@@ -1,0 +1,23 @@
+{
+  "name": "gas-types-detailed",
+  "version": "1.0.0",
+  "description": "Detailed Google Apps Script Type Definitions. Forked from Definitely Typed @types/google-apps-script. Adds full documentation and urls.",
+  "main": "",
+  "scripts": {},
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enuchi/gas-types-detailed.git"
+  },
+  "keywords": [
+    "types",
+    "google",
+    "apps",
+    "script"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enuchi/gas-types-detailed/issues"
+  },
+  "homepage": "https://github.com/enuchi/gas-types-detailed#readme"
+}
