@@ -2,7 +2,9 @@
 This package is a more detailed version of the Google Apps Script definitions available at @types/google-apps-script.
 
 # Installation
-> `npm install --save @types/google-apps-script`
+> `npm install --save-dev gas-types-detailed`
+or
+> `yarn add --dev gas-types-detailed`
 
 # Summary
 This package contains type definitions for google-apps-script (https://developers.google.com/apps-script/).
