@@ -1,7 +1,6 @@
-// Type definitions for Google Apps Script 2020-01-02
+// Type definitions for Google Apps Script 2020-01-26
 // Project: https://developers.google.com/apps-script/
-// Definitions by: PopGoesTheWza <https://github.com/PopGoesTheWza>
-//                 motemen <https://github.com/motemen/>
+// Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference path="google-apps-script.types.d.ts" />
@@ -32,12 +31,54 @@ declare namespace GoogleAppsScript {
      *       .build();
      */
     interface BigQueryConfig {
+
+      /**
+       * Adds a query parameter to this BigQueryConfig.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#addQueryParameter(String,BigQueryParameterType,String)
+       * @param name The parameter name.
+       * @param type The parameter type.
+       * @param value The parameter value.
+       */
       addQueryParameter(name: string, type: BigQueryParameterType, value: string): BigQueryConfig;
-      build(): Config;
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#build()
+       */
+      build(): object;
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#printJson()
+       */
       printJson(): string;
+
+      /**
+       * Sets the access token of this BigQueryConfig.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#setAccessToken(String)
+       * @param accessToken The access token to set.
+       */
       setAccessToken(accessToken: string): BigQueryConfig;
+
+      /**
+       * Sets the billing project ID of this BigQueryConfig.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#setBillingProjectId(String)
+       * @param billingProjectId The billing project ID to set.
+       */
       setBillingProjectId(billingProjectId: string): BigQueryConfig;
+
+      /**
+       * Sets the SQL query of this BigQueryConfig.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#setQuery(String)
+       * @param query The query to set.
+       */
       setQuery(query: string): BigQueryConfig;
+
+      /**
+       * Determines if the query is interpreted as standard or legacy SQL.
+       * https://developers.google.com/apps-script/reference/data-studio/big-query-config#setUseStandardSql(Boolean)
+       * @param useStandardSql If true, the query is interpreted as standard SQL. If false, the query is interpreted as legacy SQL.
+       */
       setUseStandardSql(useStandardSql: boolean): BigQueryConfig;
     }
     /**
@@ -55,10 +96,44 @@ declare namespace GoogleAppsScript {
      *       .setAllowOverride(true);
      */
     interface Checkbox {
+
+      /**
+       * Enables overriding for this config entry. If set to true, data source creators have the
+       * option to enable this for report editors.
+       * https://developers.google.com/apps-script/reference/data-studio/checkbox#setAllowOverride(Boolean)
+       * @param allowOverride Whether or not this config entry can be overridden in reports.
+       */
       setAllowOverride(allowOverride: boolean): Checkbox;
+
+      /**
+       * Sets the help text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/checkbox#setHelpText(String)
+       * @param helpText The helpText to set.
+       */
       setHelpText(helpText: string): Checkbox;
+
+      /**
+       * Sets the unique ID for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/checkbox#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): Checkbox;
+
+      /**
+       * Sets the dynamic status for this configuration entry.
+       *
+       *
+       * If a dynamic configuration entry is modified, subsequent configuration entries are cleared.
+       * https://developers.google.com/apps-script/reference/data-studio/checkbox#setIsDynamic(Boolean)
+       * @param isDynamic The dynamic status to set.
+       */
       setIsDynamic(isDynamic: boolean): Checkbox;
+
+      /**
+       * Sets the display name for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/checkbox#setName(String)
+       * @param name The name to set.
+       */
       setName(name: string): Checkbox;
     }
     /**
@@ -82,14 +157,64 @@ declare namespace GoogleAppsScript {
       AuthType: typeof AuthType;
       BigQueryParameterType: typeof BigQueryParameterType;
       FieldType: typeof FieldType;
+
+      /**
+       * Returns a Config object. Use this object to add configuration entries.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#getConfig()
+       */
       getConfig(): Config;
+
+      /**
+       * Returns a Fields object. Use this object to add metric and dimension Fields.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#getFields()
+       */
       getFields(): Fields;
+
+      /**
+       * Returns a new GetAuthTypeResponse object. Use this object to create a response for the
+       * getAuthType() function you implement in your script project.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newAuthTypeResponse()
+       */
       newAuthTypeResponse(): GetAuthTypeResponse;
+
+      /**
+       * Returns a new BigQueryConfig object. Use this object to create a response for the
+       * getData() function you implement in your script project.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newBigQueryConfig()
+       */
       newBigQueryConfig(): BigQueryConfig;
+
+      /**
+       * Returns a new DebugError object. Use this object to create debug errors.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newDebugError()
+       */
       newDebugError(): DebugError;
+
+      /**
+       * Returns a new GetDataResponse object. Use this object to create a response for the
+       * getData() function you implement in your script project.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newGetDataResponse()
+       */
       newGetDataResponse(): GetDataResponse;
+
+      /**
+       * Returns a new GetSchemaResponse object. Use this object to create a response for the
+       * getSchema() function you implement in your script project.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newGetSchemaResponse()
+       */
       newGetSchemaResponse(): GetSchemaResponse;
+
+      /**
+       * Returns a new SetCredentialsResponse object. Use this object to create a response for
+       * the setCredentials() function you implement in your script project.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newSetCredentialsResponse()
+       */
       newSetCredentialsResponse(): SetCredentialsResponse;
+
+      /**
+       * Returns a new UserError object. Use this object to create user errors.
+       * https://developers.google.com/apps-script/reference/data-studio/community-connector#newUserError()
+       */
       newUserError(): UserError;
     }
     /**
@@ -104,22 +229,84 @@ declare namespace GoogleAppsScript {
      *       .setHelpText("This connector can connect to multiple data endpoints.");
      */
     interface Config {
-      build(): Config;
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/config#build()
+       */
+      build(): object;
+
+      /**
+       * Returns a new checkbox configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newCheckbox()
+       */
       newCheckbox(): Checkbox;
+
+      /**
+       * Returns a new info configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newInfo()
+       */
       newInfo(): Info;
+
+      /**
+       * Returns a new options builder.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newOptionBuilder()
+       */
       newOptionBuilder(): OptionBuilder;
+
+      /**
+       * Returns a new select multiple configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newSelectMultiple()
+       */
       newSelectMultiple(): SelectMultiple;
+
+      /**
+       * Returns a new select single configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newSelectSingle()
+       */
       newSelectSingle(): SelectSingle;
+
+      /**
+       * Returns a new text area configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newTextArea()
+       */
       newTextArea(): TextArea;
+
+      /**
+       * Returns a new text input configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/config#newTextInput()
+       */
       newTextInput(): TextInput;
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/config#printJson()
+       */
       printJson(): string;
+
+      /**
+       * If true, a date range is provided for getData() requests.
+       * https://developers.google.com/apps-script/reference/data-studio/config#setDateRangeRequired(Boolean)
+       * @param dateRangeRequired Whether or not a date range should be provided to getData() requests.
+       */
       setDateRangeRequired(dateRangeRequired: boolean): Config;
+
+      /**
+       * If true, getConfig() is called again with the current user configuration.
+       * https://developers.google.com/apps-script/reference/data-studio/config#setIsSteppedConfig(Boolean)
+       * @param isSteppedConfig The stepped config status to set.
+       */
       setIsSteppedConfig(isSteppedConfig: boolean): Config;
     }
     /**
      * DataStudioApp allows scripts to interact with developer-oriented features for Data Studio.
      */
     interface DataStudioApp {
+
+      /**
+       * Creates a new Community Connector.
+       * https://developers.google.com/apps-script/reference/data-studio/data-studio-app#createCommunityConnector()
+       */
       createCommunityConnector(): CommunityConnector;
     }
     /**
@@ -132,8 +319,24 @@ declare namespace GoogleAppsScript {
      *       .throwException();
      */
     interface DebugError {
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/debug-error#printJson()
+       */
       printJson(): string;
+
+      /**
+       * Sets the text of the debug error, which is only shown to admins.
+       * https://developers.google.com/apps-script/reference/data-studio/debug-error#setText(String)
+       * @param text The error text.
+       */
       setText(text: string): DebugError;
+
+      /**
+       * Triggers this exception to be thrown.
+       * https://developers.google.com/apps-script/reference/data-studio/debug-error#throwException()
+       */
       throwException(): void;
     }
     /**
@@ -151,26 +354,153 @@ declare namespace GoogleAppsScript {
      *       .setGroup('DATETIME');
      */
     interface Field {
-      getAggregation(): AggregationType | null;
-      getDescription(): string | null;
-      getFormula(): string | null;
-      getGroup(): string | null;
-      getId(): string | null;
-      getIsReaggregatable(): boolean | null;
-      getName(): string | null;
-      getType(): FieldType | null;
+
+      /**
+       * Returns the AggregationType of this Field. AggregationType determines
+       * how Data Studio combines similar data into dimensions.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getAggregation()
+       */
+      getAggregation(): AggregationType;
+
+      /**
+       * Returns the description of this Field. Descriptions are short explanations of a field's
+       * purpose.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getDescription()
+       */
+      getDescription(): string;
+
+      /**
+       * Returns the formula of this Field. Formulas define a data transformation that Data
+       * Studio runs at query-time.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getFormula()
+       */
+      getFormula(): string;
+
+      /**
+       * Returns the group of this Field. Fields collected into a group are presented together
+       * in the Data Studio UI.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getGroup()
+       */
+      getGroup(): string;
+
+      /**
+       * Returns the ID of this Field. IDs are unique per set of fields and are used in formulas
+       * to refer to fields.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getId()
+       */
+      getId(): string;
+
+      /**
+       * Returns true if this field can be reaggregated, false otherwise.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getIsReaggregatable()
+       */
+      getIsReaggregatable(): boolean;
+
+      /**
+       * Returns the name of this Field. Names are shown to the user to distinguish fields.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getName()
+       */
+      getName(): string;
+
+      /**
+       * Returns the FieldType of this Field.
+       * https://developers.google.com/apps-script/reference/data-studio/field#getType()
+       */
+      getType(): FieldType;
+
+      /**
+       * Returns true if this Field is the default metric or dimension.
+       * https://developers.google.com/apps-script/reference/data-studio/field#isDefault()
+       */
       isDefault(): boolean;
+
+      /**
+       * Returns true if this field is a dimension.
+       * https://developers.google.com/apps-script/reference/data-studio/field#isDimension()
+       */
       isDimension(): boolean;
+
+      /**
+       * Returns true if this Field is hidden. You can use hidden fields in formulas,
+       * but not in charts. You cannot hide fields containing formulas.
+       * https://developers.google.com/apps-script/reference/data-studio/field#isHidden()
+       */
       isHidden(): boolean;
+
+      /**
+       * Returns true if this field is a metric.
+       * https://developers.google.com/apps-script/reference/data-studio/field#isMetric()
+       */
       isMetric(): boolean;
+
+      /**
+       * Sets the aggregation type of this Field. AggregationType determines how Data
+       * Studio combines similar data into dimensions. This throws an error if called on a metric.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setAggregation(AggregationType)
+       * @param aggregation The aggregation type to set.
+       */
       setAggregation(aggregation: AggregationType): Field;
+
+      /**
+       * Sets the description of this Field. Descriptions are short explanations of a field's
+       * purpose.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setDescription(String)
+       * @param description The description to set.
+       */
       setDescription(description: string): Field;
+
+      /**
+       * Sets the formula of this Field. Formulas define a data transformation that Data Studio
+       * runs at query-time.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setFormula(String)
+       * @param formula The formula to set.
+       */
       setFormula(formula: string): Field;
+
+      /**
+       * Sets the group of this Field. Fields collected into a group are presented together in
+       * the Data Studio UI.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setGroup(String)
+       * @param group The group to set.
+       */
       setGroup(group: string): Field;
+
+      /**
+       * Sets the ID of this Field. IDs are unique per set of fields and are used in formulas to
+       * refer to fields.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): Field;
+
+      /**
+       * Sets the hidden status of this Field. You can use hidden fields in formulas, but not in
+       * charts. You cannot hide fields containing formulas.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setIsHidden(Boolean)
+       * @param isHidden The hidden status to set.
+       */
       setIsHidden(isHidden: boolean): Field;
+
+      /**
+       * Sets the reaggregation-permitted status for a Field. Attempting to set an aggregation
+       * type on a field that can't be reaggregated results in an error.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setIsReaggregatable(Boolean)
+       * @param isReaggregatable The reaggregation-permitted status to set.
+       */
       setIsReaggregatable(isReaggregatable: boolean): Field;
+
+      /**
+       * Sets the name of this Field. Names are shown to the user to distinguish fields.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setName(String)
+       * @param name The name to set.
+       */
       setName(name: string): Field;
+
+      /**
+       * Sets the FieldType of this Field.
+       * https://developers.google.com/apps-script/reference/data-studio/field#setType(FieldType)
+       * @param type The type to set.
+       */
       setType(type: FieldType): Field;
     }
     /**
@@ -190,15 +520,105 @@ declare namespace GoogleAppsScript {
      *       .setId('field1_id');
      */
     interface Fields {
+
+      /**
+       * Returns a view of this object as an array.
+       *
+       *
+       *     var fields = //reference to fields object.
+       *     fields.newDimension().setId('field1_id');
+       *     fields.newDimension().setId('field2_id');
+       *     fields.newDimension().setId('field3_id');
+       *
+       *     // Logging the ID of each field:
+       *     fields
+       *       .asArray()
+       *       .map(function(field) {
+       *          Logger.log(field.getId());
+       *       });
+       * https://developers.google.com/apps-script/reference/data-studio/fields#asArray()
+       */
       asArray(): Field[];
-      build(): any[];
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#build()
+       */
+      build(): object[];
+
+      /**
+       * Returns a new Fields object filtered to Fields with an ID in ids.
+       *
+       *
+       *     var fields = //reference to fields object.
+       *     fields.newDimension().setId('field1_id');
+       *     fields.newDimension().setId('field2_id');
+       *     fields.newDimension().setId('field3_id');
+       *
+       *     // subsetFields is a Fields object that only contains field1 and field2.
+       *     var subsetFields = fields.forIds(['field1_id', 'field3_id']);
+       * https://developers.google.com/apps-script/reference/data-studio/fields#forIds(String)
+       * @param ids The IDs of fields that should be kept.
+       */
       forIds(ids: string[]): Fields;
-      getDefaultDimension(): Field | null;
-      getDefaultMetric(): Field | null;
-      getFieldById(fieldId: string): Field | null;
+
+      /**
+       * Returns the default dimension to be used for the set of fields. The default dimension is
+       * selected automatically when a new visualization is made.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#getDefaultDimension()
+       */
+      getDefaultDimension(): Field;
+
+      /**
+       * Returns the default metric to be used for the set of fields. The default metric is selected
+       * automatically when a new visualization is made.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#getDefaultMetric()
+       */
+      getDefaultMetric(): Field;
+
+      /**
+       * Returns a field with a given ID, or null if no field with that ID is in this Fields object.
+       *
+       *
+       *     var fields = //reference to fields object.
+       *     var field1 = fields.newDimension().setId('field1_id');
+       *
+       *     // byId is the same as field1.
+       *     var byId = fields.getFieldById('field1_id');
+       *
+       *     // byId2 is null.
+       *     var byId2 = fields.getFieldById('not present id');
+       * https://developers.google.com/apps-script/reference/data-studio/fields#getFieldById(String)
+       * @param fieldId The ID of the field to get.
+       */
+      getFieldById(fieldId: string): Field;
+
+      /**
+       * Returns a new dimension Field.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#newDimension()
+       */
       newDimension(): Field;
+
+      /**
+       * Returns a new metric Field.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#newMetric()
+       */
       newMetric(): Field;
+
+      /**
+       * Sets the default dimension to be used for the set of fields. The default dimension is selected
+       * automatically when a new visualization is made.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#setDefaultDimension(String)
+       * @param fieldId The ID of the field to use as the default dimension. This ID must be present in the set of fields.
+       */
       setDefaultDimension(fieldId: string): void;
+
+      /**
+       * Sets the default metric to be used for the set of fields. The default metric is selected
+       * automatically when a new visualization is made.
+       * https://developers.google.com/apps-script/reference/data-studio/fields#setDefaultMetric(String)
+       * @param fieldId The ID of the field to use as the default metric. This ID must be present in the set of fields.
+       */
       setDefaultMetric(fieldId: string): void;
     }
     /**
@@ -215,9 +635,36 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface GetAuthTypeResponse {
-      build(): GetAuthTypeResponse;
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/get-auth-type-response#build()
+       */
+      build(): object;
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/get-auth-type-response#printJson()
+       */
       printJson(): string;
+
+      /**
+       * Sets the AuthType of the builder.
+       * https://developers.google.com/apps-script/reference/data-studio/get-auth-type-response#setAuthType(AuthType)
+       * @param authType The authentication type to set.
+       */
       setAuthType(authType: AuthType): GetAuthTypeResponse;
+
+      /**
+       * Sets the help URL of the builder.
+       *
+       *
+       * The help URL is an optional URL the user can visit to get help on setting up auth. This is
+       * only supported for USER_PASS, KEY, and USER_TOKEN
+       * authTypes.
+       * https://developers.google.com/apps-script/reference/data-studio/get-auth-type-response#setHelpUrl(String)
+       * @param helpUrl The help URL to set.
+       */
       setHelpUrl(helpUrl: string): GetAuthTypeResponse;
     }
     /**
@@ -239,10 +686,40 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface GetDataResponse {
+
+      /**
+       * Adds multiple rows of data to this GetDataResponse.
+       * https://developers.google.com/apps-script/reference/data-studio/get-data-response#addAllRows(String)
+       * @param rows The rows of data to set.
+       */
       addAllRows(rows: string[][]): GetDataResponse;
+
+      /**
+       * Adds a row of data to this GetDataResponse.
+       * https://developers.google.com/apps-script/reference/data-studio/get-data-response#addRow(String)
+       * @param row The row of data to set.
+       */
       addRow(row: string[]): GetDataResponse;
-      build(): any;
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/get-data-response#build()
+       */
+      build(): object;
+
+      /**
+       * Sets the Fields of the builder.
+       * https://developers.google.com/apps-script/reference/data-studio/get-data-response#setFields(Fields)
+       * @param fields The fields to set.
+       */
       setFields(fields: Fields): GetDataResponse;
+
+      /**
+       * Sets the filters applied status for this builder. Set to true if all filters were
+       * successfully applied, false otherwise.
+       * https://developers.google.com/apps-script/reference/data-studio/get-data-response#setFiltersApplied(Boolean)
+       * @param filtersApplied - The filters applied status to set.
+       */
       setFiltersApplied(filtersApplied: boolean): GetDataResponse;
     }
     /**
@@ -271,8 +748,24 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface GetSchemaResponse {
-      build(): any;
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/get-schema-response#build()
+       */
+      build(): object;
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/get-schema-response#printJson()
+       */
       printJson(): string;
+
+      /**
+       * Sets the Fields of the builder.
+       * https://developers.google.com/apps-script/reference/data-studio/get-schema-response#setFields(Fields)
+       * @param fields The fields to set.
+       */
       setFields(fields: Fields): GetSchemaResponse;
     }
     /**
@@ -287,7 +780,19 @@ declare namespace GoogleAppsScript {
      *       .setText("This text gives some context on the configuration.");
      */
     interface Info {
+
+      /**
+       * Sets the unique ID for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/info#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): Info;
+
+      /**
+       * Sets the text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/info#setText(String)
+       * @param text The text to set.
+       */
       setText(text: string): Info;
     }
     /**
@@ -312,7 +817,21 @@ declare namespace GoogleAppsScript {
      *       .addOption(option2);
      */
     interface OptionBuilder {
+
+      /**
+       * Sets the label of this option builder. Labels are the text that the user sees when selecting
+       * one or more options from the dropdown.
+       * https://developers.google.com/apps-script/reference/data-studio/option-builder#setLabel(String)
+       * @param label The label to set.
+       */
       setLabel(label: string): OptionBuilder;
+
+      /**
+       * Sets the value of this option builder. Values are what is passed to the code when a user
+       * selects one or more options from the dropdown.
+       * https://developers.google.com/apps-script/reference/data-studio/option-builder#setValue(String)
+       * @param value The value to set.
+       */
       setValue(value: string): OptionBuilder;
     }
     /**
@@ -338,11 +857,51 @@ declare namespace GoogleAppsScript {
      *       .addOption(option2);
      */
     interface SelectMultiple {
+
+      /**
+       * Adds a new select option.
+       * https://developers.google.com/apps-script/reference/data-studio/select-multiple#addOption(OptionBuilder)
+       * @param optionBuilder A builder for an option.
+       */
       addOption(optionBuilder: OptionBuilder): SelectMultiple;
+
+      /**
+       * Enables overriding for this config entry. If set to true, data source creators have the
+       * option to enable this for report editors.
+       * https://developers.google.com/apps-script/reference/data-studio/select-multiple#setAllowOverride(Boolean)
+       * @param allowOverride Whether or not this config entry can be overridden in reports.
+       */
       setAllowOverride(allowOverride: boolean): SelectMultiple;
+
+      /**
+       * Sets the help text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/select-multiple#setHelpText(String)
+       * @param helpText The help text to set.
+       */
       setHelpText(helpText: string): SelectMultiple;
+
+      /**
+       * Sets the unique ID for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/select-multiple#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): SelectMultiple;
+
+      /**
+       * Sets the dynamic status for this configuration entry.
+       *
+       *
+       * If a dynamic configuration entry is modified, subsequent configuration entries are cleared.
+       * https://developers.google.com/apps-script/reference/data-studio/select-multiple#setIsDynamic(Boolean)
+       * @param isDynamic The dynamic status to set.
+       */
       setIsDynamic(isDynamic: boolean): SelectMultiple;
+
+      /**
+       * Sets the display name for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/select-multiple#setName(String)
+       * @param name The name to set.
+       */
       setName(name: string): SelectMultiple;
     }
     /**
@@ -366,11 +925,51 @@ declare namespace GoogleAppsScript {
      *       .addOption(option2);
      */
     interface SelectSingle {
+
+      /**
+       * Adds a new select option.
+       * https://developers.google.com/apps-script/reference/data-studio/select-single#addOption(OptionBuilder)
+       * @param optionBuilder A builder for an option.
+       */
       addOption(optionBuilder: OptionBuilder): SelectSingle;
+
+      /**
+       * Enables overriding for this config entry. If set to true, data source creators have the
+       * option to enable this for report editors.
+       * https://developers.google.com/apps-script/reference/data-studio/select-single#setAllowOverride(Boolean)
+       * @param allowOverride Whether or not this config entry can be overridden in reports.
+       */
       setAllowOverride(allowOverride: boolean): SelectSingle;
+
+      /**
+       * Sets the help text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/select-single#setHelpText(String)
+       * @param helpText The helpText to set.
+       */
       setHelpText(helpText: string): SelectSingle;
+
+      /**
+       * Sets the unique ID for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/select-single#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): SelectSingle;
+
+      /**
+       * Sets the dynamic status for this configuration entry.
+       *
+       *
+       * If a dynamic configuration entry is modified, subsequent configuration entries are cleared.
+       * https://developers.google.com/apps-script/reference/data-studio/select-single#setIsDynamic(Boolean)
+       * @param isDynamic The dynamic status to set.
+       */
       setIsDynamic(isDynamic: boolean): SelectSingle;
+
+      /**
+       * Sets the display name for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/select-single#setName(String)
+       * @param name The name to set.
+       */
       setName(name: string): SelectSingle;
     }
     /**
@@ -389,8 +988,25 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface SetCredentialsResponse {
-      build(): any;
+
+      /**
+       * Validates this object and returns it in the format needed by Data Studio.
+       * https://developers.google.com/apps-script/reference/data-studio/set-credentials-response#build()
+       */
+      build(): object;
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/set-credentials-response#printJson()
+       */
       printJson(): string;
+
+      /**
+       * Sets the valid status of this SetCredentialsResponse. Set to true if the
+       * credentials provided in the request were valid, false, otherwise.
+       * https://developers.google.com/apps-script/reference/data-studio/set-credentials-response#setIsValid(Boolean)
+       * @param isValid The valid status to set.
+       */
       setIsValid(isValid: boolean): SetCredentialsResponse;
     }
     /**
@@ -410,11 +1026,51 @@ declare namespace GoogleAppsScript {
      *       .setPlaceholder("Search for an artist for all songs.");
      */
     interface TextArea {
+
+      /**
+       * Enables overriding for this config entry. If set to true, data source creators have the
+       * option to enable this for report editors.
+       * https://developers.google.com/apps-script/reference/data-studio/text-area#setAllowOverride(Boolean)
+       * @param allowOverride Whether or not this config entry can be overridden in reports.
+       */
       setAllowOverride(allowOverride: boolean): TextArea;
+
+      /**
+       * Sets the help text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-area#setHelpText(String)
+       * @param helpText The helpText to set.
+       */
       setHelpText(helpText: string): TextArea;
+
+      /**
+       * Sets the unique ID for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-area#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): TextArea;
+
+      /**
+       * Sets the dynamic status for this configuration entry.
+       *
+       *
+       * If a dynamic configuration entry is modified, subsequent configuration entries are cleared.
+       * https://developers.google.com/apps-script/reference/data-studio/text-area#setIsDynamic(Boolean)
+       * @param isDynamic The dynamic status to set.
+       */
       setIsDynamic(isDynamic: boolean): TextArea;
+
+      /**
+       * Sets the display name for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-area#setName(String)
+       * @param name The name to set.
+       */
       setName(name: string): TextArea;
+
+      /**
+       * Sets the placeholder text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-area#setPlaceholder(String)
+       * @param placeholder The placeholder text to set.
+       */
       setPlaceholder(placeholder: string): TextArea;
     }
     /**
@@ -432,11 +1088,51 @@ declare namespace GoogleAppsScript {
      *       .setPlaceholder("Search for an artist for all songs.");
      */
     interface TextInput {
+
+      /**
+       * Enables overriding for this config entry. If set to true, data source creators have the
+       * option to enable this for report editors
+       * https://developers.google.com/apps-script/reference/data-studio/text-input#setAllowOverride(Boolean)
+       * @param allowOverride Whether or not this config entry can be overridden in reports.
+       */
       setAllowOverride(allowOverride: boolean): TextInput;
+
+      /**
+       * Sets the help text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-input#setHelpText(String)
+       * @param helpText The helpText to set.
+       */
       setHelpText(helpText: string): TextInput;
+
+      /**
+       * Sets the unique ID for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-input#setId(String)
+       * @param id The ID to set.
+       */
       setId(id: string): TextInput;
+
+      /**
+       * Sets the dynamic status for this configuration entry.
+       *
+       *
+       * If a dynamic configuration entry is modified, subsequent configuration entries are cleared.
+       * https://developers.google.com/apps-script/reference/data-studio/text-input#setIsDynamic(Boolean)
+       * @param isDynamic The dynamic status to set.
+       */
       setIsDynamic(isDynamic: boolean): TextInput;
+
+      /**
+       * Sets the display name for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-input#setName(String)
+       * @param name The name to set.
+       */
       setName(name: string): TextInput;
+
+      /**
+       * Sets the placeholder text for this configuration entry.
+       * https://developers.google.com/apps-script/reference/data-studio/text-input#setPlaceholder(String)
+       * @param placeholder The placeholder text to set.
+       */
       setPlaceholder(placeholder: string): TextInput;
     }
     /**
@@ -450,58 +1146,32 @@ declare namespace GoogleAppsScript {
      *       .throwException();
      */
     interface UserError {
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/data-studio/user-error#printJson()
+       */
       printJson(): string;
+
+      /**
+       * Sets the text of the debug error, which is only shown to admins.
+       * https://developers.google.com/apps-script/reference/data-studio/user-error#setDebugText(String)
+       * @param text The error text.
+       */
       setDebugText(text: string): UserError;
+
+      /**
+       * Sets the text of the user error.
+       * https://developers.google.com/apps-script/reference/data-studio/user-error#setText(String)
+       * @param text The error text.
+       */
       setText(text: string): UserError;
+
+      /**
+       * Triggers this exception to be thrown.
+       * https://developers.google.com/apps-script/reference/data-studio/user-error#throwException()
+       */
       throwException(): void;
-    }
-    /**
-     * function getData(request: GoogleAppsScript.Data_Studio.Request<YourConnectorParams>)
-     *
-     * See https://developers.google.com/datastudio/connector/reference#getdata
-     */
-    interface Request<T> {
-      /** An object containing the user provided values for the config parameters defined by the connector. */
-      configParams: T;
-      /** An object containing information relevant to connector execution. */
-      scriptParams: ScriptParams;
-      /**
-       * By default, the date range provided will be the last 28 days excluding today.
-       * If a user applies a date range filter for a report, then the date range provided will reflect the user selection.
-       * When sampleExtraction is set to true, the date two days earlier than today is given as both the start and end date.
-       */
-      dateRange: DateRange;
-      /** The names of the requested fields. */
-      fields: { name: string }[];
-      /**
-       * A nested array of the user selected filters.
-       * The innermost arrays should be ORed together, the outermost arrays should be ANDed together.
-       */
-      dimensionsFilters: DimensionsFilters[][];
-    }
-    interface DateRange {
-      /** The start date for filtering the data. Applies only if dateRangeRequired is set to true. It will be in YYYY-MM-DD format. */
-      startDate: string;
-      /** The end date for filtering the data. Applies only dateRangeRequired is set to true. It will be in YYYY-MM-DD format. */
-      endDate: string;
-    }
-    interface ScriptParams {
-      /** If true, the getData() request is for automatic semantic type detection. */
-      sampleExtraction?: boolean;
-      /** A timestamp that marks the most recent request for a refresh of data. */
-      lastRefresh: string;
-    }
-    type RegexpOperator = "REGEXP_PARTIAL_MATCH" | "REGEXP_EXACT_MATCH";
-    type NumericOperator = "NUMERIC_GREATER_THAN" | "NUMERIC_GREATER_THAN_OR_EQUAL" | "NUMERIC_LESS_THAN" | "NUMERIC_LESS_THAN_OR_EQUAL";
-    interface DimensionsFilters {
-      /** The name of the field to be filtered */
-      fieldName: string;
-      /** An array of values to use for the operator. */
-      values: string[];
-      /** Whether data matching this filter should be included or excluded from the getData() response. */
-      type: "INCLUDE" | "EXCLUDE";
-      /** The operator to apply. */
-      operator: "EQUALS" | "CONTAINS" | RegexpOperator | "IN_LIST" | "IS_NULL" | "BETWEEN" | NumericOperator;
     }
   }
 }

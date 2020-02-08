@@ -1,7 +1,6 @@
-// Type definitions for Google Apps Script 2020-01-02
+// Type definitions for Google Apps Script 2020-01-26
 // Project: https://developers.google.com/apps-script/
-// Definitions by: PopGoesTheWza <https://github.com/PopGoesTheWza>
-//                 motemen <https://github.com/motemen/>
+// Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference path="google-apps-script.types.d.ts" />
@@ -19,7 +18,31 @@ declare namespace GoogleAppsScript {
      */
     interface ContentService {
       MimeType: typeof MimeType;
+
+      /**
+       * Create a new TextOutput object.
+       *
+       *
+       *     function doGet() {
+       *       var output = ContentService.createTextOutput();
+       *       output.append("Hello world!");
+       *       return output;
+       *     }
+       * https://developers.google.com/apps-script/reference/content/content-service#createTextOutput()
+       */
       createTextOutput(): TextOutput;
+
+      /**
+       * Create a new TextOutput object that can serve the given content.
+       *
+       *
+       *     function doGet() {
+       *       var output = ContentService.createTextOutput("Hello world!");
+       *       return output;
+       *     }
+       * https://developers.google.com/apps-script/reference/content/content-service#createTextOutput(String)
+       * @param content the content to serve.
+       */
       createTextOutput(content: string): TextOutput;
     }
     /**
@@ -42,13 +65,62 @@ declare namespace GoogleAppsScript {
      * ContentService
      */
     interface TextOutput {
+
+      /**
+       * Appends new content to the content that will be served.
+       * https://developers.google.com/apps-script/reference/content/text-output#append(String)
+       * @param addedContent the content to append
+       */
       append(addedContent: string): TextOutput;
+
+      /**
+       * Clears the current content.
+       * https://developers.google.com/apps-script/reference/content/text-output#clear()
+       */
       clear(): TextOutput;
+
+      /**
+       * Tells browsers to download rather than display this content.
+       *
+       *
+       * Some browsers will ignore this setting. Setting this to null will clear it back to the
+       * default behavior of displaying rather than downloading.
+       * https://developers.google.com/apps-script/reference/content/text-output#downloadAsFile(String)
+       * @param filename the filename to tell the browser to use
+       */
       downloadAsFile(filename: string): TextOutput;
+
+      /**
+       * Gets the content that will be served.
+       * https://developers.google.com/apps-script/reference/content/text-output#getContent()
+       */
       getContent(): string;
+
+      /**
+       * Returns the file name to download this file as, or null if it should be displayed rather than
+       * downloaded.
+       * https://developers.google.com/apps-script/reference/content/text-output#getFileName()
+       */
       getFileName(): string;
+
+      /**
+       * Get the mime type this content will be served with.
+       * https://developers.google.com/apps-script/reference/content/text-output#getMimeType()
+       */
       getMimeType(): MimeType;
+
+      /**
+       * Sets the content that will be served.
+       * https://developers.google.com/apps-script/reference/content/text-output#setContent(String)
+       * @param content the content to serve
+       */
       setContent(content: string): TextOutput;
+
+      /**
+       * Sets the mime type for content that will be served. The default is plain text.
+       * https://developers.google.com/apps-script/reference/content/text-output#setMimeType(MimeType)
+       * @param mimeType the mime type
+       */
       setMimeType(mimeType: MimeType): TextOutput;
     }
   }

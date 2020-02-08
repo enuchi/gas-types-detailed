@@ -1,7 +1,6 @@
-// Type definitions for Google Apps Script 2020-01-02
+// Type definitions for Google Apps Script 2020-01-26
 // Project: https://developers.google.com/apps-script/
-// Definitions by: PopGoesTheWza <https://github.com/PopGoesTheWza>
-//                 motemen <https://github.com/motemen/>
+// Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference path="google-apps-script.types.d.ts" />
@@ -11,20 +10,103 @@ declare namespace GoogleAppsScript {
     /**
      * A data interchange object for Apps Script services.
      */
-    interface Blob extends BlobSource {
+    interface Blob {
+
+      /**
+       * Returns a copy of this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#copyBlob()
+       */
       copyBlob(): Blob;
+
+      /**
+       * Return the data inside this object as a blob converted to the specified content type. This
+       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
+       * assumes that the part of the filename that follows the last period (if any) is an existing
+       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
+       * "ShoppingList.12.25.pdf".
+       * https://developers.google.com/apps-script/reference/base/blob#getAs(String)
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       */
       getAs(contentType: string): Blob;
+
+      /**
+       * Gets the data stored in this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#getBytes()
+       */
       getBytes(): Byte[];
+
+      /**
+       * Gets the content type of the bytes in this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#getContentType()
+       */
       getContentType(): string;
+
+      /**
+       * Gets the data of this blob as a String with UTF-8 encoding.
+       * https://developers.google.com/apps-script/reference/base/blob#getDataAsString()
+       */
       getDataAsString(): string;
+
+      /**
+       * Gets the data of this blob as a string with the specified encoding.
+       * https://developers.google.com/apps-script/reference/base/blob#getDataAsString(String)
+       * @param charset The charset to use in encoding the data in this blob as a string.
+       */
       getDataAsString(charset: string): string;
+
+      /**
+       * Gets the name of this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#getName()
+       */
       getName(): string;
+
+      /**
+       * Returns whether this blob is a G Suite file (Sheets, Docs, etc.).
+       * https://developers.google.com/apps-script/reference/base/blob#isGoogleType()
+       */
       isGoogleType(): boolean;
+
+      /**
+       * Sets the data stored in this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#setBytes(Byte)
+       * @param data The new data.
+       */
       setBytes(data: Byte[]): Blob;
+
+      /**
+       * Sets the content type of the bytes in this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#setContentType(String)
+       * @param contentType The new contentType.
+       */
       setContentType(contentType: string): Blob;
+
+      /**
+       * Sets the content type of the bytes in this blob based on the file extension. The contentType is
+       * null if it cannot be guessed from its extension.
+       * https://developers.google.com/apps-script/reference/base/blob#setContentTypeFromExtension()
+       */
       setContentTypeFromExtension(): Blob;
+
+      /**
+       * Sets the data of this blob from a string with UTF-8 encoding.
+       * https://developers.google.com/apps-script/reference/base/blob#setDataFromString(String)
+       * @param string The string data.
+       */
       setDataFromString(string: string): Blob;
+
+      /**
+       * Sets the data of this blob from a string with the specified encoding.
+       * https://developers.google.com/apps-script/reference/base/blob#setDataFromString(String,String)
+       * @param string The string data.
+       * @param charset The charset to use in interpreting the string as bytes.
+       */
       setDataFromString(string: string, charset: string): Blob;
+
+      /**
+       * Sets the name of this blob.
+       * https://developers.google.com/apps-script/reference/base/blob#setName(String)
+       * @param name The new name.
+       */
       setName(name: string): Blob;
       /** @deprecated DO NOT USE */ getAllBlobs(): Blob[];
     }
@@ -69,7 +151,22 @@ declare namespace GoogleAppsScript {
      * StaticMapAllows for the creation and decoration of static map images.
      */
     interface BlobSource {
+
+      /**
+       * Return the data inside this object as a blob converted to the specified content type. This
+       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
+       * assumes that the part of the filename that follows the last period (if any) is an existing
+       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
+       * "ShoppingList.12.25.pdf".
+       * https://developers.google.com/apps-script/reference/base/blob-source#getAs(String)
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       */
       getAs(contentType: string): Blob;
+
+      /**
+       * Return the data inside this object as a blob.
+       * https://developers.google.com/apps-script/reference/base/blob-source#getBlob()
+       */
       getBlob(): Blob;
     }
     /**
@@ -83,11 +180,114 @@ declare namespace GoogleAppsScript {
      */
     interface Browser {
       Buttons: typeof ButtonSet;
+
+      /**
+       * Pops up a dialog box with a text input box in the user's browser.
+       *
+       *
+       * The inputBox method raises a client-side input box that displays the given prompt to the
+       * user. Note that this function causes the server-side script to be suspended. It resumes
+       * automatically after the user clears the dialog, but JDBC connections don't persist across the
+       * suspension.
+       *
+       *
+       *     // The code below sets the value of name to the name input by the user, or 'cancel'.
+       *     var name = Browser.inputBox('Enter your name');
+       * https://developers.google.com/apps-script/reference/base/browser#inputBox(String)
+       * @param prompt The text to be displayed in the dialog box.
+       */
       inputBox(prompt: string): string;
+
+      /**
+       * Pops up a dialog box with a text input box in the user's browser.
+       *
+       *
+       * The inputBox method raises a client-side input box that displays the given prompt to the
+       * user, and offers a choice of buttons to be displayed. Note that this function causes the
+       * server-side script to be suspended. It resumes automatically after the user clears the dialog,
+       * but JDBC connections don't persist across the suspension.
+       *
+       *
+       *     // The code below sets the value of name to the name input by the user, or 'cancel'.
+       *     var name = Browser.inputBox('Enter your name', Browser.Buttons.OK_CANCEL);
+       * https://developers.google.com/apps-script/reference/base/browser#inputBox(String,ButtonSet)
+       * @param prompt The text to be displayed in the dialog box.
+       * @param buttons The type of button set to use.
+       */
       inputBox(prompt: string, buttons: ButtonSet): string;
+
+      /**
+       * Pops up a dialog box with a text input box in the user's browser.
+       *
+       *
+       * The inputBox method raises a client side input box with the given title, that displays the
+       * given prompt to the user, and offers a choice of buttons to be displayed. Note that this
+       * function causes the server-side script to be suspended. It resumes automatically after the user
+       * clears the dialog, but JDBC connections don't persist across the suspension.
+       *
+       *
+       *     // The code below sets the value of name to the name input by the user, or 'cancel'.
+       *     var name = Browser.inputBox('ID Check', 'Enter your name', Browser.Buttons.OK_CANCEL);
+       * https://developers.google.com/apps-script/reference/base/browser#inputBox(String,String,ButtonSet)
+       * @param title The title for the dialog box.
+       * @param prompt The text to be displayed in the dialog box.
+       * @param buttons The type of button set to use.
+       */
       inputBox(title: string, prompt: string, buttons: ButtonSet): string;
+
+      /**
+       * Pops up a dialog box with the given message and an OK button in the user's browser.
+       *
+       *
+       * The msgBox method raises a client-side message box that displays the given message to the
+       * user. Note that this method causes the server-side script to be suspended. It resumes
+       * automatically after the user clears the dialog, but JDBC connections don't persist across the
+       * suspension.
+       *
+       *
+       *     // The code below displays "hello world" in a dialog box with an OK button
+       *     Browser.msgBox('hello world');
+       * https://developers.google.com/apps-script/reference/base/browser#msgBox(String)
+       * @param prompt The text to be displayed in the dialog box.
+       */
       msgBox(prompt: string): string;
+
+      /**
+       * Pops up a dialog box with the given message and specified buttons in the user's browser.
+       *
+       *
+       * The msgBox method raises a client-side message box that displays the given message to the
+       * user, and offers a choice of buttons to be displayed. Note that this method causes the
+       * server-side script to be suspended. It resumes automatically after the user clears the dialog,
+       * but JDBC connections don't persist across the suspension.
+       *
+       *
+       *     // The code below displays "hello world" in a dialog box with OK and Cancel buttons.
+       *     Browser.msgBox('hello world', Browser.Buttons.OK_CANCEL);
+       * https://developers.google.com/apps-script/reference/base/browser#msgBox(String,ButtonSet)
+       * @param prompt The text to be displayed in the dialog box.
+       * @param buttons The type of button set to use.
+       */
       msgBox(prompt: string, buttons: ButtonSet): string;
+
+      /**
+       * Pops up a dialog box with the given title, message and specified buttons in the user's browser.
+       *
+       *
+       * The msgBox method raises a client-side message box with the given title, that displays the
+       * given message to the user, and offers a choice of buttons to be displayed. Note that this
+       * method causes the server-side script to be suspended. It resumes automatically after the user
+       * clears the dialog, but JDBC connections don't persist across the suspension.
+       *
+       *
+       *     // The code below displays "hello world" in a dialog box with a custom title and Yes and
+       *     // No buttons
+       *     Browser.msgBox('Greetings', 'hello world', Browser.Buttons.YES_NO);
+       * https://developers.google.com/apps-script/reference/base/browser#msgBox(String,String,ButtonSet)
+       * @param title The title of the dialog box.
+       * @param prompt The text to be displayed in the dialog box.
+       * @param buttons The type of button set to use.
+       */
       msgBox(title: string, prompt: string, buttons: ButtonSet): string;
     }
     /**
@@ -132,10 +332,53 @@ declare namespace GoogleAppsScript {
      * This class allows the developer to write out text to the debugging logs.
      */
     interface Logger {
+
+      /**
+       * Clears the log.
+       * https://developers.google.com/apps-script/reference/base/logger#clear()
+       */
       clear(): void;
+
+      /**
+       * Returns a complete list of messages in the current log. This method can be used to save or
+       * email the entire log output generated during script execution.
+       *
+       *
+       *     // Generate a log, then email it to the person who ran the script.
+       *     var files = DriveApp.getFiles();
+       *     while (files.hasNext()) {
+       *       Logger.log(files.next().getName());
+       *     }
+       *     var recipient = Session.getActiveUser().getEmail();
+       *     var subject = 'A list of files in your Google Drive';
+       *     var body = Logger.getLog();
+       *     MailApp.sendEmail(recipient, subject, body);
+       * https://developers.google.com/apps-script/reference/base/logger#getLog()
+       */
       getLog(): string;
-      log(data: any): Logger;
-      log(format: string, ...values: any[]): Logger;
+
+      /**
+       * Writes the string to the logging console. To view the logged output, select View > Show
+       * logs. This can be very useful for debugging scripts.
+       * https://developers.google.com/apps-script/reference/base/logger#log(Object)
+       * @param data the message to log
+       */
+      log(data: object): Logger;
+
+      /**
+       * Writes a formatted string to the logging console, using the format and values provided. The
+       * string can include multiple %s placeholders, which are replaced with corresponding
+       * values from the list of arguments, converted to strings.
+       *
+       *
+       *     // Log the number of Google Groups you belong to.
+       *     var groups = GroupsApp.getGroups();
+       *     Logger.log('You are a member of %s Google Groups.', groups.length);
+       * https://developers.google.com/apps-script/reference/base/logger#log(String,Object...)
+       * @param format a format string that contains as many instances of %s as the number of values arguments
+       * @param values a variable number of values to insert into the format string
+       */
+      log(format: string, ...values: object[]): Logger;
     }
     /**
      * A custom menu in an instance of the user interface for a Google App. A script can only interact
@@ -155,9 +398,33 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface Menu {
+
+      /**
+       * Adds an item to the menu. The label for a menu item should be in sentence case (only the first
+       * word capitalized).
+       * https://developers.google.com/apps-script/reference/base/menu#addItem(String,String)
+       * @param caption The label for the menu item, with only the first word capitalized.
+       * @param functionName The name of the function to invoke when the user selects the item. You can use functions from included libraries, such as Library.libFunction1.
+       */
       addItem(caption: string, functionName: string): Menu;
+
+      /**
+       * Adds a visual separator to the menu.
+       * https://developers.google.com/apps-script/reference/base/menu#addSeparator()
+       */
       addSeparator(): Menu;
+
+      /**
+       * Adds a sub-menu to the menu.
+       * https://developers.google.com/apps-script/reference/base/menu#addSubMenu(Menu)
+       * @param menu The sub-menu, constructed like a top-level menu.
+       */
       addSubMenu(menu: Menu): Menu;
+
+      /**
+       * Inserts the menu into the instance of the editor's user interface.
+       * https://developers.google.com/apps-script/reference/base/menu#addToUi()
+       */
       addToUi(): void;
     }
     /**
@@ -205,17 +472,56 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface PromptResponse {
+
+      /**
+       * Gets the text that the user entered in the dialog's input field. The text is available even if
+       * the user closed the dialog by clicking a button with a negative connotation, like "Cancel" or
+       * the close button in the dialog's title bar. getSelectedButton() can help to determine
+       * whether the user intended the response text to be valid.
+       * https://developers.google.com/apps-script/reference/base/prompt-response#getResponseText()
+       */
       getResponseText(): string;
+
+      /**
+       * Gets the button that the user clicked to dismiss the dialog. If the user clicked the close
+       * button that is included in every dialog's title bar, this method returns Button.CLOSE.
+       * https://developers.google.com/apps-script/reference/base/prompt-response#getSelectedButton()
+       */
       getSelectedButton(): Button;
     }
     /**
      * A color defined by red, green, blue color channels.
      */
     interface RgbColor {
+
+      /**
+       * Returns the color as a CSS-style 7 character hexadecimal string, #rrggbb.
+       * https://developers.google.com/apps-script/reference/base/rgb-color#asHexString()
+       */
       asHexString(): string;
+
+      /**
+       * The blue channel of this color, as a number from 0 to 255.
+       * https://developers.google.com/apps-script/reference/base/rgb-color#getBlue()
+       */
       getBlue(): Integer;
+
+      /**
+       * Get the type of this color.
+       * https://developers.google.com/apps-script/reference/base/rgb-color#getColorType()
+       */
       getColorType(): ColorType;
+
+      /**
+       * The green channel of this color, as a number from 0 to 255.
+       * https://developers.google.com/apps-script/reference/base/rgb-color#getGreen()
+       */
       getGreen(): Integer;
+
+      /**
+       * The red channel of this color, as a number from 0 to 255.
+       * https://developers.google.com/apps-script/reference/base/rgb-color#getRed()
+       */
       getRed(): Integer;
     }
     /**
@@ -223,10 +529,73 @@ declare namespace GoogleAppsScript {
      * some circumstances) and language setting.
      */
     interface Session {
+
+      /**
+       * Gets information about the current user. If security policies do not allow access to the user's
+       * identity, User.getEmail() returns a blank string. The circumstances in which the
+       * email address is available vary: for example, the user's email address is not available in any
+       * context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app
+       * deployed to "execute as me" (that is, authorized by the developer instead of the user).
+       * However, these restrictions generally do not apply if the developer runs the script themselves
+       * or belongs to the same G Suite domain as the user.
+       *
+       *
+       *     // Log the email address of the person running the script.
+       *     var email = Session.getActiveUser().getEmail();
+       *     Logger.log(email);
+       * https://developers.google.com/apps-script/reference/base/session#getActiveUser()
+       */
       getActiveUser(): User;
+
+      /**
+       * Gets the language setting of the current user as a string—for example, en for English.
+       *
+       *
+       *     // Log the language setting of the person running the script.
+       *     Logger.log(Session.getActiveUserLocale());
+       * https://developers.google.com/apps-script/reference/base/session#getActiveUserLocale()
+       */
       getActiveUserLocale(): string;
+
+      /**
+       * Gets information about the user under whose authority the script is running. If the script is a
+       * web app set to "execute as me" (the developer), this returns the developer's user account. If
+       * the script is running under an installable
+       * trigger, this returns the account of the user who created the trigger. In most other
+       * scenarios, this returns the same account as getActiveUser().
+       *
+       *
+       *     // Log the email address of the user under whose authority the script is running.
+       *     var email = Session.getEffectiveUser().getEmail();
+       *     Logger.log(email);
+       * https://developers.google.com/apps-script/reference/base/session#getEffectiveUser()
+       */
       getEffectiveUser(): User;
+
+      /**
+       * Gets the time zone of the script. New scripts default to the owner's time zone, but the
+       * script's time zone can be changed by clicking File > Project properties in the script
+       * editor. Note that spreadsheets have a separate time zone, which can be changed by clicking
+       * File > Spreadsheet settings in Google Sheets. Spreadsheet time zones that differ from
+       * the script time zone are a frequent source of scripting bugs.
+       *
+       *
+       *     // Log the time zone of the script.
+       *     var timeZone = Session.getScriptTimeZone();
+       *     Logger.log(timeZone);
+       * https://developers.google.com/apps-script/reference/base/session#getScriptTimeZone()
+       */
       getScriptTimeZone(): string;
+
+      /**
+       * Gets a temporary key that is unique to the active user but does not reveal the user identity.
+       * The temporary key rotates every 30 days and is unique to the script.
+       *
+       *
+       *     // Log the temporary key of the person running the script.
+       *     Logger.log(Session.getTemporaryActiveUserKey());
+       * https://developers.google.com/apps-script/reference/base/session#getTemporaryActiveUserKey()
+       */
       getTemporaryActiveUserKey(): string;
       /** @deprecated DO NOT USE */ getTimeZone(): string;
       /** @deprecated DO NOT USE */ getUser(): User;
@@ -253,23 +622,294 @@ declare namespace GoogleAppsScript {
     interface Ui {
       Button: typeof Button;
       ButtonSet: typeof ButtonSet;
+
+      /**
+       * Opens a dialog box in the user's editor with the given message and an "OK" button. This method
+       * suspends the server-side script while the dialog is open. The script resumes after the user
+       * dismisses the dialog, but Jdbc
+       * connections and LockService locks don't
+       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       *
+       *
+       *     // Display "Hello, world" in a dialog box with an "OK" button. The user can also close the
+       *     // dialog by clicking the close button in its title bar.
+       *     SpreadsheetApp.getUi().alert('Hello, world');
+       * https://developers.google.com/apps-script/reference/base/ui#alert(String)
+       * @param prompt The message to display in the dialog box.
+       */
       alert(prompt: string): Button;
+
+      /**
+       * Opens a dialog box in the user's editor with the given message and set of buttons. This method
+       * suspends the server-side script while the dialog is open. The script resumes after the user
+       * dismisses the dialog, but Jdbc
+       * connections and LockService locks don't
+       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       *
+       *
+       *     // Display a dialog box with a message and "Yes" and "No" buttons. The user can also close the
+       *     // dialog by clicking the close button in its title bar.
+       *     var ui = SpreadsheetApp.getUi();
+       *     var response = ui.alert('Are you sure you want to continue?', ui.ButtonSet.YES_NO);
+       *
+       *     // Process the user's response.
+       *     if (response == ui.Button.YES) {
+       *       Logger.log('The user clicked "Yes."');
+       *     } else {
+       *       Logger.log('The user clicked "No" or the close button in the dialog\'s title bar.');
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#alert(String,ButtonSet)
+       * @param prompt The message to display in the dialog box.
+       * @param buttons The button set to display in the dialog box.
+       */
       alert(prompt: string, buttons: ButtonSet): Button;
+
+      /**
+       * Opens a dialog box in the user's editor with the given title, message, and set of buttons. This
+       * method suspends the server-side script while the dialog is open. The script resumes after the
+       * user dismisses the dialog, but Jdbc
+       * connections and LockService locks don't
+       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       *
+       *
+       *     // Display a dialog box with a title, message, and "Yes" and "No" buttons. The user can also
+       *     // close the dialog by clicking the close button in its title bar.
+       *     var ui = SpreadsheetApp.getUi();
+       *     var response = ui.alert('Confirm', 'Are you sure you want to continue?', ui.ButtonSet.YES_NO);
+       *
+       *     // Process the user's response.
+       *     if (response == ui.Button.YES) {
+       *       Logger.log('The user clicked "Yes."');
+       *     } else {
+       *       Logger.log('The user clicked "No" or the close button in the dialog\'s title bar.');
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#alert(String,String,ButtonSet)
+       * @param title The title to display above the dialog box.
+       * @param prompt The message to display in the dialog box.
+       * @param buttons The button set to display in the dialog box.
+       */
       alert(title: string, prompt: string, buttons: ButtonSet): Button;
+
+      /**
+       * Creates a builder that can be used to insert a sub-menu into the editor's Add-on menu. The menu
+       * isn't actually be updated until Menu.addToUi() is called. If the script is running as
+       * an add-on, the sub-menu name matches the add-on's name in the web store; if the script is bound to the document directly, the sub-menu name
+       * matches the script's name. For more information, see the guide to menus.
+       *
+       *
+       *     // Add an item to the Add-on menu, under a sub-menu whose name is set automatically.
+       *     function onOpen(e) {
+       *       SpreadsheetApp.getUi()
+       *           .createAddonMenu()
+       *           .addItem('Show', 'showSidebar')
+       *           .addToUi();
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#createAddonMenu()
+       */
       createAddonMenu(): Menu;
+
+      /**
+       * Creates a builder that can be used to add a menu to the editor's user interface. The menu isn't
+       * actually be added until Menu.addToUi() is called. For more information, see the guide to menus. The label for a top-level menu should be
+       * in headline case (all major words capitalized), although the label for a sub-menu should be in
+       * sentence case (only the first word capitalized). If the script is published as an add-on, the caption parameter is ignored and the
+       * menu is added as a sub-menu of the Add-ons menu, equivalent to createAddonMenu().
+       *
+       *
+       *     // Add a custom menu to the active document, including a separator and a sub-menu.
+       *     function onOpen(e) {
+       *       SpreadsheetApp.getUi()
+       *           .createMenu('My Menu')
+       *           .addItem('My menu item', 'myFunction')
+       *           .addSeparator()
+       *           .addSubMenu(SpreadsheetApp.getUi().createMenu('My sub-menu')
+       *               .addItem('One sub-menu item', 'mySecondFunction')
+       *               .addItem('Another sub-menu item', 'myThirdFunction'))
+       *           .addToUi();
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#createMenu(String)
+       * @param caption The label for the menu, with all major words capitalized for a top-level menu, or only the first word capitalized for a sub-menu.
+       */
       createMenu(caption: string): Menu;
+
+      /**
+       * Opens an input dialog box in the user's editor with the given message and an "OK" button. This
+       * method suspends the server-side script while the dialog is open. The script resumes after the
+       * user dismisses the dialog, but Jdbc
+       * connections and LockService locks don't
+       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       *
+       *
+       *     // Display a dialog box with a message, input field, and an "OK" button. The user can also
+       *     // close the dialog by clicking the close button in its title bar.
+       *     var ui = SpreadsheetApp.getUi();
+       *     var response = ui.prompt('Enter your name:');
+       *
+       *     // Process the user's response.
+       *     if (response.getSelectedButton() == ui.Button.OK) {
+       *       Logger.log('The user\'s name is %s.', response.getResponseText());
+       *     } else {
+       *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#prompt(String)
+       * @param prompt The message to display in the dialog box.
+       */
       prompt(prompt: string): PromptResponse;
+
+      /**
+       * Opens an input dialog box in the user's editor with the given message and set of buttons. This
+       * method suspends the server-side script while the dialog is open. The script resumes after the
+       * user dismisses the dialog, but Jdbc
+       * connections and LockService locks don't
+       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       *
+       *
+       *     // Display a dialog box with a message, input field, and "Yes" and "No" buttons. The user can
+       *     // also close the dialog by clicking the close button in its title bar.
+       *     var ui = SpreadsheetApp.getUi();
+       *     var response = ui.prompt('May I know your name?', ui.ButtonSet.YES_NO);
+       *
+       *     // Process the user's response.
+       *     if (response.getSelectedButton() == ui.Button.YES) {
+       *       Logger.log('The user\'s name is %s.', response.getResponseText());
+       *     } else if (response.getSelectedButton() == ui.Button.NO) {
+       *       Logger.log('The user didn\'t want to provide a name.');
+       *     } else {
+       *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#prompt(String,ButtonSet)
+       * @param prompt The message to display in the dialog box.
+       * @param buttons The button set to display in the dialog box.
+       */
       prompt(prompt: string, buttons: ButtonSet): PromptResponse;
+
+      /**
+       * Opens an input dialog box in the user's editor with the given title, message, and set of
+       * buttons. This method suspends the server-side script while the dialog is open. The script
+       * resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the
+       * suspension. For more information, see the guide to
+       * dialogs and sidebars.
+       *
+       *
+       *     // Display a dialog box with a title, message, input field, and "Yes" and "No" buttons. The
+       *     // user can also close the dialog by clicking the close button in its title bar.
+       *     var ui = SpreadsheetApp.getUi();
+       *     var response = ui.prompt('Getting to know you', 'May I know your name?', ui.ButtonSet.YES_NO);
+       *
+       *     // Process the user's response.
+       *     if (response.getSelectedButton() == ui.Button.YES) {
+       *       Logger.log('The user\'s name is %s.', response.getResponseText());
+       *     } else if (response.getSelectedButton() == ui.Button.NO) {
+       *       Logger.log('The user didn\'t want to provide a name.');
+       *     } else {
+       *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
+       *     }
+       * https://developers.google.com/apps-script/reference/base/ui#prompt(String,String,ButtonSet)
+       * @param title The title to display above the dialog box.
+       * @param prompt The message to display in the dialog box.
+       * @param buttons The button set to display in the dialog box.
+       */
       prompt(title: string, prompt: string, buttons: ButtonSet): PromptResponse;
-      showModalDialog(userInterface: HTML.HtmlOutput, title: string): void;
-      showModelessDialog(userInterface: HTML.HtmlOutput, title: string): void;
-      showSidebar(userInterface: HTML.HtmlOutput): void;
-      /** @deprecated DO NOT USE */ showDialog(userInterface: HTML.HtmlOutput): void;
+
+      /**
+       * Opens a modal dialog box in the user's editor with custom client-side content. This method does
+       * not suspend the server-side script while the dialog is open. To communicate with the
+       * server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog
+       * programmatically, call
+       * google.script.host.close() on the client side of an HtmlService web
+       * app. For more information, see the guide to dialogs and
+       * sidebars.
+       *
+       *
+       * Modal dialogs prevent the user from interacting with anything other than the dialog. By
+       * contrast, modeless dialogs and sidebars let the user interact with the editor. In almost all cases, a
+       * modal dialog or sidebar is a better choice than a modeless dialog.
+       *
+       *
+       *     // Display a modal dialog box with custom HtmlService content.
+       *     var htmlOutput = HtmlService
+       *         .createHtmlOutput('<p>A change of speed, a change of style...</p>')
+       *         .setWidth(250)
+       *         .setHeight(300);
+       *     SpreadsheetApp.getUi().showModalDialog(htmlOutput, 'My add-on');
+       * https://developers.google.com/apps-script/reference/base/ui#showModalDialog(Object,String)
+       * @param userInterface An HtmlOutput representing the interface to display.
+       * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
+       */
+      showModalDialog(userInterface: object, title: string): void;
+
+      /**
+       * Opens a modeless dialog box in the user's editor with custom client-side content. This method
+       * does not suspend the server-side script while the dialog is open. To communicate with
+       * the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog
+       * programmatically, call
+       * google.script.host.close() on the client side of an HtmlService web
+       * app. For more information, see the guide to dialogs and
+       * sidebars.
+       *
+       *
+       * Modeless dialogs let the user interact with the editor behind the dialog. By contrast,
+       * modal dialogs do not. In almost all cases, a modal
+       * dialog or sidebar is a better choice than a modeless dialog.
+       *
+       *
+       *     // Display a modeless dialog box with custom HtmlService content.
+       *     var htmlOutput = HtmlService
+       *         .createHtmlOutput('<p>A change of speed, a change of style...</p>')
+       *         .setWidth(250)
+       *         .setHeight(300);
+       *     SpreadsheetApp.getUi().showModelessDialog(htmlOutput, 'My add-on');
+       * https://developers.google.com/apps-script/reference/base/ui#showModelessDialog(Object,String)
+       * @param userInterface An HtmlOutput representing the interface to display.
+       * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
+       */
+      showModelessDialog(userInterface: object, title: string): void;
+
+      /**
+       * Opens a sidebar in the user's editor with custom client-side content. This method does
+       * not suspend the server-side script while the sidebar is open. To communicate with the
+       * server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the sidebar
+       * programmatically, call
+       * google.script.host.close() on the client side of an HtmlService web
+       * app. For more information, see the guide to dialogs and
+       * sidebars.
+       *
+       *
+       * The sidebar displays on the right side of the editor for users whose environments use a
+       * left-to-right language and on the left side of the editor for right-to-left languages. All
+       * sidebars shown by scripts are 300 pixels wide.
+       *
+       *
+       *     // Display a sidebar with custom HtmlService content.
+       *     var htmlOutput = HtmlService
+       *         .createHtmlOutput('<p>A change of speed, a change of style...</p>')
+       *         .setTitle('My add-on');
+       *     SpreadsheetApp.getUi().showSidebar(htmlOutput);
+       * https://developers.google.com/apps-script/reference/base/ui#showSidebar(Object)
+       * @param userInterface An HtmlOutput representing the interface to display.
+       */
+      showSidebar(userInterface: object): void;
+      /** @deprecated DO NOT USE */ showDialog(userInterface: object): void;
     }
     /**
      * Representation of a user, suitable for scripting.
      */
     interface User {
+
+      /**
+       * Gets the user's email address, if available. If security policies do not allow access to the
+       * user's email address, this method returns a blank string. The circumstances in which the email
+       * address is available vary: for example, the user's email address is not available in any
+       * context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app
+       * deployed to "execute as me" (that is, authorized by the developer instead of the user).
+       * However, these restrictions generally do not apply if the developer runs the script themselves
+       * or belongs to the same G Suite domain as the user.
+       *
+       *
+       *     // Log the email address of the person running the script.
+       *     Logger.log(Session.getActiveUser().getEmail());
+       * https://developers.google.com/apps-script/reference/base/user#getEmail()
+       */
       getEmail(): string;
       /** @deprecated DO NOT USE */ getUserLoginId(): string;
     }
@@ -307,200 +947,78 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface console {
-      error(): void;
-      error(formatOrObject: object | string, ...values: any[]): void;
-      info(): void;
-      info(formatOrObject: object | string, ...values: any[]): void;
-      log(): void;
-      log(formatOrObject: object | string, ...values: any[]): void;
-      time(label: string): void;
-      timeEnd(label: string): void;
-      warn(): void;
-      warn(formatOrObject: object | string, ...values: any[]): void;
-    }
-    /**
-     * Apps Script has a non-standard Date Class
-     *
-     * @see https://github.com/microsoft/TypeScript/blob/master/lib/lib.es5.d.ts
-     * Enables basic storage and retrieval of dates and times.
-     */
-    interface Date {
-      /** Returns a string representation of a date. The format of the string depends on the locale. */
-      toString(): string;
-      /** Returns a date as a string value. */
-      toDateString(): string;
-      /** Returns a time as a string value. */
-      toTimeString(): string;
-      /** Returns a value as a string value appropriate to the host environment's current locale. */
-      toLocaleString(): string;
-      /** Returns a date as a string value appropriate to the host environment's current locale. */
-      toLocaleDateString(): string;
-      /** Returns a time as a string value appropriate to the host environment's current locale. */
-      toLocaleTimeString(): string;
-      /** Returns the stored time value in milliseconds since midnight, January 1, 1970 UTC. */
-      valueOf(): number;
-      /** Gets the time value in milliseconds. */
-      getTime(): number;
-      /** Gets the year, using local time. */
-      getFullYear(): number;
-      /** Gets the year using Universal Coordinated Time (UTC). */
-      getUTCFullYear(): number;
-      /** Gets the month, using local time. */
-      getMonth(): number;
-      /** Gets the month of a Date object using Universal Coordinated Time (UTC). */
-      getUTCMonth(): number;
-      /** Gets the day-of-the-month, using local time. */
-      getDate(): number;
-      /** Gets the day-of-the-month, using Universal Coordinated Time (UTC). */
-      getUTCDate(): number;
-      /** Gets the day of the week, using local time. */
-      getDay(): number;
-      /** Gets the day of the week using Universal Coordinated Time (UTC). */
-      getUTCDay(): number;
-      /** Gets the hours in a date, using local time. */
-      getHours(): number;
-      /** Gets the hours value in a Date object using Universal Coordinated Time (UTC). */
-      getUTCHours(): number;
-      /** Gets the minutes of a Date object, using local time. */
-      getMinutes(): number;
-      /** Gets the minutes of a Date object using Universal Coordinated Time (UTC). */
-      getUTCMinutes(): number;
-      /** Gets the seconds of a Date object, using local time. */
-      getSeconds(): number;
-      /** Gets the seconds of a Date object using Universal Coordinated Time (UTC). */
-      getUTCSeconds(): number;
-      /** Gets the milliseconds of a Date, using local time. */
-      getMilliseconds(): number;
-      /** Gets the milliseconds of a Date object using Universal Coordinated Time (UTC). */
-      getUTCMilliseconds(): number;
-      /** Gets the difference in minutes between the time on the local computer and Universal Coordinated Time (UTC). */
-      getTimezoneOffset(): number;
-      /**
-       * Sets the date and time value in the Date object.
-       * @param time A numeric value representing the number of elapsed milliseconds since midnight, January 1, 1970 GMT.
-       */
-      setTime(time: number): number;
-      /**
-       * Sets the milliseconds value in the Date object using local time.
-       * @param ms A numeric value equal to the millisecond value.
-       */
-      setMilliseconds(ms: number): number;
-      /**
-       * Sets the milliseconds value in the Date object using Universal Coordinated Time (UTC).
-       * @param ms A numeric value equal to the millisecond value.
-       */
-      setUTCMilliseconds(ms: number): number;
-      /**
-       * Sets the seconds value in the Date object using local time.
-       * @param sec A numeric value equal to the seconds value.
-       * @param ms A numeric value equal to the milliseconds value.
-       */
-      setSeconds(sec: number, ms?: number): number;
-      /**
-       * Sets the seconds value in the Date object using Universal Coordinated Time (UTC).
-       * @param sec A numeric value equal to the seconds value.
-       * @param ms A numeric value equal to the milliseconds value.
-       */
-      setUTCSeconds(sec: number, ms?: number): number;
-      /**
-       * Sets the minutes value in the Date object using local time.
-       * @param min A numeric value equal to the minutes value.
-       * @param sec A numeric value equal to the seconds value.
-       * @param ms A numeric value equal to the milliseconds value.
-       */
-      setMinutes(min: number, sec?: number, ms?: number): number;
-      /**
-       * Sets the minutes value in the Date object using Universal Coordinated Time (UTC).
-       * @param min A numeric value equal to the minutes value.
-       * @param sec A numeric value equal to the seconds value.
-       * @param ms A numeric value equal to the milliseconds value.
-       */
-      setUTCMinutes(min: number, sec?: number, ms?: number): number;
-      /**
-       * Sets the hour value in the Date object using local time.
-       * @param hours A numeric value equal to the hours value.
-       * @param min A numeric value equal to the minutes value.
-       * @param sec A numeric value equal to the seconds value.
-       * @param ms A numeric value equal to the milliseconds value.
-       */
-      setHours(hours: number, min?: number, sec?: number, ms?: number): number;
-      /**
-       * Sets the hours value in the Date object using Universal Coordinated Time (UTC).
-       * @param hours A numeric value equal to the hours value.
-       * @param min A numeric value equal to the minutes value.
-       * @param sec A numeric value equal to the seconds value.
-       * @param ms A numeric value equal to the milliseconds value.
-       */
-      setUTCHours(hours: number, min?: number, sec?: number, ms?: number): number;
-      /**
-       * Sets the numeric day-of-the-month value of the Date object using local time.
-       * @param date A numeric value equal to the day of the month.
-       */
-      setDate(date: number): number;
-      /**
-       * Sets the numeric day of the month in the Date object using Universal Coordinated Time (UTC).
-       * @param date A numeric value equal to the day of the month.
-       */
-      setUTCDate(date: number): number;
-      /**
-       * Sets the month value in the Date object using local time.
-       * @param month A numeric value equal to the month. The value for January is 0, and other month values follow consecutively.
-       * @param date A numeric value representing the day of the month. If this value is not supplied, the value from a call to the getDate method is used.
-       */
-      setMonth(month: number, date?: number): number;
-      /**
-       * Sets the month value in the Date object using Universal Coordinated Time (UTC).
-       * @param month A numeric value equal to the month. The value for January is 0, and other month values follow consecutively.
-       * @param date A numeric value representing the day of the month. If it is not supplied, the value from a call to the getUTCDate method is used.
-       */
-      setUTCMonth(month: number, date?: number): number;
-      /**
-       * Sets the year of the Date object using local time.
-       * @param year A numeric value for the year.
-       * @param month A zero-based numeric value for the month (0 for January, 11 for December). Must be specified if numDate is specified.
-       * @param date A numeric value equal for the day of the month.
-       */
-      setFullYear(year: number, month?: number, date?: number): number;
-      /**
-       * Sets the year value in the Date object using Universal Coordinated Time (UTC).
-       * @param year A numeric value equal to the year.
-       * @param month A numeric value equal to the month. The value for January is 0, and other month values follow consecutively. Must be supplied if numDate is supplied.
-       * @param date A numeric value equal to the day of the month.
-       */
-      setUTCFullYear(year: number, month?: number, date?: number): number;
-      /** Returns a date converted to a string using Universal Coordinated Time (UTC). */
-      toUTCString(): string;
-      /** Returns a date as a string value in ISO format. */
-      toISOString(): string;
-      /** Used by the JSON.stringify method to enable the transformation of an object's data for JavaScript Object Notation (JSON) serialization. */
-      toJSON(key?: any): string;
-    }
 
-    interface DateConstructor {
-      new(): Date;
-      new(value: number | string): Date;
-      new(year: number, month: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number): Date;
-      (): string;
-      readonly prototype: Date;
       /**
-       * Parses a string containing a date, and returns the number of milliseconds between that date and midnight, January 1, 1970.
-       * @param s A date string
+       * Outputs a blank ERROR level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#error()
        */
-      parse(s: string): number;
+      error(): void;
+
       /**
-       * Returns the number of milliseconds between midnight, January 1, 1970 Universal Coordinated Time (UTC) (or GMT) and the specified date.
-       * @param year The full year designation is required for cross-century date accuracy. If year is between 0 and 99 is used, then year is assumed to be 1900 + year.
-       * @param month The month as an number between 0 and 11 (January to December).
-       * @param date The date as an number between 1 and 31.
-       * @param hours Must be supplied if minutes is supplied. An number from 0 to 23 (midnight to 11pm) that specifies the hour.
-       * @param minutes Must be supplied if seconds is supplied. An number from 0 to 59 that specifies the minutes.
-       * @param seconds Must be supplied if milliseconds is supplied. An number from 0 to 59 that specifies the seconds.
-       * @param ms An number from 0 to 999 that specifies the milliseconds.
+       * Outputs an ERROR level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#error(Object,Object...)
+       * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
+       * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      UTC(year: number, month: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number): number;
-      now(): number;
+      error(formatOrObject: object, ...values: object[]): void;
+
+      /**
+       * Outputs blank INFO level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#info()
+       */
+      info(): void;
+
+      /**
+       * Outputs an INFO level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#info(Object,Object...)
+       * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
+       * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
+       */
+      info(formatOrObject: object, ...values: object[]): void;
+
+      /**
+       * Outputs a blank DEBUG level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#log()
+       */
+      log(): void;
+
+      /**
+       * Outputs a DEBUG level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#log(Object,Object...)
+       * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
+       * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
+       */
+      log(formatOrObject: object, ...values: object[]): void;
+
+      /**
+       * Starts a timer you can use to track how long an operation takes.
+       * https://developers.google.com/apps-script/reference/base/console#time(String)
+       * @param label The name to give the new timer.
+       */
+      time(label: string): void;
+
+      /**
+       * Stops a timer that was previously started by calling console.time(). The time duration
+       * is logged in Stackdriver.
+       * https://developers.google.com/apps-script/reference/base/console#timeEnd(String)
+       * @param label the name of the timer to stop.
+       */
+      timeEnd(label: string): void;
+
+      /**
+       * Outputs a blank WARNING level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#warn()
+       */
+      warn(): void;
+
+      /**
+       * Outputs a WARNING level message to Stackdriver Logging.
+       * https://developers.google.com/apps-script/reference/base/console#warn(Object,Object...)
+       * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
+       * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
+       */
+      warn(formatOrObject: object, ...values: object[]): void;
     }
-    const Date: DateConstructor;
   }
 }
 
@@ -510,10 +1028,3 @@ declare var Logger: GoogleAppsScript.Base.Logger;
 // declare var MimeType: GoogleAppsScript.Base.MimeType;
 declare var Session: GoogleAppsScript.Base.Session;
 declare var console: GoogleAppsScript.Base.console;
-
-// The name `Date` conflicts with lib.es5.d.ts.
-// - We cannot include lib.es5.d.ts with Apps Script though because Apps Script is ES3
-//   and doesn't include all ES5+ features.
-//   Thus developers using the Date class must alias the type in their own TS projects.
-// - We cannot use lib.es3.d.ts because it is no longer by dtslint.
-declare var Date2: GoogleAppsScript.Base.DateConstructor;
