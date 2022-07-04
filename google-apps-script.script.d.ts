@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -104,16 +104,17 @@ declare namespace GoogleAppsScript {
     interface ClockTriggerBuilder {
 
       /**
-       * Specifies the duration (in milliseconds) after the current time that the trigger runs.
+       * Specifies the minimum duration (in milliseconds) after the current time that the trigger runs.
+       * The actual duration might vary, but won't be less than your specified minimum.
        *
        *
-       *     // Creates a trigger that will run 10 minutes later
+       *     // Creates a trigger that runs 10 minutes later
        *     ScriptApp.newTrigger("myFunction")
        *       .timeBased()
        *       .after(10 * 60 * 1000)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#after(Integer)
-       * @param durationMilliseconds the duration (in milliseconds) after the current time when the trigger should run
+       * @param durationMilliseconds The minimum duration (in milliseconds) after the current time when the trigger should run.
        */
       after(durationMilliseconds: Integer): ClockTriggerBuilder;
 
@@ -128,12 +129,12 @@ declare namespace GoogleAppsScript {
        *       .at(triggerDay)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#at(Date)
-       * @param date a Date object representing when the trigger should run
+       * @param date A Date object representing when the trigger should run.
        */
       at(date: Date): ClockTriggerBuilder;
 
       /**
-       * Specifies trigger will fire on the given date, by default near midnight (+/- 15 minutes).
+       * Specifies that the trigger fires on the given date, by default near midnight (+/- 15 minutes).
        *
        *
        *     // Schedules for January 1st, 2013
@@ -142,9 +143,9 @@ declare namespace GoogleAppsScript {
        *       .atDate(2013, 1, 1)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#atDate(Integer,Integer,Integer)
-       * @param year the calendar year to schedule the trigger
-       * @param month the calendar month to schedule the trigger (should be a number between 1 and 12, inclusive)
-       * @param day the calendar day to schedule the trigger (should be a number between 1 and 31, inclusive)
+       * @param year The calendar year to schedule the trigger.
+       * @param month The calendar month to schedule the trigger (should be a number between 1 and 12, inclusive).
+       * @param day The calendar day to schedule the trigger (should be a number between 1 and 31, inclusive).
        */
       atDate(year: Integer, month: Integer, day: Integer): ClockTriggerBuilder;
 
@@ -159,7 +160,7 @@ declare namespace GoogleAppsScript {
        *       .everyDays(1) // Frequency is required if you are using atHour() or nearMinute()
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#atHour(Integer)
-       * @param hour the hour at which to fire
+       * @param hour The hour at which to fire.
        */
       atHour(hour: Integer): ClockTriggerBuilder;
 
@@ -178,7 +179,7 @@ declare namespace GoogleAppsScript {
        *       .everyDays(3)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#everyDays(Integer)
-       * @param n the number of days between executions
+       * @param n The number of days between executions.
        */
       everyDays(n: Integer): ClockTriggerBuilder;
 
@@ -191,7 +192,7 @@ declare namespace GoogleAppsScript {
        *       .everyHours(12)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#everyHours(Integer)
-       * @param n the number of hours between executions
+       * @param n The number of hours between executions.
        */
       everyHours(n: Integer): ClockTriggerBuilder;
 
@@ -204,7 +205,7 @@ declare namespace GoogleAppsScript {
        *       .everyMinutes(10)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#everyMinutes(Integer)
-       * @param n the number of minutes between executions
+       * @param n The number of minutes between executions.
        */
       everyMinutes(n: Integer): ClockTriggerBuilder;
 
@@ -217,17 +218,17 @@ declare namespace GoogleAppsScript {
        *       .everyWeeks(2)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#everyWeeks(Integer)
-       * @param n the number of weeks between executions
+       * @param n The number of weeks between executions.
        */
       everyWeeks(n: Integer): ClockTriggerBuilder;
 
       /**
-       * Specifies the timezone that the specified dates/time that the trigger will run in. By default,
-       * the timezone will be that of the script.
+       * Specifies the timezone for the specified dates/time when the trigger runs. By default, the
+       * timezone is that of the script.
        *
        *
        * The list of valid timezone strings corresponds with the valid timezone strings listed by Joda.org. An invalid timezone string
-       * will cause the script to throw an error.
+       * causes the script to throw an error.
        *
        *
        *     // Schedule the trigger to execute at noon every day in the US/Pacific time zone
@@ -238,7 +239,7 @@ declare namespace GoogleAppsScript {
        *       .inTimezone("America/Los_Angeles")
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#inTimezone(String)
-       * @param timezone the timezone with which to treat time information in the event
+       * @param timezone The timezone with which to treat time information in the event.
        */
       inTimezone(timezone: string): ClockTriggerBuilder;
 
@@ -254,12 +255,12 @@ declare namespace GoogleAppsScript {
        *       .everyDays(1) // Frequency is required if you are using atHour() or nearMinute()
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#nearMinute(Integer)
-       * @param minute the minute at which to fire
+       * @param minute The minute at which to fire.
        */
       nearMinute(minute: Integer): ClockTriggerBuilder;
 
       /**
-       * Specifies on what date in the month that the trigger will run.
+       * Specifies the date in the month that the trigger runs.
        *
        *
        *     // Schedules for the first of every month
@@ -268,12 +269,12 @@ declare namespace GoogleAppsScript {
        *       .onMonthDay(1)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#onMonthDay(Integer)
-       * @param day the day of the month the trigger should be scheduled for
+       * @param day The day of the month the trigger should be scheduled for.
        */
       onMonthDay(day: Integer): ClockTriggerBuilder;
 
       /**
-       * Specifies on what day of the week that the trigger will run.
+       * Specifies the day of the week that the trigger runs.
        *
        *
        *     ScriptApp.newTrigger("myFunction")
@@ -281,7 +282,7 @@ declare namespace GoogleAppsScript {
        *       .onWeekDay(ScriptApp.WeekDay.FRIDAY)
        *       .create();
        * https://developers.google.com/apps-script/reference/script/clock-trigger-builder#onWeekDay(Weekday)
-       * @param day the day of the week to fire
+       * @param day The day of the week to fire.
        */
       onWeekDay(day: Base.Weekday): ClockTriggerBuilder;
     }
@@ -431,9 +432,9 @@ declare namespace GoogleAppsScript {
       getInstallationSource(): InstallationSource;
 
       /**
-       * Gets the OAuth 2.0 access token
-       * for the effective user. If the script's OAuth scopes are sufficient to authorize another Google
-       * API that normally requires its own OAuth flow (like Google Picker), scripts can bypass the
+       * Gets the OAuth 2.0 access
+       * token for the effective user. If the script's OAuth scopes are sufficient to authorize
+       * another Google API that normally requires its own OAuth flow (like Google Picker), scripts can bypass the
        * second authorization prompt by passing this token instead. The token expires after a time (a
        * few minutes at minimum); scripts should handle authorization failures and call this method to
        * obtain a fresh token when needed.

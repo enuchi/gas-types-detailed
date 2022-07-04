@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -171,7 +171,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): AreaChartBuilder;
+      setOption(option: string, value: any): AreaChartBuilder;
 
       /**
        * Sets the style for points in the line. By default, points have no particular styles, and only
@@ -473,7 +473,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): BarChartBuilder;
+      setOption(option: string, value: any): BarChartBuilder;
 
       /**
        * Sets the range for the chart.
@@ -618,6 +618,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/charts/chart#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -662,7 +667,16 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/charts/chart-options#get(String)
        * @param option The string representing the desired option.
        */
-      get(option: string): object;
+      get(option: string): any;
+
+      /**
+       * Returns a configured option for this chart. If the chart option is not set, returns the default
+       * value of this option if available, or returns null if the default value is not
+       * available.
+       * https://developers.google.com/apps-script/reference/charts/chart-options#getOrDefault(String)
+       * @param option The string representing the desired option.
+       */
+      getOrDefault(option: string): any;
     }
     /**
      * Chart types supported by the Charts service.
@@ -943,7 +957,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): ColumnChartBuilder;
+      setOption(option: string, value: any): ColumnChartBuilder;
 
       /**
        * Sets the range for the chart.
@@ -1126,7 +1140,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/charts/data-table-builder#addRow(Object)
        * @param values values for the row, specified in the same order that the columns are entered.
        */
-      addRow(values: object[]): DataTableBuilder;
+      addRow(values: any[]): DataTableBuilder;
 
       /**
        * Builds and returns a data table.
@@ -1148,7 +1162,7 @@ declare namespace GoogleAppsScript {
        * @param column the column index (the first column has index 0)
        * @param value the value of the table cell (should have the right type for the column).
        */
-      setValue(row: Integer, column: Integer, value: object): DataTableBuilder;
+      setValue(row: Integer, column: Integer, value: any): DataTableBuilder;
     }
     /**
      * Interface for objects that can represent their data as a DataTable.
@@ -1271,7 +1285,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/charts/data-view-definition-builder#setColumns(Object)
        * @param columns An array of column indexes, or column descriptions (an object), to include in the data view. The column descriptions define a column role. The data table and the enumeration for data view columns are zero-based.
        */
-      setColumns(columns: object[]): DataViewDefinitionBuilder;
+      setColumns(columns: any[]): DataViewDefinitionBuilder;
     }
     /**
      * Builder for line charts. For more details, see the Google Charts documentation.
@@ -1435,7 +1449,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): LineChartBuilder;
+      setOption(option: string, value: any): LineChartBuilder;
 
       /**
        * Sets the style for points in the line. By default, points have no particular styles, and only
@@ -1835,7 +1849,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): PieChartBuilder;
+      setOption(option: string, value: any): PieChartBuilder;
 
       /**
        * Sets the title of the chart. The title is displayed centered above the chart.
@@ -2005,7 +2019,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): ScatterChartBuilder;
+      setOption(option: string, value: any): ScatterChartBuilder;
 
       /**
        * Sets the style for points in the line. By default, points have no particular styles, and only
@@ -2422,7 +2436,7 @@ declare namespace GoogleAppsScript {
        * @param option The option to set.
        * @param value The value to set.
        */
-      setOption(option: string, value: object): TableChartBuilder;
+      setOption(option: string, value: any): TableChartBuilder;
 
       /**
        * Sets whether to show the row number as the first column of the table.

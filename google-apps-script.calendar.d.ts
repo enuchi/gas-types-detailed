@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -59,7 +59,7 @@ declare namespace GoogleAppsScript {
        * @param endDate the date when the event ends (only the day is used; the time is ignored)
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createAllDayEvent(title: string, startDate: Date, endDate: Date, options: object): CalendarEvent;
+      createAllDayEvent(title: string, startDate: Date, endDate: Date, options: any): CalendarEvent;
 
       /**
        * Creates a new all-day event.
@@ -75,7 +75,7 @@ declare namespace GoogleAppsScript {
        * @param date the date of the event (only the day is used; the time is ignored)
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createAllDayEvent(title: string, date: Date, options: object): CalendarEvent;
+      createAllDayEvent(title: string, date: Date, options: any): CalendarEvent;
 
       /**
        * Creates a new all-day event series.
@@ -113,7 +113,7 @@ declare namespace GoogleAppsScript {
        * @param recurrence the recurrence settings of the event series
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createAllDayEventSeries(title: string, startDate: Date, recurrence: EventRecurrence, options: object): CalendarEventSeries;
+      createAllDayEventSeries(title: string, startDate: Date, recurrence: EventRecurrence, options: any): CalendarEventSeries;
 
       /**
        * Creates a new event.
@@ -155,7 +155,7 @@ declare namespace GoogleAppsScript {
        * @param endTime the date and time when the event ends
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createEvent(title: string, startTime: Date, endTime: Date, options: object): CalendarEvent;
+      createEvent(title: string, startTime: Date, endTime: Date, options: any): CalendarEvent;
 
       /**
        * Creates an event from a free-form description.
@@ -213,7 +213,7 @@ declare namespace GoogleAppsScript {
        * @param recurrence the recurrence settings of the event series
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createEventSeries(title: string, startTime: Date, endTime: Date, recurrence: EventRecurrence, options: object): CalendarEventSeries;
+      createEventSeries(title: string, startTime: Date, endTime: Date, recurrence: EventRecurrence, options: any): CalendarEventSeries;
 
       /**
        * Deletes the calendar permanently. A user can only delete a calendar they own.
@@ -305,7 +305,7 @@ declare namespace GoogleAppsScript {
        * @param endTime the end of the time range, non-inclusive
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      getEvents(startTime: Date, endTime: Date, options: object): CalendarEvent[];
+      getEvents(startTime: Date, endTime: Date, options: any): CalendarEvent[];
 
       /**
        * Gets all events that occur on a given day.
@@ -355,7 +355,7 @@ declare namespace GoogleAppsScript {
        * @param date the date to retrieve events for (only the day is used; the time is ignored)
        * @param options advanced filtering options
        */
-      getEventsForDay(date: Date, options: object): CalendarEvent[];
+      getEventsForDay(date: Date, options: any): CalendarEvent[];
 
       /**
        * Gets the ID of the calendar. The ID for a user's default calendar is their email address.
@@ -402,7 +402,7 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the color of the calendar.
        * https://developers.google.com/apps-script/reference/calendar/calendar#setColor(String)
-       * @param color a hexadecimal color string ("#rrggbb") or a value from CalendarApp.Colors
+       * @param color A hexadecimal color string ("#rrggbb") or a value from CalendarApp.Color.
        */
       setColor(color: string): Calendar;
 
@@ -506,7 +506,7 @@ declare namespace GoogleAppsScript {
        * @param endDate the date when the event ends (only the day is used; the time is ignored)
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createAllDayEvent(title: string, startDate: Date, endDate: Date, options: object): CalendarEvent;
+      createAllDayEvent(title: string, startDate: Date, endDate: Date, options: any): CalendarEvent;
 
       /**
        * Creates a new all-day event.
@@ -522,7 +522,7 @@ declare namespace GoogleAppsScript {
        * @param date the date of the event (only the day is used; the time is ignored)
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createAllDayEvent(title: string, date: Date, options: object): CalendarEvent;
+      createAllDayEvent(title: string, date: Date, options: any): CalendarEvent;
 
       /**
        * Creates a new all-day event series.
@@ -560,7 +560,7 @@ declare namespace GoogleAppsScript {
        * @param recurrence the recurrence settings of the event series
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createAllDayEventSeries(title: string, startDate: Date, recurrence: EventRecurrence, options: object): CalendarEventSeries;
+      createAllDayEventSeries(title: string, startDate: Date, recurrence: EventRecurrence, options: any): CalendarEventSeries;
 
       /**
        * Creates a new calendar, owned by the user.
@@ -590,7 +590,7 @@ declare namespace GoogleAppsScript {
        * @param name the name of the new calendar
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createCalendar(name: string, options: object): Calendar;
+      createCalendar(name: string, options: any): Calendar;
 
       /**
        * Creates a new event.
@@ -632,7 +632,7 @@ declare namespace GoogleAppsScript {
        * @param endTime the date and time when the event ends
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createEvent(title: string, startTime: Date, endTime: Date, options: object): CalendarEvent;
+      createEvent(title: string, startTime: Date, endTime: Date, options: any): CalendarEvent;
 
       /**
        * Creates an event from a free-form description.
@@ -690,7 +690,7 @@ declare namespace GoogleAppsScript {
        * @param recurrence the recurrence settings of the event series
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createEventSeries(title: string, startTime: Date, endTime: Date, recurrence: EventRecurrence, options: object): CalendarEventSeries;
+      createEventSeries(title: string, startTime: Date, endTime: Date, recurrence: EventRecurrence, options: any): CalendarEventSeries;
 
       /**
        * Gets all calendars that the user owns or is subscribed to.
@@ -837,7 +837,7 @@ declare namespace GoogleAppsScript {
        * @param endTime the end of the time range, non-inclusive
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      getEvents(startTime: Date, endTime: Date, options: object): CalendarEvent[];
+      getEvents(startTime: Date, endTime: Date, options: any): CalendarEvent[];
 
       /**
        * Gets all events that occur on a given day.
@@ -887,7 +887,7 @@ declare namespace GoogleAppsScript {
        * @param date the date to retrieve events for (only the day is used; the time is ignored)
        * @param options advanced filtering options
        */
-      getEventsForDay(date: Date, options: object): CalendarEvent[];
+      getEventsForDay(date: Date, options: any): CalendarEvent[];
 
       /**
        * Gets the ID of the calendar. The ID for a user's default calendar is their email address.
@@ -980,7 +980,7 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the color of the calendar.
        * https://developers.google.com/apps-script/reference/calendar/calendar-app#setColor(String)
-       * @param color a hexadecimal color string ("#rrggbb") or a value from CalendarApp.Colors
+       * @param color A hexadecimal color string ("#rrggbb") or a value from CalendarApp.Color.
        */
       setColor(color: string): Calendar;
 
@@ -1045,7 +1045,7 @@ declare namespace GoogleAppsScript {
        * @param id the ID of the calendar to subscribe to
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      subscribeToCalendar(id: string, options: object): Calendar;
+      subscribeToCalendar(id: string, options: any): Calendar;
     }
     /**
      * Represents a single calendar event.
@@ -1062,8 +1062,55 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a guest to the event.
+       *
+       *
+       *     // Example 1: Add a guest to one event
+       *     function addAttendeeToEvent() {
+       *       // Replace the below values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to add
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar containing event
+       *       let eventId = '123abc'; // ID of event instance
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *       if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *         }
+       *       let event = calendar.getEventById(eventId);
+       *       if (event === null) {
+       *         // Event not found
+       *         console.log('Event not found', eventId);
+       *         return;
+       *         }
+       *       event.addGuest(attendeeEmail);
+       *       }
+       *
+       *     // Example 2: Add a guest to all events on a calendar within a specified timeframe
+       *     function addAttendeeToAllEvents(){
+       *     // Replace the following values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to add
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar with the events
+       *       let startDate = new Date("YYYY-MM-DD"); // The first date to add the guest to the events
+       *       let endDate = new Date("YYYY-MM-DD"); // The last date to add the guest to the events
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *         if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *       }
+       *       // Get the events within the specified timeframe
+       *       let calEvents = calendar.getEvents(startDate,endDate);
+       *       console.log(calEvents.length); // Checks how many events are found
+       *       // Loop through all events and add the attendee to each of them
+       *       for (var i = 0; i < calEvents.length; i++) {
+       *       let event = calEvents[i];
+       *       event.addGuest(attendeeEmail);
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/calendar/calendar-event#addGuest(String)
-       * @param email the email address of the guest
+       * @param email The email address of the guest.
        */
       addGuest(email: string): CalendarEvent;
 
@@ -1200,8 +1247,9 @@ declare namespace GoogleAppsScript {
       getGuestList(includeOwner: boolean): EventGuest[];
 
       /**
-       * Gets the unique iCalUID of the event. Note that the iCalUID and the event id used by the Calendar v3 API and Calendar advanced service are not identical and
-       * cannot be used interchangebly. One difference in their semantics is that in recurring events
+       * Gets the unique iCalUID of the event. Note that the iCalUID and the event id used by the
+       * Calendar v3 API and Calendar advanced service are not identical and
+       * cannot be used interchangeably. One difference in their semantics is that in recurring events
        * all occurrences of one event have different ids while they all share the same iCalUIDs.
        * https://developers.google.com/apps-script/reference/calendar/calendar-event#getId()
        */
@@ -1321,6 +1369,53 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes a guest from the event.
+       *
+       *
+       *     // Example 1: Remove a guest from one event
+       *     function removeGuestFromEvent() {
+       *       // Replace the below values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to remove
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar containing event
+       *       let eventId = '123abc'; // ID of event instance
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *       if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *         }
+       *       let event = calendar.getEventById(eventId);
+       *       if (event === null) {
+       *         // Event not found
+       *         console.log('Event not found', eventId);
+       *         return;
+       *         }
+       *       event.removeGuest(attendeeEmail);
+       *       }
+       *
+       *     // Example 2: Remove a guest from all events on a calendar within a specified timeframe
+       *     function removeGuestFromAllEvents(){
+       *     // Replace the following values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to remove
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar with the events
+       *       let startDate = new Date("YYYY-MM-DD"); // The first date to remove the guest from the events
+       *       let endDate = new Date("YYYY-MM-DD"); // The last date to remove the attendee from the events
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *         if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *       }
+       *       // Get the events within the specified timeframe
+       *       let calEvents = calendar.getEvents(startDate,endDate);
+       *       console.log(calEvents.length); // Checks how many events are found
+       *       // Loop through all events and remove the attendee from each of them
+       *       for (var i = 0; i < calEvents.length; i++) {
+       *       let event = calEvents[i];
+       *       event.removeGuest(attendeeEmail);
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/calendar/calendar-event#removeGuest(String)
        * @param email the email address of the guest
        */
@@ -1358,7 +1453,7 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the color of the calendar event.
        * https://developers.google.com/apps-script/reference/calendar/calendar-event#setColor(String)
-       * @param color an integer color index as a string, or a value from CalendarApp.EventColors
+       * @param color An integer color index as a string, or a value from CalendarApp.EventColor.
        */
       setColor(color: string): CalendarEvent;
 
@@ -1450,8 +1545,55 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a guest to the event.
+       *
+       *
+       *     // Example 1: Add a guest to one event
+       *     function addAttendeeToEvent() {
+       *       // Replace the below values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to add
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar containing event
+       *       let eventId = '123abc'; // ID of event instance
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *       if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *         }
+       *       let event = calendar.getEventById(eventId);
+       *       if (event === null) {
+       *         // Event not found
+       *         console.log('Event not found', eventId);
+       *         return;
+       *         }
+       *       event.addGuest(attendeeEmail);
+       *       }
+       *
+       *     // Example 2: Add a guest to all events on a calendar within a specified timeframe
+       *     function addAttendeeToAllEvents(){
+       *     // Replace the following values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to add
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar with the events
+       *       let startDate = new Date("YYYY-MM-DD"); // The first date to add the guest to the events
+       *       let endDate = new Date("YYYY-MM-DD"); // The last date to add the guest to the events
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *         if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *       }
+       *       // Get the events within the specified timeframe
+       *       let calEvents = calendar.getEvents(startDate,endDate);
+       *       console.log(calEvents.length); // Checks how many events are found
+       *       // Loop through all events and add the attendee to each of them
+       *       for (var i = 0; i < calEvents.length; i++) {
+       *       let event = calEvents[i];
+       *       event.addGuest(attendeeEmail);
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/calendar/calendar-event-series#addGuest(String)
-       * @param email the email address of the guest
+       * @param email The email address of the guest.
        */
       addGuest(email: string): CalendarEventSeries;
 
@@ -1547,8 +1689,9 @@ declare namespace GoogleAppsScript {
       getGuestList(includeOwner: boolean): EventGuest[];
 
       /**
-       * Gets the unique iCalUID of the event. Note that the iCalUID and the event id used by the Calendar v3 API and Calendar advanced service are not identical and
-       * cannot be used interchangebly. One difference in their semantics is that in recurring events
+       * Gets the unique iCalUID of the event. Note that the iCalUID and the event id used by the
+       * Calendar v3 API and Calendar advanced service are not identical and
+       * cannot be used interchangeably. One difference in their semantics is that in recurring events
        * all occurrences of one event have different ids while they all share the same iCalUIDs.
        * https://developers.google.com/apps-script/reference/calendar/calendar-event-series#getId()
        */
@@ -1641,6 +1784,53 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes a guest from the event.
+       *
+       *
+       *     // Example 1: Remove a guest from one event
+       *     function removeGuestFromEvent() {
+       *       // Replace the below values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to remove
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar containing event
+       *       let eventId = '123abc'; // ID of event instance
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *       if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *         }
+       *       let event = calendar.getEventById(eventId);
+       *       if (event === null) {
+       *         // Event not found
+       *         console.log('Event not found', eventId);
+       *         return;
+       *         }
+       *       event.removeGuest(attendeeEmail);
+       *       }
+       *
+       *     // Example 2: Remove a guest from all events on a calendar within a specified timeframe
+       *     function removeGuestFromAllEvents(){
+       *     // Replace the following values with your own
+       *       let attendeeEmail = 'user@example.com'; // Email address of the person you need to remove
+       *       let calendarId = 'calendar_123@group.calendar.google.com'; // ID of calendar with the events
+       *       let startDate = new Date("YYYY-MM-DD"); // The first date to remove the guest from the events
+       *       let endDate = new Date("YYYY-MM-DD"); // The last date to remove the attendee from the events
+       *
+       *       let calendar = CalendarApp.getCalendarById(calendarId);
+       *         if (calendar === null) {
+       *         // Calendar not found
+       *         console.log('Calendar not found', calendarId);
+       *         return;
+       *       }
+       *       // Get the events within the specified timeframe
+       *       let calEvents = calendar.getEvents(startDate,endDate);
+       *       console.log(calEvents.length); // Checks how many events are found
+       *       // Loop through all events and remove the attendee from each of them
+       *       for (var i = 0; i < calEvents.length; i++) {
+       *       let event = calEvents[i];
+       *       event.removeGuest(attendeeEmail);
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/calendar/calendar-event-series#removeGuest(String)
        * @param email the email address of the guest
        */
@@ -1662,7 +1852,7 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the color of the calendar event.
        * https://developers.google.com/apps-script/reference/calendar/calendar-event-series#setColor(String)
-       * @param color an integer color index as a string, or a value from CalendarApp.EventColors
+       * @param color An integer color index as a string, or a value from CalendarApp.EventColor.
        */
       setColor(color: string): CalendarEventSeries;
 

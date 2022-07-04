@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -52,7 +52,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/cache/cache#getAll(String)
        * @param keys the keys to lookup
        */
-      getAll(keys: string[]): object;
+      getAll(keys: string[]): any;
 
       /**
        * Adds a key/value pair to the cache.
@@ -60,6 +60,10 @@ declare namespace GoogleAppsScript {
        *
        * The maximum length of a key is 250 characters. The maximum amount of data that can be stored
        * per key is 100KB. The value will expire from the cache after 600 seconds (10 minutes).
+       *
+       *
+       * The cap for cached items is 1,000. If more than 1,000 items are written, the cache stores
+       * the 900 items farthest from expiration. This limit might change.
        *
        *
        *     // Puts the value 'bar' into the cache using the key 'foo'
@@ -77,6 +81,10 @@ declare namespace GoogleAppsScript {
        * The maximum length of a key is 250 characters. The maximum amount of data that can be stored
        * per key is 100KB. The specified expiration time is only a suggestion; cached data may be
        * removed before this time if a lot of data is cached.
+       *
+       *
+       * The cap for cached items is 1,000. If more than 1,000 items are written, the cache stores
+       * the 900 items farthest from expiration. This limit might change.
        *
        *
        *     // Puts the value 'bar' into the cache using the key 'foo', but only for the next 20 seconds.
@@ -98,6 +106,10 @@ declare namespace GoogleAppsScript {
        * 600 seconds (10 minutes).
        *
        *
+       * The cap for cached items is 1,000. If more than 1,000 items are written, the cache stores
+       * the 900 items farthest from expiration. This limit might change.
+       *
+       *
        *     // Puts a set of values into the cache with the keys 'foo', 'x', and 'key'.
        *     var values = {
        *       'foo': 'bar',
@@ -108,7 +120,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/cache/cache#putAll(Object)
        * @param values a JavaScript Object containing string keys and values
        */
-      putAll(values: object): void;
+      putAll(values: any): void;
 
       /**
        * Adds a set of key/value pairs to the cache, with an expiration time (in seconds).
@@ -118,6 +130,10 @@ declare namespace GoogleAppsScript {
        * memcache server to set all values. The maximum length of a key is 250 characters. The maximum
        * amount of data that can be stored per key is 100KB. The specified expiration time is only a
        * suggestion; cached data may be removed before this time if a lot of data is cached.
+       *
+       *
+       * The cap for cached items is 1,000. If more than 1,000 items are written, the cache stores
+       * the 900 items farthest from expiration. This limit might change.
        *
        *
        *     // Puts a set of values into the cache with the keys 'foo', 'x', and 'key'.
@@ -131,7 +147,7 @@ declare namespace GoogleAppsScript {
        * @param values A JavaScript Object containing string keys and values
        * @param expirationInSeconds The maximum time the value remains in the cache, in seconds The minimum allowed expiration is 1 second, and the maximum allowed expiration is 21600 seconds (6 hours). The default expiration is 600 seconds (10 minutes).
        */
-      putAll(values: object, expirationInSeconds: Integer): void;
+      putAll(values: any, expirationInSeconds: Integer): void;
 
       /**
        * Removes an entry from the cache using the given key.

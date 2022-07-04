@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -1443,8 +1443,8 @@ declare namespace GoogleAppsScript {
        * administrator changes the default.
        *
        *
-       * This feature is available only for forms created by G Suite users. Users of other types of
-       * Google accounts cannot be required to log in.
+       * This feature is available only for forms created by Google Workspace users. Users of other
+       * types of Google accounts can't be required to log in.
        * https://developers.google.com/apps-script/reference/forms/form#setRequireLogin(Boolean)
        * @param requireLogin true if the form requires users to log in; false if not
        */
@@ -1482,6 +1482,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Submits grades for the given FormResponses.
+       *
+       *
+       * If your code includes an onFormSubmit trigger, calling submitGrades()
+       * triggers the onFormSubmit condition and causes an infinite loop. To prevent the
+       * infinite loop, add code that checks whether grades already exist before calling submitGrades().
        * https://developers.google.com/apps-script/reference/forms/form#submitGrades(FormResponse)
        * @param responses
        */
@@ -1748,14 +1753,14 @@ declare namespace GoogleAppsScript {
        *     for (var i = 0; i < formResponses.length; i++) {
        *       var formResponse = formResponses[i];
        *       for (var j = 0; j < formItems.length; j++) {
-       *         var item = formItems[i];
+       *         var item = formItems[j];
        *         var points = item.asMultipleChoiceItem().getPoints();
        *         var itemResponse = formResponse.getGradableResponseForItem(item);
        *         Logger.log('Award half credit for answers containing the word "Kennedy"');
        *         var answer = itemResponse.getResponse();
        *         if (answer != null && answer.includes('Kennedy')) {
        *           itemResponse.setScore(points / 2);
-       *           formResponse.withItemGrades(itemResponse);
+       *           formResponse.withItemGrade(itemResponse);
        *         }
        *       }
        *     }
@@ -2240,7 +2245,7 @@ declare namespace GoogleAppsScript {
        * Gets the feedback that was given for the respondent's submitted answer.
        * https://developers.google.com/apps-script/reference/forms/item-response#getFeedback()
        */
-      getFeedback(): object;
+      getFeedback(): any;
 
       /**
        * Gets the question item that this response answers.
@@ -2267,13 +2272,13 @@ declare namespace GoogleAppsScript {
        * grid. If a respondent did not answer a question in the grid, that answer is returned as ''.
        * https://developers.google.com/apps-script/reference/forms/item-response#getResponse()
        */
-      getResponse(): object;
+      getResponse(): any;
 
       /**
        * Gets the score for the respondent's submitted answer.
        * https://developers.google.com/apps-script/reference/forms/item-response#getScore()
        */
-      getScore(): object;
+      getScore(): any;
 
       /**
        * Sets the feedback that should be displayed for the respondent's submitted answer.
@@ -2283,7 +2288,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/item-response#setFeedback(Object)
        * @param feedback
        */
-      setFeedback(feedback: object): ItemResponse;
+      setFeedback(feedback: any): ItemResponse;
 
       /**
        * Sets the score for the respondent's submitted answer. A null value will clear the existing
@@ -2316,7 +2321,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/item-response#setScore(Object)
        * @param score
        */
-      setScore(score: object): ItemResponse;
+      setScore(score: any): ItemResponse;
     }
     /**
      * An enum representing the supported types of form items. Item types can be accessed from FormApp.ItemType.
@@ -2331,7 +2336,7 @@ declare namespace GoogleAppsScript {
      *       item.setHelpText('Description of new section.');
      *     }
      */
-    enum ItemType { CHECKBOX, CHECKBOX_GRID, DATE, DATETIME, DURATION, GRID, IMAGE, LIST, MULTIPLE_CHOICE, PAGE_BREAK, PARAGRAPH_TEXT, SCALE, SECTION_HEADER, TEXT, TIME, VIDEO }
+    enum ItemType { CHECKBOX, CHECKBOX_GRID, DATE, DATETIME, DURATION, GRID, IMAGE, LIST, MULTIPLE_CHOICE, PAGE_BREAK, PARAGRAPH_TEXT, SCALE, SECTION_HEADER, TEXT, TIME, VIDEO, FILE_UPLOAD }
     /**
      * A question item that allows the respondent to select one choice from a drop-down list. Items can
      * be accessed or created from a Form.
@@ -3060,8 +3065,8 @@ declare namespace GoogleAppsScript {
      *     // Add a paragraph text item to a form and require the answer to be at least 100 characters.
      *     var paragraphTextItem = form.addParagraphTextItem().setTitle('Describe yourself:');
      *     var paragraphtextValidation = FormApp.createParagraphTextValidation()
-     *       .setHelpText(“Answer must be more than 100 characters.”)
-     *       .requireTextLengthGreatherThan(100);
+     *       .setHelpText('Answer must be more than 100 characters.')
+     *       .requireTextLengthGreaterThan(100);
      *     paragraphTextItem.setValidation(paragraphtextValidation);
      */
     interface ParagraphTextValidationBuilder {
@@ -3534,7 +3539,7 @@ declare namespace GoogleAppsScript {
      *     // Add a text item to a form and require it to be a number within a range.
      *     var textItem = form.addTextItem().setTitle('Pick a number between 1 and 100?');
      *     var textValidation = FormApp.createTextValidation()
-     *       .setHelpText(“Input was not a number between 1 and 100.”)
+     *       .setHelpText('Input was not a number between 1 and 100.')
      *       .requireNumberBetween(1, 100)
      *       .build();
      *     textItem.setValidation(textValidation);
@@ -3547,8 +3552,9 @@ declare namespace GoogleAppsScript {
      *     // Add a text item to a form and require it to be a number within a range.
      *     var textItem = form.addTextItem().setTitle('Pick a number between 1 and 100?');
      *     var textValidation = FormApp.createTextValidation()
-     *       .setHelpText(“Input was not a number between 1 and 100.”)
-     *       .requireNumberBetween(1, 100);
+     *       .setHelpText('Input was not a number between 1 and 100.')
+     *       .requireNumberBetween(1, 100)
+     *       .build();
      *     textItem.setValidation(textValidation);
      */
     interface TextValidationBuilder {

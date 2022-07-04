@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -27,7 +27,7 @@ declare namespace GoogleAppsScript {
        *     Logger.log(response.getAllHeaders());
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getAllHeaders()
        */
-      getAllHeaders(): object;
+      getAllHeaders(): any;
 
       /**
        * Return the data inside this object as a blob converted to the specified content type. This
@@ -35,6 +35,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -90,7 +95,7 @@ declare namespace GoogleAppsScript {
        *     Logger.log(response.getHeaders());
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getHeaders()
        */
-      getHeaders(): object;
+      getHeaders(): any;
 
       /**
        * Get the HTTP status code (200 for OK, etc.) of an HTTP response.
@@ -113,8 +118,8 @@ declare namespace GoogleAppsScript {
      * requests and receive responses. The URL Fetch service uses Google's network infrastructure for
      * efficiency and scaling purposes.
      *
-     * Requests made using this service originate from a set pool of IP ranges. You can look up the full list of IP addresses
-     * if you need to whitelist or approve these requests.
+     * Requests made using this service originate from a set pool of IP ranges. You can look up the full list of IP addresses if
+     * you need to allowlist or approve these requests.
      *
      * This service requires the https://www.googleapis.com/auth/script.external_request
      * scope. In most cases Apps Script automatically detects and includes the scopes a script needs,
@@ -186,13 +191,17 @@ declare namespace GoogleAppsScript {
        * @param url The URL to fetch.
        * @param params The optional JavaScript object specifying advanced parameters as defined below.
        */
-      fetch(url: string, params: object): HTTPResponse;
+      fetch(url: string, params: any): HTTPResponse;
 
       /**
        * Makes multiple requests to fetch multiple URLs using optional advanced parameters.
        *
        *
        * This works over HTTP as well as HTTPS.
+       *
+       *
+       * The maximum number of URLs you can fetch is 100. If you provide more than 100 URLs, the
+       * request fails.
        *
        *
        *     // Make both a POST request with form data, and a GET request.
@@ -216,7 +225,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#fetchAll(Object)
        * @param requests An array of either URLs or JavaScript objects specifying requests as defined below.
        */
-      fetchAll(requests: object[]): HTTPResponse[];
+      fetchAll(requests: any[]): HTTPResponse[];
 
       /**
        * Returns the request that is made if the operation was invoked.
@@ -233,7 +242,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#getRequest(String)
        * @param url The URL to look up.
        */
-      getRequest(url: string): object;
+      getRequest(url: string): any;
 
       /**
        * Returns the request that is made if the operation were invoked.
@@ -244,7 +253,7 @@ declare namespace GoogleAppsScript {
        * @param url The URL to look up.
        * @param params An optional JavaScript object specifying advanced parameters as defined below.
        */
-      getRequest(url: string, params: object): object;
+      getRequest(url: string, params: any): any;
     }
   }
 }

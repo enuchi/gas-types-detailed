@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -16,35 +16,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Attempts to establish a connection to the given Google Cloud SQL URL.
-       *
-       *
-       *
-       *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc#getCloudSqlConnection(String)
-       * @param url A database URL of the form jdbc:google:mysql:subname.
+       * @param url A database URL of the form jdbc:google:mysql://subname.
        */
       getCloudSqlConnection(url: string): JdbcConnection;
 
       /**
        * Attempts to establish a connection to the given Google Cloud SQL URL.
-       *
-       *
-       *
-       *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc#getCloudSqlConnection(String,Object)
-       * @param url A database URL of the form jdbc:google:mysql:subname.
+       * @param url A database URL of the form jdbc:google:mysql://subname.
        * @param info Optional JavaScript object specifying advanced parameters as defined below.
        */
-      getCloudSqlConnection(url: string, info: object): JdbcConnection;
+      getCloudSqlConnection(url: string, info: any): JdbcConnection;
 
       /**
        * Attempts to establish a connection to the given Google Cloud SQL URL.
-       *
-       *
-       *
-       *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc#getCloudSqlConnection(String,String,String)
-       * @param url A database URL of the form jdbc:google:mysql:subname.
+       * @param url A database URL of the form jdbc:google:mysql://subname.
        * @param userName The username to pass to the database.
        * @param password The user's password.
        */
@@ -70,7 +58,7 @@ declare namespace GoogleAppsScript {
        * @param url A database URL of the form jdbc:subprotocol:subname.
        * @param info Optional JavaScript object specifying advanced parameters as defined below.
        */
-      getConnection(url: string, info: object): JdbcConnection;
+      getConnection(url: string, info: any): JdbcConnection;
 
       /**
        * Attempts to establish a connection to the given database using a username and password.
@@ -146,7 +134,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-array#getArray()
        */
-      getArray(): object;
+      getArray(): any;
 
       /**
        * For documentation of this method, see
@@ -155,7 +143,7 @@ declare namespace GoogleAppsScript {
        * @param index The array index of the first element to retrieve, where the first element has an index of 1.
        * @param count The number of successive SQL array elements to retrieve.
        */
-      getArray(index: Integer, count: Integer): object;
+      getArray(index: Integer, count: Integer): any;
 
       /**
        * For documentation of this method, see
@@ -212,6 +200,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-blob#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -779,7 +772,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#getObject(Integer)
        * @param parameterIndex The index of the parameter to retrieve (the first parameter is 1, the second is 2, and so on).
        */
-      getObject(parameterIndex: Integer): object;
+      getObject(parameterIndex: Integer): any;
 
       /**
        * For documentation of this method, see
@@ -787,7 +780,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#getObject(String)
        * @param parameterName The name of the parameter.
        */
-      getObject(parameterName: string): object;
+      getObject(parameterName: string): any;
 
       /**
        * For documentation of this method, see
@@ -1437,7 +1430,7 @@ declare namespace GoogleAppsScript {
        * @param index The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The object containing the value to set the parameter to.
        */
-      setObject(index: Integer, x: object): void;
+      setObject(index: Integer, x: any): void;
 
       /**
        * For documentation of this method, see
@@ -1447,7 +1440,7 @@ declare namespace GoogleAppsScript {
        * @param x The object containing the value to set the parameter to.
        * @param targetSqlType The SQL type to send to the database.
        */
-      setObject(parameterIndex: Integer, x: object, targetSqlType: Integer): void;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -1458,7 +1451,7 @@ declare namespace GoogleAppsScript {
        * @param targetSqlType The SQL type to send to the database. The scale argument may further qualify this type.
        * @param scaleOrLength The number of digits after the decimal for DECIMAL or NUMERIC types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      setObject(parameterIndex: Integer, x: object, targetSqlType: Integer, scaleOrLength: Integer): void;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -1467,7 +1460,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The object containing the value to set.
        */
-      setObject(parameterName: string, x: object): void;
+      setObject(parameterName: string, x: any): void;
 
       /**
        * For documentation of this method, see
@@ -1477,7 +1470,7 @@ declare namespace GoogleAppsScript {
        * @param x The object containing the value to set.
        * @param targetSqlType The SQL type sent to the database.
        */
-      setObject(parameterName: string, x: object, targetSqlType: Integer): void;
+      setObject(parameterName: string, x: any, targetSqlType: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -1488,7 +1481,7 @@ declare namespace GoogleAppsScript {
        * @param targetSqlType The SQL type sent to the database. The scale parameter may further qualify this type.
        * @param scale The number of digits after the decimal point for DECIMAL and NUMERIC types. Ignored for all other types.
        */
-      setObject(parameterName: string, x: object, targetSqlType: Integer, scale: Integer): void;
+      setObject(parameterName: string, x: any, targetSqlType: Integer, scale: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -1713,6 +1706,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-clob#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -1849,7 +1847,7 @@ declare namespace GoogleAppsScript {
        * @param typeName The database-specific SQL name of the array elemnents' type. Options include built-in types, user-defined types, or standard SQL types supported by the database.
        * @param elements The elements to populate in the returned object.
        */
-      createArrayOf(typeName: string, elements: object[]): JdbcArray;
+      createArrayOf(typeName: string, elements: any[]): JdbcArray;
 
       /**
        * Constructs a JdbcBlob instance. See also
@@ -1981,7 +1979,7 @@ declare namespace GoogleAppsScript {
        * @param typeName The database-specific SQL name of the array elemnents' type. Options include built-in types, user-defined types, or standard SQL types supported by the database.
        * @param attributes The attributes that populate the returned object.
        */
-      createStruct(typeName: string, attributes: object[]): JdbcStruct;
+      createStruct(typeName: string, attributes: any[]): JdbcStruct;
 
       /**
        * For documentation of this method, see
@@ -4196,7 +4194,7 @@ declare namespace GoogleAppsScript {
        * @param index The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The object containing the value to set the parameter to.
        */
-      setObject(index: Integer, x: object): void;
+      setObject(index: Integer, x: any): void;
 
       /**
        * For documentation of this method, see
@@ -4206,7 +4204,7 @@ declare namespace GoogleAppsScript {
        * @param x The object containing the value to set the parameter to.
        * @param targetSqlType The SQL type to send to the database.
        */
-      setObject(parameterIndex: Integer, x: object, targetSqlType: Integer): void;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -4217,7 +4215,7 @@ declare namespace GoogleAppsScript {
        * @param targetSqlType The SQL type to send to the database. The scale argument may further qualify this type.
        * @param scaleOrLength The number of digits after the decimal for DECIMAL or NUMERIC types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      setObject(parameterIndex: Integer, x: object, targetSqlType: Integer, scaleOrLength: Integer): void;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -4344,7 +4342,7 @@ declare namespace GoogleAppsScript {
        * java.sql.Ref#getObject().
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-ref#getObject()
        */
-      getObject(): object;
+      getObject(): any;
 
       /**
        * For documentation of this method, see
@@ -4352,7 +4350,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-ref#setObject(Object)
        * @param object The object to set as the refernence target.
        */
-      setObject(object: object): void;
+      setObject(object: any): void;
     }
     /**
      * A JDBC ResultSet. For documentation of this class, see java.sql.ResultSet
@@ -4715,7 +4713,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#getObject(Integer)
        * @param columnIndex The index of the column to retrieve the data from (the first column is 1, the second is 2, and so on).
        */
-      getObject(columnIndex: Integer): object;
+      getObject(columnIndex: Integer): any;
 
       /**
        * For documentation of this method, see
@@ -4723,7 +4721,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#getObject(String)
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        */
-      getObject(columnLabel: string): object;
+      getObject(columnLabel: string): any;
 
       /**
        * For documentation of this method, see
@@ -5320,7 +5318,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateObject(columnIndex: Integer, x: object): void;
+      updateObject(columnIndex: Integer, x: any): void;
 
       /**
        * For documentation of this method, see
@@ -5330,7 +5328,7 @@ declare namespace GoogleAppsScript {
        * @param x The new column value.
        * @param scaleOrLength The number of digits after the decimal for BigDecimal types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      updateObject(columnIndex: Integer, x: object, scaleOrLength: Integer): void;
+      updateObject(columnIndex: Integer, x: any, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -5339,7 +5337,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateObject(columnLabel: string, x: object): void;
+      updateObject(columnLabel: string, x: any): void;
 
       /**
        * For documentation of this method, see
@@ -5349,7 +5347,7 @@ declare namespace GoogleAppsScript {
        * @param x The new column value.
        * @param scaleOrLength The number of digits after the decimal for BigDecimal types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      updateObject(columnLabel: string, x: object, scaleOrLength: Integer): void;
+      updateObject(columnLabel: string, x: any, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see
@@ -6055,7 +6053,7 @@ declare namespace GoogleAppsScript {
        * java.sql.Struct#getAttributes().
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-struct#getAttributes()
        */
-      getAttributes(): object[];
+      getAttributes(): any[];
 
       /**
        * For documentation of this method, see

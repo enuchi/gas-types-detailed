@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -16,13 +16,12 @@ declare namespace GoogleAppsScript {
      *
      *     function listGroupMembers() {
      *       var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
-     *       var str = group.getEmail() + ': ';
+     *       console.log(group.getEmail() + ':');
      *       var users = group.getUsers();
      *       for (var i = 0; i < users.length; i++) {
      *         var user = users[i];
-     *         str = str + user.getEmail() + ", ";
+     *         console.log(user.getEmail());
      *       }
-     *       Logger.log(str);
      *     }
      */
     interface Group {
@@ -37,7 +36,7 @@ declare namespace GoogleAppsScript {
        *     function listMyGroupEmails() {
        *       var groups = GroupsApp.getGroups();
        *       for (var i = 0; i < groups.length; i++) {
-       *         Logger.log(groups[i].getEmail());
+       *         console.log(groups[i].getEmail());
        *       }
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#getEmail()
@@ -57,13 +56,11 @@ declare namespace GoogleAppsScript {
        *       var GROUP_EMAIL = "example@googlegroups.com";
        *       var group = GroupsApp.getGroupByEmail(GROUP_EMAIL);
        *       var childGroups = group.getGroups();
-       *       var str = "Group " + GROUP_EMAIL + " has " + childGroup.length +
-       *           " groups: ";
+       *       console.log("Group " + GROUP_EMAIL + " has " + childGroup.length + " groups:");
        *       for (var i = 0; i < childGroups.length; i++) {
        *         var childGroup = childGroups[i];
-       *         str = str + childGroup.getEmail() + ", ";
+       *         console.log(childGroup.getEmail());
        *       }
-       *       Logger.log(str);
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#getGroups()
        */
@@ -80,11 +77,11 @@ declare namespace GoogleAppsScript {
        *
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     var users = group.getUsers();
-       *     Logger.log('These are the group owners:');
+       *     console.log('These are the group owners:');
        *     for (var i = 0; i < users.length; i++) {
        *       var user = users[i];
        *       if (group.getRole(user.getEmail()) == GroupsApp.Role.OWNER) {
-       *         Logger.log(user.getEmail());
+       *         console.log(user.getEmail());
        *       }
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#getRole(String)
@@ -103,11 +100,11 @@ declare namespace GoogleAppsScript {
        *
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     var users = group.getUsers();
-       *     Logger.log('These are the group owners:');
+       *     console.log('These are the group owners:');
        *     for (var i = 0; i < users.length; i++) {
        *       var user = users[i];
        *       if (group.getRole(user) == GroupsApp.Role.OWNER) {
-       *         Logger.log(user.getEmail());
+       *         console.log(user.getEmail());
        *       }
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#getRole(User)
@@ -127,10 +124,10 @@ declare namespace GoogleAppsScript {
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     var users = group.getUsers();
        *     var roles = group.getRoles(users);
-       *     Logger.log('These are the group owners:');
+       *     console.log('These are the group owners:');
        *     for (var i = 0; i < users.length; i++) {
        *       if (roles[i] == GroupsApp.Role.OWNER) {
-       *         Logger.log(users[i].getEmail());
+       *         console.log(users[i].getEmail());
        *       }
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#getRoles(User)
@@ -156,13 +153,11 @@ declare namespace GoogleAppsScript {
        *       var GROUP_EMAIL = "example@googlegroups.com";
        *       var group = GroupsApp.getGroupByEmail(GROUP_EMAIL);
        *       var users = group.getUsers();
-       *       var str = "Group " + GROUP_EMAIL + " has " + users.length +
-       *       " members: ";
+       *       console.log("Group " + GROUP_EMAIL + " has " + users.length + " members:");
        *       for (var i = 0; i < users.length; i++) {
        *         var user = users[i];
-       *         str = str + user.getEmail() + ", ";
+       *         console.log(user.getEmail());
        *       }
-       *       Logger.log(str);
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#getUsers()
        */
@@ -177,7 +172,7 @@ declare namespace GoogleAppsScript {
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     var childGroup = GroupsApp.getGroupByEmail("childgroup@googlegroups.com");
        *     if (group.hasGroup(childGroup)) {
-       *       Logger.log("childgroup@googlegroups.com is a child group");
+       *       console.log("childgroup@googlegroups.com is a child group");
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#hasGroup(Group)
        * @param group The group whose membership to test.
@@ -192,7 +187,7 @@ declare namespace GoogleAppsScript {
        *
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     if (group.hasGroup("childgroup@googlegroups.com")) {
-       *       Logger.log("childgroup@googlegroups.com is a child group");
+       *       console.log("childgroup@googlegroups.com is a child group");
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#hasGroup(String)
        * @param email A group's email address.
@@ -210,7 +205,7 @@ declare namespace GoogleAppsScript {
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     var currentUser = Session.getActiveUser();
        *     if (group.hasUser(currentUser.getEmail())) {
-       *       Logger.log("You are a member");
+       *       console.log("You are a member");
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#hasUser(String)
        * @param email A user's email address.
@@ -228,7 +223,7 @@ declare namespace GoogleAppsScript {
        *     var group = GroupsApp.getGroupByEmail("example@googlegroups.com");
        *     var currentUser = Session.getActiveUser();
        *     if (group.hasUser(currentUser)) {
-       *       Logger.log("You are a member");
+       *       console.log("You are a member");
        *     }
        * https://developers.google.com/apps-script/reference/groups/group#hasUser(User)
        * @param user The user whose membership to test.

@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -38,7 +38,7 @@ declare namespace GoogleAppsScript {
      *     body.appendParagraph("A paragraph.");
      *     body.appendPageBreak();
      */
-    interface Body {
+    interface Body extends Element {
 
       /**
        * Creates and appends a new HorizontalRule.
@@ -174,7 +174,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/body#copy()
        */
@@ -295,7 +295,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/body#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -328,7 +328,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/document/body#getHeadingAttributes(ParagraphHeading)
        * @param paragraphHeading the heading whose attributes will be retrieved
        */
-      getHeadingAttributes(paragraphHeading: ParagraphHeading): object;
+      getHeadingAttributes(paragraphHeading: ParagraphHeading): any;
 
       /**
        * Retrieves all the InlineImages contained in the section.
@@ -615,9 +615,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/body#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Body;
+      setAttributes(attributes: any): Body;
 
       /**
        * Sets the attributes for the provided ParagraphHeading.
@@ -625,7 +625,7 @@ declare namespace GoogleAppsScript {
        * @param paragraphHeading the heading whose attributes will be set
        * @param attributes a map of attributes and the values to set them to
        */
-      setHeadingAttributes(paragraphHeading: ParagraphHeading, attributes: object): Body;
+      setHeadingAttributes(paragraphHeading: ParagraphHeading, attributes: any): Body;
 
       /**
        * Sets the bottom margin, in points.
@@ -732,7 +732,7 @@ declare namespace GoogleAppsScript {
      * A generic element that may contain other elements. All elements that may contain child elements,
      * such as Paragraph, inherit from ContainerElement.
      */
-    interface ContainerElement {
+    interface ContainerElement extends Element {
 
       /**
        * Returns the current element as a Body.
@@ -745,7 +745,7 @@ declare namespace GoogleAppsScript {
       asBody(): Body;
 
       /**
-       * Returns the current element as a Equation.
+       * Returns the current element as an Equation.
        *
        *
        * Use this method to aid auto-complete whenever a given element is known to be of a specific
@@ -854,7 +854,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/container-element#copy()
        */
@@ -975,7 +975,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/container-element#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -1095,7 +1095,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -1103,13 +1103,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/container-element#merge()
        */
       merge(): ContainerElement;
@@ -1181,9 +1196,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/container-element#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): ContainerElement;
+      setAttributes(attributes: any): ContainerElement;
 
       /**
        * Sets the link url.
@@ -1203,6 +1218,204 @@ declare namespace GoogleAppsScript {
        * @param textAlignment the type of text alignment to apply
        */
       setTextAlignment(textAlignment: TextAlignment): ContainerElement;
+    }
+    /**
+     * An element representing a formatted date
+     */
+    interface Date {
+
+      /**
+       * Returns a detached, deep copy of the current element.
+       *
+       *
+       * Any child elements present in the element are also copied. The new element doesn't have a
+       * parent.
+       * https://developers.google.com/apps-script/reference/document/date#copy()
+       */
+      copy(): Date;
+
+      /**
+       * Retrieves the element's attributes.
+       *
+       *
+       * The result is an object containing a property for each valid element attribute where each
+       * property name corresponds to an item in the DocumentApp.Attribute enumeration.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Append a styled paragraph.
+       *     var par = body.appendParagraph('A bold, italicized paragraph.');
+       *     par.setBold(true);
+       *     par.setItalic(true);
+       *
+       *     // Retrieve the paragraph's attributes.
+       *     var atts = par.getAttributes();
+       *
+       *     // Log the paragraph attributes.
+       *     for (var att in atts) {
+       *       Logger.log(att + ":" + atts[att]);
+       *     }
+       * https://developers.google.com/apps-script/reference/document/date#getAttributes()
+       */
+      getAttributes(): any;
+
+      /**
+       * Returns the display value that's rendered in the document. The display value uses the UTC
+       * timezone and the date's locale. For example, Jul 16, 2021.
+       * https://developers.google.com/apps-script/reference/document/date#getDisplayText()
+       */
+      getDisplayText(): string;
+
+      /**
+       * Returns the date's locale used for the display value. For example, en.
+       * https://developers.google.com/apps-script/reference/document/date#getLocale()
+       */
+      getLocale(): string;
+
+      /**
+       * Retrieves the element's next sibling element.
+       *
+       *
+       * The next sibling has the same parent and follows the current element.
+       * https://developers.google.com/apps-script/reference/document/date#getNextSibling()
+       */
+      getNextSibling(): Element;
+
+      /**
+       * Retrieves the element's parent element.
+       *
+       *
+       * The parent element contains the current element.
+       * https://developers.google.com/apps-script/reference/document/date#getParent()
+       */
+      getParent(): ContainerElement;
+
+      /**
+       * Retrieves the element's previous sibling element.
+       *
+       *
+       * The previous sibling has the same parent and precedes the current element.
+       * https://developers.google.com/apps-script/reference/document/date#getPreviousSibling()
+       */
+      getPreviousSibling(): Element;
+
+      /**
+       * Returns the timestamp associated with the date.
+       * https://developers.google.com/apps-script/reference/document/date#getTimestamp()
+       */
+      getTimestamp(): Date;
+
+      /**
+       * Retrieves the element's ElementType.
+       *
+       *
+       * Use getType() to determine the exact type of a given element.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Obtain the first element in the document body.
+       *
+       *     var firstChild = body.getChild(0);
+       *
+       *     // Use getType() to determine the element's type.
+       *     if (firstChild.getType() == DocumentApp.ElementType.PARAGRAPH) {
+       *       Logger.log('The first element is a paragraph.');
+       *     } else {
+       *       Logger.log('The first element is not a paragraph.');
+       *     }
+       * https://developers.google.com/apps-script/reference/document/date#getType()
+       */
+      getType(): ElementType;
+
+      /**
+       * Determines whether the element is at the end of the Document.
+       * https://developers.google.com/apps-script/reference/document/date#isAtDocumentEnd()
+       */
+      isAtDocumentEnd(): boolean;
+
+      /**
+       * Merges the element with the preceding sibling of the same type.
+       *
+       *
+       * Only elements of the same ElementType can be merged. Any child elements contained in
+       * the current element are moved to the preceding sibling element.
+       *
+       *
+       * The current element is removed from the document.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *     // Example 1: Merge paragraphs
+       *     // Append two paragraphs to the document.
+       *     var par1 = body.appendParagraph('Paragraph 1.');
+       *     var par2 = body.appendParagraph('Paragraph 2.');
+       *     // Merge the newly added paragraphs into a single paragraph.
+       *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
+       * https://developers.google.com/apps-script/reference/document/date#merge()
+       */
+      merge(): Date;
+
+      /**
+       * Removes the element from its parent.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Remove all images in the document body.
+       *     var imgs = body.getImages();
+       *     for (var i = 0; i < imgs.length; i++) {
+       *       imgs[i].removeFromParent();
+       *     }
+       * https://developers.google.com/apps-script/reference/document/date#removeFromParent()
+       */
+      removeFromParent(): Date;
+
+      /**
+       * Sets the element's attributes.
+       *
+       *
+       * The specified attributes parameter must be an object where each property name is an item in
+       * the DocumentApp.Attribute enumeration and each property value is the new value to be
+       * applied.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Define a custom paragraph style.
+       *     var style = {};
+       *     style[DocumentApp.Attribute.HORIZONTAL_ALIGNMENT] =
+       *         DocumentApp.HorizontalAlignment.RIGHT;
+       *     style[DocumentApp.Attribute.FONT_FAMILY] = 'Calibri';
+       *     style[DocumentApp.Attribute.FONT_SIZE] = 18;
+       *     style[DocumentApp.Attribute.BOLD] = true;
+       *
+       *     // Append a plain paragraph.
+       *     var par = body.appendParagraph('A paragraph with custom style.');
+       *
+       *     // Apply the custom style.
+       *     par.setAttributes(style);
+       * https://developers.google.com/apps-script/reference/document/date#setAttributes(Object)
+       * @param attributes The element's attributes.
+       */
+      setAttributes(attributes: any): Date;
     }
     /**
      * A document, containing rich text and elements such as tables and lists.
@@ -1743,6 +1956,8 @@ declare namespace GoogleAppsScript {
      *
      * ContainerElementA generic element that may contain other elements.
      *
+     * DateAn element representing a formatted date
+     *
      * EquationAn element representing a mathematical expression.
      *
      * EquationFunctionAn element representing a function in a mathematical Equation.
@@ -1771,6 +1986,10 @@ declare namespace GoogleAppsScript {
      *
      * ParagraphAn element representing a paragraph.
      *
+     * PersonAn element representing a link to a person.
+     *
+     * RichLinkAn element representing a link to a Google resource, such as a Drive file or a YouTube video.
+     *
      * TableAn element representing a table.
      *
      * TableCellAn element representing a table cell.
@@ -1797,7 +2016,17 @@ declare namespace GoogleAppsScript {
       asBody(): Body;
 
       /**
-       * Returns the current element as a Equation.
+       * Returns the current element as a Date.
+       *
+       *
+       * When you know an element is a Date, use this method to set its type as a Date. Doing so lets autocomplete in the Apps Script editor show you the methods you can use
+       * with a Date.
+       * https://developers.google.com/apps-script/reference/document/element#asDate()
+       */
+      asDate(): Date;
+
+      /**
+       * Returns the current element as an Equation.
        *
        *
        * Use this method to aid auto-complete whenever a given element is known to be of a specific
@@ -1937,6 +2166,27 @@ declare namespace GoogleAppsScript {
       asParagraph(): Paragraph;
 
       /**
+       * Returns the current element as a Person.
+       *
+       *
+       * When you know an element is a Person, use this method to set its type as a person.
+       * Doing so lets autocomplete in the Apps Script editor show you the methods you can use with a
+       * person element.
+       * https://developers.google.com/apps-script/reference/document/element#asPerson()
+       */
+      asPerson(): Person;
+
+      /**
+       * Returns the current element as a RichLink, for example, a link to a Google Sheets file.
+       *
+       *
+       * When you know an element is a RichLink, use this method to set its type as a RichLink. Doing so lets autocomplete in the Apps Script editor show you the methods you can
+       * use with a RichLink.
+       * https://developers.google.com/apps-script/reference/document/element#asRichLink()
+       */
+      asRichLink(): RichLink;
+
+      /**
        * Returns the current element as a Table.
        *
        *
@@ -1990,7 +2240,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/element#copy()
        */
@@ -2020,7 +2270,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/element#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the element's next sibling element.
@@ -2082,7 +2332,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -2090,13 +2340,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/element#merge()
        */
       merge(): Element;
@@ -2141,9 +2406,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/element#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Element;
+      setAttributes(attributes: any): Element;
     }
     /**
      * An enumeration of all the element types.
@@ -2156,13 +2421,13 @@ declare namespace GoogleAppsScript {
      *       firstChild.asParagraph().setHeading(DocumentApp.ParagraphHeading.HEADING1);
      *     }
      */
-    enum ElementType { BODY_SECTION, COMMENT_SECTION, DOCUMENT, EQUATION, EQUATION_FUNCTION, EQUATION_FUNCTION_ARGUMENT_SEPARATOR, EQUATION_SYMBOL, FOOTER_SECTION, FOOTNOTE, FOOTNOTE_SECTION, HEADER_SECTION, HORIZONTAL_RULE, INLINE_DRAWING, INLINE_IMAGE, LIST_ITEM, PAGE_BREAK, PARAGRAPH, TABLE, TABLE_CELL, TABLE_OF_CONTENTS, TABLE_ROW, TEXT, UNSUPPORTED }
+    enum ElementType { BODY_SECTION, COMMENT_SECTION, DATE, DOCUMENT, EQUATION, EQUATION_FUNCTION, EQUATION_FUNCTION_ARGUMENT_SEPARATOR, EQUATION_SYMBOL, RICH_LINK, FOOTER_SECTION, FOOTNOTE, FOOTNOTE_SECTION, HEADER_SECTION, HORIZONTAL_RULE, INLINE_DRAWING, INLINE_IMAGE, LIST_ITEM, PAGE_BREAK, PARAGRAPH, PERSON, TABLE, TABLE_CELL, TABLE_OF_CONTENTS, TABLE_ROW, TEXT, UNSUPPORTED }
     /**
      * An element representing a mathematical expression. An Equation may contain EquationFunction, EquationSymbol, and Text elements. For more information on
      * document structure, see the guide to
      * extending Google Docs.
      */
-    interface Equation {
+    interface Equation extends Element {
 
       /**
        * Clears the contents of the element.
@@ -2174,7 +2439,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/equation#copy()
        */
@@ -2295,7 +2560,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/equation#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -2415,7 +2680,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -2423,13 +2688,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/equation#merge()
        */
       merge(): Equation;
@@ -2501,9 +2781,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/equation#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Equation;
+      setAttributes(attributes: any): Equation;
 
       /**
        * Sets the link url.
@@ -2528,7 +2808,7 @@ declare namespace GoogleAppsScript {
      * An element representing a function in a mathematical Equation. An EquationFunction may contain EquationFunction, EquationFunctionArgumentSeparator, EquationSymbol, and Text elements. For more
      * information on document structure, see the guide to extending Google Docs.
      */
-    interface EquationFunction {
+    interface EquationFunction extends Element {
 
       /**
        * Clears the contents of the element.
@@ -2540,7 +2820,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/equation-function#copy()
        */
@@ -2661,7 +2941,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/equation-function#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -2787,7 +3067,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -2795,13 +3075,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/equation-function#merge()
        */
       merge(): EquationFunction;
@@ -2873,9 +3168,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/equation-function#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): EquationFunction;
+      setAttributes(attributes: any): EquationFunction;
 
       /**
        * Sets the link url.
@@ -2901,13 +3196,13 @@ declare namespace GoogleAppsScript {
      * document structure, see the guide to
      * extending Google Docs.
      */
-    interface EquationFunctionArgumentSeparator {
+    interface EquationFunctionArgumentSeparator extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/equation-function-argument-separator#copy()
        */
@@ -2937,7 +3232,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/equation-function-argument-separator#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the element's next sibling element.
@@ -2999,7 +3294,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -3007,13 +3302,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/equation-function-argument-separator#merge()
        */
       merge(): EquationFunctionArgumentSeparator;
@@ -3058,21 +3368,21 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/equation-function-argument-separator#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): EquationFunctionArgumentSeparator;
+      setAttributes(attributes: any): EquationFunctionArgumentSeparator;
     }
     /**
      * An element representing a symbol in a mathematical Equation. An EquationSymbol
      * cannot contain any other element. For more information on document structure, see the guide to extending Google Docs.
      */
-    interface EquationSymbol {
+    interface EquationSymbol extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/equation-symbol#copy()
        */
@@ -3102,7 +3412,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/equation-symbol#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the code corresponding to the equation symbol.
@@ -3170,7 +3480,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -3178,13 +3488,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/equation-symbol#merge()
        */
       merge(): EquationSymbol;
@@ -3229,9 +3554,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/equation-symbol#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): EquationSymbol;
+      setAttributes(attributes: any): EquationSymbol;
     }
     /**
      *
@@ -3265,7 +3590,7 @@ declare namespace GoogleAppsScript {
      * An element representing a footer section. A Document typically contains at most one FooterSection. The FooterSection may contain ListItem, Paragraph, and
      * Table elements. For more information on document structure, see the guide to extending Google Docs.
      */
-    interface FooterSection {
+    interface FooterSection extends Element {
 
       /**
        * Creates and appends a new HorizontalRule.
@@ -3379,7 +3704,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/footer-section#copy()
        */
@@ -3500,7 +3825,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/footer-section#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -3771,9 +4096,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/footer-section#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): FooterSection;
+      setAttributes(attributes: any): FooterSection;
 
       /**
        * Sets the contents as plain text.
@@ -3810,13 +4135,13 @@ declare namespace GoogleAppsScript {
      * document structure, see the guide to
      * extending Google Docs.
      */
-    interface Footnote {
+    interface Footnote extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/footnote#copy()
        */
@@ -3846,7 +4171,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/footnote#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the contents of the footnote element.
@@ -3950,16 +4275,16 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/footnote#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Footnote;
+      setAttributes(attributes: any): Footnote;
     }
     /**
      * An element representing a footnote section. A FootnoteSection contains the text that
      * corresponds to a Footnote. The FootnoteSection may contain ListItem or
      * Paragraph elements. For more information on document structure, see the guide to extending Google Docs.
      */
-    interface FootnoteSection {
+    interface FootnoteSection extends Element {
 
       /**
        * Appends the given Paragraph.
@@ -3988,7 +4313,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/footnote-section#copy()
        */
@@ -4109,7 +4434,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/footnote-section#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -4310,9 +4635,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/footnote-section#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): FootnoteSection;
+      setAttributes(attributes: any): FootnoteSection;
 
       /**
        * Sets the contents as plain text.
@@ -4360,7 +4685,7 @@ declare namespace GoogleAppsScript {
      * An element representing a header section. A Document typically contains at most one HeaderSection. The HeaderSection may contain ListItem, Paragraph, and
      * Table elements. For more information on document structure, see the guide to extending Google Docs.
      */
-    interface HeaderSection {
+    interface HeaderSection extends Element {
 
       /**
        * Creates and appends a new HorizontalRule.
@@ -4474,7 +4799,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/header-section#copy()
        */
@@ -4595,7 +4920,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/header-section#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -4866,9 +5191,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/header-section#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): HeaderSection;
+      setAttributes(attributes: any): HeaderSection;
 
       /**
        * Sets the contents as plain text.
@@ -4926,13 +5251,13 @@ declare namespace GoogleAppsScript {
      * ListItem or Paragraph, but cannot itself contain any other element. For more
      * information on document structure, see the guide to extending Google Docs.
      */
-    interface HorizontalRule {
+    interface HorizontalRule extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/horizontal-rule#copy()
        */
@@ -4962,7 +5287,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/horizontal-rule#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the element's next sibling element.
@@ -5060,9 +5385,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/horizontal-rule#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): HorizontalRule;
+      setAttributes(attributes: any): HorizontalRule;
     }
     /**
      * An element representing an embedded drawing. An InlineDrawing can be contained within a
@@ -5070,13 +5395,13 @@ declare namespace GoogleAppsScript {
      * a FootnoteSection. An InlineDrawing cannot itself contain any other element. For
      * more information on document structure, see the guide to extending Google Docs.
      */
-    interface InlineDrawing {
+    interface InlineDrawing extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/inline-drawing#copy()
        */
@@ -5118,7 +5443,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/inline-drawing#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the element's next sibling element.
@@ -5180,7 +5505,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -5188,13 +5513,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/inline-drawing#merge()
        */
       merge(): InlineDrawing;
@@ -5255,9 +5595,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/inline-drawing#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): InlineDrawing;
+      setAttributes(attributes: any): InlineDrawing;
     }
     /**
      * An element representing an embedded image. An InlineImage can be contained within a
@@ -5265,13 +5605,13 @@ declare namespace GoogleAppsScript {
      * a FootnoteSection. An InlineImage cannot itself contain any other element. For
      * more information on document structure, see the guide to extending Google Docs.
      */
-    interface InlineImage {
+    interface InlineImage extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/inline-image#copy()
        */
@@ -5295,6 +5635,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/document/inline-image#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -5324,7 +5669,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/inline-image#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Return the data inside this object as a blob.
@@ -5410,7 +5755,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -5418,13 +5763,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/inline-image#merge()
        */
       merge(): InlineImage;
@@ -5485,9 +5845,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/inline-image#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): InlineImage;
+      setAttributes(attributes: any): InlineImage;
 
       /**
        * Sets the image's height, in pixels.
@@ -5542,7 +5902,7 @@ declare namespace GoogleAppsScript {
      *     var item2 = body.appendListItem('Item 2');
      *     item2.setListId(item1);
      */
-    interface ListItem {
+    interface ListItem extends Element {
 
       /**
        * Creates and inserts a new PositionedImage from the specified image blob.
@@ -5616,7 +5976,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/list-item#copy()
        */
@@ -5743,7 +6103,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/list-item#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -6010,7 +6370,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -6018,13 +6378,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/list-item#merge()
        */
       merge(): ListItem;
@@ -6117,9 +6492,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/list-item#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): ListItem;
+      setAttributes(attributes: any): ListItem;
 
       /**
        * Sets the list item's GlyphType.
@@ -6286,13 +6661,13 @@ declare namespace GoogleAppsScript {
      * see the guide to extending Google
      * Docs.
      */
-    interface PageBreak {
+    interface PageBreak extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/page-break#copy()
        */
@@ -6322,7 +6697,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/page-break#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the element's next sibling element.
@@ -6420,9 +6795,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/page-break#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): PageBreak;
+      setAttributes(attributes: any): PageBreak;
     }
     /**
      * An element representing a paragraph. A Paragraph may contain Equation, Footnote, HorizontalRule, InlineDrawing, InlineImage, PageBreak,
@@ -6444,7 +6819,7 @@ declare namespace GoogleAppsScript {
      *     // Append a regular paragraph.
      *     body.appendParagraph("This is a typical paragraph.");
      */
-    interface Paragraph {
+    interface Paragraph extends Element {
 
       /**
        * Creates and inserts a new PositionedImage from the specified image blob.
@@ -6518,7 +6893,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/paragraph#copy()
        */
@@ -6645,7 +7020,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/paragraph#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -6890,7 +7265,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -6898,13 +7273,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/paragraph#merge()
        */
       merge(): Paragraph;
@@ -6997,9 +7387,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/paragraph#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Paragraph;
+      setAttributes(attributes: any): Paragraph;
 
       /**
        * Sets the ParagraphHeading.
@@ -7107,6 +7497,199 @@ declare namespace GoogleAppsScript {
      */
     enum ParagraphHeading { NORMAL, HEADING1, HEADING2, HEADING3, HEADING4, HEADING5, HEADING6, TITLE, SUBTITLE }
     /**
+     * An element representing a link to a person. A person link refers to an email address and might
+     * optionally have a name associated with the address. If the name is set, the name is what is
+     * displayed in the document body.
+     */
+    interface Person {
+
+      /**
+       * Returns a detached, deep copy of the current element.
+       *
+       *
+       * Any child elements present in the element are also copied. The new element doesn't have a
+       * parent.
+       * https://developers.google.com/apps-script/reference/document/person#copy()
+       */
+      copy(): Person;
+
+      /**
+       * Retrieves the element's attributes.
+       *
+       *
+       * The result is an object containing a property for each valid element attribute where each
+       * property name corresponds to an item in the DocumentApp.Attribute enumeration.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Append a styled paragraph.
+       *     var par = body.appendParagraph('A bold, italicized paragraph.');
+       *     par.setBold(true);
+       *     par.setItalic(true);
+       *
+       *     // Retrieve the paragraph's attributes.
+       *     var atts = par.getAttributes();
+       *
+       *     // Log the paragraph attributes.
+       *     for (var att in atts) {
+       *       Logger.log(att + ":" + atts[att]);
+       *     }
+       * https://developers.google.com/apps-script/reference/document/person#getAttributes()
+       */
+      getAttributes(): any;
+
+      /**
+       * Returns the person's email address.
+       * https://developers.google.com/apps-script/reference/document/person#getEmail()
+       */
+      getEmail(): string;
+
+      /**
+       * Returns the person's display name, if set.
+       * https://developers.google.com/apps-script/reference/document/person#getName()
+       */
+      getName(): string;
+
+      /**
+       * Retrieves the element's next sibling element.
+       *
+       *
+       * The next sibling has the same parent and follows the current element.
+       * https://developers.google.com/apps-script/reference/document/person#getNextSibling()
+       */
+      getNextSibling(): Element;
+
+      /**
+       * Retrieves the element's parent element.
+       *
+       *
+       * The parent element contains the current element.
+       * https://developers.google.com/apps-script/reference/document/person#getParent()
+       */
+      getParent(): ContainerElement;
+
+      /**
+       * Retrieves the element's previous sibling element.
+       *
+       *
+       * The previous sibling has the same parent and precedes the current element.
+       * https://developers.google.com/apps-script/reference/document/person#getPreviousSibling()
+       */
+      getPreviousSibling(): Element;
+
+      /**
+       * Retrieves the element's ElementType.
+       *
+       *
+       * Use getType() to determine the exact type of a given element.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Obtain the first element in the document body.
+       *
+       *     var firstChild = body.getChild(0);
+       *
+       *     // Use getType() to determine the element's type.
+       *     if (firstChild.getType() == DocumentApp.ElementType.PARAGRAPH) {
+       *       Logger.log('The first element is a paragraph.');
+       *     } else {
+       *       Logger.log('The first element is not a paragraph.');
+       *     }
+       * https://developers.google.com/apps-script/reference/document/person#getType()
+       */
+      getType(): ElementType;
+
+      /**
+       * Determines whether the element is at the end of the Document.
+       * https://developers.google.com/apps-script/reference/document/person#isAtDocumentEnd()
+       */
+      isAtDocumentEnd(): boolean;
+
+      /**
+       * Merges the element with the preceding sibling of the same type.
+       *
+       *
+       * Only elements of the same ElementType can be merged. Any child elements contained in
+       * the current element are moved to the preceding sibling element.
+       *
+       *
+       * The current element is removed from the document.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *     // Example 1: Merge paragraphs
+       *     // Append two paragraphs to the document.
+       *     var par1 = body.appendParagraph('Paragraph 1.');
+       *     var par2 = body.appendParagraph('Paragraph 2.');
+       *     // Merge the newly added paragraphs into a single paragraph.
+       *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
+       * https://developers.google.com/apps-script/reference/document/person#merge()
+       */
+      merge(): Person;
+
+      /**
+       * Removes the element from its parent.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Remove all images in the document body.
+       *     var imgs = body.getImages();
+       *     for (var i = 0; i < imgs.length; i++) {
+       *       imgs[i].removeFromParent();
+       *     }
+       * https://developers.google.com/apps-script/reference/document/person#removeFromParent()
+       */
+      removeFromParent(): Person;
+
+      /**
+       * Sets the element's attributes.
+       *
+       *
+       * The specified attributes parameter must be an object where each property name is an item in
+       * the DocumentApp.Attribute enumeration and each property value is the new value to be
+       * applied.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Define a custom paragraph style.
+       *     var style = {};
+       *     style[DocumentApp.Attribute.HORIZONTAL_ALIGNMENT] =
+       *         DocumentApp.HorizontalAlignment.RIGHT;
+       *     style[DocumentApp.Attribute.FONT_FAMILY] = 'Calibri';
+       *     style[DocumentApp.Attribute.FONT_SIZE] = 18;
+       *     style[DocumentApp.Attribute.BOLD] = true;
+       *
+       *     // Append a plain paragraph.
+       *     var par = body.appendParagraph('A paragraph with custom style.');
+       *
+       *     // Apply the custom style.
+       *     par.setAttributes(style);
+       * https://developers.google.com/apps-script/reference/document/person#setAttributes(Object)
+       * @param attributes The element's attributes.
+       */
+      setAttributes(attributes: any): Person;
+    }
+    /**
      * A reference to a location in the document, relative to a specific element. The user's cursor is
      * represented as a Position, among other uses. Scripts can only access the cursor of the
      * user who is running the script, and only if the script is bound to the document.
@@ -7210,6 +7793,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/document/positioned-image#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -7460,6 +8048,211 @@ declare namespace GoogleAppsScript {
       isPartial(): boolean;
     }
     /**
+     * An element representing a link to a Google resource, such as a Drive file or a YouTube video.
+     */
+    interface RichLink {
+
+      /**
+       * Returns a detached, deep copy of the current element.
+       *
+       *
+       * Any child elements present in the element are also copied. The new element doesn't have a
+       * parent.
+       * https://developers.google.com/apps-script/reference/document/rich-link#copy()
+       */
+      copy(): RichLink;
+
+      /**
+       * Retrieves the element's attributes.
+       *
+       *
+       * The result is an object containing a property for each valid element attribute where each
+       * property name corresponds to an item in the DocumentApp.Attribute enumeration.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Append a styled paragraph.
+       *     var par = body.appendParagraph('A bold, italicized paragraph.');
+       *     par.setBold(true);
+       *     par.setItalic(true);
+       *
+       *     // Retrieve the paragraph's attributes.
+       *     var atts = par.getAttributes();
+       *
+       *     // Log the paragraph attributes.
+       *     for (var att in atts) {
+       *       Logger.log(att + ":" + atts[att]);
+       *     }
+       * https://developers.google.com/apps-script/reference/document/rich-link#getAttributes()
+       */
+      getAttributes(): any;
+
+      /**
+       * Returns the MIME type of
+       * the link, which is available when the item is a link to a Drive file and null
+       * otherwise.
+       *
+       *
+       * For example, if the link points to a Google Docs file, this returns the string
+       * application/vnd.google-apps.document.
+       * https://developers.google.com/apps-script/reference/document/rich-link#getMimeType()
+       */
+      getMimeType(): string;
+
+      /**
+       * Retrieves the element's next sibling element.
+       *
+       *
+       * The next sibling has the same parent and follows the current element.
+       * https://developers.google.com/apps-script/reference/document/rich-link#getNextSibling()
+       */
+      getNextSibling(): Element;
+
+      /**
+       * Retrieves the element's parent element.
+       *
+       *
+       * The parent element contains the current element.
+       * https://developers.google.com/apps-script/reference/document/rich-link#getParent()
+       */
+      getParent(): ContainerElement;
+
+      /**
+       * Retrieves the element's previous sibling element.
+       *
+       *
+       * The previous sibling has the same parent and precedes the current element.
+       * https://developers.google.com/apps-script/reference/document/rich-link#getPreviousSibling()
+       */
+      getPreviousSibling(): Element;
+
+      /**
+       * Returns the link's displayed title. This title matches the title of the linked resource at the
+       * time of the insertion or last update of the link. For example, if this link points to a Google
+       * Docs document titled "Analysis," this returns Analysis.
+       * https://developers.google.com/apps-script/reference/document/rich-link#getTitle()
+       */
+      getTitle(): string;
+
+      /**
+       * Retrieves the element's ElementType.
+       *
+       *
+       * Use getType() to determine the exact type of a given element.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Obtain the first element in the document body.
+       *
+       *     var firstChild = body.getChild(0);
+       *
+       *     // Use getType() to determine the element's type.
+       *     if (firstChild.getType() == DocumentApp.ElementType.PARAGRAPH) {
+       *       Logger.log('The first element is a paragraph.');
+       *     } else {
+       *       Logger.log('The first element is not a paragraph.');
+       *     }
+       * https://developers.google.com/apps-script/reference/document/rich-link#getType()
+       */
+      getType(): ElementType;
+
+      /**
+       * Returns the URL of the resource.
+       * https://developers.google.com/apps-script/reference/document/rich-link#getUrl()
+       */
+      getUrl(): string;
+
+      /**
+       * Determines whether the element is at the end of the Document.
+       * https://developers.google.com/apps-script/reference/document/rich-link#isAtDocumentEnd()
+       */
+      isAtDocumentEnd(): boolean;
+
+      /**
+       * Merges the element with the preceding sibling of the same type.
+       *
+       *
+       * Only elements of the same ElementType can be merged. Any child elements contained in
+       * the current element are moved to the preceding sibling element.
+       *
+       *
+       * The current element is removed from the document.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *     // Example 1: Merge paragraphs
+       *     // Append two paragraphs to the document.
+       *     var par1 = body.appendParagraph('Paragraph 1.');
+       *     var par2 = body.appendParagraph('Paragraph 2.');
+       *     // Merge the newly added paragraphs into a single paragraph.
+       *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
+       * https://developers.google.com/apps-script/reference/document/rich-link#merge()
+       */
+      merge(): RichLink;
+
+      /**
+       * Removes the element from its parent.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Remove all images in the document body.
+       *     var imgs = body.getImages();
+       *     for (var i = 0; i < imgs.length; i++) {
+       *       imgs[i].removeFromParent();
+       *     }
+       * https://developers.google.com/apps-script/reference/document/rich-link#removeFromParent()
+       */
+      removeFromParent(): RichLink;
+
+      /**
+       * Sets the element's attributes.
+       *
+       *
+       * The specified attributes parameter must be an object where each property name is an item in
+       * the DocumentApp.Attribute enumeration and each property value is the new value to be
+       * applied.
+       *
+       *
+       *     var body = DocumentApp.getActiveDocument().getBody();
+       *
+       *     // Define a custom paragraph style.
+       *     var style = {};
+       *     style[DocumentApp.Attribute.HORIZONTAL_ALIGNMENT] =
+       *         DocumentApp.HorizontalAlignment.RIGHT;
+       *     style[DocumentApp.Attribute.FONT_FAMILY] = 'Calibri';
+       *     style[DocumentApp.Attribute.FONT_SIZE] = 18;
+       *     style[DocumentApp.Attribute.BOLD] = true;
+       *
+       *     // Append a plain paragraph.
+       *     var par = body.appendParagraph('A paragraph with custom style.');
+       *
+       *     // Apply the custom style.
+       *     par.setAttributes(style);
+       * https://developers.google.com/apps-script/reference/document/rich-link#setAttributes(Object)
+       * @param attributes The element's attributes.
+       */
+      setAttributes(attributes: any): RichLink;
+    }
+    /**
      * An element representing a table. A Table may only contain TableRow elements. For
      * more information on document structure, see the guide to extending Google Docs.
      *
@@ -7477,7 +8270,7 @@ declare namespace GoogleAppsScript {
      *     // Build a table from the array.
      *     body.appendTable(cells);
      */
-    interface Table {
+    interface Table extends Element {
 
       /**
        * Creates and appends a new TableRow.
@@ -7502,7 +8295,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/table#copy()
        */
@@ -7623,7 +8416,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/table#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the border color.
@@ -7875,9 +8668,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/table#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Table;
+      setAttributes(attributes: any): Table;
 
       /**
        * Sets the border color.
@@ -7924,7 +8717,7 @@ declare namespace GoogleAppsScript {
      * An element representing a table cell. A TableCell is always contained within a TableRow and may contain ListItem, Paragraph, or Table elements. For
      * more information on document structure, see the guide to extending Google Docs.
      */
-    interface TableCell {
+    interface TableCell extends Element {
 
       /**
        * Creates and appends a new HorizontalRule.
@@ -8013,7 +8806,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/table-cell#copy()
        */
@@ -8134,7 +8927,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/table-cell#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the background color.
@@ -8410,7 +9203,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -8418,13 +9211,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/table-cell#merge()
        */
       merge(): TableCell;
@@ -8503,9 +9311,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/table-cell#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): TableCell;
+      setAttributes(attributes: any): TableCell;
 
       /**
        * Sets the background color.
@@ -8590,7 +9398,7 @@ declare namespace GoogleAppsScript {
      * document structure, see the guide to
      * extending Google Docs.
      */
-    interface TableOfContents {
+    interface TableOfContents extends Element {
 
       /**
        * Clears the contents of the element.
@@ -8602,7 +9410,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/table-of-contents#copy()
        */
@@ -8723,7 +9531,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/table-of-contents#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the child element at the specified child index.
@@ -8906,9 +9714,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/table-of-contents#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): TableOfContents;
+      setAttributes(attributes: any): TableOfContents;
 
       /**
        * Sets the link url.
@@ -8934,7 +9742,7 @@ declare namespace GoogleAppsScript {
      * structure, see the guide to extending
      * Google Docs.
      */
-    interface TableRow {
+    interface TableRow extends Element {
 
       /**
        * Creates and appends a new TableCell.
@@ -8966,7 +9774,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/table-row#copy()
        */
@@ -9087,7 +9895,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/table-row#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the TableCell at the specified cell index.
@@ -9255,7 +10063,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -9263,13 +10071,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/table-row#merge()
        */
       merge(): TableRow;
@@ -9355,9 +10178,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/table-row#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): TableRow;
+      setAttributes(attributes: any): TableRow;
 
       /**
        * Sets the link url.
@@ -9406,10 +10229,10 @@ declare namespace GoogleAppsScript {
      *     // Make the first half of the document blue.
      *     text.setForegroundColor(0, text.getText().length / 2, '#00FFFF');
      */
-    interface Text {
+    interface Text extends Element {
 
       /**
-       * Appends the specified text at the given character offset.
+       * Adds the specified text to the end of this text region.
        * https://developers.google.com/apps-script/reference/document/text#appendText(String)
        * @param text the text to append
        */
@@ -9419,7 +10242,7 @@ declare namespace GoogleAppsScript {
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/text#copy()
        */
@@ -9513,7 +10336,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/text#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the attributes at the specified character offset.
@@ -9524,7 +10347,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/document/text#getAttributes(Integer)
        * @param offset the character offset
        */
-      getAttributes(offset: Integer): object;
+      getAttributes(offset: Integer): any;
 
       /**
        * Retrieves the background color setting.
@@ -9562,14 +10385,14 @@ declare namespace GoogleAppsScript {
        * Retrieves the font size setting.
        * https://developers.google.com/apps-script/reference/document/text#getFontSize()
        */
-      getFontSize(): Integer;
+      getFontSize(): number;
 
       /**
        * Retrieves the font size at the specified character offset.
        * https://developers.google.com/apps-script/reference/document/text#getFontSize(Integer)
        * @param offset the character offset
        */
-      getFontSize(offset: Integer): Integer;
+      getFontSize(offset: Integer): number;
 
       /**
        * Retrieves the foreground color setting.
@@ -9743,7 +10566,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -9751,13 +10574,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/text#merge()
        */
       merge(): Text;
@@ -9816,7 +10654,7 @@ declare namespace GoogleAppsScript {
        * @param endOffsetInclusive the text range's end offset
        * @param attributes the element's attributes
        */
-      setAttributes(startOffset: Integer, endOffsetInclusive: Integer, attributes: object): Text;
+      setAttributes(startOffset: Integer, endOffsetInclusive: Integer, attributes: any): Text;
 
       /**
        * Sets the element's attributes.
@@ -9843,9 +10681,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/text#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): Text;
+      setAttributes(attributes: any): Text;
 
       /**
        * Sets the background color for the specified character range.
@@ -9902,20 +10740,20 @@ declare namespace GoogleAppsScript {
       setFontFamily(fontFamilyName: string): Text;
 
       /**
-       * Sets the font size.
-       * https://developers.google.com/apps-script/reference/document/text#setFontSize(Integer)
-       * @param size the font size
-       */
-      setFontSize(size: Integer): Text;
-
-      /**
        * Sets the font size for the specified character range.
-       * https://developers.google.com/apps-script/reference/document/text#setFontSize(Integer,Integer,Integer)
+       * https://developers.google.com/apps-script/reference/document/text#setFontSize(Integer,Integer,Number)
        * @param startOffset the text range's start offset
        * @param endOffsetInclusive the text range's end offset
        * @param size the font size
        */
-      setFontSize(startOffset: Integer, endOffsetInclusive: Integer, size: Integer): Text;
+      setFontSize(startOffset: Integer, endOffsetInclusive: Integer, size: number): Text;
+
+      /**
+       * Sets the font size.
+       * https://developers.google.com/apps-script/reference/document/text#setFontSize(Number)
+       * @param size the font size
+       */
+      setFontSize(size: number): Text;
 
       /**
        * Sets the foreground color for the specified character range.
@@ -10044,13 +10882,13 @@ declare namespace GoogleAppsScript {
      * An element representing a region that is unknown or cannot be affected by a script, such as a
      * page number.
      */
-    interface UnsupportedElement {
+    interface UnsupportedElement extends Element {
 
       /**
        * Returns a detached, deep copy of the current element.
        *
        *
-       * Any child elements present in the element are also copied. The new element will not have a
+       * Any child elements present in the element are also copied. The new element doesn't have a
        * parent.
        * https://developers.google.com/apps-script/reference/document/unsupported-element#copy()
        */
@@ -10080,7 +10918,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/document/unsupported-element#getAttributes()
        */
-      getAttributes(): object;
+      getAttributes(): any;
 
       /**
        * Retrieves the element's next sibling element.
@@ -10142,7 +10980,7 @@ declare namespace GoogleAppsScript {
        * Merges the element with the preceding sibling of the same type.
        *
        *
-       * Only elements of the same ElementType may be merged. Any child elements contained in
+       * Only elements of the same ElementType can be merged. Any child elements contained in
        * the current element are moved to the preceding sibling element.
        *
        *
@@ -10150,13 +10988,28 @@ declare namespace GoogleAppsScript {
        *
        *
        *     var body = DocumentApp.getActiveDocument().getBody();
-       *
+       *     // Example 1: Merge paragraphs
        *     // Append two paragraphs to the document.
        *     var par1 = body.appendParagraph('Paragraph 1.');
        *     var par2 = body.appendParagraph('Paragraph 2.');
-       *
        *     // Merge the newly added paragraphs into a single paragraph.
        *     par2.merge();
+       *
+       *     // Example 2: Merge table cells
+       *     // Create a two-dimensional array containing the table's cell contents.
+       *     var cells = [
+       *     ['Row 1, Cell 1', 'Row 1, Cell 2'],
+       *     ['Row 2, Cell 1', 'Row 2, Cell 2']
+       *     ];
+       *     // Build a table from the array.
+       *     var table = body.appendTable(cells);
+       *     // Get the first row in the table.
+       *      var row = table.getRow(0);
+       *     // Get the two cells in this row.
+       *     var cell1 = row.getCell(0);
+       *     var cell2 = row.getCell(1);
+       *     // Merge the current cell into its preceding sibling element.
+       *     var merged = cell2.merge();
        * https://developers.google.com/apps-script/reference/document/unsupported-element#merge()
        */
       merge(): UnsupportedElement;
@@ -10201,9 +11054,9 @@ declare namespace GoogleAppsScript {
        *     // Apply the custom style.
        *     par.setAttributes(style);
        * https://developers.google.com/apps-script/reference/document/unsupported-element#setAttributes(Object)
-       * @param attributes the element's attributes
+       * @param attributes The element's attributes.
        */
-      setAttributes(attributes: object): UnsupportedElement;
+      setAttributes(attributes: any): UnsupportedElement;
     }
     /**
      * An enumeration of the supported vertical alignment types.

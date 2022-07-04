@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -170,6 +170,51 @@ declare namespace GoogleAppsScript {
      * The types of auto text.
      */
     enum AutoTextType { UNSUPPORTED, SLIDE_NUMBER }
+    /**
+     * Describes the autofit settings of a shape. If a change is made that might affect text fitting
+     * within its bounding text box:
+     *
+     * Autofit is deactivated and set to AutofitType.NONE.
+     *
+     * The font scale is reset to the default value and applied to the font size.
+     *
+     * The line spacing reduction is reset to the default value and applied to the line spacing.
+     */
+    interface Autofit {
+
+      /**
+       * Sets the AutofitType of a shape to AutofitType.NONE.
+       * https://developers.google.com/apps-script/reference/slides/autofit#disableAutofit()
+       */
+      disableAutofit(): Autofit;
+
+      /**
+       * Gets the AutofitType of the shape.
+       * https://developers.google.com/apps-script/reference/slides/autofit#getAutofitType()
+       */
+      getAutofitType(): AutofitType;
+
+      /**
+       * Gets the font scale applied to the shape. For shapes with AutofitType AutofitType.NONE or AutofitType.SHAPE_AUTOFIT, this value is the default value of 1.
+       * For AutofitType.TEXT_AUTOFIT, the value returned is what the original font size is
+       * multiplied by to fit within the shape.
+       * https://developers.google.com/apps-script/reference/slides/autofit#getFontScale()
+       */
+      getFontScale(): number;
+
+      /**
+       * Gets the line spacing reduction applied to the shape. For shapes with AutofitType
+       * AutofitType.NONE or AutofitType.SHAPE_AUTOFIT, this value is the default value
+       * of 0. For AutofitType.TEXT_AUTOFIT, the returned value is the amount of spacing
+       * subtracted from the original spacing to make the text fit within the shape.
+       * https://developers.google.com/apps-script/reference/slides/autofit#getLineSpacingReduction()
+       */
+      getLineSpacingReduction(): number;
+    }
+    /**
+     * The autofit types.
+     */
+    enum AutofitType { UNSUPPORTED, NONE, TEXT_AUTOFIT, SHAPE_AUTOFIT }
     /**
      * Describes the border around an element.
      */
@@ -638,8 +683,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/group#remove()
        */
       remove(): void;
@@ -728,6 +773,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -762,6 +810,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -865,6 +916,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/slides/image#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -980,6 +1036,28 @@ declare namespace GoogleAppsScript {
       getParentPage(): Page;
 
       /**
+       * Returns the parent page element of the placeholder. Returns null if the image is not a
+       * placeholder or has no parent.
+       * https://developers.google.com/apps-script/reference/slides/image#getParentPlaceholder()
+       */
+      getParentPlaceholder(): PageElement;
+
+      /**
+       * Returns the index of the placeholder image. If two or more placeholder images on the same page
+       * are the same type, they each have a unique index value. Returns null if the image isn't
+       * a placeholder.
+       * https://developers.google.com/apps-script/reference/slides/image#getPlaceholderIndex()
+       */
+      getPlaceholderIndex(): Integer;
+
+      /**
+       * Returns the placeholder type of the image, or PlaceholderType.NONE if the shape is not
+       * a placeholder.
+       * https://developers.google.com/apps-script/reference/slides/image#getPlaceholderType()
+       */
+      getPlaceholderType(): PlaceholderType;
+
+      /**
        * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
        * means no rotation.
        * https://developers.google.com/apps-script/reference/slides/image#getRotation()
@@ -1053,8 +1131,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/image#remove()
        */
       remove(): void;
@@ -1234,6 +1312,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -1313,6 +1394,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -1598,16 +1682,17 @@ declare namespace GoogleAppsScript {
        * Inserts a copy of the provided Image on the page.
        *
        *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
+       * The inserted images's position on this page is determined from the source image's position
+       * on its respective page.
        *
        *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided image is a placeholder being copied from within the current presentation,
+       * properties that inherit from master or layout pages also inherit on the inserted image.
        *
        *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
+       * If the provided image is a placeholder being copied from a different presentation,
+       * properties that inherit from master or layout pages are copied onto the image from the source
+       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
        * presentation.
        *
        *
@@ -1751,7 +1836,7 @@ declare namespace GoogleAppsScript {
        *     // Copy a page element between presentations.
        *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
        *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements[0];
+       *     var pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
@@ -2425,8 +2510,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/line#remove()
        */
       remove(): void;
@@ -2536,6 +2621,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text description.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text description to "new alt text description".
@@ -2700,6 +2788,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -3315,16 +3406,17 @@ declare namespace GoogleAppsScript {
        * Inserts a copy of the provided Image on the page.
        *
        *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
+       * The inserted images's position on this page is determined from the source image's position
+       * on its respective page.
        *
        *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided image is a placeholder being copied from within the current presentation,
+       * properties that inherit from master or layout pages also inherit on the inserted image.
        *
        *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
+       * If the provided image is a placeholder being copied from a different presentation,
+       * properties that inherit from master or layout pages are copied onto the image from the source
+       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
        * presentation.
        *
        *
@@ -3468,7 +3560,7 @@ declare namespace GoogleAppsScript {
        *     // Copy a page element between presentations.
        *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
        *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements[0];
+       *     var pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
@@ -4383,16 +4475,17 @@ declare namespace GoogleAppsScript {
        * Inserts a copy of the provided Image on the page.
        *
        *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
+       * The inserted images's position on this page is determined from the source image's position
+       * on its respective page.
        *
        *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided image is a placeholder being copied from within the current presentation,
+       * properties that inherit from master or layout pages also inherit on the inserted image.
        *
        *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
+       * If the provided image is a placeholder being copied from a different presentation,
+       * properties that inherit from master or layout pages are copied onto the image from the source
+       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
        * presentation.
        *
        *
@@ -4536,7 +4629,7 @@ declare namespace GoogleAppsScript {
        *     // Copy a page element between presentations.
        *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
        *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements[0];
+       *     var pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
@@ -5313,8 +5406,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/page-element#remove()
        */
       remove(): void;
@@ -5403,6 +5496,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -5437,6 +5533,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -5542,6 +5641,9 @@ declare namespace GoogleAppsScript {
      * Read methods in this class return null if the corresponding TextRange spans
      * multiple paragraphs, and those paragraphs have different values for the read method being called.
      * To avoid this, query for paragraph styles using the TextRange returned by the Paragraph.getRange() method.
+     *
+     * If you use methods that edit how text fits within a shape, any autofit settings applied to the
+     * paragraph styles are deactivated.
      */
     interface ParagraphStyle {
 
@@ -5700,6 +5802,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/slides/picture-fill#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -5856,7 +5963,7 @@ declare namespace GoogleAppsScript {
        *     // Copy a slide from another presentation and appends it.
        *     var otherPresentation = SlidesApp.openById('presentationId');
        *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var slide = otherPresentation.getSlides[0];
+       *     var slide = otherPresentation.getSlides()[0];
        *     currentPresentation.appendSlide(slide);
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide(Slide)
        * @param slide The slide to be copied and appended.
@@ -6349,6 +6456,13 @@ declare namespace GoogleAppsScript {
       duplicate(): PageElement;
 
       /**
+       * Returns the Autofit of the text within this shape. This is null if the shape
+       * doesn't allow text.
+       * https://developers.google.com/apps-script/reference/slides/shape#getAutofit()
+       */
+      getAutofit(): Autofit;
+
+      /**
        * Returns the Border of the shape.
        * https://developers.google.com/apps-script/reference/slides/shape#getBorder()
        */
@@ -6553,8 +6667,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/shape#remove()
        */
       remove(): void;
@@ -6768,6 +6882,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the ContentAlignment of the text in the shape.
+       *
+       *
+       * This method automatically deactivates text autofit properties on the updated shapes.
        * https://developers.google.com/apps-script/reference/slides/shape#setContentAlignment(ContentAlignment)
        * @param contentAlignment The alignment to set.
        */
@@ -6775,6 +6892,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text description.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text description to "new alt text description".
@@ -6856,6 +6976,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -7131,8 +7254,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#remove()
        */
       remove(): void;
@@ -7230,6 +7353,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -7309,6 +7435,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -7633,16 +7762,17 @@ declare namespace GoogleAppsScript {
        * Inserts a copy of the provided Image on the page.
        *
        *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
+       * The inserted images's position on this page is determined from the source image's position
+       * on its respective page.
        *
        *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided image is a placeholder being copied from within the current presentation,
+       * properties that inherit from master or layout pages also inherit on the inserted image.
        *
        *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
+       * If the provided image is a placeholder being copied from a different presentation,
+       * properties that inherit from master or layout pages are copied onto the image from the source
+       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
        * presentation.
        *
        *
@@ -7786,7 +7916,7 @@ declare namespace GoogleAppsScript {
        *     // Copy a page element between presentations.
        *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
        *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements[0];
+       *     var pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
@@ -8156,6 +8286,12 @@ declare namespace GoogleAppsScript {
       insertWordArt(wordArt: WordArt): WordArt;
 
       /**
+       * Returns whether the slide is skipped in the presentation mode.
+       * https://developers.google.com/apps-script/reference/slides/slide#isSkipped()
+       */
+      isSkipped(): boolean;
+
+      /**
        * Move the slide to the specified index.
        * https://developers.google.com/apps-script/reference/slides/slide#move(Integer)
        * @param index The index where the slide should be moved to, based on the slide arrangement before the move. The index should be between zero and the number of slides in the presentation, inclusive.
@@ -8218,6 +8354,13 @@ declare namespace GoogleAppsScript {
       selectAsCurrentPage(): void;
 
       /**
+       * Sets whether the slide is skipped in the presentation mode.
+       * https://developers.google.com/apps-script/reference/slides/slide#setSkipped(Boolean)
+       * @param isSkipped True to skip the slide in the presentation mode.
+       */
+      setSkipped(isSkipped: boolean): void;
+
+      /**
        * Unlinks the current Slide from its source slide. If this slide is not linked, returns
        * without making any changes.
        *
@@ -8257,6 +8400,7 @@ declare namespace GoogleAppsScript {
       AlignmentPosition: typeof AlignmentPosition;
       ArrowStyle: typeof ArrowStyle;
       AutoTextType: typeof AutoTextType;
+      AutofitType: typeof AutofitType;
       CellMergeState: typeof CellMergeState;
       ColorType: typeof Base.ColorType;
       ContentAlignment: typeof ContentAlignment;
@@ -8624,8 +8768,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/table#remove()
        */
       remove(): void;
@@ -8714,6 +8858,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -8748,6 +8895,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -9004,6 +9154,9 @@ declare namespace GoogleAppsScript {
     enum TextDirection { UNSUPPORTED, LEFT_TO_RIGHT, RIGHT_TO_LEFT }
     /**
      * A segment of the text contents of a Shape or a TableCell.
+     *
+     * If you use methods that edit how the text fits within a shape, any autofit settings applied to
+     * the shape are deactivated.
      */
     interface TextRange {
 
@@ -9317,6 +9470,9 @@ declare namespace GoogleAppsScript {
      * Read methods in this class return null if the corresponding TextRange spans
      * multiple text runs, and those runs have different values for the read method being called. To
      * avoid this, query for text styles using the TextRanges returned by the TextRange.getRuns() method.
+     *
+     * If you use methods that edit how text fits within a shape, any autofit settings applied to the
+     * text styles are deactivated.
      */
     interface TextStyle {
 
@@ -9900,8 +10056,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/video#remove()
        */
       remove(): void;
@@ -9990,6 +10146,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -10024,6 +10183,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".
@@ -10270,8 +10432,8 @@ declare namespace GoogleAppsScript {
        * group itself is also removed.
        *
        *
-       * If a placeholder Shape is removed on a master or layout, any empty inheriting shapes
-       * are also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
+       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/word-art#remove()
        */
       remove(): void;
@@ -10369,6 +10531,9 @@ declare namespace GoogleAppsScript {
        * Sets the page element's alt text description.
        *
        *
+       * The method is not supported for Group elements.
+       *
+       *
        *     // Set the first page element's alt text description to "new alt text description".
        *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
@@ -10448,6 +10613,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
+       *
+       *
+       * The method is not supported for Group elements.
        *
        *
        *     // Set the first page element's alt text title to "new alt text title".

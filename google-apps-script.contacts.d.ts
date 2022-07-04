@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -54,7 +54,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/address-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Gets whether this is the primary field value.
@@ -246,7 +246,7 @@ declare namespace GoogleAppsScript {
        * @param label the label of the new address, either from ContactsApp.Field or a custom string
        * @param address the new address
        */
-      addAddress(label: object, address: string): AddressField;
+      addAddress(label: any, address: string): AddressField;
 
       /**
        * Adds a company to the contact.
@@ -278,7 +278,7 @@ declare namespace GoogleAppsScript {
        * @param label the label of the new address, either from ContactsApp.ExtendedField or a custom string
        * @param content the value to store in the custom field
        */
-      addCustomField(label: object, content: object): CustomField;
+      addCustomField(label: any, content: any): CustomField;
 
       /**
        * Adds a date to the contact with either an standard or custom label.
@@ -298,7 +298,7 @@ declare namespace GoogleAppsScript {
        * @param day the day
        * @param year the year
        */
-      addDate(label: object, month: Base.Month, day: Integer, year: Integer): DateField;
+      addDate(label: any, month: Base.Month, day: Integer, year: Integer): DateField;
 
       /**
        * Add an email address with a standard label (home, work, etc.) or a custom label
@@ -312,7 +312,7 @@ declare namespace GoogleAppsScript {
        * @param label the label of the new email, either from ContactsApp.Field or a custom string
        * @param address the new email address
        */
-      addEmail(label: object, address: string): EmailField;
+      addEmail(label: any, address: string): EmailField;
 
       /**
        * Adds an IM address to the contact with either a standard or custom label.
@@ -329,7 +329,7 @@ declare namespace GoogleAppsScript {
        * @param label the label of the new IM address, either from ContactsApp.Field or a custom string
        * @param address the new IM address
        */
-      addIM(label: object, address: string): IMField;
+      addIM(label: any, address: string): IMField;
 
       /**
        * Adds a phone number to the contact with either a standard or custom label.
@@ -346,7 +346,7 @@ declare namespace GoogleAppsScript {
        * @param label the label of the new phone number, either from ContactsApp.Field or a custom string
        * @param number the new phone number
        */
-      addPhone(label: object, number: string): PhoneField;
+      addPhone(label: any, number: string): PhoneField;
 
       /**
        * Adds this contact to the given contact group.
@@ -377,7 +377,7 @@ declare namespace GoogleAppsScript {
        * @param label the label of the new address, either from ContactsApp.Field or a custom string
        * @param url the new URL
        */
-      addUrl(label: object, url: string): UrlField;
+      addUrl(label: any, url: string): UrlField;
 
       /**
        * Deletes this contact.
@@ -421,7 +421,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getAddresses(Object)
        * @param label the label to match, either from ContactsApp.Field or a custom string
        */
-      getAddresses(label: object): AddressField[];
+      getAddresses(label: any): AddressField[];
 
       /**
        * Gets all the companies for this contact.
@@ -484,7 +484,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getCustomFields(Object)
        * @param label the label to match, either from ContactsApp.ExtendedField or a custom string
        */
-      getCustomFields(label: object): CustomField[];
+      getCustomFields(label: any): CustomField[];
 
       /**
        * Gets all the dates for this contact.
@@ -518,7 +518,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getDates(Object)
        * @param label the label to match, either from ContactsApp.Field or a custom string
        */
-      getDates(label: object): DateField[];
+      getDates(label: any): DateField[];
 
       /**
        * Gets the email addresses of this contact.
@@ -552,7 +552,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getEmails(Object)
        * @param label the label to match, either from ContactsApp.Field or a custom string
        */
-      getEmails(label: object): EmailField[];
+      getEmails(label: any): EmailField[];
 
       /**
        * Gets the family name (last name) of the contact as a string.
@@ -623,7 +623,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getIMs(Object)
        * @param label the label to match, either from ContactsApp.Field or a custom string
        */
-      getIMs(label: object): IMField[];
+      getIMs(label: any): IMField[];
 
       /**
        * Returns the unique id of this contact.
@@ -744,7 +744,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getPhones(Object)
        * @param label the label to match, either from ContactsApp.Field or a custom string
        */
-      getPhones(label: object): PhoneField[];
+      getPhones(label: any): PhoneField[];
 
       /**
        * Gets the prefix to the contact's name.
@@ -829,7 +829,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/contact#getUrls(Object)
        * @param label the label to match, either from ContactsApp.Field or a custom string
        */
-      getUrls(label: object): UrlField[];
+      getUrls(label: any): UrlField[];
 
       /**
        * Removes this contact from the given contact group.
@@ -1018,7 +1018,7 @@ declare namespace GoogleAppsScript {
       /** @deprecated DO NOT USE */ getMobilePhone(): string;
       /** @deprecated DO NOT USE */ getPager(): string;
       /** @deprecated DO NOT USE */ getUserDefinedField(key: string): string;
-      /** @deprecated DO NOT USE */ getUserDefinedFields(): object;
+      /** @deprecated DO NOT USE */ getUserDefinedFields(): any;
       /** @deprecated DO NOT USE */ getWorkAddress(): string;
       /** @deprecated DO NOT USE */ getWorkFax(): string;
       /** @deprecated DO NOT USE */ getWorkPhone(): string;
@@ -1029,7 +1029,7 @@ declare namespace GoogleAppsScript {
       /** @deprecated DO NOT USE */ setPager(phone: string): void;
       /** @deprecated DO NOT USE */ setPrimaryEmail(primaryEmail: string): void;
       /** @deprecated DO NOT USE */ setUserDefinedField(key: string, value: string): void;
-      /** @deprecated DO NOT USE */ setUserDefinedFields(o: object): void;
+      /** @deprecated DO NOT USE */ setUserDefinedFields(o: any): void;
       /** @deprecated DO NOT USE */ setWorkAddress(addr: string): void;
       /** @deprecated DO NOT USE */ setWorkFax(phone: string): void;
       /** @deprecated DO NOT USE */ setWorkPhone(phone: string): void;
@@ -1361,7 +1361,7 @@ declare namespace GoogleAppsScript {
        * @param query the string to search for in contact's custom field
        * @param label the custom field to search within
        */
-      getContactsByCustomField(query: object, label: ExtendedField): Contact[];
+      getContactsByCustomField(query: any, label: ExtendedField): Contact[];
 
       /**
        * Get contacts matching a given month and day for a particular standard field.
@@ -1697,7 +1697,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/custom-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Gets the value of the field.
@@ -1711,7 +1711,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/custom-field#getValue()
        */
-      getValue(): object;
+      getValue(): any;
 
       /**
        * Sets the label of this field.
@@ -1756,7 +1756,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/contacts/custom-field#setValue(Object)
        * @param value the new value
        */
-      setValue(value: object): CustomField;
+      setValue(value: any): CustomField;
     }
     /**
      * A date field in a Contact.
@@ -1811,7 +1811,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/date-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Gets the month for this date.
@@ -1954,7 +1954,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/email-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Gets whether this is the primary field value.
@@ -2097,7 +2097,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/im-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Gets whether this is the primary field value.
@@ -2202,7 +2202,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/phone-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Get the phone number for this field.
@@ -2339,7 +2339,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/contacts/url-field#getLabel()
        */
-      getLabel(): object;
+      getLabel(): any;
 
       /**
        * Gets whether this is the primary field value.

@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -44,7 +44,7 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createDraft(recipient: string, subject: string, body: string, options: object): GmailDraft;
+      createDraft(recipient: string, subject: string, body: string, options: any): GmailDraft;
 
       /**
        * Create a new user label of the given name.
@@ -90,12 +90,15 @@ declare namespace GoogleAppsScript {
       getAliases(): string[];
 
       /**
-       * Retrieves all chat threads irrespective of labels.
+       * Gets all classic Google Hangouts threads and Google Chat threads until all users are switched to
+       * Chat later this year. To learn more, see
+       * Learn
+       * about the switch from classic Hangouts to Google Chat.
        *
        *
-       * This call will fail when the size of all threads is too large for the system to handle.
-       * Where the thread size is unknown, and potentially very large, please use the 'paged' call, and
-       * specify ranges of the threads to retrieve in each call.
+       * This call fails when the size of all threads is too large for the system to handle. Where
+       * the thread size is unknown, and potentially very large, use the 'paged' call, and specify
+       * ranges of the threads to retrieve in each call.
        *
        *
        *     var threads = GmailApp.getChatThreads();
@@ -105,7 +108,9 @@ declare namespace GoogleAppsScript {
       getChatThreads(): GmailThread[];
 
       /**
-       * Retrieves a range of chat threads irrespective of labels.
+       * Gets a range of classic Google Hangouts threads and Google Chat threads until all users are
+       * switched to Chat later this year. To learn more, see Learn
+       * about the switch from classic Hangouts to Google Chat.
        *
        *
        *     // Get first 50 chat threads
@@ -825,15 +830,15 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      sendEmail(recipient: string, subject: string, body: string, options: object): GmailApp;
+      sendEmail(recipient: string, subject: string, body: string, options: any): GmailApp;
 
       /**
-       * Sets the current message access
-       * token that enables the script to access the current GmailMessage properties.
+       * Sets the current message
+       * access token that enables the script to access the current GmailMessage properties.
        *
        *
-       * Only Gmail add-on projects using Gmail current message scopes require
-       * this method.
+       * Only Google Workspace Add-on projects using Gmail current message scopes
+       * require this method.
        *
        *
        *     function handleAddonActionEvent(e) {
@@ -931,6 +936,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/gmail/gmail-attachment#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -981,7 +991,7 @@ declare namespace GoogleAppsScript {
       getSize(): Integer;
 
       /**
-       * Returns whether this blob is a G Suite file (Sheets, Docs, etc.).
+       * Returns whether this blob is a Google Workspace file (Sheets, Docs, etc.).
        * https://developers.google.com/apps-script/reference/gmail/gmail-attachment#isGoogleType()
        */
       isGoogleType(): boolean;
@@ -1041,7 +1051,7 @@ declare namespace GoogleAppsScript {
        *
        *     var draft = GmailApp.getDrafts()[0]; // The first draft message in the drafts folder
        *     draft.deleteDraft();
-       *     draft.getMessage(); // Throws exception!
+       *     draft.getMessage(); // Throws exception.
        * https://developers.google.com/apps-script/reference/gmail/gmail-draft#deleteDraft()
        */
       deleteDraft(): void;
@@ -1124,7 +1134,7 @@ declare namespace GoogleAppsScript {
        * @param body body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      update(recipient: string, subject: string, body: string, options: object): GmailDraft;
+      update(recipient: string, subject: string, body: string, options: any): GmailDraft;
     }
     /**
      * A user-created label in a user's Gmail account.
@@ -1288,7 +1298,7 @@ declare namespace GoogleAppsScript {
        * @param body The body of the email.
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      createDraftReply(body: string, options: object): GmailDraft;
+      createDraftReply(body: string, options: any): GmailDraft;
 
       /**
        * Creates a draft message replying to the sender using the reply-to address and all recipients of
@@ -1316,7 +1326,7 @@ declare namespace GoogleAppsScript {
        *
        *     // Create a draft response to all recipients (except those bcc'd) using an HTML text body.
        *     var firstThread = GmailApp.getInboxThreads(0,1)[0];
-       *     var message = firstThread.getMessages[0];
+       *     var message = firstThread.getMessages()[0];
        *     message.createDraftReplyAll("incapable of HTML", {
        *       htmlBody: "<b>some HTML body text</b>",
        *       cc: "another@example.com"
@@ -1325,7 +1335,7 @@ declare namespace GoogleAppsScript {
        * @param body The body of the email.
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      createDraftReplyAll(body: string, options: object): GmailDraft;
+      createDraftReplyAll(body: string, options: any): GmailDraft;
 
       /**
        * Forwards this message to new recipients. The size of the email (including headers) is quota limited.
@@ -1359,7 +1369,7 @@ declare namespace GoogleAppsScript {
        * @param recipient A comma-separated list of email addresses.
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      forward(recipient: string, options: object): GmailMessage;
+      forward(recipient: string, options: any): GmailMessage;
 
       /**
        * Gets all the attachments for this message.
@@ -1372,7 +1382,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/gmail/gmail-message#getAttachments(Object)
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      getAttachments(options: object): GmailAttachment[];
+      getAttachments(options: any): GmailAttachment[];
 
       /**
        * Gets the comma-separated recipients bcc'd on this message.
@@ -1682,7 +1692,7 @@ declare namespace GoogleAppsScript {
        * @param body The body of the email.
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      reply(body: string, options: object): GmailMessage;
+      reply(body: string, options: any): GmailMessage;
 
       /**
        * Replies to the sender using the reply-to address and all recipients of this message. The size
@@ -1710,7 +1720,7 @@ declare namespace GoogleAppsScript {
        *
        *     // Respond with HTML body text
        *     var firstThread = GmailApp.getInboxThreads(0,1)[0];
-       *     var message = firstThread.getMessages[0];
+       *     var message = firstThread.getMessages()[0];
        *     messageThread.replyAll("incapable of HTML", {
        *       htmlBody: "<b>some HTML body text</b>",
        *       noReply: true
@@ -1719,7 +1729,7 @@ declare namespace GoogleAppsScript {
        * @param body The body of the email.
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      replyAll(body: string, options: object): GmailMessage;
+      replyAll(body: string, options: any): GmailMessage;
 
       /**
        * Stars the message.
@@ -1794,7 +1804,7 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createDraftReply(body: string, options: object): GmailDraft;
+      createDraftReply(body: string, options: any): GmailDraft;
 
       /**
        * Creates a draft message replying to the sender of the last message in this thread, using the
@@ -1833,7 +1843,7 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      createDraftReplyAll(body: string, options: object): GmailDraft;
+      createDraftReplyAll(body: string, options: any): GmailDraft;
 
       /**
        * Gets the subject of the first message in the thread.
@@ -1938,10 +1948,10 @@ declare namespace GoogleAppsScript {
       hasStarredMessages(): boolean;
 
       /**
-       * Returns whether the thread is marked important.
+       * Returns whether the thread is marked as important.
        *
        *
-       *     // Log if this thread is marked important
+       *     // Log if this thread is marked as important
        *     var firstThread = GmailApp.getInboxThreads(0,1)[0];
        *     Logger.log('Important? : ' + firstThread.isImportant());
        * https://developers.google.com/apps-script/reference/gmail/gmail-thread#isImportant()
@@ -2161,7 +2171,7 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      reply(body: string, options: object): GmailThread;
+      reply(body: string, options: any): GmailThread;
 
       /**
        * Reply to the sender (using the replyTo address), and all recipients of the last message on this
@@ -2196,7 +2206,7 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      replyAll(body: string, options: object): GmailThread;
+      replyAll(body: string, options: any): GmailThread;
     }
   }
 }

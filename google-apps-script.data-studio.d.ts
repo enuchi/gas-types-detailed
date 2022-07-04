@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -14,7 +14,7 @@ declare namespace GoogleAppsScript {
     /**
      * An enum that defines the authentication types that can be set for a connector.
      */
-    enum AuthType { NONE, OAUTH2, USER_PASS, KEY, USER_TOKEN }
+    enum AuthType { NONE, OAUTH2, USER_PASS, PATH_USER_PASS, PATH_KEY, KEY, USER_TOKEN }
     /**
      * A configuration object for a native BigQuery connector. Return this object from getData()
      * for Data Studio to query BigQuery for the connector.
@@ -45,7 +45,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/big-query-config#build()
        */
-      build(): object;
+      build(): any;
 
       /**
        * Prints the JSON representation of this object. This is for debugging only.
@@ -234,7 +234,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/config#build()
        */
-      build(): object;
+      build(): any;
 
       /**
        * Returns a new checkbox configuration entry.
@@ -506,7 +506,7 @@ declare namespace GoogleAppsScript {
     /**
      * An enum that defines the types that can be set for a Field.
      */
-    enum FieldType { YEAR, YEAR_QUARTER, YEAR_MONTH, YEAR_WEEK, YEAR_MONTH_DAY, YEAR_MONTH_DAY_HOUR, YEAR_MONTH_DAY_SECOND, QUARTER, MONTH, WEEK, MONTH_DAY, DAY_OF_WEEK, DAY, HOUR, MINUTE, DURATION, COUNTRY, COUNTRY_CODE, CONTINENT, CONTINENT_CODE, SUB_CONTINENT, SUB_CONTINENT_CODE, REGION, REGION_CODE, CITY, CITY_CODE, METRO, METRO_CODE, LATITUDE_LONGITUDE, NUMBER, PERCENT, TEXT, BOOLEAN, URL, HYPERLINK, IMAGE, IMAGE_LINK, CURRENCY_AED, CURRENCY_ALL, CURRENCY_ARS, CURRENCY_AUD, CURRENCY_BDT, CURRENCY_BGN, CURRENCY_BOB, CURRENCY_BRL, CURRENCY_CAD, CURRENCY_CDF, CURRENCY_CHF, CURRENCY_CLP, CURRENCY_CNY, CURRENCY_COP, CURRENCY_CRC, CURRENCY_CZK, CURRENCY_DKK, CURRENCY_DOP, CURRENCY_EGP, CURRENCY_ETB, CURRENCY_EUR, CURRENCY_GBP, CURRENCY_HKD, CURRENCY_HRK, CURRENCY_HUF, CURRENCY_IDR, CURRENCY_ILS, CURRENCY_INR, CURRENCY_IRR, CURRENCY_ISK, CURRENCY_JMD, CURRENCY_JPY, CURRENCY_KRW, CURRENCY_LKR, CURRENCY_LTL, CURRENCY_MNT, CURRENCY_MVR, CURRENCY_MXN, CURRENCY_MYR, CURRENCY_NOK, CURRENCY_NZD, CURRENCY_PAB, CURRENCY_PEN, CURRENCY_PHP, CURRENCY_PKR, CURRENCY_PLN, CURRENCY_RON, CURRENCY_RSD, CURRENCY_RUB, CURRENCY_SAR, CURRENCY_SEK, CURRENCY_SGD, CURRENCY_THB, CURRENCY_TRY, CURRENCY_TWD, CURRENCY_TZS, CURRENCY_UAH, CURRENCY_USD, CURRENCY_UYU, CURRENCY_VEF, CURRENCY_VND, CURRENCY_YER, CURRENCY_ZAR }
+    enum FieldType { YEAR, YEAR_QUARTER, YEAR_MONTH, YEAR_WEEK, YEAR_MONTH_DAY, YEAR_MONTH_DAY_HOUR, YEAR_MONTH_DAY_MINUTE, YEAR_MONTH_DAY_SECOND, QUARTER, MONTH, WEEK, MONTH_DAY, DAY_OF_WEEK, DAY, HOUR, MINUTE, DURATION, COUNTRY, COUNTRY_CODE, CONTINENT, CONTINENT_CODE, SUB_CONTINENT, SUB_CONTINENT_CODE, REGION, REGION_CODE, CITY, CITY_CODE, METRO, METRO_CODE, LATITUDE_LONGITUDE, NUMBER, PERCENT, TEXT, BOOLEAN, URL, HYPERLINK, IMAGE, IMAGE_LINK, CURRENCY_AED, CURRENCY_ALL, CURRENCY_ARS, CURRENCY_AUD, CURRENCY_BDT, CURRENCY_BGN, CURRENCY_BOB, CURRENCY_BRL, CURRENCY_CAD, CURRENCY_CDF, CURRENCY_CHF, CURRENCY_CLP, CURRENCY_CNY, CURRENCY_COP, CURRENCY_CRC, CURRENCY_CZK, CURRENCY_DKK, CURRENCY_DOP, CURRENCY_EGP, CURRENCY_ETB, CURRENCY_EUR, CURRENCY_GBP, CURRENCY_HKD, CURRENCY_HRK, CURRENCY_HUF, CURRENCY_IDR, CURRENCY_ILS, CURRENCY_INR, CURRENCY_IRR, CURRENCY_ISK, CURRENCY_JMD, CURRENCY_JPY, CURRENCY_KRW, CURRENCY_LKR, CURRENCY_LTL, CURRENCY_MNT, CURRENCY_MVR, CURRENCY_MXN, CURRENCY_MYR, CURRENCY_NGN, CURRENCY_NOK, CURRENCY_NZD, CURRENCY_PAB, CURRENCY_PEN, CURRENCY_PHP, CURRENCY_PKR, CURRENCY_PLN, CURRENCY_RON, CURRENCY_RSD, CURRENCY_RUB, CURRENCY_SAR, CURRENCY_SEK, CURRENCY_SGD, CURRENCY_THB, CURRENCY_TRY, CURRENCY_TWD, CURRENCY_TZS, CURRENCY_UAH, CURRENCY_USD, CURRENCY_UYU, CURRENCY_VEF, CURRENCY_VND, CURRENCY_YER, CURRENCY_ZAR }
     /**
      * Contains a set of Fields for a community connector. This set of fields define which
      * dimensions and metrics can be used in Data Studio.
@@ -544,7 +544,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/fields#build()
        */
-      build(): object[];
+      build(): any[];
 
       /**
        * Returns a new Fields object filtered to Fields with an ID in ids.
@@ -640,7 +640,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/get-auth-type-response#build()
        */
-      build(): object;
+      build(): any;
 
       /**
        * Prints the JSON representation of this object. This is for debugging only.
@@ -705,7 +705,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/get-data-response#build()
        */
-      build(): object;
+      build(): any;
 
       /**
        * Sets the Fields of the builder.
@@ -753,7 +753,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/get-schema-response#build()
        */
-      build(): object;
+      build(): any;
 
       /**
        * Prints the JSON representation of this object. This is for debugging only.
@@ -993,7 +993,7 @@ declare namespace GoogleAppsScript {
        * Validates this object and returns it in the format needed by Data Studio.
        * https://developers.google.com/apps-script/reference/data-studio/set-credentials-response#build()
        */
-      build(): object;
+      build(): any;
 
       /**
        * Prints the JSON representation of this object. This is for debugging only.

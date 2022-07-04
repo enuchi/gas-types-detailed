@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -29,40 +29,40 @@ declare namespace GoogleAppsScript {
       copyTo(range: Range): Banding;
 
       /**
-       * Returns the first column color that is alternating, or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFirstColumnColor()
+       * Returns the first alternating column color in the banding, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFirstColumnColorObject()
        */
-      getFirstColumnColor(): string;
+      getFirstColumnColorObject(): Color;
 
       /**
-       * Returns the first row color that is alternating or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFirstRowColor()
+       * Returns the first alternating row color, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFirstRowColorObject()
        */
-      getFirstRowColor(): string;
+      getFirstRowColorObject(): Color;
 
       /**
-       * Returns the color of the last column, or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFooterColumnColor()
+       * Returns the color of the last column in the banding, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFooterColumnColorObject()
        */
-      getFooterColumnColor(): string;
+      getFooterColumnColorObject(): Color;
 
       /**
-       * Returns the color of the last row, or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFooterRowColor()
+       * Returns the last row color in the banding, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getFooterRowColorObject()
        */
-      getFooterRowColor(): string;
+      getFooterRowColorObject(): Color;
 
       /**
-       * Returns the color of the header column, or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getHeaderColumnColor()
+       * Returns the color of the first column in the banding, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getHeaderColumnColorObject()
        */
-      getHeaderColumnColor(): string;
+      getHeaderColumnColorObject(): Color;
 
       /**
        * Returns the color of the header row or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getHeaderRowColor()
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getHeaderRowColorObject()
        */
-      getHeaderRowColor(): string;
+      getHeaderRowColorObject(): Color;
 
       /**
        * Returns the range for this banding.
@@ -71,16 +71,16 @@ declare namespace GoogleAppsScript {
       getRange(): Range;
 
       /**
-       * Returns the second column color that is alternating, or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getSecondColumnColor()
+       * Returns the second alternating column color in the banding, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getSecondColumnColorObject()
        */
-      getSecondColumnColor(): string;
+      getSecondColumnColorObject(): Color;
 
       /**
-       * Returns the second row color that is alternating or null if no color is set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getSecondRowColor()
+       * Returns the second alternating row color, or null if no color is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#getSecondRowColorObject()
        */
-      getSecondRowColor(): string;
+      getSecondRowColorObject(): Color;
 
       /**
        * Removes this banding.
@@ -96,11 +96,25 @@ declare namespace GoogleAppsScript {
       setFirstColumnColor(color: string): Banding;
 
       /**
+       * Sets the first alternating column color in the banding.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setFirstColumnColorObject(Color)
+       * @param color The new first alternating column color in the banding; setting to null clears the color.
+       */
+      setFirstColumnColorObject(color: Color): Banding;
+
+      /**
        * Sets the first row color that is alternating.
        * https://developers.google.com/apps-script/reference/spreadsheet/banding#setFirstRowColor(String)
        * @param color The color code in CSS notation (such as '#ffffff' or 'white'), or null to clear the color.
        */
       setFirstRowColor(color: string): Banding;
+
+      /**
+       * Sets the first alternating row color in the banding.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setFirstRowColorObject(Color)
+       * @param color The new first alternating color in the banding; setting to null clears the color.
+       */
+      setFirstRowColorObject(color: Color): Banding;
 
       /**
        * Sets the color of the last column.
@@ -110,11 +124,25 @@ declare namespace GoogleAppsScript {
       setFooterColumnColor(color: string): Banding;
 
       /**
+       * Sets the color of the last column in the banding.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setFooterColumnColorObject(Color)
+       * @param color The new color of the last column in the banding; setting to null clears the color.
+       */
+      setFooterColumnColorObject(color: Color): Banding;
+
+      /**
        * Sets the color of the last row.
        * https://developers.google.com/apps-script/reference/spreadsheet/banding#setFooterRowColor(String)
        * @param color The color code in CSS notation (such as '#ffffff' or 'white'), or null to clear the color.
        */
       setFooterRowColor(color: string): Banding;
+
+      /**
+       * Sets the color of the footer row in the banding.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setFooterRowColorObject(Color)
+       * @param color The new footer row color; setting to null clears the color.
+       */
+      setFooterRowColorObject(color: Color): Banding;
 
       /**
        * Sets the color of the header column.
@@ -124,11 +152,25 @@ declare namespace GoogleAppsScript {
       setHeaderColumnColor(color: string): Banding;
 
       /**
+       * Sets the color of the header column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setHeaderColumnColorObject(Color)
+       * @param color The new header column color; setting to null clears the color.
+       */
+      setHeaderColumnColorObject(color: Color): Banding;
+
+      /**
        * Sets the color of the header row.
        * https://developers.google.com/apps-script/reference/spreadsheet/banding#setHeaderRowColor(String)
        * @param color The color code in CSS notation (such as '#ffffff' or 'white'), or null to clear the color.
        */
       setHeaderRowColor(color: string): Banding;
+
+      /**
+       * Sets the color of the header row.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setHeaderRowColorObject(Color)
+       * @param color The new header row color; setting to null clears the color.
+       */
+      setHeaderRowColorObject(color: Color): Banding;
 
       /**
        * Sets the range for this banding.
@@ -145,11 +187,33 @@ declare namespace GoogleAppsScript {
       setSecondColumnColor(color: string): Banding;
 
       /**
+       * Sets the second alternating column color in the banding.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setSecondColumnColorObject(Color)
+       * @param color The new second alternating column color in the banding; setting to null clears the color.
+       */
+      setSecondColumnColorObject(color: Color): Banding;
+
+      /**
        * Sets the second row color that is alternating.
        * https://developers.google.com/apps-script/reference/spreadsheet/banding#setSecondRowColor(String)
        * @param color The color code in CSS notation (such as '#ffffff' or 'white'), or null to clear the color.
        */
       setSecondRowColor(color: string): Banding;
+
+      /**
+       * Sets the second alternating color in the banding.
+       * https://developers.google.com/apps-script/reference/spreadsheet/banding#setSecondRowColorObject(Color)
+       * @param color The new second alternating color in the banding; setting to null clears the color.
+       */
+      setSecondRowColorObject(color: Color): Banding;
+      /** @deprecated DO NOT USE */ getFirstColumnColor(): string;
+      /** @deprecated DO NOT USE */ getFirstRowColor(): string;
+      /** @deprecated DO NOT USE */ getFooterColumnColor(): string;
+      /** @deprecated DO NOT USE */ getFooterRowColor(): string;
+      /** @deprecated DO NOT USE */ getHeaderColumnColor(): string;
+      /** @deprecated DO NOT USE */ getHeaderRowColor(): string;
+      /** @deprecated DO NOT USE */ getSecondColumnColor(): string;
+      /** @deprecated DO NOT USE */ getSecondRowColor(): string;
     }
     /**
      * An enumeration of banding themes. Each theme consists of several complementary colors that are
@@ -169,6 +233,12 @@ declare namespace GoogleAppsScript {
       copy(): DataSourceSpecBuilder;
 
       /**
+       * Gets the BigQuery dataset ID.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec#getDatasetId()
+       */
+      getDatasetId(): string;
+
+      /**
        * Gets the parameters of the data source.
        * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec#getParameters()
        */
@@ -185,6 +255,18 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec#getRawQuery()
        */
       getRawQuery(): string;
+
+      /**
+       * Gets the BigQuery table ID.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec#getTableId()
+       */
+      getTableId(): string;
+
+      /**
+       * Gets the BigQuery project ID for the table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec#getTableProjectId()
+       */
+      getTableProjectId(): string;
 
       /**
        * Gets the type of the data source.
@@ -211,6 +293,12 @@ declare namespace GoogleAppsScript {
       copy(): DataSourceSpecBuilder;
 
       /**
+       * Gets the BigQuery dataset ID.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#getDatasetId()
+       */
+      getDatasetId(): string;
+
+      /**
        * Gets the parameters of the data source.
        * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#getParameters()
        */
@@ -227,6 +315,18 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#getRawQuery()
        */
       getRawQuery(): string;
+
+      /**
+       * Gets the BigQuery table ID.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#getTableId()
+       */
+      getTableId(): string;
+
+      /**
+       * Gets the BigQuery project ID for the table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#getTableProjectId()
+       */
+      getTableProjectId(): string;
 
       /**
        * Gets the type of the data source.
@@ -246,6 +346,13 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to remove.
        */
       removeParameter(parameterName: string): BigQueryDataSourceSpecBuilder;
+
+      /**
+       * Sets the BigQuery dataset ID.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#setDatasetId(String)
+       * @param datasetId The ID of the dataset.
+       */
+      setDatasetId(datasetId: string): BigQueryDataSourceSpecBuilder;
 
       /**
        * Adds a parameter, or if the parameter with the name exists, updates its source cell.
@@ -268,6 +375,20 @@ declare namespace GoogleAppsScript {
        * @param rawQuery The raw query string.
        */
       setRawQuery(rawQuery: string): BigQueryDataSourceSpecBuilder;
+
+      /**
+       * Sets the BigQuery table ID.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#setTableId(String)
+       * @param tableId The ID of the table.
+       */
+      setTableId(tableId: string): BigQueryDataSourceSpecBuilder;
+
+      /**
+       * Sets the BigQuery project ID for the table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/big-query-data-source-spec-builder#setTableProjectId(String)
+       * @param projectId The project ID of the BigQuery table.
+       */
+      setTableProjectId(projectId: string): BigQueryDataSourceSpecBuilder;
     }
     /**
      * Access boolean conditions in ConditionalFormatRules. Each
@@ -279,19 +400,19 @@ declare namespace GoogleAppsScript {
     interface BooleanCondition {
 
       /**
-       * Gets the background color string for this boolean condition. Returns null if not set.
+       * Gets the background color for this boolean condition. Returns null if not set.
        *
        *
        *     // Logs the boolean condition background color for each conditional format rule on a sheet.
        *     var sheet = SpreadsheetApp.getActiveSheet();
        *     var rules = sheet.getConditionalFormatRules();
        *     for (int i = 0; i < rules.length; i++) {
-       *       var color = rules[i].getBooleanCondition().getBackground();
-       *       Logger.log("The background color for rule %s is %s", i, color);
+       *       var color = rules[i].getBooleanCondition().getBackgroundObject();
+       *       Logger.log("The background color for rule %s is %s", i, color.asRgbColor().asHexString());
        *     }
-       * https://developers.google.com/apps-script/reference/spreadsheet/boolean-condition#getBackground()
+       * https://developers.google.com/apps-script/reference/spreadsheet/boolean-condition#getBackgroundObject()
        */
-      getBackground(): string;
+      getBackgroundObject(): Color;
 
       /**
        * Returns true if this boolean condition bolds the text and returns false if this
@@ -350,22 +471,22 @@ declare namespace GoogleAppsScript {
        *     });
        * https://developers.google.com/apps-script/reference/spreadsheet/boolean-condition#getCriteriaValues()
        */
-      getCriteriaValues(): object[];
+      getCriteriaValues(): any[];
 
       /**
-       * Gets the font color string for this boolean condition. Returns null if not set.
+       * Gets the font color for this boolean condition. Returns null if not set.
        *
        *
        *     // Logs the boolean condition font color for each conditional format rule on a sheet.
        *     var sheet = SpreadsheetApp.getActiveSheet();
        *     var rules = sheet.getConditionalFormatRules();
        *     for (int i = 0; i < rules.length; i++) {
-       *       var color = rules[i].getBooleanCondition().getFontColor();
-       *       Logger.log("The font color for rule %s is %s", i, color);
+       *       var color = rules[i].getBooleanCondition().getFontColorObject();
+       *       Logger.log("The font color for rule %s is %s", i, color.asRgbColor().asHexString());
        *     }
-       * https://developers.google.com/apps-script/reference/spreadsheet/boolean-condition#getFontColor()
+       * https://developers.google.com/apps-script/reference/spreadsheet/boolean-condition#getFontColorObject()
        */
-      getFontColor(): string;
+      getFontColorObject(): Color;
 
       /**
        * Returns true if this boolean condition italicises the text and returns false if
@@ -417,16 +538,133 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/boolean-condition#getUnderline()
        */
       getUnderline(): boolean;
+      /** @deprecated DO NOT USE */ getBackground(): string;
+      /** @deprecated DO NOT USE */ getFontColor(): string;
     }
     /**
      * An enumeration representing the boolean criteria that can be used in conditional format or
      * filter.
      */
-    enum BooleanCriteria { CELL_EMPTY, CELL_NOT_EMPTY, DATE_AFTER, DATE_BEFORE, DATE_EQUAL_TO, DATE_AFTER_RELATIVE, DATE_BEFORE_RELATIVE, DATE_EQUAL_TO_RELATIVE, NUMBER_BETWEEN, NUMBER_EQUAL_TO, NUMBER_GREATER_THAN, NUMBER_GREATER_THAN_OR_EQUAL_TO, NUMBER_LESS_THAN, NUMBER_LESS_THAN_OR_EQUAL_TO, NUMBER_NOT_BETWEEN, NUMBER_NOT_EQUAL_TO, TEXT_CONTAINS, TEXT_DOES_NOT_CONTAIN, TEXT_EQUAL_TO, TEXT_STARTS_WITH, TEXT_ENDS_WITH, CUSTOM_FORMULA }
+    enum BooleanCriteria { CELL_EMPTY, CELL_NOT_EMPTY, DATE_AFTER, DATE_BEFORE, DATE_EQUAL_TO, DATE_NOT_EQUAL_TO, DATE_AFTER_RELATIVE, DATE_BEFORE_RELATIVE, DATE_EQUAL_TO_RELATIVE, NUMBER_BETWEEN, NUMBER_EQUAL_TO, NUMBER_GREATER_THAN, NUMBER_GREATER_THAN_OR_EQUAL_TO, NUMBER_LESS_THAN, NUMBER_LESS_THAN_OR_EQUAL_TO, NUMBER_NOT_BETWEEN, NUMBER_NOT_EQUAL_TO, TEXT_CONTAINS, TEXT_DOES_NOT_CONTAIN, TEXT_EQUAL_TO, TEXT_NOT_EQUAL_TO, TEXT_STARTS_WITH, TEXT_ENDS_WITH, CUSTOM_FORMULA }
     /**
      * Styles that can be set on a range using Range.setBorder(top, left, bottom, right, vertical, horizontal, color, style).
      */
     enum BorderStyle { DOTTED, DASHED, SOLID, SOLID_MEDIUM, SOLID_THICK, DOUBLE }
+    /**
+     * Represents an image to add to a cell. To add an image to a cell, you must create a new image
+     * value for the image using SpreadsheetApp.newCellImage() and CellImageBuilder. Then you can use Range.setValue(value) or Range.setValues(values) to
+     * add the image value to the cell.
+     */
+    interface CellImage {
+      valueType: typeof ValueType;
+
+      /**
+       * Returns the alt text description for this image.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image#getAltTextDescription()
+       */
+      getAltTextDescription(): string;
+
+      /**
+       * Returns the alt text title for this image.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image#getAltTextTitle()
+       */
+      getAltTextTitle(): string;
+
+      /**
+       * Returns a Google-hosted URL to the image. This URL is tagged with the account of the requester,
+       * so anyone with the URL effectively accesses the image as the original requester. Access to the
+       * image might be lost if the spreadsheet's sharing settings change. The returned URL expires
+       * after a short period of time.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image#getContentUrl()
+       */
+      getContentUrl(): string;
+
+      /**
+       * Gets the image's source URL; returns null if the URL is unavailable. If the image was
+       * inserted by URL using an API, this method returns the URL provided during image insertion.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image#getUrl()
+       */
+      getUrl(): string;
+
+      /**
+       * Creates a builder that turns an image into an image value type so that you can place it into a
+       * cell. Before an image is placed into a cell, it needs to be created as an image value type.
+       * Then you can add it to a cell using Range.setValue(value) or Range.setValues(values).
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image#toBuilder()
+       */
+      toBuilder(): CellImageBuilder;
+    }
+    /**
+     * Builder for CellImage. This builder creates the image value needed to add an
+     * image to a cell.
+     */
+    interface CellImageBuilder {
+      valueType: typeof ValueType;
+
+      /**
+       * Creates the image value type needed to add an image to a cell. The image value is built from
+       * the image properties added to the builder, such as the source URL.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#build()
+       */
+      build(): CellImage;
+
+      /**
+       * Returns the alt text description for this image.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#getAltTextDescription()
+       */
+      getAltTextDescription(): string;
+
+      /**
+       * Returns the alt text title for this image.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#getAltTextTitle()
+       */
+      getAltTextTitle(): string;
+
+      /**
+       * Returns a Google-hosted URL to the image. This URL is tagged with the account of the requester,
+       * so anyone with the URL effectively accesses the image as the original requester. Access to the
+       * image might be lost if the spreadsheet's sharing settings change. The returned URL expires
+       * after a short period of time.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#getContentUrl()
+       */
+      getContentUrl(): string;
+
+      /**
+       * Gets the image's source URL; returns null if the URL is unavailable. If the image was
+       * inserted by URL using an API, this method returns the URL provided during image insertion.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#getUrl()
+       */
+      getUrl(): string;
+
+      /**
+       * Sets the alt-text description for this image.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#setAltTextDescription(String)
+       * @param description The new alt text description for the image.
+       */
+      setAltTextDescription(description: string): CellImage;
+
+      /**
+       * Sets the alt text title for this image.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#setAltTextTitle(String)
+       * @param title The new alt text title for the image.
+       */
+      setAltTextTitle(title: string): CellImage;
+
+      /**
+       * Sets the image source URL.
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#setSourceUrl(String)
+       * @param url The URL for the image.
+       */
+      setSourceUrl(url: string): CellImageBuilder;
+
+      /**
+       * Creates a builder that turns an image into an image value type so that you can place it into a
+       * cell. Before an image is placed into a cell, it needs to be created as an image value type.
+       * Then you can add it to a cell using Range.setValue(value) or Range.setValues(values).
+       * https://developers.google.com/apps-script/reference/spreadsheet/cell-image-builder#toBuilder()
+       */
+      toBuilder(): CellImageBuilder;
+    }
     /**
      * A representation for a color.
      */
@@ -530,7 +768,8 @@ declare namespace GoogleAppsScript {
        *     var rule = SpreadsheetApp.getActiveSheet().getConditionalFormatRules()[0];
        *     var gradientCondition = rule.getGradientCondition();
        *     if (gradientCondition != null) {
-       *       Logger.log(gradientCondition.getMinColor());
+       *       // Assume the color has ColorType.RGB.
+       *       Logger.log(gradientCondition.getMinColorObject().asRgbColor().asHexString());
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule#getGradientCondition()
        */
@@ -604,7 +843,8 @@ declare namespace GoogleAppsScript {
        *     var rule = SpreadsheetApp.getActiveSheet().getConditionalFormatRules()[0];
        *     var gradientCondition = rule.getGradientCondition();
        *     if (gradientCondition != null) {
-       *       Logger.log(gradientCondition.getMinColor());
+       *       // Assume the color has ColorType.RGB.
+       *       Logger.log(gradientCondition.getMinColorObject().asRgbColor().asHexString());
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#getGradientCondition()
        */
@@ -646,6 +886,32 @@ declare namespace GoogleAppsScript {
        * @param color The desired color or null to clear.
        */
       setBackground(color: string): ConditionalFormatRuleBuilder;
+
+      /**
+       * Sets the background color for the conditional format rule's format. Passing in null
+       * removes the background color format setting from the rule.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their
+       *     // background color to theme background color if the cell has text equal to "hello".
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var color = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.BACKGROUND)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .whenTextEqualTo("hello")
+       *         .setBackground(color)
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setBackgroundObject(Color)
+       * @param color The desired color object or null to clear.
+       */
+      setBackgroundObject(color: Color): ConditionalFormatRuleBuilder;
 
       /**
        * Sets text bolding for the conditional format rule's format. If bold is true,
@@ -696,6 +962,32 @@ declare namespace GoogleAppsScript {
       setFontColor(color: string): ConditionalFormatRuleBuilder;
 
       /**
+       * Sets the font color for the conditional format rule's format. Passing in null removes
+       * the font color format setting from the rule.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their font
+       *     // color to theme text color if the cell has text equal to "hello".
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var color = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.TEXT)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .whenTextEqualTo("hello")
+       *         .setFontColor(color)
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setFontColorObject(Color)
+       * @param color The desired color object or null to clear.
+       */
+      setFontColorObject(color: Color): ConditionalFormatRuleBuilder;
+
+      /**
        * Clears the conditional format rule's gradient maxpoint value, and instead uses the maximum
        * value in the rule's ranges. Also sets the gradient's maxpoint color to the input color.
        *
@@ -718,6 +1010,71 @@ declare namespace GoogleAppsScript {
        * @param color The maxpoint color to set.
        */
       setGradientMaxpoint(color: string): ConditionalFormatRuleBuilder;
+
+      /**
+       * Clears the conditional format rule's gradient maxpoint value, and instead uses the maximum
+       * value in the rule's ranges. Also sets the gradient's maxpoint color to the input color.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their
+       *     // background color somewhere between theme text and background colors, based on their values
+       *     // in comparison to the ranges minimum and maximum values.
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var textColor = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.TEXT)
+       *         .build();
+       *     var backgroundColor = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.BACKGROUND)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .setGradientMaxpoint(textColor)
+       *         .setGradientMinpoint(backgroundColor)
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setGradientMaxpointObject(Color)
+       * @param color The maxpoint color object to set.
+       */
+      setGradientMaxpointObject(color: Color): ConditionalFormatRuleBuilder;
+
+      /**
+       * Sets the conditional format rule's gradient maxpoint fields.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their
+       *     // background color somewhere from theme accent 1, accent 2 to accent 3 colors, based on their
+       *     // values in comparison to the values 0, 50, and 100.
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var color1 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+       *         .build();
+       *     var color2 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT2)
+       *         .build();
+       *     var color3 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT3)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .setGradientMaxpointWithValue(color1, SpreadsheetApp.InterpolationType.NUMBER, "100")
+       *         .setGradientMidpointWithValue(color2, SpreadsheetApp.InterpolationType.NUMBER, "50")
+       *         .setGradientMinpointWithValue(color3, SpreadsheetApp.InterpolationType.NUMBER, "0")
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setGradientMaxpointObjectWithValue(Color,InterpolationType,String)
+       * @param color The maxpoint color to set.
+       * @param type The maxpoint interpolation type to set.
+       * @param value The maxpoint value to set.
+       */
+      setGradientMaxpointObjectWithValue(color: Color, type: InterpolationType, value: string): ConditionalFormatRuleBuilder;
 
       /**
        * Sets the conditional format rule's gradient maxpoint fields.
@@ -744,6 +1101,42 @@ declare namespace GoogleAppsScript {
        * @param value The maxpoint value to set.
        */
       setGradientMaxpointWithValue(color: string, type: InterpolationType, value: string): ConditionalFormatRuleBuilder;
+
+      /**
+       * Sets the conditional format rule's gradient midpoint fields. Clears all of the midpoint fields
+       * if the passed in interpolation type is null.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their
+       *     // background color somewhere from theme accent 1 to accent 2 to accent 3 colors, based on
+       *     // their values in comparison to the values 0, 50, and 100.
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var color1 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+       *         .build();
+       *     var color2 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT2)
+       *         .build();
+       *     var color3 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT3)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .setGradientMaxpointWithValue(color1, SpreadsheetApp.InterpolationType.NUMBER, "100")
+       *         .setGradientMidpointWithValue(color2, SpreadsheetApp.InterpolationType.NUMBER, "50")
+       *         .setGradientMinpointWithValue(color3, SpreadsheetApp.InterpolationType.NUMBER, "0")
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setGradientMidpointObjectWithValue(Color,InterpolationType,String)
+       * @param color The midpoint color to set.
+       * @param type The midpoint interpolation type to set or null to clear.
+       * @param value The midpoint value to set.
+       */
+      setGradientMidpointObjectWithValue(color: Color, type: InterpolationType, value: string): ConditionalFormatRuleBuilder;
 
       /**
        * Sets the conditional format rule's gradient midpoint fields. Clears all of the midpoint fields
@@ -795,6 +1188,71 @@ declare namespace GoogleAppsScript {
        * @param color The minpoint color to set.
        */
       setGradientMinpoint(color: string): ConditionalFormatRuleBuilder;
+
+      /**
+       * Clears the conditional format rule's gradient minpoint value, and instead uses the minimum
+       * value in the rule's ranges. Also sets the gradient's minpoint color to the input color.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their
+       *     // background color somewhere between theme text and background colors, based on their values
+       *     // in comparison to the ranges minimum and maximum values.
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var textColor = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.TEXT)
+       *         .build();
+       *     var backgroundColor = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.BACKGROUND)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .setGradientMaxpoint(textColor)
+       *         .setGradientMinpoint(backgroundColor)
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setGradientMinpointObject(Color)
+       * @param color The minpoint color object to set.
+       */
+      setGradientMinpointObject(color: Color): ConditionalFormatRuleBuilder;
+
+      /**
+       * Sets the conditional format rule's gradient minpoint fields.
+       *
+       *
+       *     // Adds a conditional format rule to a sheet that causes cells in range A1:B3 to set their
+       *     // background color somewhere from theme accent 1 to accent 2 to accent 3 colors, based on
+       *     // their values in comparison to the values 0, 50, and 100.
+       *
+       *     var sheet = SpreadsheetApp.getActiveSheet();
+       *     var range = sheet.getRange("A1:B3");
+       *     var color1 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+       *         .build();
+       *     var color2 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT2)
+       *         .build();
+       *     var color3 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT3)
+       *         .build();
+       *     var rule = SpreadsheetApp.newConditionalFormatRule()
+       *         .setGradientMaxpointWithValue(color1, SpreadsheetApp.InterpolationType.NUMBER, "100")
+       *         .setGradientMidpointWithValue(color2, SpreadsheetApp.InterpolationType.NUMBER, "50")
+       *         .setGradientMinpointWithValue(color3, SpreadsheetApp.InterpolationType.NUMBER, "0")
+       *         .setRanges([range])
+       *         .build();
+       *     var rules = sheet.getConditionalFormatRules();
+       *     rules.push(rule);
+       *     sheet.setConditionalFormatRules(rules);
+       * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#setGradientMinpointObjectWithValue(Color,InterpolationType,String)
+       * @param color The minpoint color to set.
+       * @param type The minpoint interpolation type to set.
+       * @param value The minpoint value to set.
+       */
+      setGradientMinpointObjectWithValue(color: Color, type: InterpolationType, value: string): ConditionalFormatRuleBuilder;
 
       /**
        * Sets the conditional format rule's gradient minpoint fields.
@@ -1426,6 +1884,7 @@ declare namespace GoogleAppsScript {
        *           .withCriteria(booleanCondition.getCriteriaType(),
        *              booleanCondition.getCriteriaValues())
        *           .setBackground("#000000")
+       *           .setRanges(rule.getRanges())
        *           .build();
        *       rules.push(rule);
        *     }
@@ -1434,7 +1893,7 @@ declare namespace GoogleAppsScript {
        * @param criteria The type of conditional format criteria.
        * @param args An array of arguments appropriate to the criteria type; the number of arguments and their type match the corresponding when...() method above.
        */
-      withCriteria(criteria: BooleanCriteria, args: object[]): ConditionalFormatRuleBuilder;
+      withCriteria(criteria: BooleanCriteria, args: any[]): ConditionalFormatRuleBuilder;
     }
     /**
      * Access the chart's position within a sheet. Can be updated using the EmbeddedChart.modify() function.
@@ -1475,7 +1934,7 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration of data execution error codes.
      */
-    enum DataExecutionErrorCode { DATA_EXECUTION_ERROR_CODE_UNSUPPORTED, NONE, TIME_OUT, TOO_MANY_ROWS, TOO_MANY_CELLS, ENGINE, PARAMETER_INVALID, UNSUPPORTED_DATA_TYPE, DUPLICATE_COLUMN_NAMES, INTERRUPTED, OTHER, TOO_MANY_CHARS_PER_CELL }
+    enum DataExecutionErrorCode { DATA_EXECUTION_ERROR_CODE_UNSUPPORTED, NONE, TIME_OUT, TOO_MANY_ROWS, TOO_MANY_COLUMNS, TOO_MANY_CELLS, ENGINE, PARAMETER_INVALID, UNSUPPORTED_DATA_TYPE, DUPLICATE_COLUMN_NAMES, INTERRUPTED, OTHER, TOO_MANY_CHARS_PER_CELL, DATA_NOT_FOUND, PERMISSION_DENIED }
     /**
      * An enumeration of data execution states.
      */
@@ -1504,6 +1963,12 @@ declare namespace GoogleAppsScript {
       getExecutionState(): DataExecutionState;
 
       /**
+       * Gets the time the last data execution completed regardless of the execution state.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-execution-status#getLastExecutionTime()
+       */
+      getLastExecutionTime(): Date;
+
+      /**
        * Gets the time the data last successfully refreshed.
        * https://developers.google.com/apps-script/reference/spreadsheet/data-execution-status#getLastRefreshedTime()
        */
@@ -1523,22 +1988,293 @@ declare namespace GoogleAppsScript {
     interface DataSource {
 
       /**
+       * Creates a calculated column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#createCalculatedColumn(String,String)
+       * @param name The name of the calculated column.
+       * @param formula The calculated column formula.
+       */
+      createCalculatedColumn(name: string, formula: string): DataSourceColumn;
+
+      /**
+       * Creates a data source pivot table from this data source in the first cell of a new sheet. As a
+       * side effect, makes the new sheet the active sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#createDataSourcePivotTableOnNewSheet()
+       */
+      createDataSourcePivotTableOnNewSheet(): DataSourcePivotTable;
+
+      /**
+       * Creates a data source table from this data source in the first cell of a new sheet. As a side
+       * effect, makes the new sheet the active sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#createDataSourceTableOnNewSheet()
+       */
+      createDataSourceTableOnNewSheet(): DataSourceTable;
+
+      /**
+       * Returns the calculated column in the data source that matches the column name.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#getCalculatedColumnByName(String)
+       * @param columnName The name of the calculated column to get.
+       */
+      getCalculatedColumnByName(columnName: string): DataSourceColumn;
+
+      /**
+       * Returns all the calculated columns in the data source.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#getCalculatedColumns()
+       */
+      getCalculatedColumns(): DataSourceColumn[];
+
+      /**
+       * Returns all the columns in the data source.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#getColumns()
+       */
+      getColumns(): DataSourceColumn[];
+
+      /**
+       * Returns the data source sheets associated with this data source.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#getDataSourceSheets()
+       */
+      getDataSourceSheets(): DataSourceSheet[];
+
+      /**
        * Gets the data source specification.
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source#getSpec()
        */
       getSpec(): DataSourceSpec;
 
       /**
+       * Refreshes all data source objects linked to the data source.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for the specific data
+       * source type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#refreshAllLinkedDataSourceObjects()
+       */
+      refreshAllLinkedDataSourceObjects(): void;
+
+      /**
        * Updates the data source specification and refreshes the data source objects linked with this
        * data source with the new specification.
        *
        *
-       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
-       * type.
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for the specific data
+       * source type.
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source#updateSpec(DataSourceSpec)
        * @param spec The data source specification to update with.
        */
       updateSpec(spec: DataSourceSpec): DataSource;
+
+      /**
+       * Updates the data source specification and refreshes the linked data
+       * source sheets with the new specification.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for the specific data
+       * source type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#updateSpec(DataSourceSpec,Boolean)
+       * @param spec The data source specification to update with.
+       * @param refreshAllLinkedObjects If true, also refreshes all the data source objects linked with this data source.
+       */
+      updateSpec(spec: DataSourceSpec, refreshAllLinkedObjects: boolean): DataSource;
+
+      /**
+       * Waits until all the current executions of the linked data source objects complete, timing out
+       * after the provided number of seconds. Throws an exception if the executions are not completed
+       * when timing out, but does not cancel the data executions.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source#waitForAllDataExecutionsCompletion(Integer)
+       * @param timeoutInSeconds The time to wait for data executions, in seconds. The maximum is 300 seconds.
+       */
+      waitForAllDataExecutionsCompletion(timeoutInSeconds: Integer): void;
+    }
+    /**
+     * Access and modify an existing data source chart.
+     */
+    interface DataSourceChart {
+
+      /**
+       * Refreshes the data of this object regardless of the current state. See refreshData() for
+       * more details.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-chart#forceRefreshData()
+       */
+      forceRefreshData(): DataSourceChart;
+
+      /**
+       * Gets the data source the object is linked to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-chart#getDataSource()
+       */
+      getDataSource(): DataSource;
+
+      /**
+       * Gets the data execution status of the object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-chart#getStatus()
+       */
+      getStatus(): DataExecutionStatus;
+
+      /**
+       * Refreshes the data of the object.
+       *
+       *
+       * Throws an exception if currently in error state. Use DataSource#updateSpec() to update the specification. The method is
+       * preferred over forceRefreshData() to prevent unexpected edits on data source.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-chart#refreshData()
+       */
+      refreshData(): DataSourceChart;
+
+      /**
+       * Waits until the current execution completes, timing out after the provided number of seconds.
+       * Throws an exception if the execution is not completed when timing out, but does not cancel the
+       * data execution.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-chart#waitForCompletion(Integer)
+       * @param timeoutInSeconds The time to wait for data execution, in seconds. The maximum is 300 seconds.
+       */
+      waitForCompletion(timeoutInSeconds: Integer): DataExecutionStatus;
+    }
+    /**
+     * Access and modify a data source column.
+     */
+    interface DataSourceColumn {
+
+      /**
+       * Gets the data source associated with the data source column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#getDataSource()
+       */
+      getDataSource(): DataSource;
+
+      /**
+       * Gets the formula for the data source column. Returns an empty string if the data source column
+       * is not a calculated column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#getFormula()
+       */
+      getFormula(): string;
+
+      /**
+       * Gets the name for the data source column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#getName()
+       */
+      getName(): string;
+
+      /**
+       * Returns whether the column has an array dependency.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#hasArrayDependency()
+       */
+      hasArrayDependency(): boolean;
+
+      /**
+       * Returns whether the column is a calculated column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#isCalculatedColumn()
+       */
+      isCalculatedColumn(): boolean;
+
+      /**
+       * Removes the data source column.
+       *
+       *
+       * Only supported for calculated columns.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#remove()
+       */
+      remove(): void;
+
+      /**
+       * Sets the formula for the data source column.
+       *
+       *
+       * Only supported for calculated columns.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#setFormula(String)
+       * @param formula The new formula.
+       */
+      setFormula(formula: string): DataSourceColumn;
+
+      /**
+       * Sets the name of the data source column.
+       *
+       *
+       * Only supported for calculated columns.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#setName(String)
+       * @param name The name to set.
+       */
+      setName(name: string): DataSourceColumn;
+    }
+    /**
+     * Access and modify existing data source formulas. To create a new data source formula, use Range.setFormula(formula).
+     */
+    interface DataSourceFormula {
+
+      /**
+       * Refreshes the data of this object regardless of the current state. See refreshData() for
+       * more details.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#forceRefreshData()
+       */
+      forceRefreshData(): DataSourceFormula;
+
+      /**
+       * Returns the Range representing the cell where this data source formula is anchored.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#getAnchorCell()
+       */
+      getAnchorCell(): Range;
+
+      /**
+       * Gets the data source the object is linked to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#getDataSource()
+       */
+      getDataSource(): DataSource;
+
+      /**
+       * Returns the display value of the data source formula.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#getDisplayValue()
+       */
+      getDisplayValue(): string;
+
+      /**
+       * Returns the formula for this data source formula.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#getFormula()
+       */
+      getFormula(): string;
+
+      /**
+       * Gets the data execution status of the object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#getStatus()
+       */
+      getStatus(): DataExecutionStatus;
+
+      /**
+       * Refreshes the data of the object.
+       *
+       *
+       * Throws an exception if currently in error state. Use DataSource#updateSpec() to update the specification. The method is
+       * preferred over forceRefreshData() to prevent unexpected edits on data source.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#refreshData()
+       */
+      refreshData(): DataSourceFormula;
+
+      /**
+       * Updates the formula.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#setFormula(String)
+       * @param formula The new formula.
+       */
+      setFormula(formula: string): DataSourceFormula;
+
+      /**
+       * Waits until the current execution completes, timing out after the provided number of seconds.
+       * Throws an exception if the execution is not completed when timing out, but does not cancel the
+       * data execution.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-formula#waitForCompletion(Integer)
+       * @param timeoutInSeconds The time to wait for data execution, in seconds. The maximum is 300 seconds.
+       */
+      waitForCompletion(timeoutInSeconds: Integer): DataExecutionStatus;
     }
     /**
      * Access existing data source parameters.
@@ -1568,6 +2304,365 @@ declare namespace GoogleAppsScript {
      * An enumeration of data source parameter types.
      */
     enum DataSourceParameterType { DATA_SOURCE_PARAMETER_TYPE_UNSUPPORTED, CELL }
+    /**
+     * Access and modify existing data source pivot table. To create a new data source pivot table, use
+     * Range.createDataSourcePivotTable(dataSource).
+     */
+    interface DataSourcePivotTable {
+
+      /**
+       * Adds a new pivot column group based on the specified data source column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#addColumnGroup(String)
+       * @param columnName The data souce column name the pivot group is based on.
+       */
+      addColumnGroup(columnName: string): PivotGroup;
+
+      /**
+       * Adds a new filter based on the specified data source column with the specified filter criteria.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#addFilter(String,FilterCriteria)
+       * @param columnName The data souce column name the filter is based on.
+       * @param filterCriteria The criteria the filter uses.
+       */
+      addFilter(columnName: string, filterCriteria: FilterCriteria): PivotFilter;
+
+      /**
+       * Adds a new pivot value based on the specified data source column with the specified summarize
+       * function.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#addPivotValue(String,PivotTableSummarizeFunction)
+       * @param columnName The data souce column name the pivot value is based on.
+       * @param summarizeFunction The summarize function the pivot value uses.
+       */
+      addPivotValue(columnName: string, summarizeFunction: PivotTableSummarizeFunction): PivotValue;
+
+      /**
+       * Adds a new pivot row group based on the specified data source column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#addRowGroup(String)
+       * @param columnName The data souce column name the pivot group is based on.
+       */
+      addRowGroup(columnName: string): PivotGroup;
+
+      /**
+       * Returns the data source pivot table as a regular pivot table object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#asPivotTable()
+       */
+      asPivotTable(): PivotTable;
+
+      /**
+       * Refreshes the data of this object regardless of the current state. See refreshData() for
+       * more details.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#forceRefreshData()
+       */
+      forceRefreshData(): DataSourcePivotTable;
+
+      /**
+       * Gets the data source the object is linked to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#getDataSource()
+       */
+      getDataSource(): DataSource;
+
+      /**
+       * Gets the data execution status of the object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#getStatus()
+       */
+      getStatus(): DataExecutionStatus;
+
+      /**
+       * Refreshes the data of the object.
+       *
+       *
+       * Throws an exception if currently in error state. Use DataSource#updateSpec() to update the specification. The method is
+       * preferred over forceRefreshData() to prevent unexpected edits on data source.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#refreshData()
+       */
+      refreshData(): DataSourcePivotTable;
+
+      /**
+       * Waits until the current execution completes, timing out after the provided number of seconds.
+       * Throws an exception if the execution is not completed when timing out, but does not cancel the
+       * data execution.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-pivot-table#waitForCompletion(Integer)
+       * @param timeoutInSeconds The time to wait for data execution, in seconds. The maximum is 300 seconds.
+       */
+      waitForCompletion(timeoutInSeconds: Integer): DataExecutionStatus;
+    }
+    /**
+     * Access and modify an existing refresh schedule. To get all refresh schedules, see Spreadsheet.getDataSourceRefreshSchedules().
+     */
+    interface DataSourceRefreshSchedule {
+
+      /**
+       * Gets the refresh schedule frequency, which specifies how often and when to refresh.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule#getFrequency()
+       */
+      getFrequency(): DataSourceRefreshScheduleFrequency;
+
+      /**
+       * Gets the scope of this refresh schedule.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule#getScope()
+       */
+      getScope(): DataSourceRefreshScope;
+
+      /**
+       * Gets the time window of the next run of this refresh schedule. Only applies if this refresh
+       * schedule is enabled.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule#getTimeIntervalOfNextRun()
+       */
+      getTimeIntervalOfNextRun(): any;
+
+      /**
+       * Determines whether this refresh schedule is enabled.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule#isEnabled()
+       */
+      isEnabled(): boolean;
+    }
+    /**
+     * Access a refresh schedule's frequency, which specifies how often and when to refresh.
+     *
+     * To see the next time this refresh schedule is scheduled to run, use DataSourceRefreshSchedule.getTimeIntervalOfNextRun().
+     *
+     * To update, use DataSourceRefreshSchedule.setFrequency(newFrequency).
+     */
+    interface DataSourceRefreshScheduleFrequency {
+
+      /**
+       * Gets the days of the month as numbers (1-28) on which to refresh the data source. Only applies
+       * if frequency type is monthly.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule-frequency#getDaysOfTheMonth()
+       */
+      getDaysOfTheMonth(): Integer[];
+
+      /**
+       * Gets the days of the week on which to refresh the data source. Only applies if the frequency
+       * type is weekly.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule-frequency#getDaysOfTheWeek()
+       */
+      getDaysOfTheWeek(): Base.Weekday[];
+
+      /**
+       * Gets the frequency type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule-frequency#getFrequencyType()
+       */
+      getFrequencyType(): FrequencyType;
+
+      /**
+       * Gets the start hour (as a number 0-23) of the time interval during which the refresh schedule
+       * runs. For example, if the start hour is 13 and the time interval's duration is 4 hours, then
+       * the data source is refreshed between 1 p.m. and 5 p.m. The hour is in the timezone of the
+       * spreadsheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-refresh-schedule-frequency#getStartHour()
+       */
+      getStartHour(): Integer;
+    }
+    /**
+     * An enumeration of scopes for refreshes.
+     */
+    enum DataSourceRefreshScope { DATA_SOURCE_REFRESH_SCOPE_UNSUPPORTED, ALL_DATA_SOURCES }
+    /**
+     * Access and modify existing data source sheet. To create a new data source sheet, use Spreadsheet.insertDataSourceSheet(spec).
+     */
+    interface DataSourceSheet {
+
+      /**
+       * Adds a filter applied to the data source sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#addFilter(String,FilterCriteria)
+       * @param columnName The name of the column to apply this filter to.
+       * @param filterCriteria The filter criteria to apply.
+       */
+      addFilter(columnName: string, filterCriteria: FilterCriteria): DataSourceSheet;
+
+      /**
+       * Returns the data source sheet as a regular sheet object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#asSheet()
+       */
+      asSheet(): Sheet;
+
+      /**
+       * Auto resizes the width of the specified column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#autoResizeColumn(String)
+       * @param columnName The column name.
+       */
+      autoResizeColumn(columnName: string): DataSourceSheet;
+
+      /**
+       * Auto resizes the width of the specified columns.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#autoResizeColumns(String)
+       * @param columnNames The list of column names to update.
+       */
+      autoResizeColumns(columnNames: string[]): DataSourceSheet;
+
+      /**
+       * Refreshes the data of this object regardless of the current state. See refreshData() for
+       * more details.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#forceRefreshData()
+       */
+      forceRefreshData(): DataSourceSheet;
+
+      /**
+       * Returns the width of the specified column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getColumnWidth(String)
+       * @param columnName The column name.
+       */
+      getColumnWidth(columnName: string): Integer;
+
+      /**
+       * Gets the data source the object is linked to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getDataSource()
+       */
+      getDataSource(): DataSource;
+
+      /**
+       * Returns all filters applied to the data source sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getFilters()
+       */
+      getFilters(): DataSourceSheetFilter[];
+
+      /**
+       * Returns all the values for the data source sheet for the provided column name.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getSheetValues(String)
+       * @param columnName The data source column name to fetch values for.
+       */
+      getSheetValues(columnName: string): any[];
+
+      /**
+       * Returns all the values for the data source sheet for the provided column name from the provided
+       * start row (based-1) and up to the provided numRows.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getSheetValues(String,Integer,Integer)
+       * @param columnName The data source column name to fetch values for.
+       * @param startRow The row position to start fetching values from.
+       * @param numRows The number of rows to fetch.
+       */
+      getSheetValues(columnName: string, startRow: Integer, numRows: Integer): any[];
+
+      /**
+       * Gets all the sort specs in the data source sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getSortSpecs()
+       */
+      getSortSpecs(): SortSpec[];
+
+      /**
+       * Gets the data execution status of the object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#getStatus()
+       */
+      getStatus(): DataExecutionStatus;
+
+      /**
+       * Refreshes the data of the object.
+       *
+       *
+       * Throws an exception if currently in error state. Use DataSource#updateSpec() to update the specification. The method is
+       * preferred over forceRefreshData() to prevent unexpected edits on data source.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#refreshData()
+       */
+      refreshData(): DataSourceSheet;
+
+      /**
+       * Removes all filters applied to the data source sheet column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#removeFilters(String)
+       * @param columnName The name of the column to remove filters from.
+       */
+      removeFilters(columnName: string): DataSourceSheet;
+
+      /**
+       * Removes the sort spec on a column in the data source sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#removeSortSpec(String)
+       * @param columnName The name of the column.
+       */
+      removeSortSpec(columnName: string): DataSourceSheet;
+
+      /**
+       * Sets the width of the specified column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#setColumnWidth(String,Integer)
+       * @param columnName The column name.
+       * @param width The new width for the column.
+       */
+      setColumnWidth(columnName: string, width: Integer): DataSourceSheet;
+
+      /**
+       * Sets the width of the specified columns.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#setColumnWidths(String,Integer)
+       * @param columnNames The list of column names to update.
+       * @param width The new width for the columns.
+       */
+      setColumnWidths(columnNames: string[], width: Integer): DataSourceSheet;
+
+      /**
+       * Sets the sort spec on a column in the data source sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#setSortSpec(String,Boolean)
+       * @param columnName The name of the column to sort.
+       * @param ascending If true, sort the column in ascending order; if false, sort the column in descending order.
+       */
+      setSortSpec(columnName: string, ascending: boolean): DataSourceSheet;
+
+      /**
+       * Sets the sort spec on a column in the data source sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#setSortSpec(String,SortOrder)
+       * @param columnName The name of the column to sort.
+       * @param sortOrder The sort order.
+       */
+      setSortSpec(columnName: string, sortOrder: SortOrder): DataSourceSheet;
+
+      /**
+       * Waits until the current execution completes, timing out after the provided number of seconds.
+       * Throws an exception if the execution is not completed when timing out, but does not cancel the
+       * data execution.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet#waitForCompletion(Integer)
+       * @param timeoutInSeconds The time to wait for data execution, in seconds. The maximum is 300 seconds.
+       */
+      waitForCompletion(timeoutInSeconds: Integer): DataExecutionStatus;
+    }
+    /**
+     * Access and modify an existing data source sheet filter. To create a new data source sheet filter,
+     * use DataSourceSheet.addFilter(columnName, filterCriteria).
+     */
+    interface DataSourceSheetFilter {
+
+      /**
+       * Returns the data source column this filter applies to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet-filter#getDataSourceColumn()
+       */
+      getDataSourceColumn(): DataSourceColumn;
+
+      /**
+       * Returns the DataSourceSheet that this filter belongs to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet-filter#getDataSourceSheet()
+       */
+      getDataSourceSheet(): DataSourceSheet;
+
+      /**
+       * Returns the filter criteria for this filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet-filter#getFilterCriteria()
+       */
+      getFilterCriteria(): FilterCriteria;
+
+      /**
+       * Removes this filter from the data source object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet-filter#remove()
+       */
+      remove(): void;
+
+      /**
+       * Sets the filter criteria for this filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet-filter#setFilterCriteria(FilterCriteria)
+       * @param filterCriteria The filter criteria to set.
+       */
+      setFilterCriteria(filterCriteria: FilterCriteria): DataSourceSheetFilter;
+    }
     /**
      * Access the general settings of an existing data source spec. To access data source spec for
      * certain type, use as...() method. To create a new data source spec, use SpreadsheetApp.newDataSourceSpec().
@@ -1723,6 +2818,37 @@ declare namespace GoogleAppsScript {
     interface DataSourceTable {
 
       /**
+       * Adds columns to the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#addColumns(String)
+       * @param columnNames The list of the names of the columns to add.
+       */
+      addColumns(columnNames: string[]): DataSourceTable;
+
+      /**
+       * Adds a filter applied to the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#addFilter(String,FilterCriteria)
+       * @param columnName The name of the column to apply this filter to.
+       * @param filterCriteria The filter criteria to apply.
+       */
+      addFilter(columnName: string, filterCriteria: FilterCriteria): DataSourceTable;
+
+      /**
+       * Adds a sort spec on a column in the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#addSortSpec(String,Boolean)
+       * @param columnName The name of the column to sort.
+       * @param ascending If true, sort the column in ascending order; if false, sort the column in descending order.
+       */
+      addSortSpec(columnName: string, ascending: boolean): DataSourceTable;
+
+      /**
+       * Adds a sort spec on a column in the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#addSortSpec(String,SortOrder)
+       * @param columnName The name of the column to sort.
+       * @param sortOrder The sort order.
+       */
+      addSortSpec(columnName: string, sortOrder: SortOrder): DataSourceTable;
+
+      /**
        * Refreshes the data of this object regardless of the current state. See refreshData() for
        * more details.
        *
@@ -1734,10 +2860,22 @@ declare namespace GoogleAppsScript {
       forceRefreshData(): DataSourceTable;
 
       /**
+       * Gets all the data source columns added to the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#getColumns()
+       */
+      getColumns(): DataSourceTableColumn[];
+
+      /**
        * Gets the data source the object is linked to.
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#getDataSource()
        */
       getDataSource(): DataSource;
+
+      /**
+       * Returns all filters applied to the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#getFilters()
+       */
+      getFilters(): DataSourceTableFilter[];
 
       /**
        * Gets the Range this data source table spans.
@@ -1746,16 +2884,34 @@ declare namespace GoogleAppsScript {
       getRange(): Range;
 
       /**
+       * Returns the row limit for the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#getRowLimit()
+       */
+      getRowLimit(): Integer;
+
+      /**
+       * Gets all the sort specs in the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#getSortSpecs()
+       */
+      getSortSpecs(): SortSpec[];
+
+      /**
        * Gets the data execution status of the object.
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#getStatus()
        */
       getStatus(): DataExecutionStatus;
 
       /**
+       * Returns whether the data source table is syncing all columns in the associated data source.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#isSyncingAllColumns()
+       */
+      isSyncingAllColumns(): boolean;
+
+      /**
        * Refreshes the data of the object.
        *
        *
-       * Throws an exception if currently in error state. Use DataSource#updateSpec() to update specificiation. The method is
+       * Throws an exception if currently in error state. Use DataSource#updateSpec() to update the specification. The method is
        * preferred over forceRefreshData() to prevent unexpected edits on data source.
        *
        *
@@ -1766,6 +2922,32 @@ declare namespace GoogleAppsScript {
       refreshData(): DataSourceTable;
 
       /**
+       * Removes all the columns in the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#removeAllColumns()
+       */
+      removeAllColumns(): DataSourceTable;
+
+      /**
+       * Removes all the sort specs in the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#removeAllSortSpecs()
+       */
+      removeAllSortSpecs(): DataSourceTable;
+
+      /**
+       * Updates the row limit for the data source table. If the provided row limit is null,
+       * then updates the data source table to use the default max row limit as in Google Sheets UI.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#setRowLimit(Integer)
+       * @param rowLimit The new row limit for the data table. If null, updates the table to use the default row limit.
+       */
+      setRowLimit(rowLimit: Integer): DataSourceTable;
+
+      /**
+       * Sync all current and future columns in the associated data source to the data source table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table#syncAllColumns()
+       */
+      syncAllColumns(): DataSourceTable;
+
+      /**
        * Waits until the current execution completes, timing out after the provided number of seconds.
        * Throws an exception if the execution is not completed when timing out, but does not cancel the
        * data execution.
@@ -1773,6 +2955,61 @@ declare namespace GoogleAppsScript {
        * @param timeoutInSeconds The time to wait for data execution, in seconds. The maximum is 300 seconds.
        */
       waitForCompletion(timeoutInSeconds: Integer): DataExecutionStatus;
+    }
+    /**
+     * Access and modify an existing column in a DataSourceTable. To add columns to a data
+     * source table, use DataSourceTable.addColumns(columnNames).
+     */
+    interface DataSourceTableColumn {
+
+      /**
+       * Gets the data souce column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-column#getDataSourceColumn()
+       */
+      getDataSourceColumn(): DataSourceColumn;
+
+      /**
+       * Removes the column from the DataSourceTable.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-column#remove()
+       */
+      remove(): void;
+    }
+    /**
+     * Access and modify an existing data source table filter. To create a new data source table filter,
+     * use DataSourceTable.addFilter(columnName, filterCriteria).
+     */
+    interface DataSourceTableFilter {
+
+      /**
+       * Returns the data source column this filter applies to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-filter#getDataSourceColumn()
+       */
+      getDataSourceColumn(): DataSourceColumn;
+
+      /**
+       * Returns the DataSourceTable that this filter belongs to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-filter#getDataSourceTable()
+       */
+      getDataSourceTable(): DataSourceTable;
+
+      /**
+       * Returns the filter criteria for this filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-filter#getFilterCriteria()
+       */
+      getFilterCriteria(): FilterCriteria;
+
+      /**
+       * Removes this filter from the data source object.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-filter#remove()
+       */
+      remove(): void;
+
+      /**
+       * Sets the filter criteria for this filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-filter#setFilterCriteria(FilterCriteria)
+       * @param filterCriteria The filter criteria to set.
+       */
+      setFilterCriteria(filterCriteria: FilterCriteria): DataSourceTableFilter;
     }
     /**
      * An enumeration of data source types.
@@ -1870,7 +3107,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/data-validation#getCriteriaValues()
        */
-      getCriteriaValues(): object[];
+      getCriteriaValues(): any[];
 
       /**
        * Gets the rule's help text, or null if no help text is set.
@@ -1970,7 +3207,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/data-validation-builder#getCriteriaValues()
        */
-      getCriteriaValues(): object[];
+      getCriteriaValues(): any[];
 
       /**
        * Gets the rule's help text, or null if no help text is set.
@@ -2006,7 +3243,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/data-validation-builder#requireCheckbox(Object)
        * @param checkedValue The value assigned to a checked box.
        */
-      requireCheckbox(checkedValue: object): DataValidationBuilder;
+      requireCheckbox(checkedValue: any): DataValidationBuilder;
 
       /**
        * Sets the data validation rule to require that the input is one of the specified values. When
@@ -2023,7 +3260,7 @@ declare namespace GoogleAppsScript {
        * @param checkedValue The value assigned to a checked box.
        * @param uncheckedValue The value assigned to an unchecked box.
        */
-      requireCheckbox(checkedValue: object, uncheckedValue: object): DataValidationBuilder;
+      requireCheckbox(checkedValue: any, uncheckedValue: any): DataValidationBuilder;
 
       /**
        * Sets the data validation rule to require a date.
@@ -2436,7 +3673,7 @@ declare namespace GoogleAppsScript {
        * @param criteria The type of data validation criteria.
        * @param args An array of arguments appropriate to the criteria type; the number of arguments and their type match the corresponding require...() method above.
        */
-      withCriteria(criteria: DataValidationCriteria, args: object[]): DataValidationBuilder;
+      withCriteria(criteria: DataValidationCriteria, args: any[]): DataValidationBuilder;
     }
     /**
      * An enumeration representing the data validation criteria that can be set on a range.
@@ -2468,6 +3705,26 @@ declare namespace GoogleAppsScript {
      *     range.setDataValidations(rules);
      */
     enum DataValidationCriteria { DATE_AFTER, DATE_BEFORE, DATE_BETWEEN, DATE_EQUAL_TO, DATE_IS_VALID_DATE, DATE_NOT_BETWEEN, DATE_ON_OR_AFTER, DATE_ON_OR_BEFORE, NUMBER_BETWEEN, NUMBER_EQUAL_TO, NUMBER_GREATER_THAN, NUMBER_GREATER_THAN_OR_EQUAL_TO, NUMBER_LESS_THAN, NUMBER_LESS_THAN_OR_EQUAL_TO, NUMBER_NOT_BETWEEN, NUMBER_NOT_EQUAL_TO, TEXT_CONTAINS, TEXT_DOES_NOT_CONTAIN, TEXT_EQUAL_TO, TEXT_IS_VALID_EMAIL, TEXT_IS_VALID_URL, VALUE_IN_LIST, VALUE_IN_RANGE, CUSTOM_FORMULA, CHECKBOX }
+    /**
+     * Access an existing date-time grouping rule.
+     *
+     * To set a rule on PivotGroup, use PivotGroup.setDateTimeGroupingRule(dateTimeGroupingRuleType).
+     */
+    interface DateTimeGroupingRule {
+
+      /**
+       * Gets the type of the date-time grouping rule.
+       * https://developers.google.com/apps-script/reference/spreadsheet/date-time-grouping-rule#getRuleType()
+       */
+      getRuleType(): DateTimeGroupingRuleType;
+    }
+    /**
+     * The types of date-time grouping rule.
+     *
+     * The examples below assume the spreadsheet locale
+     * is "en-US", grouping bucket may be translated based on the spreadsheet locale.
+     */
+    enum DateTimeGroupingRuleType { UNSUPPORTED, SECOND, MINUTE, HOUR, HOUR_MINUTE, HOUR_MINUTE_AMPM, DAY_OF_WEEK, DAY_OF_YEAR, DAY_OF_MONTH, DAY_MONTH, MONTH, QUARTER, YEAR, YEAR_MONTH, YEAR_QUARTER, YEAR_MONTH_DAY }
     /**
      * Access and modify developer metadata. To create new developer metadata use Range.addDeveloperMetadata(key), Sheet.addDeveloperMetadata(key), or Spreadsheet.addDeveloperMetadata(key).
      */
@@ -2671,6 +3928,135 @@ declare namespace GoogleAppsScript {
      * the arrow keys.
      */
     enum Direction { UP, DOWN, PREVIOUS, NEXT }
+    /**
+     * Represents a drawing over a sheet in a spreadsheet.
+     */
+    interface Drawing {
+
+      /**
+       * Gets information about where the drawing is positioned in the sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#getContainerInfo()
+       */
+      getContainerInfo(): ContainerInfo;
+
+      /**
+       * Returns the actual height of this drawing in pixels.
+       *
+       *
+       *     // Logs the height of all drawings in a sheet
+       *     var drawings = SpreadsheetApp.getActiveSheet().getDrawings();
+       *     for (var i = 0; i < drawings.length; i++) {
+       *       Logger.log(drawings[i].getHeight());
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#getHeight()
+       */
+      getHeight(): Integer;
+
+      /**
+       * Returns the name of the macro attached to this drawing.
+       *
+       *
+       *     // Logs the macro name of all drawings on the active sheet.
+       *     var drawings = SpreadsheetApp.getActiveSheet().getDrawings();
+       *     for (var i = 0; i < drawings.length; i++) {
+       *       Logger.log(drawings[i].getOnAction());
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#getOnAction()
+       */
+      getOnAction(): string;
+
+      /**
+       * Returns the sheet this drawing appears on.
+       *
+       *
+       *     // Logs the parent sheet of all drawings on the active sheet.
+       *     var drawings = SpreadsheetApp.getActiveSheet().getDrawings();
+       *     for (var i = 0; i < drawings.length; i++) {
+       *       Logger.log(drawings[i].getSheet());
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#getSheet()
+       */
+      getSheet(): Sheet;
+
+      /**
+       * Returns the actual width of this drawing in pixels.
+       *
+       *
+       *     // Logs the width of all drawings in a sheet
+       *     var drawings = SpreadsheetApp.getActiveSheet().getDrawings();
+       *     for (var i = 0; i < drawings.length; i++) {
+       *       Logger.log(drawings[i].getWidth());
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#getWidth()
+       */
+      getWidth(): Integer;
+
+      /**
+       * Returns the z-index of this drawing.
+       *
+       *
+       *     // Logs the z-index of all drawings on the active sheet.
+       *     var drawings = SpreadsheetApp.getActiveSheet().getDrawings();
+       *     for (var i = 0; i < drawings.length; i++) {
+       *       Logger.log(drawings[i].getZIndex());
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#getZIndex()
+       */
+      getZIndex(): number;
+
+      /**
+       * Deletes this drawing from the spreadsheet. Any further operation on the drawing results in a
+       * script error.
+       *
+       *
+       *     // Deletes all drawings from the active sheet.
+       *     var drawings = SpreadsheetApp.getActiveSheet().getDrawings();
+       *     for (var i = 0; i < drawings.length; i++) {
+       *       drawings[i].remove();
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#remove()
+       */
+      remove(): void;
+
+      /**
+       * Sets the actual height of this drawing in pixels.
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#setHeight(Integer)
+       * @param height The desired height in pixels.
+       */
+      setHeight(height: Integer): Drawing;
+
+      /**
+       * Assigns a macro function to this drawing.
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#setOnAction(String)
+       * @param macroName Name of the macro function.
+       */
+      setOnAction(macroName: string): Drawing;
+
+      /**
+       * Sets the position where the drawing appears on the sheet. The anchor row and column position
+       * indices are 1-indexed.
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#setPosition(Integer,Integer,Integer,Integer)
+       * @param anchorRowPos The drawing's top side is anchored in this row.
+       * @param anchorColPos The drawing's top side is anchored in this col.
+       * @param offsetX The horizontal offset from the cell corner in pixels.
+       * @param offsetY The vertical offset from the cell corner in pixels.
+       */
+      setPosition(anchorRowPos: Integer, anchorColPos: Integer, offsetX: Integer, offsetY: Integer): Drawing;
+
+      /**
+       * Sets the actual width of this drawing in pixels.
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#setWidth(Integer)
+       * @param width The desired width in pixels.
+       */
+      setWidth(width: Integer): Drawing;
+
+      /**
+       * Sets the z-index of this drawing.
+       * https://developers.google.com/apps-script/reference/spreadsheet/drawing#setZIndex(Number)
+       * @param zIndex Z-Index of this drawing.
+       */
+      setZIndex(zIndex: number): Drawing;
+    }
     /**
      * Builder for area charts. For more details, see the Gviz
      * documentation.
@@ -3040,27 +4426,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-area-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the style for points in the line. By default, points have no particular styles, and only
@@ -3628,27 +5011,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-bar-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -3857,11 +5237,23 @@ declare namespace GoogleAppsScript {
     interface EmbeddedChart {
 
       /**
+       * Casts to a data source chart instance if the chart is a data source chart, or null
+       * otherwise.
+       * https://developers.google.com/apps-script/reference/spreadsheet/embedded-chart#asDataSourceChart()
+       */
+      asDataSourceChart(): DataSourceChart;
+
+      /**
        * Return the data inside this object as a blob converted to the specified content type. This
        * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-chart#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -4358,27 +5750,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -4795,27 +6184,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-column-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -4995,7 +6381,8 @@ declare namespace GoogleAppsScript {
       useLogScale(): EmbeddedColumnChartBuilder;
     }
     /**
-     * Builder for combo charts. For more details, see the Gviz documentation.
+     * Builder for combo charts. For more details, see the Google
+     * Visualization documentation.
      */
     interface EmbeddedComboChartBuilder {
 
@@ -5362,27 +6749,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-combo-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -5930,27 +7314,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-histogram-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -6511,27 +7892,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-line-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the style for points in the line. By default, points have no particular styles, and only
@@ -7091,27 +8469,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-pie-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -7540,27 +8915,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-scatter-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the style for points in the line. By default, points have no particular styles, and only
@@ -8188,27 +9560,24 @@ declare namespace GoogleAppsScript {
       setNumHeaders(headers: Integer): EmbeddedChartBuilder;
 
       /**
-       * Sets advanced options for this chart. Lookup the chart type in the Charts API Chart
-       * Gallery for a listing of the available options. For example, the options for an area chart
-       * are listed
-       * here.
+       * Sets advanced options for this chart. To view a list of the available options, see Chart
+       * configuration options.
        *
        *
-       * This method does not validate the option you specify is valid for this chart type nor if the
+       * This method doesn't validate the option you specify is valid for this chart type nor if the
        * value is of the correct format/structure.
        *
        *
-       * This example shows how to change the animation duration to 1 second and set a legend.
+       * This example shows how to change the title and set a legend.
        *
        *
        *     builder.setOption('title', 'Earnings projections');
-       *     builder.setOption('animation.duration', 1000);
        *     builder.setOption('legend', {position: 'top', textStyle: {color: 'blue', fontSize: 16}});
        * https://developers.google.com/apps-script/reference/spreadsheet/embedded-table-chart-builder#setOption(String,Object)
        * @param option The name of the option.
        * @param value The value of the option.
        */
-      setOption(option: string, value: object): EmbeddedChartBuilder;
+      setOption(option: string, value: any): EmbeddedChartBuilder;
 
       /**
        * Sets the position, changing where the chart appears on the sheet. anchorRowPos and
@@ -8277,87 +9646,284 @@ declare namespace GoogleAppsScript {
       useAlternatingRowStyle(alternate: boolean): EmbeddedTableChartBuilder;
     }
     /**
-     * Access and modify existing filters. To create a new filter, use Range.createFilter().
+     * Use this class to modify existing filters on Grid sheets, the default type of
+     * sheet. Grid sheets are regular sheets with data that aren't connected to a database.
+     *
+     * If a filter doesn’t exist on the sheet yet, create one using Range.createFilter().
+     *
+     * To use this class, you must first access the grid sheet filter using Range.getFilter() or Sheet.getFilter().
+     *
+     * Common uses
+     * Remove a filter
+     *
+     *     let ss = SpreadsheetApp.getActiveSheet();
+     *     let filter = ss.getFilter();
+     *     // Removes the filter from the active sheet.
+     *     filter.remove();
+     *
+     * Get the range that the filter applies to
+     * getRange()
+     *
+     *     let ss = SpreadsheetApp.getActiveSheet();
+     *     // Gets the existing filter on the active sheet.
+     *     let filter = ss.getFilter();
+     *     // Logs the range that the filter applies to in A1 notation.
+     *     console.log(filter.getRange().getA1Notation());
      */
     interface Filter {
 
       /**
-       * Gets the filter criteria on the specified column, or null if no filter criteria is set.
+       * Gets the filter criteria on the specified column, or null if the column doesn't have
+       * filter criteria applied to it.
+       *
+       *
+       * To get more details about the filter criteria, chain this method with methods from the
+       * FilterCriteria class.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *       // Gets the filter criteria applied to column B of the active sheet
+       *       // and logs the hidden values.
+       *     let filterCriteria = filter.getColumnFilterCriteria(2).getHiddenValues();
+       *     console.log(filterCriteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#getColumnFilterCriteria(Integer)
-       * @param columnPosition The 1-indexed position of the column.
+       * @param columnPosition The 1-indexed position of the column. For example, column B's index is 2.
        */
       getColumnFilterCriteria(columnPosition: Integer): FilterCriteria;
 
       /**
-       * Gets the range this filter is applied to.
+       * Gets the range this filter applies to.
+       *
+       *
+       *     // Gets the existing filter on the active sheet.
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Logs the range that the filter applies to in A1 notation.
+       *     console.log(filter.getRange().getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#getRange()
        */
       getRange(): Range;
 
       /**
        * Removes this filter.
+       *
+       *
+       *     // Removes the filter from the active sheet.
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     filter.remove();
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#remove()
        */
       remove(): void;
 
       /**
        * Removes the filter criteria from the specified column.
+       *
+       *
+       *     // Removes the filter criteria from column B.
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     filter.removeColumnFilterCriteria(2);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#removeColumnFilterCriteria(Integer)
-       * @param columnPosition The 1-indexed position of the column.
+       * @param columnPosition The 1-indexed position of the column. For example, column B's index is 2.
        */
       removeColumnFilterCriteria(columnPosition: Integer): Filter;
 
       /**
-       * Sets the filter criteria on the specified column.
+       * Sets the filter criteria on the specified column. First, create the filter criteria builder
+       * using SpreadsheetApp.newFilterCriteria(). Then add criteria to the builder
+       * using the FilterCriteriaBuilder class. After you've built your criteria, set it as the
+       * filterCriteria parameter for this method.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Builds the filter criteria to use as a parameter for setColumnFilterCriteria.
+       *     const criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .setHiddenValues(["Hello", "World"])
+       *                                  .build();
+       *     // Sets the filter criteria for column C.
+       *     filter.setColumnFilterCriteria(3, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#setColumnFilterCriteria(Integer,FilterCriteria)
-       * @param columnPosition The 1-indexed position of the column.
-       * @param filterCriteria The filter criteria to set. If null, remove filter criteria from the specified column; alternatively, use removeColumnFilterCriteria(columnPosition).
+       * @param columnPosition The 1-indexed position of the column. For example, column B's index is 2.
+       * @param filterCriteria The filter criteria to set. If you set the criteria to null, it removes filter criteria from the specified column. You can also use removeColumnFilterCriteria(columnPosition).
        */
       setColumnFilterCriteria(columnPosition: Integer, filterCriteria: FilterCriteria): Filter;
 
       /**
        * Sorts the filtered range by the specified column, excluding the first row (the header row) in
-       * the range this filter is applied to.
+       * the range this filter applies to.
+       *
+       *
+       *     // Gets the existing filter and sorts it by column B in ascending order.
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     filter.sort(2, true);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#sort(Integer,Boolean)
-       * @param columnPosition The 1-indexed position of the column.
-       * @param ascending If true, sort the filtered range in ascending order; if false, sort the filtered range in descending order.
+       * @param columnPosition The 1-indexed position of the column. For example, column B's index is 2.
+       * @param ascending If true, sorts the filtered range in ascending order; if false, sorts the filtered range in descending order.
        */
       sort(columnPosition: Integer, ascending: boolean): Filter;
     }
     /**
-     * Access filter criteria. To create a new criteria, use SpreadsheetApp.newFilterCriteria() and FilterCriteriaBuilder.
+     * Use this class to get information about or copy the criteria for existing filters.
+     *
+     * To create a new filter, refer to Range.createFilter().
+     *
+     * To create the criteria for a filter, refer to SpreadsheetApp.newFilterCriteria() and FilterCriteriaBuilder.
+     *
+     * Common uses
+     * Copy criteria
+     * A1:C20
+     *
+     *     let ss = SpreadsheetApp.getActiveSheet();
+     *     let range = ss.getRange("A1:C20");
+     *     // Copies the filter criteria applied to column C.
+     *     let filter = range.getFilter();
+     *     let criteria = filter.getColumnFilterCriteria(3).copy().build();
+     *     // Applies the copied criteria to column B. The copied criteria overwrites any existing
+     *     // criteria on column B.
+     *     filter.setColumnFilterCriteria(2, criteria);
+     *
+     * Get values hidden by the filter
+     *
+     *     let ss = SpreadsheetApp.getActiveSheet();
+     *     let range = ss.getRange("A1:C20");
+     *     let filter = range.getFilter();
+     *     // Gets the filter criteria applied to column B, then gets the hidden values.
+     *     let filterCriteria = filter.getColumnFilterCriteria(2).getHiddenValues();
+     *     // Logs the hidden values.
+     *     console.log(filterCriteria);
      */
     interface FilterCriteria {
 
       /**
-       * Creates a builder for a filter criteria based on this filter criteria's settings.
+       * Copies this filter criteria and creates a criteria builder that you can apply to another
+       * filter.
+       *
+       *
+       * You can use this method with any type of filter. If you're using a sheet filter, you can
+       * copy the criteria to another column.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Makes a copy of the filter criteria applied to column C.
+       *     let criteria = filter.getColumnFilterCriteria(3).copy().build();
+       *     // Applies the copied criteria to column B. The copied criteria overwrites any existing
+       *     // criteria on column B.
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#copy()
        */
       copy(): FilterCriteriaBuilder;
 
       /**
-       * Returns the boolean criteria type as defined in the BooleanCriteria enum. To get the
-       * arguments for the criteria, use getCriteriaValues(). To use these values to create or
-       * modify a filter criteria, see FilterCriteriaBuilder.withCriteria(criteria, args).
+       * Returns the criteria's boolean type, for example, CELL_EMPTY. To learn about the types
+       * of boolean criteria, see the BooleanCriteria enum.
+       *
+       *
+       * People often use this method to add criteria to a filter without replacing existing
+       * criteria.
+       *
+       *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getCriteriaType()
        */
       getCriteriaType(): BooleanCriteria;
 
       /**
-       * Returns an array of arguments for the boolean criteria. To get the boolean criteria type, use
-       * getCriteriaType(). To use these values to create or modify a filter criteria, see FilterCriteriaBuilder.withCriteria(criteria, args).
+       * Returns an array of arguments for boolean criteria. Some boolean criteria types don't have
+       * arguments and return an empty array, for example, CELL_NOT_EMPTY.
+       *
+       *
+       * People often use this method to add criteria to a filter without replacing existing
+       * criteria.
+       *
+       *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getCriteriaValues()
        */
-      getCriteriaValues(): object[];
+      getCriteriaValues(): any[];
 
       /**
-       * Returns the values to hide.
+       * Returns the values that the filter hides.
+       *
+       *
+       * Use this criteria with filters on Grid sheets, the default type of sheet.
+       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
+       * this method for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Gets the filter criteria applied to column B, then gets the hidden values.
+       *     let filterCriteria = filter.getColumnFilterCriteria(2).getHiddenValues();
+       *     // Logs the hidden values.
+       *     console.log(filterCriteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getHiddenValues()
        */
       getHiddenValues(): string[];
 
       /**
-       * Returns the values to show.
+       * Returns the background color used as filter criteria. Cells with this background color remain
+       * visible.
+       *
+       *
+       * Use this criteria with filters on Grid sheets, the default type of sheet.
+       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
+       * this method for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     // Logs the background color that column B is filtered by as a hexadecimal string.
+       *     let filter = range.getFilter();
+       *     let color = filter.getColumnFilterCriteria(2)
+       *                       .getVisibleBackgroundColor()
+       *                       .asRgbColor()
+       *                       .asHexString();
+       *     console.log(color);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getVisibleBackgroundColor()
+       */
+      getVisibleBackgroundColor(): Color;
+
+      /**
+       * Returns the foreground color used as a filter criteria. Cells with this foreground color remain
+       * visible.
+       *
+       *
+       * Use this criteria with filters on Grid sheets, the default type of sheet.
+       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
+       * this method for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     // Logs the foreground color that column B is filtered by as a hexadecimal string.
+       *     let filter = range.getFilter();
+       *     let color = filter.getColumnFilterCriteria(2)
+       *                       .getVisibleForegroundColor()
+       *                       .asRgbColor()
+       *                       .asHexString();
+       *     console.log(color);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getVisibleForegroundColor()
+       */
+      getVisibleForegroundColor(): Color;
+
+      /**
+       * Returns the values that the pivot table filter shows.
+       *
+       *
+       * This criteria is only for filters on pivot tables that aren't connected to a database.
+       * Returns an empty array for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     // Gets the first pivot table on the sheet, then gets the visible values of its first filter.
+       *     pivotTable = ss.getPivotTables()[0];
+       *     pivotFilterValues = pivotTable.getFilters()[0].getFilterCriteria().getVisibleValues();
+       *     // Logs the visible values.
+       *     console.log(pivotFilterValues);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getVisibleValues()
        */
       getVisibleValues(): string[];
@@ -8374,47 +9940,177 @@ declare namespace GoogleAppsScript {
       build(): FilterCriteria;
 
       /**
-       * Creates a builder for a filter criteria based on this filter criteria's settings.
+       * Copies this filter criteria and creates a criteria builder that you can apply to another
+       * filter.
+       *
+       *
+       * You can use this method with any type of filter. If you're using a sheet filter, you can
+       * copy the criteria to another column.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Makes a copy of the filter criteria applied to column C.
+       *     let criteria = filter.getColumnFilterCriteria(3).copy().build();
+       *     // Applies the copied criteria to column B. The copied criteria overwrites any existing
+       *     // criteria on column B.
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#copy()
        */
       copy(): FilterCriteriaBuilder;
 
       /**
-       * Returns the boolean criteria type as defined in the BooleanCriteria enum. To get the
-       * arguments for the criteria, use getCriteriaValues(). To use these values to create or
-       * modify a filter criteria, see withCriteria(criteria, args).
+       * Returns the criteria's boolean type, for example, CELL_EMPTY. To learn about the types
+       * of boolean criteria, see the BooleanCriteria enum.
+       *
+       *
+       * People often use this method to add criteria to a filter without replacing existing
+       * criteria.
+       *
+       *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getCriteriaType()
        */
       getCriteriaType(): BooleanCriteria;
 
       /**
-       * Returns an array of arguments for the boolean criteria. To get the boolean criteria type, use
-       * getCriteriaType(). To use these values to create or modify a filter criteria, see withCriteria(criteria, args).
+       * Returns an array of arguments for boolean criteria. Some boolean criteria types don't have
+       * arguments and return an empty array, for example, CELL_NOT_EMPTY.
+       *
+       *
+       * People often use this method to add criteria to a filter without replacing existing
+       * criteria.
+       *
+       *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getCriteriaValues()
        */
-      getCriteriaValues(): object[];
+      getCriteriaValues(): any[];
 
       /**
-       * Returns the values to hide.
+       * Returns the values that the filter hides.
+       *
+       *
+       * Use this criteria with filters on Grid sheets, the default type of sheet.
+       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
+       * this method for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Gets the filter criteria applied to column B, then gets the hidden values.
+       *     let filterCriteria = filter.getColumnFilterCriteria(2).getHiddenValues();
+       *     // Logs the hidden values.
+       *     console.log(filterCriteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getHiddenValues()
        */
       getHiddenValues(): string[];
 
       /**
-       * Returns the values to show.
+       * Returns the background color used as filter criteria. Cells with this background color remain
+       * visible.
+       *
+       *
+       * Use this criteria with filters on Grid sheets, the default type of sheet.
+       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
+       * this method for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     // Logs the background color that column B is filtered by as a hexadecimal string.
+       *     let filter = range.getFilter();
+       *     let color = filter.getColumnFilterCriteria(2)
+       *                       .getVisibleBackgroundColor()
+       *                       .asRgbColor()
+       *                       .asHexString();
+       *     console.log(color);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getVisibleBackgroundColor()
+       */
+      getVisibleBackgroundColor(): Color;
+
+      /**
+       * Returns the foreground color used as a filter criteria. Cells with this foreground color remain
+       * visible.
+       *
+       *
+       * Use this criteria with filters on Grid sheets, the default type of sheet.
+       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
+       * this method for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     // Logs the foreground color that column B is filtered by as a hexadecimal string.
+       *     let filter = range.getFilter();
+       *     let color = filter.getColumnFilterCriteria(2)
+       *                       .getVisibleForegroundColor()
+       *                       .asRgbColor()
+       *                       .asHexString();
+       *     console.log(color);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getVisibleForegroundColor()
+       */
+      getVisibleForegroundColor(): Color;
+
+      /**
+       * Returns the values that the pivot table filter shows.
+       *
+       *
+       * This criteria is only for filters on pivot tables that aren't connected to a database.
+       * Returns an empty array for other types of filters.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     // Gets the first pivot table on the sheet, then gets the visible values of its first filter.
+       *     pivotTable = ss.getPivotTables()[0];
+       *     pivotFilterValues = pivotTable.getFilters()[0].getFilterCriteria().getVisibleValues();
+       *     // Logs the visible values.
+       *     console.log(pivotFilterValues);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getVisibleValues()
        */
       getVisibleValues(): string[];
 
       /**
        * Sets the values to hide. Clears any existing visible or hidden values.
+       *
+       *
+       * You can use this filter criteria for Grid sheet filters. Grid sheets are
+       * sheets with data that aren't connected to a database.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setHiddenValues(String)
        * @param values The list of values to hide.
        */
       setHiddenValues(values: string[]): FilterCriteriaBuilder;
 
       /**
+       * Sets the background color used as a filter criteria. Cells with this background color remain
+       * visible. Setting a background color filter criteria removes the current color filter criteria
+       * from this builder.
+       *
+       *
+       * You can use this filter criteria for Grid sheet filters. Grid sheets are
+       * sheets with data that aren't connected to a database.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setVisibleBackgroundColor(Color)
+       * @param visibleBackgroundColor The background color to set. This must be an RGB-style color, theme colors are not supported.
+       */
+      setVisibleBackgroundColor(visibleBackgroundColor: Color): FilterCriteriaBuilder;
+
+      /**
+       * Sets the foreground color used as a filter criteria. Cells with this foreground color remain
+       * visible. Setting a foreground color filter criteria removes the current color filter criteria
+       * from this builder.
+       *
+       *
+       * You can use this filter criteria for Grid sheet filters. Grid sheets are
+       * sheets with data that aren't connected to a database.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setVisibleForegroundColor(Color)
+       * @param visibleForegroundColor The foreground color to set. This must be an RGB-style color, theme colors are not supported.
+       */
+      setVisibleForegroundColor(visibleForegroundColor: Color): FilterCriteriaBuilder;
+
+      /**
        * Sets the values to show. It clears any existing visible or hidden values.
+       *
+       *
+       * You can use this criteria for filters on pivot tables that aren't connected to a database.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setVisibleValues(String)
        * @param values The list of values to show.
        */
@@ -8422,18 +10118,30 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where the cell is empty.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenCellEmpty()
        */
       whenCellEmpty(): FilterCriteriaBuilder;
 
       /**
        * Sets the filter criteria to show cells where the cell is not empty.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenCellNotEmpty()
        */
       whenCellNotEmpty(): FilterCriteriaBuilder;
 
       /**
        * Sets the filter criteria to show cells where the cell date is after the specified value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateAfter(Date)
        * @param date The latest date.
        */
@@ -8442,6 +10150,12 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the filter criteria to show cells where the cell date is after the specified relative
        * date.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateAfter(RelativeDate)
        * @param date The latest date relative to the date type selected.
        */
@@ -8449,6 +10163,12 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where the cell date is before the specified date.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateBefore(Date)
        * @param date The earliest unacceptable date.
        */
@@ -8456,6 +10176,12 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where a cell date is before the specified relative date.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateBefore(RelativeDate)
        * @param date The latest date relative to the date type selected.
        */
@@ -8463,6 +10189,12 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where a cell date is equal to the specified date.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateEqualTo(Date)
        * @param date The sole acceptable date.
        */
@@ -8471,22 +10203,78 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the filter criteria to show cells where a cell date is equal to the specified relative
        * date.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateEqualTo(RelativeDate)
        * @param date The latest date relative to the date type selected.
        */
       whenDateEqualTo(date: RelativeDate): FilterCriteriaBuilder;
 
       /**
+       * Sets the filter criteria to show cells where the cell date is equal to any of the specified
+       * dates.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateEqualToAny(Date)
+       * @param dates The acceptable values.
+       */
+      whenDateEqualToAny(dates: Date[]): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells where the cell date is not equal to the specified date.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateNotEqualTo(Date)
+       * @param date The latest date relative to the date type selected.
+       */
+      whenDateNotEqualTo(date: Date): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells where the cell date is not equal to any of the specified
+       * dates.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a date. If the
+       * data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a date, but if it's not, you might get unexpected results.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateNotEqualToAny(Date)
+       * @param dates The acceptable values.
+       */
+      whenDateNotEqualToAny(dates: Date[]): FilterCriteriaBuilder;
+
+      /**
        * Sets the filter criteria to show cells where the specified formula (such as =B:B<C:C)
        * evaluates to true.
+       *
+       *
+       * You can only use this criteria to filter data that isn't connected to a database.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenFormulaSatisfied(String)
        * @param formula A custom formula that evaluates to true if the input is valid.
        */
       whenFormulaSatisfied(formula: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell number is falls between, or is either of,
+       * Sets the filter criteria to show cells where the cell number falls between, or is either of,
        * two specified numbers.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberBetween(Number,Number)
        * @param start The lowest acceptable value.
        * @param end The highest acceptable value.
@@ -8495,14 +10283,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where the cell number is equal to the specified value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberEqualTo(Number)
        * @param number The sole acceptable value.
        */
       whenNumberEqualTo(number: number): FilterCriteriaBuilder;
 
       /**
+       * Sets the filter criteria to show cells where the cell number is equal to any of the specified
+       * numbers.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberEqualToAny(Number)
+       * @param numbers The acceptable values.
+       */
+      whenNumberEqualToAny(numbers: number[]): FilterCriteriaBuilder;
+
+      /**
        * Sets the filter criteria to show cells where the cell number is greater than the specified
        * value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberGreaterThan(Number)
        * @param number The highest unacceptable value.
        */
@@ -8511,6 +10325,12 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the filter criteria to show cells where the cell number is greater than or equal to the
        * specified value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberGreaterThanOrEqualTo(Number)
        * @param number The lowest acceptable value.
        */
@@ -8519,6 +10339,12 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the conditional conditional format rule to show cells where the cell number is less than
        * the specified value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberLessThan(Number)
        * @param number The lowest unacceptable value.
        */
@@ -8527,14 +10353,26 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the filter criteria to show cells where the cell number is less than or equal to the
        * specified value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberLessThanOrEqualTo(Number)
        * @param number The highest acceptable value.
        */
       whenNumberLessThanOrEqualTo(number: number): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell number does not fall between, and is
+       * Sets the filter criteria to show cells where the cell number doesn't fall between, and is
        * neither of, two specified numbers.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotBetween(Number,Number)
        * @param start The lowest unacceptable value.
        * @param end The highest unacceptable value.
@@ -8544,20 +10382,46 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the filter criteria to show cells where the cell number is not equal to the specified
        * value.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotEqualTo(Number)
        * @param number The sole unacceptable value.
        */
       whenNumberNotEqualTo(number: number): FilterCriteriaBuilder;
 
       /**
+       * Sets the filter criteria to show cells where the cell number isn't equal to any of the
+       * specified numbers.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotEqualToAny(Number)
+       * @param numbers The unacceptable values.
+       */
+      whenNumberNotEqualToAny(numbers: number[]): FilterCriteriaBuilder;
+
+      /**
        * Sets the filter criteria to show cells where the cell text contains the specified text.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextContains(String)
        * @param text The value that the input must contain.
        */
       whenTextContains(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text does not contain the specified text.
+       * Sets the filter criteria to show cells where the cell text doesn't contain the specified text.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextDoesNotContain(String)
        * @param text The value that the input must not contain.
        */
@@ -8565,6 +10429,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where the cell text ends with the specified text.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextEndsWith(String)
        * @param text Text to compare against the end of the string.
        */
@@ -8572,13 +10439,51 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the filter criteria to show cells where the cell text is equal to the specified text.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextEqualTo(String)
        * @param text The sole acceptable value.
        */
       whenTextEqualTo(text: string): FilterCriteriaBuilder;
 
       /**
+       * Sets the filter criteria to show cells where the cell text is equal to any of the specified
+       * values.
+       *
+       *
+       * You can use this criteria with any type of filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextEqualToAny(String)
+       * @param texts The acceptable values.
+       */
+      whenTextEqualToAny(texts: string[]): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells where the cell text is not equal to the specified text.
+       *
+       *
+       * You can use this criteria with any type of filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextNotEqualTo(String)
+       * @param text The unacceptable value.
+       */
+      whenTextNotEqualTo(text: string): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells where the cell text is not equal to any of the specified
+       * values.
+       *
+       *
+       * You can use this criteria with any type of filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextNotEqualToAny(String)
+       * @param texts The unacceptable values.
+       */
+      whenTextNotEqualToAny(texts: string[]): FilterCriteriaBuilder;
+
+      /**
        * Sets the filter criteria to show cells where the cell text starts with the specified text.
+       *
+       *
+       * You can use this criteria with any type of filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextStartsWith(String)
        * @param text Text to compare against the beginning of the string.
        */
@@ -8587,6 +10492,10 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the boolean criteria to criteria defined by BooleanCriteria values, typically
        * taken from the criteria and arguments of an existing criteria.
+       *
+       *
+       * You can use this criteria with any type of filter, but some BooleanCriteria aren't
+       * applicable for all filters.
        *
        *
        *     // Builds a filter criteria that is based on an existing criteria.
@@ -8601,8 +10510,12 @@ declare namespace GoogleAppsScript {
        * @param criteria The type of boolean criteria.
        * @param args An array of arguments appropriate to the criteria type; the number of arguments and their type match the corresponding when...() method above.
        */
-      withCriteria(criteria: BooleanCriteria, args: object[]): FilterCriteriaBuilder;
+      withCriteria(criteria: BooleanCriteria, args: any[]): FilterCriteriaBuilder;
     }
+    /**
+     * An enumeration of frequency types.
+     */
+    enum FrequencyType { FREQUENCY_TYPE_UNSUPPORTED, DAILY, WEEKLY, MONTHLY }
     /**
      * Access gradient (color) conditions in ConditionalFormatRuleApis.
      * Each conditional format rule may contain a single gradient condition. A gradient condition is
@@ -8612,6 +10525,7 @@ declare namespace GoogleAppsScript {
      * based on the cell content's proximity to the gradient condition min, mid, and max points.
      *
      *     // Logs all the information inside gradient conditional format rules on a sheet.
+     *     // The below snippet assumes all colors have ColorType.RGB.
      *     var sheet = SpreadsheetApp.getActiveSheet();
      *     var rules = sheet.getConditionalFormatRules();
      *     for (int i = 0; i < rules.length; i++) {
@@ -8620,19 +10534,22 @@ declare namespace GoogleAppsScript {
      *         MinColor %s, MinType %s, MinValue %s, \n
      *         MidColor %s, MidType %s, MidValue %s, \n
      *         MaxColor %s, MaxType %s, MaxValue %s \n", i,
-     *         gradient.getMinColor(), gradient.getMinType(), gradient.getMinValue(),
-     *         gradient.getMidColor(), gradient.getMidType(), gradient.getMidValue(),
-     *         gradient.getMaxColor(), gradient.getMaxType(), gradient.getMaxValue());
+     *         gradient.getMinColorObject().asRgbColor().asHexString(),
+     *         gradient.getMinType(), gradient.getMinValue(),
+     *         gradient.getMidColorObject().asRgbColor().asHexString(),
+     *         gradient.getMidType(), gradient.getMidValue(),
+     *         gradient.getMaxColorObject().asRgbColor().asHexString(),
+     *         gradient.getMaxType(), gradient.getMaxValue());
      *     }
      */
     interface GradientCondition {
 
       /**
-       * Gets the color set for the maximum value of this gradient condition. Returns an empty string if
+       * Gets the color set for the maximum value of this gradient condition. Returns null if
        * the color hasn't been set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMaxColor()
+       * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMaxColorObject()
        */
-      getMaxColor(): string;
+      getMaxColorObject(): Color;
 
       /**
        * Gets the interpolation type for the maximum value of this gradient condition. Returns null if the gradient max type hasn't been set.
@@ -8648,11 +10565,11 @@ declare namespace GoogleAppsScript {
       getMaxValue(): string;
 
       /**
-       * Gets the color set for the mid-point value of this gradient condition. Returns an empty string
-       * if the color hasn't been set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMidColor()
+       * Gets the color set for the midpoint value of this gradient condition. Returns null if
+       * the color hasn't been set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMidColorObject()
        */
-      getMidColor(): string;
+      getMidColorObject(): Color;
 
       /**
        * Gets the interpolation type for the mid-point value of this gradient condition. Returns null if the gradient mid type hasn't been set.
@@ -8668,11 +10585,11 @@ declare namespace GoogleAppsScript {
       getMidValue(): string;
 
       /**
-       * Gets the color set for the minimum value of this gradient condition. Returns an empty string if
+       * Gets the color set for the minimum value of this gradient condition. Returns null if
        * the color hasn't been set.
-       * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMinColor()
+       * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMinColorObject()
        */
-      getMinColor(): string;
+      getMinColorObject(): Color;
 
       /**
        * Gets the interpolation type for the minimum value of this gradient condition. Returns null if the gradient min type hasn't been set.
@@ -8686,6 +10603,9 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/gradient-condition#getMinValue()
        */
       getMinValue(): string;
+      /** @deprecated DO NOT USE */ getMaxColor(): string;
+      /** @deprecated DO NOT USE */ getMidColor(): string;
+      /** @deprecated DO NOT USE */ getMinColor(): string;
     }
     /**
      * Access and modify spreadsheet groups. Groups are an association between an interval of contiguous
@@ -8709,7 +10629,7 @@ declare namespace GoogleAppsScript {
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(2, 1);
+       *     var group = sheet.getRowGroup(2, 1);
        *
        *     // Collapses this group.
        *     group.collapse();
@@ -8724,7 +10644,7 @@ declare namespace GoogleAppsScript {
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(2, 1);
+       *     var group = sheet.getRowGroup(2, 1);
        *
        *     // Expands this group.
        *     group.expand();
@@ -8741,7 +10661,7 @@ declare namespace GoogleAppsScript {
        *     sheet.setRowGroupControlAfter(true);
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(2, 1);
+       *     var group = sheet.getRowGroup(2, 1);
        *
        *     // Returns 4
        *     var controlIndex = group.getControlIndex();
@@ -8756,7 +10676,7 @@ declare namespace GoogleAppsScript {
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(2, 1);
+       *     var group = sheet.getRowGroup(2, 1);
        *
        *     // Returns 1 if the group is at depth 1.
        *     var depth = group.getDepth();
@@ -8771,7 +10691,7 @@ declare namespace GoogleAppsScript {
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(1, 1);
+       *     var group = sheet.getRowGroup(1, 1);
        *
        *     // Returns the range 2:3 if the group is over rows 2:3
        *     range = group.getRange();
@@ -8786,7 +10706,7 @@ declare namespace GoogleAppsScript {
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(2, 1);
+       *     var group = sheet.getRowGroup(2, 1);
        *
        *     // Returns true if the group is collapsed.
        *     var isCollapsed = group.isCollapsed();
@@ -8802,7 +10722,7 @@ declare namespace GoogleAppsScript {
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
        *     var range = sheet.getRange(2:3);
        *     range.shiftRowGroupDepth(1);
-       *     var group = sheet.getRowGroupAt(2, 1);
+       *     var group = sheet.getRowGroup(2, 1);
        *
        *     // Removes this group
        *     var range = group.remove();
@@ -8993,7 +10913,8 @@ declare namespace GoogleAppsScript {
       remove(): void;
 
       /**
-       * Replaces this image with the one specified by the provided BlobSource.
+       * Replaces this image with the one specified by the provided BlobSource. The maximum
+       * supported blob size is 2MB.
        * https://developers.google.com/apps-script/reference/spreadsheet/over-grid-image#replace(BlobSource)
        * @param blob The new image as a Blob.
        */
@@ -9101,6 +11022,13 @@ declare namespace GoogleAppsScript {
       getSourceDataColumn(): Integer;
 
       /**
+       * Returns the data source column the filter operates on. Returns null if the pivot table
+       * is not a {DataSourcePivotTableApi}.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-filter#getSourceDataSourceColumn()
+       */
+      getSourceDataSourceColumn(): DataSourceColumn;
+
+      /**
        * Removes this pivot filter from the pivot table.
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-filter#remove()
        */
@@ -9124,7 +11052,7 @@ declare namespace GoogleAppsScript {
        * @param groupName The name of this grouping rule.
        * @param groupMembers The values that are included in this grouping rule.
        */
-      addManualGroupingRule(groupName: string, groupMembers: object[]): PivotGroup;
+      addManualGroupingRule(groupName: string, groupMembers: any[]): PivotGroup;
 
       /**
        * Returns whether labels are displayed as repeated.
@@ -9145,10 +11073,24 @@ declare namespace GoogleAppsScript {
       clearSort(): PivotGroup;
 
       /**
+       * Returns the date-time grouping rule on the pivot group, or null if no date-time
+       * grouping rule is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#getDateTimeGroupingRule()
+       */
+      getDateTimeGroupingRule(): DateTimeGroupingRule;
+
+      /**
        * Returns whether this is a row or column group.
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#getDimension()
        */
       getDimension(): Dimension;
+
+      /**
+       * Returns the pivot group limit on the pivot group. Returns null if no pivot group limit
+       * is set.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#getGroupLimit()
+       */
+      getGroupLimit(): PivotGroupLimit;
 
       /**
        * Returns the index of this pivot group in the current group order.
@@ -9168,6 +11110,13 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#getSourceDataColumn()
        */
       getSourceDataColumn(): Integer;
+
+      /**
+       * Returns the data source column the pivot group operates on. Returns null if the pivot
+       * table is not a {DataSourcePivotTableApi}.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#getSourceDataSourceColumn()
+       */
+      getSourceDataSourceColumn(): DataSourceColumn;
 
       /**
        * Hides repeated labels for this grouping. If labels are already hidden this results in a no-op.
@@ -9213,11 +11162,28 @@ declare namespace GoogleAppsScript {
       resetDisplayName(): PivotGroup;
 
       /**
+       * Sets the date-time grouping rule on the pivot group.
+       *
+       *
+       * To remove the rule, use clearGroupingRule().
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#setDateTimeGroupingRule(DateTimeGroupingRuleType)
+       * @param dateTimeGroupingRuleType The rule type to set.
+       */
+      setDateTimeGroupingRule(dateTimeGroupingRuleType: DateTimeGroupingRuleType): PivotGroup;
+
+      /**
        * Sets the display name of this group in the pivot table.
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#setDisplayName(String)
        * @param name The display name to set.
        */
       setDisplayName(name: string): PivotGroup;
+
+      /**
+       * Sets the pivot group limit on the pivot group. The operation is only supported for DataSourcePivotTable.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#setGroupLimit(Integer)
+       * @param countLimit The count limit of rows or columns to set. Must be positive.
+       */
+      setGroupLimit(countLimit: Integer): PivotGroup;
 
       /**
        * Sets a histogram grouping rule for this pivot group. A histogram rule organizes values in a
@@ -9266,7 +11232,7 @@ declare namespace GoogleAppsScript {
        * @param value The pivot value to sort by.
        * @param oppositeGroupValues The values of an opposite pivot group (a column group if sorting a row group, or a row group if sorting a column group) that are used to sort. The order of these values determines precedence for tie breaking.
        */
-      sortBy(value: PivotValue, oppositeGroupValues: object[]): PivotGroup;
+      sortBy(value: PivotValue, oppositeGroupValues: any[]): PivotGroup;
 
       /**
        * Sets the sort order to be descending.
@@ -9279,6 +11245,36 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#totalsAreShown()
        */
       totalsAreShown(): boolean;
+    }
+    /**
+     * Access and modify pivot table group limit.
+     */
+    interface PivotGroupLimit {
+
+      /**
+       * Gets the count limit on rows or columns in the pivot group.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group-limit#getCountLimit()
+       */
+      getCountLimit(): Integer;
+
+      /**
+       * Returns the pivot group the limit belongs to.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group-limit#getPivotGroup()
+       */
+      getPivotGroup(): PivotGroup;
+
+      /**
+       * Removes the pivot group limit.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group-limit#remove()
+       */
+      remove(): void;
+
+      /**
+       * Sets the count limit on rows or columns in the pivot group.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group-limit#setCountLimit(Integer)
+       * @param countLimit The count limit on rows or columns to set. Must be positive.
+       */
+      setCountLimit(countLimit: Integer): PivotGroupLimit;
     }
     /**
      * Access and modify pivot tables.
@@ -9330,6 +11326,12 @@ declare namespace GoogleAppsScript {
       addRowGroup(sourceDataColumn: Integer): PivotGroup;
 
       /**
+       * Returns the pivot table as a data source pivot table if the pivot table is linked to a DataSource, or null otherwise.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-table#asDataSourcePivotTable()
+       */
+      asDataSourcePivotTable(): DataSourcePivotTable;
+
+      /**
        * Returns the Range representing the cell where this pivot table is anchored.
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-table#getAnchorCell()
        */
@@ -9358,6 +11360,12 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-table#getRowGroups()
        */
       getRowGroups(): PivotGroup[];
+
+      /**
+       * Returns the source data range on which the pivot table is constructed.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-table#getSourceDataRange()
+       */
+      getSourceDataRange(): Range;
 
       /**
        * Returns whether values are displayed as rows or columns.
@@ -9407,10 +11415,31 @@ declare namespace GoogleAppsScript {
       getPivotTable(): PivotTable;
 
       /**
+       * Returns the number of the source data column the pivot value summarizes. This index is 1-based,
+       * if this group summarizes source data in column "A" of the spreadsheet this method returns
+       * 1.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-value#getSourceDataColumn()
+       */
+      getSourceDataColumn(): Integer;
+
+      /**
+       * Returns the data source column the pivot value summarizes. Returns null if the pivot
+       * table is not a {DataSourcePivotTableApi}.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-value#getSourceDataSourceColumn()
+       */
+      getSourceDataSourceColumn(): DataSourceColumn;
+
+      /**
        * Returns this group’s summarization function.
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-value#getSummarizedBy()
        */
       getSummarizedBy(): PivotTableSummarizeFunction;
+
+      /**
+       * Remove this value from the pivot table.
+       * https://developers.google.com/apps-script/reference/spreadsheet/pivot-value#remove()
+       */
+      remove(): void;
 
       /**
        * Sets the display name for this value in the pivot table.
@@ -9518,6 +11547,13 @@ declare namespace GoogleAppsScript {
       addEditors(emailAddresses: string[]): Protection;
 
       /**
+       * Adds the specified target audience as an editor of the protected range.
+       * https://developers.google.com/apps-script/reference/spreadsheet/protection#addTargetAudience(String)
+       * @param audienceId The ID of the target audience to add.
+       */
+      addTargetAudience(audienceId: string): Protection;
+
+      /**
        * Determines whether all users in the domain that owns the spreadsheet have permission to edit
        * the protected range or sheet. Throws an exception if the user does not have permission to edit
        * the protected range or sheet.
@@ -9603,6 +11639,12 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#getRangeName()
        */
       getRangeName(): string;
+
+      /**
+       * Returns the IDs of the target audiences that can edit the protected range.
+       * https://developers.google.com/apps-script/reference/spreadsheet/protection#getTargetAudiences()
+       */
+      getTargetAudiences(): any[];
 
       /**
        * Gets an array of unprotected ranges within a protected sheet. If the Protection object
@@ -9698,6 +11740,13 @@ declare namespace GoogleAppsScript {
       removeEditors(emailAddresses: string[]): Protection;
 
       /**
+       * Removes the specified target audience as an editor of the protected range.
+       * https://developers.google.com/apps-script/reference/spreadsheet/protection#removeTargetAudience(String)
+       * @param audienceId The ID of the target audience to remove.
+       */
+      removeTargetAudience(audienceId: string): Protection;
+
+      /**
        * Sets the description of the protected range or sheet.
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#setDescription(String)
        * @param description The description of the protected range or sheet.
@@ -9708,7 +11757,7 @@ declare namespace GoogleAppsScript {
        * Sets whether all users in the domain that owns the spreadsheet have permission to edit the
        * protected range or sheet. Note that any users who have explicit edit permission are able to
        * edit the protected area regardless of this setting. Throws an exception if the spreadsheet does
-       * not belong to a G Suite domain (that is, if it is owned by a gmail.com account).
+       * not belong to a Google Workspace domain (that is, if it is owned by a gmail.com account).
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#setDomainEdit(Boolean)
        * @param editable true if all users in the domain that owns the spreadsheet should have permission to edit the protected range or sheet; false if not.
        */
@@ -10051,11 +12100,11 @@ declare namespace GoogleAppsScript {
        *
        *     // The code below clears range C2:G8 in the active sheet, but preserves the format,
        *     // data validation rules, and comments.
-       *     SpreadsheetApp.getActiveSheet().getRange(2, 3, 6, 4).clear({contentsOnly: true});
+       *     SpreadsheetApp.getActiveSheet().getRange(2, 3, 6, 5).clear({contentsOnly: true});
        * https://developers.google.com/apps-script/reference/spreadsheet/range#clear(Object)
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      clear(options: object): Range;
+      clear(options: any): Range;
 
       /**
        * Clears the content of the range, leaving the formatting intact.
@@ -10120,7 +12169,7 @@ declare namespace GoogleAppsScript {
        *     var range = sheet.getActiveRange();
        *
        *     // All row and column groups within the range are collapsed.
-       *     range.expandGroups();
+       *     range.collapseGroups();
        * https://developers.google.com/apps-script/reference/spreadsheet/range#collapseGroups()
        */
       collapseGroups(): Range;
@@ -10196,7 +12245,8 @@ declare namespace GoogleAppsScript {
        *
        *     // The code below copies only the values of the first 5 columns over to the 6th column.
        *     var sheet = SpreadsheetApp.getActiveSheet();
-       *     sheet.getRange("A:E").copyTo(sheet.getRange("F1"), SpreadsheetApp.CopyPasteType.PASTE_VALUES);
+       *     sheet.getRange("A:E").copyTo(sheet.getRange("F1"), SpreadsheetApp.CopyPasteType.PASTE_VALUES,
+       *     false);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#copyTo(Range,CopyPasteType,Boolean)
        * @param destination A destination range to copy to; only the top-left cell position is relevant.
        * @param copyPasteType A type that specifies how the range contents are pasted to the destination.
@@ -10216,7 +12266,7 @@ declare namespace GoogleAppsScript {
        * @param destination A destination range to copy to; only the top-left cell position is relevant.
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      copyTo(destination: Range, options: object): void;
+      copyTo(destination: Range, options: any): void;
 
       /**
        * Copy the content of the range to the given location. If the destination is larger or smaller
@@ -10267,6 +12317,50 @@ declare namespace GoogleAppsScript {
       copyValuesToRange(sheet: Sheet, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): void;
 
       /**
+       * Creates an empty data source pivot table from the data source, anchored at the first cell in
+       * this range.
+       *
+       *
+       * This example shows how to create and configure a new data source pivot table.
+       *
+       *
+       *     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+       *     var anchorCell = spreadsheet.getSheets()[0].getRange('A1');
+       *     var dataSource = spreadsheet.getDataSources()[0];
+       *
+       *     var pivotTable = anchorCell.createDataSourcePivotTable(dataSource);
+       *     pivotTable.addRowGroup('dataColumnA');
+       *     pivotTable.addColumnGroup('dataColumnB');
+       *     pivotTable.addPivotValue('dataColumnC', SpreadsheetApp.PivotTableSummarizeFunction.SUM);
+       *     pivotTable.addFilter('dataColumnA',
+       *                          SpreadsheetApp.newFilterCriteria().whenTextStartsWith('A').build());
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#createDataSourcePivotTable(DataSource)
+       * @param dataSource The data source to create the pivot table from.
+       */
+      createDataSourcePivotTable(dataSource: DataSource): DataSourcePivotTable;
+
+      /**
+       * Creates an empty data source table from the data source, anchored at the first cell in this
+       * range.
+       *
+       *
+       * This example shows how to create and configure a new data source table.
+       *
+       *
+       *     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+       *     var anchorCell = spreadsheet.getSheets()[0].getRange('A1');
+       *     var dataSource = spreadsheet.getDataSources()[0];
+       *
+       *     var dataSourceTable = anchorCell.createDataSourceTable(dataSource);
+       *         .addColumns('dataColumnA', 'dataColumnB', 'dataColumnC')
+       *         .addSortSpec('dataColumnA', /* ascending= *\/ true)
+       *         .addSortSpec('dataColumnB', /* ascending= *\/ false);
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#createDataSourceTable(DataSource)
+       * @param dataSource The data source to create the pivot table from.
+       */
+      createDataSourceTable(dataSource: DataSource): DataSourceTable;
+
+      /**
        * Returns a DeveloperMetadataFinderApi for finding developer metadata within the scope of this
        * range. Metadata is within the scope of the range only if it is wholly contained within that
        * range. For example, metadata associated with the row ‘3:3’ is not in the scope of a range
@@ -10276,7 +12370,25 @@ declare namespace GoogleAppsScript {
       createDeveloperMetadataFinder(): DeveloperMetadataFinder;
 
       /**
-       * Creates a filter applied to the range. There can be at most one filter in a sheet.
+       * Creates a filter and applies it to the specified range on the sheet. You can't create more than
+       * one filter on a sheet. To access and modify your filter after you create it, use getFilter() or Sheet.getFilter().
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *
+       *     // Creates a new filter and applies it to the range A1:C20 on the active sheet.
+       *     function createFilter() {
+       *       range.createFilter();
+       *     }
+       *     // Gets the filter and applies criteria that only shows cells that aren't empty.
+       *     function getFilterAddCriteria() {
+       *       let filter = range.getFilter();
+       *       let criteria = SpreadsheetApp.newFilterCriteria()
+       *         .whenCellNotEmpty()
+       *         .build();
+       *       filter.setColumnFilterCriteria(2, criteria);
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/range#createFilter()
        */
       createFilter(): Filter;
@@ -10369,6 +12481,37 @@ declare namespace GoogleAppsScript {
       getBackground(): string;
 
       /**
+       * Returns the background color of the top-left cell in the range.
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *
+       *     var cell = sheet.getRange("B5");
+       *     Logger.log(cell.getBackgroundObject().asRgbColor().asHexString());
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getBackgroundObject()
+       */
+      getBackgroundObject(): Color;
+
+      /**
+       * Returns the background colors of the cells in the range.
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *
+       *     var range = sheet.getRange("B5:C6");
+       *     var bgColors = range.getBackgroundObjects();
+       *     for (var i in bgColors) {
+       *       for (var j in bgColors[i]) {
+       *         Logger.log(bgColors[i][j].asRgbColor().asHexString());
+       *       }
+       *     }
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getBackgroundObjects()
+       */
+      getBackgroundObjects(): Color[][];
+
+      /**
        * Returns the background colors of the cells in the range (for example, '#ffffff').
        *
        *
@@ -10402,7 +12545,7 @@ declare namespace GoogleAppsScript {
        *     var range = sheet.getRange("B2:D4");
        *
        *     // The row and column here are relative to the range
-       *     // getCell(1,1) in this code returns the cell at B2, B2
+       *     // getCell(1,1) in this code returns the cell at B2
        *     var cell = range.getCell(1, 1);
        *     Logger.log(cell.getValue());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getCell(Integer,Integer)
@@ -10471,6 +12614,25 @@ declare namespace GoogleAppsScript {
        * @param dimension The dimension along which to expand the range.
        */
       getDataRegion(dimension: Dimension): Range;
+
+      /**
+       * Returns the DataSourceFormula for the first cell in the range, or null if
+       * the cell doesn't contain a data source formula.
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourceFormula()
+       */
+      getDataSourceFormula(): DataSourceFormula;
+
+      /**
+       * Returns the DataSourceFormulas for the cells in the range.
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourceFormulas()
+       */
+      getDataSourceFormulas(): DataSourceFormula[];
+
+      /**
+       * Gets all the data source pivot tables intersecting with the range.
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourcePivotTables()
+       */
+      getDataSourcePivotTables(): DataSourcePivotTable[];
 
       /**
        * Gets all the data source tables intersecting with the range.
@@ -10603,45 +12765,49 @@ declare namespace GoogleAppsScript {
       getDisplayValues(): string[][];
 
       /**
-       * Returns the filter in the sheet this range belongs to, or null if there is no filter on
+       * Returns the filter on the sheet this range belongs to, or null if there is no filter on
        * the sheet.
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     // Gets the existing filter on the sheet that the given range belongs to.
+       *     let filter = range.getFilter();
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getFilter()
        */
       getFilter(): Filter;
 
       /**
-       * Returns the font color of the cell in the top-left corner of the range, in CSS notation (such
-       * as '#ffffff' or 'white').
+       * Returns the font color of the cell in the top-left corner of the range.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *     var range = sheet.getRange("B2:D4");
        *
-       *     Logger.log(range.getFontColor());
-       * https://developers.google.com/apps-script/reference/spreadsheet/range#getFontColor()
+       *     Logger.log(range.getFontColorObject().asRgbColor().asHexString());
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getFontColorObject()
        */
-      getFontColor(): string;
+      getFontColorObject(): Color;
 
       /**
-       * Returns the font colors of the cells in the range in CSS notation (such as '#ffffff' or
-       * 'white').
+       * Returns the font colors of the cells in the range.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *     var range = sheet.getRange("B2:D4");
        *
-       *     var results = range.getFontColors();
+       *     var results = range.getFontColorObjects();
        *
        *     for (var i in results) {
        *       for (var j in results[i]) {
-       *         Logger.log(results[i][j]);
+       *         Logger.log(results[i][j].asRgbColor().asHexString());
        *       }
        *     }
-       * https://developers.google.com/apps-script/reference/spreadsheet/range#getFontColors()
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#getFontColorObjects()
        */
-      getFontColors(): string[][];
+      getFontColorObjects(): Color[][];
 
       /**
        * Returns the font families of the cells in the range.
@@ -10999,7 +13165,7 @@ declare namespace GoogleAppsScript {
        *
        *     var range = sheet.getRange("C3:E5");
        *     // Logs "C1"
-       *     Logger.log(range.getNextDataCell(Direction.UP).getA1Notation());
+       *     Logger.log(range.getNextDataCell(SpreadsheetApp.Direction.UP).getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getNextDataCell(Direction)
        * @param direction The direction in which to find the next data region edge cell.
        */
@@ -11261,7 +13427,7 @@ declare namespace GoogleAppsScript {
        * cells return an empty string.
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getValue()
        */
-      getValue(): object;
+      getValue(): any;
 
       /**
        * Returns the rectangular grid of values for this range.
@@ -11279,7 +13445,7 @@ declare namespace GoogleAppsScript {
        *     Logger.log(values[0][0]);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getValues()
        */
-      getValues(): object[][];
+      getValues(): any[][];
 
       /**
        * Returns the vertical alignment (top/middle/bottom) of the cell in the top-left corner of the
@@ -11321,8 +13487,7 @@ declare namespace GoogleAppsScript {
       getWidth(): Integer;
 
       /**
-       * Returns the wrapping policy of the cell in the top-left corner of the range. true if
-       * the text wraps, false if the text does not.
+       * Returns whether the text in the cell wraps. To get more granular wrap strategy, use getWrapStrategy().
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -11365,7 +13530,7 @@ declare namespace GoogleAppsScript {
       getWrapStrategy(): WrapStrategy;
 
       /**
-       * Returns the wrapping policy of the cells in the range.
+       * Returns whether the text in the cells wrap. To get more granular wrap strategy, use getWrapStrategies().
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -11430,7 +13595,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#insertCheckboxes(Object)
        * @param checkedValue The checked value for the checkbox data validation.
        */
-      insertCheckboxes(checkedValue: object): Range;
+      insertCheckboxes(checkedValue: any): Range;
 
       /**
        * Inserts checkboxes into each cell in the range, configured with custom values for the checked
@@ -11446,7 +13611,7 @@ declare namespace GoogleAppsScript {
        * @param checkedValue The checked value for the checkbox data validation.
        * @param uncheckedValue The unchecked value for the checkbox data validation.
        */
-      insertCheckboxes(checkedValue: object, uncheckedValue: object): Range;
+      insertCheckboxes(checkedValue: any, uncheckedValue: any): Range;
 
       /**
        * Returns true if the range is totally blank.
@@ -11774,6 +13939,55 @@ declare namespace GoogleAppsScript {
       setBackground(color: string): Range;
 
       /**
+       * Sets the background color of all cells in the range.
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *     var bgColor = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.BACKGROUND)
+       *         .build();
+       *
+       *     var range = sheet.getRange("B2:D5");
+       *     range.setBackgroundObject(bgColor);
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#setBackgroundObject(Color)
+       * @param color The background color to set; null value resets the background color.
+       */
+      setBackgroundObject(color: Color): Range;
+
+      /**
+       * Sets a rectangular grid of background colors (must match dimensions of this range).
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *
+       *     var colorAccent1 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+       *         .build();
+       *     var colorAccent2 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT2)
+       *         .build();
+       *     var colorAccent3 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT3)
+       *         .build();
+       *     var colorAccent4 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT4)
+       *         .build();
+       *
+       *     var colors = [
+       *       [colorAccent1, colorAccent2],
+       *       [colorAccent3, colorAccent4]
+       *     ];
+       *
+       *     var cell = sheet.getRange("B5:C6");
+       *     cell.setBackgroundObjects(colors);
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#setBackgroundObjects(Color)
+       * @param color A two-dimensional array of colors; null values reset the color.
+       */
+      setBackgroundObjects(color: Color[][]): Range;
+
+      /**
        * Sets the background to the given color using RGB values (integers between 0 and 255 inclusive).
        *
        *
@@ -11908,6 +14122,55 @@ declare namespace GoogleAppsScript {
       setFontColor(color: string): Range;
 
       /**
+       * Sets the font color of the given range.
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *     var color = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.TEXT)
+       *         .build();
+       *
+       *     var cell = sheet.getRange("B2");
+       *     cell.setFontColor(color);
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontColorObject(Color)
+       * @param color The font color to set; a null value resets the color.
+       */
+      setFontColorObject(color: Color): Range;
+
+      /**
+       * Sets a rectangular grid of font colors (must match dimensions of this range).
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *
+       *     var colorAccent1 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+       *         .build();
+       *     var colorAccent2 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT2)
+       *         .build();
+       *     var colorAccent3 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT3)
+       *         .build();
+       *     var colorAccent4 = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT4)
+       *         .build();
+       *
+       *     var colors = [
+       *       [colorAccent1, colorAccent2],
+       *       [colorAccent3, colorAccent4]
+       *     ];
+       *
+       *     var cell = sheet.getRange("B5:C6");
+       *     cell.setFontColorObjects(colors);
+       * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontColorObjects(Color)
+       * @param colors A two-dimensional array of colors; null values reset the font color.
+       */
+      setFontColorObjects(colors: Color[][]): Range;
+
+      /**
        * Sets a rectangular grid of font colors (must match dimensions of this range). The colors are in
        * CSS notation (such as '#ffffff' or 'white').
        *
@@ -11925,7 +14188,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontColors(Object)
        * @param colors A two-dimensional array of colors in CSS notation (such as '#ffffff' or 'white'); null values reset the color.
        */
-      setFontColors(colors: object[][]): Range;
+      setFontColors(colors: any[][]): Range;
 
       /**
        * Sets a rectangular grid of font families (must match dimensions of this range). Examples of
@@ -11945,7 +14208,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontFamilies(Object)
        * @param fontFamilies A two-dimensional array of font families; null values reset the font family.
        */
-      setFontFamilies(fontFamilies: object[][]): Range;
+      setFontFamilies(fontFamilies: any[][]): Range;
 
       /**
        * Sets the font family, such as "Arial" or "Helvetica".
@@ -11993,7 +14256,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontLines(Object)
        * @param fontLines A two-dimensional array of font line styles ('underline', 'line-through', or 'none'); null values reset the font line style.
        */
-      setFontLines(fontLines: object[][]): Range;
+      setFontLines(fontLines: any[][]): Range;
 
       /**
        * Sets the font size, with the size being the point size to use.
@@ -12027,7 +14290,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontSizes(Object)
        * @param sizes A two-dimensional array of sizes.
        */
-      setFontSizes(sizes: object[][]): Range;
+      setFontSizes(sizes: any[][]): Range;
 
       /**
        * Set the font style for the given range ('italic' or 'normal').
@@ -12060,7 +14323,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontStyles(Object)
        * @param fontStyles A two-dimensional array of font styles, either 'italic' or 'normal'; null values reset the font style.
        */
-      setFontStyles(fontStyles: object[][]): Range;
+      setFontStyles(fontStyles: any[][]): Range;
 
       /**
        * Set the font weight for the given range (normal/bold).
@@ -12094,7 +14357,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setFontWeights(Object)
        * @param fontWeights A two-dimensional array of font weights, either 'bold' or 'normal'; null values reset the font weight.
        */
-      setFontWeights(fontWeights: object[][]): Range;
+      setFontWeights(fontWeights: any[][]): Range;
 
       /**
        * Updates the formula for this range. The given formula must be in A1 notation.
@@ -12206,7 +14469,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setHorizontalAlignments(Object)
        * @param alignments A two-dimensional array of alignments, either 'left', 'center' or 'normal'; a null value resets the alignment.
        */
-      setHorizontalAlignments(alignments: object[][]): Range;
+      setHorizontalAlignments(alignments: any[][]): Range;
 
       /**
        * Sets the note to the given value.
@@ -12240,7 +14503,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setNotes(Object)
        * @param notes A two-dimensional array of notes; null values remove the note.
        */
-      setNotes(notes: object[][]): Range;
+      setNotes(notes: any[][]): Range;
 
       /**
        * Sets the number or date format to the given formatting string. The accepted format patterns are
@@ -12277,7 +14540,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setNumberFormats(Object)
        * @param numberFormats A two-dimensional array of number formats.
        */
-      setNumberFormats(numberFormats: object[][]): Range;
+      setNumberFormats(numberFormats: any[][]): Range;
 
       /**
        * Sets the Rich Text value for the cells in the range.
@@ -12467,7 +14730,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setValue(Object)
        * @param value The value for the range.
        */
-      setValue(value: object): Range;
+      setValue(value: any): Range;
 
       /**
        * Sets a rectangular grid of values (must match dimensions of this range).
@@ -12486,7 +14749,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setValues(Object)
        * @param values A two-dimensional array of values.
        */
-      setValues(values: object[][]): Range;
+      setValues(values: any[][]): Range;
 
       /**
        * Set the vertical (top to bottom) alignment for the given range (top/middle/bottom).
@@ -12519,7 +14782,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setVerticalAlignments(Object)
        * @param alignments A two-dimensional array of alignments, either 'top', 'middle' or 'bottom'; a null value resets the alignment.
        */
-      setVerticalAlignments(alignments: object[][]): Range;
+      setVerticalAlignments(alignments: any[][]): Range;
 
       /**
        * Sets whether or not to stack the text for the cells in the range. If the text is stacked
@@ -12602,7 +14865,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setWraps(Object)
        * @param isWrapEnabled A two-dimensional array of wrap variables that determine whether to wrap text in a cell or not.
        */
-      setWraps(isWrapEnabled: object[][]): Range;
+      setWraps(isWrapEnabled: any[][]): Range;
 
       /**
        * Changes the column grouping depth of the range by the specified amount.
@@ -12698,7 +14961,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#sort(Object)
        * @param sortSpecObj The columns to sort by.
        */
-      sort(sortSpecObj: object): Range;
+      sort(sortSpecObj: any): Range;
 
       /**
        * Splits a column of text into multiple columns based on an auto-detected delimiter.
@@ -12792,6 +15055,8 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#uncheck()
        */
       uncheck(): Range;
+      /** @deprecated DO NOT USE */ getFontColor(): string;
+      /** @deprecated DO NOT USE */ getFontColors(): string[][];
     }
     /**
      * A collection of one or more Range instances in the same sheet. You can use this class
@@ -12876,7 +15141,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range-list#clear(Object)
        * @param options A JavaScript object that specifies advanced parameters, as listed below.
        */
-      clear(options: object): RangeList;
+      clear(options: any): RangeList;
 
       /**
        * Clears the content of each Range in the range list, leaving the formatting intact.
@@ -12960,7 +15225,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range-list#insertCheckboxes(Object)
        * @param checkedValue The checked value for the checkbox data validation.
        */
-      insertCheckboxes(checkedValue: object): RangeList;
+      insertCheckboxes(checkedValue: any): RangeList;
 
       /**
        * Inserts checkboxes into each cell in the range, configured with custom values for the checked
@@ -12976,7 +15241,7 @@ declare namespace GoogleAppsScript {
        * @param checkedValue The checked value for the checkbox data validation.
        * @param uncheckedValue The unchecked value for the checkbox data validation.
        */
-      insertCheckboxes(checkedValue: object, uncheckedValue: object): RangeList;
+      insertCheckboxes(checkedValue: any, uncheckedValue: any): RangeList;
 
       /**
        * Removes all checkboxes from the range. Clears the data validation of each cell, and
@@ -13276,7 +15541,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range-list#setValue(Object)
        * @param value The value for the range.
        */
-      setValue(value: object): RangeList;
+      setValue(value: any): RangeList;
 
       /**
        * Set the vertical alignment for each Range in the range list. The alignment options
@@ -13391,6 +15656,22 @@ declare namespace GoogleAppsScript {
       getEndIndex(): Integer;
 
       /**
+       * Returns the link URL for this value.
+       * https://developers.google.com/apps-script/reference/spreadsheet/rich-text-value#getLinkUrl()
+       */
+      getLinkUrl(): string;
+
+      /**
+       * Returns the link URL for the text from startOffset to endOffset. Offsets are 0
+       * based and relative to the cell's text, with the start offset being inclusive and the end offset
+       * being exclusive.
+       * https://developers.google.com/apps-script/reference/spreadsheet/rich-text-value#getLinkUrl(Integer,Integer)
+       * @param startOffset The start offset.
+       * @param endOffset The end offset.
+       */
+      getLinkUrl(startOffset: Integer, endOffset: Integer): string;
+
+      /**
        * Returns the Rich Text string split into an array of runs, wherein each run is the longest
        * possible substring having a consistent text style.
        * https://developers.google.com/apps-script/reference/spreadsheet/rich-text-value#getRuns()
@@ -13435,6 +15716,47 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/rich-text-value-builder#build()
        */
       build(): RichTextValue;
+
+      /**
+       * Sets the link URL for the given substring of this value, or clears it if linkUrl is
+       * null.
+       *
+       *
+       *     // Creates a Rich Text value for the text "foo no baz" with "foo" pointing to
+       *     // "https://bar.foo" and "baz" to "https://abc.xyz".
+       *     // "foo" is underlined with the default link color, whereas "baz" has its text style
+       *     // overridden by a call to `setTextStyle`, and is therefore black and bold with no underlining.
+       *     const boldStyle = SpreadsheetApp.newTextStyle()
+       *         .setUnderline(false)
+       *         .setBold(true)
+       *         .setForegroundColor("#000000")
+       *         .build();
+       *     const value = SpreadsheetApp.newRichTextValue()
+       *         .setText("foo no baz")
+       *         .setLinkUrl(0, 3, "https://bar.foo")
+       *         .setLinkUrl(7, 10, "https://abc.xyz")
+       *         .setTextStyle(7, 10, boldStyle)
+       *         .build();
+       * https://developers.google.com/apps-script/reference/spreadsheet/rich-text-value-builder#setLinkUrl(Integer,Integer,String)
+       * @param startOffset The start offset for the substring, inclusive.
+       * @param endOffset The end offset for the substring, exclusive.
+       * @param linkUrl The link URL being set.
+       */
+      setLinkUrl(startOffset: Integer, endOffset: Integer, linkUrl: string): RichTextValueBuilder;
+
+      /**
+       * Sets the link URL for the entire value, or clears it if linkUrl is null.
+       *
+       *
+       *     // Creates a Rich Text value for the text "Foo" which points to "https://bar.foo".
+       *     const value = SpreadsheetApp.newRichTextValue()
+       *         .setText("Foo")
+       *         .setLinkUrl("https://bar.foo")
+       *         .build();
+       * https://developers.google.com/apps-script/reference/spreadsheet/rich-text-value-builder#setLinkUrl(String)
+       * @param linkUrl The link URL being set.
+       */
+      setLinkUrl(linkUrl: string): RichTextValueBuilder;
 
       /**
        * Sets the text for this value and clears any existing text style. When creating a new Rich Text
@@ -13630,21 +15952,25 @@ declare namespace GoogleAppsScript {
       addDeveloperMetadata(key: string, value: string, visibility: DeveloperMetadataVisibility): Sheet;
 
       /**
-       * Appends a row to the spreadsheet. This operation is atomic; it prevents issues where a user
-       * asks for the last row, and then writes to that row, and an intervening mutation occurs between
-       * getting the last row and writing to it.
+       * Appends a row to the bottom of the current data region in the sheet.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *
-       *     // Appends a new row with 3 columns to the bottom of the
-       *     // spreadsheet containing the values in the array
+       *     // Appends a new row with 3 columns to the bottom of the current
+       *     // data region in the sheet containing the values in the array.
        *     sheet.appendRow(["a man", "a plan", "panama"]);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#appendRow(Object)
        * @param rowContents An array of values to insert after the last row in the sheet.
        */
-      appendRow(rowContents: object[]): Sheet;
+      appendRow(rowContents: any[]): Sheet;
+
+      /**
+       * Returns the sheet as a DataSourceSheet if the sheet is of type SheetType.DATASOURCE, or null otherwise.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#asDataSourceSheet()
+       */
+      asDataSourceSheet(): DataSourceSheet;
 
       /**
        * Sets the width of the given column to fit its contents.
@@ -13714,7 +16040,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#clear(Object)
        * @param options A JavaScript map containing advanced options, listed below.
        */
-      clear(options: object): Sheet;
+      clear(options: any): Sheet;
 
       /**
        * Removes all conditional format rules from the sheet. Equivalent to calling setConditionalFormatRules(rules) with an empty array as input.
@@ -13888,7 +16214,7 @@ declare namespace GoogleAppsScript {
       deleteRows(rowPosition: Integer, howMany: Integer): void;
 
       /**
-       * Expands all column groups on the sheet.
+       * Expands all column groups on the sheet. This method requires at least one column group.
        *
        *
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
@@ -13900,7 +16226,7 @@ declare namespace GoogleAppsScript {
       expandAllColumnGroups(): Sheet;
 
       /**
-       * Expands all row groups on the sheet.
+       * Expands all row groups on the sheet. This method requires at least one row group.
        *
        *
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
@@ -14100,7 +16426,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * This is functionally equivalent to creating a Range bounded by A1 and
-       * (Range.getLastColumn(), Range.getLastRow()).
+       * (Sheet.getLastColumn(), Sheet.getLastRow()).
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -14126,6 +16452,18 @@ declare namespace GoogleAppsScript {
       getDataRange(): Range;
 
       /**
+       * Gets all the data source formulas.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDataSourceFormulas()
+       */
+      getDataSourceFormulas(): DataSourceFormula[];
+
+      /**
+       * Gets all the data source pivot tables.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDataSourcePivotTables()
+       */
+      getDataSourcePivotTables(): DataSourcePivotTable[];
+
+      /**
        * Gets all the data source tables.
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDataSourceTables()
        */
@@ -14138,7 +16476,18 @@ declare namespace GoogleAppsScript {
       getDeveloperMetadata(): DeveloperMetadata[];
 
       /**
+       * Returns an array of drawings on the sheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDrawings()
+       */
+      getDrawings(): Drawing[];
+
+      /**
        * Returns the filter in this sheet, or null if there is no filter.
+       *
+       *
+       *     // Gets the filter on the active sheet.
+       *     let ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getFilter()
        */
       getFilter(): Filter;
@@ -14533,7 +16882,7 @@ declare namespace GoogleAppsScript {
        * @param numRows The number of rows to return values for.
        * @param numColumns The number of columns to return values for.
        */
-      getSheetValues(startRow: Integer, startColumn: Integer, numRows: Integer, numColumns: Integer): object[][];
+      getSheetValues(startRow: Integer, startColumn: Integer, numRows: Integer, numColumns: Integer): any[][];
 
       /**
        * Returns an array of slicers on the sheet.
@@ -14545,13 +16894,13 @@ declare namespace GoogleAppsScript {
        * Gets the sheet tab color, or null if the sheet tab has no color.
        *
        *
-       *     // This example assumes there is a sheet named "first"
+       *     // This example assumes there is a sheet named "Sheet1"
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
-       *     var first = ss.getSheetByName("first");
-       *     var color = first.getTabColor();
-       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getTabColor()
+       *     var first = ss.getSheetByName("Sheet1");
+       *     var color = first.getTabColorObject();
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getTabColorObject()
        */
-      getTabColor(): string;
+      getTabColorObject(): Color;
 
       /**
        * Returns the type of the sheet.
@@ -14576,14 +16925,18 @@ declare namespace GoogleAppsScript {
       hasHiddenGridlines(): boolean;
 
       /**
-       * Hides the columns in the given range.
+       * Hides the column or columns in the given range.
        *
        *
-       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
-       *     var sheet = ss.getSheets()[0];
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     let sheet = ss.getSheets()[0];
        *
        *     // This hides the first column
-       *     var range = sheet.getRange("A1");
+       *     let range = sheet.getRange("A1");
+       *     sheet.hideColumn(range);
+       *
+       *     // This hides the first 3 columns
+       *     let range = sheet.getRange("A:C");
        *     sheet.hideColumn(range);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hideColumn(Range)
        * @param column The column range to hide.
@@ -14591,20 +16944,26 @@ declare namespace GoogleAppsScript {
       hideColumn(column: Range): void;
 
       /**
-       * Hides the column at the given index.
+       * Hides a single column at the given index. Use 1-index for this method.
        *
        *
-       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
-       *     var sheet = ss.getSheets()[0];
+       * To hide more than one column using an index, use hideColumns(columnIndex, numColumns).
+       *
+       *
+       * To hide more than one column using a range, use hideColumn().
+       *
+       *
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     let sheet = ss.getSheets()[0];
        *     // Hides the first column
        *     sheet.hideColumns(1);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hideColumns(Integer)
-       * @param columnIndex the index of the column to hide
+       * @param columnIndex The index of the column to hide.
        */
       hideColumns(columnIndex: Integer): void;
 
       /**
-       * Hides one or more consecutive columns starting at the given index.
+       * Hides one or more consecutive columns starting at the given index. Use 1-index for this method.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -14687,7 +17046,7 @@ declare namespace GoogleAppsScript {
        *         .build();
        *     sheet.insertChart(chart);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#insertChart(EmbeddedChart)
-       * @param chart the chart to insert
+       * @param chart The chart to insert.
        */
       insertChart(chart: EmbeddedChart): void;
 
@@ -14778,7 +17137,7 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a BlobSource as an image in the document at a given row and column. The image
-       * size is retrieved from the blob contents.
+       * size is retrieved from the blob contents. The maximum supported blob size is 2MB.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -14795,7 +17154,8 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a BlobSource as an image in the document at a given row and column, with a
-       * pixel offset. The image size is retrieved from the blob contents.
+       * pixel offset. The image size is retrieved from the blob contents. The maximum supported blob
+       * size is 2MB.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -14977,8 +17337,8 @@ declare namespace GoogleAppsScript {
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *
-       *     // Columns start at 1
-       *     Logger.log(sheet.isColumnHiddenByUser(1));
+       *     // Rows start at 1
+       *     Logger.log(sheet.isRowHiddenByFilter(1));
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#isRowHiddenByFilter(Integer)
        * @param rowPosition The position of the row to examine.
        */
@@ -15102,7 +17462,7 @@ declare namespace GoogleAppsScript {
        *       sheet.removeChart(charts[i]);
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#removeChart(EmbeddedChart)
-       * @param chart the chart to remove
+       * @param chart The chart to remove.
        */
       removeChart(chart: EmbeddedChart): void;
 
@@ -15326,7 +17686,8 @@ declare namespace GoogleAppsScript {
       setRowGroupControlPosition(position: GroupControlTogglePosition): Sheet;
 
       /**
-       * Sets the row height of the given row in pixels.
+       * Sets the row height of the given row in pixels. By default, rows grow to fit cell contents. If
+       * you want to force rows to a specified height, use setRowHeightsForced(startRow, numRows, height).
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -15341,7 +17702,8 @@ declare namespace GoogleAppsScript {
       setRowHeight(rowPosition: Integer, height: Integer): Sheet;
 
       /**
-       * Sets the height of the given rows in pixels.
+       * Sets the height of the given rows in pixels. By default, rows grow to fit cell contents. If you
+       * want to force rows to a specified height, use setRowHeightsForced(startRow, numRows, height).
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -15357,6 +17719,24 @@ declare namespace GoogleAppsScript {
       setRowHeights(startRow: Integer, numRows: Integer, height: Integer): Sheet;
 
       /**
+       * Sets the height of the given rows in pixels. By default, rows grow to fit cell contents. When
+       * you use setRowHeightsForced, rows are forced to the specified height even if the
+       * cell contents are taller than the row height.
+       *
+       *
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var sheet = ss.getSheets()[0];
+       *
+       *     // Sets the first three rows to a height of 5 pixels.
+       *     sheet.setRowHeightsForced(1, 3, 5);
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setRowHeightsForced(Integer,Integer,Integer)
+       * @param startRow The starting row position to change.
+       * @param numRows The number of rows to change.
+       * @param height The height in pixels to set it to.
+       */
+      setRowHeightsForced(startRow: Integer, numRows: Integer, height: Integer): Sheet;
+
+      /**
        * Sets the sheet tab color.
        *
        *
@@ -15369,6 +17749,23 @@ declare namespace GoogleAppsScript {
        * @param color A color code in CSS notation (like '#ffffff' or 'white'), or null to reset the tab color.
        */
       setTabColor(color: string): Sheet;
+
+      /**
+       * Sets the sheet tab color.
+       *
+       *
+       *     // This example assumes there is a sheet named "Sheet1"
+       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     var first = ss.getSheetByName("Sheet1");
+       *     var color = SpreadsheetApp.newColor()
+       *         .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+       *         .build();
+       *     first.setTabColorObject(color); // Set the color to theme accent 1.
+       *     first.setTabColorObject(null); // Unset the color.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setTabColorObject(Color)
+       * @param color The sheet tab color to set.
+       */
+      setTabColorObject(color: Color): Sheet;
 
       /**
        * Unhides the column at the given index.
@@ -15512,16 +17909,17 @@ declare namespace GoogleAppsScript {
        *       sheet.updateChart(newChart);
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#updateChart(EmbeddedChart)
-       * @param chart the chart to update
+       * @param chart The chart to update.
        */
       updateChart(chart: EmbeddedChart): void;
       /** @deprecated DO NOT USE */ getSheetProtection(): PageProtection;
+      /** @deprecated DO NOT USE */ getTabColor(): string;
       /** @deprecated DO NOT USE */ setSheetProtection(permissions: PageProtection): void;
     }
     /**
      * The different types of sheets that can exist in a spreadsheet.
      */
-    enum SheetType { GRID, OBJECT }
+    enum SheetType { GRID, OBJECT, DATASOURCE }
     /**
      * Represents a slicer, which is used
      * to filter ranges, charts and pivot tables in a non-collaborative manner. This class contains
@@ -15530,10 +17928,10 @@ declare namespace GoogleAppsScript {
     interface Slicer {
 
       /**
-       * Returns the background color of the slicer in CSS notation (such as '#ffffff').
-       * https://developers.google.com/apps-script/reference/spreadsheet/slicer#getBackgroundColor()
+       * Return the background Color of the slicer.
+       * https://developers.google.com/apps-script/reference/spreadsheet/slicer#getBackgroundColorObject()
        */
-      getBackgroundColor(): string;
+      getBackgroundColorObject(): Color;
 
       /**
        * Returns the column position (relative to the data range of the slicer) on which the filter is
@@ -15606,6 +18004,14 @@ declare namespace GoogleAppsScript {
       setBackgroundColor(color: string): Slicer;
 
       /**
+       * Sets the background Color of the slicer. A null value resets the background
+       * color.
+       * https://developers.google.com/apps-script/reference/spreadsheet/slicer#setBackgroundColorObject(Color)
+       * @param color The new background color of this slicer.
+       */
+      setBackgroundColorObject(color: Color): Slicer;
+
+      /**
        * Sets the column index and filtering criteria of the slicer. A null value resets the
        * slicer filter.
        * https://developers.google.com/apps-script/reference/spreadsheet/slicer#setColumnFilterCriteria(Integer,FilterCriteria)
@@ -15653,6 +18059,53 @@ declare namespace GoogleAppsScript {
        * @param textStyle The new text style of the slicer's title.
        */
       setTitleTextStyle(textStyle: TextStyle): Slicer;
+      /** @deprecated DO NOT USE */ getBackgroundColor(): string;
+    }
+    /**
+     * An enumeration representing the sort order.
+     */
+    enum SortOrder { ASCENDING, DESCENDING }
+    /**
+     * The sorting specification.
+     */
+    interface SortSpec {
+
+      /**
+       * Returns the background color used for sorting, or null if absent.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sort-spec#getBackgroundColor()
+       */
+      getBackgroundColor(): Color;
+
+      /**
+       * Gets the data source column the sort spec acts on. Returns null if this sort spec is
+       * not acting on a data source column.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sort-spec#getDataSourceColumn()
+       */
+      getDataSourceColumn(): DataSourceColumn;
+
+      /**
+       * Returns the dimension index or null if not linked to a local filter.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sort-spec#getDimensionIndex()
+       */
+      getDimensionIndex(): Integer;
+
+      /**
+       * Returns the foreground color used for sorting, or null if absent.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sort-spec#getForegroundColor()
+       */
+      getForegroundColor(): Color;
+
+      /**
+       * Returns the sort order.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sort-spec#getSortOrder()
+       */
+      getSortOrder(): SortOrder;
+
+      /**
+       * Returns whether the sort order is ascending.
+       * https://developers.google.com/apps-script/reference/spreadsheet/sort-spec#isAscending()
+       */
+      isAscending(): boolean;
     }
     /**
      * Access and modify Google Sheets files. Common operations are adding new sheets and adding
@@ -15740,7 +18193,7 @@ declare namespace GoogleAppsScript {
        * @param name The name of the menu to be created.
        * @param subMenus An array of JavaScript maps with name and functionName parameters. You can use functions from included libraries, such as  Library.libFunction1.
        */
-      addMenu(name: string, subMenus: object[]): void;
+      addMenu(name: string, subMenus: any[]): void;
 
       /**
        * Adds the given user to the list of viewers for the Spreadsheet. If the user was already
@@ -15767,21 +18220,19 @@ declare namespace GoogleAppsScript {
       addViewers(emailAddresses: string[]): Spreadsheet;
 
       /**
-       * Appends a row to the spreadsheet. This operation is atomic; it prevents issues where a user
-       * asks for the last row, and then writes to that row, and an intervening mutation occurs between
-       * getting the last row and writing to it.
+       * Appends a row to the bottom of the current data region in the sheet.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *
-       *     // Appends a new row with 3 columns to the bottom of the
-       *     // spreadsheet containing the values in the array
+       *     // Appends a new row with 3 columns to the bottom of the current
+       *     // data region in the sheet containing the values in the array.
        *     sheet.appendRow(["a man", "a plan", "panama"]);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#appendRow(Object)
        * @param rowContents An array of values to insert after the last row in the sheet.
        */
-      appendRow(rowContents: object[]): Sheet;
+      appendRow(rowContents: any[]): Sheet;
 
       /**
        * Sets the width of the given column to fit its contents.
@@ -15807,7 +18258,7 @@ declare namespace GoogleAppsScript {
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     ss.copy("Copy of " + ss.getName());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#copy(String)
-       * @param name
+       * @param name The name of the copy.
        */
       copy(name: string): Spreadsheet;
 
@@ -15994,6 +18445,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -16044,7 +18500,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * This is functionally equivalent to creating a Range bounded by A1 and
-       * (Range.getLastColumn(), Range.getLastRow()).
+       * (Sheet.getLastColumn(), Sheet.getLastRow()).
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -16070,10 +18526,40 @@ declare namespace GoogleAppsScript {
       getDataRange(): Range;
 
       /**
+       * Gets all the data source formulas.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceFormulas()
+       */
+      getDataSourceFormulas(): DataSourceFormula[];
+
+      /**
+       * Gets all the data source pivot tables.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourcePivotTables()
+       */
+      getDataSourcePivotTables(): DataSourcePivotTable[];
+
+      /**
+       * Gets the refresh schedules of this spreadsheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceRefreshSchedules()
+       */
+      getDataSourceRefreshSchedules(): DataSourceRefreshSchedule[];
+
+      /**
+       * Returns all the data source sheets in the spreadsheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceSheets()
+       */
+      getDataSourceSheets(): DataSourceSheet[];
+
+      /**
        * Gets all the data source tables.
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceTables()
        */
       getDataSourceTables(): DataSourceTable[];
+
+      /**
+       * Returns all the data sources in the spreadsheet.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSources()
+       */
+      getDataSources(): DataSource[];
 
       /**
        * Get the developer metadata associated with the top-level spreadsheet.
@@ -16199,8 +18685,8 @@ declare namespace GoogleAppsScript {
        *
        *     // The code below logs the name of the first named range.
        *     var namedRanges = SpreadsheetApp.getActiveSpreadsheet().getNamedRanges();
-       *     if (namedRanges.length > 1) {
-       *       Logger.log(namedRanges[0].getName());
+       *     for (var i = 0; i < namedRanges.length; i++) {
+       *       Logger.log(namedRanges[i].getName());
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getNamedRanges()
        */
@@ -16232,7 +18718,8 @@ declare namespace GoogleAppsScript {
        *
        *
        *     // The code below returns the list of predefined themes.
-       *     var predefinedThemesList = SpreadsheetApp.getPredefinedSpreadsheetThemes();
+       *     var predefinedThemesList = SpreadsheetApp.getActiveSpreadsheet()
+       *                                    .getPredefinedSpreadsheetThemes();
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getPredefinedSpreadsheetThemes()
        */
       getPredefinedSpreadsheetThemes(): SpreadsheetTheme[];
@@ -16409,7 +18896,7 @@ declare namespace GoogleAppsScript {
        * @param numRows The number of rows to return values for.
        * @param numColumns The number of columns to return values for.
        */
-      getSheetValues(startRow: Integer, startColumn: Integer, numRows: Integer, numColumns: Integer): object[][];
+      getSheetValues(startRow: Integer, startColumn: Integer, numRows: Integer, numColumns: Integer): any[][];
 
       /**
        * Gets all the sheets in this spreadsheet.
@@ -16435,7 +18922,7 @@ declare namespace GoogleAppsScript {
        *
        *
        *     // The code below returns the current theme of the spreadsheet.
-       *     var currentTheme = SpreadsheetApp.getSpreadsheetTheme();
+       *     var currentTheme = SpreadsheetApp.getActiveSpreadsheet().getSpreadsheetTheme();
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getSpreadsheetTheme()
        */
       getSpreadsheetTheme(): SpreadsheetTheme;
@@ -16463,14 +18950,18 @@ declare namespace GoogleAppsScript {
       getViewers(): Base.User[];
 
       /**
-       * Hides the columns in the given range.
+       * Hides the column or columns in the given range.
        *
        *
-       *     var ss = SpreadsheetApp.getActiveSpreadsheet();
-       *     var sheet = ss.getSheets()[0];
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet();
+       *     let sheet = ss.getSheets()[0];
        *
        *     // This hides the first column
-       *     var range = sheet.getRange("A1");
+       *     let range = sheet.getRange("A1");
+       *     sheet.hideColumn(range);
+       *
+       *     // This hides the first 3 columns
+       *     let range = sheet.getRange("A:C");
        *     sheet.hideColumn(range);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#hideColumn(Range)
        * @param column The column range to hide.
@@ -16551,8 +19042,20 @@ declare namespace GoogleAppsScript {
       insertColumnsBefore(beforePosition: Integer, howMany: Integer): Sheet;
 
       /**
+       * Inserts a new DataSourceSheet in the spreadsheet and starts data execution. As a
+       * side effect, this also makes the new sheet the active sheet.
+       *
+       *
+       * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
+       * type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#insertDataSourceSheet(DataSourceSpec)
+       * @param spec The data source specification to insert with.
+       */
+      insertDataSourceSheet(spec: DataSourceSpec): DataSourceSheet;
+
+      /**
        * Inserts a Spreadsheet as an image in the document at a given row and column. The image
-       * size is retrieved from the blob contents.
+       * size is retrieved from the blob contents. The maximum supported blob size is 2MB.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -16569,7 +19072,8 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Spreadsheet as an image in the document at a given row and column, with a
-       * pixel offset. The image size is retrieved from the blob contents.
+       * pixel offset. The image size is retrieved from the blob contents. The maximum supported blob
+       * size is 2MB.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -16711,7 +19215,7 @@ declare namespace GoogleAppsScript {
        * @param sheetIndex The index of the newly created sheet. To insert a sheet as the first one in the spreadsheet, set it to 0.
        * @param options Optional JavaScript advanced arguments.
        */
-      insertSheet(sheetIndex: Integer, options: object): Sheet;
+      insertSheet(sheetIndex: Integer, options: any): Sheet;
 
       /**
        * Inserts a new sheet into the spreadsheet, using a default sheet name and optional advanced
@@ -16724,7 +19228,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#insertSheet(Object)
        * @param options Optional JavaScript advanced arguments, listed below.
        */
-      insertSheet(options: object): Sheet;
+      insertSheet(options: any): Sheet;
 
       /**
        * Inserts a new sheet into the spreadsheet with the given name. The new sheet becomes the active
@@ -16764,7 +19268,7 @@ declare namespace GoogleAppsScript {
        * @param sheetIndex The index of the newly inserted sheet. To insert a sheet as the first one in a spreadsheet, set it to 0.
        * @param options Optional JavaScript advanced arguments.
        */
-      insertSheet(sheetName: string, sheetIndex: Integer, options: object): Sheet;
+      insertSheet(sheetName: string, sheetIndex: Integer, options: any): Sheet;
 
       /**
        * Inserts a new sheet into the spreadsheet with the given name and uses optional advanced
@@ -16778,7 +19282,7 @@ declare namespace GoogleAppsScript {
        * @param sheetName The name of the new sheet.
        * @param options Optional JavaScript advanced arguments.
        */
-      insertSheet(sheetName: string, options: object): Sheet;
+      insertSheet(sheetName: string, options: any): Sheet;
 
       /**
        * Inserts a new sheet in the spreadsheet, creates a DataSourceTable spanning the
@@ -16820,8 +19324,8 @@ declare namespace GoogleAppsScript {
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *
-       *     // Columns start at 1
-       *     Logger.log(sheet.isColumnHiddenByUser(1));
+       *     // Rows start at 1
+       *     Logger.log(sheet.isRowHiddenByFilter(1));
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#isRowHiddenByFilter(Integer)
        * @param rowPosition The position of the row to examine.
        */
@@ -16879,6 +19383,17 @@ declare namespace GoogleAppsScript {
       moveChartToObjectSheet(chart: EmbeddedChart): Sheet;
 
       /**
+       * Refreshes all supported data sources and their linked data source objects, skipping invalid
+       * data source objects.
+       *
+       *
+       * Use SpreadsheetApp#enable...Execution() methods to enable data execution for
+       * specific data source type.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#refreshAllDataSources()
+       */
+      refreshAllDataSources(): void;
+
+      /**
        * Removes the given user from the list of editors for the Spreadsheet. This method doesn't
        * block users from accessing the Spreadsheet if they belong to a class of users who have
        * general access—for example, if the Spreadsheet is shared with the user's entire
@@ -16920,7 +19435,7 @@ declare namespace GoogleAppsScript {
        *       ss.removeMenu("badMenu");  // name must match the name used when added the menu
        *     }
        *     function foo(){
-       *     //do nothing
+       *     // Do nothing
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#removeMenu(String)
        * @param name The name of the menu to remove.
@@ -16996,7 +19511,7 @@ declare namespace GoogleAppsScript {
        *
        *
        *     // The code below applies default theme on the spreadsheet.
-       *     SpreadsheetApp.resetSpreadsheetTheme();
+       *     SpreadsheetApp.getActiveSpreadsheet().resetSpreadsheetTheme();
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#resetSpreadsheetTheme()
        */
       resetSpreadsheetTheme(): SpreadsheetTheme;
@@ -17227,7 +19742,8 @@ declare namespace GoogleAppsScript {
       setRecalculationInterval(recalculationInterval: RecalculationInterval): Spreadsheet;
 
       /**
-       * Sets the row height of the given row in pixels.
+       * Sets the row height of the given row in pixels. By default, rows grow to fit cell contents. If
+       * you want to force rows to a specified height, use Sheet.setRowHeightsForced(startRow, numRows, height).
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -17252,9 +19768,10 @@ declare namespace GoogleAppsScript {
        * Sets a theme on the spreadsheet.
        *
        *
+       *     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
        *     // The code below sets the second predefined theme as the current theme of the spreadsheet.
-       *     var predefinedThemesList = SpreadsheetApp.getPredefinedSpreadsheetThemes();
-       *     SpreadsheetApp.setSpreadsheetTheme(predefinedThemesList[1]);
+       *     var predefinedThemesList = spreadsheet.getPredefinedSpreadsheetThemes();
+       *     spreadsheet.setSpreadsheetTheme(predefinedThemesList[1]);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setSpreadsheetTheme(SpreadsheetTheme)
        * @param theme The theme to apply.
        */
@@ -17294,7 +19811,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#show(Object)
        * @param userInterface An HtmlOutput.
        */
-      show(userInterface: object): void;
+      show(userInterface: any): void;
 
       /**
        * Sorts a sheet by column, ascending.
@@ -17405,7 +19922,16 @@ declare namespace GoogleAppsScript {
        * @param name The name of the menu to update.
        * @param subMenus An array of JavaScript maps with name and functionName parameters. You can use functions from included libraries, such as  Library.libFunction1.
        */
-      updateMenu(name: string, subMenus: object[]): void;
+      updateMenu(name: string, subMenus: any[]): void;
+
+      /**
+       * Waits until all the current executions in the spreadsheet complete, timing out after the
+       * provided number of seconds. Throws an exception if the executions are not completed when timing
+       * out, but does not cancel the data executions.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#waitForAllDataExecutionsCompletion(Integer)
+       * @param timeoutInSeconds The time to wait for data executions, in seconds. The maximum is 300 seconds.
+       */
+      waitForAllDataExecutionsCompletion(timeoutInSeconds: Integer): void;
       /** @deprecated DO NOT USE */ getSheetProtection(): PageProtection;
       /** @deprecated DO NOT USE */ isAnonymousView(): boolean;
       /** @deprecated DO NOT USE */ isAnonymousWrite(): boolean;
@@ -17425,12 +19951,15 @@ declare namespace GoogleAppsScript {
       DataExecutionErrorCode: typeof DataExecutionErrorCode;
       DataExecutionState: typeof DataExecutionState;
       DataSourceParameterType: typeof DataSourceParameterType;
+      DataSourceRefreshScope: typeof DataSourceRefreshScope;
       DataSourceType: typeof DataSourceType;
       DataValidationCriteria: typeof DataValidationCriteria;
+      DateTimeGroupingRuleType: typeof DateTimeGroupingRuleType;
       DeveloperMetadataLocationType: typeof DeveloperMetadataLocationType;
       DeveloperMetadataVisibility: typeof DeveloperMetadataVisibility;
       Dimension: typeof Dimension;
       Direction: typeof Direction;
+      FrequencyType: typeof FrequencyType;
       GroupControlTogglePosition: typeof GroupControlTogglePosition;
       InterpolationType: typeof InterpolationType;
       PivotTableSummarizeFunction: typeof PivotTableSummarizeFunction;
@@ -17439,9 +19968,11 @@ declare namespace GoogleAppsScript {
       RecalculationInterval: typeof RecalculationInterval;
       RelativeDate: typeof RelativeDate;
       SheetType: typeof SheetType;
+      SortOrder: typeof SortOrder;
       TextDirection: typeof TextDirection;
       TextToColumnsDelimiter: typeof TextToColumnsDelimiter;
       ThemeColorType: typeof ThemeColorType;
+      ValueType: typeof ValueType;
       WrapStrategy: typeof WrapStrategy;
 
       /**
@@ -17485,7 +20016,7 @@ declare namespace GoogleAppsScript {
        * Enables data execution for BigQuery data source.
        *
        *
-       * Data execution for BigQuery data source throws an expection if not enabled.
+       * Data execution for BigQuery data source throws an exception if not enabled.
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#enableBigQueryExecution()
        */
       enableBigQueryExecution(): void;
@@ -17543,8 +20074,9 @@ declare namespace GoogleAppsScript {
        *
        *
        *     // The code below logs the background color for the active range.
-       *     var color = SpreadsheetApp.getActiveRange().getBackgroundColor();
-       *     Logger.log(color);
+       *     var colorObject = SpreadsheetApp.getActiveRange().getBackgroundObject();
+       *     // Assume the color has ColorType.RGB.
+       *     Logger.log(colorObject.asRgbColor().asHexString());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#getActiveRange()
        */
       getActiveRange(): Range;
@@ -17635,6 +20167,12 @@ declare namespace GoogleAppsScript {
       getUi(): Base.Ui;
 
       /**
+       * Creates a builder for a CellImage.
+       * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#newCellImage()
+       */
+      newCellImage(): CellImageBuilder;
+
+      /**
        * Creates a builder for a Color.
        *
        *
@@ -17653,7 +20191,7 @@ declare namespace GoogleAppsScript {
        *     var range = sheet.getRange('A1:B3');
        *     var rule = SpreadsheetApp.newConditionalFormatRule()
        *         .whenNumberBetween(1, 10)
-       *         .setBackgroundColor("#FF0000")
+       *         .setBackground("#FF0000")
        *         .setRanges([range])
        *         .build()
        *     var rules = sheet.getConditionalFormatRules();
@@ -17757,7 +20295,8 @@ declare namespace GoogleAppsScript {
       openById(id: string): Spreadsheet;
 
       /**
-       * Opens the spreadsheet with the given URL.
+       * Opens the spreadsheet with the given URL. Throws a scripting exception if the URL does not
+       * exist or the user does not have permission to access it.
        *
        *
        *     // The code below opens a spreadsheet using its id and logs the name for it.
@@ -18102,9 +20641,9 @@ declare namespace GoogleAppsScript {
        * Gets the font color of the text. Returns null if the font color isn't set or the
        * corresponding RichTextValue has multiple runs with different font
        * colors.
-       * https://developers.google.com/apps-script/reference/spreadsheet/text-style#getForegroundColor()
+       * https://developers.google.com/apps-script/reference/spreadsheet/text-style#getForegroundColorObject()
        */
-      getForegroundColor(): string;
+      getForegroundColorObject(): Color;
 
       /**
        * Gets whether or not the text is bold. Returns null if bold isn't set or the
@@ -18137,6 +20676,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/text-style#isUnderline()
        */
       isUnderline(): boolean;
+      /** @deprecated DO NOT USE */ getForegroundColor(): string;
     }
     /**
      * A builder for text styles.
@@ -18176,6 +20716,13 @@ declare namespace GoogleAppsScript {
        * @param cssString The desired font color in CSS notation (such as '#ffffff' or 'white').
        */
       setForegroundColor(cssString: string): TextStyleBuilder;
+
+      /**
+       * Sets the text font color.
+       * https://developers.google.com/apps-script/reference/spreadsheet/text-style-builder#setForegroundColorObject(Color)
+       * @param color The desired font color.
+       */
+      setForegroundColorObject(color: Color): TextStyleBuilder;
 
       /**
        * Sets whether or not the text is italic.
@@ -18224,6 +20771,11 @@ declare namespace GoogleAppsScript {
      * An enum which describes various color entries supported in themes.
      */
     enum ThemeColorType { UNSUPPORTED, TEXT, BACKGROUND, ACCENT1, ACCENT2, ACCENT3, ACCENT4, ACCENT5, ACCENT6, HYPERLINK }
+    /**
+     * An enumeration of value types returned by Range.getValue() and Range.getValues() from the Range class of the Spreadsheet service. The enumeration values
+     * listed below are in addition to Number, Boolean, Date, or String.
+     */
+    enum ValueType { IMAGE }
     /**
      * An enumeration of the strategies used to handle cell text wrapping.
      */
