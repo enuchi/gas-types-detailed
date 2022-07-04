@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -20,12 +20,12 @@ declare namespace GoogleAppsScript {
     interface MailApp {
 
       /**
-       * Returns the number of remaining emails a user can send for the rest of the day.
+       * Returns the number of recipients you can send emails to for the rest of the day. The
+       * returned value is valid for the current execution and might vary between executions.
        *
        *
-       * Quotas are based on the number of email recipients. Specific quota information is available
-       * on the quota tab of the Apps Script
-       * dashboard.
+       * Quotas are based on the number of email recipients. For specific quota information, see Quotas for Google
+       * Services.
        *
        *
        *     var emailQuotaRemaining = MailApp.getRemainingDailyQuota();
@@ -42,7 +42,7 @@ declare namespace GoogleAppsScript {
        *     // This code fetches the Google and YouTube logos, inlines them in an email
        *     // and sends the email
        *     function inlineImage() {
-       *       var googleLogoUrl = "http://www.google.com/intl/en_com/images/srpr/logo3w.png";
+       *       var googleLogoUrl = "https://www.gstatic.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png";
        *       var youtubeLogoUrl =
        *             "https://developers.google.com/youtube/images/YouTube_logo_standard_white.png";
        *       var googleLogoBlob = UrlFetchApp
@@ -68,7 +68,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/mail/mail-app#sendEmail(Object)
        * @param message a JavaScript object representing an email message
        */
-      sendEmail(message: object): void;
+      sendEmail(message: any): void;
 
       /**
        * Sends an email message.
@@ -101,7 +101,7 @@ declare namespace GoogleAppsScript {
        * @param body the body of the email
        * @param options a JavaScript object that specifies advanced parameters, as listed below
        */
-      sendEmail(recipient: string, subject: string, body: string, options: object): void;
+      sendEmail(recipient: string, subject: string, body: string, options: any): void;
 
       /**
        * Sends an email message. This method allows a user to easily specify a Reply-To address for the

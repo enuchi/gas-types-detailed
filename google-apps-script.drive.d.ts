@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -13,7 +13,7 @@ declare namespace GoogleAppsScript {
      * users who have been explicitly given access. These properties can be accessed from DriveApp.Access.
      *
      *     // Creates a folder that anyone on the Internet can read from and write to. (Domain
-     *     // administrators can prohibit this setting for users of a G Suite domain.)
+     *     // administrators can prohibit this setting for users of a Google Workspace domain.)
      *     var folder = DriveApp.createFolder('Shared Folder');
      *     folder.setSharing(DriveApp.Access.ANYONE, DriveApp.Permission.EDIT);
      */
@@ -31,22 +31,6 @@ declare namespace GoogleAppsScript {
     interface DriveApp {
       Access: typeof Access;
       Permission: typeof Permission;
-
-      /**
-       * Adds the given file to the root of the user's Drive. This method does not move the file out of its
-       * existing parent folder; a file can have more than one parent simultaneously.
-       * https://developers.google.com/apps-script/reference/drive/drive-app#addFile(File)
-       * @param child the child file to add
-       */
-      addFile(child: File): Folder;
-
-      /**
-       * Adds the given folder to the root of the user's Drive. This method does not move the folder out of
-       * its existing parent folder; a folder can have more than one parent simultaneously.
-       * https://developers.google.com/apps-script/reference/drive/drive-app#addFolder(Folder)
-       * @param child the child folder to add
-       */
-      addFolder(child: Folder): Folder;
 
       /**
        * Resumes a file iteration using a continuation token from a previous iterator. This method is
@@ -74,7 +58,7 @@ declare namespace GoogleAppsScript {
        *     var blob = Maps.newStaticMap().setCenter('76 9th Avenue, New York NY').getBlob();
        *     DriveApp.createFile(blob);
        * https://developers.google.com/apps-script/reference/drive/drive-app#createFile(BlobSource)
-       * @param blob the data for the new file
+       * @param blob The data for the new file.
        */
       createFile(blob: Base.BlobSource): File;
 
@@ -86,8 +70,8 @@ declare namespace GoogleAppsScript {
        *     // Create a text file with the content "Hello, world!"
        *     DriveApp.createFile('New Text File', 'Hello, world!');
        * https://developers.google.com/apps-script/reference/drive/drive-app#createFile(String,String)
-       * @param name the name of the new file
-       * @param content the content for the new file
+       * @param name The name of the new file.
+       * @param content The content for the new file.
        */
       createFile(name: string, content: string): File;
 
@@ -99,18 +83,46 @@ declare namespace GoogleAppsScript {
        *     // Create an HTML file with the content "Hello, world!"
        *     DriveApp.createFile('New HTML File', '<b>Hello, world!</b>', MimeType.HTML);
        * https://developers.google.com/apps-script/reference/drive/drive-app#createFile(String,String,String)
-       * @param name the name of the new file
-       * @param content the content for the new file
-       * @param mimeType the MIME type of the new file
+       * @param name The name of the new file.
+       * @param content The content for the new file.
+       * @param mimeType The MIME type of the new file.
        */
       createFile(name: string, content: string, mimeType: string): File;
 
       /**
        * Creates a folder in the root of the user's Drive with the given name.
        * https://developers.google.com/apps-script/reference/drive/drive-app#createFolder(String)
-       * @param name the name of the new folder
+       * @param name The name of the new folder.
        */
       createFolder(name: string): Folder;
+
+      /**
+       * Creates a shortcut to the provided Drive item ID, and returns it.
+       * https://developers.google.com/apps-script/reference/drive/drive-app#createShortcut(String)
+       * @param targetId The file ID of the target file or folder.
+       */
+      createShortcut(targetId: string): File;
+
+      /**
+       * Creates a shortcut to the provided Drive item ID and resource key, and returns it. Resource
+       * keys are an additional parameter which need to be passed to access the target file or folder
+       * that has been shared using a link.
+       * https://developers.google.com/apps-script/reference/drive/drive-app#createShortcutForTargetIdAndResourceKey(String,String)
+       * @param targetId The ID of the target file or folder.
+       * @param targetResourceKey The resource key of the target file or folder.
+       */
+      createShortcutForTargetIdAndResourceKey(targetId: string, targetResourceKey: string): File;
+
+      /**
+       * Enables or disables enforceSingleParent behavior for all calls affecting item parents.
+       *
+       *
+       * See the  Simplifying Google Drive’s folder structure and sharing models blog for
+       * more details.
+       * https://developers.google.com/apps-script/reference/drive/drive-app#enforceSingleParent(Boolean)
+       * @param value The new state of the enforceSingleParent flag.
+       */
+      enforceSingleParent(value: boolean): void;
 
       /**
        * Gets the file with the given ID. Throws a scripting exception if the file does not exist or the
@@ -121,6 +133,19 @@ declare namespace GoogleAppsScript {
       getFileById(id: string): File;
 
       /**
+       * Gets the file with the given ID and resource key. Resource keys are an additional parameter
+       * which need to be passed to access files that have been shared using a link.
+       *
+       *
+       * Throws a scripting exception if the file doesn't exist or the user doesn't have permission
+       * to access it.
+       * https://developers.google.com/apps-script/reference/drive/drive-app#getFileByIdAndResourceKey(String,String)
+       * @param id The ID of the file.
+       * @param resourceKey The resource key of the folder.
+       */
+      getFileByIdAndResourceKey(id: string, resourceKey: string): File;
+
+      /**
        * Gets a collection of all files in the user's Drive.
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFiles()
        */
@@ -129,14 +154,14 @@ declare namespace GoogleAppsScript {
       /**
        * Gets a collection of all files in the user's Drive that have the given name.
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFilesByName(String)
-       * @param name the name of the files to find
+       * @param name The name of the files to find.
        */
       getFilesByName(name: string): FileIterator;
 
       /**
        * Gets a collection of all files in the user's Drive that have the given MIME type.
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFilesByType(String)
-       * @param mimeType the MIME type of the files to find
+       * @param mimeType The MIME type of the files to find.
        */
       getFilesByType(mimeType: string): FileIterator;
 
@@ -149,6 +174,19 @@ declare namespace GoogleAppsScript {
       getFolderById(id: string): Folder;
 
       /**
+       * Gets the folder with the given ID and resource key. Resource keys are an additional parameter
+       * which need to be passed to access folders that have been shared using a link.
+       *
+       *
+       * Throws a scripting exception if the folder doesn't exist or the user doesn't have permission
+       * to access it.
+       * https://developers.google.com/apps-script/reference/drive/drive-app#getFolderByIdAndResourceKey(String,String)
+       * @param id The ID of the folder.
+       * @param resourceKey The resource key of the folder.
+       */
+      getFolderByIdAndResourceKey(id: string, resourceKey: string): Folder;
+
+      /**
        * Gets a collection of all folders in the user's Drive.
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFolders()
        */
@@ -157,7 +195,7 @@ declare namespace GoogleAppsScript {
       /**
        * Gets a collection of all folders in the user's Drive that have the given name.
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFoldersByName(String)
-       * @param name the name of the folders to find
+       * @param name The name of the folders to find.
        */
       getFoldersByName(name: string): FolderIterator;
 
@@ -192,28 +230,10 @@ declare namespace GoogleAppsScript {
       getTrashedFolders(): FolderIterator;
 
       /**
-       * Removes the given file from the root of the user's Drive. This method does not delete the file, but
-       * if a file is removed from all of its parents, it cannot be seen in Drive except by searching
-       * for it or using the "All items" view.
-       * https://developers.google.com/apps-script/reference/drive/drive-app#removeFile(File)
-       * @param child the child file to remove
-       */
-      removeFile(child: File): Folder;
-
-      /**
-       * Removes the given folder from the root of the user's Drive. This method does not delete the folder
-       * or its contents, but if a folder is removed from all of its parents, it cannot be seen in Drive
-       * except by searching for it or using the "All items" view.
-       * https://developers.google.com/apps-script/reference/drive/drive-app#removeFolder(Folder)
-       * @param child the child folder to remove
-       */
-      removeFolder(child: Folder): Folder;
-
-      /**
        * Gets a collection of all files in the user's Drive that match the given search
-       * criteria. The search criteria are detailed the Google
-       * Drive SDK documentation. Note that the params argument is a query string that may
-       * contain string values, so take care to escape quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
+       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
+       * 'title contains "Gulliver\'s Travels"').
        *
        *
        *     // Log the name of every file in the user's Drive that modified after February 28,
@@ -225,15 +245,15 @@ declare namespace GoogleAppsScript {
        *       Logger.log(file.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#searchFiles(String)
-       * @param params the search criteria, as detailed in the Google Drive SDK documentation
+       * @param params The search criteria, as detailed in the Google Drive SDK documentation.
        */
       searchFiles(params: string): FileIterator;
 
       /**
        * Gets a collection of all folders in the user's Drive that match the given search
-       * criteria. The search criteria are detailed the Google
-       * Drive SDK documentation. Note that the params argument is a query string that may
-       * contain string values, so take care to escape quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
+       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
+       * 'title contains "Gulliver\'s Travels"').
        *
        *
        *     // Log the name of every folder in the user's Drive that you own and is starred.
@@ -243,9 +263,13 @@ declare namespace GoogleAppsScript {
        *       Logger.log(folder.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#searchFolders(String)
-       * @param params the search criteria, as detailed in the Google Drive SDK documentation
+       * @param params The search criteria, as detailed in the Google Drive SDK documentation.
        */
       searchFolders(params: string): FolderIterator;
+      /** @deprecated DO NOT USE */ addFile(child: File): Folder;
+      /** @deprecated DO NOT USE */ addFolder(child: Folder): Folder;
+      /** @deprecated DO NOT USE */ removeFile(child: File): Folder;
+      /** @deprecated DO NOT USE */ removeFolder(child: Folder): Folder;
     }
     /**
      * A file in Google Drive. Files can be accessed or created from DriveApp.
@@ -265,7 +289,7 @@ declare namespace GoogleAppsScript {
        * Add the given user to the list of commenters for the File. If the user was
        * already on the list of viewers, this method promotes the user out of the list of viewers.
        * https://developers.google.com/apps-script/reference/drive/file#addCommenter(String)
-       * @param emailAddress the email address of the user to add
+       * @param emailAddress The email address of the user to add.
        */
       addCommenter(emailAddress: string): File;
 
@@ -273,7 +297,7 @@ declare namespace GoogleAppsScript {
        * Add the given user to the list of commenters for the File. If the user was
        * already on the list of viewers, this method promotes the user out of the list of viewers.
        * https://developers.google.com/apps-script/reference/drive/file#addCommenter(User)
-       * @param user a representation of the user to add
+       * @param user A representation of the user to add.
        */
       addCommenter(user: Base.User): File;
 
@@ -282,7 +306,7 @@ declare namespace GoogleAppsScript {
        * of the users were already on the list of viewers, this method promotes them out of the list of
        * viewers.
        * https://developers.google.com/apps-script/reference/drive/file#addCommenters(String)
-       * @param emailAddresses an array of email addresses of the users to add
+       * @param emailAddresses An array of email addresses of the users to add.
        */
       addCommenters(emailAddresses: string[]): File;
 
@@ -355,6 +379,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/drive/file#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -380,7 +409,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the URL that can be used to download the file. Only users with permission to open the file
-       * in Google Drive can access the URL.
+       * in Google Drive can access the URL. You can use this URL in a browser to download the file, but
+       * you can't use to fetch the file with UrlFetchApp. If you want the contents of the
+       * file in the script, use getBlob().
        * https://developers.google.com/apps-script/reference/drive/file#getDownloadUrl()
        */
       getDownloadUrl(): string;
@@ -429,6 +460,41 @@ declare namespace GoogleAppsScript {
       getParents(): FolderIterator;
 
       /**
+       * Gets the resource key of the File that is required to access items that
+       * have been shared using a link.
+       * https://developers.google.com/apps-script/reference/drive/file#getResourceKey()
+       */
+      getResourceKey(): string;
+
+      /**
+       * Gets whether this File is eligible to apply the security update that
+       * requires a resource key for access when it's shared using a link.
+       *
+       *
+       * Drive requires a resource key to access some files or folders that have been shared using a
+       * link. This change is part of a security update. The update is turned on by default for eligible
+       * files and folders. To turn the resource key requirement on or off for eligible files, use
+       * setSecurityUpdateEnabled.
+       *
+       *
+       * Learn more about the Security update for Google Drive.
+       * https://developers.google.com/apps-script/reference/drive/file#getSecurityUpdateEligible()
+       */
+      getSecurityUpdateEligible(): boolean;
+
+      /**
+       * Gets whether this File requires a resource key for access when it's
+       * shared using a link. This requirement is turned on by default for eligible files and folders.
+       * To turn the resource key requirement on or off for eligible files, use
+       * setSecurityUpdateEnabled.
+       *
+       *
+       * Learn more about the Security update for Google Drive.
+       * https://developers.google.com/apps-script/reference/drive/file#getSecurityUpdateEnabled()
+       */
+      getSecurityUpdateEnabled(): boolean;
+
+      /**
        * Gets which class of users can access the File, besides any individual
        * users who have been explicitly given access.
        * https://developers.google.com/apps-script/reference/drive/file#getSharingAccess()
@@ -443,12 +509,41 @@ declare namespace GoogleAppsScript {
       getSharingPermission(): Permission;
 
       /**
-       * Gets the number of bytes used to store the File in Drive. Note that G
-       * Suite application files do not count toward Drive storage limits and thus return 0
-       * bytes.
+       * Gets the number of bytes used to store the File in Drive. Note that
+       * Google Workspace application files do not count toward Drive storage limits and thus return
+       * 0 bytes.
        * https://developers.google.com/apps-script/reference/drive/file#getSize()
        */
       getSize(): Integer;
+
+      /**
+       * If this is a Shortcut, returns the ID of the item it points to.
+       *
+       *
+       * Otherwise it returns null.
+       * https://developers.google.com/apps-script/reference/drive/file#getTargetId()
+       */
+      getTargetId(): string;
+
+      /**
+       * If this is a Shortcut, returns the mime type of the item it points to.
+       *
+       *
+       * Otherwise it returns null.
+       * https://developers.google.com/apps-script/reference/drive/file#getTargetMimeType()
+       */
+      getTargetMimeType(): string;
+
+      /**
+       * If the file is a shortcut, returns the resource key of the item it points to. Resource keys are
+       * an additional parameter which need to be passed to access files that have been shared using a
+       * link.
+       *
+       *
+       * If the file isn't a shortcut, it returns null.
+       * https://developers.google.com/apps-script/reference/drive/file#getTargetResourceKey()
+       */
+      getTargetResourceKey(): string;
 
       /**
        * Gets a thumbnail image for the file, or null if no thumbnail exists.
@@ -499,24 +594,35 @@ declare namespace GoogleAppsScript {
       /**
        * Creates a copy of the file in the destination directory.
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy(Folder)
-       * @param destination the directory to copy the file into.
+       * @param destination The directory to copy the file into.
        */
       makeCopy(destination: Folder): File;
 
       /**
        * Creates a copy of the file and names it with the name provided.
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy(String)
-       * @param name the filename that should be applied to the new copy
+       * @param name The filename that should be applied to the new copy.
        */
       makeCopy(name: string): File;
 
       /**
        * Creates a copy of the file in the destination directory and names it with the name provided.
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy(String,Folder)
-       * @param name the filename that should be applied to the new copy
-       * @param destination the directory to copy the file into.
+       * @param name The filename that should be applied to the new copy.
+       * @param destination The directory to copy the file into.
        */
       makeCopy(name: string, destination: Folder): File;
+
+      /**
+       * Moves this item to the provided destination folder.
+       *
+       *
+       * The current user must be the owner of the file or have at least edit access to the item's
+       * current parent folder in order to move the item to the destination folder.
+       * https://developers.google.com/apps-script/reference/drive/file#moveTo(Folder)
+       * @param destination The folder that becomes the new parent.
+       */
+      moveTo(destination: Folder): File;
 
       /**
        * Removes the given user from the list of commenters for the File. This method
@@ -524,7 +630,7 @@ declare namespace GoogleAppsScript {
        * who have general access — for example, if the File is shared with the user's
        * entire domain.
        * https://developers.google.com/apps-script/reference/drive/file#removeCommenter(String)
-       * @param emailAddress the email address of the user to remove
+       * @param emailAddress The email address of the user to remove.
        */
       removeCommenter(emailAddress: string): File;
 
@@ -534,7 +640,7 @@ declare namespace GoogleAppsScript {
        * who have general access — for example, if the File is shared with the user's
        * entire domain.
        * https://developers.google.com/apps-script/reference/drive/file#removeCommenter(User)
-       * @param user a representation of the user to remove
+       * @param user A representation of the user to remove.
        */
       removeCommenter(user: Base.User): File;
 
@@ -619,7 +725,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * https://developers.google.com/apps-script/reference/drive/file#setContent(String)
-       * @param content the new content for the file
+       * @param content The new content for the file.
        */
       setContent(content: string): File;
 
@@ -654,6 +760,17 @@ declare namespace GoogleAppsScript {
       setOwner(user: Base.User): File;
 
       /**
+       * Sets whether the File requires a resource key for access when it's
+       * shared using a link. Eligible files and folders are enabled by default.
+       *
+       *
+       * Learn more about the Security update for Google Drive.
+       * https://developers.google.com/apps-script/reference/drive/file#setSecurityUpdateEnabled(Boolean)
+       * @param enabled Whether to enable the resource key requirement for the File.
+       */
+      setSecurityUpdateEnabled(enabled: boolean): File;
+
+      /**
        * Sets whether users with edit permissions to the File are allowed to share
        * with other users or change the permissions. The default for a new File is
        * true.
@@ -668,7 +785,7 @@ declare namespace GoogleAppsScript {
        *
        *
        *     // Creates a folder that anyone on the Internet can read from and write to. (Domain
-       *     // administrators can prohibit this setting for users of a G Suite domain.)
+       *     // administrators can prohibit this setting for users of a Google Workspace domain.)
        *     var folder = DriveApp.createFolder('Shared Folder');
        *     folder.setSharing(DriveApp.Access.ANYONE, DriveApp.Permission.EDIT);
        * https://developers.google.com/apps-script/reference/drive/file#setSharing(Access,Permission)
@@ -695,7 +812,7 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An iterator that allows scripts to iterate over a potentially large collection of files. File
-     * iterators can be acccessed from DriveApp or a Folder.
+     * iterators can be accessed from DriveApp or a Folder.
      *
      *     // Log the name of every file in the user's Drive.
      *     var files = DriveApp.getFiles();
@@ -765,22 +882,6 @@ declare namespace GoogleAppsScript {
       addEditors(emailAddresses: string[]): Folder;
 
       /**
-       * Adds the given file to the current folder. This method does not move the file out of its
-       * existing parent folder; a file can have more than one parent simultaneously.
-       * https://developers.google.com/apps-script/reference/drive/folder#addFile(File)
-       * @param child the child file to add
-       */
-      addFile(child: File): Folder;
-
-      /**
-       * Adds the given folder to the current folder. This method does not move the folder out of
-       * its existing parent folder; a folder can have more than one parent simultaneously.
-       * https://developers.google.com/apps-script/reference/drive/folder#addFolder(Folder)
-       * @param child the child folder to add
-       */
-      addFolder(child: Folder): Folder;
-
-      /**
        * Adds the given user to the list of viewers for the Folder. If the user was already
        * on the list of editors, this method has no effect.
        * https://developers.google.com/apps-script/reference/drive/folder#addViewer(String)
@@ -812,7 +913,7 @@ declare namespace GoogleAppsScript {
        *     var blob = Maps.newStaticMap().setCenter('76 9th Avenue, New York NY').getBlob();
        *     DriveApp.getRootFolder().createFile(blob);
        * https://developers.google.com/apps-script/reference/drive/folder#createFile(BlobSource)
-       * @param blob the data for the new file
+       * @param blob The data for the new file.
        */
       createFile(blob: Base.BlobSource): File;
 
@@ -824,8 +925,8 @@ declare namespace GoogleAppsScript {
        *     // Create a text file with the content "Hello, world!"
        *     DriveApp.getRootFolder().createFile('New Text File', 'Hello, world!');
        * https://developers.google.com/apps-script/reference/drive/folder#createFile(String,String)
-       * @param name the name of the new file
-       * @param content the content for the new file
+       * @param name The name of the new file.
+       * @param content The content for the new file.
        */
       createFile(name: string, content: string): File;
 
@@ -837,18 +938,35 @@ declare namespace GoogleAppsScript {
        *     // Create an HTML file with the content "Hello, world!"
        *     DriveApp.getRootFolder().createFile('New HTML File', '<b>Hello, world!</b>', MimeType.HTML);
        * https://developers.google.com/apps-script/reference/drive/folder#createFile(String,String,String)
-       * @param name the name of the new file
-       * @param content the content for the new file
-       * @param mimeType the MIME type of the new file
+       * @param name The name of the new file.
+       * @param content The content for the new file.
+       * @param mimeType The MIME type of the new file.
        */
       createFile(name: string, content: string, mimeType: string): File;
 
       /**
        * Creates a folder in the current folder with the given name.
        * https://developers.google.com/apps-script/reference/drive/folder#createFolder(String)
-       * @param name the name of the new folder
+       * @param name The name of the new folder.
        */
       createFolder(name: string): Folder;
+
+      /**
+       * Creates a shortcut to the provided Drive item ID, and returns it.
+       * https://developers.google.com/apps-script/reference/drive/folder#createShortcut(String)
+       * @param targetId The file ID of the target file or folder.
+       */
+      createShortcut(targetId: string): File;
+
+      /**
+       * Creates a shortcut to the provided Drive item ID and resource key, and returns it. Resource
+       * keys are an additional parameter which need to be passed to access the target file or folder
+       * that has been shared using a link.
+       * https://developers.google.com/apps-script/reference/drive/folder#createShortcutForTargetIdAndResourceKey(String,String)
+       * @param targetId The ID of the target file or folder.
+       * @param targetResourceKey The resource key of the target file or folder.
+       */
+      createShortcutForTargetIdAndResourceKey(targetId: string, targetResourceKey: string): File;
 
       /**
        * Gets the permission granted to the given user.
@@ -892,14 +1010,14 @@ declare namespace GoogleAppsScript {
       /**
        * Gets a collection of all files that are children of the current folder and have the given name.
        * https://developers.google.com/apps-script/reference/drive/folder#getFilesByName(String)
-       * @param name the name of the files to find
+       * @param name The name of the files to find.
        */
       getFilesByName(name: string): FileIterator;
 
       /**
        * Gets a collection of all files that are children of the current folder and have the given MIME type.
        * https://developers.google.com/apps-script/reference/drive/folder#getFilesByType(String)
-       * @param mimeType the MIME type of the files to find
+       * @param mimeType The MIME type of the files to find.
        */
       getFilesByType(mimeType: string): FileIterator;
 
@@ -912,7 +1030,7 @@ declare namespace GoogleAppsScript {
       /**
        * Gets a collection of all folders that are children of the current folder and have the given name.
        * https://developers.google.com/apps-script/reference/drive/folder#getFoldersByName(String)
-       * @param name the name of the folders to find
+       * @param name The name of the folders to find.
        */
       getFoldersByName(name: string): FolderIterator;
 
@@ -947,6 +1065,41 @@ declare namespace GoogleAppsScript {
       getParents(): FolderIterator;
 
       /**
+       * Gets the resource key of the Folder that is required to access items that
+       * have been shared using a link.
+       * https://developers.google.com/apps-script/reference/drive/folder#getResourceKey()
+       */
+      getResourceKey(): string;
+
+      /**
+       * Gets whether this Folder is eligible to apply the security update that
+       * requires a resource key for access when it's shared using a link.
+       *
+       *
+       * Drive requires a resource key to access some files or folders that have been shared using a
+       * link. This change is part of a security update. The update is turned on by default for eligible
+       * files and folders. To turn the resource key requirement on or off for eligible files, use
+       * setSecurityUpdateEnabled.
+       *
+       *
+       * Learn more about the Security update for Google Drive.
+       * https://developers.google.com/apps-script/reference/drive/folder#getSecurityUpdateEligible()
+       */
+      getSecurityUpdateEligible(): boolean;
+
+      /**
+       * Gets whether this Folder requires a resource key for access when it's
+       * shared using a link. This requirement is turned on by default for eligible files and folders.
+       * To turn the resource key requirement on or off for eligible files, use
+       * setSecurityUpdateEnabled.
+       *
+       *
+       * Learn more about the Security update for Google Drive.
+       * https://developers.google.com/apps-script/reference/drive/folder#getSecurityUpdateEnabled()
+       */
+      getSecurityUpdateEnabled(): boolean;
+
+      /**
        * Gets which class of users can access the Folder, besides any individual
        * users who have been explicitly given access.
        * https://developers.google.com/apps-script/reference/drive/folder#getSharingAccess()
@@ -961,9 +1114,9 @@ declare namespace GoogleAppsScript {
       getSharingPermission(): Permission;
 
       /**
-       * Gets the number of bytes used to store the Folder in Drive. Note that G
-       * Suite application files do not count toward Drive storage limits and thus return 0
-       * bytes.
+       * Gets the number of bytes used to store the Folder in Drive. Note that
+       * Google Workspace application files do not count toward Drive storage limits and thus return
+       * 0 bytes.
        * https://developers.google.com/apps-script/reference/drive/folder#getSize()
        */
       getSize(): Integer;
@@ -1003,6 +1156,17 @@ declare namespace GoogleAppsScript {
       isTrashed(): boolean;
 
       /**
+       * Moves this item to the provided destination folder.
+       *
+       *
+       * The current user must be the owner of the file or have at least edit access to the item's
+       * current parent folder in order to move the item to the destination folder.
+       * https://developers.google.com/apps-script/reference/drive/folder#moveTo(Folder)
+       * @param destination The folder that becomes the new parent.
+       */
+      moveTo(destination: Folder): Folder;
+
+      /**
        * Removes the given user from the list of editors for the Folder. This method doesn't
        * block users from accessing the Folder if they belong to a class of users who have
        * general access—for example, if the Folder is shared with the user's entire
@@ -1027,24 +1191,6 @@ declare namespace GoogleAppsScript {
        * @param user A representation of the user to remove.
        */
       removeEditor(user: Base.User): Folder;
-
-      /**
-       * Removes the given file from the current folder. This method does not delete the file, but
-       * if a file is removed from all of its parents, it cannot be seen in Drive except by searching
-       * for it or using the "All items" view.
-       * https://developers.google.com/apps-script/reference/drive/folder#removeFile(File)
-       * @param child the child file to remove
-       */
-      removeFile(child: File): Folder;
-
-      /**
-       * Removes the given folder from the current folder. This method does not delete the folder
-       * or its contents, but if a folder is removed from all of its parents, it cannot be seen in Drive
-       * except by searching for it or using the "All items" view.
-       * https://developers.google.com/apps-script/reference/drive/folder#removeFolder(Folder)
-       * @param child the child folder to remove
-       */
-      removeFolder(child: Folder): Folder;
 
       /**
        * Removes the given user from the list of viewers and commenters for the Folder. This
@@ -1096,9 +1242,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets a collection of all files that are children of the current folder and match the given search
-       * criteria. The search criteria are detailed the Google
-       * Drive SDK documentation. Note that the params argument is a query string that may
-       * contain string values, so take care to escape quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
+       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
+       * 'title contains "Gulliver\'s Travels"').
        *
        *
        *     // Log the name of every file that are children of the current folder and modified after February 28,
@@ -1110,15 +1256,15 @@ declare namespace GoogleAppsScript {
        *       Logger.log(file.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/folder#searchFiles(String)
-       * @param params the search criteria, as detailed in the Google Drive SDK documentation
+       * @param params The search criteria, as detailed in the Google Drive SDK documentation.
        */
       searchFiles(params: string): FileIterator;
 
       /**
        * Gets a collection of all folders that are children of the current folder and match the given search
-       * criteria. The search criteria are detailed the Google
-       * Drive SDK documentation. Note that the params argument is a query string that may
-       * contain string values, so take care to escape quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
+       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
+       * 'title contains "Gulliver\'s Travels"').
        *
        *
        *     // Log the name of every folder that are children of the current folder and you own and is starred.
@@ -1128,7 +1274,7 @@ declare namespace GoogleAppsScript {
        *       Logger.log(folder.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/folder#searchFolders(String)
-       * @param params the search criteria, as detailed in the Google Drive SDK documentation
+       * @param params The search criteria, as detailed in the Google Drive SDK documentation.
        */
       searchFolders(params: string): FolderIterator;
 
@@ -1163,6 +1309,17 @@ declare namespace GoogleAppsScript {
       setOwner(user: Base.User): Folder;
 
       /**
+       * Sets whether the Folder requires a resource key for access when it's
+       * shared using a link. Eligible files and folders are enabled by default.
+       *
+       *
+       * Learn more about the Security update for Google Drive.
+       * https://developers.google.com/apps-script/reference/drive/folder#setSecurityUpdateEnabled(Boolean)
+       * @param enabled Whether to enable the resource key requirement for the Folder.
+       */
+      setSecurityUpdateEnabled(enabled: boolean): Folder;
+
+      /**
        * Sets whether users with edit permissions to the Folder are allowed to share
        * with other users or change the permissions. The default for a new Folder is
        * true.
@@ -1177,7 +1334,7 @@ declare namespace GoogleAppsScript {
        *
        *
        *     // Creates a folder that anyone on the Internet can read from and write to. (Domain
-       *     // administrators can prohibit this setting for users of a G Suite domain.)
+       *     // administrators can prohibit this setting for users of a Google Workspace domain.)
        *     var folder = DriveApp.createFolder('Shared Folder');
        *     folder.setSharing(DriveApp.Access.ANYONE, DriveApp.Permission.EDIT);
        * https://developers.google.com/apps-script/reference/drive/folder#setSharing(Access,Permission)
@@ -1201,10 +1358,14 @@ declare namespace GoogleAppsScript {
        * @param trashed true if the Folder should be moved to the trash of the user's Drive; false if not
        */
       setTrashed(trashed: boolean): Folder;
+      /** @deprecated DO NOT USE */ addFile(child: File): Folder;
+      /** @deprecated DO NOT USE */ addFolder(child: Folder): Folder;
+      /** @deprecated DO NOT USE */ removeFile(child: File): Folder;
+      /** @deprecated DO NOT USE */ removeFolder(child: Folder): Folder;
     }
     /**
      * An object that allows scripts to iterate over a potentially large collection of folders. Folder
-     * iterators can be acccessed from DriveApp, a File, or a Folder.
+     * iterators can be accessed from DriveApp, a File, or a Folder.
      *
      *     // Log the name of every folder in the user's Drive.
      *     var folders = DriveApp.getFolders();
@@ -1242,11 +1403,11 @@ declare namespace GoogleAppsScript {
      * DriveApp.Permission.
      *
      *     // Creates a folder that anyone on the Internet can read from and write to. (Domain
-     *     // administrators can prohibit this setting for G Suite users.)
+     *     // administrators can prohibit this setting for Google Workspace users.)
      *     var folder = DriveApp.createFolder('Shared Folder');
      *     folder.setSharing(DriveApp.Access.ANYONE, DriveApp.Permission.EDIT);
      */
-    enum Permission { VIEW, EDIT, COMMENT, OWNER, ORGANIZER, NONE }
+    enum Permission { VIEW, EDIT, COMMENT, OWNER, ORGANIZER, FILE_ORGANIZER, NONE }
     /**
      * A user associated with a file in Google Drive. Users can be accessed from File.getEditors(), Folder.getViewers(), and other methods.
      *

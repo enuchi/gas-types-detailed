@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -48,7 +48,7 @@ declare namespace GoogleAppsScript {
     /**
      * An enum for mime types that can be served from a script.
      */
-    enum MimeType { ATOM, CSV, ICAL, JAVASCRIPT, JSON, RSS, TEXT, VCARD, XML }
+    enum MimeType { CSV, ICAL, JAVASCRIPT, JSON, TEXT, VCARD }
     /**
      * A TextOutput object that can be served from a script.
      *

@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -103,6 +103,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/html/html-output#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */

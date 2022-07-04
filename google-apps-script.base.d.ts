@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -10,7 +10,7 @@ declare namespace GoogleAppsScript {
     /**
      * A data interchange object for Apps Script services.
      */
-    interface Blob {
+    interface Blob extends BlobSource {
 
       /**
        * Returns a copy of this blob.
@@ -24,6 +24,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/base/blob#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -61,7 +66,7 @@ declare namespace GoogleAppsScript {
       getName(): string;
 
       /**
-       * Returns whether this blob is a G Suite file (Sheets, Docs, etc.).
+       * Returns whether this blob is a Google Workspace file (Sheets, Docs, etc.).
        * https://developers.google.com/apps-script/reference/base/blob#isGoogleType()
        */
       isGoogleType(): boolean;
@@ -158,6 +163,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/base/blob-source#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -173,7 +183,7 @@ declare namespace GoogleAppsScript {
      * This class provides access to dialog boxes specific to Google Sheets.
      *
      * The methods in this class are only available for use in the context of a Google Spreadsheet.
-     * Please use G Suite dialogs instead.
+     * Please use Google Workspace dialogs instead.
      * See also
      *
      * ButtonSet
@@ -363,7 +373,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/base/logger#log(Object)
        * @param data the message to log
        */
-      log(data: object): Logger;
+      log(data: any): Logger;
 
       /**
        * Writes a formatted string to the logging console, using the format and values provided. The
@@ -378,7 +388,7 @@ declare namespace GoogleAppsScript {
        * @param format a format string that contains as many instances of %s as the number of values arguments
        * @param values a variable number of values to insert into the format string
        */
-      log(format: string, ...values: object[]): Logger;
+      log(format: string, ...values: any[]): Logger;
     }
     /**
      * A custom menu in an instance of the user interface for a Google App. A script can only interact
@@ -447,7 +457,7 @@ declare namespace GoogleAppsScript {
      *      Logger.log(png.getSize());
      *     }
      */
-    enum MimeType { GOOGLE_APPS_SCRIPT, GOOGLE_DRAWINGS, GOOGLE_DOCS, GOOGLE_FORMS, GOOGLE_SHEETS, GOOGLE_SITES, GOOGLE_SLIDES, FOLDER, BMP, GIF, JPEG, PNG, SVG, PDF, CSS, CSV, HTML, JAVASCRIPT, PLAIN_TEXT, RTF, OPENDOCUMENT_GRAPHICS, OPENDOCUMENT_PRESENTATION, OPENDOCUMENT_SPREADSHEET, OPENDOCUMENT_TEXT, MICROSOFT_EXCEL, MICROSOFT_EXCEL_LEGACY, MICROSOFT_POWERPOINT, MICROSOFT_POWERPOINT_LEGACY, MICROSOFT_WORD, MICROSOFT_WORD_LEGACY, ZIP }
+    enum MimeType { GOOGLE_APPS_SCRIPT, GOOGLE_DRAWINGS, GOOGLE_DOCS, GOOGLE_FORMS, GOOGLE_SHEETS, GOOGLE_SITES, GOOGLE_SLIDES, FOLDER, SHORTCUT, BMP, GIF, JPEG, PNG, SVG, PDF, CSS, CSV, HTML, JAVASCRIPT, PLAIN_TEXT, RTF, OPENDOCUMENT_GRAPHICS, OPENDOCUMENT_PRESENTATION, OPENDOCUMENT_SPREADSHEET, OPENDOCUMENT_TEXT, MICROSOFT_EXCEL, MICROSOFT_EXCEL_LEGACY, MICROSOFT_POWERPOINT, MICROSOFT_POWERPOINT_LEGACY, MICROSOFT_WORD, MICROSOFT_WORD_LEGACY, ZIP }
     /**
      * An enum representing the months of the year.
      */
@@ -537,7 +547,7 @@ declare namespace GoogleAppsScript {
        * context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app
        * deployed to "execute as me" (that is, authorized by the developer instead of the user).
        * However, these restrictions generally do not apply if the developer runs the script themselves
-       * or belongs to the same G Suite domain as the user.
+       * or belongs to the same Google Workspace domain as the user.
        *
        *
        *     // Log the email address of the person running the script.
@@ -836,7 +846,7 @@ declare namespace GoogleAppsScript {
        * @param userInterface An HtmlOutput representing the interface to display.
        * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
        */
-      showModalDialog(userInterface: object, title: string): void;
+      showModalDialog(userInterface: any, title: string): void;
 
       /**
        * Opens a modeless dialog box in the user's editor with custom client-side content. This method
@@ -863,7 +873,7 @@ declare namespace GoogleAppsScript {
        * @param userInterface An HtmlOutput representing the interface to display.
        * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
        */
-      showModelessDialog(userInterface: object, title: string): void;
+      showModelessDialog(userInterface: any, title: string): void;
 
       /**
        * Opens a sidebar in the user's editor with custom client-side content. This method does
@@ -888,8 +898,8 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/base/ui#showSidebar(Object)
        * @param userInterface An HtmlOutput representing the interface to display.
        */
-      showSidebar(userInterface: object): void;
-      /** @deprecated DO NOT USE */ showDialog(userInterface: object): void;
+      showSidebar(userInterface: any): void;
+      /** @deprecated DO NOT USE */ showDialog(userInterface: any): void;
     }
     /**
      * Representation of a user, suitable for scripting.
@@ -903,7 +913,7 @@ declare namespace GoogleAppsScript {
        * context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app
        * deployed to "execute as me" (that is, authorized by the developer instead of the user).
        * However, these restrictions generally do not apply if the developer runs the script themselves
-       * or belongs to the same G Suite domain as the user.
+       * or belongs to the same Google Workspace domain as the user.
        *
        *
        *     // Log the email address of the person running the script.
@@ -960,7 +970,7 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      error(formatOrObject: object, ...values: object[]): void;
+      error(formatOrObject: any, ...values: any[]): void;
 
       /**
        * Outputs blank INFO level message to Stackdriver Logging.
@@ -974,7 +984,7 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      info(formatOrObject: object, ...values: object[]): void;
+      info(formatOrObject: any, ...values: any[]): void;
 
       /**
        * Outputs a blank DEBUG level message to Stackdriver Logging.
@@ -988,7 +998,7 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      log(formatOrObject: object, ...values: object[]): void;
+      log(formatOrObject: any, ...values: any[]): void;
 
       /**
        * Starts a timer you can use to track how long an operation takes.
@@ -1017,7 +1027,7 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      warn(formatOrObject: object, ...values: object[]): void;
+      warn(formatOrObject: any, ...values: any[]): void;
     }
   }
 }

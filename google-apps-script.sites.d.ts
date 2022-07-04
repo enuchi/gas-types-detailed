@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -43,6 +43,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/sites/attachment#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */
@@ -872,7 +877,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/page#getAllDescendants(Object)
        * @param options JavaScript object fields defined in the Advanced Arguments section below
        */
-      getAllDescendants(options: object): Page[];
+      getAllDescendants(options: any): Page[];
 
       /**
        * Get the announcements for this page. Only valid for announcement pages.
@@ -917,7 +922,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/page#getAnnouncements(Object)
        * @param optOptions A JavaScript object containing advanced parameters
        */
-      getAnnouncements(optOptions: object): Page[];
+      getAnnouncements(optOptions: any): Page[];
 
       /**
        * Get the attachments for this page.
@@ -949,7 +954,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/page#getAttachments(Object)
        * @param optOptions a JavaScript object containing optional parameters
        */
-      getAttachments(optOptions: object): Attachment[];
+      getAttachments(optOptions: any): Attachment[];
 
       /**
        * Get the emails of the authors of the page
@@ -1007,7 +1012,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/page#getChildren(Object)
        * @param options JavaScript object fields defined in the Advanced Arguments section below
        */
-      getChildren(options: object): Page[];
+      getChildren(options: any): Page[];
 
       /**
        * Get the columns for the list. Only valid for list pages.
@@ -1119,7 +1124,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/page#getListItems(Object)
        * @param optOptions A JavaScript object of optional parameters
        */
-      getListItems(optOptions: object): ListItem[];
+      getListItems(optOptions: any): ListItem[];
 
       /**
        * Return the page's name.
@@ -1259,7 +1264,7 @@ declare namespace GoogleAppsScript {
        * @param query the full text search query to match
        * @param options JavaScript object fields defined in the Advanced Arguments section below
        */
-      search(query: string, options: object): Page[];
+      search(query: string, options: any): Page[];
 
       /**
        * Set the HTML content of the page.
@@ -1325,7 +1330,7 @@ declare namespace GoogleAppsScript {
       setTitle(title: string): Page;
       /** @deprecated DO NOT USE */ addComment(content: string): Comment;
       /** @deprecated DO NOT USE */ getComments(): Comment[];
-      /** @deprecated DO NOT USE */ getComments(optOptions: object): Comment[];
+      /** @deprecated DO NOT USE */ getComments(optOptions: any): Comment[];
       /** @deprecated DO NOT USE */ getPageName(): string;
       /** @deprecated DO NOT USE */ getSelfLink(): string;
     }
@@ -1560,7 +1565,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/site#getAllDescendants(Object)
        * @param options JavaScript object fields defined in the Advanced Arguments section below
        */
-      getAllDescendants(options: object): Page[];
+      getAllDescendants(options: any): Page[];
 
       /**
        * Gets a particular child page.
@@ -1603,7 +1608,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/sites/site#getChildren(Object)
        * @param options JavaScript object fields defined in the Advanced Arguments section below
        */
-      getChildren(options: object): Page[];
+      getChildren(options: any): Page[];
 
       /**
        * Gets the list of editors for this Site.
@@ -1800,7 +1805,7 @@ declare namespace GoogleAppsScript {
        * @param query the full text search query to match
        * @param options JavaScript object fields defined in the Advanced Arguments section below
        */
-      search(query: string, options: object): Page[];
+      search(query: string, options: any): Page[];
 
       /**
        * Set the summary of the web site
@@ -1893,25 +1898,25 @@ declare namespace GoogleAppsScript {
        *
        * Warning: Copying a site takes time, from seconds to possibly many minutes, depending on the
        * size of the site. Although the method returns right away, the copy is still going on in the
-       * background, and not all pages in the copied site will be immediately available. This method can
+       * background, and not all pages in the copied site are immediately available. This method can
        * also be used to instantiate a new site based on a given template.
        *
        *
-       *     // This creates a site. Note that this only works for G Suite domains.
+       *     // This creates a site. Note that this only works for Google Workspace domains.
        *     // There is no version of this API for consumer accounts.
-       *     var site = SitesApp.createSite("example.com",
+       *     var site = SitesApp.createSite("examplepetstore.com",
        *                                    "homepage",
        *                                    "My Home Page",
        *                                    "This is a new site I created!");
        *
-       *     var siteCopy = SitesApp.copySite("example.com",
+       *     var siteCopy = SitesApp.copySite("examplepetstore.com",
        *                                      "homepage-clone",
        *                                      "Cloned Home Page",
        *                                      "Begun, these clone wars have.",
        *                                      site);
        * https://developers.google.com/apps-script/reference/sites/sites-app#copySite(String,String,String,String,Site)
-       * @param domain The G Suite hosted domain (e.g. example.com)
-       * @param name The webspace name found in the URL (e.g. mySite)
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
+       * @param name The webspace name found in the URL, such as mySite.
        * @param title The title of the site
        * @param summary The description of the site
        * @param site The Site to copy from. This can either be a site or a template. If the parameter is an existing site then the entire contents of the site will be copied. If the given Site is a template, then a new Site is created based on that template.
@@ -1922,17 +1927,17 @@ declare namespace GoogleAppsScript {
        * Creates a new Site.
        *
        *
-       *     // This creates a site. Note that this only works for G Suite domains.
+       *     // This creates a site. Note that this only works for Google Workspace domains.
        *     // There is no version of this API for consumer accounts.
-       *     var site = SitesApp.createSite("example.com",
+       *     var site = SitesApp.createSite("examplepetstore.com",
        *                                    "homepage",
        *                                    "My Home Page",
        *                                    "This is a new site I created!");
        * https://developers.google.com/apps-script/reference/sites/sites-app#createSite(String,String,String,String)
-       * @param domain The G Suite hosted domain (e.g. example.com)
-       * @param name the path name found in the URL (e.g. mySite)
-       * @param title The title of the site
-       * @param summary The description of the site
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
+       * @param name The path name found in the URL, such as mySite.
+       * @param title The title of the site.
+       * @param summary The description of the site.
        */
       createSite(domain: string, name: string, title: string, summary: string): Site;
 
@@ -1946,7 +1951,8 @@ declare namespace GoogleAppsScript {
       getActivePage(): Page;
 
       /**
-       * Returns the active container, if the script is hosted in a container, or null otherwise.
+       * Returns the active container, if the script is hosted in a container, or null
+       * otherwise.
        *
        *
        *     var site = SitesApp.getActiveSite();
@@ -1958,14 +1964,14 @@ declare namespace GoogleAppsScript {
        * Retrieves first 200 Sites belonging to this domain. To get all the sites, use the getAllSites(domain, start, max) method to page through the results.
        *
        *
-       *     // This writes the first page of sites belonging to a G Suite
+       *     // This writes the first page of sites belonging to a Google Workspace
        *     // domain to the log.
-       *     var sites = SitesApp.getAllSites("example.com");
+       *     var sites = SitesApp.getAllSites("examplepetstore.com.");
        *     for(var i in sites) {
        *       Logger.log(sites[i].getUrl());
        *     }
        * https://developers.google.com/apps-script/reference/sites/sites-app#getAllSites(String)
-       * @param domain The G Suite hosted domain (e.g. example.com)
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
        */
       getAllSites(domain: string): Site[];
 
@@ -1978,7 +1984,7 @@ declare namespace GoogleAppsScript {
        *     var pageSize = 50;
        *     while (true) {
        *       Logger.log("Loading sites starting at %s", pageStart);
-       *       var sites = SitesApp.getAllSites("example.com", pageStart, pageSize);
+       *       var sites = SitesApp.getAllSites("examplepetstore.com", pageStart, pageSize);
        *       if (sites.length == 0) {
        *         break;
        *       }
@@ -1989,9 +1995,9 @@ declare namespace GoogleAppsScript {
        *       }
        *     }
        * https://developers.google.com/apps-script/reference/sites/sites-app#getAllSites(String,Integer,Integer)
-       * @param domain The G Suite hosted domain (e.g. example.com)
-       * @param start the index of the first site to return
-       * @param max the maximum number of results to return
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
+       * @param start The index of the first site to return.
+       * @param max The maximum number of results to return.
        */
       getAllSites(domain: string, start: Integer, max: Integer): Site[];
 
@@ -2005,7 +2011,7 @@ declare namespace GoogleAppsScript {
        *                         "https://sites.google.com/site/demositeappsscript/mylistpage");
        *     Logger.log(page.getName());
        * https://developers.google.com/apps-script/reference/sites/sites-app#getPageByUrl(String)
-       * @param url the public url
+       * @param url The public url.
        */
       getPageByUrl(url: string): Page;
 
@@ -2017,7 +2023,7 @@ declare namespace GoogleAppsScript {
        *     // Returns a Site instance
        *     var site = SitesApp.getSite('mysite');
        * https://developers.google.com/apps-script/reference/sites/sites-app#getSite(String)
-       * @param name The webspace name found in the URL (e.g. mySite)
+       * @param name The webspace name found in the URL, such as mySite.
        */
       getSite(name: string): Site;
 
@@ -2028,8 +2034,8 @@ declare namespace GoogleAppsScript {
        *     // Returns a Site instance
        *     var site = SitesApp.getSite('example.com', 'mysite');
        * https://developers.google.com/apps-script/reference/sites/sites-app#getSite(String,String)
-       * @param domain The G Suite hosted domain (e.g. example.com)
-       * @param name The webspace name found in the URL (e.g. mySite)
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
+       * @param name The webspace name found in the URL, such as mySite.
        */
       getSite(domain: string, name: string): Site;
 
@@ -2043,7 +2049,7 @@ declare namespace GoogleAppsScript {
        *     var site = SitesApp.getSiteByUrl("https://sites.google.com/site/demosite");
        *     Logger.log(site.getName());
        * https://developers.google.com/apps-script/reference/sites/sites-app#getSiteByUrl(String)
-       * @param url the public url
+       * @param url The public url.
        */
       getSiteByUrl(url: string): Site;
 
@@ -2072,8 +2078,8 @@ declare namespace GoogleAppsScript {
        *       Logger.log(sites[i].getUrl());
        *     }
        * https://developers.google.com/apps-script/reference/sites/sites-app#getSites(Integer,Integer)
-       * @param start the index of the first site to return
-       * @param max the maximum number of results to return
+       * @param start The index of the first site to return.
+       * @param max The maximum number of results to return.
        */
       getSites(start: Integer, max: Integer): Site[];
 
@@ -2088,7 +2094,7 @@ declare namespace GoogleAppsScript {
        *       Logger.log(sites[i].getUrl());
        *     }
        * https://developers.google.com/apps-script/reference/sites/sites-app#getSites(String)
-       * @param domain The G Suite hosted domain (e.g. example.com)
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
        */
       getSites(domain: string): Site[];
 
@@ -2103,9 +2109,9 @@ declare namespace GoogleAppsScript {
        *       Logger.log(sites[i].getUrl());
        *     }
        * https://developers.google.com/apps-script/reference/sites/sites-app#getSites(String,Integer,Integer)
-       * @param domain The G Suite hosted domain (e.g. example.com)
-       * @param start the index of the first site to return
-       * @param max the maximum number of results to return
+       * @param domain The Google Workspace hosted domain, such as examplepetstore.com.
+       * @param start The index of the first site to return.
+       * @param max The maximum number of results to return.
        */
       getSites(domain: string, start: Integer, max: Integer): Site[];
     }

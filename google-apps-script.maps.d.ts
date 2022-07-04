@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -123,7 +123,7 @@ declare namespace GoogleAppsScript {
        *     Logger.log(directions.routes[0].legs[0].duration.text);
        * https://developers.google.com/apps-script/reference/maps/direction-finder#getDirections()
        */
-      getDirections(): object;
+      getDirections(): any;
 
       /**
        * Sets whether or not alternative routes should be returned, instead of just the highest ranked
@@ -329,7 +329,7 @@ declare namespace GoogleAppsScript {
        * @param latitude the latitude of the point to sample
        * @param longitude the longitude of the point to sample
        */
-      sampleLocation(latitude: number, longitude: number): object;
+      sampleLocation(latitude: number, longitude: number): any;
 
       /**
        * Returns elevation data for a series of points (lat/lng).
@@ -347,7 +347,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/maps/elevation-sampler#sampleLocations(Number)
        * @param points an array of latitude/longitude pairs
        */
-      sampleLocations(points: number[]): object;
+      sampleLocations(points: number[]): any;
 
       /**
        * Returns elevation data for the points in an encoded polyline.
@@ -360,7 +360,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/maps/elevation-sampler#sampleLocations(String)
        * @param encodedPolyline an encoded polyline of points to sample
        */
-      sampleLocations(encodedPolyline: string): object;
+      sampleLocations(encodedPolyline: string): any;
 
       /**
        * Returns elevation data for a number of samples along a line, defined using a series of points.
@@ -380,7 +380,7 @@ declare namespace GoogleAppsScript {
        * @param points an array of latitude/longitude pairs defining a path to sample over
        * @param numSamples the number of points to sample along the path of points
        */
-      samplePath(points: number[], numSamples: Integer): object;
+      samplePath(points: number[], numSamples: Integer): any;
 
       /**
        * Returns elevation data for a number of samples along a line, defined using an encoded polyline.
@@ -395,7 +395,7 @@ declare namespace GoogleAppsScript {
        * @param encodedPolyline an encoded polyline of points defining a path to sample over
        * @param numSamples the number of points to sample along the path of points
        */
-      samplePath(encodedPolyline: string, numSamples: Integer): object;
+      samplePath(encodedPolyline: string, numSamples: Integer): any;
     }
     /**
      * An enum representing the format of the map image.
@@ -450,7 +450,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/maps/geocoder#geocode(String)
        * @param address an address
        */
-      geocode(address: string): object;
+      geocode(address: string): any;
 
       /**
        * Gets the approximate addresses for a given geographic point.
@@ -467,26 +467,7 @@ declare namespace GoogleAppsScript {
        * @param latitude the latitude of the point
        * @param longitude the longitude of the point
        */
-      reverseGeocode(latitude: number, longitude: number): object;
-
-      /**
-       * Gets the approximate addresses for a given area.
-       *
-       *
-       *     // Gets the address of an area around Central Park.
-       *     var response = Maps.newGeocoder().reverseGeocode(40.764941, -73.98262, 40.799133, -73.947558);
-       *     for (var i = 0; i < response.results.length; i++) {
-       *       var result = response.results[i];
-       *       Logger.log('%s: %s, %s', result.formatted_address, result.geometry.location.lat,
-       *           result.geometry.location.lng);
-       *     }
-       * https://developers.google.com/apps-script/reference/maps/geocoder#reverseGeocode(Number,Number,Number,Number)
-       * @param swLatitude the latitude of the south west corner of the bounds
-       * @param swLongitude the longitude of the south west corner of the bounds
-       * @param neLatitude the latitude of the north east corner of the bounds
-       * @param neLongitude the longitude of the north east corner of the bounds
-       */
-      reverseGeocode(swLatitude: number, swLongitude: number, neLatitude: number, neLongitude: number): object;
+      reverseGeocode(latitude: number, longitude: number): any;
 
       /**
        * Sets the bounds of an area that should be given extra preference in the results.
@@ -833,6 +814,11 @@ declare namespace GoogleAppsScript {
        * assumes that the part of the filename that follows the last period (if any) is an existing
        * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
        * "ShoppingList.12.25.pdf".
+       *
+       *
+       * To view the daily quotas for conversions, see Quotas for Google
+       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
+       * quotas.
        * https://developers.google.com/apps-script/reference/maps/static-map#getAs(String)
        * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
        */

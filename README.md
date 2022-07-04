@@ -13,7 +13,7 @@ This package contains type definitions for google-apps-script (https://developer
 Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/google-apps-script.
 
 # Credits
-These definitions were written by PopGoesTheWza (https://github.com/PopGoesTheWza), motemen (https://github.com/motemen/), and enuchi (https://github.com/enuchi).
+These definitions were written by PopGoesTheWza (https://github.com/PopGoesTheWza), motemen (https://github.com/motemen/), and enuchi (https://github.com/enuchi). The type files included here were generated using the scripts at https://github.com/enuchi/dts-google-apps-script.
 
 Reference:
 https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/google-apps-script

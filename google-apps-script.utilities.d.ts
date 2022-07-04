@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -490,7 +490,7 @@ declare namespace GoogleAppsScript {
        * @param template The format string that controls what gets returned.
        * @param args Objects to use to fill in the '%' placeholders in the template.
        */
-      formatString(template: string, ...args: object[]): string;
+      formatString(template: string, ...args: any[]): string;
 
       /**
        * Get a UUID as a string (equivalent to using the java.util.UUID.randomUUID() method). This identifier is not guaranteed to be unique across
@@ -696,8 +696,8 @@ declare namespace GoogleAppsScript {
        * @param name the name of the zip file to be created
        */
       zip(blobs: Base.BlobSource[], name: string): Base.Blob;
-      /** @deprecated DO NOT USE */ jsonParse(jsonString: string): object;
-      /** @deprecated DO NOT USE */ jsonStringify(obj: object): string;
+      /** @deprecated DO NOT USE */ jsonParse(jsonString: string): any;
+      /** @deprecated DO NOT USE */ jsonStringify(obj: any): string;
     }
   }
 }

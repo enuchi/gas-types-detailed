@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2022-07-03
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -84,7 +84,7 @@ declare namespace GoogleAppsScript {
        *     }
        * https://developers.google.com/apps-script/reference/properties/properties#getProperties()
        */
-      getProperties(): object;
+      getProperties(): any;
 
       /**
        * Gets the value associated with the given key in the current Properties store, or null if no such key exists.
@@ -110,7 +110,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/properties/properties#setProperties(Object)
        * @param properties an object containing key-values pairs to set
        */
-      setProperties(properties: object): Properties;
+      setProperties(properties: any): Properties;
 
       /**
        * Sets all key-value pairs from the given object in the current Properties store,
@@ -125,7 +125,7 @@ declare namespace GoogleAppsScript {
        * @param properties an object containing key-values pairs to set
        * @param deleteAllOthers true to delete all other key-value pairs in the properties object; false to not
        */
-      setProperties(properties: object, deleteAllOthers: boolean): Properties;
+      setProperties(properties: any, deleteAllOthers: boolean): Properties;
 
       /**
        * Sets the given key-value pair in the current Properties store.
@@ -189,10 +189,10 @@ declare namespace GoogleAppsScript {
       /** @deprecated DO NOT USE */ deleteAllProperties(): ScriptProperties;
       /** @deprecated DO NOT USE */ deleteProperty(key: string): ScriptProperties;
       /** @deprecated DO NOT USE */ getKeys(): string[];
-      /** @deprecated DO NOT USE */ getProperties(): object;
+      /** @deprecated DO NOT USE */ getProperties(): any;
       /** @deprecated DO NOT USE */ getProperty(key: string): string;
-      /** @deprecated DO NOT USE */ setProperties(properties: object): ScriptProperties;
-      /** @deprecated DO NOT USE */ setProperties(properties: object, deleteAllOthers: boolean): ScriptProperties;
+      /** @deprecated DO NOT USE */ setProperties(properties: any): ScriptProperties;
+      /** @deprecated DO NOT USE */ setProperties(properties: any, deleteAllOthers: boolean): ScriptProperties;
       /** @deprecated DO NOT USE */ setProperty(key: string, value: string): ScriptProperties;
     }
     /**
@@ -205,10 +205,10 @@ declare namespace GoogleAppsScript {
       /** @deprecated DO NOT USE */ deleteAllProperties(): UserProperties;
       /** @deprecated DO NOT USE */ deleteProperty(key: string): UserProperties;
       /** @deprecated DO NOT USE */ getKeys(): string[];
-      /** @deprecated DO NOT USE */ getProperties(): object;
+      /** @deprecated DO NOT USE */ getProperties(): any;
       /** @deprecated DO NOT USE */ getProperty(key: string): string;
-      /** @deprecated DO NOT USE */ setProperties(properties: object): UserProperties;
-      /** @deprecated DO NOT USE */ setProperties(properties: object, deleteAllOthers: boolean): UserProperties;
+      /** @deprecated DO NOT USE */ setProperties(properties: any): UserProperties;
+      /** @deprecated DO NOT USE */ setProperties(properties: any, deleteAllOthers: boolean): UserProperties;
       /** @deprecated DO NOT USE */ setProperty(key: string, value: string): UserProperties;
     }
   }
