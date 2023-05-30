@@ -187,6 +187,8 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/checkbox-grid-validation-builder#requireLimitOneResponsePerColumn()
        */
       requireLimitOneResponsePerColumn(): CheckboxGridValidationBuilder;
+      build(): CheckboxGridValidation;
+      setHelpText(text: string): CheckboxGridValidationBuilder;
     }
     /**
      * A question item that allows the respondent to select one or more checkboxes, as well as an
@@ -470,6 +472,8 @@ declare namespace GoogleAppsScript {
        * @param number
        */
       requireSelectExactly(number: Integer): CheckboxValidationBuilder;
+      build(): CheckboxValidation;
+      setHelpText(text: string): CheckboxValidationBuilder;
     }
     /**
      * A single choice associated with a type of Item that supports choices, like CheckboxItem, ListItem, or MultipleChoiceItem.
@@ -1944,6 +1948,8 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/grid-validation-builder#requireLimitOneResponsePerColumn()
        */
       requireLimitOneResponsePerColumn(): GridValidationBuilder;
+      build(): GridValidation;
+      setHelpText(text: string): GridValidationBuilder;
     }
     /**
      * A layout item that displays an image. Items can be accessed or created from a Form.
@@ -3112,6 +3118,8 @@ declare namespace GoogleAppsScript {
        * @param pattern text must match pattern
        */
       requireTextMatchesPattern(pattern: string): ParagraphTextValidationBuilder;
+      build(): ParagraphTextValidation;
+      setHelpText(text: string): ParagraphTextValidationBuilder;
     }
     /**
      * The bean implementation of a Feedback, which contains properties common to all feedback, such as
@@ -3682,6 +3690,9 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/text-validation-builder#requireWholeNumber()
        */
       requireWholeNumber(): TextValidationBuilder;
+
+      build(): TextValidation;
+      setHelpText(text: string): TextValidationBuilder;
     }
     /**
      * A question item that allows the respondent to indicate a time of day. Items can be accessed or
