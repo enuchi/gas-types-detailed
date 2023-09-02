@@ -614,6 +614,22 @@ declare namespace GoogleAppsScript {
       parseCsv(csv: string, delimiter: Char): string[][];
 
       /**
+       * Parses the provided string date according to the specification described in the Java Standard Edition
+       * SimpleDateFormat class. For more information, see the Java SimpleDateFormat class.
+       * https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
+       *
+       *     // This set of parameters parses the given string as a date in Greenwich Mean Time, formatted
+       *     // as year-month-dateThour-minute-second.
+       *     var date = Utilities.parseDate("1970-01-01 00:00:00", "GMT", "yyyy-MM-dd' 'HH:mm:ss");
+       *     Logger.log(date);
+       * https://developers.google.com/apps-script/reference/utilities/utilities#parsedatedate,-timezone,-format
+       * @param date a string value to parse as a date
+       * @param timeZone the output time zone
+       * @param delimiter the date format per the SimpleDateFormat specification
+       */
+      parseDate(date: string, timeZone: string, format: string): Date;
+
+      /**
        * Sleeps for specified number of milliseconds. Immediately puts the script to sleep for the
        * specified number of milliseconds. The maximum allowed value is 300000 (or 5 minutes).
        * https://developers.google.com/apps-script/reference/utilities/utilities#sleep(Integer)
