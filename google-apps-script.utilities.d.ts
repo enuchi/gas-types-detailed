@@ -625,7 +625,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/utilities/utilities#parsedatedate,-timezone,-format
        * @param date a string value to parse as a date
        * @param timeZone the output time zone
-       * @param delimiter the date format per the SimpleDateFormat specification
+       * @param format the date format per the SimpleDateFormat specification
        */
       parseDate(date: string, timeZone: string, format: string): Date;
 
