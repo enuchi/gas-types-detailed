@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped

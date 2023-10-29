@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -20,8 +20,8 @@ declare namespace GoogleAppsScript {
     interface MailApp {
 
       /**
-       * Returns the number of recipients you can send emails to for the rest of the day. The
-       * returned value is valid for the current execution and might vary between executions.
+       * Returns the number of recipients you can send emails to for the rest of the day. The returned
+       * value is valid for the current execution and might vary between executions.
        *
        *
        * Quotas are based on the number of email recipients. For specific quota information, see Quotas for Google

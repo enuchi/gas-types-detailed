@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -88,41 +88,6 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/gmail/gmail-app#getAliases()
        */
       getAliases(): string[];
-
-      /**
-       * Gets all classic Google Hangouts threads and Google Chat threads until all users are switched to
-       * Chat later this year. To learn more, see
-       * Learn
-       * about the switch from classic Hangouts to Google Chat.
-       *
-       *
-       * This call fails when the size of all threads is too large for the system to handle. Where
-       * the thread size is unknown, and potentially very large, use the 'paged' call, and specify
-       * ranges of the threads to retrieve in each call.
-       *
-       *
-       *     var threads = GmailApp.getChatThreads();
-       *     Logger.log("# of chat threads: " + threads.length);
-       * https://developers.google.com/apps-script/reference/gmail/gmail-app#getChatThreads()
-       */
-      getChatThreads(): GmailThread[];
-
-      /**
-       * Gets a range of classic Google Hangouts threads and Google Chat threads until all users are
-       * switched to Chat later this year. To learn more, see Learn
-       * about the switch from classic Hangouts to Google Chat.
-       *
-       *
-       *     // Get first 50 chat threads
-       *     var threads = GmailApp.getChatThreads(0,50);
-       *     // Will log no more than 50.0
-       *     Logger.log(threads.length);
-       *     Logger.log(threads[0].getFirstMessageSubject());
-       * https://developers.google.com/apps-script/reference/gmail/gmail-app#getChatThreads(Integer,Integer)
-       * @param start the index of the first thread to retrieve
-       * @param max the maximum number of threads to retrieve
-       */
-      getChatThreads(start: Integer, max: Integer): GmailThread[];
 
       /**
        * Retrieve an email message draft by ID.
@@ -904,6 +869,8 @@ declare namespace GoogleAppsScript {
        * @param messages an array of messages to unstar
        */
       unstarMessages(messages: GmailMessage[]): GmailApp;
+      /** @deprecated DO NOT USE */ getChatThreads(): GmailThread[];
+      /** @deprecated DO NOT USE */ getChatThreads(start: Integer, max: Integer): GmailThread[];
     }
     /**
      * An attachment from Gmail. This is a regular Blob except that it has an extra getSize() method that is faster than calling
@@ -1155,7 +1122,8 @@ declare namespace GoogleAppsScript {
       addToThread(thread: GmailThread): GmailLabel;
 
       /**
-       * Adds this label to the given threads and forces the threads to refresh.
+       * Adds this label to the given threads and forces the threads to refresh. You can add labels for
+       * up to 100 threads per batch.
        *
        *
        *     // label the first three threads in the inbox with the label MyLabel
@@ -1246,7 +1214,8 @@ declare namespace GoogleAppsScript {
       removeFromThread(thread: GmailThread): GmailLabel;
 
       /**
-       * Removes this label from the given threads and forces the threads to refresh.
+       * Removes this label from the given threads and forces the threads to refresh. You can remove
+       * labels for up to 100 threads per batch.
        *
        *
        *     // remove the label MyLabel from the first three threads in the inbox

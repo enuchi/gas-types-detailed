@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -56,7 +56,7 @@ declare namespace GoogleAppsScript {
        *       var GROUP_EMAIL = "example@googlegroups.com";
        *       var group = GroupsApp.getGroupByEmail(GROUP_EMAIL);
        *       var childGroups = group.getGroups();
-       *       console.log("Group " + GROUP_EMAIL + " has " + childGroup.length + " groups:");
+       *       console.log("Group " + GROUP_EMAIL + " has " + childGroups.length + " groups:");
        *       for (var i = 0; i < childGroups.length; i++) {
        *         var childGroup = childGroups[i];
        *         console.log(childGroup.getEmail());
@@ -136,8 +136,8 @@ declare namespace GoogleAppsScript {
       getRoles(users: Base.User[]): Role[];
 
       /**
-       * Retrieves the direct members of the group that have a known corresponding Google account.
-       * Throws an exception if you do not have permission to view the group's member list.
+       * Gets the direct members of the group that have a known corresponding Google account. Throws an
+       * exception if you don't have permission to view the group's member list or the member emails.
        *
        *
        * Note: if you are a member of a group B which is itself a member of another group A then you
@@ -289,6 +289,9 @@ declare namespace GoogleAppsScript {
     /**
      * Possible roles of a user within a group, such as owner or ordinary member. Users subscribed to a
      * group have exactly one role within the context of that group.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * GroupsApp.Role.OWNER.
      * See also
      *
      * Group.getRole(email)

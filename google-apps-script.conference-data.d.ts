@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -146,7 +146,7 @@ declare namespace GoogleAppsScript {
      *         + state;
      *
      *     var conferenceError = ConferenceDataService.newConferenceError()
-     *         .setConferenceErrorType(ConferenceErrorType.UNAUTHENTICATED)
+     *         .setConferenceErrorType(ConferenceDataService.ConferenceErrorType.AUTHENTICATION)
      *         .setAuthenticationUrl(authenticationUrl);
      */
     interface ConferenceError {
@@ -154,7 +154,7 @@ declare namespace GoogleAppsScript {
       /**
        * If the error type is AUTHENTICATION, the add-on must
        * provide a URL calling back into the add-on to allow users to log in. The maximum length for
-       * this field is 1300 characters.
+       * this field is 1800 characters.
        * https://developers.google.com/apps-script/reference/conference-data/conference-error#setAuthenticationUrl(String)
        * @param authenticationUrl The authentication URL to set.
        */

@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -11,6 +11,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enum representing the supported types of image alignment. Alignment types can be accessed from
      * FormApp.Alignment.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * FormApp.Alignment.LEFT.
      *
      *     // Open a form by ID and add a new image item with alignment
      *     var form = FormApp.openById('1234567890abcdefghijklmnopqrstuvwxyz');
@@ -776,6 +779,9 @@ declare namespace GoogleAppsScript {
      * those that do not have a destination set explicitly, save a copy of responses in the form's
      * response store. Destination types can be accessed from FormApp.DestinationType.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * FormApp.DestinationType.SPREADSHEET.
+     *
      *     // Open a form by ID and create a new spreadsheet.
      *     var form = FormApp.openById('1234567890abcdefghijklmnopqrstuvwxyz');
      *     var ss = SpreadsheetApp.create('Spreadsheet Name');
@@ -899,6 +905,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enum representing the supported types of feedback. Feedback types can be accessed from FormApp.FeedbackType.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * FormApp.FeedbackType.CORRECT.
+     *
      *     // Open a form by ID and add a new list item.
      *     var form = FormApp.openById('1234567890abcdefghijklmnopqrstuvwxyz');
      *     var item = form.addListItem();
@@ -936,6 +945,22 @@ declare namespace GoogleAppsScript {
       /**
        * Appends a new question item, presented as a grid of columns and rows, that allows the
        * respondent to select multiple choices per row from a sequence of checkboxes.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a checkbox grid item.
+       *     const item = form.addCheckboxGridItem();
+       *
+       *     // Sets the title 'Where did you celebrate New Year's?'
+       *     item.setTitle('Where did you celebrate New Year's?');
+       *
+       *     // Sets the grid's rows and columns.
+       *     item.setRows(['New York', 'San Francisco', 'London'])
+       *       .setColumns(['2014', '2015', '2016', '2017']);
        * https://developers.google.com/apps-script/reference/forms/form#addCheckboxGridItem()
        */
       addCheckboxGridItem(): CheckboxGridItem;
@@ -943,24 +968,84 @@ declare namespace GoogleAppsScript {
       /**
        * Appends a new question item that allows the respondent to select one or more checkboxes, as
        * well as an optional "other" field.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a checkbox item.
+       *     const item = form.addCheckboxItem();
+       *
+       *     // Sets the title of the checkbox item to 'Do you prefer cats or dogs?'
+       *     item.setTitle('Do you prefer cats or dogs?');
+       *
+       *     // Sets the choices.
+       *     item.setChoiceValues(['Cats', 'Dogs']);
        * https://developers.google.com/apps-script/reference/forms/form#addCheckboxItem()
        */
       addCheckboxItem(): CheckboxItem;
 
       /**
        * Appends a new question item that allows the respondent to indicate a date.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a date item.
+       *     const item = form.addDateItem();
+       *
+       *     // Sets the title to 'When were you born?'
+       *     item.setTitle('When were you born?');
+       *
+       *     // Sets the description for the date item.
+       *     item.setHelpText('Some helper text.');
        * https://developers.google.com/apps-script/reference/forms/form#addDateItem()
        */
       addDateItem(): DateItem;
 
       /**
        * Appends a new question item that allows the respondent to indicate a date and time.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a question with date and time inputs.
+       *     const item = form.addDateTimeItem();
+       *
+       *     // Sets the title to 'When were you born?'
+       *     item.setTitle('When were you born?');
+       *
+       *     // Sets the question as required.
+       *     item.setRequired(true);
        * https://developers.google.com/apps-script/reference/forms/form#addDateTimeItem()
        */
       addDateTimeItem(): DateTimeItem;
 
       /**
        * Appends a new question item that allows the respondent to indicate a length of time.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a question with a duration input.
+       *     const item = form.addDurationItem();
+       *
+       *     // Sets the title to 'How long can you hold your breath?'
+       *     item.setTitle('How long can you hold your breath?');
+       *
+       *     // Sets the question as required.
+       *     item.setRequired(true);
        * https://developers.google.com/apps-script/reference/forms/form#addDurationItem()
        */
       addDurationItem(): DurationItem;
@@ -993,38 +1078,142 @@ declare namespace GoogleAppsScript {
       /**
        * Appends a new question item, presented as a grid of columns and rows, that allows the
        * respondent to select one choice per row from a sequence of radio buttons.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a multiple choice grid.
+       *     const item = form.addGridItem();
+       *
+       *     // Sets the title to 'Rate your interests.'
+       *     item.setTitle('Rate your interests');
+       *
+       *     // Sets the grid's rows and columns.
+       *     item.setRows(['Cars', 'Computers', 'Celebrities'])
+       *       .setColumns(['Boring', 'So-so', 'Interesting']);
        * https://developers.google.com/apps-script/reference/forms/form#addGridItem()
        */
       addGridItem(): GridItem;
 
       /**
        * Appends a new layout item that displays an image.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds an image item.
+       *     const item = form.addImageItem();
+       *
+       *     // Gets the Google icon to use as the image.
+       *     const img = UrlFetchApp.fetch('https://fonts.gstatic.com/s/i/productlogos/googleg/v6/web-24dp/logo_googleg_color_1x_web_24dp.png');
+       *
+       *     // Sets the image, title, and description for the item.
+       *     item.setTitle('Google icon').setHelpText('Google icon').setImage(img);
        * https://developers.google.com/apps-script/reference/forms/form#addImageItem()
        */
       addImageItem(): ImageItem;
 
       /**
-       * Appends a new question item that allows the respondent to select one choice from a drop-down
+       * Appends a new question item that allows the respondent to select one choice from a dropdown
        * list.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a dropdown list to the form.
+       *     const item = form.addListItem();
+       *
+       *     // Sets the title to 'Do you prefer cats or dogs?'
+       *     item.setTitle('Do you prefer cats or dogs?');
+       *
+       *     // Sets the description to 'This is description text...'
+       *     item.setHelpText('This is description text...');
+       *
+       *     // Creates and adds choices to the dropdown list.
+       *     item.setChoices([
+       *       item.createChoice('dog'),
+       *       item.createChoice('cat')
+       *     ]);
        * https://developers.google.com/apps-script/reference/forms/form#addListItem()
        */
       addListItem(): ListItem;
 
       /**
-       * Appends a new question item that allows the respondent to select one choice from a list of
-       * radio buttons or an optional "other" field.
+       * Adds a new question item that allows the respondent to select one choice from a list of radio
+       * buttons or an optional "other" field.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a multiple choice item to the form.
+       *     const item = form.addMultipleChoiceItem();
+       *
+       *     // Sets the title.
+       *     item.setTitle('What is your favorite ice cream flavor?');
+       *
+       *     // Creates some choice items.
+       *     const vanilla = item.createChoice('vanilla');
+       *     const chocolate = item.createChoice('chocolate');
+       *     const strawberry = item.createChoice('strawberry');
+       *
+       *     // Sets the choices.
+       *     item.setChoices([vanilla, chocolate, strawberry]);
        * https://developers.google.com/apps-script/reference/forms/form#addMultipleChoiceItem()
        */
       addMultipleChoiceItem(): MultipleChoiceItem;
 
       /**
-       * Appends a new layout item that marks the start of a page.
+       * Adds a new layout item that marks the start of a page.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds page break items to create a second and third page for the form.
+       *     const pageTwo = form.addPageBreakItem();
+       *     const pageThree = form.addPageBreakItem();
+       *
+       *     // Sets the titles for the pages.
+       *     pageTwo.setTitle('Page two');
+       *     pageThree.setTitle('Page three');
+       *
+       *     // Upon completion of the first page, sets the form to navigate to the third page.
+       *     pageTwo.setGoToPage(pageThree);
+       *
+       *     // Upon completion of the second page, sets the form to navigate back to the first page.
+       *     pageThree.setGoToPage(FormApp.PageNavigationType.RESTART);
        * https://developers.google.com/apps-script/reference/forms/form#addPageBreakItem()
        */
       addPageBreakItem(): PageBreakItem;
 
       /**
-       * Appends a new question item that allows the respondent to enter a block of text.
+       * Adds a new question item that allows the respondent to enter a block of text.
+       *
+       *
+       *     // Opens the form by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds the paragraph text item.
+       *     const item = form.addParagraphTextItem();
+       *
+       *     // Sets the title to 'What is your address?'
+       *     item.setTitle('What is your address?');
        * https://developers.google.com/apps-script/reference/forms/form#addParagraphTextItem()
        */
       addParagraphTextItem(): ParagraphTextItem;
@@ -1032,30 +1221,104 @@ declare namespace GoogleAppsScript {
       /**
        * Appends a new question item that allows the respondent to choose one option from a numbered
        * sequence of radio buttons.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds the scale item.
+       *     const item = form.addScaleItem();
+       *
+       *     // Sets the title of the scale item to 'Choose a number.'
+       *     item.setTitle('Choose a number');
+       *
+       *     // Sets the scale to 1-5.
+       *     item.setBounds(1, 5);
+       *
+       *     // Sets the label for the lower and upper bounds.
+       *     item.setLabels('Lowest', 'Highest');
        * https://developers.google.com/apps-script/reference/forms/form#addScaleItem()
        */
       addScaleItem(): ScaleItem;
 
       /**
        * Appends a new layout item that visually indicates the start of a section.
+       *
+       *
+       *      // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds the section heading item.
+       *     const item = form.addSectionHeaderItem();
+       *
+       *     // Sets the title to 'Title of new section.'
+       *     item.setTitle('Title of new section');
+       *
+       *     // Sets the description.
+       *     item.setHelpText('Description of new section');
        * https://developers.google.com/apps-script/reference/forms/form#addSectionHeaderItem()
        */
       addSectionHeaderItem(): SectionHeaderItem;
 
       /**
        * Appends a new question item that allows the respondent to enter a single line of text.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a single-line text item.
+       *     const item = form.addTextItem();
+       *
+       *     // Sets the title to 'What is your name?'
+       *     item.setTitle('What is your name?');
        * https://developers.google.com/apps-script/reference/forms/form#addTextItem()
        */
       addTextItem(): TextItem;
 
       /**
        * Appends a new question item that allows the respondent to indicate a time of day.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a question with a time input.
+       *     const item = form.addTimeItem();
+       *
+       *     // Sets the title to 'What time do you usually wake up in the morning?'
+       *     item.setTitle('What time do you usually wake up in the morning?');
        * https://developers.google.com/apps-script/reference/forms/form#addTimeItem()
        */
       addTimeItem(): TimeItem;
 
       /**
        * Appends a new layout item that displays a video.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Adds a video item.
+       *     const item = form.addVideoItem();
+       *
+       *     // Sets the title, description, and video.
+       *     item.setTitle('YouTube video')
+       *       .setHelpText('Send content automatically via Google Sheets and Apps Script')
+       *       .setVideoUrl('https://youtu.be/xxgQr-jSu9o');
+       *
+       *     // Sets the alignment to the center.
+       *     item.setAlignment(FormApp.Alignment.CENTER);
        * https://developers.google.com/apps-script/reference/forms/form#addVideoItem()
        */
       addVideoItem(): VideoItem;
@@ -1067,12 +1330,40 @@ declare namespace GoogleAppsScript {
        * Regardless of this setting, the method FormResponse.getEditResponseUrl() allows a
        * script author who has edit access to the form to generate a URL that can be used to edit a
        * response.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Checks if the form displays a link to edit a response after submitting it.
+       *     // The default is false. To let people edit their responses, use
+       *     // form.setAllowResponseEdits(true).
+       *     const edit = form.canEditResponse();
+       *
+       *     // If the form doesn't let people edit responses, logs false to the console.
+       *     console.log(edit);
        * https://developers.google.com/apps-script/reference/forms/form#canEditResponse()
        */
       canEditResponse(): boolean;
 
       /**
        * Determines whether the form collects respondents' email addresses.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to not collect respondents' email addresses.
+       *     form.setCollectEmail(false);
+       *
+       *     // Checks whether the form collects respondents' email addresses and logs it to the console.
+       *     const bool = form.collectsEmail();
+       *
+       *     console.log(bool);
        * https://developers.google.com/apps-script/reference/forms/form#collectsEmail()
        */
       collectsEmail(): boolean;
@@ -1099,15 +1390,45 @@ declare namespace GoogleAppsScript {
       /**
        * Deletes the item at a given index among all the items in the form. Throws a scripting exception
        * if no item exists at the given index.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets all the items from the form.
+       *     const items = form.getItems();
+       *
+       *     // Finds the index of a paragraph text item and deletes it by the item's index.
+       *     const index = items.findIndex(item => item.getType() === FormApp.ItemType.PARAGRAPH_TEXT);
+       *     if (index !== -1) {
+       *       form.deleteItem(index);
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form#deleteItem(Integer)
-       * @param index the index of the item among all the items in the form
+       * @param index The index of the item among all the items in the form.
        */
       deleteItem(index: Integer): void;
 
       /**
        * Deletes the given item. Throws a scripting exception if the item has already been deleted.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets all of the items from the form.
+       *     const items = form.getItems();
+       *
+       *     // Finds a paragraph text item and deletes it.
+       *     const item = items.find(item => item.getType() === FormApp.ItemType.PARAGRAPH_TEXT);
+       *     if (item) {
+       *       form.deleteItem(item);
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form#deleteItem(Item)
-       * @param item the item to be deleted
+       * @param item The item to be deleted.
        */
       deleteItem(item: Item): void;
 
@@ -1120,43 +1441,125 @@ declare namespace GoogleAppsScript {
        *
        *
        * https://developers.google.com/apps-script/reference/forms/form#deleteResponse(String)
-       * @param responseId the ID of the form response to delete
+       * @param responseId The ID of the form response to delete.
        */
       deleteResponse(responseId: string): Form;
 
       /**
        * Gets the form's confirmation message.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the confirmation message to display after someone submits the form.
+       *     form.setConfirmationMessage('You successfully submitted the form.');
+       *
+       *     // Gets the confirmation message and logs it to the console.
+       *     const message = form.getConfirmationMessage();
+       *
+       *     console.log(message);
        * https://developers.google.com/apps-script/reference/forms/form#getConfirmationMessage()
        */
       getConfirmationMessage(): string;
 
       /**
-       * Gets the custom message that will be displayed if the form is not accepting responses, or an
-       * empty string if no custom message has been set.
+       * Gets the custom message that is displayed if the form is not accepting responses, or an empty
+       * string if no custom message is set.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets a custom closed form message to display to the user when the form
+       *     // no longer accepts responses.
+       *     form.setCustomClosedFormMessage('The form is no longer accepting responses.');
+       *
+       *     // Gets the custom message set for the form and logs it to the console.
+       *     const message = form.getCustomClosedFormMessage();
+       *
+       *     console.log(message);
        * https://developers.google.com/apps-script/reference/forms/form#getCustomClosedFormMessage()
        */
       getCustomClosedFormMessage(): string;
 
       /**
        * Gets the form's description.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form description.
+       *     form.setDescription('This is the form description.');
+       *
+       *     // Gets the form description and logs it to the console.
+       *     const description = form.getDescription();
+       *
+       *     console.log(description);
        * https://developers.google.com/apps-script/reference/forms/form#getDescription()
        */
       getDescription(): string;
 
       /**
        * Gets the ID of the form's response destination.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Creates a spreadsheet to use as the response destination.
+       *     const ss = SpreadsheetApp.create('Test_Spreadsheet');
+       *
+       *     // Updates the form's response destination.
+       *     form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+       *
+       *     // Gets the ID of the form's response destination and logs it to the console.
+       *     const destinationId = form.getDestinationId();
+       *
+       *     console.log(destinationId);
        * https://developers.google.com/apps-script/reference/forms/form#getDestinationId()
        */
       getDestinationId(): string;
 
       /**
        * Gets the type of the form's response destination.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc1234556/edit');
+       *
+       *     // Gets the type of the form's response destination and logs it to the console.
+       *     const destinationType = form.getDestinationType().name();
+       *
+       *     console.log(destinationType);
        * https://developers.google.com/apps-script/reference/forms/form#getDestinationType()
        */
       getDestinationType(): DestinationType;
 
       /**
        * Gets the URL that can be used to access the form's edit mode.
+       *
+       *
+       *     // Opens the form by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the URL that accesses the form's edit mode and logs it to the console.
+       *     const url = form.getEditUrl();
+       *
+       *     console.log(url);
        * https://developers.google.com/apps-script/reference/forms/form#getEditUrl()
        */
       getEditUrl(): string;
@@ -1169,6 +1572,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the ID of the form.
+       *
+       *
+       *     // Opens the form by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the ID of the form and logs it to the console.
+       *     const id = form.getId();
+       *
+       *     console.log(id);
        * https://developers.google.com/apps-script/reference/forms/form#getId()
        */
       getId(): string;
@@ -1176,26 +1590,80 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the item with a given ID. Returns null if the ID does not correspond to an item in
        * the form.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the ID of the first item on the form.
+       *     const itemId = form.getItems()[0].getId();
+       *
+       *     // Gets the item from the ID.
+       *     const item = form.getItemById(itemId);
+       *
+       *     // Gets the name of the item type and logs it to the console.
+       *     const type = item.getType().name();
+       *
+       *     console.log(type);
        * https://developers.google.com/apps-script/reference/forms/form#getItemById(Integer)
-       * @param id the item's ID
+       * @param id The item's ID.
        */
       getItemById(id: Integer): Item;
 
       /**
        * Gets an array of all items in the form.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the list of items in the form.
+       *     const items = form.getItems();
+       *
+       *     // Gets the type for each item and logs them to the console.
+       *     const types = items.map((item) => item.getType().name());
+       *
+       *     console.log(types);
        * https://developers.google.com/apps-script/reference/forms/form#getItems()
        */
       getItems(): Item[];
 
       /**
        * Gets an array of all items of a given type.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets a list of all checkbox items on the form.
+       *     const items = form.getItems(FormApp.ItemType.CHECKBOX);
+       *
+       *     // Gets the title of each checkbox item and logs them to the console.
+       *     const checkboxItemsTitle = items.map((item) => item.asCheckboxItem().getTitle());
+       *     console.log(checkboxItemsTitle);
        * https://developers.google.com/apps-script/reference/forms/form#getItems(ItemType)
-       * @param itemType the type of items to retrieve
+       * @param itemType The type of items to retrieve.
        */
       getItems(itemType: ItemType): Item[];
 
       /**
        * Gets the URL that can be used to respond to the form.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the URL to respond to the form and logs it to the console.
+       *     const url = form.getPublishedUrl();
+       *     console.log(url);
        * https://developers.google.com/apps-script/reference/forms/form#getPublishedUrl()
        */
       getPublishedUrl(): string;
@@ -1203,7 +1671,7 @@ declare namespace GoogleAppsScript {
       /**
        * Gets a single form response based on its response ID. Response IDs can be retrieved from FormResponse.getId().
        * https://developers.google.com/apps-script/reference/forms/form#getResponse(String)
-       * @param responseId the ID for the form response
+       * @param responseId The ID for the form response.
        */
       getResponse(responseId: string): FormResponse;
 
@@ -1216,7 +1684,7 @@ declare namespace GoogleAppsScript {
       /**
        * Gets an array of all of the form's responses after a given date and time.
        * https://developers.google.com/apps-script/reference/forms/form#getResponses(Date)
-       * @param timestamp the earliest date and time for which form responses should be returned
+       * @param timestamp The earliest date and time for which form responses should be returned.
        */
       getResponses(timestamp: Date): FormResponse[];
 
@@ -1227,14 +1695,38 @@ declare namespace GoogleAppsScript {
       getShuffleQuestions(): boolean;
 
       /**
-       * Gets the URL that can be used to view a summary of the form's responses. Unless setPublishingSummary(enabled) is set to true, only users with edit permission to the form
-       * will be able to access the URL.
+       * Gets the URL that can be used to view a summary of the form's responses. Unless setPublishingSummary(enabled) is set to true, only the users with edit permission to the
+       * form is able to access the URL.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // Opens the form by its URL.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the URL to view a summary of the form's responses and logs it to the console.
+       *     const url = form.getSummaryUrl();
+       *     console.log(url);
        * https://developers.google.com/apps-script/reference/forms/form#getSummaryUrl()
        */
       getSummaryUrl(): string;
 
       /**
        * Gets the form's title.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the title of the form to 'For_Testing.'
+       *     form.setTitle('For_Testing');
+       *
+       *     // Gets the title of the form and logs it to the console.
+       *     const title = form.getTitle();
+       *     console.log(title);
        * https://developers.google.com/apps-script/reference/forms/form#getTitle()
        */
       getTitle(): string;
@@ -1247,6 +1739,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Determines whether the form displays a progress bar.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // Opens the form by its URL.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Displays the progress bar on the form.
+       *     form.setProgressBar(true);
+       *
+       *     // Checks if the form displays a progress bar and logs it to the console.
+       *     console.log(form.hasProgressBar());
        * https://developers.google.com/apps-script/reference/forms/form#hasProgressBar()
        */
       hasProgressBar(): boolean;
@@ -1254,12 +1759,38 @@ declare namespace GoogleAppsScript {
       /**
        * Determines whether the form displays a link to submit another response after a respondent
        * completes the form.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to display a link to submit another
+       *     // response after someone submits the form.
+       *     form.setShowLinkToRespondAgain(true);
+       *
+       *     // Checks if the form displays a 'Submit another response' link and logs it to the console.
+       *     console.log(form.hasRespondAgainLink());
        * https://developers.google.com/apps-script/reference/forms/form#hasRespondAgainLink()
        */
       hasRespondAgainLink(): boolean;
 
       /**
        * Determines whether the form is currently accepting responses.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to accept responses.
+       *     form.setAcceptingResponses(true);
+       *
+       *     // Checks if the form is accepting responses or not and logs it to the console.
+       *     const accepting = form.isAcceptingResponses();
+       *     console.log(accepting);
        * https://developers.google.com/apps-script/reference/forms/form#isAcceptingResponses()
        */
       isAcceptingResponses(): boolean;
@@ -1267,12 +1798,38 @@ declare namespace GoogleAppsScript {
       /**
        * Determines whether the form displays a link to view a summary of responses after a respondent
        * completes the form.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to display a link to a summary of
+       *     // the responses after someone submits the form.
+       *     form.setPublishingSummary(true);
+       *
+       *     // Checks if the form displays a "See previous responses" link and logs it to the console.
+       *     const publishingLink = form.isPublishingSummary();
+       *     console.log(publishingLink);
        * https://developers.google.com/apps-script/reference/forms/form#isPublishingSummary()
        */
       isPublishingSummary(): boolean;
 
       /**
        * Determines whether the form is a quiz.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form as a quiz.
+       *     form.setIsQuiz(true);
+       *
+       *     // Checks if the form is a quiz or not and logs it to the console.
+       *     console.log(form.isQuiz());
        * https://developers.google.com/apps-script/reference/forms/form#isQuiz()
        */
       isQuiz(): boolean;
@@ -1280,18 +1837,39 @@ declare namespace GoogleAppsScript {
       /**
        * Moves an item at a given index among all the items in the form to another given index. Throws a
        * scripting exception if the to index is out of bounds.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Moves the first item to be the last item.
+       *     form.moveItem(0, form.getItems().length - 1);
        * https://developers.google.com/apps-script/reference/forms/form#moveItem(Integer,Integer)
-       * @param from the current index of the item among all the items in the form
-       * @param to the new index for the item among all the items in the form
+       * @param from The current index of the item among all the items in the form.
+       * @param to The new index for the item among all the items in the form.
        */
       moveItem(from: Integer, to: Integer): Item;
 
       /**
-       * Moves a given item to an given index among all the items in the form. Throws a scripting
+       * Moves a given item to a given index among all the items in the form. Throws a scripting
        * exception if the given index is out of bounds.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Gets the first item.
+       *     const item = form.getItems()[0];
+       *
+       *     // Moves the item to be the last item.
+       *     form.moveItem(item, form.getItems().length - 1);
        * https://developers.google.com/apps-script/reference/forms/form#moveItem(Item,Integer)
-       * @param item the item to move
-       * @param toIndex the new index for the item among all the items in the form
+       * @param item The item to move.
+       * @param toIndex The new index for the item among all the items in the form.
        */
       moveItem(item: Item, toIndex: Integer): Item;
 
@@ -1301,6 +1879,22 @@ declare namespace GoogleAppsScript {
        * destination set explicitly, save a
        * copy of responses in the form's response store. If the form does not currently have a
        * response destination, this method has no effect.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Opens a spreadsheet to use for the response destination.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Updates the form's response destination to the spreadsheet.
+       *     form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
+       *
+       *     // Unlinks the form from the spreadsheet.
+       *     form.removeDestination();
        * https://developers.google.com/apps-script/reference/forms/form#removeDestination()
        */
       removeDestination(): Form;
@@ -1334,14 +1928,37 @@ declare namespace GoogleAppsScript {
       /**
        * Determines whether the form requires respondents to log in to an account in the same domain or
        * a subdomain before responding.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Checks if the form requires respondents to log in to a Google Workspace account
+       *     // before responding and logs it to the console.
+       *     const login = form.requiresLogin();
+       *     console.log(login);
        * https://developers.google.com/apps-script/reference/forms/form#requiresLogin()
        */
       requiresLogin(): boolean;
 
       /**
        * Sets whether the form is currently accepting responses. The default for new forms is true.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to accept responses.
+       *     form.setAcceptingResponses(true);
+       *
+       *     // Checks whether the form is accepting responses or not and logs it to the console.
+       *     console.log(form.isAcceptingResponses());
        * https://developers.google.com/apps-script/reference/forms/form#setAcceptingResponses(Boolean)
-       * @param enabled true if the form should accept responses; false if not
+       * @param enabled true if the form should accept responses; false if it shouldn't.
        */
       setAcceptingResponses(enabled: boolean): Form;
 
@@ -1353,38 +1970,93 @@ declare namespace GoogleAppsScript {
        * Regardless of this setting, the method FormResponse.getEditResponseUrl() allows a
        * script author who has edit permission to the form to generate a URL that can be used to edit a
        * response.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Shows "Edit your response" link after someone submits the form.
+       *     form.setAllowResponseEdits(true);
+       *
+       *     // Checks whether the option to edit the form after a user submits it is set to true or not
+       *     // and logs it to the console.
+       *     console.log(form.canEditResponse());
        * https://developers.google.com/apps-script/reference/forms/form#setAllowResponseEdits(Boolean)
-       * @param enabled true if the form should display an "Edit your response" link; false if not
+       * @param enabled true if the form should display an "Edit your response" link; false if not.
        */
       setAllowResponseEdits(enabled: boolean): Form;
 
       /**
        * Sets whether the form collects respondents' email addresses. The default for new forms is
        * false.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to collect respondents' email addresses.
+       *     form.setCollectEmail(true);
+       *
+       *     // Checks whether the value is set to true or false and logs it to the console.
+       *     const collect = form.collectsEmail();
+       *     console.log(collect);
        * https://developers.google.com/apps-script/reference/forms/form#setCollectEmail(Boolean)
-       * @param collect true if the form should collect email addresses; false if not
+       * @param collect true if the form should collect email addresses; false if it doesn't.
        */
       setCollectEmail(collect: boolean): Form;
 
       /**
        * Sets the form's confirmation message.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets a custom confirmation message to display after someone submits the form.
+       *     form.setConfirmationMessage('Your form has been successfully submitted.');
+       *
+       *     // Gets the confirmation message set for the form and logs it to the console.
+       *     const message = form.getConfirmationMessage();
+       *     console.log(message);
        * https://developers.google.com/apps-script/reference/forms/form#setConfirmationMessage(String)
-       * @param message the form's new confirmation message
+       * @param message The form's new confirmation message.
        */
       setConfirmationMessage(message: string): Form;
 
       /**
        * Sets the message to display if the form is not accepting responses. If no message is set, the
-       * form will use a default message.
+       * form uses a default message.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form to not accept responses.
+       *     form.setAcceptingResponses(false);
+       *
+       *     // Sets a custom closed form message to display to the user.
+       *     form.setCustomClosedFormMessage('The form is no longer accepting responses.');
+       *
+       *     // Gets the custom message set for the form and logs it to the console.
+       *     const message = form.getCustomClosedFormMessage();
+       *     console.log(message);
        * https://developers.google.com/apps-script/reference/forms/form#setCustomClosedFormMessage(String)
-       * @param message the message to display if the form is not accepting responses
+       * @param message The message to display if the form is not accepting responses.
        */
       setCustomClosedFormMessage(message: string): Form;
 
       /**
        * Sets the form's description.
        * https://developers.google.com/apps-script/reference/forms/form#setDescription(String)
-       * @param description the form's new description
+       * @param description The form's new description.
        */
       setDescription(description: string): Form;
 
@@ -1393,8 +2065,8 @@ declare namespace GoogleAppsScript {
        * have a destination set explicitly, save a copy of responses in the form's
        * response store.
        * https://developers.google.com/apps-script/reference/forms/form#setDestination(DestinationType,String)
-       * @param type the type of the form's response destination
-       * @param id the ID of the form's response destination
+       * @param type The type of the form's response destination.
+       * @param id The ID of the form's response destination.
        */
       setDestination(type: DestinationType, id: string): Form;
 
@@ -1402,14 +2074,26 @@ declare namespace GoogleAppsScript {
        * Sets whether the form is a quiz. The default for new forms is false.
        *
        *
-       * Graded questions are only allowed in Quizzes, so setting this to false will cause all
+       * Graded questions are only allowed in Quizzes, so setting this to false causes all
        * grading options to be removed from all questions.
        *
        *
-       * Quiz settings are only available in the new Forms UI; making a form a Quiz will opt the form
+       * Quiz settings are only available in the new Forms UI; making a form a Quiz opts the form
        * into using the new UI.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within a
+       *     // Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Makes the form a quiz.
+       *     form.setIsQuiz(true);
+       *
+       *     // Checks whether the form is a quiz or not and logs it to the console.
+       *     console.log(form.isQuiz());
        * https://developers.google.com/apps-script/reference/forms/form#setIsQuiz(Boolean)
-       * @param enabled true if quiz features should be enabled for the form; false if not
+       * @param enabled true if quiz features should be enabled for the form; false if not.
        */
       setIsQuiz(enabled: boolean): Form;
 
@@ -1418,14 +2102,26 @@ declare namespace GoogleAppsScript {
        * false. If the value is set to true, the script cannot submit form responses at
        * all.
        * https://developers.google.com/apps-script/reference/forms/form#setLimitOneResponsePerUser(Boolean)
-       * @param enabled true if the form should allow only one response per respondent; false if not
+       * @param enabled true if the form should allow only one response per respondent; false if not.
        */
       setLimitOneResponsePerUser(enabled: boolean): Form;
 
       /**
        * Sets whether the form has a progress bar. The default for new forms is false.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Displays the progress bar on the form.
+       *     form.setProgressBar(true);
+       *
+       *     // Checks whether the form has a progress bar and logs it to the console.
+       *     console.log(form.hasProgressBar());
        * https://developers.google.com/apps-script/reference/forms/form#setProgressBar(Boolean)
-       * @param enabled true if the form should display a progress bar; false if not
+       * @param enabled true if the form displays a progress bar; false if it doesn't.
        */
       setProgressBar(enabled: boolean): Form;
 
@@ -1433,7 +2129,7 @@ declare namespace GoogleAppsScript {
        * Sets whether the form displays a link to view a summary of responses after a respondent submits
        * the form. The default for new forms is false.
        * https://developers.google.com/apps-script/reference/forms/form#setPublishingSummary(Boolean)
-       * @param enabled true if the form should display a "See previous responses" link; false if not
+       * @param enabled true if the form should display a "See previous responses" link; false if not.
        */
       setPublishingSummary(enabled: boolean): Form;
 
@@ -1445,8 +2141,20 @@ declare namespace GoogleAppsScript {
        *
        * This feature is available only for forms created by Google Workspace users. Users of other
        * types of Google accounts can't be required to log in.
+       *
+       *
+       *     // Opens the Forms file by its URL. If you created your script from within
+       *     // a Google Forms file, you can use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const form = FormApp.openByUrl('https://docs.google.com/forms/d/abc123456/edit');
+       *
+       *     // Sets the form so that users must log in to their Google Workspace account.
+       *     form.setRequireLogin(true);
+       *
+       *     // Checks whether the form requires login or not and logs it to the console.
+       *     console.log(form.requiresLogin());
        * https://developers.google.com/apps-script/reference/forms/form#setRequireLogin(Boolean)
-       * @param requireLogin true if the form requires users to log in; false if not
+       * @param requireLogin true if the form requires users to log in; false if it doesn't.
        */
       setRequireLogin(requireLogin: boolean): Form;
 
@@ -1454,21 +2162,21 @@ declare namespace GoogleAppsScript {
        * Sets whether the form displays a link to submit another response after a respondent completes
        * the form. The default for new forms is true.
        * https://developers.google.com/apps-script/reference/forms/form#setShowLinkToRespondAgain(Boolean)
-       * @param enabled true if the form should display a "Submit another response" link; false if not
+       * @param enabled true if the form should display a "Submit another response" link; false if not.
        */
       setShowLinkToRespondAgain(enabled: boolean): Form;
 
       /**
        * Sets whether the order of the questions on each page of the form is randomized.
        * https://developers.google.com/apps-script/reference/forms/form#setShuffleQuestions(Boolean)
-       * @param shuffle true if the order of the questions on each page of the form should be randomized; false if not
+       * @param shuffle true if the order of the questions on each page of the form should be randomized; false if not.
        */
       setShuffleQuestions(shuffle: boolean): Form;
 
       /**
        * Sets the form's title.
        * https://developers.google.com/apps-script/reference/forms/form#setTitle(String)
-       * @param title the form's new title
+       * @param title The form's new title.
        */
       setTitle(title: string): Form;
 
@@ -1476,7 +2184,7 @@ declare namespace GoogleAppsScript {
        * Converts a long URL for a form to a short URL. Throws an exception if the long URL does not
        * belong to Google Forms.
        * https://developers.google.com/apps-script/reference/forms/form#shortenFormUrl(String)
-       * @param url
+       * @param url The URL to shorten.
        */
       shortenFormUrl(url: string): string;
 
@@ -1488,7 +2196,7 @@ declare namespace GoogleAppsScript {
        * triggers the onFormSubmit condition and causes an infinite loop. To prevent the
        * infinite loop, add code that checks whether grades already exist before calling submitGrades().
        * https://developers.google.com/apps-script/reference/forms/form#submitGrades(FormResponse)
-       * @param responses
+       * @param responses An array of all of the form's responses.
        */
       submitGrades(responses: FormResponse[]): Form;
     }
@@ -1655,6 +2363,20 @@ declare namespace GoogleAppsScript {
        *
        * For a form response that the script has created but not yet submitted, this method returns
        * null.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets the first form response.
+       *     const formResponse = form.getResponses()[0];
+       *
+       *     // Gets the edit URL for the first form response and logs it to the console.
+       *     const editUrl = formResponse.getEditResponseUrl();
+       *     console.log(editUrl);
        * https://developers.google.com/apps-script/reference/forms/form-response#getEditResponseUrl()
        */
       getEditResponseUrl(): string;
@@ -1665,6 +2387,27 @@ declare namespace GoogleAppsScript {
        * a missing answer, it still returns an ItemResponse if the corresponding Item
        * can be graded (ie has a point value), even if there isn't an actual response. However, if the
        * Item isn't gradable, this method excludes that item from its returned array.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets an array of the form's responses.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Gets the item responses contained in each form response.
+       *     for (const formResponse of formResponses){
+       *       const gradableItemsResponses = formResponse.getGradableItemResponses();
+       *
+       *       // Logs the title and score for each item response to the console.
+       *       for (const gradableItemsResponse of gradableItemsResponses) {
+       *         console.log(`${gradableItemsResponse.getItem().getTitle()}
+       *            score ${gradableItemsResponse.getScore()}`);
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getGradableItemResponses()
        */
       getGradableItemResponses(): ItemResponse[];
@@ -1675,6 +2418,25 @@ declare namespace GoogleAppsScript {
        * returns an ItemResponse if the corresponding Item can be graded (ie has a point
        * value), even if there isn't an actual response. However, if the Item isn't gradable,
        * this method returns null.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets an array of the form's responses.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Gets the item responses contained in a form response.
+       *     for (const formResponse of formResponses) {
+       *       const formItemResponses = formResponse.getGradableItemResponses();
+       *
+       *       // Logs the title and score for responses to the first item of the form.
+       *       const itemResponse = formResponse.getGradableResponseForItem(formItemResponses[0].getItem());
+       *       console.log(`${itemResponse.getItem().getTitle()} score ${itemResponse.getScore()}`);
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getGradableResponseForItem(Item)
        * @param item
        */
@@ -1683,6 +2445,21 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the ID of the form response. This method returns null if the form response has not
        * been submitted.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets an array of the form's responses.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Loops through the form responses and logs the ID for each form response to the console.
+       *     for (const formResponse of formResponses) {
+       *       console.log(`Response ID: ${formResponse.getId()}`);
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getId()
        */
       getId(): string;
@@ -1693,6 +2470,31 @@ declare namespace GoogleAppsScript {
        * DateItem, TimeItem, or ParagraphTextItem, the ItemResponse
        * returned for that item will have an empty string as the response. If the form response omits a
        * response for any other item type, this method excludes that item from its returned array.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets the responses to the form.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Iterates over the responses.
+       *     for (const formResponse of formResponses) {
+       *
+       *       // Gets the item responses from each form response.
+       *       const itemResponses = formResponse.getItemResponses();
+       *
+       *       // Iterates over the item responses.
+       *       for (const itemResponse of itemResponses) {
+       *
+       *         // Logs the items' questions and responses to the console.
+       *         console.log(`Response to the question '${itemResponse.getItem().getTitle()}' was
+       *           '${itemResponse.getResponse()}'`);
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getItemResponses()
        */
       getItemResponses(): ItemResponse[];
@@ -1703,12 +2505,47 @@ declare namespace GoogleAppsScript {
        *
        * For a form response that the script has created but not yet submitted, this method returns
        * null.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets an array of the form's responses.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Loops through the responses and logs each respondent's email to the console.
+       *     // To collect respondent emails, ensure that Form.setCollectEmail(collect) is set to true.
+       *     for (const formResponse of formResponses) {
+       *       console.log(`Respondent Email: ${formResponse.getRespondentEmail()}`);
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getRespondentEmail()
        */
       getRespondentEmail(): string;
 
       /**
        * Gets the item response contained in this form response for a given item.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets the first item on the form.
+       *     const item = form.getItems()[0];
+       *
+       *     // Gets an array of the form's responses.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Loops through the responses and logs each response to the first item to the console.
+       *     for (const formResponse of formResponses) {
+       *       const itemResponse = formResponse.getResponseForItem(item);
+       *       console.log(itemResponse.getResponse());
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getResponseForItem(Item)
        * @param item
        */
@@ -1720,12 +2557,40 @@ declare namespace GoogleAppsScript {
        *
        * For a form response that the script has created but not yet submitted, this method returns
        * null.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets an array of the form's responses.
+       *     const formResponses = form.getResponses();
+       *
+       *     // Loops through the responses and logs the timestamp of each response to the console.
+       *     for (const formResponse of formResponses) {
+       *       console.log(`Timestamp: ${formResponse.getTimestamp()}`);
+       *     }
        * https://developers.google.com/apps-script/reference/forms/form-response#getTimestamp()
        */
       getTimestamp(): Date;
 
       /**
        * Submits the response. Throws a scripting exception if the response has already been submitted.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Creates an empty response for the form.
+       *     const formResponse = form.createResponse();
+       *
+       *     // Submits an empty response.
+       *     formResponse.submit();
        * https://developers.google.com/apps-script/reference/forms/form-response#submit()
        */
       submit(): FormResponse;
@@ -1733,6 +2598,21 @@ declare namespace GoogleAppsScript {
       /**
        * Generates a URL for the form in which the answers are pre-filled based on the answers in this
        * form response.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Gets the first form response.
+       *     const formResponse = form.getResponses()[0];
+       *
+       *     // Generates and logs the URL of a pre-filled form response based on the answers
+       *     // of the first form response.
+       *     const prefilledUrl = formResponse.toPrefilledUrl();
+       *     console.log(prefilledUrl);
        * https://developers.google.com/apps-script/reference/forms/form-response#toPrefilledUrl()
        */
       toPrefilledUrl(): string;
@@ -1774,6 +2654,38 @@ declare namespace GoogleAppsScript {
        * Adds the given item response to a form response. This method applies only to form responses
        * that the script has created but not yet submitted; it cannot affect stored responses. If this
        * method is called multiple times for the same item, only the last item response is retained.
+       *
+       *
+       *     // Opens the Forms file by its ID.
+       *     // If you created your script from within a Google Forms file, you can
+       *     // use FormApp.getActiveForm() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const form = FormApp.openById('abc123456');
+       *
+       *     // Creates a response for the form.
+       *     const formResponse = form.createResponse();
+       *
+       *     // Appends a checkbox item to the form.
+       *     const item = form.addCheckboxItem();
+       *
+       *     // Sets the title of the item to 'Which items are ice cream flavors?'
+       *     item.setTitle('Which items are ice cream flavors?');
+       *
+       *     // Sets choices for the item.
+       *     item.setChoices([
+       *     item.createChoice('Vanilla'),
+       *     item.createChoice('Strawberry'),
+       *     item.createChoice('Brick')
+       *     ]);
+       *
+       *     // Creates a response for the item.
+       *     const response = item.createResponse(['Vanilla', 'Strawberry']);
+       *
+       *     // Adds the item response to the form response.
+       *     formResponse.withItemResponse(response);
+       *
+       *     // Submits the form response.
+       *     formResponse.submit();
        * https://developers.google.com/apps-script/reference/forms/form-response#withItemResponse(ItemResponse)
        * @param response
        */
@@ -2325,6 +3237,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enum representing the supported types of form items. Item types can be accessed from FormApp.ItemType.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * FormApp.ItemType.CHECKBOX.
      *
      *     // Open a form by ID and add a new section header.
      *     var form = FormApp.create('Form Name');
@@ -2909,6 +3824,9 @@ declare namespace GoogleAppsScript {
      * Choices that use page navigation cannot be combined in the same item with choices that do not
      * use page navigation.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * FormApp.PageNavigationType.CONTINUE.
+     *
      *     // Create a form and add a new multiple-choice item and a page-break item.
      *     var form = FormApp.create('Form Name');
      *     var item = form.addMultipleChoiceItem();
@@ -3054,7 +3972,7 @@ declare namespace GoogleAppsScript {
      *     var paragraphTextItem = form.addParagraphTextItem().setTitle('Describe yourself:');
      *     var paragraphtextValidation = FormApp.createParagraphTextValidation()
      *       .setHelpText(“Answer must be more than 100 characters.”)
-     *       .requireTextLengthGreatherThan(100);
+     *       .requireTextLengthGreaterThanOrEqualTo(100).build();
      *     paragraphTextItem.setValidation(paragraphtextValidation);
      */
     interface ParagraphTextValidation {

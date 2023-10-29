@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2020-01-26
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -11,7 +11,8 @@ declare namespace GoogleAppsScript {
   namespace Card {
     /**
      * An action that enables interactivity within UI elements. The action does not happen directly on
-     * the client but rather invokes an Apps Script callback function with optional parameters.
+     * the client but rather invokes an Apps Script callback function
+     * with optional parameters.
      *
      *     var image = CardService.newImage()
      *         .setOnClickAction(CardService.newAction()
@@ -39,7 +40,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/card-service/action#setParameters(Object)
        * @param parameters Both keys and values must be strings.
        */
-      setParameters(parameters: object): Action;
+      setParameters(parameters: any): Action;
       /** @deprecated DO NOT USE */ setMethodName(functionName: string): Action;
     }
     /**
@@ -119,6 +120,46 @@ declare namespace GoogleAppsScript {
       setStateChanged(stateChanged: boolean): ActionResponseBuilder;
     }
     /**
+     * Represents an attachment created by an add-on. This can be used within the context of different
+     * Google extensibility products to generate new attachments, such as for Calendar events.
+     *
+     *     var attachment = CardService.newAttachment()
+     *         .setResourceUrl("https://fakeresourceurl.com")
+     *         .setTitle("Attachment title")
+     *         .setMimeType("text/html")
+     *         .setIconUrl("https://fakeresourceurl.com/iconurl.png");
+     */
+    interface Attachment {
+
+      /**
+       * Sets the icon URL for the attachment.
+       * https://developers.google.com/apps-script/reference/card-service/attachment#setIconUrl(String)
+       * @param iconUrl The URL address of the attachment icon.
+       */
+      setIconUrl(iconUrl: string): Attachment;
+
+      /**
+       * Sets the MIME type for the attachment.
+       * https://developers.google.com/apps-script/reference/card-service/attachment#setMimeType(String)
+       * @param mimeType The MIME type of the content in the attachment resource.
+       */
+      setMimeType(mimeType: string): Attachment;
+
+      /**
+       * Sets the resource URL for the attachment.
+       * https://developers.google.com/apps-script/reference/card-service/attachment#setResourceUrl(String)
+       * @param resourceUrl The URL address of a resource.
+       */
+      setResourceUrl(resourceUrl: string): Attachment;
+
+      /**
+       * Sets the title for the attachment.
+       * https://developers.google.com/apps-script/reference/card-service/attachment#setTitle(String)
+       * @param title The title of the attachment.
+       */
+      setTitle(title: string): Attachment;
+    }
+    /**
      * An authorization action that will send the user to the AuthorizationUrl when clicked.
      *
      *     CardService.newAuthorizationAction()
@@ -176,6 +217,36 @@ declare namespace GoogleAppsScript {
        */
       throwException(): void;
     }
+    /**
+     * A class that represents a complete border style that can be applied to widgets.
+     */
+    interface BorderStyle {
+
+      /**
+       * Sets the corner radius of the border, for example 8.
+       * https://developers.google.com/apps-script/reference/card-service/border-style#setCornerRadius(Integer)
+       * @param radius The corner radius to be applied to the border.
+       */
+      setCornerRadius(radius: Integer): BorderStyle;
+
+      /**
+       * Sets the color of the border.
+       * https://developers.google.com/apps-script/reference/card-service/border-style#setStrokeColor(String)
+       * @param color The color in #RGB format to be applied to the border.
+       */
+      setStrokeColor(color: string): BorderStyle;
+
+      /**
+       * Sets the type of the border.
+       * https://developers.google.com/apps-script/reference/card-service/border-style#setType(BorderType)
+       * @param type The border type.
+       */
+      setType(type: BorderType): BorderStyle;
+    }
+    /**
+     * An enum that represents the border types that can be applied to widgets.
+     */
+    enum BorderType { NO_BORDER, STROKE }
     /**
      * A base class for all buttons.
      */
@@ -322,6 +393,14 @@ declare namespace GoogleAppsScript {
      * A builder for CalendarEventActionResponse objects.
      */
     interface CalendarEventActionResponseBuilder {
+
+      /**
+       * Specifies that the response should add the attachments to the Calendar event when the
+       * associated UI action is taken.
+       * https://developers.google.com/apps-script/reference/card-service/calendar-event-action-response-builder#addAttachments(Attachment)
+       * @param attachments An array of Attachments to add.
+       */
+      addAttachments(attachments: Attachment[]): CalendarEventActionResponseBuilder;
 
       /**
        * Specifies that the response should add the indicated attendees to the Calendar event when the
@@ -581,7 +660,7 @@ declare namespace GoogleAppsScript {
       setImageAltText(imageAltText: string): CardHeader;
 
       /**
-       * Sets the cropping of the icon in then card header. Defaults to no crop. Optional.
+       * Sets the cropping of the icon in the card header. Defaults to no crop. Optional.
        * https://developers.google.com/apps-script/reference/card-service/card-header#setImageStyle(ImageStyle)
        * @param imageStyle The style setting.
        */
@@ -668,9 +747,7 @@ declare namespace GoogleAppsScript {
     }
     /**
      * CardService provides the ability to create generic cards used across different Google
-     * extensibility products, such as Gmail add-ons.
-     *
-     * Currently you can only use this service to construct Gmail add-ons.
+     * extensibility products, such as Google Workspace Add-ons.
      *
      *     return CardService.newCardBuilder()
      *              .setHeader(CardService.newCardHeader().setTitle("CardTitle"))
@@ -711,9 +788,13 @@ declare namespace GoogleAppsScript {
      *     }
      */
     interface CardService {
+      BorderType: typeof BorderType;
       ComposedEmailType: typeof ComposedEmailType;
       ContentType: typeof ContentType;
+      GridItemLayout: typeof GridItemLayout;
+      HorizontalAlignment: typeof HorizontalAlignment;
       Icon: typeof Icon;
+      ImageCropType: typeof ImageCropType;
       ImageStyle: typeof ImageStyle;
       LoadIndicator: typeof LoadIndicator;
       OnClose: typeof OnClose;
@@ -735,6 +816,12 @@ declare namespace GoogleAppsScript {
       newActionResponseBuilder(): ActionResponseBuilder;
 
       /**
+       * Creates a new Attachment.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newAttachment()
+       */
+      newAttachment(): Attachment;
+
+      /**
        * Creates a new AuthorizationAction.
        * https://developers.google.com/apps-script/reference/card-service/card-service#newAuthorizationAction()
        */
@@ -745,6 +832,12 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/card-service/card-service#newAuthorizationException()
        */
       newAuthorizationException(): AuthorizationException;
+
+      /**
+       * Creates a new BorderStyle.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newBorderStyle()
+       */
+      newBorderStyle(): BorderStyle;
 
       /**
        * Creates a new ButtonSet.
@@ -801,16 +894,75 @@ declare namespace GoogleAppsScript {
       newDateTimePicker(): DateTimePicker;
 
       /**
+       * Creates a new DecoratedText.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newDecoratedText()
+       */
+      newDecoratedText(): DecoratedText;
+
+      /**
+       * Creates a new Divider. The following sample builds a simple card with 2 paragraphs
+       * separated by a divider.
+       *
+       *
+       *     function buildCard() {
+       *         let cardSection1TextParagraph1 = CardService.newTextParagraph()
+       *             .setText('Hello world!');
+       *
+       *         let cardSection1Divider1 = CardService.newDivider();
+       *
+       *         let cardSection1TextParagraph2 = CardService.newTextParagraph()
+       *             .setText('Hello world!');
+       *
+       *         let cardSection1 = CardService.newCardSection()
+       *             .addWidget(cardSection1TextParagraph1)
+       *             .addWidget(cardSection1Divider1)
+       *             .addWidget(cardSection1TextParagraph2);
+       *
+       *         let card = CardService.newCardBuilder()
+       *             .addSection(cardSection1)
+       *             .build();
+       *
+       *        return card;
+       *     }
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newDivider()
+       */
+      newDivider(): Divider;
+
+      /**
        * Creates a new DriveItemsSelectedActionResponseBuilder.
        * https://developers.google.com/apps-script/reference/card-service/card-service#newDriveItemsSelectedActionResponseBuilder()
        */
       newDriveItemsSelectedActionResponseBuilder(): DriveItemsSelectedActionResponseBuilder;
 
       /**
+       * Creates a new EditorFileScopeActionResponseBuilder.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newEditorFileScopeActionResponseBuilder()
+       */
+      newEditorFileScopeActionResponseBuilder(): EditorFileScopeActionResponseBuilder;
+
+      /**
        * Creates a new FixedFooter.
        * https://developers.google.com/apps-script/reference/card-service/card-service#newFixedFooter()
        */
       newFixedFooter(): FixedFooter;
+
+      /**
+       * Creates a new Grid.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newGrid()
+       */
+      newGrid(): Grid;
+
+      /**
+       * Creates a new GridItem.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newGridItem()
+       */
+      newGridItem(): GridItem;
+
+      /**
+       * Creates a new IconImage.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newIconImage()
+       */
+      newIconImage(): IconImage;
 
       /**
        * Creates a new Image.
@@ -823,6 +975,18 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/card-service/card-service#newImageButton()
        */
       newImageButton(): ImageButton;
+
+      /**
+       * Creates a new ImageComponent.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newImageComponent()
+       */
+      newImageComponent(): ImageComponent;
+
+      /**
+       * Creates a new ImageCropStyle.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newImageCropStyle()
+       */
+      newImageCropStyle(): ImageCropStyle;
 
       /**
        * Creates a new KeyValue.
@@ -909,10 +1073,34 @@ declare namespace GoogleAppsScript {
       newUpdateDraftActionResponseBuilder(): UpdateDraftActionResponseBuilder;
 
       /**
+       * Creates a new UpdateDraftBccRecipientsAction;
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newUpdateDraftBccRecipientsAction()
+       */
+      newUpdateDraftBccRecipientsAction(): UpdateDraftBccRecipientsAction;
+
+      /**
        * Creates a new UpdateDraftBodyAction.
        * https://developers.google.com/apps-script/reference/card-service/card-service#newUpdateDraftBodyAction()
        */
       newUpdateDraftBodyAction(): UpdateDraftBodyAction;
+
+      /**
+       * Creates a new UpdateDraftCcRecipientsAction.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newUpdateDraftCcRecipientsAction()
+       */
+      newUpdateDraftCcRecipientsAction(): UpdateDraftCcRecipientsAction;
+
+      /**
+       * Creates a new UpdateDraftSubjectAction.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newUpdateDraftSubjectAction()
+       */
+      newUpdateDraftSubjectAction(): UpdateDraftSubjectAction;
+
+      /**
+       * Creates a new UpdateDraftToRecipientsAction.
+       * https://developers.google.com/apps-script/reference/card-service/card-service#newUpdateDraftToRecipientsAction()
+       */
+      newUpdateDraftToRecipientsAction(): UpdateDraftToRecipientsAction;
     }
     /**
      * The response object that may be returned from a callback method for compose action in a Gmail add-on.
@@ -1079,6 +1267,178 @@ declare namespace GoogleAppsScript {
       setValueInMsSinceEpoch(valueMsEpoch: string): DateTimePicker;
     }
     /**
+     * A widget that displays text with optional decorations. Possible keys include an icon, a label
+     * above and a label below. Setting the text content and one of the keys is required using setText(text) and one of DecoratedText, DecoratedText, setTopLabel(text), or setBottomLabel(text). This class is intended to replace KeyValue.
+     *
+     *     var decoratedText = CardService.newDecoratedText()
+     *         .setText("Text")
+     *         .setTopLabel("TopLabel");
+     *
+     *     var multilineDecoratedText = CardService.newDecoratedText()
+     *         .setText("Text")
+     *         .setTopLabel("TopLabel")
+     *         .setWrapText(true)
+     *         .setBottomLabel("BottomLabel");
+     */
+    interface DecoratedText {
+
+      /**
+       * Sets an authorization action that opens a URL to the authorization flow when the object is
+       * clicked. This opens the URL in a new window. When the user finishes the authorization flow and
+       * returns to the application, the add-on reloads.
+       *
+       *
+       * A UI object can only have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
+       *
+       *
+       *     // ...
+       *
+       *     var action = CardService.newAuthorizationAction().setAuthorizationUrl('url');
+       *     CardService.newTextButton().setText('Authorize').setAuthorizationAction(action);
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setAuthorizationAction(AuthorizationAction)
+       * @param action The object that specifies the authorization action to take when this element is clicked.
+       */
+      setAuthorizationAction(action: AuthorizationAction): DecoratedText;
+
+      /**
+       * Sets the label text to be used as the key and is displayed below the text content.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setBottomLabel(String)
+       * @param text The label text.
+       */
+      setBottomLabel(text: string): DecoratedText;
+
+      /**
+       * Sets the Button that is displayed to the right of the text. A DecoratedText can
+       * only support one button or one switch.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setButton(Button)
+       * @param button The button to add.
+       */
+      setButton(button: Button): DecoratedText;
+
+      /**
+       * Sets an action that composes a draft email when the object is clicked. A UI object can only
+       * have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action),
+       * setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
+       *
+       *
+       * The Action parameter must specify a callback function that returns a ComposeActionResponse object configured using ComposeActionResponseBuilder.setGmailDraft(draft).
+       *
+       *
+       *
+       *
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setComposeAction(Action,ComposedEmailType)
+       * @param action The object that specifies the compose action to take when this element is clicked.
+       * @param composedEmailType An enum value that specifies whether the composed draft is a standalone or reply draft.
+       */
+      setComposeAction(action: Action, composedEmailType: ComposedEmailType): DecoratedText;
+
+      /**
+       * Sets the optional IconImage that is displayed to the right of the content. A DecoratedText can only support one button, one switch or one icon.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setEndIcon(IconImage)
+       * @param endIcon The icon to add.
+       */
+      setEndIcon(endIcon: IconImage): DecoratedText;
+
+      /**
+       * Sets an action that executes when the object is clicked. A UI object can only have one of
+       * setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
+       *
+       *
+       * The Action parameter must specify a callback function that returns a ActionResponse object.
+       *
+       *
+       *     // ...
+       *
+       *     var action = CardService.newAction().setFunctionName('notificationCallback');
+       *     CardService.newTextButton().setText('Create notification').setOnClickAction(action);
+       *
+       *     // ...
+       *
+       *     function notificationCallback() {
+       *       return CardService.newActionResponseBuilder()
+       *           .setNotification(CardService.newNotification()
+       *               .setText("Some info to display to user"))
+       *           .build();
+       *     }
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setOnClickAction(Action)
+       * @param action The action to take when this element is clicked.
+       */
+      setOnClickAction(action: Action): DecoratedText;
+
+      /**
+       * Sets an action that opens a URL in a tab when the object is clicked. Use this function when the
+       * URL needs to be built or when you need to take other actions in additon to creating the OpenLink object. A UI object can only have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action), or
+       * setComposeAction(action, composedEmailType) set.
+       *
+       *
+       * The Action parameter must specify a callback function that returns a ActionResponse object configured using ActionResponseBuilder.setOpenLink(openLink).
+       *
+       *
+       *     // ...
+       *
+       *     var action = CardService.newAction().setFunctionName('openLinkCallback');
+       *     CardService.newTextButton().setText('Open Link').setOnClickOpenLinkAction(action);
+       *
+       *     // ...
+       *
+       *     function openLinkCallback() {
+       *       return CardService.newActionResponseBuilder()
+       *           .setOpenLink(CardService.newOpenLink()
+       *               .setUrl('https://www.google.com'))
+       *           .build();
+       *     }
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setOnClickOpenLinkAction(Action)
+       * @param action The object that specifies the open link action to take when this element is clicked.
+       */
+      setOnClickOpenLinkAction(action: Action): DecoratedText;
+
+      /**
+       * Sets a URL to be opened when the object is clicked. Use this function when the URL is already
+       * known and only needs to be opened. A UI object can only have one of setOpenLink(openLink),
+       * setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action),
+       * or setComposeAction(action, composedEmailType) set.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setOpenLink(OpenLink)
+       * @param openLink An OpenLink object describing the URL to open.
+       */
+      setOpenLink(openLink: OpenLink): DecoratedText;
+
+      /**
+       * Sets the optional IconImage to display before the text content.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setStartIcon(IconImage)
+       * @param startIcon The icon to display.
+       */
+      setStartIcon(startIcon: IconImage): DecoratedText;
+
+      /**
+       * Sets the Switch that is displayed to the right of the content. A DecoratedText
+       * can only support one button or one switch.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setSwitchControl(Switch)
+       * @param switchToSet The switch to add.
+       */
+      setSwitchControl(switchToSet: Switch): DecoratedText;
+
+      /**
+       * Sets the text to be used as the value. Supports basic HTML formatting. Required.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setText(String)
+       * @param text The text content for this widget.
+       */
+      setText(text: string): DecoratedText;
+
+      /**
+       * Sets the label text to be used as the key and is displayed above the text content.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setTopLabel(String)
+       * @param text The label text.
+       */
+      setTopLabel(text: string): DecoratedText;
+
+      /**
+       * Sets whether the value text should be displayed on a single line or multiple lines.
+       * https://developers.google.com/apps-script/reference/card-service/decorated-text#setWrapText(Boolean)
+       * @param wrapText If true, the text is wrapped and displayed on multiple lines. Otherwise the text is truncated.
+       */
+      setWrapText(wrapText: boolean): DecoratedText;
+    }
+    /**
      * An enum that defines the display style of card.
      *
      * DisplayStyle.REPLACE means that the card is shown by replacing the view of top card in
@@ -1091,6 +1451,34 @@ declare namespace GoogleAppsScript {
      * DisplayStyle only works for card returned from contextual trigger function.
      */
     enum DisplayStyle { PEEK, REPLACE }
+    /**
+     * A horizontal divider. To add a divider to your add-on card, use the newDivider()
+     * method within CardService. For example, the following sample builds a simple card with 2
+     * paragraphs separated by a divider.
+     *
+     *     function buildCard() {
+     *         let cardSection1TextParagraph1 = CardService.newTextParagraph()
+     *             .setText('Hello world!');
+     *
+     *         let cardSection1Divider1 = CardService.newDivider();
+     *
+     *         let cardSection1TextParagraph2 = CardService.newTextParagraph()
+     *             .setText('Hello world!');
+     *
+     *         let cardSection1 = CardService.newCardSection()
+     *             .addWidget(cardSection1TextParagraph1)
+     *             .addWidget(cardSection1Divider1)
+     *             .addWidget(cardSection1TextParagraph2);
+     *
+     *         let card = CardService.newCardBuilder()
+     *             .addSection(cardSection1)
+     *             .build();
+     *
+     *        return card;
+     *     }
+     */
+    interface Divider {
+    }
     /**
      * Represents a response that makes changes to Drive while Drive items are selected and in reaction
      * to an action taken in the UI, such as a button click.
@@ -1115,12 +1503,50 @@ declare namespace GoogleAppsScript {
       build(): DriveItemsSelectedActionResponse;
 
       /**
-       * Specifies that the response requests file scope for the set of contextually-relevant items in
-       * Drive.
+       * Specifies that the response requests file scope for the contextually-relevant item in Drive.
        * https://developers.google.com/apps-script/reference/card-service/drive-items-selected-action-response-builder#requestFileScope(String)
        * @param itemId ID of the Drive item to request file scope for.
        */
       requestFileScope(itemId: string): DriveItemsSelectedActionResponseBuilder;
+    }
+    /**
+     * Makes changes to an Editor, such as Google Docs, Sheets, or Slides in reaction to an action taken
+     * in the UI. For example a request for drive.file scope for the current active
+     * document.
+     */
+    interface EditorFileScopeActionResponse {
+
+      /**
+       * Prints the JSON representation of this object. This is for debugging only.
+       * https://developers.google.com/apps-script/reference/card-service/editor-file-scope-action-response#printJson()
+       */
+      printJson(): string;
+    }
+    /**
+     * A builder for EditorFileScopeActionResponse objects.
+     */
+    interface EditorFileScopeActionResponseBuilder {
+
+      /**
+       * Builds the current Editor action response.
+       * https://developers.google.com/apps-script/reference/card-service/editor-file-scope-action-response-builder#build()
+       */
+      build(): EditorFileScopeActionResponse;
+
+      /**
+       * Requests the drive.file scope for the current active Editor document.
+       *
+       *
+       *     // Display a permissions dialog to the user, requesting `drive.file` scope for the current
+       *     // document on behalf of this add-on.
+       *     CardService.newEditorFileScopeActionResponseBuilder()
+       *         .requestFileScopeForActiveDocument()
+       *         .build();
+       * Note: To call this method, you must add the drive.file scope to the add-on's
+       * manifest.
+       * https://developers.google.com/apps-script/reference/card-service/editor-file-scope-action-response-builder#requestFileScopeForActiveDocument()
+       */
+      requestFileScopeForActiveDocument(): EditorFileScopeActionResponseBuilder;
     }
     /**
      * The fixed footer shown at the bottom of an add-on Card.
@@ -1152,11 +1578,246 @@ declare namespace GoogleAppsScript {
       setSecondaryButton(button: TextButton): FixedFooter;
     }
     /**
-     * Predefined icons that can be used in various UI objects, such as ImageButton or KeyValue widgets.
+     * An organized grid to display a collection of grid items.
+     *
+     *     var grid = CardService.newGrid()
+     *         .setTitle("My Grid")
+     *         .setNumColumns(2)
+     *         .addItem(CardService.newGridItem()
+     *             .setTitle("My item"));
+     */
+    interface Grid {
+
+      /**
+       * Adds a new grid item to the grid.
+       * https://developers.google.com/apps-script/reference/card-service/grid#addItem(GridItem)
+       * @param gridItem The grid item to add.
+       */
+      addItem(gridItem: GridItem): Grid;
+
+      /**
+       * Sets an authorization action that opens a URL to the authorization flow when the object is
+       * clicked. This opens the URL in a new window. When the user finishes the authorization flow and
+       * returns to the application, the add-on reloads.
+       *
+       *
+       * A UI object can only have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
+       *
+       *
+       *     // ...
+       *
+       *     var action = CardService.newAuthorizationAction().setAuthorizationUrl('url');
+       *     CardService.newTextButton().setText('Authorize').setAuthorizationAction(action);
+       * https://developers.google.com/apps-script/reference/card-service/grid#setAuthorizationAction(AuthorizationAction)
+       * @param action The object that specifies the authorization action to take when this element is clicked.
+       */
+      setAuthorizationAction(action: AuthorizationAction): Grid;
+
+      /**
+       * Sets the border style applied to each grid item. Default is NO_BORDER.
+       * https://developers.google.com/apps-script/reference/card-service/grid#setBorderStyle(BorderStyle)
+       * @param borderStyle The border style to apply.
+       */
+      setBorderStyle(borderStyle: BorderStyle): Grid;
+
+      /**
+       * Sets an action that composes a draft email when the object is clicked. A UI object can only
+       * have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action),
+       * setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
+       *
+       *
+       * The Action parameter must specify a callback function that returns a ComposeActionResponse object configured using ComposeActionResponseBuilder.setGmailDraft(draft).
+       *
+       *
+       *
+       *
+       * https://developers.google.com/apps-script/reference/card-service/grid#setComposeAction(Action,ComposedEmailType)
+       * @param action The object that specifies the compose action to take when this element is clicked.
+       * @param composedEmailType An enum value that specifies whether the composed draft is a standalone or reply draft.
+       */
+      setComposeAction(action: Action, composedEmailType: ComposedEmailType): Grid;
+
+      /**
+       * The number of columns to display in the grid. If shown in the right side panel, you can display
+       * 1-2 columns and the default value is 1. If shown in a dialog, you can display 2-3 columns and
+       * the default value is 2.
+       * https://developers.google.com/apps-script/reference/card-service/grid#setNumColumns(Integer)
+       * @param numColumns The number of columns.
+       */
+      setNumColumns(numColumns: Integer): Grid;
+
+      /**
+       * Sets an action that executes when the object is clicked. A UI object can only have one of
+       * setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
+       *
+       *
+       * The Action parameter must specify a callback function that returns a ActionResponse object.
+       *
+       *
+       *     // ...
+       *
+       *     var action = CardService.newAction().setFunctionName('notificationCallback');
+       *     CardService.newTextButton().setText('Create notification').setOnClickAction(action);
+       *
+       *     // ...
+       *
+       *     function notificationCallback() {
+       *       return CardService.newActionResponseBuilder()
+       *           .setNotification(CardService.newNotification()
+       *               .setText("Some info to display to user"))
+       *           .build();
+       *     }
+       * https://developers.google.com/apps-script/reference/card-service/grid#setOnClickAction(Action)
+       * @param action The action to take when this element is clicked.
+       */
+      setOnClickAction(action: Action): Grid;
+
+      /**
+       * Sets an action that opens a URL in a tab when the object is clicked. Use this function when the
+       * URL needs to be built or when you need to take other actions in additon to creating the OpenLink object. A UI object can only have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action), or
+       * setComposeAction(action, composedEmailType) set.
+       *
+       *
+       * The Action parameter must specify a callback function that returns a ActionResponse object configured using ActionResponseBuilder.setOpenLink(openLink).
+       *
+       *
+       *     // ...
+       *
+       *     var action = CardService.newAction().setFunctionName('openLinkCallback');
+       *     CardService.newTextButton().setText('Open Link').setOnClickOpenLinkAction(action);
+       *
+       *     // ...
+       *
+       *     function openLinkCallback() {
+       *       return CardService.newActionResponseBuilder()
+       *           .setOpenLink(CardService.newOpenLink()
+       *               .setUrl('https://www.google.com'))
+       *           .build();
+       *     }
+       * https://developers.google.com/apps-script/reference/card-service/grid#setOnClickOpenLinkAction(Action)
+       * @param action The object that specifies the open link action to take when this element is clicked.
+       */
+      setOnClickOpenLinkAction(action: Action): Grid;
+
+      /**
+       * Sets a URL to be opened when the object is clicked. Use this function when the URL is already
+       * known and only needs to be opened. A UI object can only have one of setOpenLink(openLink),
+       * setOnClickAction(action), setOnClickOpenLinkAction(action), setAuthorizationAction(action),
+       * or setComposeAction(action, composedEmailType) set.
+       * https://developers.google.com/apps-script/reference/card-service/grid#setOpenLink(OpenLink)
+       * @param openLink An OpenLink object describing the URL to open.
+       */
+      setOpenLink(openLink: OpenLink): Grid;
+
+      /**
+       * Sets the title text of the grid. The text must be a plain string with no formatting.
+       * https://developers.google.com/apps-script/reference/card-service/grid#setTitle(String)
+       * @param title The title text.
+       */
+      setTitle(title: string): Grid;
+    }
+    /**
+     * The items users interact with within a grid widget.
+     *
+     *     var gridItem = CardService.newGridItem()
+     *         .setIdentifier("itemA")
+     *         .setTitle("This is a cat")
+     *         .setImage(CardService.newImageComponent())
+     *         .setLayout(CardService.GridItemLayout.TEXT_BELOW);
+     */
+    interface GridItem {
+
+      /**
+       * Sets the identifier for the grid item. When a user clicks this grid item, this ID is returned
+       * in the parent grid's on_click call back parameters.
+       * https://developers.google.com/apps-script/reference/card-service/grid-item#setIdentifier(String)
+       * @param id The ID.
+       */
+      setIdentifier(id: string): GridItem;
+
+      /**
+       * Sets the image for this grid item.
+       * https://developers.google.com/apps-script/reference/card-service/grid-item#setImage(ImageComponent)
+       * @param image The ImageComponent object.
+       */
+      setImage(image: ImageComponent): GridItem;
+
+      /**
+       * Sets the layout of text and image for the grid item. Default is TEXT_BELOW
+       * https://developers.google.com/apps-script/reference/card-service/grid-item#setLayout(GridItemLayout)
+       * @param layout The layout setting.
+       */
+      setLayout(layout: GridItemLayout): GridItem;
+
+      /**
+       * Sets the subtitle of the grid item.
+       * https://developers.google.com/apps-script/reference/card-service/grid-item#setSubtitle(String)
+       * @param subtitle The subtitle text.
+       */
+      setSubtitle(subtitle: string): GridItem;
+
+      /**
+       * Sets the horizontal alignment of the grid item. Default is START.
+       * https://developers.google.com/apps-script/reference/card-service/grid-item#setTextAlignment(HorizontalAlignment)
+       * @param alignment The alignment setting.
+       */
+      setTextAlignment(alignment: HorizontalAlignment): GridItem;
+
+      /**
+       * Sets the title text of the grid item.
+       * https://developers.google.com/apps-script/reference/card-service/grid-item#setTitle(String)
+       * @param title The title text.
+       */
+      setTitle(title: string): GridItem;
+    }
+    /**
+     * An enum that defines the image and text style of a GridItem.
+     */
+    enum GridItemLayout { TEXT_BELOW, TEXT_ABOVE }
+    /**
+     * An enum that specifies the horizontal alignment of a widget.
+     */
+    enum HorizontalAlignment { START, CENTER, END }
+    /**
+     * Predefined icons that can be used in various UI objects, such as ImageButton or DecoratedText widgets.
      */
     enum Icon { NONE, AIRPLANE, BOOKMARK, BUS, CAR, CLOCK, CONFIRMATION_NUMBER_ICON, DOLLAR, DESCRIPTION, EMAIL, EVENT_PERFORMER, EVENT_SEAT, FLIGHT_ARRIVAL, FLIGHT_DEPARTURE, HOTEL, HOTEL_ROOM_TYPE, INVITE, MAP_PIN, MEMBERSHIP, MULTIPLE_PEOPLE, OFFER, PERSON, PHONE, RESTAURANT_ICON, SHOPPING_CART, STAR, STORE, TICKET, TRAIN, VIDEO_CAMERA, VIDEO_PLAY }
     /**
-     * A widget that shows a single image.
+     * A predefined icon or an icon from a URL with a customizable crop style.
+     */
+    interface IconImage {
+
+      /**
+       * Sets the alternative text of the URL which is used for accessibility.
+       * https://developers.google.com/apps-script/reference/card-service/icon-image#setAltText(String)
+       * @param altText The alternative text.
+       */
+      setAltText(altText: string): IconImage;
+
+      /**
+       * Sets the predefined icon if the URL is not set. Default is NONE.
+       * https://developers.google.com/apps-script/reference/card-service/icon-image#setIcon(Icon)
+       * @param icon One of the predefined Icon values.
+       */
+      setIcon(icon: Icon): IconImage;
+
+      /**
+       * Sets the URL of the icon if the icon is not set.
+       * https://developers.google.com/apps-script/reference/card-service/icon-image#setIconUrl(String)
+       * @param url The URL address of a hosted image to use as an icon.
+       */
+      setIconUrl(url: string): IconImage;
+
+      /**
+       * Sets the crop style for the image. The crop type options you can use for icons are SQUARE
+       *  and CIRCLE. Default is SQUARE.
+       * https://developers.google.com/apps-script/reference/card-service/icon-image#setImageCropType(ImageCropType)
+       * @param imageCropType The ImageCropType option to apply.
+       */
+      setImageCropType(imageCropType: ImageCropType): IconImage;
+    }
+    /**
+     * A widget that shows a single image. For information about cropping images, see ImageCropStyle.
      *
      *     var image = CardService.newImage().setAltText("A nice image").setImageUrl("https://image.png");
      */
@@ -1420,28 +2081,80 @@ declare namespace GoogleAppsScript {
       setOpenLink(openLink: OpenLink): ImageButton;
     }
     /**
+     * An image component that can be added to grid items.
+     *
+     *     var ImageComponent = CardService.newImageComponent()
+     *         .setImageUrl("http://imageurl.ca")
+     *         .setAltText(altText)
+     *         .setCropStyle(CARD_SERVICE.newImageCropStyle())
+     *         .setBorderStyle(CARD_SERVICE.newBorderStyle());
+     */
+    interface ImageComponent {
+
+      /**
+       * Sets the alternative text of the image.
+       * https://developers.google.com/apps-script/reference/card-service/image-component#setAltText(String)
+       * @param altText The alt_text to set for the image.
+       */
+      setAltText(altText: string): ImageComponent;
+
+      /**
+       * Sets the border style applied to the image.
+       * https://developers.google.com/apps-script/reference/card-service/image-component#setBorderStyle(BorderStyle)
+       * @param borderStyle The BorderStyle object to apply.
+       */
+      setBorderStyle(borderStyle: BorderStyle): ImageComponent;
+
+      /**
+       * Sets the crop style for the image.
+       * https://developers.google.com/apps-script/reference/card-service/image-component#setCropStyle(ImageCropStyle)
+       * @param imageCropStyle The ImageCropStyle object to apply.
+       */
+      setCropStyle(imageCropStyle: ImageCropStyle): ImageComponent;
+
+      /**
+       * Sets the URL of the image.
+       * https://developers.google.com/apps-script/reference/card-service/image-component#setImageUrl(String)
+       * @param url The URL.
+       */
+      setImageUrl(url: string): ImageComponent;
+    }
+    /**
+     * A class that represents a crop style that can be applied to image components. You can't set the
+     * size of an image or resize it, but you can crop the image.
+     */
+    interface ImageCropStyle {
+
+      /**
+       * Sets the aspect ratio to use if the crop type is RECTANGLE_CUSTOM. The ratio must
+       * be a positive value.
+       * https://developers.google.com/apps-script/reference/card-service/image-crop-style#setAspectRatio(Number)
+       * @param ratio The ratio to apply.
+       */
+      setAspectRatio(ratio: number): ImageCropStyle;
+
+      /**
+       * Sets the crop type for the image. Default is SQUARE.
+       * https://developers.google.com/apps-script/reference/card-service/image-crop-style#setImageCropType(ImageCropType)
+       * @param type The crop type.
+       */
+      setImageCropType(type: ImageCropType): ImageCropStyle;
+    }
+    /**
+     * An enum that represents the crop styles applied to image components.
+     *
+     * If you want to apply a crop style to an IconImage, you can only use SQUARE
+     *  or CIRCLE.
+     */
+    enum ImageCropType { SQUARE, CIRCLE, RECTANGLE_CUSTOM, RECTANGLE_4_3 }
+    /**
      * An enum that defines an image cropping style.
      */
     enum ImageStyle { SQUARE, CIRCLE }
     /**
-     * A widget that displays one or more "keys" around a text "value". The possible keys include an
-     * icon, a label above and a label below. Setting the text content and one of the keys is required
-     * using setContent(text) and one of setIcon(icon), setIconUrl(url), setTopLabel(text),
-     * or setBottomLabel(text).
      *
-     *     var imageKeyValue = CardService.newKeyValue()
-     *         .setIconUrl("https://icon.png")
-     *         .setContent("KeyValue widget with an image on the left and text on the right");
-     *
-     *     var textKeyValue = CardService.newKeyValue()
-     *         .setTopLabel("Text key")
-     *         .setContent("KeyValue widget with text key on top and cotent below");
-     *
-     *     var multilineKeyValue = CardService.newKeyValue()
-     *         .setTopLabel("Top label - single line)")
-     *         .setContent("Content can be multiple lines")
-     *         .setMultiline(true)
-     *         .setBottomLabel("Bottom label - single line");
+     * Deprecated. This class is deprecated and should not be used in new scripts.
+     * This class is deprecated. Instead, use DecoratedText.
      */
     interface KeyValue {
 
@@ -1464,22 +2177,6 @@ declare namespace GoogleAppsScript {
       setAuthorizationAction(action: AuthorizationAction): KeyValue;
 
       /**
-       * Sets the label text to be used as the key. Displayed below the text-content and supports basic HTML formatting
-       *
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setBottomLabel(String)
-       * @param text The label text.
-       */
-      setBottomLabel(text: string): KeyValue;
-
-      /**
-       * Sets the Button that is displayed to the right of the context. A KeyValue can
-       * only support one button or one switch.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setButton(Button)
-       * @param button The button to add.
-       */
-      setButton(button: Button): KeyValue;
-
-      /**
        * Sets an action that composes a draft email when the object is clicked. A UI object can only
        * have one of setOpenLink(openLink), setOnClickAction(action), setOnClickOpenLinkAction(action),
        * setAuthorizationAction(action), or setComposeAction(action, composedEmailType) set.
@@ -1495,41 +2192,6 @@ declare namespace GoogleAppsScript {
        * @param composedEmailType An enum value that specifies whether the composed draft is a standalone or reply draft.
        */
       setComposeAction(action: Action, composedEmailType: ComposedEmailType): KeyValue;
-
-      /**
-       * Sets the text to be used as the value. Supports basic HTML formatting. Required.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setContent(String)
-       * @param text The text content for this widget.
-       */
-      setContent(text: string): KeyValue;
-
-      /**
-       * Sets the icon to be used as the key.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setIcon(Icon)
-       * @param icon One of the predefined Icon values.
-       */
-      setIcon(icon: Icon): KeyValue;
-
-      /**
-       * Sets the alternative text for the icon.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setIconAltText(String)
-       * @param altText The alternative text for the icon.
-       */
-      setIconAltText(altText: string): KeyValue;
-
-      /**
-       * Sets the URL of the icon to be used as the key.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setIconUrl(String)
-       * @param url The URL address of a hosted image to use as an icon.
-       */
-      setIconUrl(url: string): KeyValue;
-
-      /**
-       * Sets whether the value text should be displayed on a single line or multiple lines.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setMultiline(Boolean)
-       * @param multiline The multiline setting.
-       */
-      setMultiline(multiline: boolean): KeyValue;
 
       /**
        * Sets an action that executes when the object is clicked. A UI object can only have one of
@@ -1593,21 +2255,15 @@ declare namespace GoogleAppsScript {
        * @param openLink An OpenLink object describing the URL to open.
        */
       setOpenLink(openLink: OpenLink): KeyValue;
-
-      /**
-       * Sets the Switch that is displayed to the right of the content. A KeyValue can
-       * only support one button or one switch.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setSwitch(Switch)
-       * @param switchToSet The switch to add.
-       */
-      setSwitch(switchToSet: Switch): KeyValue;
-
-      /**
-       * Sets the label text to be used as the key. Displayed above the text-content and supports basic HTML formatting.
-       * https://developers.google.com/apps-script/reference/card-service/key-value#setTopLabel(String)
-       * @param text The label text.
-       */
-      setTopLabel(text: string): KeyValue;
+      /** @deprecated DO NOT USE */ setBottomLabel(text: string): KeyValue;
+      /** @deprecated DO NOT USE */ setButton(button: Button): KeyValue;
+      /** @deprecated DO NOT USE */ setContent(text: string): KeyValue;
+      /** @deprecated DO NOT USE */ setIcon(icon: Icon): KeyValue;
+      /** @deprecated DO NOT USE */ setIconAltText(altText: string): KeyValue;
+      /** @deprecated DO NOT USE */ setIconUrl(url: string): KeyValue;
+      /** @deprecated DO NOT USE */ setMultiline(multiline: boolean): KeyValue;
+      /** @deprecated DO NOT USE */ setSwitch(switchToSet: Switch): KeyValue;
+      /** @deprecated DO NOT USE */ setTopLabel(text: string): KeyValue;
     }
     /**
      * An enum type that specifies the type of loading or progress indicator to display while an Action is being processed.
@@ -1689,7 +2345,7 @@ declare namespace GoogleAppsScript {
      * The implementation depends on the client platform capabilities. OnClose may cause OpenAs to be ignored; if the client platform cannot support both selected values together,
      * OnClose takes precedence.
      */
-    enum OnClose { NOTHING, RELOAD_ADD_ON }
+    enum OnClose { NOTHING, RELOAD, RELOAD_ADD_ON }
     /**
      * An enum that specifies how to open a URL.
      *
@@ -1719,8 +2375,12 @@ declare namespace GoogleAppsScript {
      *         .setOpenLink(CardService.newOpenLink()
      *             .setUrl("https://www.google.com")
      *             .setOpenAs(CardService.OpenAs.FULL_SIZE)
-     *             .setOnClose(CardService.OnClose.NOTHING));
+     *             .setOnClose(CardService.OnClose.NOTHING))
      *         .build();
+     *
+     * Note: To reload add-ons after closing a link, don't use a link with
+     * Cross-Origin-Opener-Policy (COOP) header enabled. If COOP is enabled in a link, add-ons can't
+     * detect the window state, and the add-on card doesn't update.
      */
     interface OpenLink {
 
@@ -1755,7 +2415,7 @@ declare namespace GoogleAppsScript {
      *         .setFieldName("checkbox_field")
      *         .addItem("checkbox one title", "checkbox_one_value", false)
      *         .addItem("checkbox two title", "checkbox_two_value", true)
-     *         .addItem("checkbox three title", "checkbox_three_value", false)
+     *         .addItem("checkbox three title", "checkbox_three_value", true)
      *         .setOnChangeAction(CardService.newAction()
      *             .setFunctionName("handleCheckboxChange"));
      *
@@ -1764,7 +2424,7 @@ declare namespace GoogleAppsScript {
      *         .setTitle("A group of radio buttons. Only a single selection is allowed.")
      *         .setFieldName("checkbox_field")
      *         .addItem("radio button one title", "radio_one_value", true)
-     *         .addItem("radio button two title", "radio_two_value", true)
+     *         .addItem("radio button two title", "radio_two_value", false)
      *         .addItem("radio button three title", "radio_three_value", false);
      */
     interface SelectionInput {
@@ -1774,9 +2434,9 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/card-service/selection-input#addItem(Object,Object,Boolean)
        * @param text The text to be shown for this item. Non-string primitive arguments are converted to strings automatically.
        * @param value The form input value that is sent via the callback. Non-string primitive arguments are converted to strings automatically.
-       * @param selected Whether the item should start as selected or unselected.
+       * @param selected Whether the item is selected by default. If the selection input only accepts one value (such as for radio buttons or a dropdown menu), only set this field for one item.
        */
-      addItem(text: object, value: object, selected: boolean): SelectionInput;
+      addItem(text: any, value: any, selected: boolean): SelectionInput;
 
       /**
        * Sets the key that identifies this selection input in the event object that is generated when
@@ -1833,7 +2493,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/card-service/suggestions#addSuggestions(Object)
        * @param suggestions An array of string suggestions.
        */
-      addSuggestions(suggestions: object[]): Suggestions;
+      addSuggestions(suggestions: any[]): Suggestions;
     }
     /**
      * A response object that can be returned from a suggestions callback function. This is used with
@@ -1872,16 +2532,17 @@ declare namespace GoogleAppsScript {
       setSuggestions(suggestions: Suggestions): SuggestionsResponseBuilder;
     }
     /**
-     * A UI element that supports being toggled on or off. This can only be used within a KeyValue widget.
+     * A UI element that supports being toggled on or off. This can only be used within a DecoratedText widget.
      *
-     *     var switchKeyValue = CardService.newKeyValue()
-     *         .setTopLabel("Switch key value widget label")
-     *         .setContent("This is a key value widget with a switch on the right")
-     *         .setSwitch(CardService.newSwitch()
-     *             .setFieldName("form_input_switch_key")
-     *             .setValue("form_input_switch_value")
-     *             .setOnChangeAction(CardService.newAction()
-     *                 .setFunctionName("handleSwitchChange")));
+     *     var switchDecoratedText  = CardService.newDecoratedText()
+     *       .setTopLabel("Switch decorated text widget label")
+     *       .setText("This is a decorated text widget with a switch on the right")
+     *       .setWrapText(true)
+     *       .setSwitchControl(CardService.newSwitch()
+     *           .setFieldName("form_input_switch_key")
+     *           .setValue("form_input_switch_value")
+     *           .setOnChangeAction(CardService.newAction()
+     *               .setFunctionName("handleSwitchChange")));
      */
     interface Switch {
 
@@ -1931,8 +2592,8 @@ declare namespace GoogleAppsScript {
      */
     enum SwitchControlType { SWITCH, CHECK_BOX }
     /**
-     * A TextButton with a text label. You can set the background color and disable the button when
-     * needed.
+     * A TextButton with a text label. You can set the background color and deactivate the button
+     * when needed.
      *
      *     var textButton = CardService.newTextButton()
      *         .setText("Open Link")
@@ -1940,6 +2601,14 @@ declare namespace GoogleAppsScript {
      *             .setUrl("https://www.google.com"));
      */
     interface TextButton {
+
+      /**
+       * Sets the alternative text of the button for accessibility. If unset, defaults to the text that
+       * displays on the button.
+       * https://developers.google.com/apps-script/reference/card-service/text-button#setAltText(String)
+       * @param altText The alternative text to assign to this button.
+       */
+      setAltText(altText: string): TextButton;
 
       /**
        * Sets an authorization action that opens a URL to the authorization flow when the object is
@@ -2055,9 +2724,9 @@ declare namespace GoogleAppsScript {
       setOpenLink(openLink: OpenLink): TextButton;
 
       /**
-       * Sets the text to be displayed on the button.
+       * Sets the text that displays on the button.
        * https://developers.google.com/apps-script/reference/card-service/text-button#setText(String)
-       * @param text The text that appears on the button to identify it.
+       * @param text The text that appears on the button.
        */
       setText(text: string): TextButton;
 
@@ -2095,10 +2764,10 @@ declare namespace GoogleAppsScript {
       setFieldName(fieldName: string): TextInput;
 
       /**
-       * Sets a hint for the text input. Used to give the user extra guidance on what to input. E.g., a
-       * hint could describe formatting ("xxx-xxx-xxxx") for a phone number field.
+       * Sets a hint for the text input. Used to give the user extra guidance on what to input. For
+       * example, a hint could describe formatting ("xxx-xxx-xxxx") for a phone number field.
        * https://developers.google.com/apps-script/reference/card-service/text-input#setHint(String)
-       * @param hint The text hint to display when the input is empty.
+       * @param hint The text hint to display below the input field. This text is always visible.
        */
       setHint(hint: string): TextInput;
 
@@ -2278,7 +2947,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/card-service/universal-action-response-builder#displayAddOnCards(Object)
        * @param cardObjects An array of Cards to display.
        */
-      displayAddOnCards(cardObjects: object[]): UniversalActionResponseBuilder;
+      displayAddOnCards(cardObjects: any[]): UniversalActionResponseBuilder;
 
       /**
        * Sets the URL to open when the universal action is selected.
@@ -2290,7 +2959,29 @@ declare namespace GoogleAppsScript {
     /**
      * Represents an action that updates the email draft that the user is currently editing.
      *
-     *     // A UpdateDraftActionResponse that inserts non-editable content (a link in this case) into an
+     *     // An UpdateDraftActionResponse that inserts a list of To recipients into an email draft
+     *     var updateDraftActionResponse = CardService.newUpdateDraftActionResponseBuilder()
+     *         .setUpdateToRecipientsAction(CardService.newUpdateToRecipientsAction()
+     *            .addUpdateToRecipients(["joe@example.com", "wen@example.com"]))
+     *         .build()
+     *
+     *     // An UpdateDraftActionResponse that inserts a list of Cc recipients into an email draft
+     *     var updateDraftActionResponse = CardService.newUpdateDraftActionResponseBuilder()
+     *         .setUpdateCcRecipientsAction(CardService.newUpdateCcRecipientsAction()
+     *            .addUpdateCcRecipients(["joe@example.com", "wen@example.com"]))
+     *         .build()
+     *
+     *     // An UpdateDraftActionResponse that inserts a list of Bcc recipients into an email draft
+     *         .setUpdateCcRecipientsAction(CardService.newUpdateBccRecipientsAction()
+     *            .addUpdateBccRecipients(["joe@example.com", "wen@example.com"]))
+     *
+     *     // An UpdateDraftActionResponse that inserts a subject line into an email draft
+     *     var updateDraftActionResponse = CARD_SERVICE.newUpdateDraftActionResponseBuilder()
+     *     .setUpdateDraftSubjectAction(CARD_SERVICE.newUpdateDraftSubjectAction()
+     *     .addUpdateSubject("example subject"))
+     *     .build();
+     *
+     *     // An UpdateDraftActionResponse that inserts non-editable content (a link in this case) into an
      *     // email draft.
      *     var updateDraftActionResponse = CardService.newUpdateDraftActionResponseBuilder()
      *         .setUpdateDraftBodyAction(CardService.newUpdateDraftBodyAction()
@@ -2300,7 +2991,7 @@ declare namespace GoogleAppsScript {
      *             .setUpdateType(UpdateDraftBodyType.IN_PLACE_INSERT))
      *         .build();
      *
-     *     // A UpdateDraftActionResponse that inserts a link into an email draft. The added content can be
+     *     // An UpdateDraftActionResponse that inserts a link into an email draft. The added content can be
      *     // edited further.
      *     var updateDraftActionResponse = CardService.newUpdateDraftActionResponseBuilder()
      *         .setUpdateDraftBodyAction(CardService.newUpdateDraftBodyAction()
@@ -2310,7 +3001,7 @@ declare namespace GoogleAppsScript {
      *             .setUpdateType(UpdateDraftBodyType.IN_PLACE_INSERT))
      *         .build();
      *
-     *     // A UpdateDraftActionResponse that inserts multiple values of different types.
+     *     // An UpdateDraftActionResponse that inserts multiple values of different types.
      *     // The example action response inserts two lines next to each other in the email
      *     // draft, at the cursor position. Each line contains the content added by
      *     // {@link UpdateDraftActionResponseBuilder#addUpdateContent}.
@@ -2343,20 +3034,60 @@ declare namespace GoogleAppsScript {
       build(): UpdateDraftActionResponse;
 
       /**
+       * Sets an action that updates the email Bcc recipients of a draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-action-response-builder#setUpdateDraftBccRecipientsAction(UpdateDraftBccRecipientsAction)
+       * @param updateDraftBccRecipientsAction The action that updates the draft Bcc recipients.
+       */
+      setUpdateDraftBccRecipientsAction(updateDraftBccRecipientsAction: UpdateDraftBccRecipientsAction): UpdateDraftActionResponseBuilder;
+
+      /**
        * Set an action that updates the email body of a draft.
        * https://developers.google.com/apps-script/reference/card-service/update-draft-action-response-builder#setUpdateDraftBodyAction(UpdateDraftBodyAction)
        * @param updateDraftBodyAction The action that updates the draft body.
        */
       setUpdateDraftBodyAction(updateDraftBodyAction: UpdateDraftBodyAction): UpdateDraftActionResponseBuilder;
+
+      /**
+       * Sets an action that updates the Cc recipients of a draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-action-response-builder#setUpdateDraftCcRecipientsAction(UpdateDraftCcRecipientsAction)
+       * @param updateDraftCcRecipientsAction The action that updates the draft Cc recipients.
+       */
+      setUpdateDraftCcRecipientsAction(updateDraftCcRecipientsAction: UpdateDraftCcRecipientsAction): UpdateDraftActionResponseBuilder;
+
+      /**
+       * Sets an action that updates the subject line of a draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-action-response-builder#setUpdateDraftSubjectAction(UpdateDraftSubjectAction)
+       * @param updateDraftSubjectAction The action that updates the subject line.
+       */
+      setUpdateDraftSubjectAction(updateDraftSubjectAction: UpdateDraftSubjectAction): UpdateDraftActionResponseBuilder;
+
+      /**
+       * Sets an action that updates the To recipients of a draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-action-response-builder#setUpdateDraftToRecipientsAction(UpdateDraftToRecipientsAction)
+       * @param updateDraftToRecipientsAction The action that updates the To recipients.
+       */
+      setUpdateDraftToRecipientsAction(updateDraftToRecipientsAction: UpdateDraftToRecipientsAction): UpdateDraftActionResponseBuilder;
     }
     /**
-     * Represents an action that updates the email draft body.
+     * Updates the Bcc recipients of an email draft.
+     */
+    interface UpdateDraftBccRecipientsAction {
+
+      /**
+       * Updates the Bcc recipients of an email draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-bcc-recipients-action#addUpdateBccRecipients(String)
+       * @param bccRecipientEmails The Bcc recipients to insert to the email draft.
+       */
+      addUpdateBccRecipients(bccRecipientEmails: string[]): UpdateDraftBccRecipientsAction;
+    }
+    /**
+     * Updates the email draft body.
      */
     interface UpdateDraftBodyAction {
 
       /**
-       * Add update content of a UpdateDraftBodyAction. The content type of the content
-       * is specified by ContentType.
+       * Adds the specified content to the draft body. The type of the content is specified by
+       * ContentType.
        * https://developers.google.com/apps-script/reference/card-service/update-draft-body-action#addUpdateContent(String,ContentType)
        * @param content The content to insert to the email draft.
        * @param contentType The content type of the content to be inserted.
@@ -2364,7 +3095,8 @@ declare namespace GoogleAppsScript {
       addUpdateContent(content: string, contentType: ContentType): UpdateDraftBodyAction;
 
       /**
-       * Set the UpdateDraftBodyType of this update action on the draft body.
+       * Sets the UpdateDraftBodyType of this update action on the draft body. For example,
+       * inserting content at the start, end, or cursor position of the draft body.
        * https://developers.google.com/apps-script/reference/card-service/update-draft-body-action#setUpdateType(UpdateDraftBodyType)
        * @param updateType The type of update to be performed on an email draft.
        */
@@ -2373,7 +3105,43 @@ declare namespace GoogleAppsScript {
     /**
      * An enum value that specifies the type of an UpdateDraftBodyAction.
      */
-    enum UpdateDraftBodyType { IN_PLACE_INSERT }
+    enum UpdateDraftBodyType { IN_PLACE_INSERT, INSERT_AT_START, INSERT_AT_END }
+    /**
+     * Updates the Cc recipients of an email draft.
+     */
+    interface UpdateDraftCcRecipientsAction {
+
+      /**
+       * Updates the Cc recipients of an email draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-cc-recipients-action#addUpdateCcRecipients(String)
+       * @param ccRecipientEmails The Cc recipients to insert to the email draft.
+       */
+      addUpdateCcRecipients(ccRecipientEmails: string[]): UpdateDraftCcRecipientsAction;
+    }
+    /**
+     * Updates the subject line of an email draft.
+     */
+    interface UpdateDraftSubjectAction {
+
+      /**
+       * Updates the subject line of an email draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-subject-action#addUpdateSubject(String)
+       * @param subject The subject line to insert to the email draft.
+       */
+      addUpdateSubject(subject: string): UpdateDraftSubjectAction;
+    }
+    /**
+     * Updates the To recipients of an email draft.
+     */
+    interface UpdateDraftToRecipientsAction {
+
+      /**
+       * Updates the To recipients of an email draft.
+       * https://developers.google.com/apps-script/reference/card-service/update-draft-to-recipients-action#addUpdateToRecipients(String)
+       * @param toRecipientEmails The To recipients to insert to the email draft.
+       */
+      addUpdateToRecipients(toRecipientEmails: string[]): UpdateDraftToRecipientsAction;
+    }
     /**
      * Base class for all widgets that can be added to a Card.
      */
