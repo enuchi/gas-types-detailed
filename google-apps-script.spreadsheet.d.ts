@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -13,6 +13,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration of the types of series used to calculate auto-filled values. The manner in which
      * these series affect calculated values differs depending on the type and amount of source data.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.AutoFillSeries.DEFAULT_SERIES.
      */
     enum AutoFillSeries { DEFAULT_SERIES, ALTERNATE_SERIES }
     /**
@@ -218,6 +221,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration of banding themes. Each theme consists of several complementary colors that are
      * applied to different cells based on the banding settings.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.BandingTheme.LIGHT_GREY.
      */
     enum BandingTheme { LIGHT_GREY, CYAN, GREEN, YELLOW, ORANGE, BLUE, TEAL, GREY, BROWN, LIGHT_GREEN, INDIGO, PINK }
     /**
@@ -544,10 +550,16 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration representing the boolean criteria that can be used in conditional format or
      * filter.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.BooleanCriteria.CELL_EMPTY.
      */
     enum BooleanCriteria { CELL_EMPTY, CELL_NOT_EMPTY, DATE_AFTER, DATE_BEFORE, DATE_EQUAL_TO, DATE_NOT_EQUAL_TO, DATE_AFTER_RELATIVE, DATE_BEFORE_RELATIVE, DATE_EQUAL_TO_RELATIVE, NUMBER_BETWEEN, NUMBER_EQUAL_TO, NUMBER_GREATER_THAN, NUMBER_GREATER_THAN_OR_EQUAL_TO, NUMBER_LESS_THAN, NUMBER_LESS_THAN_OR_EQUAL_TO, NUMBER_NOT_BETWEEN, NUMBER_NOT_EQUAL_TO, TEXT_CONTAINS, TEXT_DOES_NOT_CONTAIN, TEXT_EQUAL_TO, TEXT_NOT_EQUAL_TO, TEXT_STARTS_WITH, TEXT_ENDS_WITH, CUSTOM_FORMULA }
     /**
      * Styles that can be set on a range using Range.setBorder(top, left, bottom, right, vertical, horizontal, color, style).
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.BorderStyle.DOTTED.
      */
     enum BorderStyle { DOTTED, DASHED, SOLID, SOLID_MEDIUM, SOLID_THICK, DOUBLE }
     /**
@@ -782,7 +794,7 @@ declare namespace GoogleAppsScript {
        *     // Log each range of the first conditional format rule of a sheet.
        *     var rule = SpreadsheetApp.getActiveSheet().getConditionalFormatRules()[0];
        *     var ranges = rule.getRanges();
-       *     for (int i = 0; i < ranges.length; i++) {
+       *     for (var i = 0; i < ranges.length; i++) {
        *       Logger.log(ranges[i].getA1Notation());
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule#getRanges()
@@ -857,7 +869,7 @@ declare namespace GoogleAppsScript {
        *     // Log each range of the first conditional format rule of a sheet.
        *     var rule = SpreadsheetApp.getActiveSheet().getConditionalFormatRules()[0];
        *     var ranges = rule.getRanges();
-       *     for (int i = 0; i < ranges.length; i++) {
+       *     for (var i = 0; i < ranges.length; i++) {
        *       Logger.log(ranges[i].getA1Notation());
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/conditional-format-rule-builder#getRanges()
@@ -1929,14 +1941,23 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of possible special paste types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.CopyPasteType.PASTE_NORMAL.
      */
     enum CopyPasteType { PASTE_NORMAL, PASTE_NO_BORDERS, PASTE_FORMAT, PASTE_FORMULA, PASTE_DATA_VALIDATION, PASTE_VALUES, PASTE_CONDITIONAL_FORMATTING, PASTE_COLUMN_WIDTHS }
     /**
      * An enumeration of data execution error codes.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DataExecutionErrorCode.TIME_OUT.
      */
     enum DataExecutionErrorCode { DATA_EXECUTION_ERROR_CODE_UNSUPPORTED, NONE, TIME_OUT, TOO_MANY_ROWS, TOO_MANY_COLUMNS, TOO_MANY_CELLS, ENGINE, PARAMETER_INVALID, UNSUPPORTED_DATA_TYPE, DUPLICATE_COLUMN_NAMES, INTERRUPTED, OTHER, TOO_MANY_CHARS_PER_CELL, DATA_NOT_FOUND, PERMISSION_DENIED }
     /**
      * An enumeration of data execution states.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DataExecutionState.RUNNING.
      */
     enum DataExecutionState { DATA_EXECUTION_STATE_UNSUPPORTED, RUNNING, SUCCESS, ERROR, NOT_STARTED }
     /**
@@ -1984,6 +2005,8 @@ declare namespace GoogleAppsScript {
     /**
      * Access and modify existing data source. To create a data source table with new data source, see
      * DataSourceTable.
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSource {
 
@@ -2086,6 +2109,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Access and modify an existing data source chart.
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceChart {
 
@@ -2137,6 +2162,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Access and modify a data source column.
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceColumn {
 
@@ -2202,6 +2229,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Access and modify existing data source formulas. To create a new data source formula, use Range.setFormula(formula).
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceFormula {
 
@@ -2278,6 +2307,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Access existing data source parameters.
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceParameter {
 
@@ -2302,11 +2333,16 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of data source parameter types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DataSourceParameterType.CELL.
      */
     enum DataSourceParameterType { DATA_SOURCE_PARAMETER_TYPE_UNSUPPORTED, CELL }
     /**
      * Access and modify existing data source pivot table. To create a new data source pivot table, use
      * Range.createDataSourcePivotTable(dataSource).
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourcePivotTable {
 
@@ -2395,6 +2431,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Access and modify an existing refresh schedule. To get all refresh schedules, see Spreadsheet.getDataSourceRefreshSchedules().
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceRefreshSchedule {
 
@@ -2425,6 +2463,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Access a refresh schedule's frequency, which specifies how often and when to refresh.
+     *
+     * Only use this class with data that's connected to a database.
      *
      * To see the next time this refresh schedule is scheduled to run, use DataSourceRefreshSchedule.getTimeIntervalOfNextRun().
      *
@@ -2463,10 +2503,15 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of scopes for refreshes.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DataSourceRefreshScope.ALL_DATA_SOURCES.
      */
     enum DataSourceRefreshScope { DATA_SOURCE_REFRESH_SCOPE_UNSUPPORTED, ALL_DATA_SOURCES }
     /**
      * Access and modify existing data source sheet. To create a new data source sheet, use Spreadsheet.insertDataSourceSheet(spec).
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceSheet {
 
@@ -2629,6 +2674,8 @@ declare namespace GoogleAppsScript {
     /**
      * Access and modify an existing data source sheet filter. To create a new data source sheet filter,
      * use DataSourceSheet.addFilter(columnName, filterCriteria).
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceSheetFilter {
 
@@ -2666,6 +2713,8 @@ declare namespace GoogleAppsScript {
     /**
      * Access the general settings of an existing data source spec. To access data source spec for
      * certain type, use as...() method. To create a new data source spec, use SpreadsheetApp.newDataSourceSpec().
+     *
+     * Only use this class with data that's connected to a database.
      *
      * This example shows how to get information from a BigQuery data source spec.
      *
@@ -2706,6 +2755,8 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The builder for DataSourceSpec. To create a specification for certain type, use as...() method. To create a new builder, use SpreadsheetApp.newDataSourceSpec(). To use the specification, see DataSourceTable.
+     *
+     * Only use this class with data that's connected to a database.
      *
      * This examples show how to build a BigQuery data source specification.
      *
@@ -2774,6 +2825,8 @@ declare namespace GoogleAppsScript {
     /**
      * Access and modify existing data source table. To create a new data source table on a new sheet,
      * use Spreadsheet.insertSheetWithDataSourceTable(spec).
+     *
+     * Only use this class with data that's connected to a database.
      *
      * This example shows how to create a new data source table.
      *
@@ -2959,6 +3012,8 @@ declare namespace GoogleAppsScript {
     /**
      * Access and modify an existing column in a DataSourceTable. To add columns to a data
      * source table, use DataSourceTable.addColumns(columnNames).
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceTableColumn {
 
@@ -2977,6 +3032,8 @@ declare namespace GoogleAppsScript {
     /**
      * Access and modify an existing data source table filter. To create a new data source table filter,
      * use DataSourceTable.addFilter(columnName, filterCriteria).
+     *
+     * Only use this class with data that's connected to a database.
      */
     interface DataSourceTableFilter {
 
@@ -3013,6 +3070,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of data source types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DataSourceType.BIGQUERY.
      */
     enum DataSourceType { DATA_SOURCE_TYPE_UNSUPPORTED, BIGQUERY }
     /**
@@ -3678,6 +3738,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration representing the data validation criteria that can be set on a range.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DataValidationCriteria.DATE_IS_VALID_DATE.
+     *
      *     // Change existing data-validation rules that require a date in 2013 to require a date in 2014.
      *     var oldDates = [new Date('1/1/2013'), new Date('12/31/2013')];
      *     var newDates = [new Date('1/1/2014'), new Date('12/31/2014')];
@@ -3723,6 +3786,9 @@ declare namespace GoogleAppsScript {
      *
      * The examples below assume the spreadsheet locale
      * is "en-US", grouping bucket may be translated based on the spreadsheet locale.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DateTimeGroupingRuleType.SECOND.
      */
     enum DateTimeGroupingRuleType { UNSUPPORTED, SECOND, MINUTE, HOUR, HOUR_MINUTE, HOUR_MINUTE_AMPM, DAY_OF_WEEK, DAY_OF_YEAR, DAY_OF_MONTH, DAY_MONTH, MONTH, QUARTER, YEAR, YEAR_MONTH, YEAR_QUARTER, YEAR_MONTH_DAY }
     /**
@@ -3913,19 +3979,31 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of the types of developer metadata location types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DeveloperMetadataLocationType.SPREADSHEET.
      */
     enum DeveloperMetadataLocationType { SPREADSHEET, SHEET, ROW, COLUMN }
     /**
      * An enumeration of the types of developer metadata visibility.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.DeveloperMetadataVisibility.DOCUMENT.
      */
     enum DeveloperMetadataVisibility { DOCUMENT, PROJECT }
     /**
      * An enumeration of possible directions along which data can be stored in a spreadsheet.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.Dimension.COLUMNS.
      */
     enum Dimension { COLUMNS, ROWS }
     /**
      * An enumeration representing the possible directions that one can move within a spreadsheet using
      * the arrow keys.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.Direction.UP.
      */
     enum Direction { UP, DOWN, PREVIOUS, NEXT }
     /**
@@ -9767,11 +9845,19 @@ declare namespace GoogleAppsScript {
       sort(columnPosition: Integer, ascending: boolean): Filter;
     }
     /**
-     * Use this class to get information about or copy the criteria for existing filters.
+     * Use this class to get information about or copy the criteria on existing filters.
      *
-     * To create a new filter, refer to Range.createFilter().
+     * To create a new filter, refer to the following:
      *
-     * To create the criteria for a filter, refer to SpreadsheetApp.newFilterCriteria() and FilterCriteriaBuilder.
+     * For sheets, use Range.createFilter().
+     *
+     * For pivot tables, use PivotTable.addFilter(sourceDataColumn, filterCriteria).
+     *
+     * For sheets that are connected to a database, use DataSourceSheet.addFilter(columnName, filterCriteria).
+     *
+     * For pivot tables that are connected to a database, use DataSourcePivotTable.addFilter(columnName, filterCriteria).
+     *
+     * To create the criteria for any type of filter, refer to SpreadsheetApp.newFilterCriteria() and FilterCriteriaBuilder.
      *
      * Common uses
      * Copy criteria
@@ -9823,8 +9909,8 @@ declare namespace GoogleAppsScript {
        * of boolean criteria, see the BooleanCriteria enum.
        *
        *
-       * People often use this method to add criteria to a filter without replacing existing
-       * criteria.
+       * People often use this method to add boolean condition criteria to a filter without replacing
+       * existing criteria.
        *
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getCriteriaType()
@@ -9836,8 +9922,8 @@ declare namespace GoogleAppsScript {
        * arguments and return an empty array, for example, CELL_NOT_EMPTY.
        *
        *
-       * People often use this method to add criteria to a filter without replacing existing
-       * criteria.
+       * People often use this method to add boolean condition criteria to a filter without replacing
+       * existing criteria.
        *
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria#getCriteriaValues()
@@ -9849,8 +9935,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * Use this criteria with filters on Grid sheets, the default type of sheet.
-       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
-       * this method for other types of filters.
+       * Returns null if you call this method for other types of filters.
        *
        *
        *     let ss = SpreadsheetApp.getActiveSheet();
@@ -9870,8 +9955,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * Use this criteria with filters on Grid sheets, the default type of sheet.
-       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
-       * this method for other types of filters.
+       * Returns null if you call this method for other types of filters.
        *
        *
        *     let ss = SpreadsheetApp.getActiveSheet();
@@ -9893,8 +9977,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * Use this criteria with filters on Grid sheets, the default type of sheet.
-       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
-       * this method for other types of filters.
+       * Returns null if you call this method for other types of filters.
        *
        *
        *     let ss = SpreadsheetApp.getActiveSheet();
@@ -9929,12 +10012,50 @@ declare namespace GoogleAppsScript {
       getVisibleValues(): string[];
     }
     /**
-     * Builder for FilterCriteria.
+     * To add criteria to a filter, you must do the following:
+     *
+     * Create the criteria builder using SpreadsheetApp.newFilterCriteria().
+     * Add settings to the builder using the methods from this class.
+     * Use build() to assemble the criteria with your specified settings.
+     *
+     * Common uses
+     * Hide values on a sheet
+     * Grid
+     *
+     *     let ss = SpreadsheetApp.getActiveSheet();
+     *     let filter = ss.getFilter();
+     *     let criteria = SpreadsheetApp.newFilterCriteria()
+     *                                  .setHiddenValues(["hello", "world"])
+     *                                  .build();
+     *     filter.setColumnFilterCriteria(3, criteria);
+     *
+     * Only show non-empty cells
+     * DataSource
+     *
+     *     // Gets the sheet named "Connected sheet," which is connected to a database.
+     *     let sheet = SpreadsheetApp.getActiveSpreadsheet()
+     *                               .getSheetByName("Connected sheet")
+     *                               .asDataSourceSheet();
+     *     // Creates criteria that only shows non-empty cells.
+     *     let criteria = SpreadsheetApp.newFilterCriteria()
+     *                                  .whenCellNotEmpty()
+     *                                  .build();
+     *     // Applies the criteria to the column named "Category."
+     *     sheet.addFilter("Category", criteria);
      */
     interface FilterCriteriaBuilder {
 
       /**
-       * Constructs a filter criteria from the settings supplied to the builder.
+       * Assembles the filter criteria using the settings you add to the criteria builder.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     let criteria = SpreadsheetApp.newFilterCriteria() // Creates a criteria builder.
+       *                                  .whenCellNotEmpty() // Adds settings to the builder.
+       *                                  .build();          // Assembles the criteria.
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#build()
        */
       build(): FilterCriteria;
@@ -9964,8 +10085,8 @@ declare namespace GoogleAppsScript {
        * of boolean criteria, see the BooleanCriteria enum.
        *
        *
-       * People often use this method to add criteria to a filter without replacing existing
-       * criteria.
+       * People often use this method to add boolean condition criteria to a filter without replacing
+       * existing criteria.
        *
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getCriteriaType()
@@ -9977,8 +10098,8 @@ declare namespace GoogleAppsScript {
        * arguments and return an empty array, for example, CELL_NOT_EMPTY.
        *
        *
-       * People often use this method to add criteria to a filter without replacing existing
-       * criteria.
+       * People often use this method to add boolean condition criteria to a filter without replacing
+       * existing criteria.
        *
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#getCriteriaValues()
@@ -9990,8 +10111,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * Use this criteria with filters on Grid sheets, the default type of sheet.
-       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
-       * this method for other types of filters.
+       * Returns null if you call this method for other types of filters.
        *
        *
        *     let ss = SpreadsheetApp.getActiveSheet();
@@ -10011,8 +10131,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * Use this criteria with filters on Grid sheets, the default type of sheet.
-       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
-       * this method for other types of filters.
+       * Returns null if you call this method for other types of filters.
        *
        *
        *     let ss = SpreadsheetApp.getActiveSheet();
@@ -10034,8 +10153,7 @@ declare namespace GoogleAppsScript {
        *
        *
        * Use this criteria with filters on Grid sheets, the default type of sheet.
-       * Grid sheets are sheets that aren't connected to a database. Returns null if you call
-       * this method for other types of filters.
+       * Returns null if you call this method for other types of filters.
        *
        *
        *     let ss = SpreadsheetApp.getActiveSheet();
@@ -10073,328 +10191,396 @@ declare namespace GoogleAppsScript {
        * Sets the values to hide. Clears any existing visible or hidden values.
        *
        *
-       * You can use this filter criteria for Grid sheet filters. Grid sheets are
-       * sheets with data that aren't connected to a database.
+       * You can only use this criteria for filters on Grid sheets, the default
+       * type of sheet.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Sets the values to hide and applies the criteria to column C.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .setHiddenValues(["Hello", "World"])
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(3, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setHiddenValues(String)
        * @param values The list of values to hide.
        */
       setHiddenValues(values: string[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the background color used as a filter criteria. Cells with this background color remain
-       * visible. Setting a background color filter criteria removes the current color filter criteria
+       * Sets the background color used as filter criteria. Cells with this background color remain
+       * visible. Setting a background color filter criteria removes any current color filter criteria
        * from this builder.
        *
        *
-       * You can use this filter criteria for Grid sheet filters. Grid sheets are
-       * sheets with data that aren't connected to a database.
+       * You can only use this criteria for filters on Grid sheets, the default
+       * type of sheet.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that filters by background color and sets it to column B.
+       *     let color = SpreadsheetApp.newColor().setRgbColor("#185ABC").build();
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .setVisibleBackgroundColor(color)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setVisibleBackgroundColor(Color)
-       * @param visibleBackgroundColor The background color to set. This must be an RGB-style color, theme colors are not supported.
+       * @param visibleBackgroundColor The background color to set. The color must be an RGB-style color. This method doesn't support theme colors.
        */
       setVisibleBackgroundColor(visibleBackgroundColor: Color): FilterCriteriaBuilder;
 
       /**
-       * Sets the foreground color used as a filter criteria. Cells with this foreground color remain
-       * visible. Setting a foreground color filter criteria removes the current color filter criteria
+       * Sets the foreground color used as filter criteria. Cells with this foreground color remain
+       * visible. Setting a foreground color filter criteria removes any current color filter criteria
        * from this builder.
        *
        *
-       * You can use this filter criteria for Grid sheet filters. Grid sheets are
-       * sheets with data that aren't connected to a database.
+       * You can only use this criteria for filters on Grid sheets, the default
+       * type of sheet.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that filters by foreground color and sets it to column B.
+       *     let color = SpreadsheetApp.newColor().setRgbColor("#185ABC").build();
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .setVisibleForegroundColor(color)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setVisibleForegroundColor(Color)
-       * @param visibleForegroundColor The foreground color to set. This must be an RGB-style color, theme colors are not supported.
+       * @param visibleForegroundColor The foreground color to set. The color must be an RGB-style color. This method doesn't support theme colors.
        */
       setVisibleForegroundColor(visibleForegroundColor: Color): FilterCriteriaBuilder;
 
       /**
-       * Sets the values to show. It clears any existing visible or hidden values.
+       * Sets the values to show on a pivot table. Clears any existing visible or hidden values.
        *
        *
-       * You can use this criteria for filters on pivot tables that aren't connected to a database.
+       * You can only use this criteria for filters on pivot tables that aren't connected to a
+       * database.
+       *
+       *
+       *     // Gets the active sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     // Gets the first pivot table on the sheet and adds a filter to it that
+       *     // sets the visible values to "Northeast" and "Southwest."
+       *     let pivotTable = ss.getPivotTables()[0];
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .setVisibleValues(["Northeast", "Southwest"])
+       *                                  .build();
+       *     pivotTable.addFilter(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#setVisibleValues(String)
        * @param values The list of values to show.
        */
       setVisibleValues(values: string[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell is empty.
+       * Sets the filter criteria to show empty cells.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Sets criteria to column B that only shows empty cells.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenCellEmpty()
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenCellEmpty()
        */
       whenCellEmpty(): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell is not empty.
+       * Sets the filter criteria to show cells that aren't empty.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Sets criteria to column B that only shows cells that aren't empty.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenCellNotEmpty()
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenCellNotEmpty()
        */
       whenCellNotEmpty(): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell date is after the specified value.
+       * Sets filter criteria that shows cells with dates that are after the specified date.
        *
        *
        * You can use this criteria with any type of filter. If you use this criteria with data that's
        * connected to a database, the data type of the column you're filtering by must be a date. If the
        * data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a date, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Creates criteria that only shows cells with dates after June 1, 2022
+       *     // and sets it to column A.
+       *     let date = new Date("June 1, 2022");
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateAfter(date)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateAfter(Date)
-       * @param date The latest date.
+       * @param date The latest date to hide.
        */
       whenDateAfter(date: Date): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell date is after the specified relative
-       * date.
+       * Sets filter criteria that shows cells with dates that are after the specified relative date. To
+       * view the relative date options, refer to Enum RelativeDate.
        *
        *
        * You can use this criteria with any type of filter. If you use this criteria with data that's
        * connected to a database, the data type of the column you're filtering by must be a date. If the
        * data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a date, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Creates criteria that only shows cells with dates after today's date
+       *     // and sets it to column A.
+       *     let date = SpreadsheetApp.RelativeDate.TODAY;
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateAfter(date)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateAfter(RelativeDate)
-       * @param date The latest date relative to the date type selected.
+       * @param date The latest relative date.
        */
       whenDateAfter(date: RelativeDate): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell date is before the specified date.
+       * Sets filter criteria that shows cells with dates that are before the specified date.
        *
        *
        * You can use this criteria with any type of filter. If you use this criteria with data that's
        * connected to a database, the data type of the column you're filtering by must be a date. If the
        * data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a date, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Creates criteria that only shows cells with dates before June 1, 2022
+       *     // and sets it to column A.
+       *     let date = new Date("June 1, 2022");
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateBefore(date)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateBefore(Date)
-       * @param date The earliest unacceptable date.
+       * @param date The earliest date to hide.
        */
       whenDateBefore(date: Date): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where a cell date is before the specified relative date.
+       * Sets filter criteria that shows cells with dates that are before the specified relative date.
+       * To view the relative date options, refer to Enum RelativeDate.
        *
        *
        * You can use this criteria with any type of filter. If you use this criteria with data that's
        * connected to a database, the data type of the column you're filtering by must be a date. If the
        * data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a date, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Creates criteria that only shows cells with dates before today's date
+       *     // and sets it to column A.
+       *     let date = SpreadsheetApp.RelativeDate.TODAY;
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateBefore(date)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateBefore(RelativeDate)
-       * @param date The latest date relative to the date type selected.
+       * @param date The earliest relative date to hide.
        */
       whenDateBefore(date: RelativeDate): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where a cell date is equal to the specified date.
+       * Sets filter criteria that shows cells with dates that are equal to the specified date.
        *
        *
        * You can use this criteria with any type of filter. If you use this criteria with data that's
        * connected to a database, the data type of the column you're filtering by must be a date. If the
        * data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a date, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Creates criteria that only shows cells with dates equal to June 1, 2022
+       *     // and sets it to column A.
+       *     let date = new Date("June 1, 2022");
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateEqualTo(date)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateEqualTo(Date)
-       * @param date The sole acceptable date.
+       * @param date The date that cell values must match.
        */
       whenDateEqualTo(date: Date): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where a cell date is equal to the specified relative
-       * date.
+       * Sets filter criteria that shows cells with dates that are equal to the specified relative date.
+       * To view the relative date options, refer to Enum RelativeDate.
        *
        *
        * You can use this criteria with any type of filter. If you use this criteria with data that's
        * connected to a database, the data type of the column you're filtering by must be a date. If the
        * data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a date, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the range.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let range = ss.getRange("A1:C20");
+       *     let filter = range.getFilter();
+       *     // Creates criteria that only shows cells with dates that fall within the past month
+       *     // and sets it to column A.
+       *     let date = SpreadsheetApp.RelativeDate.PAST_MONTH;
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateEqualTo(date)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateEqualTo(RelativeDate)
-       * @param date The latest date relative to the date type selected.
+       * @param date The relative date that cell values must match.
        */
       whenDateEqualTo(date: RelativeDate): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell date is equal to any of the specified
-       * dates.
+       * Sets the filter criteria to show cells with dates that are equal to any of the specified dates.
        *
        *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a date. If the
-       * data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a date, but if it's not, you might get unexpected results.
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "date" column that shows cells with any of the below dates.
+       *     let date1 = new Date("June 1, 2022");
+       *     let date2 = new Date("June 2, 2022");
+       *     let date3 = new Date("June 3, 2022");
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateEqualToAny([date1, date2, date3])
+       *                                  .build();
+       *     dataSheet.addFilter("date", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateEqualToAny(Date)
-       * @param dates The acceptable values.
+       * @param dates The dates to show.
        */
       whenDateEqualToAny(dates: Date[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell date is not equal to the specified date.
+       * Sets the filter criteria to show cells that aren't equal to the specified date.
        *
        *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a date. If the
-       * data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a date, but if it's not, you might get unexpected results.
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       * The data type of the column you're filtering by must be a date.
+       *
+       *
+       *     // Gets a pivot table that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Pivot Table Sheet");
+       *     let dataPivotTable = ss.getDataSourcePivotTables()[0];
+       *     // Creates criteria that only shows cells that don't equal June 16, 2022
+       *     // and sets it to the "date" column.
+       *     let date = new Date("June 16, 2022");
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateNotEqualTo(date)
+       *                                  .build();
+       *     dataPivotTable.addFilter("date", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateNotEqualTo(Date)
-       * @param date The latest date relative to the date type selected.
+       * @param date The date to hide.
        */
       whenDateNotEqualTo(date: Date): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell date is not equal to any of the specified
+       * Sets the filter criteria to show cells with dates that aren't equal to any of the specified
        * dates.
        *
        *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a date. If the
-       * data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a date, but if it's not, you might get unexpected results.
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "date" column that hides cells with any of the below dates.
+       *     let date1 = new Date("June 1, 2022");
+       *     let date2 = new Date("June 2, 2022");
+       *     let date3 = new Date("June 3, 2022");
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenDateNotEqualToAny([date1, date2, date3])
+       *                                  .build();
+       *     dataSheet.addFilter("date", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenDateNotEqualToAny(Date)
-       * @param dates The acceptable values.
+       * @param dates The dates to hide.
        */
       whenDateNotEqualToAny(dates: Date[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the specified formula (such as =B:B<C:C)
+       * Sets the filter criteria to show cells with a specified formula (such as =B:B<C:C) that
        * evaluates to true.
        *
        *
        * You can only use this criteria to filter data that isn't connected to a database.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows the rows where the value in column B is less than the value in
+       *     // column C and sets it to column A.
+       *     let formula = "=B:B<C:C";
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenFormulaSatisfied(formula)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenFormulaSatisfied(String)
        * @param formula A custom formula that evaluates to true if the input is valid.
        */
       whenFormulaSatisfied(formula: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell number falls between, or is either of,
-       * two specified numbers.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberBetween(Number,Number)
-       * @param start The lowest acceptable value.
-       * @param end The highest acceptable value.
-       */
-      whenNumberBetween(start: number, end: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number is equal to the specified value.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberEqualTo(Number)
-       * @param number The sole acceptable value.
-       */
-      whenNumberEqualTo(number: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number is equal to any of the specified
-       * numbers.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberEqualToAny(Number)
-       * @param numbers The acceptable values.
-       */
-      whenNumberEqualToAny(numbers: number[]): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number is greater than the specified
-       * value.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberGreaterThan(Number)
-       * @param number The highest unacceptable value.
-       */
-      whenNumberGreaterThan(number: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number is greater than or equal to the
-       * specified value.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberGreaterThanOrEqualTo(Number)
-       * @param number The lowest acceptable value.
-       */
-      whenNumberGreaterThanOrEqualTo(number: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the conditional conditional format rule to show cells where the cell number is less than
-       * the specified value.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberLessThan(Number)
-       * @param number The lowest unacceptable value.
-       */
-      whenNumberLessThan(number: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number is less than or equal to the
-       * specified value.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberLessThanOrEqualTo(Number)
-       * @param number The highest acceptable value.
-       */
-      whenNumberLessThanOrEqualTo(number: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number doesn't fall between, and is
-       * neither of, two specified numbers.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotBetween(Number,Number)
-       * @param start The lowest unacceptable value.
-       * @param end The highest unacceptable value.
-       */
-      whenNumberNotBetween(start: number, end: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number is not equal to the specified
-       * value.
-       *
-       *
-       * You can use this criteria with any type of filter. If you use this criteria with data that's
-       * connected to a database, the data type of the column you're filtering by must be a number. If
-       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
-       * need to be a number, but if it's not, you might get unexpected results.
-       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotEqualTo(Number)
-       * @param number The sole unacceptable value.
-       */
-      whenNumberNotEqualTo(number: number): FilterCriteriaBuilder;
-
-      /**
-       * Sets the filter criteria to show cells where the cell number isn't equal to any of the
+       * Sets the filter criteria to show cells with a number that falls between, or is either of, 2
        * specified numbers.
        *
        *
@@ -10402,118 +10588,444 @@ declare namespace GoogleAppsScript {
        * connected to a database, the data type of the column you're filtering by must be a number. If
        * the data isn't connected to a database, the data type of the column you're filtering by doesn't
        * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that only shows cells with numbers that fall between 1-25, inclusively,
+       *     // and sets it to column A.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberBetween(1, 25)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(1, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberBetween(Number,Number)
+       * @param start The lowest number to show.
+       * @param end The highest number to show.
+       */
+      whenNumberBetween(start: number, end: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number that's equal to the specified number.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that only shows cells that are equal to 25 and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberEqualTo(25)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberEqualTo(Number)
+       * @param number The number to show.
+       */
+      whenNumberEqualTo(number: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number that's equal to any of the specified
+       * numbers.
+       *
+       *
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "amount" column that only shows cells with the number 10, 20, or 30.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberEqualToAny([10,20,30])
+       *                                  .build();
+       *     dataSheet.addFilter("amount", criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberEqualToAny(Number)
+       * @param numbers The numbers to show.
+       */
+      whenNumberEqualToAny(numbers: number[]): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number greater than the specified number
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells greater than 10 and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberGreaterThan(10)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberGreaterThan(Number)
+       * @param number The highest number to hide.
+       */
+      whenNumberGreaterThan(number: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number greater than or equal to the specified
+       * number.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells greater than or equal to 10 and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberGreaterThanOrEqualTo(10)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberGreaterThanOrEqualTo(Number)
+       * @param number The lowest number to show.
+       */
+      whenNumberGreaterThanOrEqualTo(number: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number that's less than the specified number.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells less than 10 and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberLessThan(10)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberLessThan(Number)
+       * @param number The lowest number to hide.
+       */
+      whenNumberLessThan(number: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number less than or equal to the specified
+       * number.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells less than or equal to 10 and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberLessThanOrEqualTo(10)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberLessThanOrEqualTo(Number)
+       * @param number The highest number to show.
+       */
+      whenNumberLessThanOrEqualTo(number: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number doesn't fall between, and is neither of, 2
+       * specified numbers.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that hides cells with numbers that fall between 1-25, inclusively,
+       *     // and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberNotBetween(1, 25)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotBetween(Number,Number)
+       * @param start The lowest number hide.
+       * @param end The highest number to hide.
+       */
+      whenNumberNotBetween(start: number, end: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number that isn't equal to the specified number.
+       *
+       *
+       * You can use this criteria with any type of filter. If you use this criteria with data that's
+       * connected to a database, the data type of the column you're filtering by must be a number. If
+       * the data isn't connected to a database, the data type of the column you're filtering by doesn't
+       * need to be a number, but if it's not, you might get unexpected results.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that hides cells that are equal to 25 and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberNotEqualTo(25)
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
+       * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotEqualTo(Number)
+       * @param number The number to hide.
+       */
+      whenNumberNotEqualTo(number: number): FilterCriteriaBuilder;
+
+      /**
+       * Sets the filter criteria to show cells with a number that isn't equal to any of the specified
+       * numbers.
+       *
+       *
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "amount" column that hides cells with the number 10, 20, or 30.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenNumberNotEqualToAny([10,20,30])
+       *                                  .build();
+       *     dataSheet.addFilter("amount", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenNumberNotEqualToAny(Number)
-       * @param numbers The unacceptable values.
+       * @param numbers The numbers to hide.
        */
       whenNumberNotEqualToAny(numbers: number[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text contains the specified text.
+       * Sets the filter criteria to show cells with text that contains the specified text. The text
+       * isn't case-sensitive.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells that contain "Northwest" and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextContains("Northwest")
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextContains(String)
-       * @param text The value that the input must contain.
+       * @param text The text that the cell must contain.
        */
       whenTextContains(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text doesn't contain the specified text.
+       * Sets the filter criteria to show cells with text that doesn't contain the specified text. The
+       * text isn't case-sensitive.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that hides cells that contain "Northwest" and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextDoesNotContain("Northwest")
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextDoesNotContain(String)
-       * @param text The value that the input must not contain.
+       * @param text The text that the cell must not contain.
        */
       whenTextDoesNotContain(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text ends with the specified text.
+       * Sets the filter criteria to show cells with text that ends with the specified text. The text
+       * isn't case-sensitive.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells with text that ends with "est" and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextEndsWith("est")
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextEndsWith(String)
-       * @param text Text to compare against the end of the string.
+       * @param text Text that the end of the cell's text must contain.
        */
       whenTextEndsWith(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text is equal to the specified text.
+       * Sets the filter criteria to show cells with text that's equal to the specified text. The text
+       * isn't case-sensitive.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells with text that equals "hello" and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextEqualTo("hello")
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextEqualTo(String)
-       * @param text The sole acceptable value.
+       * @param text The text that the cell's text must equal.
        */
       whenTextEqualTo(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text is equal to any of the specified
-       * values.
+       * Sets the filter criteria to show cells with text that's equal to any of the specified text
+       * values. The text isn't case-sensitive.
        *
        *
-       * You can use this criteria with any type of filter.
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "category" column that shows cells with the text "tech" or "business."
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextEqualToAny(["tech","business"])
+       *                                  .build();
+       *     dataSheet.addFilter("category", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextEqualToAny(String)
-       * @param texts The acceptable values.
+       * @param texts The text values that a cell must equal.
        */
       whenTextEqualToAny(texts: string[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text is not equal to the specified text.
+       * Sets the filter criteria to show cells with text that isn't equal to the specified text. The
+       * text isn't case-sensitive.
        *
        *
-       * You can use this criteria with any type of filter.
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "category" column that hides cells with text equal to "tech."
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextNotEqualTo("tech")
+       *                                  .build();
+       *     dataSheet.addFilter("category", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextNotEqualTo(String)
-       * @param text The unacceptable value.
+       * @param text The text that the cell's text can't equal.
        */
       whenTextNotEqualTo(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text is not equal to any of the specified
-       * values.
+       * Sets the filter criteria to show cells with text that isn't equal to any of the specified
+       * values. The text isn't case-sensitive.
        *
        *
-       * You can use this criteria with any type of filter.
+       * You can only use this criteria with data connected to a database. For example, use this
+       * criteria with filters on a DataSource sheet, a sheet that's connected to a
+       * database, or a DataSourcePivotTable, a pivot table created from a DataSource sheet.
+       *
+       *
+       *     // Gets the sheet that's connected to a database.
+       *     let ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Data Sheet");
+       *     let dataSheet = ss.asDataSourceSheet();
+       *     // Adds criteria to the "category" column that hides cells with the text "tech" or "business."
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextNotEqualToAny(["tech","business"])
+       *                                  .build();
+       *     dataSheet.addFilter("category", criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextNotEqualToAny(String)
-       * @param texts The unacceptable values.
+       * @param texts The text values that a cell can't equal.
        */
       whenTextNotEqualToAny(texts: string[]): FilterCriteriaBuilder;
 
       /**
-       * Sets the filter criteria to show cells where the cell text starts with the specified text.
+       * Sets the filter criteria to show cells with text that starts with the specified text. The text
+       * isn't case-sensitive.
        *
        *
        * You can use this criteria with any type of filter.
+       *
+       *
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Creates criteria that shows cells with text that starts with "pre" and sets it to column B.
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *                                  .whenTextStartsWith("pre")
+       *                                  .build();
+       *     filter.setColumnFilterCriteria(2, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#whenTextStartsWith(String)
-       * @param text Text to compare against the beginning of the string.
+       * @param text Text that the start of the cell's text must contain.
        */
       whenTextStartsWith(text: string): FilterCriteriaBuilder;
 
       /**
-       * Sets the boolean criteria to criteria defined by BooleanCriteria values, typically
-       * taken from the criteria and arguments of an existing criteria.
+       * Sets the filter criteria to a boolean condition defined by BooleanCriteria values, such
+       * as CELL_EMPTY or NUMBER_GREATER_THAN. To copy the boolean condition from
+       * existing criteria, define the parameters for this method using getCriteriaType() and getCriteriaValues() on an
+       * existing criteria.
        *
        *
        * You can use this criteria with any type of filter, but some BooleanCriteria aren't
        * applicable for all filters.
        *
        *
-       *     // Builds a filter criteria that is based on an existing criteria.
-       *
-       *     var sheet = SpreadsheetApp.getActiveSheet();
-       *     var criteria = sheet.getFilter().getColumnFilterCriteria(1);
-       *     var newCriteria = SpreadsheetApp.newFilterCriteria()
-       *         .withCriteria(criteria.getCriteriaType(), criteria.getCriteriaValues())
-       *         .setHiddenValues(['c'])
+       *     // Builds a filter criteria that is based on existing boolean conditions from another criteria.
+       *     // Gets the existing filter on the sheet.
+       *     const ss = SpreadsheetApp.getActiveSheet();
+       *     let filter = ss.getFilter();
+       *     // Gets the existing boolean conditions applied to Column B and adds criteria to column C that
+       *     // has the same boolean conditions and additional criteria that hides the value, "Northwest."
+       *     let filter = ss.getFilter();
+       *     let filterCriteria = filter.getColumnFilterCriteria(2);
+       *     let criteria = SpreadsheetApp.newFilterCriteria()
+       *         .withCriteria(filterCriteria.getCriteriaType(), filterCriteria.getCriteriaValues())
+       *         .setHiddenValues(["Northwest"])
        *         .build();
+       *     filter.setColumnFilterCriteria(3, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/filter-criteria-builder#withCriteria(BooleanCriteria,Object)
        * @param criteria The type of boolean criteria.
-       * @param args An array of arguments appropriate to the criteria type; the number of arguments and their type match the corresponding when...() method above.
+       * @param args An array of arguments appropriate to the criteria type; the number of arguments and their type match the corresponding when...() methods above.
        */
       withCriteria(criteria: BooleanCriteria, args: any[]): FilterCriteriaBuilder;
     }
     /**
      * An enumeration of frequency types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.FrequencyType.DAILY.
      */
     enum FrequencyType { FREQUENCY_TYPE_UNSUPPORTED, DAILY, WEEKLY, MONTHLY }
     /**
@@ -10732,11 +11244,17 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration representing the possible positions that a group control toggle can have.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.GroupControlTogglePosition.BEFORE.
      */
     enum GroupControlTogglePosition { BEFORE, AFTER }
     /**
      * An enumeration representing the interpolation options for calculating a value to be used in a
      * GradientCondition in a ConditionalFormatRule.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.InterpolationType.NUMBER.
      */
     enum InterpolationType { NUMBER, PERCENT, PERCENTILE, MIN, MAX }
     /**
@@ -11388,6 +11906,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of functions that summarize pivot table data.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.PivotTableSummarizeFunction.CUSTOM.
      */
     enum PivotTableSummarizeFunction { CUSTOM, SUM, COUNTA, COUNT, COUNTUNIQUE, AVERAGE, MAX, MIN, MEDIAN, PRODUCT, STDEV, STDEVP, VAR, VARP }
     /**
@@ -11472,6 +11993,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of ways to display a pivot value as a function of another value.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.PivotValueDisplayType.PERCENT_OF_ROW_TOTAL.
      */
     enum PivotValueDisplayType { DEFAULT, PERCENT_OF_ROW_TOTAL, PERCENT_OF_COLUMN_TOTAL, PERCENT_OF_GRAND_TOTAL }
     /**
@@ -11523,6 +12047,32 @@ declare namespace GoogleAppsScript {
        * Adds the given user to the list of editors for the protected sheet or range. This method does
        * not automatically give the user permission to edit the spreadsheet itself; to do that in
        * addition, call Spreadsheet.addEditor(emailAddress).
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds an editor to the spreadsheet using an email address.
+       *     // TODO(developer): Replace the email address with a valid email.
+       *     ss.addEditor('cloudysanfrancisco@gmail.com');
+       *
+       *     // Gets a sheet by its name and protects it.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Adds an editor of the protected sheet using an email address.
+       *     // TODO(developer): Replace the email address with a valid email.
+       *     sampleProtectedSheet.addEditor('cloudysanfrancisco@gmail.com');
+       *
+       *     // Gets the editors of the protected sheet.
+       *     const editors = sampleProtectedSheet.getEditors();
+       *
+       *     // Logs the editors' email addresses to the console.
+       *     for (const editor of editors) {
+       *       console.log(editor.getEmail());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#addEditor(String)
        * @param emailAddress The email address of the user to add.
        */
@@ -11532,6 +12082,29 @@ declare namespace GoogleAppsScript {
        * Adds the given user to the list of editors for the protected sheet or range. This method does
        * not automatically give the user permission to edit the spreadsheet itself; to do that in
        * addition, call Spreadsheet.addEditor(user).
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Adds the active user as an editor of the protected sheet.
+       *     sampleProtectedSheet.addEditor(Session.getActiveUser());
+       *
+       *     // Gets the editors of the protected sheet.
+       *     const editors = sampleProtectedSheet.getEditors();
+       *
+       *     // Logs the editors' email addresses to the console.
+       *     for (const editor of editors) {
+       *       console.log(editor.getEmail());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#addEditor(User)
        * @param user A representation of the user to add.
        */
@@ -11541,6 +12114,34 @@ declare namespace GoogleAppsScript {
        * Adds the given array of users to the list of editors for the protected sheet or range. This
        * method does not automatically give the users permission to edit the spreadsheet itself; to do
        * that in addition, call Spreadsheet.addEditors(emailAddresses).
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Creates variables for the email addresses to add as editors.
+       *     // TODO(developer): Replace the email addresses with valid ones.
+       *     const TEST_EMAIL_1 = 'cloudysanfrancisco@gmail.com';
+       *     const TEST_EMAIL_2 = 'baklavainthebalkans@gmail.com';
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Adds editors to the protected sheet using the email address variables.
+       *     sampleProtectedSheet.addEditors([TEST_EMAIL_1, TEST_EMAIL_2]);
+       *
+       *     // Gets the editors of the protected sheet.
+       *     const editors = sampleProtectedSheet.getEditors();
+       *
+       *     // Logs the editors' email addresses to the console.
+       *     for (const editor of editors) {
+       *       console.log(editor.getEmail());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#addEditors(String)
        * @param emailAddresses An array of email addresses of the users to add.
        */
@@ -11557,6 +12158,21 @@ declare namespace GoogleAppsScript {
        * Determines whether all users in the domain that owns the spreadsheet have permission to edit
        * the protected range or sheet. Throws an exception if the user does not have permission to edit
        * the protected range or sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Logs whether domain users have permission to edit the protected sheet to the console.
+       *     console.log(sampleProtectedSheet.canDomainEdit());
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#canDomainEdit()
        */
       canDomainEdit(): boolean;
@@ -11582,6 +12198,22 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the description of the protected range or sheet. If no description is set, this method
        * returns an empty string.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet and sets the description.
+       *     const sampleProtectedSheet = sheet.protect().setDescription('Sample sheet is protected');
+       *
+       *     // Gets the description of the protected sheet and logs it to the console.
+       *     const sampleProtectedSheetDescription = sampleProtectedSheet.getDescription();
+       *     console.log(sampleProtectedSheetDescription);
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#getDescription()
        */
       getDescription(): string;
@@ -11609,6 +12241,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the type of the protected area, either RANGE or SHEET.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Gets the type of the protected area.
+       *     const protectionType = sampleProtectedSheet.getProtectionType();
+       *
+       *     // Logs 'SHEET'to the console since the type of the protected area is a sheet.
+       *     console.log(protectionType.toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#getProtectionType()
        */
       getProtectionType(): ProtectionType;
@@ -11616,6 +12266,27 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the range that is being protected. If the protection applies to the sheet instead of a
        * range, this method returns a range that spans the entire sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range 'A1:B10' of Sheet1.
+       *     const range = sheet.getRange('A1:B10');
+       *
+       *     // Makes cells A1:B10 a protected range.
+       *     const sampleProtectedRange = range.protect();
+       *
+       *     // Gets the protected ranges on the sheet.
+       *     const protections = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE);
+       *
+       *     // Logs the A1 notation of the first protected range on the sheet.
+       *     console.log(protections[0].getRange().getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#getRange()
        */
       getRange(): Range;
@@ -11668,6 +12339,26 @@ declare namespace GoogleAppsScript {
        * means that every user can edit data in the area, except editing prompts a warning asking the
        * user to confirm the edit. By default, protected ranges or sheets are not warning-based. To
        * change to the warning state, use setWarningOnly(warningOnly).
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit')
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Sets the warning status for the protected sheet as true.
+       *     sampleProtectedSheet.setWarningOnly(true);
+       *
+       *     const protectedSheetWarningStatus = sampleProtectedSheet.isWarningOnly();
+       *
+       *     // Logs the warning status of the protected sheet to the console.
+       *     console.log(protectedSheetWarningStatus);
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#isWarningOnly()
        */
       isWarningOnly(): boolean;
@@ -11700,6 +12391,36 @@ declare namespace GoogleAppsScript {
        * the user is a member of a Google Group that has edit permission, or if all users in the domain
        * have edit permission, the user are still be able to edit the protected area. Neither the owner
        * of the spreadsheet nor the current user can be removed.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Creates a variable for an email address.
+       *     // TODO(developer): Replace the email address with a valid one.
+       *     const TEST_EMAIL = 'baklavainthebalkans@gmail.com';
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Adds an editor to the protected sheet using the email address variable.
+       *     sampleProtectedSheet.addEditor(TEST_EMAIL);
+       *
+       *     // Removes the editor from the protected sheet using the email address variable.
+       *     sampleProtectedSheet.removeEditor(TEST_EMAIL);
+       *
+       *     // Gets the editors of the protected sheet.
+       *     const editors = sampleProtectedSheet.getEditors();
+       *
+       *     // Logs the editors' email addresses to the console.
+       *     for (const editor of editors) {
+       *       console.log(editor.getEmail());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#removeEditor(String)
        * @param emailAddress The email address of the user to remove.
        */
@@ -11710,6 +12431,29 @@ declare namespace GoogleAppsScript {
        * the user is a member of a Google Group that has edit permission, or if all users in the domain
        * have edit permission, the user is still be able to edit the protected area as well. Neither the
        * owner of the spreadsheet nor the current user can be removed.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Removes the active user from the editors of the protected sheet.
+       *     sampleProtectedSheet.removeEditor(Session.getActiveUser());
+       *
+       *     // Gets the editors of the protected sheet.
+       *     const editors = sampleProtectedSheet.getEditors();
+       *
+       *     // Logs the editors' email addresses to the console.
+       *     for (const editor of editors) {
+       *       console.log(editor.getEmail());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#removeEditor(User)
        * @param user A representation of the user to remove.
        */
@@ -11748,6 +12492,27 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the description of the protected range or sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the sheet 'Sheet1' by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet.
+       *     const sampleProtectedSheet = sheet.protect();
+       *
+       *     // Sets the sheet description to 'Sheet1 is protected.'
+       *     sampleProtectedSheet.setDescription('Sheet1 is protected');
+       *
+       *     // Gets the description of the protected sheet.
+       *     const sampleProtectedSheetDescription = sampleProtectedSheet.getDescription();
+       *
+       *     // Logs the description of the protected sheet to the console.
+       *     console.log(sampleProtectedSheetDescription);
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#setDescription(String)
        * @param description The description of the protected range or sheet.
        */
@@ -11772,6 +12537,31 @@ declare namespace GoogleAppsScript {
        * that happens to be a named range, without calling setRangeName(rangeName), is not
        * sufficient to associate them. However, creating a protected range from a named range in the
        * Google Sheets UI associates them automatically.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Protects cells A1:D10 on Sheet1.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *     const protectedRange = sheet.getRange('A1:D10').protect();
+       *
+       *     // Logs the current protected range, A1:D10.
+       *     console.log(protectedRange.getRange().getA1Notation());
+       *
+       *     // Creates a named range for cells E1:J10 called 'NewRange.'
+       *     const newRange = sheet.getRange('E1:J10');
+       *     ss.setNamedRange('NewRange', newRange);
+       *     const namedRange = ss.getNamedRanges()[0];
+       *
+       *     // Updates the protected range to the named range, 'NewRange.'
+       *     // This updates the protected range on Sheet1 from A1:D10 to E1:J10.
+       *     protectedRange.setNamedRange(namedRange);
+       *
+       *     // Logs the updated protected range to the console.
+       *     console.log(protectedRange.getRange().getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#setNamedRange(NamedRange)
        * @param namedRange The existing named range to associate with the protected range.
        */
@@ -11780,6 +12570,28 @@ declare namespace GoogleAppsScript {
       /**
        * Adjusts the range that is being protected. If the given range covers a different area from the
        * current protected range, this method moves the protection to cover the new range instead.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Protects cells A1:D10 on Sheet1 of the spreadsheet.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *     const protectedRange = sheet.getRange('A1:D10').protect();
+       *
+       *     // Logs the original protected range, A1:D10, to the console.
+       *     console.log(protectedRange.getRange().getA1Notation());
+       *
+       *     // Gets the range E1:J10.
+       *     const newRange = sheet.getRange('E1:J10');
+       *
+       *     // Updates the protected range to E1:J10.
+       *     protectedRange.setRange(newRange);
+       *
+       *     // Logs the updated protected range to the console.
+       *     console.log(protectedRange.getRange().getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#setRange(Range)
        * @param range The new range to protect from edits.
        */
@@ -11839,6 +12651,21 @@ declare namespace GoogleAppsScript {
        * protection means that every user can edit data in the area, except editing prompts a warning
        * asking the user to confirm the edit. By default, protected ranges or sheets are not
        * warning-based. To check warning state, use isWarningOnly().
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within
+       *     // a Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the sheet 'Sheet1' by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Protects the sheet and sets the protection to warning-based.
+       *     const sampleProtectedSheet = sheet.protect().setWarningOnly(true);
+       *
+       *     // Logs whether the protected sheet is warning-based to the console.
+       *     console.log(sampleProtectedSheet.isWarningOnly());
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#setWarningOnly(Boolean)
        * @param warningOnly
        */
@@ -11846,6 +12673,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration representing the parts of a spreadsheet that can be protected from edits.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.ProtectionType.RANGE.
      *
      *     // Remove all range protections in the spreadsheet that the user has permission to edit.
      *     var ss = SpreadsheetApp.getActive();
@@ -11906,19 +12736,40 @@ declare namespace GoogleAppsScript {
        * exception.
        *
        *
+       *     // Gets the first sheet of the spreadsheet.
        *     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-       *     var range = sheet.getRange('B5');
-       *     range.activate();
        *
-       *     var selection = sheet.getSelection();
-       *     // Current cell: B5
-       *     var currentCell = selection.getCurrentCell();
+       *     // Gets the cell B5 and sets it as the active cell.
+       *     var range = sheet.getRange('B5');
+       *     var currentCell = range.activateAsCurrentCell();
+       *
+       *     // Logs the activated cell.
+       *     console.log(currentCell.getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#activateAsCurrentCell()
        */
       activateAsCurrentCell(): Range;
 
       /**
        * Adds developer metadata with the specified key to the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 on the sheet.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Adds the key 'NAME' to the developer metadata for row 2.
+       *     range.addDeveloperMetadata('NAME');
+       *
+       *     // Gets the metadata and logs it to the console.
+       *     const developerMetaData = range.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#addDeveloperMetadata(String)
        * @param key The key for the new developer metadata.
        */
@@ -11926,6 +12777,27 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key and visibility to the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 on Sheet1.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Adds the key 'NAME' and sets the developer metadata visibility to 'DOCUMENT'
+       *     // for row 2 on Sheet1.
+       *     range.addDeveloperMetadata('NAME', SpreadsheetApp.DeveloperMetadataVisibility.DOCUMENT);
+       *
+       *     // Gets the updated metadata info and logs it to the console.
+       *     const developerMetaData = range.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getVisibility().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#addDeveloperMetadata(String,DeveloperMetadataVisibility)
        * @param key The key for the new developer metadata.
        * @param visibility The visibility of the new developer metadata.
@@ -11934,6 +12806,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key and value to the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 of Sheet1.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Adds the key 'NAME' and sets the value to 'GOOGLE' for the metadata of row 2.
+       *     range.addDeveloperMetadata('NAME', 'GOOGLE');
+       *
+       *     // Gets the metadata and logs it to the console.
+       *     const developerMetaData = range.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getValue());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#addDeveloperMetadata(String,String)
        * @param key The key for the new developer metadata.
        * @param value The value for the new developer metadata.
@@ -11942,6 +12834,31 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key, value, and visibility to the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 on the sheet.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Adds the key 'NAME', sets the value to 'GOOGLE', and sets the visibility
+       *     // to PROJECT for row 2 on the sheet.
+       *     range.addDeveloperMetadata(
+       *       'NAME',
+       *       'GOOGLE',
+       *       SpreadsheetApp.DeveloperMetadataVisibility.PROJECT);
+       *
+       *     // Gets the updated metadata info and logs it to the console.
+       *     const developerMetaData = range.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getValue());
+       *     console.log(developerMetaData.getVisibility().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#addDeveloperMetadata(String,String,DeveloperMetadataVisibility)
        * @param key The key for the new developer metadata.
        * @param value The value for the new developer metadata.
@@ -11952,6 +12869,27 @@ declare namespace GoogleAppsScript {
       /**
        * Applies a default column banding theme to the range. By default, the banding has header and no
        * footer color.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 on the sheet.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Applies column banding to row 2.
+       *     const colBanding = range.applyColumnBanding();
+       *
+       *     // Gets the first banding on the sheet and logs the color of the header column.
+       *     console.log(sheet.getBandings()[0].getHeaderColumnColorObject().asRgbColor().asHexString());
+       *
+       *     // Gets the first banding on the sheet and logs the color of the second column.
+       *     console.log(sheet.getBandings()[0].getSecondColumnColorObject().asRgbColor().asHexString());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#applyColumnBanding()
        */
       applyColumnBanding(): Banding;
@@ -11959,6 +12897,24 @@ declare namespace GoogleAppsScript {
       /**
        * Applies a specified column banding theme to the range. By default, the banding has header and
        * no footer color.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 on the sheet.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Applies the INDIGO color banding theme to the columns in row 2.
+       *     const colBanding = range.applyColumnBanding(SpreadsheetApp.BandingTheme.INDIGO);
+       *
+       *     // Gets the first banding on the sheet and logs the color of the second column.
+       *     console.log(sheet.getBandings()[0].getSecondColumnColorObject().asRgbColor().asHexString());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#applyColumnBanding(BandingTheme)
        * @param bandingTheme A color theme to apply to the columns in the range.
        */
@@ -11967,6 +12923,32 @@ declare namespace GoogleAppsScript {
       /**
        * Applies a specified column banding theme to the range with specified header and footer
        * settings.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets rows 12-22 on the sheet.
+       *     const range = sheet.getRange('12:22');
+       *
+       *     // Applies the BLUE color banding theme to rows 12-22.
+       *     // Sets the header visibility to false and the footer visibility to true.
+       *     const colBanding = range.applyColumnBanding(SpreadsheetApp.BandingTheme.BLUE, false, true);
+       *
+       *     // Gets the banding color and logs it to the console.
+       *     console.log(sheet.getBandings()[0].getSecondColumnColorObject().asRgbColor().asHexString());
+       *
+       *     // Gets the header color object and logs it to the console. Returns null because the header
+       *     // visibility is set to false.
+       *     console.log(sheet.getBandings()[0].getHeaderColumnColorObject());
+       *
+       *     // Gets the footer color and logs it to the console.
+       *     console.log(sheet.getBandings()[0].getFooterColumnColorObject().asRgbColor().asHexString());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#applyColumnBanding(BandingTheme,Boolean,Boolean)
        * @param bandingTheme A color theme to apply to the columns in the range.
        * @param showHeader If true, the banding theme header color is applied to the first column.
@@ -11977,6 +12959,30 @@ declare namespace GoogleAppsScript {
       /**
        * Applies a default row banding theme to the range. By default, the banding has header and no
        * footer color.
+       *
+       *
+       *     // Opens the spreadsheet by its URL. If you created your script from within a Google Sheets
+       *     // spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets rows 1-30 on Sheet1.
+       *     const range = sheet.getRange('1:30');
+       *
+       *     // Applies row banding to rows 1-30.
+       *     range.applyRowBanding();
+       *
+       *     // Gets the hex color of the second banded row.
+       *     const secondRowColor = range.getBandings()[0]
+       *                                 .getSecondRowColorObject()
+       *                                 .asRgbColor()
+       *                                 .asHexString();
+       *
+       *     // Logs the hex color to console.
+       *     console.log(secondRowColor);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#applyRowBanding()
        */
       applyRowBanding(): Banding;
@@ -11984,6 +12990,30 @@ declare namespace GoogleAppsScript {
       /**
        * Applies a specified row banding theme to the range. By default, the banding has header and no
        * footer color.
+       *
+       *
+       *     // Opens the spreadsheet by its URL. If you created your script from within a Google Sheets
+       *     // spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets rows 1-30 on Sheet1.
+       *     const range = sheet.getRange('1:30');
+       *
+       *     // Applies the INDIGO row banding theme to rows 1-30.
+       *     range.applyRowBanding(SpreadsheetApp.BandingTheme.INDIGO);
+       *
+       *     // Gets the hex color of the second banded row.
+       *     const secondRowColor = range.getBandings()[0]
+       *                                 .getSecondRowColorObject()
+       *                                 .asRgbColor()
+       *                                 .asHexString();
+       *
+       *     // Logs the hex color to console.
+       *     console.log(secondRowColor);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#applyRowBanding(BandingTheme)
        * @param bandingTheme A color theme to apply to the rows in the range.
        */
@@ -11991,6 +13021,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Applies a specified row banding theme to the range with specified header and footer settings.
+       *
+       *
+       *     // Opens the spreadsheet by its URL. If you created your script from within a Google Sheets
+       *     // spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets rows 1-30 on Sheet1.
+       *     const range = sheet.getRange('1:30');
+       *
+       *     // Applies the INDIGO row banding to rows 1-30 and
+       *     // specifies to hide the header and show the footer.
+       *     range.applyRowBanding(SpreadsheetApp.BandingTheme.INDIGO, false, true);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#applyRowBanding(BandingTheme,Boolean,Boolean)
        * @param bandingTheme A color theme to apply to the rows in the range.
        * @param showHeader If true, the banding theme header color is applied to the first row.
@@ -12054,8 +13100,23 @@ declare namespace GoogleAppsScript {
        * Break any multi-column cells in the range into individual cells again.
        *
        *
-       * Calling this function on a range is equivalent to selecting a range and clicking Format ->
-       * Merge -> Unmerge.
+       * Calling this function on a range is equivalent to selecting a range and clicking
+       * Format > Merge cells > Unmerge.
+       *
+       *
+       *     // Opens the spreadsheet by its URL. If you created your script from within a Google Sheets
+       *     // spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:C6 on Sheet1.
+       *     const range = sheet.getRange('A1:C6');
+       *
+       *     // Unmerges the range A1:C6 into individual cells.
+       *     range.breakApart();
        * https://developers.google.com/apps-script/reference/spreadsheet/range#breakApart()
        */
       breakApart(): Range;
@@ -12063,6 +13124,21 @@ declare namespace GoogleAppsScript {
       /**
        * Determines whether the user has permission to edit every cell in the range. The spreadsheet
        * owner is always able to edit protected ranges and sheets.
+       *
+       *
+       *     // Opens the spreadsheet by its URL. If you created your script from within a Google Sheets
+       *     // spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:C6 on Sheet1.
+       *     const range = sheet.getRange('A1:C6');
+       *
+       *     // Logs whether the user has permission to edit every cell in the range.
+       *     console.log(range.canEdit());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#canEdit()
        */
       canEdit(): boolean;
@@ -12081,7 +13157,7 @@ declare namespace GoogleAppsScript {
       check(): Range;
 
       /**
-       * Clears the range of contents, formats, and data validation rules.
+       * Clears the range of contents and formats.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -12098,7 +13174,7 @@ declare namespace GoogleAppsScript {
        * the given advanced options. By default all data is cleared.
        *
        *
-       *     // The code below clears range C2:G8 in the active sheet, but preserves the format,
+       *     // The code below clears range C2:G7 in the active sheet, but preserves the format,
        *     // data validation rules, and comments.
        *     SpreadsheetApp.getActiveSheet().getRange(2, 3, 6, 5).clear({contentsOnly: true});
        * https://developers.google.com/apps-script/reference/spreadsheet/range#clear(Object)
@@ -12365,6 +13441,27 @@ declare namespace GoogleAppsScript {
        * range. Metadata is within the scope of the range only if it is wholly contained within that
        * range. For example, metadata associated with the row ‘3:3’ is not in the scope of a range
        * ‘A1:D5’ but is within the scope of a range ‘1:5’.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:C6.
+       *     const range = sheet.getRange('A1:C6');
+       *
+       *     // Creates a developer metadata finder to search for metadata in the scope of this range.
+       *     const developerMetaDataFinder = range.createDeveloperMetadataFinder();
+       *
+       *     // Logs information about the developer metadata finder to the console.
+       *     const developerMetaData = developerMetaDataFinder.find()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getValue());
+       *     console.log(developerMetaData.getVisibility().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#createDeveloperMetadataFinder()
        */
       createDeveloperMetadataFinder(): DeveloperMetadataFinder;
@@ -12396,6 +13493,27 @@ declare namespace GoogleAppsScript {
       /**
        * Creates an empty pivot table from the specified sourceData anchored at the first cell
        * in this range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets cell A1 as a range in order to place the pivot table.
+       *     const range = sheet.getRange('A1');
+       *
+       *     // Gets the range of the source data for the pivot table.
+       *     const dataRange = sheet.getRange('E12:G20');
+       *
+       *     // Creates an empty pivot table from the specified source data.
+       *     const pivotTable = range.createPivotTable(dataRange);
+       *
+       *     // Logs the values from the pivot table's source data to the console.
+       *     console.log(pivotTable.getSourceDataRange().getValues());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#createPivotTable(Range)
        * @param sourceData The data to create the pivot table from.
        */
@@ -12416,7 +13534,7 @@ declare namespace GoogleAppsScript {
        *
        *     // Replaces the last found occurrence of 'dog' with 'cat' and returns the number
        *     // of occurrences replaced.
-       *     var numOccurrencesReplaced = findOccurrence.replaceWith('cat');
+       *     var numOccurrencesReplaced = textFinder.replaceWith('cat');
        * https://developers.google.com/apps-script/reference/spreadsheet/range#createTextFinder(String)
        * @param findText The text to search for.
        */
@@ -12531,6 +13649,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns all the bandings that are applied to any cells in this range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Sets a range.
+       *     const range = sheet.getRange('A1:K50');
+       *
+       *     // Gets the banding info for the range.
+       *     const bandings = range.getBandings();
+       *
+       *     // Logs the second row color for each banding to the console.
+       *     for (let banding of bandings) {
+       *       console.log(banding.getSecondRowColor());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getBandings()
        */
       getBandings(): Banding[];
@@ -12618,24 +13756,99 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the DataSourceFormula for the first cell in the range, or null if
        * the cell doesn't contain a data source formula.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1 on Sheet1.
+       *     const range = sheet.getRange('A1');
+       *
+       *     // Gets the data source formula from cell A1.
+       *     const dataSourceFormula = range.getDataSourceFormula();
+       *
+       *     // Gets the formula.
+       *     const formula = dataSourceFormula.getFormula();
+       *
+       *     // Logs the formula.
+       *     console.log(formula);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourceFormula()
        */
       getDataSourceFormula(): DataSourceFormula;
 
       /**
        * Returns the DataSourceFormulas for the cells in the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:B5 on Sheet1.
+       *     const range = sheet.getRange('A1:B5');
+       *
+       *     // Gets an array of the data source formulas in the range A1:B5.
+       *     const dataSourceFormulas = range.getDataSourceFormulas();
+       *
+       *     // Logs the first formula in the array.
+       *     console.log(dataSourceFormulas[0].getFormula());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourceFormulas()
        */
       getDataSourceFormulas(): DataSourceFormula[];
 
       /**
        * Gets all the data source pivot tables intersecting with the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:G50 on Sheet1.
+       *     const range = sheet.getRange('A1:G50');
+       *
+       *     // Gets an array of the data source pivot tables in the range A1:G50.
+       *     const dataSourcePivotTables = range.getDataSourcePivotTables();
+       *
+       *     // Logs the last time that the first pivot table in the array was refreshed.
+       *     console.log(dataSourcePivotTables[0].getStatus().getLastRefreshedTime());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourcePivotTables()
        */
       getDataSourcePivotTables(): DataSourcePivotTable[];
 
       /**
        * Gets all the data source tables intersecting with the range.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:G50 on Sheet1.
+       *     const range = sheet.getRange('A1:G50');
+       *
+       *     // Gets the first data source table in the range A1:G50.
+       *     const dataSourceTable = range.getDataSourceTables()[0];
+       *
+       *     // Logs the time of the last completed data execution on the data source table.
+       *     console.log(dataSourceTable.getStatus().getLastExecutionTime());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataSourceTables()
        */
       getDataSourceTables(): DataSourceTable[];
@@ -12651,6 +13864,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Return the data inside this object as a DataTable.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:B7 on Sheet1.
+       *     const range = sheet.getRange('A1:B7');
+       *
+       *     // Gets the range A1:B7 as a data table. The values in each column must be of the same type.
+       *     const datatable = range.getDataTable();
+       *
+       *     // Uses the Charts service to build a bar chart from the data table.
+       *     // This doesn't build an embedded chart. To do that, use sheet.newChart().addRange() instead.
+       *     const chart = Charts.newBarChart()
+       *                       .setDataTable(datatable)
+       *                       .setOption('title', 'Your Chart Title Here')
+       *                       .build();
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDataTable()
        */
       getDataTable(): Charts.DataTable;
@@ -12731,7 +13966,27 @@ declare namespace GoogleAppsScript {
       getDataValidations(): DataValidation[][];
 
       /**
-       * Get the developer metadata associated with this range.
+       * Gets the developer metadata associated with this range.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets row 2 on Sheet1.
+       *     const range = sheet.getRange('2:2');
+       *
+       *     // Adds metadata to row 2.
+       *     range.addDeveloperMetadata('NAME', 'GOOGLE');
+       *
+       *     // Logs the metadata to console.
+       *     for (const metadata of range.getDeveloperMetadata()) {
+       *       console.log(`${metadata.getKey()}: ${metadata.getValue()}`);
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDeveloperMetadata()
        */
       getDeveloperMetadata(): DeveloperMetadata[];
@@ -12741,6 +13996,22 @@ declare namespace GoogleAppsScript {
        * The displayed value takes into account date, time and currency formatting formatting, including
        * formats applied automatically by the spreadsheet's locale setting. Empty cells return an empty
        * string.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets cell A30 and sets its value to 'Test code.'
+       *     const cell = sheet.getRange('A30');
+       *     cell.setValue('Test code');
+       *
+       *     // Gets the value and logs it to the console.
+       *     console.log(cell.getDisplayValue());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getDisplayValue()
        */
       getDisplayValue(): string;
@@ -13268,11 +14539,11 @@ declare namespace GoogleAppsScript {
        * value is not text.
        *
        *
-       *     // Get the Rich Text value of cell D4.
+       *     // Gets the Rich Text value of cell D4.
        *     var sheet = SpreadsheetApp.getActiveSheet();
        *     var range = sheet.getRange("D4:F6");
        *     var richText = range.getRichTextValue();
-       *     Logger.log(richText);
+       *     console.log(richText.getText());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getRichTextValue()
        */
       getRichTextValue(): RichTextValue;
@@ -13281,14 +14552,14 @@ declare namespace GoogleAppsScript {
        * Returns the Rich Text values for the cells in the range.
        *
        *
-       *     // Get the Rich Text values for all cells in range B5:C6
+       *     // Gets the Rich Text values for all cells in range B5:C6
        *     var sheet = SpreadsheetApp.getActiveSheet();
        *     var range = sheet.getRange("B5:C6");
        *     var values = range.getRichTextValues();
        *
        *     for (var i = 0; i < values.length; i++) {
        *       for (var j = 0; j < values[i].length; j++) {
-       *         Logger.log(values[i][j]);
+       *         console.log(values[i][j].getText());
        *       }
        *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getRichTextValues()
@@ -13323,6 +14594,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the sheet this range belongs to.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Gets the sheet that the range belongs to.
+       *     const rangeSheet = range.getSheet();
+       *
+       *     // Gets the sheet name and logs it to the console.
+       *     console.log(rangeSheet.getName());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getSheet()
        */
       getSheet(): Sheet;
@@ -13425,6 +14714,21 @@ declare namespace GoogleAppsScript {
        * Returns the value of the top-left cell in the range. The value may be of type Number,
        * Boolean, Date, or String depending on the value of the cell. Empty
        * cells return an empty string.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Gets the value of the top-left cell in the range and logs it to the console.
+       *     console.log(range.getValue());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getValue()
        */
       getValue(): any;
@@ -13482,6 +14786,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the width of the range in columns.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Gets the width of the range in number of columns and logs it to the console.
+       *     console.log(range.getWidth());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#getWidth()
        */
       getWidth(): Integer;
@@ -13659,6 +14978,22 @@ declare namespace GoogleAppsScript {
        * ranges A1:B10 or B:B, which are bound to columns at the end of the range, this
        * method returns true; for the ranges 3:7 or A1:5, which are bound only
        * to particular rows at the end of the range, this method returns false.
+       *
+       *
+       *      // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Determines if the end of the range is bound to a particular column and logs it to the
+       *     // console.
+       *     console.log(range.isEndColumnBounded());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#isEndColumnBounded()
        */
       isEndColumnBounded(): boolean;
@@ -13668,6 +15003,21 @@ declare namespace GoogleAppsScript {
        * ranges A1:B10 or 3:7, which are bound to rows at the end of the range, this
        * method returns true; for the ranges B:B or A1:C, which are bound only
        * to particular columns at the end of the range, this method returns false.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Determines if the end of the range is bound to a particular row and logs it to the console.
+       *     console.log(range.isEndRowBounded());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#isEndRowBounded()
        */
       isEndRowBounded(): boolean;
@@ -13692,6 +15042,22 @@ declare namespace GoogleAppsScript {
        * ranges A1:B10 or B:B, which are bound to columns at the start of the range,
        * this method returns true; for the range 3:7, which is bound only to a row at
        * the start of the range, this method returns false.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Determines if the start of the range is bound to a particular column and logs it to the
+       *     // console.
+       *     console.log(range.isStartColumnBounded());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#isStartColumnBounded()
        */
       isStartColumnBounded(): boolean;
@@ -13701,6 +15067,22 @@ declare namespace GoogleAppsScript {
        * ranges A1:B10 or 3:7, which are bound to rows at the start of the range, this
        * method returns true; for the range B:B, which is bound only to a particular
        * column at the start of the range, this method returns false.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range A1:D10 on Sheet1.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Determines if the start of the range is bound to a particular row and logs it to the
+       *     // console.
+       *     console.log(range.isStartRowBounded());
        * https://developers.google.com/apps-script/reference/spreadsheet/range#isStartRowBounded()
        */
       isStartRowBounded(): boolean;
@@ -14592,6 +15974,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets whether or not the range should show hyperlinks.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can useSpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets cell A30 and sets its hyperlink value.
+       *     const range = sheet.getRange('A30');
+       *     range.setValue('https://www.example.com');
+       *
+       *     // Sets cell A30 to show hyperlinks.
+       *     range.setShowHyperlink(true);
        * https://developers.google.com/apps-script/reference/spreadsheet/range#setShowHyperlink(Boolean)
        * @param showHyperlink Whether or not to show the hyperlink.
        */
@@ -14733,7 +16131,8 @@ declare namespace GoogleAppsScript {
       setValue(value: any): Range;
 
       /**
-       * Sets a rectangular grid of values (must match dimensions of this range).
+       * Sets a rectangular grid of values (must match dimensions of this range). If a value begins with
+       * =, it's interpreted as a formula.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -15626,11 +17025,17 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration representing the possible intervals used in spreadsheet recalculation.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.RecalculationInterval.ON_CHANGE.
      */
     enum RecalculationInterval { ON_CHANGE, MINUTE, HOUR }
     /**
      * An enumeration representing the relative date options for calculating a value to be used in
      * date-based BooleanCriteria.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.RelativeDate.TODAY.
      */
     enum RelativeDate { TODAY, TOMORROW, YESTERDAY, PAST_WEEK, PAST_MONTH, PAST_YEAR }
     /**
@@ -15638,8 +17043,8 @@ declare namespace GoogleAppsScript {
      * text styles.
      *
      * A run is the longest unbroken substring having the same text style. For example, the
-     * sentence "This kid has two apples." has four runs: ["This ", "kid ", "has two ",
-     * "apples."].
+     * sentence, "This child is carrying apples" has 4 runs: ['This ', 'child ',
+     * 'is carrying ', 'apples'].
      */
     interface RichTextValue {
 
@@ -15819,15 +17224,15 @@ declare namespace GoogleAppsScript {
      *
      *     var selection = activeSheet.getSelection();
      *     // Current Cell: D1
-     *     Logger.log('Current Cell: ' + selection.getCurrentCell().getA1Notation());
+     *     console.log('Current Cell: ' + selection.getCurrentCell().getA1Notation());
      *     // Active Range: D1:E4
-     *     Logger.log('Active Range: ' + selection.getActiveRange().getA1Notation());
+     *     console.log('Active Range: ' + selection.getActiveRange().getA1Notation());
      *     // Active Ranges: A1:B4, D1:E4
      *     var ranges =  selection.getActiveRangeList().getRanges();
      *     for (var i = 0; i < ranges.length; i++) {
-     *       Logger.log('Active Ranges: ' + ranges[i].getA1Notation());
+     *       console.log('Active Ranges: ' + ranges[i].getA1Notation());
      *     }
-     *     Logger.log('Active Sheet: ' + selection.getActiveSheet().getName());
+     *     console.log('Active Sheet: ' + selection.getActiveSheet().getName());
      */
     interface Selection {
 
@@ -15892,9 +17297,11 @@ declare namespace GoogleAppsScript {
        *     var sheet = ss.getSheets()[0];
        *
        *     // Makes C3 the current cell and C3:E5 the active range.
-       *     sheet.getRange("C3:E5").activate();
-       *     // Logs "C1:E3"
-       *     Logger.log(SpreadsheetApp.getSelection().getNextDataRange(Direction.UP).getA1Notation());
+       *     sheet.getRange('C3:E5').activate();
+       *     // Logs 'C1:E3'
+       *     console.log(SpreadsheetApp.getSelection()
+       *                               .getNextDataRange(SpreadsheetApp.Direction.UP)
+       *                               .getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/selection#getNextDataRange(Direction)
        * @param direction The direction in which to find the next data region edge cell.
        */
@@ -15921,6 +17328,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key to the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Adds the key 'NAME' to the developer metadata for the sheet.
+       *     sheet.addDeveloperMetadata('NAME');
+       *
+       *     // Gets the updated metadata info and logs it to the console.
+       *     console.log(sheet.getDeveloperMetadata()[0].getKey());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#addDeveloperMetadata(String)
        * @param key The key for the new developer metadata.
        */
@@ -15928,6 +17350,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key and visibility to the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Adds the key 'NAME' and sets the developer metadata visibility to PROJECT
+       *     // for the sheet.
+       *     sheet.addDeveloperMetadata('NAME', SpreadsheetApp.DeveloperMetadataVisibility.PROJECT);
+       *
+       *     // Gets the updated metadata info and logs it to the console.
+       *     const developerMetaData = sheet.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getVisibility().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#addDeveloperMetadata(String,DeveloperMetadataVisibility)
        * @param key The key for the new developer metadata.
        * @param visibility The visibility of the new developer metadata.
@@ -15936,6 +17376,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key and value to the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Adds the key 'COMPANY' with the value 'TECH' to the developer metadata for the sheet.
+       *     sheet.addDeveloperMetadata('COMPANY', 'TECH');
+       *
+       *     // Gets the updated metadata info and logs it to the console.
+       *     const developerMetaData = sheet.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getValue());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#addDeveloperMetadata(String,String)
        * @param key The key for the new developer metadata.
        * @param value The value for the new developer metadata.
@@ -15944,6 +17401,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key, value, and visibility to the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Adds the key 'COMPANY' with the value 'TECH' to the developer metadata and sets the
+       *     // visibility to DOCUMENT for the sheet.
+       *     sheet.addDeveloperMetadata(
+       *       'COMPANY',
+       *       'TECH',
+       *       SpreadsheetApp.DeveloperMetadataVisibility.DOCUMENT);
+       *
+       *     // Gets the updated metadata info and logs it to the console.
+       *     const developerMetaData = sheet.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(developerMetaData.getValue());
+       *     console.log(developerMetaData.getVisibility().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#addDeveloperMetadata(String,String,DeveloperMetadataVisibility)
        * @param key The key for the new developer metadata.
        * @param value The value for the new developer metadata.
@@ -15952,7 +17431,8 @@ declare namespace GoogleAppsScript {
       addDeveloperMetadata(key: string, value: string, visibility: DeveloperMetadataVisibility): Sheet;
 
       /**
-       * Appends a row to the bottom of the current data region in the sheet.
+       * Appends a row to the bottom of the current data region in the sheet. If a cell's content begins
+       * with =, it's interpreted as a formula.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -15968,6 +17448,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the sheet as a DataSourceSheet if the sheet is of type SheetType.DATASOURCE, or null otherwise.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can useSpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the data source sheet value if the sheet is of type
+       *     // SpreadsheetApp.SheetType.DATASOURCE, otherwise this returns a null value.
+       *     const dataSourceSheet = sheet.asDataSourceSheet();
+       *
+       *     // Gets the data source sheet value and logs it to the console.
+       *     console.log(dataSourceSheet);
+       *     console.log(sheet.getType().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#asDataSourceSheet()
        */
       asDataSourceSheet(): DataSourceSheet;
@@ -16135,6 +17632,24 @@ declare namespace GoogleAppsScript {
        * Returns a DeveloperMetadataFinder for finding developer metadata within the scope of
        * this sheet. Metadata is in the scope of a particular sheet if it is either associated with the
        * sheet itself, or associated with a row, column, or range on that sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Adds developer metadata for testing.
+       *     sheet.addDeveloperMetadata('CITY', 'PARIS');
+       *
+       *     // Creates the developer metadata finder.
+       *     const metadatafinder = sheet.createDeveloperMetadataFinder();
+       *
+       *     // Finds the metadata with value 'PARIS' and displays its key in the console.
+       *     console.log(metadatafinder.withValue('PARIS').find()[0].getKey());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#createDeveloperMetadataFinder()
        */
       createDeveloperMetadataFinder(): DeveloperMetadataFinder;
@@ -16270,7 +17785,7 @@ declare namespace GoogleAppsScript {
        *
        *
        *
-       * Note: It's preferrable to use getCurrentCell(), which the returns the current
+       * Note: It's preferable to use getCurrentCell(), which returns the current
        * highlighted cell.
        *
        *
@@ -16314,6 +17829,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns all the bandings in this sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the banding info for the sheet.
+       *     const bandings = sheet.getBandings();
+       *
+       *     // Gets info on the bandings' second row color and logs it to the console.
+       *     for (const banding of bandings) {
+       *       console.log(banding.getSecondRowColor());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getBandings()
        */
       getBandings(): Banding[];
@@ -16453,30 +17985,116 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets all the data source formulas.
+       *
+       *
+       *     // Opens the spreadsheet by its ID. If you created your script from within a Google Sheets
+       *     // file, use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets an array of the data source formulas on Sheet1.
+       *     // To get an array of data source formulas for the entire spreadsheet,
+       *     // replace 'sheet' with 'ss'.
+       *     const dataSourceFormulas = sheet.getDataSourceFormulas();
+       *
+       *     // Logs the first data source formula in the array.
+       *     console.log(dataSourceFormulas[0].getFormula());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDataSourceFormulas()
        */
       getDataSourceFormulas(): DataSourceFormula[];
 
       /**
        * Gets all the data source pivot tables.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets an array of the data source pivot tables on Sheet1.
+       *     // To get an array of data source pivot tables for the entire
+       *     // spreadsheet, replace 'sheet' with 'ss'.
+       *     const dataSourcePivotTables = sheet.getDataSourcePivotTables();
+       *
+       *     // Logs the last time that the first pivot table in the array was refreshed.
+       *     console.log(dataSourcePivotTables[0].getStatus().getLastRefreshedTime());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDataSourcePivotTables()
        */
       getDataSourcePivotTables(): DataSourcePivotTable[];
 
       /**
        * Gets all the data source tables.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets an array of data source tables on Sheet1.
+       *     // To get an array of data source tables for the entire spreadsheet,
+       *     // replace 'sheet' with 'ss'.
+       *     const dataSourceTables = sheet.getDataSourceTables();
+       *
+       *     // Logs the last completed data execution time on the first data source table.
+       *     console.log(dataSourceTables[0].getStatus().getLastExecutionTime());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDataSourceTables()
        */
       getDataSourceTables(): DataSourceTable[];
 
       /**
        * Get all developer metadata associated with this sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Adds developer metadata for testing.
+       *     sheet.addDeveloperMetadata('CITY', 'PARIS');
+       *
+       *     // Gets all the developer metadata for the sheet.
+       *     const developerMetaDataList = sheet.getDeveloperMetadata();
+       *
+       *     // Logs the developer metadata to the console.
+       *     for (const developerMetaData of developerMetaDataList) {
+       *       console.log(developerMetaData.getKey());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDeveloperMetadata()
        */
       getDeveloperMetadata(): DeveloperMetadata[];
 
       /**
        * Returns an array of drawings on the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets all the drawings from the sheet.
+       *     const allDrawings = sheet.getDrawings();
+       *
+       *      // Logs the number of drawings present on the sheet.
+       *     console.log(allDrawings.length);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getDrawings()
        */
       getDrawings(): Drawing[];
@@ -16529,6 +18147,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns all over-the-grid images on the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the over-the-grid images from Sheet1.
+       *     // To get the over-the-grid images from the entire spreadsheet, use ss.getImages() instead.
+       *     const images = sheet.getImages();
+       *
+       *     // For each image, logs the anchor cell in A1 notation.
+       *     for (const image of images) {
+       *      console.log(image.getAnchorCell().getA1Notation());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getImages()
        */
       getImages(): OverGridImage[];
@@ -16640,6 +18276,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns all the pivot tables on this sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets all the pivot table info for the sheet.
+       *     const pivotTables = sheet.getPivotTables();
+       *
+       *     // Logs the pivot tables to the console.
+       *     for (const pivotTable of pivotTables) {
+       *       console.log(pivotTable.getSourceDataRange().getValues());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getPivotTables()
        */
       getPivotTables(): PivotTable[];
@@ -16886,6 +18539,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns an array of slicers on the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets all slicers in the spreadsheet.
+       *     const slicers = sheet.getSlicers();
+       *
+       *     // Logs the slicer titles to the console.
+       *     for (const slicer of slicers) {
+       *       console.log(slicer.getTitle());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#getSlicers()
        */
       getSlicers(): Slicer[];
@@ -16920,6 +18590,18 @@ declare namespace GoogleAppsScript {
       /**
        * Returns true if the sheet's gridlines are hidden; otherwise returns false.
        * Gridlines are visible by default.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Checks if the spreadsheet has hidden gridelines and logs the result to the console.
+       *     console.log(sheet.hasHiddenGridlines());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hasHiddenGridlines()
        */
       hasHiddenGridlines(): boolean;
@@ -17176,6 +18858,9 @@ declare namespace GoogleAppsScript {
        * Inserts an image in the document at a given row and column.
        *
        *
+       * The provided URL must be publicly accessible.
+       *
+       *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *
@@ -17189,6 +18874,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image in the document at a given row and column, with a pixel offset.
+       *
+       *
+       * The provided URL must be publicly accessible.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -17291,6 +18979,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a new slicer to this sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range of the sheet.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Inserts the slicer with a random range into the sheet.
+       *     const insertSlicers = sheet.insertSlicer(range.randomize(), 1, 10);
+       *
+       *     // Logs the insert slicer result to the console.
+       *     console.log(insertSlicers);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#insertSlicer(Range,Integer,Integer)
        * @param range The range over which slicer slicer is created.
        * @param anchorRowPos The slicer's top side is anchored in this row.
@@ -17300,6 +19006,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a new slicer to this sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the range.
+       *     const range = sheet.getRange('A1:D10');
+       *
+       *     // Inserts a slicer using the random range function.
+       *     const insertSlicers = sheet.insertSlicer(range.randomize(), 1, 10, 0, 0);
+       *
+       *     // Logs the insert slicer result to the console.
+       *     console.log(insertSlicers);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#insertSlicer(Range,Integer,Integer,Integer,Integer)
        * @param range The range over which slicer slicer is created.
        * @param anchorRowPos The slicer's top side is anchored in this row.
@@ -17326,6 +19050,18 @@ declare namespace GoogleAppsScript {
       /**
        * Returns true if this sheet layout is right-to-left. Returns false if the sheet
        * uses the default left-to-right layout.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Checks if a spreadsheet is ordered from right to left and logs the result to the console.
+       *     console.log(sheet.isRightToLeft());
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#isRightToLeft()
        */
       isRightToLeft(): boolean;
@@ -17649,6 +19385,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Hides or reveals the sheet gridlines.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can us eSpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Hides the gridlines in the sheet.
+       *     sheet.setHiddenGridlines(true);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setHiddenGridlines(Boolean)
        * @param hideGridlines If true, hide gridlines in this sheet; otherwise show the gridlines.
        */
@@ -17669,6 +19417,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets or unsets the sheet layout to right-to-left.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets a sheet by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Sets the sheet layout, so that the sheet is ordered from right to left.
+       *     sheet.setRightToLeft(true);
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setRightToLeft(Boolean)
        * @param rightToLeft If true, the sheet layout is set to right-to-left, with cell A1 at the top right corner. If false, the sheet layout is set to the default left-to-right, with cell A1 at the top left.
        */
@@ -17918,6 +19678,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The different types of sheets that can exist in a spreadsheet.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.SheetType.GRID.
      */
     enum SheetType { GRID, OBJECT, DATASOURCE }
     /**
@@ -18063,6 +19826,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration representing the sort order.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.SortOrder.ASCENDING.
      */
     enum SortOrder { ASCENDING, DESCENDING }
     /**
@@ -18115,6 +19881,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key to the top-level spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds the key 'NAME' in the developer metadata for the spreadsheet.
+       *     ss.addDeveloperMetadata('NAME')
+       *
+       *     // Gets the first developer metadata object and logs its key.
+       *     const developerMetaData = ss.getDeveloperMetadata()[0]
+       *     console.log(developerMetaData.getKey())
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addDeveloperMetadata(String)
        * @param key The key for the new developer metadata.
        */
@@ -18122,6 +19901,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key and visibility to the spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds the key 'NAME' in the developer metadata for the spreadsheet and sets the visibility
+       *     // to the developer project that created the metadata.
+       *     ss.addDeveloperMetadata('NAME', SpreadsheetApp.DeveloperMetadataVisibility.PROJECT);
+       *
+       *     // Gets the first developer metadata object and logs its key and visibility setting.
+       *     const developerMetaData = ss.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(`Key: ${developerMetaData.getKey()},
+       *     .             Visibility: ${developerMetaData.getVisibility()}`);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addDeveloperMetadata(String,DeveloperMetadataVisibility)
        * @param key The key for the new developer metadata.
        * @param visibility The visibility of the new developer metadata.
@@ -18130,6 +19925,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key and value to the spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds the key 'NAME' and sets the value to 'GOOGLE' in the developer metadata for the
+       *     // spreadsheet.
+       *     ss.addDeveloperMetadata('NAME', 'GOOGLE');
+       *
+       *     // Gets the first developer metadata object and logs its key and value.
+       *     const developerMetaData = ss.getDeveloperMetadata()[0];
+       *     console.log(developerMetaData.getKey());
+       *     console.log(`Key: ${developerMetaData.getKey()}, Value: ${developerMetaData.getValue()}`);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addDeveloperMetadata(String,String)
        * @param key The key for the new developer metadata.
        * @param value The value for the new developer metadata.
@@ -18138,6 +19948,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds developer metadata with the specified key, value, and visibility to the spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds the key 'NAME', sets the value to 'GOOGLE', and sets the visibility
+       *     // to any developer project with document access.
+       *     ss.addDeveloperMetadata('NAME', 'GOOGLE', SpreadsheetApp.DeveloperMetadataVisibility.DOCUMENT);
+       *
+       *     // Gets the first developer metadata object and logs its key, value, and visibility setting.
+       *     const developerMetaData = ss.getDeveloperMetadata()[0];
+       *     console.log(`Key: ${developerMetaData.getKey()},
+       *                  Value: ${developerMetaData.getValue()},
+       *                  Visibility: ${developerMetaData.getVisibility()}`);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#addDeveloperMetadata(String,String,DeveloperMetadataVisibility)
        * @param key The key for the new developer metadata.
        * @param value The value for the new developer metadata.
@@ -18220,7 +20046,8 @@ declare namespace GoogleAppsScript {
       addViewers(emailAddresses: string[]): Spreadsheet;
 
       /**
-       * Appends a row to the bottom of the current data region in the sheet.
+       * Appends a row to the bottom of the current data region in the sheet. If a cell's content begins
+       * with =, it's interpreted as a formula.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -18266,6 +20093,26 @@ declare namespace GoogleAppsScript {
        * Returns a DeveloperMetadataFinder for finding developer metadata within the scope of
        * this spreadsheet. By default this considers all metadata associated with the spreadsheet,
        * sheets, rows, and columns.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds developer metadata to the spreadsheet.
+       *     ss.addDeveloperMetadata('NAME', 'CHARLIE');
+       *     ss.addDeveloperMetadata('COMPANY', 'EXAMPLE ORGANIZATION');
+       *     ss.addDeveloperMetadata('TECHNOLOGY', 'JAVASCRIPT');
+       *
+       *     // Creates a developer metadata finder.
+       *     const developerMetadataFinder = ss.createDeveloperMetadataFinder();
+       *
+       *     // Finds the developer metadata objects with 'COMPANY' as the key.
+       *     const googleMetadataFromSpreadsheet = developerMetadataFinder.withKey('COMPANY').find();
+       *
+       *     // Gets the first result of developer metadata that has the key 'COMPANY' and logs its value.
+       *     console.log(googleMetadataFromSpreadsheet[0].getValue());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#createDeveloperMetadataFinder()
        */
       createDeveloperMetadataFinder(): DeveloperMetadataFinder;
@@ -18384,7 +20231,7 @@ declare namespace GoogleAppsScript {
        *
        *
        *
-       * Note: It's preferrable to use getCurrentCell(), which the returns the current
+       * Note: It's preferable to use getCurrentCell(), which returns the current
        * highlighted cell.
        *
        *
@@ -18457,6 +20304,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns all the bandings in this spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets an array of the bandings in the spreadsheet.
+       *     const bandings = ss.getBandings();
+       *
+       *     // Logs the range of the first banding in the spreadsheet to the console.
+       *     console.log(bandings[0].getRange().getA1Notation());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getBandings()
        */
       getBandings(): Banding[];
@@ -18527,42 +20386,156 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets all the data source formulas.
+       *
+       *
+       *     // Opens the spreadsheet by its ID. If you created your script from within a Google Sheets
+       *     // file, use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets an array of the data source formulas on Sheet1.
+       *     // To get an array of data source formulas for the entire spreadsheet,
+       *     // replace 'sheet' with 'ss'.
+       *     const dataSourceFormulas = sheet.getDataSourceFormulas();
+       *
+       *     // Logs the first data source formula in the array.
+       *     console.log(dataSourceFormulas[0].getFormula());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceFormulas()
        */
       getDataSourceFormulas(): DataSourceFormula[];
 
       /**
        * Gets all the data source pivot tables.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets an array of the data source pivot tables on Sheet1.
+       *     // To get an array of data source pivot tables for the entire
+       *     // spreadsheet, replace 'sheet' with 'ss'.
+       *     const dataSourcePivotTables = sheet.getDataSourcePivotTables();
+       *
+       *     // Logs the last time that the first pivot table in the array was refreshed.
+       *     console.log(dataSourcePivotTables[0].getStatus().getLastRefreshedTime());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourcePivotTables()
        */
       getDataSourcePivotTables(): DataSourcePivotTable[];
 
       /**
        * Gets the refresh schedules of this spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Activates BigQuery operations for the connected spreadsheet.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Gets the frequency type of the first referesh schedule in the array.
+       *     const frequencyType = ss.getDataSourceRefreshSchedules()[0]
+       *                             .getFrequency()
+       *                             .getFrequencyType()
+       *                             .toString();
+       *
+       *     // Logs the frequency type to the console.
+       *     console.log(frequencyType);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceRefreshSchedules()
        */
       getDataSourceRefreshSchedules(): DataSourceRefreshSchedule[];
 
       /**
        * Returns all the data source sheets in the spreadsheet.
+       *
+       *
+       *     // Turns data execution on for BigQuery data sources.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the first data source sheet in the spreadsheet.
+       *     const dataSource = ss.getDataSourceSheets()[0];
+       *
+       *     // Gets the name of the data source sheet.
+       *     console.log(dataSource.asSheet().getName());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceSheets()
        */
       getDataSourceSheets(): DataSourceSheet[];
 
       /**
        * Gets all the data source tables.
+       *
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets an array of data source tables on Sheet1.
+       *     // To get an array of data source tables for the entire spreadsheet,
+       *     // replace 'sheet' with 'ss'.
+       *     const dataSourceTables = sheet.getDataSourceTables();
+       *
+       *     // Logs the last completed data execution time on the first data source table.
+       *     console.log(dataSourceTables[0].getStatus().getLastExecutionTime());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSourceTables()
        */
       getDataSourceTables(): DataSourceTable[];
 
       /**
        * Returns all the data sources in the spreadsheet.
+       *
+       *
+       *     // Turns data execution on for BigQuery data sources.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the data sources on the spreadsheet.
+       *     const dataSources = ss.getDataSources();
+       *
+       *     // Logs the name of the first column on the first data source.
+       *     console.log(dataSources[0].getColumns()[0].getName());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDataSources()
        */
       getDataSources(): DataSource[];
 
       /**
-       * Get the developer metadata associated with the top-level spreadsheet.
+       * Gets the developer metadata associated with the top-level spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds 'Google' as a key to the spreadsheet metadata.
+       *     ss.addDeveloperMetadata('Google');
+       *
+       *     // Gets the spreadsheet's metadata.
+       *     const ssMetadata = ss.getDeveloperMetadata();
+       *
+       *     // Gets the first set of the spreadsheet's metadata and logs the key to the console.
+       *     console.log(ssMetadata[0].getKey());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getDeveloperMetadata()
        */
       getDeveloperMetadata(): DeveloperMetadata[];
@@ -18578,6 +20551,18 @@ declare namespace GoogleAppsScript {
        * this spreadsheet has no associated form. If multiple forms send responses to this spreadsheet,
        * the form URL returned is indeterminate. As an alternative, per sheet form URL associations can
        * be retrieved through the Sheet.getFormUrl() method.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the form URL from the spreadsheet.
+       *     const formUrl = ss.getFormUrl();
+       *
+       *     // Logs the form URL to the console.
+       *     console.log(formUrl);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getFormUrl()
        */
       getFormUrl(): string;
@@ -18620,6 +20605,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns all over-the-grid images on the sheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets the over-the-grid images from Sheet1.
+       *     // To get the over-the-grid images from the entire spreadsheet, use ss.getImages() instead.
+       *     const images = sheet.getImages();
+       *
+       *     // For each image, logs the anchor cell in A1 notation.
+       *     for (const image of images) {
+       *      console.log(image.getAnchorCell().getA1Notation());
+       *     }
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getImages()
        */
       getImages(): OverGridImage[];
@@ -18627,6 +20630,18 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the threshold value used during iterative calculation. When the results of successive
        * calculation differ by less than this value, the iterative calculation stops.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the iterative calculation convergence threshold for the spreadsheet.
+       *     ss.setIterativeCalculationConvergenceThreshold(2);
+       *
+       *     // Logs the threshold to the console.
+       *     console.log(ss.getIterativeCalculationConvergenceThreshold());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getIterativeCalculationConvergenceThreshold()
        */
       getIterativeCalculationConvergenceThreshold(): number;
@@ -18665,6 +20680,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the maximum number of iterations to use during iterative calculation.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the max iterative calculation cycles for the spreadsheet.
+       *     ss.setMaxIterativeCalculationCycles(10);
+       *
+       *     // Logs the max iterative calculation cycles to the console.
+       *     console.log(ss.getMaxIterativeCalculationCycles());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getMaxIterativeCalculationCycles()
        */
       getMaxIterativeCalculationCycles(): Integer;
@@ -18799,6 +20826,15 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the calculation interval for this spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Logs the calculation interval for the spreadsheet to the console.
+       *     console.log(ss.getRecalculationInterval().toString());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getRecalculationInterval()
        */
       getRecalculationInterval(): RecalculationInterval;
@@ -18913,6 +20949,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the spreadsheet locale.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the spreadsheet locale.
+       *     const ssLocale = ss.getSpreadsheetLocale();
+       *
+       *     // Logs the locale to the console.
+       *     console.log(ssLocale);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getSpreadsheetLocale()
        */
       getSpreadsheetLocale(): string;
@@ -18929,6 +20977,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the time zone for the spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the time zone of the spreadsheet.
+       *     ss.setSpreadsheetTimeZone('America/New_York');
+       *
+       *     // Gets the time zone of the spreadsheet.
+       *     const ssTimeZone = ss.getSpreadsheetTimeZone();
+       *
+       *     // Logs the time zone to the console.
+       *     console.log(ssTimeZone);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getSpreadsheetTimeZone()
        */
       getSpreadsheetTimeZone(): string;
@@ -19048,6 +21111,28 @@ declare namespace GoogleAppsScript {
        *
        * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
        * type.
+       *
+       *
+       *     // Activates BigQuery operations.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Builds a data source specification.
+       *     // TODO (developer): Update the project ID to your own Google Cloud project ID.
+       *     const dataSourceSpec = SpreadsheetApp.newDataSourceSpec()
+       *      .asBigQuery()
+       *      .setProjectId('project-id-1')
+       *      .setTableProjectId('bigquery-public-data')
+       *      .setDatasetId('ncaa_basketball')
+       *      .setTableId('mbb_historical_teams_games')
+       *      .build();
+       *
+       *     // Adds the data source and its data to the spreadsheet.
+       *     ss.insertDataSourceSheet(dataSourceSpec);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#insertDataSourceSheet(DataSourceSpec)
        * @param spec The data source specification to insert with.
        */
@@ -19094,6 +21179,9 @@ declare namespace GoogleAppsScript {
        * Inserts an image in the document at a given row and column.
        *
        *
+       * The provided URL must be publicly accessible.
+       *
+       *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
        *     var sheet = ss.getSheets()[0];
        *
@@ -19107,6 +21195,9 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image in the document at a given row and column, with a pixel offset.
+       *
+       *
+       * The provided URL must be publicly accessible.
        *
        *
        *     var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -19292,6 +21383,36 @@ declare namespace GoogleAppsScript {
        *
        * Throws an exception if the data source type is not enabled. Use SpreadsheetApp#enable...Execution() methods to enable data execution for specific data source
        * type.
+       *
+       *
+       *     // Activates BigQuery operations.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Adds a sheet and sets cell A1 as the parameter cell.
+       *     const parameterCell = ss.insertSheet('parameterSheet').getRange('A1');
+       *
+       *     // Sets the value of the parameter cell to 'Duke'.
+       *     parameterCell.setValue('Duke');
+       *
+       *     const query = 'select * from `bigquery-public-data`.`ncaa_basketball`.' +
+       *       '`mbb_historical_tournament_games` WHERE win_school_ncaa = @SCHOOL';
+       *
+       *     // Adds a data source with a query parameter.
+       *     // TODO(developer): Update the project ID to your own Google Cloud project ID.
+       *     const dataSourceSpec = SpreadsheetApp.newDataSourceSpec()
+       *      .asBigQuery()
+       *      .setProjectId('project-id-1')
+       *      .setRawQuery(query)
+       *      .setParameterFromCell('SCHOOL', 'parameterSheet!A1')
+       *      .build();
+       *
+       *     // Adds sheets for the data source and data source table to the spreadsheet.
+       *     ss.insertSheetWithDataSourceTable(dataSourceSpec);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#insertSheetWithDataSourceTable(DataSourceSpec)
        * @param spec The data source specification to insert with.
        */
@@ -19312,7 +21433,19 @@ declare namespace GoogleAppsScript {
       isColumnHiddenByUser(columnPosition: Integer): boolean;
 
       /**
-       * Returns whether iterative calculation is enabled in this spreadsheet.
+       * Returns whether iterative calculation is activated in this spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Activates iterative calculation on the spreadsheet.
+       *     ss.setIterativeCalculationEnabled(true);
+       *
+       *     // Logs whether iterative calculation is activated for the spreadsheet.
+       *     console.log(ss.isIterativeCalculationEnabled());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#isIterativeCalculationEnabled()
        */
       isIterativeCalculationEnabled(): boolean;
@@ -19350,21 +21483,22 @@ declare namespace GoogleAppsScript {
        * position is negative or greater than the number of sheets.
        *
        *
-       *     // This example assumes there are two sheets in the current
-       *     // active spreadsheet: one named "first", and another named "second",
-       *     // and that the current active sheet (first) is in position 1
+       *     // This example assumes that there are 2 sheets in the current
+       *     // active spreadsheet: one named "first" in position 1 and another named "second"
+       *     // in position 2.
        *     var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-       *     var sheet = spreadsheet.getSheetByName("first");
+       *     // Gets the "first" sheet and activates it.
+       *     var sheet = spreadsheet.getSheetByName("first").activate();
        *
-       *     // This should output 'Current index of sheet: 1'
-       *     Logger.log("Current index of sheet: %s", sheet.getIndex());
+       *     // Logs 'Current index of sheet: 1'
+       *     console.log("Current index of sheet: %s", sheet.getIndex());
        *
        *     spreadsheet.moveActiveSheet(2);
        *
-       *     // This should output 'New index of sheet: 2'
-       *     Logger.log("New index of sheet: %s", sheet.getIndex());
+       *     // Logs 'New index of sheet: 2'
+       *     console.log("New index of sheet: %s", sheet.getIndex());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#moveActiveSheet(Integer)
-       * @param pos A position to move the active sheet to in the list of sheets.
+       * @param pos The 1-index position to move the active sheet to in the list of sheets.
        */
       moveActiveSheet(pos: Integer): void;
 
@@ -19389,6 +21523,24 @@ declare namespace GoogleAppsScript {
        *
        * Use SpreadsheetApp#enable...Execution() methods to enable data execution for
        * specific data source type.
+       *
+       *
+       *     // Activates BigQuery operations.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets the first data source sheet on the spreadsheet.
+       *     const dataSheet = ss.getDataSourceSheets()[0];
+       *
+       *     // Refreshes all data sources on the spreadsheet.
+       *     ss.refreshAllDataSources();
+       *
+       *     // Logs the last refreshed time of the first data source sheet.
+       *     console.log(`Last refresh time: ${dataSheet.getStatus().getLastRefreshedTime()}`);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#refreshAllDataSources()
        */
       refreshAllDataSources(): void;
@@ -19698,16 +21850,40 @@ declare namespace GoogleAppsScript {
        * Sets the minimum threshold value for iterative calculation. When the results of successive
        * calculation differ by less than this value, the iterative calculation stops. This value must be
        * non-negative, and defaults to 0.05.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the iterative calculation convergence threshold for the spreadsheet.
+       *     ss.setIterativeCalculationConvergenceThreshold(2);
+       *
+       *     // Logs the threshold to the console.
+       *     console.log(ss.getIterativeCalculationConvergenceThreshold());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setIterativeCalculationConvergenceThreshold(Number)
        * @param minThreshold The minimum convergence threshold (must be non-negative).
        */
       setIterativeCalculationConvergenceThreshold(minThreshold: number): Spreadsheet;
 
       /**
-       * Sets whether iterative calculation is enabled in this spreadsheet. If the maximum number of
+       * Sets whether iterative calculation is activated in this spreadsheet. If the maximum number of
        * calculation cycles and convergence threshold have not previously been set when the calculation
-       * is enabled, they default to 50 and 0.05 respectively. If either has been set previously, they
+       * is activated, they default to 50 and 0.05 respectively. If either has been set previously, they
        * retain their previous values.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Activates iterative calculation on the spreadsheet.
+       *     ss.setIterativeCalculationEnabled(true);
+       *
+       *     // Logs whether iterative calculation is activated for the spreadsheet.
+       *     console.log(ss.isIterativeCalculationEnabled());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setIterativeCalculationEnabled(Boolean)
        * @param isEnabled true if iterative calculation should be enabled; false otherwise.
        */
@@ -19716,6 +21892,18 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the maximum number of calculation iterations that should be performed during iterative
        * calculation. This value must be between 1 and 10,000 (inclusive), and defaults to 50.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the max iterative calculation cycles for the spreadsheet.
+       *     ss.setMaxIterativeCalculationCycles(10);
+       *
+       *     // Logs the max iterative calculation cycles to the console.
+       *     console.log(ss.getMaxIterativeCalculationCycles());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setMaxIterativeCalculationCycles(Integer)
        * @param maxIterations The maximum number of calculation iterations (between 1 and 10,000).
        */
@@ -19736,6 +21924,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets how often this spreadsheet should recalculate.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the  calculation interval for the spreadsheet to 'ON_CHANGE'.
+       *     const interval = ss.setRecalculationInterval(SpreadsheetApp.RecalculationInterval.ON_CHANGE);
+       *
+       *     // Logs the calculation interval to the console.
+       *     console.log(interval);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setRecalculationInterval(RecalculationInterval)
        * @param recalculationInterval The new recalculation interval.
        */
@@ -19759,6 +21959,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the spreadsheet locale.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the spreadsheet locale.
+       *     ss.setSpreadsheetLocale('fr');
+       *
+       *     // Gets the spreadsheet locale.
+       *     const ssLocale = ss.getSpreadsheetLocale();
+       *
+       *     // Logs the locale to the console.
+       *     console.log(ssLocale);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setSpreadsheetLocale(String)
        * @param locale The locale code to use (for example, 'en', 'fr', or 'en_US').
        */
@@ -19779,6 +21994,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the time zone for the spreadsheet.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets spreadsheet, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Sets the time zone of the spreadsheet.
+       *     ss.setSpreadsheetTimeZone('America/New_York');
+       *
+       *     // Gets the time zone of the spreadsheet.
+       *     const ssTimeZone = ss.getSpreadsheetTimeZone();
+       *
+       *     // Logs the time zone to the console.
+       *     console.log(ssTimeZone);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setSpreadsheetTimeZone(String)
        * @param timezone The time zone, specified in "long" format (for example, "America/New_York", as listed by Joda.org).
        */
@@ -20003,20 +22233,44 @@ declare namespace GoogleAppsScript {
       create(name: string, rows: Integer, columns: Integer): Spreadsheet;
 
       /**
-       * Enables data execution for all types of data sources.
+       * Turns data execution on for all types of data sources.
        *
        *
-       * Data execution throws an exception if the data source type is not enabled. Use this method
-       * to enable data execution for all data source types.
+       * Data execution throws an exception if the data source type isn't turned on. Use this method
+       * to turn data execution on for all data source types.
+       *
+       *
+       *     // Turns data execution on for all types of data sources.
+       *     SpreadsheetApp.enableAllDataSourcesExecution();
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets the first data source sheet in the spreadsheet and refreshes the data.
+       *     ss.getDataSourceSheets()[0].refreshData();
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#enableAllDataSourcesExecution()
        */
       enableAllDataSourcesExecution(): void;
 
       /**
-       * Enables data execution for BigQuery data source.
+       * Turns data execution on for BigQuery data sources.
        *
        *
-       * Data execution for BigQuery data source throws an exception if not enabled.
+       * Data execution for BigQuery data source throws an exception if not turned on.
+       *
+       *
+       *     // Turns data execution on for BigQuery data sources.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Opens the spreadsheet file by its ID. If you created your script from a Google Sheets file,
+       *     // use SpreadsheetApp.getActiveSpreadsheet().
+       *     // TODO(developer): Replace the ID with your own.
+       *     const ss = SpreadsheetApp.openById('abc123456');
+       *
+       *     // Gets the first data source sheet in the spreadsheet and refreshes the BigQuery data.
+       *     ss.getDataSourceSheets()[0].refreshData();
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#enableBigQueryExecution()
        */
       enableBigQueryExecution(): void;
@@ -20168,6 +22422,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates a builder for a CellImage.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Gets cell A1 on Sheet1.
+       *     const range = sheet.getRange('A1');
+       *
+       *     // Builds an image using a source URL.
+       *     const cellImage = SpreadsheetApp.newCellImage()
+       *       .setSourceUrl('https://www.gstatic.com/images/branding/productlogos/apps_script/v10/web-64dp/logo_apps_script_color_1x_web_64dp.png')
+       *       .build();
+       *
+       *     // Sets the image in cell A1.
+       *     range.setValue(cellImage);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#newCellImage()
        */
       newCellImage(): CellImageBuilder;
@@ -20203,6 +22477,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates a builder for a DataSourceSpec.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Enables BigQuery.
+       *     SpreadsheetApp.enableBigQueryExecution();
+       *
+       *     // Builds a data source specification.
+       *     // TODO (developer): Update the project ID to your own Google Cloud project ID.
+       *     const dataSourceSpec = SpreadsheetApp.newDataSourceSpec()
+       *       .asBigQuery()
+       *       .setProjectId('project-id-1')
+       *       .setTableProjectId('bigquery-public-data')
+       *       .setDatasetId('ncaa_basketball')
+       *       .setTableId('mbb_historical_teams_games')
+       *       .build();
+       *
+       *     // Adds the data source and its data to the spreadsheet.
+       *     ss.insertDataSourceSheet(dataSourceSpec);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#newDataSourceSpec()
        */
       newDataSourceSpec(): DataSourceSpecBuilder;
@@ -20224,6 +22520,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates a builder for a FilterCriteria.
+       *
+       *
+       *     // Opens the spreadsheet file by its URL. If you created your script from within a
+       *     // Google Sheets file, you can use SpreadsheetApp.getActiveSpreadsheet() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const ss = SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/abc123456/edit');
+       *
+       *     // Gets Sheet1 by its name.
+       *     const sheet = ss.getSheetByName('Sheet1');
+       *
+       *     // Sets the range to A1:D20.
+       *     const range = sheet.getRange('A1:D20');
+       *
+       *     // Creates a filter and applies it to the specified range.
+       *     range.createFilter();
+       *
+       *     // Gets the current filter for the range and creates filter criteria that only shows cells
+       *     // that aren't empty.
+       *     const filter = range.getFilter();
+       *     const criteria = SpreadsheetApp.newFilterCriteria().whenCellNotEmpty().build();
+       *
+       *     // Sets the criteria to  column C.
+       *     filter.setColumnFilterCriteria(3, criteria);
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#newFilterCriteria()
        */
       newFilterCriteria(): FilterCriteriaBuilder;
@@ -20295,16 +22614,16 @@ declare namespace GoogleAppsScript {
       openById(id: string): Spreadsheet;
 
       /**
-       * Opens the spreadsheet with the given URL. Throws a scripting exception if the URL does not
-       * exist or the user does not have permission to access it.
+       * Opens the spreadsheet with the given URL. Throws a scripting exception if the URL doesn't exist
+       * or the user doesn't have permission to access it.
        *
        *
-       *     // The code below opens a spreadsheet using its id and logs the name for it.
-       *     // Note that the spreadsheet is NOT physically opened on the client side.
-       *     // It is opened on the server only (for modification by the script).
+       *     // Opens a spreadsheet by its URL and logs its name.
+       *     // Note that the spreadsheet doesn't physically open on the client side.
+       *     // It opens on the server only (for modification by the script).
        *     var ss = SpreadsheetApp.openByUrl(
        *         'https://docs.google.com/spreadsheets/d/abc1234567/edit');
-       *     Logger.log(ss.getName());
+       *     console.log(ss.getName());
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#openByUrl(String)
        * @param url The URL for the spreadsheet.
        */
@@ -20488,6 +22807,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumerations of text directions.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.TextDirection.LEFT_TO_RIGHT.
      */
     enum TextDirection { LEFT_TO_RIGHT, RIGHT_TO_LEFT }
     /**
@@ -20748,6 +23070,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration of the types of preset delimiters that can split a column of text into multiple
      * columns.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.TextToColumnsDelimiter.COMMA.
      */
     enum TextToColumnsDelimiter { COMMA, SEMICOLON, PERIOD, SPACE }
     /**
@@ -20769,15 +23094,24 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enum which describes various color entries supported in themes.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.ThemeColorType.TEXT.
      */
     enum ThemeColorType { UNSUPPORTED, TEXT, BACKGROUND, ACCENT1, ACCENT2, ACCENT3, ACCENT4, ACCENT5, ACCENT6, HYPERLINK }
     /**
      * An enumeration of value types returned by Range.getValue() and Range.getValues() from the Range class of the Spreadsheet service. The enumeration values
      * listed below are in addition to Number, Boolean, Date, or String.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.ValueType.IMAGE.
      */
     enum ValueType { IMAGE }
     /**
      * An enumeration of the strategies used to handle cell text wrapping.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SpreadsheetApp.WrapStrategy.WRAP.
      */
     enum WrapStrategy { WRAP, OVERFLOW, CLIP }
   }

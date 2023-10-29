@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -51,7 +51,7 @@ declare namespace GoogleAppsScript {
        *     // This logs the original "Google グループ"
        *     Logger.log(Utilities.newBlob(decoded).getDataAsString());
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64Decode(String)
-       * @param encoded an array of bytes of data to decode
+       * @param encoded An array of bytes of data to decode.
        */
       base64Decode(encoded: string): Byte[];
 
@@ -73,8 +73,8 @@ declare namespace GoogleAppsScript {
        *     // This logs the original "Google グループ"
        *     Logger.log(Utilities.newBlob(decoded).getDataAsString());
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64Decode(String,Charset)
-       * @param encoded the string of data to decode
-       * @param charset a Charset specifying the charset of the input
+       * @param encoded The string of data to decode.
+       * @param charset A Charset specifying the charset of the input.
        */
       base64Decode(encoded: string, charset: Charset): Byte[];
 
@@ -96,7 +96,7 @@ declare namespace GoogleAppsScript {
        *     // This logs the original "Google グループ"
        *     Logger.log(Utilities.newBlob(decoded).getDataAsString());
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64DecodeWebSafe(String)
-       * @param encoded an array of bytes of web-safe data to decode
+       * @param encoded An array of bytes of web-safe data to decode.
        */
       base64DecodeWebSafe(encoded: string): Byte[];
 
@@ -118,8 +118,8 @@ declare namespace GoogleAppsScript {
        *     // This logs the original "Google グループ"
        *     Logger.log(Utilities.newBlob(decoded).getDataAsString());
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64DecodeWebSafe(String,Charset)
-       * @param encoded the string of web-safe data to decode
-       * @param charset a Charset specifying the charset of the input
+       * @param encoded The string of web-safe data to decode.
+       * @param charset A Charset specifying the charset of the input.
        */
       base64DecodeWebSafe(encoded: string, charset: Charset): Byte[];
 
@@ -136,7 +136,7 @@ declare namespace GoogleAppsScript {
        *     var encoded = Utilities.base64Encode(blob.getBytes());
        *     Logger.log(encoded);
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64Encode(Byte)
-       * @param data a byte[] of data to encode
+       * @param data A byte[] of data to encode.
        */
       base64Encode(data: Byte[]): string;
 
@@ -150,7 +150,7 @@ declare namespace GoogleAppsScript {
        *     var encoded = Utilities.base64Encode("A string here");
        *     Logger.log(encoded);
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64Encode(String)
-       * @param data the string to encode
+       * @param data The string to encode.
        */
       base64Encode(data: string): string;
 
@@ -170,8 +170,8 @@ declare namespace GoogleAppsScript {
        *     var encoded = Utilities.base64Encode(input, Utilities.Charset.UTF_8);
        *     Logger.log(encoded);
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64Encode(String,Charset)
-       * @param data the string of data to encode
-       * @param charset a Charset specifying the charset of the input
+       * @param data The string of data to encode.
+       * @param charset A Charset specifying the charset of the input.
        */
       base64Encode(data: string, charset: Charset): string;
 
@@ -188,7 +188,7 @@ declare namespace GoogleAppsScript {
        *     var encoded = Utilities.base64EncodeWebSafe(blob.getBytes());
        *     Logger.log(encoded);
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64EncodeWebSafe(Byte)
-       * @param data an array of bytes of data to encode
+       * @param data An array of bytes of data to encode.
        */
       base64EncodeWebSafe(data: Byte[]): string;
 
@@ -202,7 +202,7 @@ declare namespace GoogleAppsScript {
        *     var encoded = Utilities.base64EncodeWebSafe("A string here");
        *     Logger.log(encoded);
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64EncodeWebSafe(String)
-       * @param data the string to encode
+       * @param data The string to encode.
        */
       base64EncodeWebSafe(data: string): string;
 
@@ -222,8 +222,8 @@ declare namespace GoogleAppsScript {
        *     var encoded = Utilities.base64EncodeWebSafe(input, Utilities.Charset.UTF_8);
        *     Logger.log(encoded);
        * https://developers.google.com/apps-script/reference/utilities/utilities#base64EncodeWebSafe(String,Charset)
-       * @param data the string of data to encode
-       * @param charset a Charset specifying the charset of the input
+       * @param data The string of data to encode.
+       * @param charset A Charset specifying the charset of the input.
        */
       base64EncodeWebSafe(data: string, charset: Charset): string;
 
@@ -235,8 +235,8 @@ declare namespace GoogleAppsScript {
        *     var digest = Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, input);
        *     Logger.log(digest);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeDigest(DigestAlgorithm,Byte)
-       * @param algorithm a DigestAlgorithm to use
-       * @param value an input string value to compute a digest for
+       * @param algorithm A DigestAlgorithm to use.
+       * @param value An input string value to compute a digest for.
        */
       computeDigest(algorithm: DigestAlgorithm, value: Byte[]): Byte[];
 
@@ -247,8 +247,8 @@ declare namespace GoogleAppsScript {
        *     var digest = Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, "input to hash");
        *     Logger.log(digest);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeDigest(DigestAlgorithm,String)
-       * @param algorithm a DigestAlgorithm to use
-       * @param value an input string value to compute a digest for
+       * @param algorithm A DigestAlgorithm to use.
+       * @param value An input string value to compute a digest for.
        */
       computeDigest(algorithm: DigestAlgorithm, value: string): Byte[];
 
@@ -262,9 +262,9 @@ declare namespace GoogleAppsScript {
        *                                          Utilities.Charset.US_ASCII);
        *     Logger.log(digest);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeDigest(DigestAlgorithm,String,Charset)
-       * @param algorithm a DigestAlgorithm to use
-       * @param value an input string value to compute a digest for
-       * @param charset a Charset representing the input character set
+       * @param algorithm A DigestAlgorithm to use.
+       * @param value An input string value to compute a digest for.
+       * @param charset A Charset representing the input character set.
        */
       computeDigest(algorithm: DigestAlgorithm, value: string, charset: Charset): Byte[];
 
@@ -278,8 +278,8 @@ declare namespace GoogleAppsScript {
        *     var signature = Utilities.computeHmacSha256Signature(input, key);
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeHmacSha256Signature(Byte,Byte)
-       * @param value the input value to generate a hash for
-       * @param key a key to use to generate the hash with
+       * @param value The input value to generate a hash for.
+       * @param key A key to use to generate the hash with.
        */
       computeHmacSha256Signature(value: Byte[], key: Byte[]): Byte[];
 
@@ -292,8 +292,8 @@ declare namespace GoogleAppsScript {
        *                                                           "my key - use a stronger one");
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeHmacSha256Signature(String,String)
-       * @param value the input value to generate a hash for
-       * @param key a key to use to generate the hash with
+       * @param value The input value to generate a hash for.
+       * @param key A key to use to generate the hash with.
        */
       computeHmacSha256Signature(value: string, key: string): Byte[];
 
@@ -307,9 +307,9 @@ declare namespace GoogleAppsScript {
        *                                                          Utilities.Charset.US_ASCII);
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeHmacSha256Signature(String,String,Charset)
-       * @param value the input value to generate a hash for
-       * @param key a key to use to generate the hash with
-       * @param charset a Charset representing the input character set
+       * @param value The input value to generate a hash for.
+       * @param key A key to use to generate the hash with.
+       * @param charset A Charset representing the input character set.
        */
       computeHmacSha256Signature(value: string, key: string, charset: Charset): Byte[];
 
@@ -324,9 +324,9 @@ declare namespace GoogleAppsScript {
        *     var signature = Utilities.computeHmacSignature(Utilities.MacAlgorithm.HMAC_MD5, input, key);
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeHmacSignature(MacAlgorithm,Byte,Byte)
-       * @param algorithm a MacAlgorithm algorithm to use to hash the input value
-       * @param value the input value to generate a hash for
-       * @param key a key to use to generate the hash with
+       * @param algorithm A MacAlgorithm algorithm to use to hash the input value.
+       * @param value The input value to generate a hash for.
+       * @param key A key to use to generate the hash with.
        */
       computeHmacSignature(algorithm: MacAlgorithm, value: Byte[], key: Byte[]): Byte[];
 
@@ -341,9 +341,9 @@ declare namespace GoogleAppsScript {
        *                                                    "key");
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeHmacSignature(MacAlgorithm,String,String)
-       * @param algorithm a MacAlgorithm algorithm to use to hash the input value
-       * @param value the input value to generate a hash for
-       * @param key a key to use to generate the hash with
+       * @param algorithm A MacAlgorithm algorithm to use to hash the input value.
+       * @param value The input value to generate a hash for.
+       * @param key A key to use to generate the hash with.
        */
       computeHmacSignature(algorithm: MacAlgorithm, value: string, key: string): Byte[];
 
@@ -359,10 +359,10 @@ declare namespace GoogleAppsScript {
        *                                                    Utilities.Charset.US_ASCII);
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeHmacSignature(MacAlgorithm,String,String,Charset)
-       * @param algorithm a MacAlgorithm algorithm to use to hash the input value
-       * @param value the input value to generate a hash for
-       * @param key a key to use to generate the hash with
-       * @param charset a Charset representing the input character set
+       * @param algorithm A MacAlgorithm algorithm to use to hash the input value.
+       * @param value The input value to generate a hash for.
+       * @param key A key to use to generate the hash with.
+       * @param charset A Charset representing the input character set.
        */
       computeHmacSignature(algorithm: MacAlgorithm, value: string, key: string, charset: Charset): Byte[];
 
@@ -405,8 +405,8 @@ declare namespace GoogleAppsScript {
        *         "-----BEGIN PRIVATE KEY-----\nprivatekeyhere\n-----END PRIVATE KEY-----\n");
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeRsaSha256Signature(String,String)
-       * @param value the input value to generate a hash for
-       * @param key a PEM formatted key to use to generate the signature
+       * @param value The input value to generate a hash for.
+       * @param key A PEM formatted key to use to generate the signature.
        */
       computeRsaSha256Signature(value: string, key: string): Byte[];
 
@@ -419,9 +419,9 @@ declare namespace GoogleAppsScript {
        *         "-----BEGIN PRIVATE KEY-----\nprivatekeyhere\n-----END PRIVATE KEY-----\n");
        *     Logger.log(signature);
        * https://developers.google.com/apps-script/reference/utilities/utilities#computeRsaSha256Signature(String,String,Charset)
-       * @param value the input value to generate a hash for
-       * @param key a PEM formatted key to use to generate the signature
-       * @param charset a Charset representing the input character set
+       * @param value The input value to generate a hash for.
+       * @param key A PEM formatted key to use to generate the signature.
+       * @param charset A Charset representing the input character set.
        */
       computeRsaSha256Signature(value: string, key: string, charset: Charset): Byte[];
 
@@ -471,9 +471,9 @@ declare namespace GoogleAppsScript {
        *     var formattedDate = Utilities.formatDate(new Date(), "GMT", "yyyy-MM-dd'T'HH:mm:ss'Z'");
        *     Logger.log(formattedDate);
        * https://developers.google.com/apps-script/reference/utilities/utilities#formatDate(Date,String,String)
-       * @param date a Date to format as a String
-       * @param timeZone the output timezone of the result
-       * @param format a format per the SimpleDateFormat specification
+       * @param date A Date to format as a String.
+       * @param timeZone The output timezone of the result.
+       * @param format A format per the SimpleDateFormat specification.
        */
       formatDate(date: Date, timeZone: string, format: string): string;
 
@@ -515,7 +515,7 @@ declare namespace GoogleAppsScript {
        *     // Create the compressed blob.
        *     var gzipBlob = Utilities.gzip(textBlob);
        * https://developers.google.com/apps-script/reference/utilities/utilities#gzip(BlobSource)
-       * @param blob a Blob object to compress using gzip.
+       * @param blob A Blob object to compress using gzip.
        */
       gzip(blob: Base.BlobSource): Base.Blob;
 
@@ -529,62 +529,156 @@ declare namespace GoogleAppsScript {
        *     // Create the compressed blob.
        *     var gzipBlob = Utilities.gzip(textBlob, "text.gz");
        * https://developers.google.com/apps-script/reference/utilities/utilities#gzip(BlobSource,String)
-       * @param blob a Blob object to compress using gzip.
-       * @param name the name of the gzip file to be created
+       * @param blob A Blob object to compress using gzip.
+       * @param name The name of the gzip file to be created.
        */
       gzip(blob: Base.BlobSource, name: string): Base.Blob;
 
       /**
        * Create a new Blob object from a byte array. Blobs are used in many Apps Script APIs that take
        * binary data as input.
+       *
+       *
+       *     // Creates a blob object from a byte array.
+       *     const data = [71, 79, 79, 71, 76, 69];
+       *     const blob = Utilities.newBlob(data);
+       *
+       *     // Logs the blob data as a string to the console.
+       *     console.log(blob.getDataAsString());
        * https://developers.google.com/apps-script/reference/utilities/utilities#newBlob(Byte)
-       * @param data the bytes for the blob
+       * @param data The bytes for the blob.
        */
       newBlob(data: Byte[]): Base.Blob;
 
       /**
        * Create a new Blob object from a byte array and content type. Blobs are used in many Apps Script
        * APIs that take binary data as input.
+       *
+       *
+       *     // Declares a byte array.
+       *     const data = [71, 79, 79, 71, 76, 69];
+       *
+       *     // Declares the content type of the blob.
+       *     const contentType = 'application/json';
+       *
+       *     // Creates a blob object from the byte array and content type.
+       *     const blob = Utilities.newBlob(data, contentType);
+       *
+       *     // Logs the blob data as a string to the console.
+       *     console.log(blob.getDataAsString());
+       *
+       *     // Logs the content type of the blob to the console.
+       *     console.log(blob.getContentType());
        * https://developers.google.com/apps-script/reference/utilities/utilities#newBlob(Byte,String)
-       * @param data the bytes for the blob
-       * @param contentType the content type of the blob - can be null
+       * @param data The bytes for the blob.
+       * @param contentType The content type of the blob - can be null.
        */
       newBlob(data: Byte[], contentType: string): Base.Blob;
 
       /**
        * Create a new Blob object from a byte array, content type, and name. Blobs are used in many Apps
        * Script APIs that take binary data as input.
+       *
+       *
+       *     // Declares a byte array.
+       *     const data = [71, 79, 79, 71, 76, 69];
+       *
+       *     // Declares the content type of the blob.
+       *     const contentType = 'application/json';
+       *
+       *     // Declares the name of the blob.
+       *     const name = 'Example blob';
+       *
+       *     // Creates a blob object from the byte array, content type, and name.
+       *     const blob = Utilities.newBlob(data, contentType, name);
+       *
+       *     // Logs the blob data as a string to the console.
+       *     console.log('Blob data:', blob.getDataAsString());
+       *
+       *     // Logs the content type of the blob to the console.
+       *     console.log('Blob content type:', blob.getContentType());
+       *
+       *     // Logs the name of the blob to the console.
+       *     console.log('Blob name:', blob.getName());
        * https://developers.google.com/apps-script/reference/utilities/utilities#newBlob(Byte,String,String)
-       * @param data the bytes for the blob
-       * @param contentType - the content type of the blob - can be null
-       * @param name the name of the blob - can be null
+       * @param data The bytes for the blob.
+       * @param contentType - The content type of the blob - can be null.
+       * @param name The name of the blob - can be null.
        */
       newBlob(data: Byte[], contentType: string, name: string): Base.Blob;
 
       /**
        * Create a new Blob object from a string. Blobs are used in many Apps Script APIs that take
        * binary data as input.
+       *
+       *
+       *     // Declares a string for the blob.
+       *     const data = 'GOOGLE';
+       *
+       *     // Creates a blob object from a string.
+       *     const blob = Utilities.newBlob(data);
+       *
+       *     // Logs the blob data in byte array to the console.
+       *     console.log('Blob Data:', blob.getBytes());
        * https://developers.google.com/apps-script/reference/utilities/utilities#newBlob(String)
-       * @param data the string for the blob, assumed UTF-8
+       * @param data The string for the blob, assumed UTF-8.
        */
       newBlob(data: string): Base.Blob;
 
       /**
        * Create a new Blob object from a string and content type. Blobs are used in many Apps Script
        * APIs that take binary data as input.
+       *
+       *
+       *     // Declares a string for the blob.
+       *     const data = 'GOOGLE';
+       *
+       *     // Declares the content type of blob.
+       *     const contentType = 'application/json';
+       *
+       *     // Creates a blob object from the string and content type.
+       *     const blob = Utilities.newBlob(data, contentType);
+       *
+       *     // Logs the blob data in byte array to the console.
+       *     console.log('Blob data:', blob.getBytes());
+       *
+       *     // Logs the content type of the blob to the console.
+       *     console.log(blob.getContentType());
        * https://developers.google.com/apps-script/reference/utilities/utilities#newBlob(String,String)
-       * @param data the string for the blob, assumed UTF-8
-       * @param contentType the content type of the blob - can be null
+       * @param data The string for the blob, assumed UTF-8.
+       * @param contentType The content type of the blob - can be null.
        */
       newBlob(data: string, contentType: string): Base.Blob;
 
       /**
        * Create a new Blob object from a string, content type, and name. Blobs are used in many Apps
        * Script APIs that take binary data as input.
+       *
+       *
+       *     // Declares a string for the blob.
+       *     const data = 'GOOGLE';
+       *
+       *     // Declares the content type of the blob.
+       *     const contentType = 'application/json';
+       *
+       *     // Declares the name of the blob.
+       *     const name = 'Example blob';
+       *
+       *     // Create a blob object from the string, content type, and name.
+       *     const blob = Utilities.newBlob(data, contentType, name);
+       *
+       *     // Logs the blob data in byte array to the console.
+       *     console.log('Blob data:', blob.getBytes());
+       *
+       *     // Logs the content type of the blob to the console.
+       *     console.log('Blob content type:', blob.getContentType());
+       *
+       *     // Logs the name of the blob to the console.
+       *     console.log('Blob name:', blob.getName());
        * https://developers.google.com/apps-script/reference/utilities/utilities#newBlob(String,String,String)
-       * @param data the string for the blob, assumed UTF-8
-       * @param contentType the content type of the blob - can be null
-       * @param name the name of the blob - can be null
+       * @param data The string for the blob, assumed UTF-8.
+       * @param contentType The content type of the blob - can be null.
+       * @param name The name of the blob - can be null.
        */
       newBlob(data: string, contentType: string, name: string): Base.Blob;
 
@@ -596,7 +690,7 @@ declare namespace GoogleAppsScript {
        *     var csvString = "a,b,c\nd,e,f";
        *     var data = Utilities.parseCsv(csvString);
        * https://developers.google.com/apps-script/reference/utilities/utilities#parseCsv(String)
-       * @param csv a string containing a single or multiline data in comma-separated value (CSV) format
+       * @param csv A string containing a single or multiline data in comma-separated value (CSV) format.
        */
       parseCsv(csv: string): string[][];
 
@@ -608,14 +702,41 @@ declare namespace GoogleAppsScript {
        *     var csvString = "a\tb\tc\nd\te\tf";
        *     var data = Utilities.parseCsv(csvString, '\t');
        * https://developers.google.com/apps-script/reference/utilities/utilities#parseCsv(String,Char)
-       * @param csv a string containing a single or multiline data in comma-separated value (CSV) format
-       * @param delimiter between values
+       * @param csv A string containing a single or multiline data in comma-separated value (CSV) format.
+       * @param delimiter Between values.
        */
       parseCsv(csv: string, delimiter: Char): string[][];
 
       /**
+       * Parses the provided string date according to the specification described in the Java Standard
+       * Edition SimpleDateFormat class. For more information, see the Java SimpleDateFormat class.
+       *
+       *
+       *     // This set of parameters parses the given string as a date in Greenwich Mean Time, formatted
+       *     // as year-month-dateThour-minute-second.
+       *     var date = Utilities.parseDate("1970-01-01 00:00:00", "GMT", "yyyy-MM-dd' 'HH:mm:ss");
+       *     Logger.log(date);
+       * https://developers.google.com/apps-script/reference/utilities/utilities#parseDate(String,String,String)
+       * @param date A string value to parse as a date.
+       * @param timeZone The output time zone.
+       * @param format The date format per the SimpleDateFormat specification.
+       */
+      parseDate(date: string, timeZone: string, format: string): Date;
+
+      /**
        * Sleeps for specified number of milliseconds. Immediately puts the script to sleep for the
        * specified number of milliseconds. The maximum allowed value is 300000 (or 5 minutes).
+       *
+       *
+       *     // Creates a blob object from a string.
+       *     const data = 'GOOGLE';
+       *     const blob = Utilities.newBlob(data);
+       *
+       *     // Puts the script to sleep for 10,000 milliseconds (10 seconds).
+       *     Utilities.sleep(10000);
+       *
+       *     // Logs the blob data in byte array to the console.
+       *     console.log(blob.getBytes());
        * https://developers.google.com/apps-script/reference/utilities/utilities#sleep(Integer)
        * @param milliseconds The number of milliseconds to sleep.
        */
@@ -634,7 +755,7 @@ declare namespace GoogleAppsScript {
        *     // Uncompress the data.
        *     var uncompressedBlob = Utilities.ungzip(gzipBlob);
        * https://developers.google.com/apps-script/reference/utilities/utilities#ungzip(BlobSource)
-       * @param blob the Blob of compressed data.
+       * @param blob The Blob of compressed data.
        */
       ungzip(blob: Base.BlobSource): Base.Blob;
 
@@ -655,7 +776,7 @@ declare namespace GoogleAppsScript {
        *     // This now unzips the blobs
        *     var files = Utilities.unzip(zip);
        * https://developers.google.com/apps-script/reference/utilities/utilities#unzip(BlobSource)
-       * @param blob the zip file blob.
+       * @param blob The zip file blob.
        */
       unzip(blob: Base.BlobSource): Base.Blob[];
 
@@ -673,7 +794,7 @@ declare namespace GoogleAppsScript {
        *     // zip now references a blob containing an archive of both faviconBlob and logoBlob
        *     var zip = Utilities.zip([faviconBlob, logoBlob]);
        * https://developers.google.com/apps-script/reference/utilities/utilities#zip(BlobSource)
-       * @param blobs a array of blobs to zip up
+       * @param blobs A array of blobs to zip up.
        */
       zip(blobs: Base.BlobSource[]): Base.Blob;
 
@@ -692,8 +813,8 @@ declare namespace GoogleAppsScript {
        *     // zip now references a blob containing an archive of both faviconBlob and logoBlob
        *     var zip = Utilities.zip([faviconBlob, logoBlob], "google_images.zip");
        * https://developers.google.com/apps-script/reference/utilities/utilities#zip(BlobSource,String)
-       * @param blobs a array of blobs to zip up
-       * @param name the name of the zip file to be created
+       * @param blobs A array of blobs to zip up.
+       * @param name The name of the zip file to be created.
        */
       zip(blobs: Base.BlobSource[], name: string): Base.Blob;
       /** @deprecated DO NOT USE */ jsonParse(jsonString: string): any;

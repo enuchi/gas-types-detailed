@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -12,6 +12,9 @@ declare namespace GoogleAppsScript {
      * An enum representing classes of users who can access a file or folder, besides any individual
      * users who have been explicitly given access. These properties can be accessed from DriveApp.Access.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DriveApp.Access.ANYONE.
+     *
      *     // Creates a folder that anyone on the Internet can read from and write to. (Domain
      *     // administrators can prohibit this setting for users of a Google Workspace domain.)
      *     var folder = DriveApp.createFolder('Shared Folder');
@@ -19,13 +22,14 @@ declare namespace GoogleAppsScript {
      */
     enum Access { ANYONE, ANYONE_WITH_LINK, DOMAIN, DOMAIN_WITH_LINK, PRIVATE }
     /**
-     * Allows scripts to create, find, and modify files and folders in Google Drive.
+     * Allows scripts to create, find, and modify files and folders in Google Drive. To access files or
+     * folders in shared drives, use the advanced Drive service.
      *
-     *     // Log the name of every file in the user's Drive.
+     *     // Logs the name of every file in the user's Drive.
      *     var files = DriveApp.getFiles();
      *     while (files.hasNext()) {
      *       var file = files.next();
-     *       Logger.log(file.getName());
+     *       console.log(file.getName());
      *     }
      */
     interface DriveApp {
@@ -34,19 +38,55 @@ declare namespace GoogleAppsScript {
 
       /**
        * Resumes a file iteration using a continuation token from a previous iterator. This method is
-       * useful if processing an iterator in one execution would exceed the maximum execution time.
+       * useful if processing an iterator in one execution exceeds the maximum execution time.
        * Continuation tokens are generally valid for one week.
+       *
+       *
+       *     // Continues getting a list of all 'Untitled document' files in the user's Drive.
+       *     // Creates a file iterator named 'previousIterator'.
+       *     const previousIterator = DriveApp.getFilesByName('Untitled document');
+       *
+       *     // Gets continuation token from the previous file iterator.
+       *     const continuationToken = previousIterator.getContinuationToken();
+       *
+       *     // Creates a new iterator using the continuation token from the previous file iterator.
+       *     const newIterator = DriveApp.continueFileIterator(continuationToken);
+       *
+       *     // Resumes the file iteration using a continuation token from 'firstIterator' and
+       *     // logs the file name.
+       *     if (newIterator.hasNext()) {
+       *       const file = newIterator.next();
+       *       console.log(file.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#continueFileIterator(String)
-       * @param continuationToken a continuation token from a previous file iterator
+       * @param continuationToken A continuation token from a previous file iterator.
        */
       continueFileIterator(continuationToken: string): FileIterator;
 
       /**
        * Resumes a folder iteration using a continuation token from a previous iterator. This method is
-       * useful if processing an iterator in one execution would exceed the maximum execution time.
+       * useful if processing an iterator in one execution exceeds the maximum execution time.
        * Continuation tokens are generally valid for one week.
+       *
+       *
+       *     // Continues getting a list of all folders in user's Drive.
+       *     // Creates a folder iterator named 'previousIterator'.
+       *     const previousIterator = DriveApp.getFolders();
+       *
+       *     // Gets continuation token from the previous folder iterator.
+       *     const continuationToken = previousIterator.getContinuationToken();
+       *
+       *     // Creates a new iterator using the continuation token from the previous folder iterator.
+       *     const newIterator = DriveApp.continueFolderIterator(continuationToken);
+       *
+       *     // Resumes the folder iteration using a continuation token from the previous iterator and logs
+       *     // the folder name.
+       *     if (newIterator.hasNext()) {
+       *       const folder = newIterator.next();
+       *       console.log(folder.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#continueFolderIterator(String)
-       * @param continuationToken a continuation token from a previous folder iterator
+       * @param continuationToken A continuation token from a previous folder iterator.
        */
       continueFolderIterator(continuationToken: string): FolderIterator;
 
@@ -104,9 +144,22 @@ declare namespace GoogleAppsScript {
       createShortcut(targetId: string): File;
 
       /**
-       * Creates a shortcut to the provided Drive item ID and resource key, and returns it. Resource
-       * keys are an additional parameter which need to be passed to access the target file or folder
-       * that has been shared using a link.
+       * Creates a shortcut to the provided Drive item ID and resource key, and returns it. A resource
+       * key is an additional parameter that needs to be passed to access the target file or folder that
+       * has been shared using a link.
+       *
+       *
+       *     // Creates shortcuts for all folders in the user's drive that have a specific name.
+       *     // TODO(developer): Replace 'Test-Folder' with a valid folder name in your drive.
+       *     const folders = DriveApp.getFoldersByName('Test-Folder');
+       *
+       *     // Iterates through all folders named 'Test-Folder'.
+       *     while (folders.hasNext()) {
+       *       const folder = folders.next();
+       *
+       *       // Creates a shortcut to the provided Drive item ID and resource key, and returns it.
+       *       DriveApp.createShortcutForTargetIdAndResourceKey(folder.getId(), folder.getResourceKey());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#createShortcutForTargetIdAndResourceKey(String,String)
        * @param targetId The ID of the target file or folder.
        * @param targetResourceKey The resource key of the target file or folder.
@@ -119,6 +172,11 @@ declare namespace GoogleAppsScript {
        *
        * See the  Simplifying Google Drive’s folder structure and sharing models blog for
        * more details.
+       *
+       *
+       *     // Turns on enforceSingleParent behavior for all calls affecting item
+       *       parents.
+       *     DriveApp.enforceSingleParent(true);
        * https://developers.google.com/apps-script/reference/drive/drive-app#enforceSingleParent(Boolean)
        * @param value The new state of the enforceSingleParent flag.
        */
@@ -127,8 +185,21 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the file with the given ID. Throws a scripting exception if the file does not exist or the
        * user does not have permission to access it.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace 'Test' with your file name.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     if (files.hasNext()) {
+       *       // Gets the ID of each file in the list.
+       *       const fileId = files.next().getId();
+       *
+       *       // Gets the file name using its ID and logs it to the console.
+       *       console.log(DriveApp.getFileById(fileId).getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFileById(String)
-       * @param id the ID of the file
+       * @param id The ID of the file.
        */
       getFileById(id: string): File;
 
@@ -139,6 +210,23 @@ declare namespace GoogleAppsScript {
        *
        * Throws a scripting exception if the file doesn't exist or the user doesn't have permission
        * to access it.
+       *
+       *
+       *     // Gets a list of all files in Drive with the given name.
+       *     // TODO(developer): Replace 'Test' with your file name.
+       *     const files = DriveApp.getFilesByName('Test');
+       *     if (files.hasNext()) {
+       *
+       *       // Gets the first file in the list.
+       *       const file = files.next();
+       *
+       *       // Gets the ID and resource key.
+       *       const key = file.getResourceKey();
+       *       const id = file.getId();
+       *
+       *       // Logs the file name to the console using its ID and resource key.
+       *       console.log(DriveApp.getFileByIdAndResourceKey(id, key).getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFileByIdAndResourceKey(String,String)
        * @param id The ID of the file.
        * @param resourceKey The resource key of the folder.
@@ -169,7 +257,7 @@ declare namespace GoogleAppsScript {
        * Gets the folder with the given ID. Throws a scripting exception if the folder does not exist or
        * the user does not have permission to access it.
        * https://developers.google.com/apps-script/reference/drive/drive-app#getFolderById(String)
-       * @param id the ID of the folder
+       * @param id The ID of the folder.
        */
       getFolderById(id: string): Folder;
 
@@ -201,48 +289,88 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the folder at the root of the user's Drive.
+       *
+       *
+       *     // Gets the user's My Drive folder and logs its name to the console.
+       *     console.log(DriveApp.getRootFolder().getName());
+       *
+       *     // Logs the Drive owner's name to the console.
+       *     console.log(DriveApp.getRootFolder().getOwner().getName());
        * https://developers.google.com/apps-script/reference/drive/drive-app#getRootFolder()
        */
       getRootFolder(): Folder;
 
       /**
        * Gets the number of bytes the user is allowed to store in Drive.
+       *
+       *
+       *     // Gets the number of bytes the user can store in Drive and logs it to the console.
+       *     console.log(DriveApp.getStorageLimit());
        * https://developers.google.com/apps-script/reference/drive/drive-app#getStorageLimit()
        */
       getStorageLimit(): Integer;
 
       /**
        * Gets the number of bytes the user is currently storing in Drive.
+       *
+       *
+       *     // Gets the number of bytes the user is currently storing in Drive and logs it to the console.
+       *     console.log(DriveApp.getStorageUsed());
        * https://developers.google.com/apps-script/reference/drive/drive-app#getStorageUsed()
        */
       getStorageUsed(): Integer;
 
       /**
        * Gets a collection of all the files in the trash of the user's Drive.
+       *
+       *
+       *     // Gets a list of all the files in the trash of the user's Drive.
+       *     const trashFiles = DriveApp.getTrashedFiles();
+       *
+       *     // Logs the trash file names to the console.
+       *     while (trashFiles.hasNext()) {
+       *       const file = trashFiles.next();
+       *       console.log(file.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#getTrashedFiles()
        */
       getTrashedFiles(): FileIterator;
 
       /**
        * Gets a collection of all the folders in the trash of the user's Drive.
+       *
+       *
+       *     // Gets a collection of all the folders in the trash of the user's Drive.
+       *     const trashFolders = DriveApp.getTrashedFolders();
+       *
+       *     // Logs the trash folder names to the console.
+       *     while (trashFolders.hasNext()) {
+       *       const folder = trashFolders.next();
+       *       console.log(folder.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#getTrashedFolders()
        */
       getTrashedFolders(): FolderIterator;
 
       /**
        * Gets a collection of all files in the user's Drive that match the given search
-       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
-       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
-       * 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the Drive
+       * service uses v2 of the Drive API and some query fields differ from v3. Review the field
+       * differences between v2 and v3.
        *
        *
-       *     // Log the name of every file in the user's Drive that modified after February 28,
-       *     // 2013 whose name contains "untitled".
+       * The params argument is a query string that can contain string values, so take care
+       * to escape quotation marks correctly (for example "title contains 'Gulliver\\'s
+       * Travels'" or 'title contains "Gulliver\'s Travels"').
+       *
+       *
+       *     // Logs the name of every file in the user's Drive that modified after February 28,
+       *     // 2022 whose name contains "untitled.""
        *     var files = DriveApp.searchFiles(
-       *         'modifiedDate > "2013-02-28" and title contains "untitled"');
+       *         'modifiedDate > "2022-02-28" and title contains "untitled"');
        *     while (files.hasNext()) {
        *       var file = files.next();
-       *       Logger.log(file.getName());
+       *       console.log(file.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#searchFiles(String)
        * @param params The search criteria, as detailed in the Google Drive SDK documentation.
@@ -251,16 +379,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets a collection of all folders in the user's Drive that match the given search
-       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
-       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
-       * 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the Drive
+       * service uses v2 of the Drive API and some query fields differ from v3. Review the field
+       * differences between v2 and v3.
        *
        *
-       *     // Log the name of every folder in the user's Drive that you own and is starred.
+       * The params argument is a query string that can contain string values, so take care
+       * to escape quotation marks correctly (for example "title contains 'Gulliver\\'s
+       * Travels'" or 'title contains "Gulliver\'s Travels"').
+       *
+       *
+       *     // Logs the name of every folder in the user's Drive that you own and is starred.
        *     var folders = DriveApp.searchFolders('starred = true and "me" in owners');
        *     while (folders.hasNext()) {
        *       var folder = folders.next();
-       *       Logger.log(folder.getName());
+       *       console.log(folder.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/drive-app#searchFolders(String)
        * @param params The search criteria, as detailed in the Google Drive SDK documentation.
@@ -288,6 +421,16 @@ declare namespace GoogleAppsScript {
       /**
        * Add the given user to the list of commenters for the File. If the user was
        * already on the list of viewers, this method promotes the user out of the list of viewers.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace 'cloudysanfrancisco@gmail.com' with the email address that you
+       *     // want to add as a commenter.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *       email = 'cloudysanfrancisco@gmail.com';
+       *       console.log(file.addCommenter(email));
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#addCommenter(String)
        * @param emailAddress The email address of the user to add.
        */
@@ -296,6 +439,17 @@ declare namespace GoogleAppsScript {
       /**
        * Add the given user to the list of commenters for the File. If the user was
        * already on the list of viewers, this method promotes the user out of the list of viewers.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Adds the active user as a commenter.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *       file.addCommenter(Session.getActiveUser());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#addCommenter(User)
        * @param user A representation of the user to add.
        */
@@ -305,6 +459,19 @@ declare namespace GoogleAppsScript {
        * Add the given array of users to the list of commenters for the File. If any
        * of the users were already on the list of viewers, this method promotes them out of the list of
        * viewers.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *       // TODO(developer): Replace 'cloudysanfrancisco@gmail.com' and
+       *       // 'baklavainthebalkans@gmail.com' with the email addresses to add as commenters.
+       *       const emails = ['cloudysanfrancisco@gmail.com','baklavainthebalkans@gmail.com'];
+       *       console.log(file.addCommenters(emails));
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#addCommenters(String)
        * @param emailAddresses An array of email addresses of the users to add.
        */
@@ -412,6 +579,17 @@ declare namespace GoogleAppsScript {
        * in Google Drive can access the URL. You can use this URL in a browser to download the file, but
        * you can't use to fetch the file with UrlFetchApp. If you want the contents of the
        * file in the script, use getBlob().
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files and logs the download URLs to the console.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *       console.log(file.getDownloadUrl());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#getDownloadUrl()
        */
       getDownloadUrl(): string;
@@ -419,6 +597,29 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the list of editors for this File. If the user who executes the script
        * does not have edit access to the File, this method returns an empty array.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Adds the email addresses in the array as editors of each file.
+       *       // TODO(developer): Replace 'cloudysanfrancisco@gmail.com'
+       *       // and 'baklavainthebalkans@gmail.com' with valid email addresses.
+       *       file.addEditors(['cloudysanfrancisco@gmail.com', 'baklavainthebalkans@gmail.com']);
+       *
+       *       // Gets a list of the file editors.
+       *       const editors = file.getEditors();
+       *
+       *       // For each file, logs the editors' email addresses to the console.
+       *       for (const editor of editors) {
+       *         console.log(editor.getEmail());
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#getEditors()
        */
       getEditors(): User[];
@@ -437,6 +638,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the MIME type of the file.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files and logs the MIME type to the console.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *       console.log(file.getMimeType());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#getMimeType()
        */
       getMimeType(): string;
@@ -448,7 +660,18 @@ declare namespace GoogleAppsScript {
       getName(): string;
 
       /**
-       * Gets the owner of the File.
+       * Gets the file owner.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files and logs the names of the file owners to the console.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *       console.log(file.getOwner().getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#getOwner()
        */
       getOwner(): User;
@@ -521,6 +744,22 @@ declare namespace GoogleAppsScript {
        *
        *
        * Otherwise it returns null.
+       *
+       *
+       *     // The ID of the file for which to make a shortcut and the ID of
+       *     // the folder to which you want to add the shortcut.
+       *     // TODO(developer): Replace the file and folder IDs with your IDs.
+       *     const fileId = 'abc123456';
+       *     const folderId = 'xyz987654';
+       *
+       *     // Gets the folder to add the shortcut to.
+       *     const folder = DriveApp.getFolderById(folderId);
+       *
+       *     // Creates a shortcut of the file and moves it to the specified folder.
+       *     const shortcut = DriveApp.createShortcut(fileId).moveTo(folder);
+       *
+       *     // Logs the target ID of the shortcut.
+       *     console.log(`${shortcut.getName()}=${shortcut.getTargetId()}`);
        * https://developers.google.com/apps-script/reference/drive/file#getTargetId()
        */
       getTargetId(): string;
@@ -530,23 +769,61 @@ declare namespace GoogleAppsScript {
        *
        *
        * Otherwise it returns null.
+       *
+       *
+       *     // The ID of the file for which to make a shortcut and the ID of
+       *     // the folder to which you want to add the shortcut.
+       *     // TODO(developer): Replace the file and folder IDs with your IDs.
+       *     const fileId = 'abc123456';
+       *     const folderId = 'xyz987654';
+       *
+       *     // Gets the folder to add the shortcut to.
+       *     const folder = DriveApp.getFolderById(folderId);
+       *
+       *     // Creates a shortcut of the file and moves it to the specified folder.
+       *     const shortcut = DriveApp.createShortcut(fileId).moveTo(folder);
+       *
+       *     // Logs the MIME type of the file that the shortcut points to.
+       *     console.log(`MIME type of the shortcut: ${shortcut.getTargetMimeType()}`);
        * https://developers.google.com/apps-script/reference/drive/file#getTargetMimeType()
        */
       getTargetMimeType(): string;
 
       /**
-       * If the file is a shortcut, returns the resource key of the item it points to. Resource keys are
-       * an additional parameter which need to be passed to access files that have been shared using a
+       * If the file is a shortcut, returns the resource key of the item it points to. A resource key is
+       * an additional parameter that you need to pass to access files that have been shared using a
        * link.
        *
        *
        * If the file isn't a shortcut, it returns null.
+       *
+       *
+       *     // Gets a file by its ID.
+       *     // TODO(developer): Replace 'abc123456' with your file ID.
+       *     const file = DriveApp.getFileById('abc123456');
+       *
+       *     // If the file is a shortcut, returns the resource key of the file that it points to.
+       *     console.log(file.getTargetResourceKey());
        * https://developers.google.com/apps-script/reference/drive/file#getTargetResourceKey()
        */
       getTargetResourceKey(): string;
 
       /**
        * Gets a thumbnail image for the file, or null if no thumbnail exists.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Logs the thumbnail image for each file to the console as a blob,
+       *       // or null if no thumbnail exists.
+       *       console.log(file.getThumbnail());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#getThumbnail()
        */
       getThumbnail(): Base.Blob;
@@ -562,6 +839,22 @@ declare namespace GoogleAppsScript {
        * Gets the list of viewers and commenters for this File. If the user who
        * executes the script does not have edit access to the File, this method
        * returns an empty array.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // For each file, logs the viewers' email addresses to the console.
+       *       const viewers = file.getViewers();
+       *       for (viewer of viewers) {
+       *         console.log(viewer.getEmail());
+       *       }
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#getViewers()
        */
       getViewers(): User[];
@@ -587,12 +880,43 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates a copy of the file.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Creates a copy of each file and logs the file name to the console.
+       *       console.log(file.makeCopy().getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy()
        */
       makeCopy(): File;
 
       /**
        * Creates a copy of the file in the destination directory.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Creates a copy of each file and adds it to the specified folder.
+       *       // TODO(developer): Replace the folder ID with your own.
+       *       const destination = DriveApp.getFolderById('123456abcxyz');
+       *       const copiedFile = file.makeCopy(destination);
+       *
+       *       // Logs the file names to the console.
+       *       console.log(copiedFile.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy(Folder)
        * @param destination The directory to copy the file into.
        */
@@ -600,6 +924,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates a copy of the file and names it with the name provided.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Creates a copy of each file and sets the name to 'Test-Copy.'
+       *       const filename = file.makeCopy('Test-Copy');
+       *
+       *       // Logs the copied file's name to the console.
+       *       console.log(filename.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy(String)
        * @param name The filename that should be applied to the new copy.
        */
@@ -607,6 +947,25 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates a copy of the file in the destination directory and names it with the name provided.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Creates a copy of each file, sets the file name, and adds the copied file
+       *       // to the specified folder.
+       *       // TODO(developer): Replace the folder ID with your own.
+       *       const destination = DriveApp.getFolderById('123456abcxyz');
+       *       const copiedFile = file.makeCopy('Test-Copy', destination);
+       *
+       *       // Logs the file names to the console.
+       *       console.log(copiedFile.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#makeCopy(String,Folder)
        * @param name The filename that should be applied to the new copy.
        * @param destination The directory to copy the file into.
@@ -629,6 +988,20 @@ declare namespace GoogleAppsScript {
        * does not block users from access the File if they belong to a class of users
        * who have general access — for example, if the File is shared with the user's
        * entire domain.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Removes the given user from the list of commenters for each file.
+       *       // TODO(developer): Replace the email with the email of the user you want to remove.
+       *       file.removeCommenter('cloudysanfrancisco@gmail.com');
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#removeCommenter(String)
        * @param emailAddress The email address of the user to remove.
        */
@@ -639,6 +1012,19 @@ declare namespace GoogleAppsScript {
        * does not block users from access the File if they belong to a class of users
        * who have general access — for example, if the File is shared with the user's
        * entire domain.
+       *
+       *
+       *     // Gets a list of all files in Google Drive with the given name.
+       *     // TODO(developer): Replace the file name with your own.
+       *     const files = DriveApp.getFilesByName('Test');
+       *
+       *     // Loops through the files.
+       *     while (files.hasNext()) {
+       *       const file = files.next();
+       *
+       *       // Removes the given user from the list of commenters for each file.
+       *       console.log(file.removeCommenter(Session.getActiveUser()));
+       *     }
        * https://developers.google.com/apps-script/reference/drive/file#removeCommenter(User)
        * @param user A representation of the user to remove.
        */
@@ -699,22 +1085,22 @@ declare namespace GoogleAppsScript {
       removeViewer(user: Base.User): File;
 
       /**
-       * Revokes the access to the File granted to the given user. This method does
-       * not block users from accessing the File if they belong to a class of users
-       * who have general access — for example, if the File is shared with the user's
+       * Revokes the access to the File granted to the given user. This method doesn't
+       * block users from accessing the File if they belong to a class of users who
+       * have general access — for example, if the File is shared with the user's
        * entire domain.
        * https://developers.google.com/apps-script/reference/drive/file#revokePermissions(String)
-       * @param user the email address of the user whose access should be revoked
+       * @param emailAddress The email address of the user whose access should be revoked.
        */
-      revokePermissions(user: string): File;
+      revokePermissions(emailAddress: string): File;
 
       /**
-       * Revokes the access to the File granted to the given user. This method does
-       * not block users from accessing the File if they belong to a class of users
-       * who have general access — for example, if the File is shared with the user's
+       * Revokes the access to the File granted to the given user. This method doesn't
+       * block users from accessing the File if they belong to a class of users who
+       * have general access — for example, if the File is shared with the user's
        * entire domain.
        * https://developers.google.com/apps-script/reference/drive/file#revokePermissions(User)
-       * @param user a representation of the user whose access should be revoked
+       * @param user A representation of the user whose access should be revoked.
        */
       revokePermissions(user: Base.User): File;
 
@@ -959,9 +1345,22 @@ declare namespace GoogleAppsScript {
       createShortcut(targetId: string): File;
 
       /**
-       * Creates a shortcut to the provided Drive item ID and resource key, and returns it. Resource
-       * keys are an additional parameter which need to be passed to access the target file or folder
-       * that has been shared using a link.
+       * Creates a shortcut to the provided Drive item ID and resource key, and returns it. A resource
+       * key is an additional parameter that needs to be passed to access the target file or folder that
+       * has been shared using a link.
+       *
+       *
+       *     // Creates shortcuts for all folders in the user's drive that have a specific name.
+       *     // TODO(developer): Replace 'Test-Folder' with a valid folder name in your drive.
+       *     const folders = DriveApp.getFoldersByName('Test-Folder');
+       *
+       *     // Iterates through all folders named 'Test-Folder'.
+       *     while (folders.hasNext()) {
+       *       const folder = folders.next();
+       *
+       *       // Creates a shortcut to the provided Drive item ID and resource key, and returns it.
+       *       DriveApp.createShortcutForTargetIdAndResourceKey(folder.getId(), folder.getResourceKey());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/folder#createShortcutForTargetIdAndResourceKey(String,String)
        * @param targetId The ID of the target file or folder.
        * @param targetResourceKey The resource key of the target file or folder.
@@ -997,6 +1396,17 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the list of editors for this Folder. If the user who executes the script
        * does not have edit access to the Folder, this method returns an empty array.
+       *
+       *
+       *     // Gets a folder by its ID.
+       *     // TODO(developer): Replace the folder ID with your own.
+       *     const folder = DriveApp.getFolderById('1234567890abcdefghijklmnopqrstuvwxyz');
+       *
+       *     // Gets the list of editors and logs their names to the console.
+       *     const editors = folder.getEditors();
+       *     for (editor of editors) {
+       *       console.log(editor.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/folder#getEditors()
        */
       getEditors(): User[];
@@ -1053,7 +1463,16 @@ declare namespace GoogleAppsScript {
       getName(): string;
 
       /**
-       * Gets the owner of the Folder.
+       * Gets the owner of this Folder.
+       *
+       *
+       *     // Gets a folder by its ID.
+       *     // TODO(developer): Replace the folder ID with your own.
+       *     const folder = DriveApp.getFolderById('1234567890abcdefghijklmnopqrstuvwxyz');
+       *
+       *     // Gets the owner of the folder and logs the name to the console.
+       *     const folderOwner = folder.getOwner();
+       *     console.log(folderOwner.getName());
        * https://developers.google.com/apps-script/reference/drive/folder#getOwner()
        */
       getOwner(): User;
@@ -1132,6 +1551,17 @@ declare namespace GoogleAppsScript {
        * Gets the list of viewers and commenters for this Folder. If the user who
        * executes the script does not have edit access to the Folder, this method
        * returns an empty array.
+       *
+       *
+       *     // Gets a folder by its ID.
+       *     // TODO(developer): Replace the folder ID with your own.
+       *     const folder = DriveApp.getFolderById('1234567890abcdefghijklmnopqrstuvwxyz');
+       *
+       *     // Gets the list of viewers and logs their names to the console.
+       *     const viewers = folder.getViewers();
+       *     for (viewer of viewers) {
+       *       console.log(viewer.getName());
+       *     }
        * https://developers.google.com/apps-script/reference/drive/folder#getViewers()
        */
       getViewers(): User[];
@@ -1221,39 +1651,44 @@ declare namespace GoogleAppsScript {
       removeViewer(user: Base.User): Folder;
 
       /**
-       * Revokes the access to the Folder granted to the given user. This method does
-       * not block users from accessing the Folder if they belong to a class of users
-       * who have general access — for example, if the Folder is shared with the user's
+       * Revokes the access to the Folder granted to the given user. This method doesn't
+       * block users from accessing the Folder if they belong to a class of users who
+       * have general access — for example, if the Folder is shared with the user's
        * entire domain.
        * https://developers.google.com/apps-script/reference/drive/folder#revokePermissions(String)
-       * @param user the email address of the user whose access should be revoked
+       * @param emailAddress The email address of the user whose access should be revoked.
        */
-      revokePermissions(user: string): Folder;
+      revokePermissions(emailAddress: string): Folder;
 
       /**
-       * Revokes the access to the Folder granted to the given user. This method does
-       * not block users from accessing the Folder if they belong to a class of users
-       * who have general access — for example, if the Folder is shared with the user's
+       * Revokes the access to the Folder granted to the given user. This method doesn't
+       * block users from accessing the Folder if they belong to a class of users who
+       * have general access — for example, if the Folder is shared with the user's
        * entire domain.
        * https://developers.google.com/apps-script/reference/drive/folder#revokePermissions(User)
-       * @param user a representation of the user whose access should be revoked
+       * @param user A representation of the user whose access should be revoked.
        */
       revokePermissions(user: Base.User): Folder;
 
       /**
        * Gets a collection of all files that are children of the current folder and match the given search
-       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
-       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
-       * 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the Drive
+       * service uses v2 of the Drive API and some query fields differ from v3. Review the field
+       * differences between v2 and v3.
        *
        *
-       *     // Log the name of every file that are children of the current folder and modified after February 28,
-       *     // 2013 whose name contains "untitled".
+       * The params argument is a query string that can contain string values, so take care
+       * to escape quotation marks correctly (for example "title contains 'Gulliver\\'s
+       * Travels'" or 'title contains "Gulliver\'s Travels"').
+       *
+       *
+       *     // Logs the name of every file that are children of the current folder and modified after February 28,
+       *     // 2022 whose name contains "untitled.""
        *     var files = DriveApp.getRootFolder().searchFiles(
-       *         'modifiedDate > "2013-02-28" and title contains "untitled"');
+       *         'modifiedDate > "2022-02-28" and title contains "untitled"');
        *     while (files.hasNext()) {
        *       var file = files.next();
-       *       Logger.log(file.getName());
+       *       console.log(file.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/folder#searchFiles(String)
        * @param params The search criteria, as detailed in the Google Drive SDK documentation.
@@ -1262,16 +1697,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets a collection of all folders that are children of the current folder and match the given search
-       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the params argument is a query string that may contain string values, so take care to escape
-       * quotation marks correctly (for example "title contains 'Gulliver\\'s Travels'" or
-       * 'title contains "Gulliver\'s Travels"').
+       * criteria. The search criteria are detailed in the Google Drive SDK documentation. Note that the Drive
+       * service uses v2 of the Drive API and some query fields differ from v3. Review the field
+       * differences between v2 and v3.
        *
        *
-       *     // Log the name of every folder that are children of the current folder and you own and is starred.
+       * The params argument is a query string that can contain string values, so take care
+       * to escape quotation marks correctly (for example "title contains 'Gulliver\\'s
+       * Travels'" or 'title contains "Gulliver\'s Travels"').
+       *
+       *
+       *     // Logs the name of every folder that are children of the current folder and you own and is starred.
        *     var folders = DriveApp.getRootFolder().searchFolders('starred = true and "me" in owners');
        *     while (folders.hasNext()) {
        *       var folder = folders.next();
-       *       Logger.log(folder.getName());
+       *       console.log(folder.getName());
        *     }
        * https://developers.google.com/apps-script/reference/drive/folder#searchFolders(String)
        * @param params The search criteria, as detailed in the Google Drive SDK documentation.
@@ -1401,6 +1841,9 @@ declare namespace GoogleAppsScript {
      * An enum representing the permissions granted to users who can access a file or folder, besides
      * any individual users who have been explicitly given access. These properties can be accessed from
      * DriveApp.Permission.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DriveApp.Permission.VIEW.
      *
      *     // Creates a folder that anyone on the Internet can read from and write to. (Domain
      *     // administrators can prohibit this setting for Google Workspace users.)

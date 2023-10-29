@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -505,7 +505,8 @@ declare namespace GoogleAppsScript {
     interface RgbColor {
 
       /**
-       * Returns the color as a CSS-style 7 character hexadecimal string, #rrggbb.
+       * Returns the color as a CSS-style 7 character hexadecimal string (#rrggbb) or 9 character
+       * hexadecimal string (#aarrggbb).
        * https://developers.google.com/apps-script/reference/base/rgb-color#asHexString()
        */
       asHexString(): string;
@@ -701,9 +702,9 @@ declare namespace GoogleAppsScript {
       alert(title: string, prompt: string, buttons: ButtonSet): Button;
 
       /**
-       * Creates a builder that can be used to insert a sub-menu into the editor's Add-on menu. The menu
-       * isn't actually be updated until Menu.addToUi() is called. If the script is running as
-       * an add-on, the sub-menu name matches the add-on's name in the web store; if the script is bound to the document directly, the sub-menu name
+       * Creates a builder that can be used to insert a sub-menu into the editor's Extensions menu. The
+       * menu isn't actually be updated until Menu.addToUi() is called. If the script is running
+       * as an add-on, the sub-menu name matches the add-on's name in the web store; if the script is bound to the document directly, the sub-menu name
        * matches the script's name. For more information, see the guide to menus.
        *
        *
@@ -723,7 +724,7 @@ declare namespace GoogleAppsScript {
        * actually be added until Menu.addToUi() is called. For more information, see the guide to menus. The label for a top-level menu should be
        * in headline case (all major words capitalized), although the label for a sub-menu should be in
        * sentence case (only the first word capitalized). If the script is published as an add-on, the caption parameter is ignored and the
-       * menu is added as a sub-menu of the Add-ons menu, equivalent to createAddonMenu().
+       * menu is added as a sub-menu of the Extensions menu, equivalent to createAddonMenu().
        *
        *
        *     // Add a custom menu to the active document, including a separator and a sub-menu.

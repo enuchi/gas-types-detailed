@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -131,6 +131,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The alignment position to apply.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.AlignmentPosition.CENTER.
      */
     enum AlignmentPosition { CENTER, HORIZONTAL_CENTER, VERTICAL_CENTER }
     /**
@@ -139,6 +142,9 @@ declare namespace GoogleAppsScript {
      * Some values are based on the "ST_LineEndType" simple type described in section 20.1.10.33 of
      * of "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
      * edition.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.ArrowStyle.FILL_ARROW.
      */
     enum ArrowStyle { UNSUPPORTED, NONE, STEALTH_ARROW, FILL_ARROW, FILL_CIRCLE, FILL_SQUARE, FILL_DIAMOND, OPEN_ARROW, OPEN_CIRCLE, OPEN_SQUARE, OPEN_DIAMOND }
     /**
@@ -168,6 +174,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The types of auto text.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.AutoTextType.SLIDE_NUMBER.
      */
     enum AutoTextType { UNSUPPORTED, SLIDE_NUMBER }
     /**
@@ -213,6 +222,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The autofit types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.AutofitType.TEXT_AUTOFIT.
      */
     enum AutofitType { UNSUPPORTED, NONE, TEXT_AUTOFIT, SHAPE_AUTOFIT }
     /**
@@ -273,6 +285,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The table cell merge states.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.CellMergeState.NORMAL.
      */
     enum CellMergeState { NORMAL, HEAD, MERGED }
     /**
@@ -387,6 +402,9 @@ declare namespace GoogleAppsScript {
      * the ST_TextAnchoringType simple type in section 20.1.10.59 of "Office Open XML File
      * Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
      * edition.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.ContentAlignment.TOP.
      */
     enum ContentAlignment { UNSUPPORTED, TOP, MIDDLE, BOTTOM }
     /**
@@ -394,6 +412,9 @@ declare namespace GoogleAppsScript {
      * "ST_PresetLineDashVal" simple type described in section 20.1.10.48 of "Office Open XML File
      * Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
      * edition.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.DashStyle.DOT.
      */
     enum DashStyle { UNSUPPORTED, SOLID, DOT, DASH, DASH_DOT, LONG_DASH, LONG_DASH_DOT }
     /**
@@ -499,6 +520,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The kinds of fill.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.FillType.SOLID.
      */
     enum FillType { UNSUPPORTED, NONE, SOLID }
     /**
@@ -554,8 +578,8 @@ declare namespace GoogleAppsScript {
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/group#getDescription()
        */
       getDescription(): string;
@@ -563,6 +587,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#getHeight()
        */
       getHeight(): number;
@@ -628,8 +657,8 @@ declare namespace GoogleAppsScript {
       getRotation(): number;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/group#getTitle()
        */
       getTitle(): string;
@@ -654,6 +683,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#getWidth()
        */
       getWidth(): number;
@@ -692,6 +726,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -700,6 +739,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -788,6 +832,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -803,6 +852,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -854,6 +908,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/group#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -957,8 +1016,8 @@ declare namespace GoogleAppsScript {
       getContentUrl(): string;
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/image#getDescription()
        */
       getDescription(): string;
@@ -966,6 +1025,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#getHeight()
        */
       getHeight(): number;
@@ -1074,8 +1138,8 @@ declare namespace GoogleAppsScript {
       getSourceUrl(): string;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/image#getTitle()
        */
       getTitle(): string;
@@ -1102,6 +1166,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#getWidth()
        */
       getWidth(): number;
@@ -1200,8 +1269,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via getSourceUrl().
        *
        *
        * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
@@ -1231,6 +1300,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -1239,6 +1313,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -1327,6 +1406,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -1387,6 +1471,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -1438,6 +1527,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/image#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -1715,8 +1809,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/layout#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -1731,8 +1825,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        *
        *
        * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
@@ -2297,8 +2391,8 @@ declare namespace GoogleAppsScript {
       getDashStyle(): DashStyle;
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/line#getDescription()
        */
       getDescription(): string;
@@ -2324,6 +2418,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#getHeight()
        */
       getHeight(): number;
@@ -2437,8 +2536,8 @@ declare namespace GoogleAppsScript {
       getStartConnection(): ConnectionSite;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/line#getTitle()
        */
       getTitle(): string;
@@ -2471,6 +2570,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#getWidth()
        */
       getWidth(): number;
@@ -2535,6 +2639,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -2543,6 +2652,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -2674,6 +2788,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -2745,6 +2864,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -2839,6 +2963,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/line#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -2849,6 +2978,9 @@ declare namespace GoogleAppsScript {
      *
      * The exact LineType created is determined based on the category and how it's routed to
      * connect to other page elements.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.LineCategory.STRAIGHT.
      */
     enum LineCategory { UNSUPPORTED, STRAIGHT, BENT, CURVED }
     /**
@@ -2942,6 +3074,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The kinds of line fill.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.LineFillType.SOLID.
      */
     enum LineFillType { UNSUPPORTED, NONE, SOLID }
     /**
@@ -2950,6 +3085,9 @@ declare namespace GoogleAppsScript {
      * Derived from a subset of the values of the "ST_ShapeType" simple type in section 20.1.10.55 of
      * "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
      * edition.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.LineType.STRAIGHT_CONNECTOR_1.
      */
     enum LineType { UNSUPPORTED, STRAIGHT_CONNECTOR_1, BENT_CONNECTOR_2, BENT_CONNECTOR_3, BENT_CONNECTOR_4, BENT_CONNECTOR_5, CURVED_CONNECTOR_2, CURVED_CONNECTOR_3, CURVED_CONNECTOR_4, CURVED_CONNECTOR_5, STRAIGHT_LINE }
     /**
@@ -3042,6 +3180,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The types of a Link.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.LinkType.URL.
      */
     enum LinkType { UNSUPPORTED, URL, SLIDE_POSITION, SLIDE_ID, SLIDE_INDEX }
     /**
@@ -3101,6 +3242,9 @@ declare namespace GoogleAppsScript {
      *
      * LEFTTRIANGLE: A triangle pointing left, ◄, corresponding to a Unicode U+25c4 code
      *       point
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.ListPreset.DISC_CIRCLE_SQUARE.
      */
     enum ListPreset { DISC_CIRCLE_SQUARE, DIAMONDX_ARROW3D_SQUARE, CHECKBOX, ARROW_DIAMOND_DISC, STAR_CIRCLE_SQUARE, ARROW3D_CIRCLE_SQUARE, LEFTTRIANGLE_DIAMOND_DISC, DIAMONDX_HOLLOWDIAMOND_SQUARE, DIAMOND_CIRCLE_SQUARE, DIGIT_ALPHA_ROMAN, DIGIT_ALPHA_ROMAN_PARENS, DIGIT_NESTED, UPPERALPHA_ALPHA_ROMAN, UPPERROMAN_UPPERALPHA_DIGIT, ZERODIGIT_ALPHA_ROMAN }
     /**
@@ -3439,8 +3583,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/master#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -3455,8 +3599,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        *
        *
        * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
@@ -4508,8 +4652,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/page#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -4524,8 +4668,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        *
        *
        * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
@@ -5091,8 +5235,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via PictureFill.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via PictureFill.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/page-background#setPictureFill(String)
        * @param imageUrl The URL to download the image from.
        */
@@ -5178,6 +5322,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The kinds of page backgrounds.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.PageBackgroundType.SOLID.
      */
     enum PageBackgroundType { UNSUPPORTED, NONE, SOLID, PICTURE }
     /**
@@ -5275,8 +5422,8 @@ declare namespace GoogleAppsScript {
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/page-element#getDescription()
        */
       getDescription(): string;
@@ -5284,6 +5431,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#getHeight()
        */
       getHeight(): number;
@@ -5349,8 +5501,8 @@ declare namespace GoogleAppsScript {
       getRotation(): number;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/page-element#getTitle()
        */
       getTitle(): string;
@@ -5377,6 +5529,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#getWidth()
        */
       getWidth(): number;
@@ -5415,6 +5572,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -5423,6 +5585,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -5511,6 +5678,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -5526,6 +5698,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -5577,6 +5754,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/page-element#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -5595,6 +5777,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The page element type.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.PageElementType.SHAPE.
      */
     enum PageElementType { UNSUPPORTED, SHAPE, IMAGE, VIDEO, TABLE, GROUP, LINE, WORD_ART, SHEETS_CHART }
     /**
@@ -5610,6 +5795,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The page types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.PageType.SLIDE.
      */
     enum PageType { UNSUPPORTED, SLIDE, LAYOUT, MASTER }
     /**
@@ -5633,6 +5821,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The types of text alignment for a paragraph.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.ParagraphAlignment.START.
      */
     enum ParagraphAlignment { UNSUPPORTED, START, CENTER, END, JUSTIFIED }
     /**
@@ -5844,6 +6035,9 @@ declare namespace GoogleAppsScript {
      * "ST_PlaceholderType" type in section 19.7.10 of "Office Open XML File Formats - Fundamentals and
      * Markup Language Reference", part 1 of ECMA-376 5th
      * edition.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.PlaceholderType.BODY.
      */
     enum PlaceholderType { UNSUPPORTED, NONE, BODY, CHART, CLIP_ART, CENTERED_TITLE, DIAGRAM, DATE_AND_TIME, FOOTER, HEADER, MEDIA, OBJECT, PICTURE, SLIDE_NUMBER, SUBTITLE, TABLE, TITLE, SLIDE_IMAGE }
     /**
@@ -5867,6 +6061,9 @@ declare namespace GoogleAppsScript {
      * Predefined layouts. These are commonly found layouts in presentations. However, there is no
      * guarantee that these layouts are present in the current master as they could have been deleted or
      * not part of the used theme. Additionally, the placeholders on each layout may have been changed.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.PredefinedLayout.BLANK.
      */
     enum PredefinedLayout { UNSUPPORTED, BLANK, CAPTION_ONLY, TITLE, TITLE_AND_BODY, TITLE_AND_TWO_COLUMNS, TITLE_ONLY, SECTION_HEADER, SECTION_TITLE_AND_DESCRIPTION, ONE_COLUMN_TEXT, MAIN_POINT, BIG_NUMBER }
     /**
@@ -5989,7 +6186,7 @@ declare namespace GoogleAppsScript {
        *     var sourcePresentation = SlidesApp.openById('presentationId');
        *     var currentPresentation = SlidesApp.getActivePresentation();
        *     var slide = sourcePresentation.getSlides()[0];
-       *     var appendedSlide = currentPresentation.appendSlide(slide, SlideApp.SlideLinkingMode.LINKED);
+       *     var appendedSlide = currentPresentation.appendSlide(slide, SlidesApp.SlideLinkingMode.LINKED);
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide(Slide,SlideLinkingMode)
        * @param slide The slide to be copied, appended, and linked.
        * @param linkingMode The link mode to use.
@@ -6159,7 +6356,7 @@ declare namespace GoogleAppsScript {
        *     // Copy a slide from another presentation and inserts it.
        *     var otherPresentation = SlidesApp.openById('presentationId');
        *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var slide = otherPresentation.getSlides[0];
+       *     var slide = otherPresentation.getSlides()[0];
        *     var insertionIndex = 1;
        *     currentPresentation.insertSlide(insertionIndex, slide);
        * https://developers.google.com/apps-script/reference/slides/presentation#insertSlide(Integer,Slide)
@@ -6413,6 +6610,9 @@ declare namespace GoogleAppsScript {
      * retrieved by using the Selection.getTableCellRange. The Table can be retrieved by
      * using the Selection.getPageElementRange and the Page can be retrieved from the
      * Selection.getCurrentPage.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.SelectionType.TEXT.
      */
     enum SelectionType { UNSUPPORTED, NONE, TEXT, TABLE_CELL, PAGE, PAGE_ELEMENT, CURRENT_PAGE }
     /**
@@ -6482,8 +6682,8 @@ declare namespace GoogleAppsScript {
       getContentAlignment(): ContentAlignment;
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/shape#getDescription()
        */
       getDescription(): string;
@@ -6497,6 +6697,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#getHeight()
        */
       getHeight(): number;
@@ -6610,8 +6815,8 @@ declare namespace GoogleAppsScript {
       getText(): TextRange;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/shape#getTitle()
        */
       getTitle(): string;
@@ -6638,6 +6843,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#getWidth()
        */
       getWidth(): number;
@@ -6733,8 +6943,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        *
        *
        * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
@@ -6762,7 +6972,7 @@ declare namespace GoogleAppsScript {
       replaceWithImage(imageUrl: string, crop: boolean): Image;
 
       /**
-       * Replaces this shape with an Google Sheets chart.
+       * Replaces this shape with a Google Sheets chart.
        *
        *
        * The chart is linked with the source Google Sheets chart which allows it to be updated. Other
@@ -6803,6 +7013,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -6811,6 +7026,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -6909,6 +7129,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -6969,6 +7194,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -7020,6 +7250,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/shape#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -7031,6 +7266,9 @@ declare namespace GoogleAppsScript {
      * type in section 20.1.10.55 of "Office Open XML File Formats - Fundamentals and Markup Language
      * Reference", part 1 of ECMA-376 4th
      * edition.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.ShapeType.TEXT_BOX.
      */
     enum ShapeType { UNSUPPORTED, TEXT_BOX, RECTANGLE, ROUND_RECTANGLE, ELLIPSE, ARC, BENT_ARROW, BENT_UP_ARROW, BEVEL, BLOCK_ARC, BRACE_PAIR, BRACKET_PAIR, CAN, CHEVRON, CHORD, CLOUD, CORNER, CUBE, CURVED_DOWN_ARROW, CURVED_LEFT_ARROW, CURVED_RIGHT_ARROW, CURVED_UP_ARROW, DECAGON, DIAGONAL_STRIPE, DIAMOND, DODECAGON, DONUT, DOUBLE_WAVE, DOWN_ARROW, DOWN_ARROW_CALLOUT, FOLDED_CORNER, FRAME, HALF_FRAME, HEART, HEPTAGON, HEXAGON, HOME_PLATE, HORIZONTAL_SCROLL, IRREGULAR_SEAL_1, IRREGULAR_SEAL_2, LEFT_ARROW, LEFT_ARROW_CALLOUT, LEFT_BRACE, LEFT_BRACKET, LEFT_RIGHT_ARROW, LEFT_RIGHT_ARROW_CALLOUT, LEFT_RIGHT_UP_ARROW, LEFT_UP_ARROW, LIGHTNING_BOLT, MATH_DIVIDE, MATH_EQUAL, MATH_MINUS, MATH_MULTIPLY, MATH_NOT_EQUAL, MATH_PLUS, MOON, NO_SMOKING, NOTCHED_RIGHT_ARROW, OCTAGON, PARALLELOGRAM, PENTAGON, PIE, PLAQUE, PLUS, QUAD_ARROW, QUAD_ARROW_CALLOUT, RIBBON, RIBBON_2, RIGHT_ARROW, RIGHT_ARROW_CALLOUT, RIGHT_BRACE, RIGHT_BRACKET, ROUND_1_RECTANGLE, ROUND_2_DIAGONAL_RECTANGLE, ROUND_2_SAME_RECTANGLE, RIGHT_TRIANGLE, SMILEY_FACE, SNIP_1_RECTANGLE, SNIP_2_DIAGONAL_RECTANGLE, SNIP_2_SAME_RECTANGLE, SNIP_ROUND_RECTANGLE, STAR_10, STAR_12, STAR_16, STAR_24, STAR_32, STAR_4, STAR_5, STAR_6, STAR_7, STAR_8, STRIPED_RIGHT_ARROW, SUN, TRAPEZOID, TRIANGLE, UP_ARROW, UP_ARROW_CALLOUT, UP_DOWN_ARROW, UTURN_ARROW, VERTICAL_SCROLL, WAVE, WEDGE_ELLIPSE_CALLOUT, WEDGE_RECTANGLE_CALLOUT, WEDGE_ROUND_RECTANGLE_CALLOUT, FLOW_CHART_ALTERNATE_PROCESS, FLOW_CHART_COLLATE, FLOW_CHART_CONNECTOR, FLOW_CHART_DECISION, FLOW_CHART_DELAY, FLOW_CHART_DISPLAY, FLOW_CHART_DOCUMENT, FLOW_CHART_EXTRACT, FLOW_CHART_INPUT_OUTPUT, FLOW_CHART_INTERNAL_STORAGE, FLOW_CHART_MAGNETIC_DISK, FLOW_CHART_MAGNETIC_DRUM, FLOW_CHART_MAGNETIC_TAPE, FLOW_CHART_MANUAL_INPUT, FLOW_CHART_MANUAL_OPERATION, FLOW_CHART_MERGE, FLOW_CHART_MULTIDOCUMENT, FLOW_CHART_OFFLINE_STORAGE, FLOW_CHART_OFFPAGE_CONNECTOR, FLOW_CHART_ONLINE_STORAGE, FLOW_CHART_OR, FLOW_CHART_PREDEFINED_PROCESS, FLOW_CHART_PREPARATION, FLOW_CHART_PROCESS, FLOW_CHART_PUNCHED_CARD, FLOW_CHART_PUNCHED_TAPE, FLOW_CHART_SORT, FLOW_CHART_SUMMING_JUNCTION, FLOW_CHART_TERMINATOR, ARROW_EAST, ARROW_NORTH_EAST, ARROW_NORTH, SPEECH, STARBURST, TEARDROP, ELLIPSE_RIBBON, ELLIPSE_RIBBON_2, CLOUD_CALLOUT, CUSTOM }
     /**
@@ -7092,8 +7330,8 @@ declare namespace GoogleAppsScript {
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getDescription()
        */
       getDescription(): string;
@@ -7107,6 +7345,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getHeight()
        */
       getHeight(): number;
@@ -7190,8 +7433,8 @@ declare namespace GoogleAppsScript {
       getSpreadsheetId(): string;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getTitle()
        */
       getTitle(): string;
@@ -7218,6 +7461,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getWidth()
        */
       getWidth(): number;
@@ -7272,6 +7520,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -7280,6 +7533,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -7368,6 +7626,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -7428,6 +7691,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -7479,6 +7747,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -7486,6 +7759,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The Sheets chart's embed type.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.SheetsChartEmbedType.IMAGE.
      */
     enum SheetsChartEmbedType { UNSUPPORTED, IMAGE }
     /**
@@ -7795,8 +8071,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/slide#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -7811,8 +8087,8 @@ declare namespace GoogleAppsScript {
        * in either in PNG, JPEG, or GIF format.
        *
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
+       * with the image and exposed via Image.getSourceUrl().
        *
        *
        * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
@@ -8381,10 +8657,16 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The mode of links between slides.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.SlideLinkingMode.LINKED.
      */
     enum SlideLinkingMode { UNSUPPORTED, LINKED, NOT_LINKED }
     /**
      * The relative position of a Slide.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.SlidePosition.NEXT_SLIDE.
      */
     enum SlidePosition { NEXT_SLIDE, PREVIOUS_SLIDE, FIRST_SLIDE, LAST_SLIDE }
     /**
@@ -8520,6 +8802,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The different modes for paragraph spacing.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.SpacingMode.NEVER_COLLAPSE.
      */
     enum SpacingMode { UNSUPPORTED, NEVER_COLLAPSE, COLLAPSE_LISTS }
     /**
@@ -8596,8 +8881,8 @@ declare namespace GoogleAppsScript {
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/table#getDescription()
        */
       getDescription(): string;
@@ -8605,6 +8890,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#getHeight()
        */
       getHeight(): number;
@@ -8689,8 +8979,8 @@ declare namespace GoogleAppsScript {
       getRow(rowIndex: Integer): TableRow;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/table#getTitle()
        */
       getTitle(): string;
@@ -8717,6 +9007,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#getWidth()
        */
       getWidth(): number;
@@ -8777,6 +9072,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -8785,6 +9085,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -8873,6 +9178,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -8888,6 +9198,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -8939,6 +9254,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/table#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -9146,10 +9466,16 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The text vertical offset from its normal position.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.TextBaselineOffset.SUPERSCRIPT.
      */
     enum TextBaselineOffset { UNSUPPORTED, NONE, SUPERSCRIPT, SUBSCRIPT }
     /**
      * The directions text can flow in.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.TextDirection.LEFT_TO_RIGHT.
      */
     enum TextDirection { UNSUPPORTED, LEFT_TO_RIGHT, RIGHT_TO_LEFT }
     /**
@@ -9842,6 +10168,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The name of an entry in the page's color scheme.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.ThemeColorType.LIGHT1.
      */
     enum ThemeColorType { UNSUPPORTED, DARK1, LIGHT1, DARK2, LIGHT2, ACCENT1, ACCENT2, ACCENT3, ACCENT4, ACCENT5, ACCENT6, HYPERLINK, FOLLOWED_HYPERLINK }
     /**
@@ -9897,8 +10226,8 @@ declare namespace GoogleAppsScript {
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/video#getDescription()
        */
       getDescription(): string;
@@ -9906,6 +10235,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#getHeight()
        */
       getHeight(): number;
@@ -9986,8 +10320,8 @@ declare namespace GoogleAppsScript {
       getThumbnailUrl(): string;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/video#getTitle()
        */
       getTitle(): string;
@@ -10027,6 +10361,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#getWidth()
        */
       getWidth(): number;
@@ -10065,6 +10404,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -10073,6 +10417,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -10161,6 +10510,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -10176,6 +10530,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -10227,6 +10586,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/video#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -10234,6 +10598,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * The video source types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * SlidesApp.VideoSourceType.YOUTUBE.
      */
     enum VideoSourceType { UNSUPPORTED, YOUTUBE }
     /**
@@ -10283,8 +10650,8 @@ declare namespace GoogleAppsScript {
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's description. The description is combined with the title to display
-       * and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/word-art#getDescription()
        */
       getDescription(): string;
@@ -10292,6 +10659,11 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#getHeight()
        */
       getHeight(): number;
@@ -10375,8 +10747,8 @@ declare namespace GoogleAppsScript {
       getRotation(): number;
 
       /**
-       * Returns the page element's title. The title is combined with the description to display and
-       * read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to
+       * display and read alt text.
        * https://developers.google.com/apps-script/reference/slides/word-art#getTitle()
        */
       getTitle(): string;
@@ -10403,6 +10775,11 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the element's width in points, which is the width of the element's bounding box when
        * the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#getWidth()
        */
       getWidth(): number;
@@ -10450,6 +10827,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
@@ -10458,6 +10840,11 @@ declare namespace GoogleAppsScript {
       /**
        * Scales the element's width by the specified ratio. The element's width is the width of its
        * bounding box when the element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
@@ -10546,6 +10933,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's height in points, which is the height of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
@@ -10606,6 +10998,11 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -10657,6 +11054,11 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the element's width in points, which is the width of the element's bounding box when the
        * element has no rotation.
+       *
+       *
+       * This method isn't compatible with all page elements. To learn which page elements aren't
+       * compatible with this method, refer to the
+       * sizing and positioning limitations.
        * https://developers.google.com/apps-script/reference/slides/word-art#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */

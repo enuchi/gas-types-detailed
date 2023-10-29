@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -10,25 +10,26 @@ declare namespace GoogleAppsScript {
     /**
      * A representation of a mutual-exclusion lock.
      *
-     * This class allows scripts to make sure that only one instance of the script is executing a
-     * given section of code at a time. This is particularly useful for callbacks and triggers, where a
-     * user action may cause changes to a shared resource and you want to ensure that aren't collisions.
+     * This class lets scripts make sure that only one instance of the script executes a given
+     * section of code at a time. This is particularly useful for callbacks and triggers, where a user
+     * action might cause changes to a shared resource and you want to ensure that there aren't
+     * collisions.
      *
-     * The following examples shows how to use a lock in a form submit handler.
+     * The following example shows how to use a lock in a form submit handler.
      *
      *     // Generates a unique ticket number for every form submission.
      *     function onFormSubmit(e) {
      *       var targetCell = e.range.offset(0, e.range.getNumColumns(), 1, 1);
      *
-     *       // Get a script lock, because we're about to modify a shared resource.
+     *       // Gets a script lock before modifying a shared resource.
      *       var lock = LockService.getScriptLock();
-     *       // Wait for up to 30 seconds for other processes to finish.
+     *       // Waits for up to 30 seconds for other processes to finish.
      *       lock.waitLock(30000);
      *
      *       var ticketNumber = Number(ScriptProperties.getProperty('lastTicketNumber')) + 1;
      *       ScriptProperties.setProperty('lastTicketNumber', ticketNumber);
      *
-     *       // Release the lock so that other processes can continue.
+     *       // Releases the lock so that other processes can continue.
      *       lock.releaseLock();
      *
      *       targetCell.setValue(ticketNumber);

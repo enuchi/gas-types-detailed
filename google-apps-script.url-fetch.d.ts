@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -144,7 +144,7 @@ declare namespace GoogleAppsScript {
        *     var response = UrlFetchApp.fetch("http://www.google.com/");
        *     Logger.log(response.getContentText());
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#fetch(String)
-       * @param url The URL to fetch.
+       * @param url The URL to fetch. The URL can have up to 2,082 characters.
        */
       fetch(url: string): HTTPResponse;
 
@@ -188,7 +188,7 @@ declare namespace GoogleAppsScript {
        *     };
        *     UrlFetchApp.fetch('https://httpbin.org/post', options);
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#fetch(String,Object)
-       * @param url The URL to fetch.
+       * @param url The URL to fetch. The URL can have up to 2,082 characters.
        * @param params The optional JavaScript object specifying advanced parameters as defined below.
        */
       fetch(url: string, params: any): HTTPResponse;
@@ -198,10 +198,6 @@ declare namespace GoogleAppsScript {
        *
        *
        * This works over HTTP as well as HTTPS.
-       *
-       *
-       * The maximum number of URLs you can fetch is 100. If you provide more than 100 URLs, the
-       * request fails.
        *
        *
        *     // Make both a POST request with form data, and a GET request.
@@ -240,7 +236,7 @@ declare namespace GoogleAppsScript {
        *       Logger.log(i + ": " + response[i]);
        *     }
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#getRequest(String)
-       * @param url The URL to look up.
+       * @param url The URL to look up. The URL can have up to 2,082 characters.
        */
       getRequest(url: string): any;
 
@@ -250,7 +246,7 @@ declare namespace GoogleAppsScript {
        *
        * This method does not actually issue the request.
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#getRequest(String,Object)
-       * @param url The URL to look up.
+       * @param url The URL to look up. The URL can have up to 2,082 characters.
        * @param params An optional JavaScript object specifying advanced parameters as defined below.
        */
       getRequest(url: string, params: any): any;

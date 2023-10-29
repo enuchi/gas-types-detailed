@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2022-07-03
+// Type definitions for Google Apps Script 2023-10-28
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -10,6 +10,9 @@ declare namespace GoogleAppsScript {
   namespace Document {
     /**
      * An enumeration of the element attributes.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.Attribute.BACKGROUND_COLOR.
      *
      * Use attributes to compose custom styles. For example:
      *
@@ -1432,8 +1435,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a Bookmark at the given Position.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body and adds a paragraph.
+       *     const paragraph = doc.getBody().appendParagraph('My new paragraph.');
+       *
+       *     // Creates a position at the first character of the paragraph text.
+       *     const position = doc.newPosition(paragraph.getChild(0), 0);
+       *
+       *     // Adds a bookmark at the first character of the paragraph text.
+       *     const bookmark = doc.addBookmark(position);
+       *
+       *     // Logs the bookmark ID to the console.
+       *     console.log(bookmark.getId());
+       *
+       *     }
        * https://developers.google.com/apps-script/reference/document/document#addBookmark(Position)
-       * @param position the position of the new bookmark
+       * @param position The position of the new bookmark.
        */
       addBookmark(position: Position): Bookmark;
 
@@ -1464,39 +1487,63 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a document footer section, if none exists.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Adds a footer to the document.
+       *     const footer = doc.addFooter();
+       *
+       *     // Sets the footer text to 'This is a footer.'
+       *     footer.setText('This is a footer');
        * https://developers.google.com/apps-script/reference/document/document#addFooter()
        */
       addFooter(): FooterSection;
 
       /**
        * Adds a document header section, if none exists.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Adds a header to the document.
+       *     const header = doc.addHeader();
+       *
+       *     // Sets the header text to 'This is a header.'
+       *     header.setText('This is a header');
        * https://developers.google.com/apps-script/reference/document/document#addHeader()
        */
       addHeader(): HeaderSection;
 
       /**
-       * Adds a new NamedRange, which is a Range that has a name and ID to allow
-       * later retrieval. Names are not necessarily unique; several different ranges in the same
-       * document may share the same name, much like a class in HTML. By contrast, IDs are unique within
-       * the document, like an ID in HTML. Once a NamedRange has been added to a document, it
-       * cannot be modified, only removed.
+       * Adds a NamedRange, which is a Range that has a name and ID to use for
+       * later retrieval. Names aren't necessarily unique; several different ranges in the same document
+       * can share the same name, much like a class in HTML. By contrast, IDs are unique within the
+       * document, like an ID in HTML. After you add a NamedRange to a document, you can't
+       * modify it, you can only remove it.
        *
        *
-       * A NamedRange can be accessed by any script that accesses the document. To avoid
-       * unintended conflicts between scripts, consider prefixing range names with a unique string.
+       * Any script that accesses the document can access a NamedRange. To avoid unintended
+       * conflicts between scripts, consider prefixing range names with a unique string.
        *
        *
-       *     // Change the user's selection to a range that includes every table in the document.
+       *     // Creates a named range that includes every table in the document.
        *     var doc = DocumentApp.getActiveDocument();
        *     var rangeBuilder = doc.newRange();
        *     var tables = doc.getBody().getTables();
        *     for (var i = 0; i < tables.length; i++) {
        *       rangeBuilder.addElement(tables[i]);
        *     }
-       *     doc.setSelection(rangeBuilder.build());
+       *     doc.addNamedRange('Document tables', rangeBuilder.build());
        * https://developers.google.com/apps-script/reference/document/document#addNamedRange(String,Range)
-       * @param name the name for the range, which does not need to be unique; range names must be at least 1 character, and no more than 256 characters
-       * @param range the range of elements to associate with the name; the range can be the active selection, a search result, or manually constructed with newRange()
+       * @param name The name for the range, which doesn't need to be unique; range names must be between 1-256 characters.
+       * @param range The range of elements to associate with the name; the range can be the active selection, a search result, or manually constructed with newRange().
        */
       addNamedRange(name: string, range: Range): NamedRange;
 
@@ -1526,13 +1573,34 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the current Document contents as a blob of the specified type.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document as a PDF.
+       *     const pdf = doc.getAs('application/pdf');
+       *
+       *     // Logs the name of the PDF to the console.
+       *     console.log(pdf.getName());
        * https://developers.google.com/apps-script/reference/document/document#getAs(String)
-       * @param contentType the MIME type to convert to; currently only 'application/pdf' is supported
+       * @param contentType The MIME type to convert to; currently only 'application/pdf' is supported.
        */
       getAs(contentType: string): Base.Blob;
 
       /**
        * Retrieves the current Document contents as a blob.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Retrieves the current document's contents as a blob and logs it to the console.
+       *     console.log(doc.getBlob().getContentType());
        * https://developers.google.com/apps-script/reference/document/document#getBlob()
        */
       getBlob(): Base.Blob;
@@ -1545,19 +1613,59 @@ declare namespace GoogleAppsScript {
        *
        *
        * Element methods in Document delegate to the active Body.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the body text and logs it to the console.
+       *     console.log(body.getText());
        * https://developers.google.com/apps-script/reference/document/document#getBody()
        */
       getBody(): Body;
 
       /**
        * Gets the Bookmark with the given ID. This method returns null if no such Bookmark exists.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the bookmark by its ID.
+       *     const bookmark = doc.getBookmark('id.xyz654321');
+       *
+       *     // If the bookmark exists, logs the character offset of its position to the console.
+       *     // otherwise, logs 'No bookmark exists with the given ID.' to the console.
+       *     if (bookmark) {
+       *       console.log(bookmark.getPosition().getOffset());
+       *     } else {
+       *       console.log('No bookmark exists with the given ID.');
+       *     }
        * https://developers.google.com/apps-script/reference/document/document#getBookmark(String)
-       * @param id the ID for the Bookmark
+       * @param id The ID for the Bookmark.
        */
       getBookmark(id: string): Bookmark;
 
       /**
        * Gets all Bookmark objects in the document.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets all of the bookmarks in the document.
+       *     const bookmarks = doc.getBookmarks();
+       *
+       *     // Logs the number of bookmarks in the document to the console.
+       *     console.log(bookmarks.length);
        * https://developers.google.com/apps-script/reference/document/document#getBookmarks()
        */
       getBookmarks(): Bookmark[];
@@ -1593,6 +1701,15 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the document's footer section, if one exists.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the text of the document's footer and logs it to the console.
+       *     console.log(doc.getFooter().getText());
        * https://developers.google.com/apps-script/reference/document/document#getFooter()
        */
       getFooter(): FooterSection;
@@ -1603,12 +1720,33 @@ declare namespace GoogleAppsScript {
        *
        * Calls to getFootnotes cause an iteration over the document's elements. For large
        * documents, avoid unnecessary calls to this method.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the first footnote.
+       *     const footnote = doc.getFootnotes()[0];
+       *
+       *     // Logs footnote contents to the console.
+       *     console.log(footnote.getFootnoteContents().getText());
        * https://developers.google.com/apps-script/reference/document/document#getFootnotes()
        */
       getFootnotes(): Footnote[];
 
       /**
        * Retrieves the document's header section, if one exists.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the text of the document's header and logs it to the console.
+       *     console.log(doc.getHeader().getText());
        * https://developers.google.com/apps-script/reference/document/document#getHeader()
        */
       getHeader(): HeaderSection;
@@ -2412,6 +2550,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of all the element types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.ElementType.BODY_SECTION.
      *
      * Use the ElementType enumeration to check the type of a given element, for instance:
      *
@@ -4668,6 +4809,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration of the supported glyph types.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.GlyphType.BULLET.
+     *
      * Use the GlyphType enumeration to set the bullet type for list items.
      *
      *     var body = DocumentApp.getActiveDocument().getBody();
@@ -5225,6 +5369,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of the supported horizontal alignment types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.HorizontalAlignment.LEFT.
      *
      * Use the HorizontalAlignment enumeration to manipulate the alignment of Paragraph contents.
      *
@@ -6823,28 +6970,99 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates and inserts a new PositionedImage from the specified image blob.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Fetches the specified image URL.
+       *     const image =
+       *       UrlFetchApp.fetch('https://fonts.gstatic.com/s/i/productlogos/apps_script/v10/web-24dp/logo_apps_script_color_1x_web_24dp.png');
+       *
+       *     // Adds the image to the document, anchored to the first paragraph.
+       *     paragraph.addPositionedImage(image);
        * https://developers.google.com/apps-script/reference/document/paragraph#addPositionedImage(BlobSource)
-       * @param image the image data
+       * @param image The image data.
        */
       addPositionedImage(image: Base.BlobSource): PositionedImage;
 
       /**
        * Creates and appends a new HorizontalRule.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Adds a horizontal line under the first paragraph.
+       *     paragraph.appendHorizontalRule();
        * https://developers.google.com/apps-script/reference/document/paragraph#appendHorizontalRule()
        */
       appendHorizontalRule(): HorizontalRule;
 
       /**
        * Creates and appends a new InlineImage from the specified image blob.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Fetches the image from the specified image URL.
+       *     const image = UrlFetchApp
+       *       .fetch('https://fonts.gstatic.com/s/i/productlogos/apps_script/v10/web-96dp/logo_apps_script_color_1x_web_96dp.png');
+       *
+       *     // Adds the image to the first paragraph.
+       *     paragraph.appendInlineImage(image);
        * https://developers.google.com/apps-script/reference/document/paragraph#appendInlineImage(BlobSource)
-       * @param image the image data
+       * @param image The image data.
        */
       appendInlineImage(image: Base.BlobSource): InlineImage;
 
       /**
        * Appends the given InlineImage.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Makes a copy of the first image in the body.
+       *     const image = body.getImages()[0].copy();;
+       *
+       *     // Adds the image to the first paragraph.
+       *     paragraph.appendInlineImage(image);
        * https://developers.google.com/apps-script/reference/document/paragraph#appendInlineImage(InlineImage)
-       * @param image the image data
+       * @param image The image data.
        */
       appendInlineImage(image: InlineImage): InlineImage;
 
@@ -6854,6 +7072,21 @@ declare namespace GoogleAppsScript {
        *
        * Note: PageBreaks may not be contained within TableCells.
        * If the current element is contained in a table cell, an exception will be thrown.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Adds a page break after the first paragraph.
+       *     paragraph.appendPageBreak();
        * https://developers.google.com/apps-script/reference/document/paragraph#appendPageBreak()
        */
       appendPageBreak(): PageBreak;
@@ -6862,24 +7095,79 @@ declare namespace GoogleAppsScript {
        * Appends the given PageBreak.
        *
        *
-       * Note: PageBreaks may not be contained within TableCells.
-       * If the current element is contained in a table cell, an exception will be thrown.
+       * Note: PageBreaks can't be contained within TableCells.
+       * If the current element exists in a table cell, the script throws an exception.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Adds a page break after the first paragraph.
+       *     const pageBreak = paragraph.appendPageBreak();
+       *
+       *     // Makes a copy of the page break.
+       *     const newPageBreak = pageBreak.copy();
+       *
+       *     // Adds the copied page break to the paragraph.
+       *     paragraph.appendPageBreak(newPageBreak);
        * https://developers.google.com/apps-script/reference/document/paragraph#appendPageBreak(PageBreak)
-       * @param pageBreak the page break to append
+       * @param pageBreak The page break to append.
        */
       appendPageBreak(pageBreak: PageBreak): PageBreak;
 
       /**
        * Creates and appends a new Text element with the specified contents.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Adds a string to the paragraph.
+       *     paragraph.appendText('This is a new sentence.');
        * https://developers.google.com/apps-script/reference/document/paragraph#appendText(String)
-       * @param text the text contents
+       * @param text The text contents.
        */
       appendText(text: string): Text;
 
       /**
        * Appends the given Text element.
+       *
+       *
+       *      // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the text from the first paragraph in the body.
+       *     const paragraph1 = body.getParagraphs()[0];
+       *     const text = paragraph1.getText();
+       *
+       *     // Gets the third paragraph in the body.
+       *     const paragraph3 = body.getParagraphs()[2];
+       *
+       *     // Adds the text from the first paragraph to the third paragraph.
+       *     paragraph3.appendText(text);
        * https://developers.google.com/apps-script/reference/document/paragraph#appendText(Text)
-       * @param text the text element to append
+       * @param text The text element to append.
        */
       appendText(text: Text): Text;
 
@@ -6992,6 +7280,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the HorizontalAlignment.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first paragraph from the body.
+       *     const paragraph = body.getParagraphs()[0];
+       *
+       *     // Sets the horizontal alignment to left for the first paragraph.
+       *     paragraph.setAlignment(DocumentApp.HorizontalAlignment.LEFT);
+       *
+       *     // Gets the horizontal alignment of the first paragraph and logs it to the console.
+       *     console.log(paragraph.getAlignment().toString());
        * https://developers.google.com/apps-script/reference/document/paragraph#getAlignment()
        */
       getAlignment(): HorizontalAlignment;
@@ -7050,6 +7356,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the ParagraphHeading.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within
+       *     // a Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Adds a paragraph to the body.
+       *     const paragraph = body.appendParagraph('Title heading');
+       *
+       *     // Sets the paragraph heading style to 'Title.'
+       *     paragraph.setHeading(DocumentApp.ParagraphHeading.TITLE);
+       *
+       *     // Gets the heading style and logs it to the console.
+       *     console.log(paragraph.getHeading().toString());
        * https://developers.google.com/apps-script/reference/document/paragraph#getHeading()
        */
       getHeading(): ParagraphHeading;
@@ -7479,6 +7803,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration of the standard paragraph headings.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.ParagraphHeading.NORMAL.
+     *
      * Use the ParagraphHeading enumeration to configure the heading style for ParagraphElement.
      *
      *     var body = DocumentApp.getActiveDocument().getBody();
@@ -7889,6 +8216,9 @@ declare namespace GoogleAppsScript {
     /**
      * An enumeration that specifies how to lay out a PositionedImage in relation to surrounding
      * text.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.PositionedLayout.ABOVE_TEXT.
      */
     enum PositionedLayout { ABOVE_TEXT, BREAK_BOTH, BREAK_LEFT, BREAK_RIGHT, WRAP_TEXT }
     /**
@@ -8280,8 +8610,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Appends the given TableRow.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table in the document and copies the second row.
+       *     const table = body.getTables()[0];
+       *     const row = table.getChild(1).copy();
+       *
+       *     // Adds the copied row to the bottom of the table.
+       *     const tableRow = table.appendTableRow(row);
        * https://developers.google.com/apps-script/reference/document/table#appendTableRow(TableRow)
-       * @param tableRow the table row to append
+       * @param tableRow The table row to append.
        */
       appendTableRow(tableRow: TableRow): TableRow;
 
@@ -8420,21 +8766,75 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the border color.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Sets the border color of the first table.
+       *     table.setBorderColor('#00FF00');
+       *
+       *     // Logs the border color of the first table to the console.
+       *     console.log(table.getBorderColor());
        * https://developers.google.com/apps-script/reference/document/table#getBorderColor()
        */
       getBorderColor(): string;
 
       /**
        * Retrieves the border width, in points.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Sets the border width of the first table.
+       *     table.setBorderWidth(20);
+       *
+       *     // Logs the border width of the first table.
+       *     console.log(table.getBorderWidth());
        * https://developers.google.com/apps-script/reference/document/table#getBorderWidth()
        */
       getBorderWidth(): number;
 
       /**
        * Retrieves the TableCell at the specified row and cell indices.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Gets the cell of the table's third row and second column.
+       *     const cell = table.getCell(2, 1);
+       *
+       *     // Logs the cell text to the console.
+       *     console.log(cell.getText());
        * https://developers.google.com/apps-script/reference/document/table#getCell(Integer,Integer)
-       * @param rowIndex the index of the row containing the cell to retrieve
-       * @param cellIndex the index of the cell to retrieve
+       * @param rowIndex The index of the row containing the cell to retrieve.
+       * @param cellIndex The index of the cell to retrieve.
        */
       getCell(rowIndex: Integer, cellIndex: Integer): TableCell;
 
@@ -8466,8 +8866,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the width of the specified table column, in points.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Sets the width of the second column to 100 points.
+       *     const columnWidth = table.setColumnWidth(1, 100);
+       *
+       *     // Gets the width of the second column and logs it to the console.
+       *     console.log(columnWidth.getColumnWidth(1));
        * https://developers.google.com/apps-script/reference/document/table#getColumnWidth(Integer)
-       * @param columnIndex the column index
+       * @param columnIndex The column index.
        */
       getColumnWidth(columnIndex: Integer): number;
 
@@ -8502,6 +8920,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the number of TableRows.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Logs the number of rows of the first table to the console.
+       *     console.log(table.getNumRows());
        * https://developers.google.com/apps-script/reference/document/table#getNumRows()
        */
       getNumRows(): Integer;
@@ -8526,8 +8959,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the TableRow at the specified row index.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table and logs the text of first row to the console.
+       *     const table = body.getTables()[0];
+       *     console.log(table.getRow(0).getText());
        * https://developers.google.com/apps-script/reference/document/table#getRow(Integer)
-       * @param rowIndex the index of the row to retrieve
+       * @param rowIndex The index of the row to retrieve.
        */
       getRow(rowIndex: Integer): TableRow;
 
@@ -8589,8 +9035,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the specified child element.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Finds the first table row and removes it.
+       *     const element = table.findElement(DocumentApp.ElementType.TABLE_ROW);
+       *     table.removeChild(element.getElement());
        * https://developers.google.com/apps-script/reference/document/table#removeChild(Element)
-       * @param child the child element to remove
+       * @param child The child element to remove.
        */
       removeChild(child: Element): Table;
 
@@ -8611,8 +9073,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the TableRow at the specified row index.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table and removes its second row.
+       *     const table = body.getTables()[0];
+       *     table.removeRow(1);
        * https://developers.google.com/apps-script/reference/document/table#removeRow(Integer)
-       * @param rowIndex the index of the row to remove
+       * @param rowIndex The index of the row to remove.
        */
       removeRow(rowIndex: Integer): TableRow;
 
@@ -8674,8 +9149,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the border color.
+       *
+       *
+       *     // Opens the Docs file by its ID. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the ID with your own.
+       *     const doc = DocumentApp.openById('abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the first table.
+       *     const table = body.getTables()[0];
+       *
+       *     // Sets the border color of the table to green.
+       *     table.setBorderColor('#00FF00');
        * https://developers.google.com/apps-script/reference/document/table#setBorderColor(String)
-       * @param color the border color, formatted in CSS notation (like '#ffffff')
+       * @param color The border color, formatted in CSS notation (like '#ffffff').
        */
       setBorderColor(color: string): Table;
 
@@ -10233,8 +10723,20 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds the specified text to the end of this text region.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Adds the text, 'Sample body text,' to the end of the document body.
+       *     const text = body.editAsText().appendText('Sample body text');
        * https://developers.google.com/apps-script/reference/document/text#appendText(String)
-       * @param text the text to append
+       * @param text The text to append.
        */
       appendText(text: string): Text;
 
@@ -10250,9 +10752,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Deletes a range of text.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *      const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Deletes the first 10 characters in the body.
+       *      const text = body.editAsText().deleteText(0, 9);
        * https://developers.google.com/apps-script/reference/document/text#deleteText(Integer,Integer)
-       * @param startOffset the character offset of the first character to delete
-       * @param endOffsetInclusive the character offset of the last character to delete
+       * @param startOffset The character offset of the first character to delete.
+       * @param endOffsetInclusive The character offset of the last character to delete.
        */
       deleteText(startOffset: Integer, endOffsetInclusive: Integer): Text;
 
@@ -10344,8 +10858,32 @@ declare namespace GoogleAppsScript {
        *
        * The result is an object containing a property for each valid text attribute where each
        * property name corresponds to an item in the DocumentApp.Attribute enumeration.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Declares style attributes.
+       *     const style = {}
+       *     style[DocumentApp.Attribute.BOLD] = true;
+       *     style[DocumentApp.Attribute.ITALIC] = true;
+       *     style[DocumentApp.Attribute.FONT_SIZE] = 29;
+       *
+       *     // Sets the style attributes to the document body.
+       *     const text = body.editAsText();
+       *     text.setAttributes(style);
+       *
+       *     // Gets the style attributes applied to the eleventh character in the
+       *     // body and logs them to the console.
+       *     const attributes = text.getAttributes(10);
+       *     console.log(attributes);
        * https://developers.google.com/apps-script/reference/document/text#getAttributes(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       getAttributes(offset: Integer): any;
 
@@ -10357,8 +10895,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the background color at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the background color of the first 3 characters in the body.
+       *     const text = body.editAsText().setBackgroundColor(0, 2, '#FFC0CB');
+       *
+       *     // Gets the background color of the first character in the body.
+       *     const backgroundColor = text.getBackgroundColor(0);
+       *
+       *     // Logs the background color to the console.
+       *     console.log(backgroundColor);
        * https://developers.google.com/apps-script/reference/document/text#getBackgroundColor(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       getBackgroundColor(offset: Integer): string;
 
@@ -10376,8 +10932,26 @@ declare namespace GoogleAppsScript {
        * case-sensitive. The methods getFontFamily() and setFontFamily(fontFamilyName)
        * now use string names for fonts instead of the FontFamily enum. Although this enum is
        * deprecated, it will remain available for compatibility with older scripts.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the font of the first 16 characters to Impact.
+       *     const text = body.editAsText().setFontFamily(0, 15, 'Impact');
+       *
+       *     // Gets the font family of the 16th character in the document body.
+       *     const fontFamily = text.getFontFamily(15);
+       *
+       *     // Logs the font family to the console.
+       *     console.log(fontFamily);
        * https://developers.google.com/apps-script/reference/document/text#getFontFamily(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       getFontFamily(offset: Integer): string;
 
@@ -10389,8 +10963,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the font size at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the font size of the first 13 characters to 15.
+       *     const text = body.editAsText().setFontSize(0, 12, 15);
+       *
+       *     // Gets the font size of the first character.
+       *     const fontSize = text.getFontSize(0);
+       *
+       *     // Logs the font size to the console.
+       *     console.log(fontSize);
        * https://developers.google.com/apps-script/reference/document/text#getFontSize(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       getFontSize(offset: Integer): number;
 
@@ -10402,8 +10994,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the foreground color at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the foreground color of the first 3 characters in the document body.
+       *     const text = body.editAsText().setForegroundColor(0, 2, '#0000FF');
+       *
+       *     // Gets the foreground color of the first character in the document body.
+       *     const foregroundColor = text.getForegroundColor(0);
+       *
+       *     // Logs the foreground color to the console.
+       *     console.log(foregroundcolor);
        * https://developers.google.com/apps-script/reference/document/text#getForegroundColor(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       getForegroundColor(offset: Integer): string;
 
@@ -10414,9 +11024,27 @@ declare namespace GoogleAppsScript {
       getLinkUrl(): string;
 
       /**
-       * Retrieves the link url at the specified character offset.
+       * Retrieves the link URL at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Applies a link to the first 10 characters in the body.
+       *     const text = body.editAsText().setLinkUrl(0, 9, 'https://www.example.com/');
+       *
+       *     // Gets the URL of the link from the first character.
+       *     const link = text.getLinkUrl(0);
+       *
+       *     // Logs the link URL to the console.
+       *     console.log(link);
        * https://developers.google.com/apps-script/reference/document/text#getLinkUrl(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       getLinkUrl(offset: Integer): string;
 
@@ -10461,14 +11089,47 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the text alignment for a single character. The available types of alignment are DocumentApp.TextAlignment.NORMAL, DocumentApp.TextAlignment.SUBSCRIPT, and DocumentApp.TextAlignment.SUPERSCRIPT.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the text alignment of the document body to NORMAL.
+       *     const text = body.editAsText().setTextAlignment(DocumentApp.TextAlignment.NORMAL);
+       *
+       *     // Gets the text alignment of the ninth character.
+       *     const alignment = text.getTextAlignment(8);
+       *
+       *     // Logs the text alignment to the console.
+       *     console.log(alignment.toString());
        * https://developers.google.com/apps-script/reference/document/text#getTextAlignment(Integer)
-       * @param offset the offset of the character
+       * @param offset The offset of the character.
        */
       getTextAlignment(offset: Integer): TextAlignment;
 
       /**
        * Retrieves the set of text indices that correspond to the start of distinct text formatting
        * runs.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Gets the text indices at which text formatting changes.
+       *     const indices = body.editAsText().getTextAttributeIndices();
+       *
+       *     // Logs the indices to the console.
+       *     console.log(indices.toString());
        * https://developers.google.com/apps-script/reference/document/text#getTextAttributeIndices()
        */
       getTextAttributeIndices(): Integer[];
@@ -10498,9 +11159,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts the specified text at the given character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Inserts the text, 'Sample inserted text', at the start of the body content.
+       *     const text = body.editAsText().insertText(0, 'Sample inserted text');
        * https://developers.google.com/apps-script/reference/document/text#insertText(Integer,String)
-       * @param offset the character offset at which to insert
-       * @param text the text to insert
+       * @param offset The character offset at which to insert the text.
+       * @param text The text to insert.
        */
       insertText(offset: Integer, text: string): Text;
 
@@ -10518,8 +11191,26 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the bold setting at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Bolds the first 4 characters in the document body.
+       *     const text = body.editAsText().setBold(0, 3, true);
+       *
+       *     // Gets whether or not the text is bold.
+       *     const bold = text.editAsText().isBold(0);
+       *
+       *     // Logs the text's bold setting to the console
+       *     console.log(bold);
        * https://developers.google.com/apps-script/reference/document/text#isBold(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       isBold(offset: Integer): boolean;
 
@@ -10531,8 +11222,25 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the italic setting at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 13 characters of the document body to italic.
+       *     const text = body.editAsText().setItalic(0, 12, true);
+       *
+       *     // Gets whether the fifth character in the document body is set to
+       *     // italic and logs it to the console.
+       *     const italic = text.isItalic(4);
+       *     console.log(italic);
        * https://developers.google.com/apps-script/reference/document/text#isItalic(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       isItalic(offset: Integer): boolean;
 
@@ -10544,8 +11252,25 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the strikethrough setting at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 17 characters of the document body to strikethrough.
+       *     const text = body.editAsText().setStrikethrough(0, 16, true);
+       *
+       *     // Gets whether the first character in the document body is set to
+       *     // strikethrough and logs it to the console.
+       *     const strikethrough = text.isStrikethrough(0);
+       *     console.log(strikethrough);
        * https://developers.google.com/apps-script/reference/document/text#isStrikethrough(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       isStrikethrough(offset: Integer): boolean;
 
@@ -10557,8 +11282,25 @@ declare namespace GoogleAppsScript {
 
       /**
        * Retrieves the underline setting at the specified character offset.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 13 characters of the document body to underline.
+       *     const text = body.editAsText().setUnderline(0, 12, false);
+       *
+       *     // Gets whether the first character in the document body is set to
+       *     // underline and logs it to the console
+       *     const underline = text.editAsText().isUnderline(0);
+       *     console.log(underline);
        * https://developers.google.com/apps-script/reference/document/text#isUnderline(Integer)
-       * @param offset the character offset
+       * @param offset The character offset.
        */
       isUnderline(offset: Integer): boolean;
 
@@ -10649,10 +11391,27 @@ declare namespace GoogleAppsScript {
        * The specified attributes parameter must be an object where each property name is an item in
        * the DocumentApp.Attribute enumeration and each property value is the new value to be
        * applied.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body and edits as text.
+       *     const body = doc.getBody().editAsText();
+       *
+       *     // Declares style attributes for font size and font family.
+       *     const style = {}
+       *     style[DocumentApp.Attribute.FONT_SIZE] = 20 ;
+       *     style[DocumentApp.Attribute.FONT_FAMILY] = 'Impact';
+       *
+       *     // Sets the style attributes to the first 9 characters in the document body.
+       *     const text = body.setAttributes(0, 8, style);
        * https://developers.google.com/apps-script/reference/document/text#setAttributes(Integer,Integer,Object)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param attributes the element's attributes
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param attributes The element's attributes.
        */
       setAttributes(startOffset: Integer, endOffsetInclusive: Integer, attributes: any): Text;
 
@@ -10687,10 +11446,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the background color for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the background color of the first 3 characters in the
+       *     // document body to hex color #0000FF.
+       *     const text = body.editAsText().setBackgroundColor(0, 2, '#0000FF');
        * https://developers.google.com/apps-script/reference/document/text#setBackgroundColor(Integer,Integer,String)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param color the background color, formatted in CSS notation (like '#ffffff')
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param color The background color, formatted in CSS notation (like '#ffffff').
        */
       setBackgroundColor(startOffset: Integer, endOffsetInclusive: Integer, color: string): Text;
 
@@ -10710,10 +11482,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the bold setting for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 11 characters in the document body to bold.
+       *     const text = body.editAsText().setBold(0, 10, true);
        * https://developers.google.com/apps-script/reference/document/text#setBold(Integer,Integer,Boolean)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param bold the bold setting
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param bold The bold setting.
        */
       setBold(startOffset: Integer, endOffsetInclusive: Integer, bold: boolean): Text;
 
@@ -10723,10 +11507,22 @@ declare namespace GoogleAppsScript {
        * Unrecognized font names will render as Arial. The methods getFontFamily(offset) and
        * setFontFamily(fontFamilyName) now use string names for fonts instead of the FontFamily enum. Although this enum is
        * deprecated, it will remain available for compatibility with older scripts.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets body of the document.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the font of the first 4 characters in the document body to Roboto.
+       *     const text = body.editAsText().setFontFamily(0, 3, 'Roboto');
        * https://developers.google.com/apps-script/reference/document/text#setFontFamily(Integer,Integer,String)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param fontFamilyName the name of the font family, from the Font menu in Docs or Google Fonts
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param fontFamilyName The name of the font family, from the Font menu in Docs or Google Fonts.
        */
       setFontFamily(startOffset: Integer, endOffsetInclusive: Integer, fontFamilyName: string): Text;
 
@@ -10741,10 +11537,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the font size for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the size of the first 11 characters in the document body to 12.
+       *     const text = body.editAsText().setFontSize(0, 10, 12);
        * https://developers.google.com/apps-script/reference/document/text#setFontSize(Integer,Integer,Number)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param size the font size
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param size The font size.
        */
       setFontSize(startOffset: Integer, endOffsetInclusive: Integer, size: number): Text;
 
@@ -10757,10 +11565,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the foreground color for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the foreground color of the first 2 characters in the
+       *     // document body to hex color #FF0000.
+       *     const text = body.editAsText().setForegroundColor(0, 1, '#FF0000');
+       *
+       *     // Gets the foreground color for the second character in the document body.
+       *     const foregroundColor = text.getForegroundColor(1);
+       *
+       *     //  Logs the foreground color to the console.
+       *     console.log(foregroundColor);
        * https://developers.google.com/apps-script/reference/document/text#setForegroundColor(Integer,Integer,String)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param color the foreground color, formatted in CSS notation (like '#ffffff')
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param color The foreground color, formatted in CSS notation (like '#ffffff').
        */
       setForegroundColor(startOffset: Integer, endOffsetInclusive: Integer, color: string): Text;
 
@@ -10780,19 +11607,43 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the italic setting for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 11 characters in the document body to italic.
+       *     const text = body.editAsText().setItalic(0, 10, true);
        * https://developers.google.com/apps-script/reference/document/text#setItalic(Integer,Integer,Boolean)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param italic the italic setting
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param italic The italic setting.
        */
       setItalic(startOffset: Integer, endOffsetInclusive: Integer, italic: boolean): Text;
 
       /**
-       * Sets the link url for the specified character range.
+       * Sets the link URL for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Applies a link to the first 11 characters in the body.
+       *     const text = body.editAsText().setLinkUrl(0, 10, 'https://example.com');
        * https://developers.google.com/apps-script/reference/document/text#setLinkUrl(Integer,Integer,String)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param url the link url
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param url The link URL.
        */
       setLinkUrl(startOffset: Integer, endOffsetInclusive: Integer, url: string): Text;
 
@@ -10812,17 +11663,41 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the strikethrough setting for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 11 characters in the document body to strikethrough.
+       *     const text = body.editAsText().setStrikethrough(0, 10, true);
        * https://developers.google.com/apps-script/reference/document/text#setStrikethrough(Integer,Integer,Boolean)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param strikethrough the strikethrough setting
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param strikethrough The strikethrough setting.
        */
       setStrikethrough(startOffset: Integer, endOffsetInclusive: Integer, strikethrough: boolean): Text;
 
       /**
        * Sets the text contents.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Replaces the contents of the body with the text, 'New body text.'
+       *     const text = body.editAsText().setText('New body text.');
        * https://developers.google.com/apps-script/reference/document/text#setText(String)
-       * @param text the new text contents
+       * @param text The new text contents.
        */
       setText(text: string): Text;
 
@@ -10836,9 +11711,9 @@ declare namespace GoogleAppsScript {
        *     var text = DocumentApp.getActiveDocument().getBody().getParagraphs()[0].editAsText();
        *     text.setTextAlignment(0, 0, DocumentApp.TextAlignment.SUPERSCRIPT);
        * https://developers.google.com/apps-script/reference/document/text#setTextAlignment(Integer,Integer,TextAlignment)
-       * @param startOffset the start offset of the character range
-       * @param endOffsetInclusive the end offset of the character range (inclusive)
-       * @param textAlignment the type of text alignment to apply
+       * @param startOffset The start offset of the character range.
+       * @param endOffsetInclusive The end offset of the character range (inclusive).
+       * @param textAlignment The type of text alignment to apply.
        */
       setTextAlignment(startOffset: Integer, endOffsetInclusive: Integer, textAlignment: TextAlignment): Text;
 
@@ -10863,15 +11738,30 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the underline setting for the specified character range.
+       *
+       *
+       *     // Opens the Docs file by its URL. If you created your script from within a
+       *     // Google Docs file, you can use DocumentApp.getActiveDocument() instead.
+       *     // TODO(developer): Replace the URL with your own.
+       *     const doc = DocumentApp.openByUrl('https://docs.google.com/document/d/abc123456/edit');
+       *
+       *     // Gets the document body.
+       *     const body = doc.getBody();
+       *
+       *     // Sets the first 11 characters in the document body to underline.
+       *     const text = body.editAsText().setUnderline(0, 10, true);
        * https://developers.google.com/apps-script/reference/document/text#setUnderline(Integer,Integer,Boolean)
-       * @param startOffset the text range's start offset
-       * @param endOffsetInclusive the text range's end offset
-       * @param underline the underline setting
+       * @param startOffset The text range's start offset.
+       * @param endOffsetInclusive The text range's end offset.
+       * @param underline The underline setting.
        */
       setUnderline(startOffset: Integer, endOffsetInclusive: Integer, underline: boolean): Text;
     }
     /**
      * An enumeration of the type of text alignments.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.TextAlignment.NORMAL.
      *
      *     // Make the first character in the first paragraph be superscript.
      *     var text = DocumentApp.getActiveDocument().getBody().getParagraphs()[0].editAsText();
@@ -11060,6 +11950,9 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enumeration of the supported vertical alignment types.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * DocumentApp.VerticalAlignment.BOTTOM.
      *
      * Use the VerticalAlignment enumeration to set the vertical alignment of table cells.
      *
