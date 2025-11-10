@@ -475,7 +475,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/data-studio/debug-error#throwException()
        */
-      throwException(): any;
+      throwException(): void;
     }
     /**
      * Contains field-related data. Its properties determine how the field is used in Data Studio.
@@ -850,7 +850,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/data-studio/fields#setDefaultDimension(String)
        * @param fieldId The ID of the field to use as the default dimension. This ID must be present in the set of fields.
        */
-      setDefaultDimension(fieldId: string): any;
+      setDefaultDimension(fieldId: string): void;
 
       /**
        * Sets the default metric to be used for the set of fields. The default metric is selected automatically when a new visualization is made.
@@ -858,7 +858,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/data-studio/fields#setDefaultMetric(String)
        * @param fieldId The ID of the field to use as the default metric. This ID must be present in the set of fields.
        */
-      setDefaultMetric(fieldId: string): any;
+      setDefaultMetric(fieldId: string): void;
     }
     /**
      * Builder to create a getAuthType() response for your script project.
@@ -1578,7 +1578,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/data-studio/user-error#throwException()
        */
-      throwException(): any;
+      throwException(): void;
     }
   }
 }

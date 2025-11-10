@@ -444,7 +444,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/base/logger#clear()
        */
-      clear(): any;
+      clear(): void;
 
       /**
        * Returns a complete list of messages in the current log. This method can be used to save or email the entire log output generated during script execution.
@@ -594,7 +594,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/base/menu#addToUi()
        */
-      addToUi(): any;
+      addToUi(): void;
     }
     /**
      * An enumeration that provides access to MIME-type declarations without typing the strings
@@ -1065,7 +1065,7 @@ declare namespace GoogleAppsScript {
        * @param userInterface An HtmlOutput representing the interface to display.
        * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
        */
-      showModalDialog(userInterface: any, title: string): any;
+      showModalDialog(userInterface: any, title: string): void;
 
       /**
        * Opens a modeless dialog box in the user's editor with custom client-side content. This method does not suspend the server-side script while the dialog is open. To communicate with the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog programmatically, call google.script.host.close() on the client side of an HtmlService web app. For more information, see the guide to dialogs and sidebars.
@@ -1089,7 +1089,7 @@ declare namespace GoogleAppsScript {
        * @param userInterface An HtmlOutput representing the interface to display.
        * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
        */
-      showModelessDialog(userInterface: any, title: string): any;
+      showModelessDialog(userInterface: any, title: string): void;
 
       /**
        * Opens a sidebar in the user's editor with custom client-side content. This method does not suspend the server-side script while the sidebar is open. To communicate with the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the sidebar programmatically, call google.script.host.close() on the client side of an HtmlService web app. For more information, see the guide to dialogs and sidebars.
@@ -1111,8 +1111,8 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/base/ui#showSidebar(Object)
        * @param userInterface An HtmlOutput representing the interface to display.
        */
-      showSidebar(userInterface: any): any;
-      /** @deprecated DO NOT USE */ showDialog(userInterface: any): any;
+      showSidebar(userInterface: any): void;
+      /** @deprecated DO NOT USE */ showDialog(userInterface: any): void;
     }
     /**
      * Representation of a user, suitable for scripting.
@@ -1172,7 +1172,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/base/console#error()
        */
-      error(): any;
+      error(): void;
 
       /**
        * Outputs an ERROR level message to Stackdriver Logging.
@@ -1181,14 +1181,14 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      error(formatOrObject: any, values: any): any;
+      error(formatOrObject: any, values: any): void;
 
       /**
        * Outputs blank INFO level message to Stackdriver Logging.
        *
        * https://developers.google.com/apps-script/reference/base/console#info()
        */
-      info(): any;
+      info(): void;
 
       /**
        * Outputs an INFO level message to Stackdriver Logging.
@@ -1197,14 +1197,14 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      info(formatOrObject: any, values: any): any;
+      info(formatOrObject: any, values: any): void;
 
       /**
        * Outputs a blank DEBUG level message to Stackdriver Logging.
        *
        * https://developers.google.com/apps-script/reference/base/console#log()
        */
-      log(): any;
+      log(): void;
 
       /**
        * Outputs a DEBUG level message to Stackdriver Logging.
@@ -1213,7 +1213,7 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      log(formatOrObject: any, values: any): any;
+      log(formatOrObject: any, values: any): void;
 
       /**
        * Starts a timer you can use to track how long an operation takes.
@@ -1221,7 +1221,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/base/console#time(String)
        * @param label The name to give the new timer.
        */
-      time(label: string): any;
+      time(label: string): void;
 
       /**
        * Stops a timer that was previously started by calling console.time(). The time duration is logged in Stackdriver.
@@ -1229,14 +1229,14 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/base/console#timeEnd(String)
        * @param label the name of the timer to stop.
        */
-      timeEnd(label: string): any;
+      timeEnd(label: string): void;
 
       /**
        * Outputs a blank WARNING level message to Stackdriver Logging.
        *
        * https://developers.google.com/apps-script/reference/base/console#warn()
        */
-      warn(): any;
+      warn(): void;
 
       /**
        * Outputs a WARNING level message to Stackdriver Logging.
@@ -1245,7 +1245,7 @@ declare namespace GoogleAppsScript {
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      warn(formatOrObject: any, values: any): any;
+      warn(formatOrObject: any, values: any): void;
     }
   }
 }

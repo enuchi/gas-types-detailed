@@ -195,7 +195,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/banding#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the first column color that is alternating.
@@ -2933,7 +2933,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source#cancelAllLinkedDataSourceObjectRefreshes()
        */
-      cancelAllLinkedDataSourceObjectRefreshes(): any;
+      cancelAllLinkedDataSourceObjectRefreshes(): void;
 
       /**
        * Creates a calculated column. This method is only available for BigQuery data sources.
@@ -3079,7 +3079,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source#refreshAllLinkedDataSourceObjects()
        */
-      refreshAllLinkedDataSourceObjects(): any;
+      refreshAllLinkedDataSourceObjects(): void;
 
       /**
        * Updates the data source specification and refreshes the data source objects linked with this data source with the new specification.
@@ -3131,7 +3131,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source#waitForAllDataExecutionsCompletion(Integer)
        * @param timeoutInSeconds The time to wait for data executions, in seconds. The maximum is 300 seconds.
        */
-      waitForAllDataExecutionsCompletion(timeoutInSeconds: Integer): any;
+      waitForAllDataExecutionsCompletion(timeoutInSeconds: Integer): void;
     }
     /**
      * Access and modify an existing data source chart.
@@ -3346,7 +3346,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source-column#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the formula for the data source column.
@@ -4432,7 +4432,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source-sheet-filter#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the filter criteria for this filter.
@@ -5174,7 +5174,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-column#remove()
        */
-      remove(): any;
+      remove(): void;
     }
     /**
      * Access and modify an existing data source table filter. To create a new data source table filter,
@@ -5242,7 +5242,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/data-source-table-filter#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the filter criteria for this filter.
@@ -6315,7 +6315,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/developer-metadata#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the key of this developer metadata to the specified value.
@@ -6718,7 +6718,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/drawing#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the actual height of this drawing in pixels.
@@ -13605,7 +13605,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/filter#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes the filter criteria from the specified column.
@@ -15172,7 +15172,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/group#remove()
        */
-      remove(): any;
+      remove(): void;
     }
     /**
      * An enumeration representing the possible positions that a group control toggle can have.
@@ -15613,7 +15613,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/named-range#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets/updates the name of the named range.
@@ -15888,7 +15888,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/over-grid-image#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Replaces this image with the one specified by the provided BlobSource. The maximum supported blob size is 2MB.
@@ -16068,11 +16068,11 @@ declare namespace GoogleAppsScript {
      * Access and modify protected sheets in the older version of Google Sheets.
      */
     interface PageProtection {
-      /** @deprecated DO NOT USE */ addUser(email: string): any;
+      /** @deprecated DO NOT USE */ addUser(email: string): void;
       /** @deprecated DO NOT USE */ getUsers(): string[];
       /** @deprecated DO NOT USE */ isProtected(): boolean;
-      /** @deprecated DO NOT USE */ removeUser(user: string): any;
-      /** @deprecated DO NOT USE */ setProtected(protection: boolean): any;
+      /** @deprecated DO NOT USE */ removeUser(user: string): void;
+      /** @deprecated DO NOT USE */ setProtected(protection: boolean): void;
     }
     /**
      * Access and modify pivot table filters.
@@ -16153,7 +16153,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-filter#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the filter criteria for this pivot filter.
@@ -16414,7 +16414,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes the manual grouping rule with the specified groupName.
@@ -16674,7 +16674,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-group-limit#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the count limit on rows or columns in the pivot group.
@@ -16924,7 +16924,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-table#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the layout of this pivot table to display values as columns or rows.
@@ -17061,7 +17061,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/pivot-value#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets the display name for this value in the pivot table.
@@ -17674,7 +17674,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/protection#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes the given user from the list of editors for the protected sheet or range. Note that if the user is a member of a Google Group that has edit permission, or if all users in the domain have edit permission, the user are still be able to edit the protected area. Neither the owner of the spreadsheet nor the current user can be removed.
@@ -18596,7 +18596,7 @@ declare namespace GoogleAppsScript {
        * @param destination The range to be auto-filled with values. The destination range should contain this range and extend it in only one direction (upwards, downwards, left, or right).
        * @param series The type of autoFill series that should be used to calculate new values. The effect of this series differs based on the type and amount of source data.
        */
-      autoFill(destination: Range, series: AutoFillSeries): any;
+      autoFill(destination: Range, series: AutoFillSeries): void;
 
       /**
        * Calculates a range to fill with new data based on neighboring cells and automatically fills that range with new values based on the data contained in this range. These new values are also determined by the specified series type.
@@ -18621,7 +18621,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#autoFillToNeighbor(AutoFillSeries)
        * @param series The type of autoFill series that should be used to calculate new values. The effect of this series differs based on the type and amount of source data.
        */
-      autoFillToNeighbor(series: AutoFillSeries): any;
+      autoFillToNeighbor(series: AutoFillSeries): void;
 
       /**
        * Break any multi-column cells in the range into individual cells again.
@@ -18901,7 +18901,7 @@ declare namespace GoogleAppsScript {
        * @param row The start row of the target range.
        * @param rowEnd The end row of the target range.
        */
-      copyFormatToRange(gridId: Integer, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): any;
+      copyFormatToRange(gridId: Integer, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): void;
 
       /**
        * Copy the formatting of the range to the given location. If the destination is larger or smaller than the source range then the source is repeated or truncated accordingly. Note that this method copies the formatting only.
@@ -18929,7 +18929,7 @@ declare namespace GoogleAppsScript {
        * @param row The start row of the target range.
        * @param rowEnd The end row of the target range.
        */
-      copyFormatToRange(sheet: Sheet, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): any;
+      copyFormatToRange(sheet: Sheet, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): void;
 
       /**
        * Copies the data from a range of cells to another range of cells. Both the values and formatting are copied.
@@ -18948,7 +18948,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#copyTo(Range)
        * @param destination A destination range to copy to; only the top-left cell position is relevant.
        */
-      copyTo(destination: Range): any;
+      copyTo(destination: Range): void;
 
       /**
        * Copies the data from a range of cells to another range of cells.
@@ -18973,7 +18973,7 @@ declare namespace GoogleAppsScript {
        * @param copyPasteType A type that specifies how the range contents are pasted to the destination.
        * @param transposed Whether the range should be pasted in its transposed orientation.
        */
-      copyTo(destination: Range, copyPasteType: CopyPasteType, transposed: boolean): any;
+      copyTo(destination: Range, copyPasteType: CopyPasteType, transposed: boolean): void;
 
       /**
        * Copies the data from a range of cells to another range of cells. By default both the values and formatting are copied, but this can be overridden using advanced arguments.
@@ -18997,7 +18997,7 @@ declare namespace GoogleAppsScript {
        * - formatOnly (Boolean) — designates that only the format should be copied
        * - contentsOnly (Boolean) — designates that only the content should be copied
        */
-      copyTo(destination: Range, options: any): any;
+      copyTo(destination: Range, options: any): void;
 
       /**
        * Copy the content of the range to the given location. If the destination is larger or smaller than the source range then the source is repeated or truncated accordingly.
@@ -19027,7 +19027,7 @@ declare namespace GoogleAppsScript {
        * @param row The start row of the target range.
        * @param rowEnd The end row of the target range.
        */
-      copyValuesToRange(gridId: Integer, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): any;
+      copyValuesToRange(gridId: Integer, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): void;
 
       /**
        * Copy the content of the range to the given location. If the destination is larger or smaller than the source range then the source is repeated or truncated accordingly.
@@ -19055,7 +19055,7 @@ declare namespace GoogleAppsScript {
        * @param row The start row of the target range.
        * @param rowEnd The end row of the target range.
        */
-      copyValuesToRange(sheet: Sheet, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): any;
+      copyValuesToRange(sheet: Sheet, column: Integer, columnEnd: Integer, row: Integer, rowEnd: Integer): void;
 
       /**
        * Creates an empty data source pivot table from the data source, anchored at the first cell in this range.
@@ -19270,7 +19270,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#deleteCells(Dimension)
        * @param shiftDimension The dimension along which to shift existing data.
        */
-      deleteCells(shiftDimension: Dimension): any;
+      deleteCells(shiftDimension: Dimension): void;
 
       /**
        * Expands the collapsed groups whose range or control toggle intersects with this range. The control toggle location is the index at which the control toggle is shown, directly before or after the group depending on settings. If there is more than one group at the same location, the shallowest group is expanded.
@@ -21634,7 +21634,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#moveTo(Range)
        * @param target A target range to copy this range to; only the top-left cell position is relevant.
        */
-      moveTo(target: Range): any;
+      moveTo(target: Range): void;
 
       /**
        * Returns a new range that is offset from this range by the given number of rows and columns (which can be negative). The new range is the same size as the original range.
@@ -23369,7 +23369,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/range#splitTextToColumns()
        */
-      splitTextToColumns(): any;
+      splitTextToColumns(): void;
 
       /**
        * Splits a column of text into multiple columns using the specified string as a custom delimiter.
@@ -23398,7 +23398,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#splitTextToColumns(String)
        * @param delimiter The custom delimiter to split on.
        */
-      splitTextToColumns(delimiter: string): any;
+      splitTextToColumns(delimiter: string): void;
 
       /**
        * Splits a column of text into multiple columns based on the specified delimiter.
@@ -23427,7 +23427,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/range#splitTextToColumns(TextToColumnsDelimiter)
        * @param delimiter The preset delimiter to split on.
        */
-      splitTextToColumns(delimiter: TextToColumnsDelimiter): any;
+      splitTextToColumns(delimiter: TextToColumnsDelimiter): void;
 
       /**
        * Trims the whitespace (such as spaces, tabs, or new lines) in every cell in this range. Removes all whitespace from the start and end of each cell's text, and reduces any subsequence of remaining whitespace characters to a single space.
@@ -25135,7 +25135,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#clearConditionalFormatRules()
        */
-      clearConditionalFormatRules(): any;
+      clearConditionalFormatRules(): void;
 
       /**
        * Clears the sheet of contents, while preserving formatting information.
@@ -25359,7 +25359,7 @@ declare namespace GoogleAppsScript {
        * @param columnPosition The position of the first column to delete.
        * @param howMany The number of columns to delete.
        */
-      deleteColumns(columnPosition: Integer, howMany: Integer): any;
+      deleteColumns(columnPosition: Integer, howMany: Integer): void;
 
       /**
        * Deletes the row at the given row position.
@@ -25401,7 +25401,7 @@ declare namespace GoogleAppsScript {
        * @param rowPosition The position of the first row to delete.
        * @param howMany The number of rows to delete.
        */
-      deleteRows(rowPosition: Integer, howMany: Integer): any;
+      deleteRows(rowPosition: Integer, howMany: Integer): void;
 
       /**
        * Expands all column groups on the sheet. This method requires at least one column group.
@@ -26769,7 +26769,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hideColumn(Range)
        * @param column The column range to hide.
        */
-      hideColumn(column: Range): any;
+      hideColumn(column: Range): void;
 
       /**
        * Hides a single column at the given index. Use 1-index for this method.
@@ -26790,7 +26790,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hideColumns(Integer)
        * @param columnIndex The index of the column to hide.
        */
-      hideColumns(columnIndex: Integer): any;
+      hideColumns(columnIndex: Integer): void;
 
       /**
        * Hides one or more consecutive columns starting at the given index. Use 1-index for this method.
@@ -26810,7 +26810,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The starting index of the columns to hide.
        * @param numColumns The number of columns to hide.
        */
-      hideColumns(columnIndex: Integer, numColumns: Integer): any;
+      hideColumns(columnIndex: Integer, numColumns: Integer): void;
 
       /**
        * Hides the rows in the given range.
@@ -26831,7 +26831,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hideRow(Range)
        * @param row The row range to hide.
        */
-      hideRow(row: Range): any;
+      hideRow(row: Range): void;
 
       /**
        * Hides the row at the given index.
@@ -26850,7 +26850,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#hideRows(Integer)
        * @param rowIndex The index of the row to hide.
        */
-      hideRows(rowIndex: Integer): any;
+      hideRows(rowIndex: Integer): void;
 
       /**
        * Hides one or more consecutive rows starting at the given index.
@@ -26870,7 +26870,7 @@ declare namespace GoogleAppsScript {
        * @param rowIndex The starting index of the rows to hide.
        * @param numRows The number of rows to hide.
        */
-      hideRows(rowIndex: Integer, numRows: Integer): any;
+      hideRows(rowIndex: Integer, numRows: Integer): void;
 
       /**
        * Hides this sheet. Has no effect if the sheet is already hidden. If this method is called on the only visible sheet, it throws an exception.
@@ -26916,7 +26916,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#insertChart(EmbeddedChart)
        * @param chart The chart to insert.
        */
-      insertChart(chart: EmbeddedChart): any;
+      insertChart(chart: EmbeddedChart): void;
 
       /**
        * Inserts a column after the given column position.
@@ -26981,7 +26981,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#insertColumns(Integer)
        * @param columnIndex The index indicating where to insert a column.
        */
-      insertColumns(columnIndex: Integer): any;
+      insertColumns(columnIndex: Integer): void;
 
       /**
        * Inserts one or more consecutive blank columns in a sheet starting at the specified location.
@@ -27001,7 +27001,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index indicating where to insert a column.
        * @param numColumns The number of columns to insert.
        */
-      insertColumns(columnIndex: Integer, numColumns: Integer): any;
+      insertColumns(columnIndex: Integer, numColumns: Integer): void;
 
       /**
        * Inserts a given number of columns after the given column position.
@@ -27227,7 +27227,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#insertRows(Integer)
        * @param rowIndex The index indicating where to insert a row.
        */
-      insertRows(rowIndex: Integer): any;
+      insertRows(rowIndex: Integer): void;
 
       /**
        * Inserts one or more consecutive blank rows in a sheet starting at the specified location.
@@ -27247,7 +27247,7 @@ declare namespace GoogleAppsScript {
        * @param rowIndex The index indicating where to insert a row.
        * @param numRows The number of rows to insert.
        */
-      insertRows(rowIndex: Integer, numRows: Integer): any;
+      insertRows(rowIndex: Integer, numRows: Integer): void;
 
       /**
        * Inserts a number of rows after the given row position.
@@ -27518,7 +27518,7 @@ declare namespace GoogleAppsScript {
        * @param columnSpec A range spanning the columns that should be moved.
        * @param destinationIndex The index that the columns should be moved to. Note that this index is based on the coordinates before the columns are moved. Existing data is shifted right to make room for the moved columns while the source columns are removed from the grid. Therefore, the data may end up at a different index than originally specified.
        */
-      moveColumns(columnSpec: Range, destinationIndex: Integer): any;
+      moveColumns(columnSpec: Range, destinationIndex: Integer): void;
 
       /**
        * Moves the rows selected by the given range to the position indicated by the destinationIndex. The rowSpec itself does not have to exactly represent an entire row or group of rows to move—it selects all rows that the range spans.
@@ -27540,7 +27540,7 @@ declare namespace GoogleAppsScript {
        * @param rowSpec A range spanning the rows that should be moved.
        * @param destinationIndex The index that the rows should be moved to. Note that this index is based on the coordinates before the rows are moved. Existing data is shifted down to make room for the moved rows while the source rows are removed from the grid. Therefore, the data may end up at a different index than originally specified.
        */
-      moveRows(rowSpec: Range, destinationIndex: Integer): any;
+      moveRows(rowSpec: Range, destinationIndex: Integer): void;
 
       /**
        * Returns a builder to create a new chart for this sheet.
@@ -27613,7 +27613,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#removeChart(EmbeddedChart)
        * @param chart The chart to remove.
        */
-      removeChart(chart: EmbeddedChart): any;
+      removeChart(chart: EmbeddedChart): void;
 
       /**
        * Sets the specified range as the active range in the active sheet, with the top left cell in the range as the current cell.
@@ -27805,7 +27805,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setConditionalFormatRules(ConditionalFormatRule)
        * @param rules The new conditional format rules.
        */
-      setConditionalFormatRules(rules: ConditionalFormatRule[]): any;
+      setConditionalFormatRules(rules: ConditionalFormatRule[]): void;
 
       /**
        * Sets the specified cell as the current cell.
@@ -27853,7 +27853,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setFrozenColumns(Integer)
        * @param columns The number of columns to freeze.
        */
-      setFrozenColumns(columns: Integer): any;
+      setFrozenColumns(columns: Integer): void;
 
       /**
        * Freezes the given number of rows. If zero, no rows are frozen.
@@ -27873,7 +27873,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#setFrozenRows(Integer)
        * @param rows The number of rows to freeze.
        */
-      setFrozenRows(rows: Integer): any;
+      setFrozenRows(rows: Integer): void;
 
       /**
        * Hides or reveals the sheet gridlines.
@@ -28121,7 +28121,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#showColumns(Integer)
        * @param columnIndex The index of the column to unhide.
        */
-      showColumns(columnIndex: Integer): any;
+      showColumns(columnIndex: Integer): void;
 
       /**
        * Unhides one or more consecutive columns starting at the given index.
@@ -28141,7 +28141,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The starting index of the columns to unhide.
        * @param numColumns The number of columns to unhide.
        */
-      showColumns(columnIndex: Integer, numColumns: Integer): any;
+      showColumns(columnIndex: Integer, numColumns: Integer): void;
 
       /**
        * Unhides the row at the given index.
@@ -28160,7 +28160,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#showRows(Integer)
        * @param rowIndex The index of the row to unhide.
        */
-      showRows(rowIndex: Integer): any;
+      showRows(rowIndex: Integer): void;
 
       /**
        * Unhides one or more consecutive rows starting at the given index.
@@ -28180,7 +28180,7 @@ declare namespace GoogleAppsScript {
        * @param rowIndex The starting index of the rows to unhide.
        * @param numRows The number of rows to unhide.
        */
-      showRows(rowIndex: Integer, numRows: Integer): any;
+      showRows(rowIndex: Integer, numRows: Integer): void;
 
       /**
        * Makes the sheet visible. Has no effect if the sheet is already visible.
@@ -28267,7 +28267,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#unhideColumn(Range)
        * @param column The range to unhide, if hidden.
        */
-      unhideColumn(column: Range): any;
+      unhideColumn(column: Range): void;
 
       /**
        * Unhides the row in the given range.
@@ -28288,7 +28288,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#unhideRow(Range)
        * @param row The range to unhide, if hidden.
        */
-      unhideRow(row: Range): any;
+      unhideRow(row: Range): void;
 
       /**
        * Updates the chart on this sheet.
@@ -28314,10 +28314,10 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/sheet#updateChart(EmbeddedChart)
        * @param chart The chart to update.
        */
-      updateChart(chart: EmbeddedChart): any;
+      updateChart(chart: EmbeddedChart): void;
       /** @deprecated DO NOT USE */ getSheetProtection(): PageProtection;
       /** @deprecated DO NOT USE */ getTabColor(): string;
-      /** @deprecated DO NOT USE */ setSheetProtection(permissions: PageProtection): any;
+      /** @deprecated DO NOT USE */ setSheetProtection(permissions: PageProtection): void;
     }
     /**
      * The different types of sheets that can exist in a spreadsheet.
@@ -28487,7 +28487,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/slicer#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Sets if the given slicer should be applied to pivot tables in the worksheet.
@@ -28992,7 +28992,7 @@ declare namespace GoogleAppsScript {
        * @param name The name of the menu to be created.
        * @param subMenus An array of JavaScript maps with name and functionName parameters. You can use functions from included libraries, such as  Library.libFunction1.
        */
-      addMenu(name: string, subMenus: any[]): any;
+      addMenu(name: string, subMenus: any[]): void;
 
       /**
        * Adds the given user to the list of viewers for the Spreadsheet. If the user was already on the list of editors, this method has no effect.
@@ -29233,7 +29233,7 @@ declare namespace GoogleAppsScript {
        * @param columnPosition The position of the first column to delete.
        * @param howMany The number of columns to delete.
        */
-      deleteColumns(columnPosition: Integer, howMany: Integer): any;
+      deleteColumns(columnPosition: Integer, howMany: Integer): void;
 
       /**
        * Deletes the row at the given row position.
@@ -29275,7 +29275,7 @@ declare namespace GoogleAppsScript {
        * @param rowPosition The position of the first row to delete.
        * @param howMany The number of rows to delete.
        */
-      deleteRows(rowPosition: Integer, howMany: Integer): any;
+      deleteRows(rowPosition: Integer, howMany: Integer): void;
 
       /**
        * Deletes the specified sheet.
@@ -29294,7 +29294,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#deleteSheet(Sheet)
        * @param sheet The sheet to delete.
        */
-      deleteSheet(sheet: Sheet): any;
+      deleteSheet(sheet: Sheet): void;
 
       /**
        * Duplicates the active sheet and makes it the active sheet.
@@ -30530,7 +30530,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#hideColumn(Range)
        * @param column The column range to hide.
        */
-      hideColumn(column: Range): any;
+      hideColumn(column: Range): void;
 
       /**
        * Hides the rows in the given range.
@@ -30551,7 +30551,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#hideRow(Range)
        * @param row The row range to hide.
        */
-      hideRow(row: Range): any;
+      hideRow(row: Range): void;
 
       /**
        * Inserts a column after the given column position.
@@ -31252,7 +31252,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#moveActiveSheet(Integer)
        * @param pos The 1-index position to move the active sheet to in the list of sheets.
        */
-      moveActiveSheet(pos: Integer): any;
+      moveActiveSheet(pos: Integer): void;
 
       /**
        * Creates a new SheetType.OBJECT sheet and moves the provided chart to it. If the chart is already on its own sheet, that sheet is returned without creating a new one.
@@ -31310,7 +31310,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#refreshAllDataSources()
        */
-      refreshAllDataSources(): any;
+      refreshAllDataSources(): void;
 
       /**
        * Removes the given user from the list of editors for the Spreadsheet. This method doesn't block users from accessing the Spreadsheet if they belong to a class of users who have general access—for example, if the Spreadsheet is shared with the user's entire domain, or if the Spreadsheet is in a shared drive that the user can access.
@@ -31378,7 +31378,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#removeMenu(String)
        * @param name The name of the menu to remove.
        */
-      removeMenu(name: string): any;
+      removeMenu(name: string): void;
 
       /**
        * Deletes a named range with the given name. Throws an exception if no range with the given name is found in the spreadsheet.
@@ -31397,7 +31397,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#removeNamedRange(String)
        * @param name The range name.
        */
-      removeNamedRange(name: string): any;
+      removeNamedRange(name: string): void;
 
       /**
        * Removes the given user from the list of viewers and commenters for the Spreadsheet. This method has no effect if the user is an editor, not a viewer or commenter. This method also doesn't block users from accessing the Spreadsheet if they belong to a class of users who have general access—for example, if the Spreadsheet is shared with the user's entire domain, or if the Spreadsheet is in a shared drive that the user can access.
@@ -31450,7 +31450,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#rename(String)
        * @param newName The new name for the document.
        */
-      rename(newName: string): any;
+      rename(newName: string): void;
 
       /**
        * Renames the current active sheet to the given new name.
@@ -31467,7 +31467,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#renameActiveSheet(String)
        * @param newName The new name for the current active sheet.
        */
-      renameActiveSheet(newName: string): any;
+      renameActiveSheet(newName: string): void;
 
       /**
        * Removes the applied theme and sets the default theme on the spreadsheet.
@@ -31713,7 +31713,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setFrozenColumns(Integer)
        * @param columns The number of columns to freeze.
        */
-      setFrozenColumns(columns: Integer): any;
+      setFrozenColumns(columns: Integer): void;
 
       /**
        * Freezes the given number of rows. If zero, no rows are frozen.
@@ -31733,7 +31733,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setFrozenRows(Integer)
        * @param rows The number of rows to freeze.
        */
-      setFrozenRows(rows: Integer): any;
+      setFrozenRows(rows: Integer): void;
 
       /**
        * Sets the minimum threshold value for iterative calculation. When the results of successive calculation differ by less than this value, the iterative calculation stops. This value must be non-negative, and defaults to 0.05.
@@ -31845,7 +31845,7 @@ declare namespace GoogleAppsScript {
        * @param name The name to give the range.
        * @param range The range specification.
        */
-      setNamedRange(name: string, range: Range): any;
+      setNamedRange(name: string, range: Range): void;
 
       /**
        * Sets how often this spreadsheet should recalculate.
@@ -31933,7 +31933,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setSpreadsheetLocale(String)
        * @param locale The locale code to use (for example, 'en', 'fr', or 'en_US').
        */
-      setSpreadsheetLocale(locale: string): any;
+      setSpreadsheetLocale(locale: string): void;
 
       /**
        * Sets a theme on the spreadsheet.
@@ -31987,7 +31987,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#setSpreadsheetTimeZone(String)
        * @param timezone The time zone, specified in "long" format (for example, "America/New_York", as listed by Joda.org).
        */
-      setSpreadsheetTimeZone(timezone: string): any;
+      setSpreadsheetTimeZone(timezone: string): void;
 
       /**
        * Displays a custom user interface component in a dialog centered in the user's browser's viewport. The server-side script's execution is not suspended. To communicate with the server side, the user interface component must make asynchronous callbacks to the server-side script.
@@ -32014,7 +32014,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#show(Object)
        * @param userInterface An HtmlOutput.
        */
-      show(userInterface: any): any;
+      show(userInterface: any): void;
 
       /**
        * Sorts a sheet by column, ascending.
@@ -32078,7 +32078,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#toast(String)
        * @param msg The message to be shown in the toast.
        */
-      toast(msg: string): any;
+      toast(msg: string): void;
 
       /**
        * Shows a popup window in the lower right corner of the spreadsheet with the given message and title.
@@ -32096,7 +32096,7 @@ declare namespace GoogleAppsScript {
        * @param msg The message to be shown in the toast.
        * @param title The optional title of the toast.
        */
-      toast(msg: string, title: string): any;
+      toast(msg: string, title: string): void;
 
       /**
        * Shows a popup window in the lower right corner of the spreadsheet with the given title and message, that stays visible for a certain length of time.
@@ -32115,7 +32115,7 @@ declare namespace GoogleAppsScript {
        * @param title The optional title of the toast.
        * @param timeoutSeconds The timeout in seconds; if null, the toast defaults to 5 seconds; if negative, the toast remains until dismissed.
        */
-      toast(msg: string, title: string, timeoutSeconds: number): any;
+      toast(msg: string, title: string, timeoutSeconds: number): void;
 
       /**
        * Unhides the column in the given range.
@@ -32136,7 +32136,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#unhideColumn(Range)
        * @param column The range to unhide, if hidden.
        */
-      unhideColumn(column: Range): any;
+      unhideColumn(column: Range): void;
 
       /**
        * Unhides the row in the given range.
@@ -32157,7 +32157,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#unhideRow(Range)
        * @param row The range to unhide, if hidden.
        */
-      unhideRow(row: Range): any;
+      unhideRow(row: Range): void;
 
       /**
        * Updates a menu that was added by addMenu(name, subMenus). Works exactly like addMenu(name, subMenus).
@@ -32177,7 +32177,7 @@ declare namespace GoogleAppsScript {
        * @param name The name of the menu to update.
        * @param subMenus An array of JavaScript maps with name and functionName parameters. You can use functions from included libraries, such as  Library.libFunction1.
        */
-      updateMenu(name: string, subMenus: any[]): any;
+      updateMenu(name: string, subMenus: any[]): void;
 
       /**
        * Waits until all the current executions in the spreadsheet complete, timing out after the provided number of seconds. Throws an exception if the executions are not completed when timing out, but does not cancel the data executions.
@@ -32190,12 +32190,12 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#waitForAllDataExecutionsCompletion(Integer)
        * @param timeoutInSeconds The time to wait for data executions, in seconds. The maximum is 300 seconds.
        */
-      waitForAllDataExecutionsCompletion(timeoutInSeconds: Integer): any;
+      waitForAllDataExecutionsCompletion(timeoutInSeconds: Integer): void;
       /** @deprecated DO NOT USE */ getSheetProtection(): PageProtection;
       /** @deprecated DO NOT USE */ isAnonymousView(): boolean;
       /** @deprecated DO NOT USE */ isAnonymousWrite(): boolean;
-      /** @deprecated DO NOT USE */ setAnonymousAccess(anonymousReadAllowed: boolean, anonymousWriteAllowed: boolean): any;
-      /** @deprecated DO NOT USE */ setSheetProtection(permissions: PageProtection): any;
+      /** @deprecated DO NOT USE */ setAnonymousAccess(anonymousReadAllowed: boolean, anonymousWriteAllowed: boolean): void;
+      /** @deprecated DO NOT USE */ setSheetProtection(permissions: PageProtection): void;
     }
     /**
      * Access and create Google Sheets files. This class is the parent class for the Spreadsheet service.
@@ -32299,7 +32299,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#enableAllDataSourcesExecution()
        */
-      enableAllDataSourcesExecution(): any;
+      enableAllDataSourcesExecution(): void;
 
       /**
        * Turns data execution on for BigQuery data sources.
@@ -32324,7 +32324,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#enableBigQueryExecution()
        */
-      enableBigQueryExecution(): any;
+      enableBigQueryExecution(): void;
 
       /**
        * Turns data execution on for Looker data sources.
@@ -32344,7 +32344,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#enableLookerExecution()
        */
-      enableLookerExecution(): any;
+      enableLookerExecution(): void;
 
       /**
        * Applies all pending Spreadsheet changes.
@@ -32370,7 +32370,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#flush()
        */
-      flush(): any;
+      flush(): void;
 
       /**
        * Returns the currently active spreadsheet, or null if there is none.
@@ -32919,7 +32919,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app#setActiveSpreadsheet(Spreadsheet)
        * @param newActiveSpreadsheet The Spreadsheet to be made the active spreadsheet.
        */
-      setActiveSpreadsheet(newActiveSpreadsheet: Spreadsheet): any;
+      setActiveSpreadsheet(newActiveSpreadsheet: Spreadsheet): void;
 
       /**
        * Sets the specified cell as the current cell.

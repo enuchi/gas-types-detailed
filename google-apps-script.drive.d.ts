@@ -235,7 +235,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/drive/drive-app#enforceSingleParent(Boolean)
        * @param value The new state of the enforceSingleParent flag.
        */
-      enforceSingleParent(value: boolean): any;
+      enforceSingleParent(value: boolean): void;
 
       /**
        * Gets the file with the given ID. Throws a scripting exception if the file does not exist or the user does not have permission to access it.

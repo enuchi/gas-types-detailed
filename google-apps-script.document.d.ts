@@ -1285,7 +1285,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/document/bookmark#remove()
        */
-      remove(): any;
+      remove(): void;
     }
     /**
      * A generic element that may contain other elements. All elements that may contain child elements,
@@ -3220,7 +3220,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/document/document#saveAndClose()
        */
-      saveAndClose(): any;
+      saveAndClose(): void;
 
       /**
        * Sets the user's selected Tab in the current document to the tab with the specified ID.
@@ -3240,7 +3240,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/document/document#setActiveTab(String)
        * @param tabId The ID of the tab to set as active.
        */
-      setActiveTab(tabId: string): any;
+      setActiveTab(tabId: string): void;
 
       /**
        * Sets the user's cursor, given a Position. A script can only access the cursor of the user who is running the script, and only if the script is bound to the document.
@@ -11371,7 +11371,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/document/list-item#setText(String)
        * @param text the new text contents
        */
-      setText(text: string): any;
+      setText(text: string): void;
 
       /**
        * Sets the text alignment. The available types of alignment are DocumentApp.TextAlignment.NORMAL, DocumentApp.TextAlignment.SUBSCRIPT, and DocumentApp.TextAlignment.SUPERSCRIPT.
@@ -11468,7 +11468,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/document/named-range#remove()
        */
-      remove(): any;
+      remove(): void;
     }
     /**
      * An element representing a page break. A PageBreak can be contained within a ListItem or Paragraph, unless the ListItem or Paragraph is within a
@@ -13076,7 +13076,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/document/paragraph#setText(String)
        * @param text the new text contents
        */
-      setText(text: string): any;
+      setText(text: string): void;
 
       /**
        * Sets the text alignment. The available types of alignment are DocumentApp.TextAlignment.NORMAL, DocumentApp.TextAlignment.SUBSCRIPT, and DocumentApp.TextAlignment.SUPERSCRIPT.

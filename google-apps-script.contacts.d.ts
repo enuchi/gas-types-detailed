@@ -172,7 +172,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): AddressField;
-      /** @deprecated DO NOT USE */ deleteAddressField(): any;
+      /** @deprecated DO NOT USE */ deleteAddressField(): void;
     }
     /**
      *
@@ -182,7 +182,7 @@ declare namespace GoogleAppsScript {
      * Company field in a Contact.
      */
     interface CompanyField {
-      /** @deprecated DO NOT USE */ deleteCompanyField(): any;
+      /** @deprecated DO NOT USE */ deleteCompanyField(): void;
       /** @deprecated DO NOT USE */ getCompanyName(): string;
       /** @deprecated DO NOT USE */ getJobTitle(): string;
       /** @deprecated DO NOT USE */ isPrimary(): boolean;
@@ -207,7 +207,7 @@ declare namespace GoogleAppsScript {
       /** @deprecated DO NOT USE */ addPhone(label: any, number: string): PhoneField;
       /** @deprecated DO NOT USE */ addToGroup(group: ContactGroup): Contact;
       /** @deprecated DO NOT USE */ addUrl(label: any, url: string): UrlField;
-      /** @deprecated DO NOT USE */ deleteContact(): any;
+      /** @deprecated DO NOT USE */ deleteContact(): void;
       /** @deprecated DO NOT USE */ getAddresses(): AddressField[];
       /** @deprecated DO NOT USE */ getAddresses(label: any): AddressField[];
       /** @deprecated DO NOT USE */ getCompanies(): CompanyField[];
@@ -253,25 +253,25 @@ declare namespace GoogleAppsScript {
       /** @deprecated DO NOT USE */ setFamilyName(familyName: string): Contact;
       /** @deprecated DO NOT USE */ setFullName(fullName: string): Contact;
       /** @deprecated DO NOT USE */ setGivenName(givenName: string): Contact;
-      /** @deprecated DO NOT USE */ setHomeAddress(addr: string): any;
-      /** @deprecated DO NOT USE */ setHomeFax(phone: string): any;
-      /** @deprecated DO NOT USE */ setHomePhone(phone: string): any;
+      /** @deprecated DO NOT USE */ setHomeAddress(addr: string): void;
+      /** @deprecated DO NOT USE */ setHomeFax(phone: string): void;
+      /** @deprecated DO NOT USE */ setHomePhone(phone: string): void;
       /** @deprecated DO NOT USE */ setInitials(initials: string): Contact;
       /** @deprecated DO NOT USE */ setMaidenName(maidenName: string): Contact;
       /** @deprecated DO NOT USE */ setMiddleName(middleName: string): Contact;
-      /** @deprecated DO NOT USE */ setMobilePhone(phone: string): any;
+      /** @deprecated DO NOT USE */ setMobilePhone(phone: string): void;
       /** @deprecated DO NOT USE */ setNickname(nickname: string): Contact;
       /** @deprecated DO NOT USE */ setNotes(notes: string): Contact;
-      /** @deprecated DO NOT USE */ setPager(phone: string): any;
+      /** @deprecated DO NOT USE */ setPager(phone: string): void;
       /** @deprecated DO NOT USE */ setPrefix(prefix: string): Contact;
-      /** @deprecated DO NOT USE */ setPrimaryEmail(primaryEmail: string): any;
+      /** @deprecated DO NOT USE */ setPrimaryEmail(primaryEmail: string): void;
       /** @deprecated DO NOT USE */ setShortName(shortName: string): Contact;
       /** @deprecated DO NOT USE */ setSuffix(suffix: string): Contact;
-      /** @deprecated DO NOT USE */ setUserDefinedField(key: string, value: string): any;
-      /** @deprecated DO NOT USE */ setUserDefinedFields(o: any): any;
-      /** @deprecated DO NOT USE */ setWorkAddress(addr: string): any;
-      /** @deprecated DO NOT USE */ setWorkFax(phone: string): any;
-      /** @deprecated DO NOT USE */ setWorkPhone(phone: string): any;
+      /** @deprecated DO NOT USE */ setUserDefinedField(key: string, value: string): void;
+      /** @deprecated DO NOT USE */ setUserDefinedFields(o: any): void;
+      /** @deprecated DO NOT USE */ setWorkAddress(addr: string): void;
+      /** @deprecated DO NOT USE */ setWorkFax(phone: string): void;
+      /** @deprecated DO NOT USE */ setWorkPhone(phone: string): void;
     }
     /**
      *
@@ -282,14 +282,14 @@ declare namespace GoogleAppsScript {
      */
     interface ContactGroup {
       /** @deprecated DO NOT USE */ addContact(contact: Contact): ContactGroup;
-      /** @deprecated DO NOT USE */ deleteGroup(): any;
+      /** @deprecated DO NOT USE */ deleteGroup(): void;
       /** @deprecated DO NOT USE */ getContacts(): Contact[];
       /** @deprecated DO NOT USE */ getGroupName(): string;
       /** @deprecated DO NOT USE */ getId(): string;
       /** @deprecated DO NOT USE */ getName(): string;
       /** @deprecated DO NOT USE */ isSystemGroup(): boolean;
       /** @deprecated DO NOT USE */ removeContact(contact: Contact): ContactGroup;
-      /** @deprecated DO NOT USE */ setGroupName(name: string): any;
+      /** @deprecated DO NOT USE */ setGroupName(name: string): void;
       /** @deprecated DO NOT USE */ setName(name: string): ContactGroup;
     }
     /**
@@ -309,8 +309,8 @@ declare namespace GoogleAppsScript {
       Sensitivity: typeof Sensitivity;
       /** @deprecated DO NOT USE */ createContact(givenName: string, familyName: string, email: string): Contact;
       /** @deprecated DO NOT USE */ createContactGroup(name: string): ContactGroup;
-      /** @deprecated DO NOT USE */ deleteContact(contact: Contact): any;
-      /** @deprecated DO NOT USE */ deleteContactGroup(group: ContactGroup): any;
+      /** @deprecated DO NOT USE */ deleteContact(contact: Contact): void;
+      /** @deprecated DO NOT USE */ deleteContactGroup(group: ContactGroup): void;
       /** @deprecated DO NOT USE */ findByEmailAddress(email: string): Contact;
       /** @deprecated DO NOT USE */ findContactGroup(name: string): ContactGroup;
       /** @deprecated DO NOT USE */ getAllContacts(): Contact[];
@@ -402,7 +402,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): CustomField;
-      /** @deprecated DO NOT USE */ deleteCustomField(): any;
+      /** @deprecated DO NOT USE */ deleteCustomField(): void;
       /** @deprecated DO NOT USE */ getValue(): any;
       /** @deprecated DO NOT USE */ setLabel(field: ExtendedField): CustomField;
       /** @deprecated DO NOT USE */ setValue(value: any): CustomField;
@@ -466,7 +466,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): DateField;
-      /** @deprecated DO NOT USE */ deleteDateField(): any;
+      /** @deprecated DO NOT USE */ deleteDateField(): void;
       /** @deprecated DO NOT USE */ getDay(): Integer;
       /** @deprecated DO NOT USE */ getMonth(): Base.Month;
       /** @deprecated DO NOT USE */ getYear(): Integer;
@@ -638,7 +638,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): EmailField;
-      /** @deprecated DO NOT USE */ deleteEmailField(): any;
+      /** @deprecated DO NOT USE */ deleteEmailField(): void;
       /** @deprecated DO NOT USE */ getDisplayName(): string;
       /** @deprecated DO NOT USE */ setDisplayName(name: string): EmailField;
     }
@@ -830,7 +830,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): IMField;
-      /** @deprecated DO NOT USE */ deleteIMField(): any;
+      /** @deprecated DO NOT USE */ deleteIMField(): void;
     }
     /**
      *
@@ -953,7 +953,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): PhoneField;
-      /** @deprecated DO NOT USE */ deletePhoneField(): any;
+      /** @deprecated DO NOT USE */ deletePhoneField(): void;
       /** @deprecated DO NOT USE */ getPhoneNumber(): string;
       /** @deprecated DO NOT USE */ setPhoneNumber(number: string): PhoneField;
     }
@@ -1137,7 +1137,7 @@ declare namespace GoogleAppsScript {
        * @param label the new label for this field
        */
       setLabel(label: string): UrlField;
-      /** @deprecated DO NOT USE */ deleteUrlField(): any;
+      /** @deprecated DO NOT USE */ deleteUrlField(): void;
     }
   }
 }

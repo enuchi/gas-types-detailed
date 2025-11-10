@@ -389,7 +389,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/calendar/calendar#deleteCalendar()
        */
-      deleteCalendar(): any;
+      deleteCalendar(): void;
 
       /**
        * Gets the color of the calendar.
@@ -1004,7 +1004,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/calendar/calendar#unsubscribeFromCalendar()
        */
-      unsubscribeFromCalendar(): any;
+      unsubscribeFromCalendar(): void;
     }
     /**
      * Allows a script to read and update the user's Google Calendar. This class provides direct access
@@ -2474,7 +2474,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/calendar/calendar-event#deleteEvent()
        */
-      deleteEvent(): any;
+      deleteEvent(): void;
 
       /**
        * Deletes a key/value tag from the event.
@@ -4517,7 +4517,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/calendar/calendar-event-series#deleteEventSeries()
        */
-      deleteEventSeries(): any;
+      deleteEventSeries(): void;
 
       /**
        * Deletes a key/value tag from the event.

@@ -2749,7 +2749,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/form#deleteItem(Integer)
        * @param index The index of the item among all the items in the form.
        */
-      deleteItem(index: Integer): any;
+      deleteItem(index: Integer): void;
 
       /**
        * Deletes the given item. Throws a scripting exception if the item has already been deleted.
@@ -2784,7 +2784,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/forms/form#deleteItem(Item)
        * @param item The item to be deleted.
        */
-      deleteItem(item: Item): any;
+      deleteItem(item: Item): void;
 
       /**
        * Deletes a single response from the form's response store. This method does not delete copies of responses stored in an external response destination (like a spreadsheet), but does remove the response from the form's summary view. The response ID can be retrieved with FormResponse.getId().

@@ -878,7 +878,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/utilities/utilities#sleep(Integer)
        * @param milliseconds The number of milliseconds to sleep.
        */
-      sleep(milliseconds: Integer): any;
+      sleep(milliseconds: Integer): void;
 
       /**
        * Uncompresses a Blob object and returns a Blob containing the uncompressed data.

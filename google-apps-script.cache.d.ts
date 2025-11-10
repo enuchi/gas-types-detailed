@@ -73,7 +73,7 @@ declare namespace GoogleAppsScript {
        * @param key the key to store the value under
        * @param value the value to be cached
        */
-      put(key: string, value: string): any;
+      put(key: string, value: string): void;
 
       /**
        * Adds a key/value pair to the cache, with an expiration time (in seconds).
@@ -89,7 +89,7 @@ declare namespace GoogleAppsScript {
        * @param value the value to be cached
        * @param expirationInSeconds the maximum time the value remains in the cache, in seconds. The minimum is 1 second and the maximum is 21600 seconds (6 hours).
        */
-      put(key: string, value: string, expirationInSeconds: Integer): any;
+      put(key: string, value: string, expirationInSeconds: Integer): void;
 
       /**
        * Adds a set of key/value pairs to the cache.
@@ -107,7 +107,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/cache/cache#putAll(Object)
        * @param values a JavaScript Object containing string keys and values
        */
-      putAll(values: any): any;
+      putAll(values: any): void;
 
       /**
        * Adds a set of key/value pairs to the cache, with an expiration time (in seconds).
@@ -126,7 +126,7 @@ declare namespace GoogleAppsScript {
        * @param values A JavaScript Object containing string keys and values
        * @param expirationInSeconds The maximum time the value remains in the cache, in seconds The minimum allowed expiration is 1 second, and the maximum allowed expiration is 21600 seconds (6 hours). The default expiration is 600 seconds (10 minutes).
        */
-      putAll(values: any, expirationInSeconds: Integer): any;
+      putAll(values: any, expirationInSeconds: Integer): void;
 
       /**
        * Removes an entry from the cache using the given key.
@@ -137,7 +137,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/cache/cache#remove(String)
        * @param key the key to remove from the cache
        */
-      remove(key: string): any;
+      remove(key: string): void;
 
       /**
        * Removes a set of entries from the cache.
@@ -148,7 +148,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/cache/cache#removeAll(String)
        * @param keys the array of keys to remove
        */
-      removeAll(keys: string[]): any;
+      removeAll(keys: string[]): void;
     }
     /**
      * CacheService allows you to access a cache for short term storage of data.

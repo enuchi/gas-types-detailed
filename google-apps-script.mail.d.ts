@@ -72,7 +72,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/mail/mail-app#sendEmail(Object)
        * @param message a JavaScript object representing an email message
        */
-      sendEmail(message: any): any;
+      sendEmail(message: any): void;
 
       /**
        * Sends an email message.
@@ -93,7 +93,7 @@ declare namespace GoogleAppsScript {
        * @param subject the subject line
        * @param body the body of the email
        */
-      sendEmail(recipient: string, subject: string, body: string): any;
+      sendEmail(recipient: string, subject: string, body: string): void;
 
       /**
        * Sends an email message with optional arguments.
@@ -137,7 +137,7 @@ declare namespace GoogleAppsScript {
        * - noReply (Boolean) — true if the email should be sent from a generic no-reply email address to discourage recipients from responding to emails; this option is only possible for Google Workspace accounts, not Gmail users
        * - replyTo (String) — an email address to use as the default reply-to address (default: the user's email address)
        */
-      sendEmail(recipient: string, subject: string, body: string, options: any): any;
+      sendEmail(recipient: string, subject: string, body: string, options: any): void;
 
       /**
        * Sends an email message. This method allows a user to easily specify a Reply-To address for the sent message that can differ from the sender.
@@ -160,7 +160,7 @@ declare namespace GoogleAppsScript {
        * @param subject the subject line
        * @param body the body of the email in plain text
        */
-      sendEmail(to: string, replyTo: string, subject: string, body: string): any;
+      sendEmail(to: string, replyTo: string, subject: string, body: string): void;
     }
   }
 }

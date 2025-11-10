@@ -70,7 +70,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/lock/lock#releaseLock()
        */
-      releaseLock(): any;
+      releaseLock(): void;
 
       /**
        * Attempts to acquire the lock, timing out after the provided number of milliseconds. This method has no effect if the lock has already been acquired.
@@ -105,7 +105,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/lock/lock#waitLock(Integer)
        * @param timeoutInMillis how long to wait to acquire the lock, in milliseconds
        */
-      waitLock(timeoutInMillis: Integer): any;
+      waitLock(timeoutInMillis: Integer): void;
     }
     /**
      * Prevents concurrent access to sections of code. This can be useful when you have multiple users

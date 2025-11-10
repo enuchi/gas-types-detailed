@@ -208,7 +208,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-array#free()
        */
-      free(): any;
+      free(): void;
 
       /**
        * For documentation of this method, see java.sql.Array#getArray()
@@ -285,7 +285,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-blob#free()
        */
-      free(): any;
+      free(): void;
 
       /**
        * Gets the content of this JdbcBlob as an Apps Script blob.
@@ -413,7 +413,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-blob#truncate(Integer)
        * @param length The size (in bytes) of this blob after truncation.
        */
-      truncate(length: Integer): any;
+      truncate(length: Integer): void;
     }
     /**
      * A JDBC CallableStatement. For documentation of this class, see
@@ -430,7 +430,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#addBatch()
        */
-      addBatch(): any;
+      addBatch(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#addBatch(String).
@@ -442,7 +442,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#addBatch(String)
        * @param sql The SQL command to add to this statement, typically an SQL INSERT or UPDATE.
        */
-      addBatch(sql: string): any;
+      addBatch(sql: string): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#cancel().
@@ -453,7 +453,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#cancel()
        */
-      cancel(): any;
+      cancel(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#clearBatch().
@@ -464,7 +464,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#clearBatch()
        */
-      clearBatch(): any;
+      clearBatch(): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#clearParameters().
@@ -475,7 +475,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#clearParameters()
        */
-      clearParameters(): any;
+      clearParameters(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#clearWarnings().
@@ -486,14 +486,14 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#clearWarnings()
        */
-      clearWarnings(): any;
+      clearWarnings(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#close().
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#close()
        */
-      close(): any;
+      close(): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#execute().
@@ -1884,7 +1884,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex An index indicating which paramater to register (the first parameter is 1, the second is 2, and so on).
        * @param sqlType The JDBC type code to register. If the parameter is of JDBC type NUMERIC or DECIMAL, use registerOutParameter(parameterIndex, sqlType, scale) instead.
        */
-      registerOutParameter(parameterIndex: Integer, sqlType: Integer): any;
+      registerOutParameter(parameterIndex: Integer, sqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#registerOutParameter(int, int, int).
@@ -1898,7 +1898,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType The JDBC type code to register.
        * @param scale The desired number of digits to the right of the decimal point (must be zero or greater).
        */
-      registerOutParameter(parameterIndex: Integer, sqlType: Integer, scale: Integer): any;
+      registerOutParameter(parameterIndex: Integer, sqlType: Integer, scale: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#registerOutParameter(int, int, String).
@@ -1912,7 +1912,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType A type code value.
        * @param typeName The fully-qualified name of an SQL structured type.
        */
-      registerOutParameter(parameterIndex: Integer, sqlType: Integer, typeName: string): any;
+      registerOutParameter(parameterIndex: Integer, sqlType: Integer, typeName: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#registerOutParameter(String, int).
@@ -1925,7 +1925,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to be registered.
        * @param sqlType A type code value.
        */
-      registerOutParameter(parameterName: string, sqlType: Integer): any;
+      registerOutParameter(parameterName: string, sqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#registerOutParameter(String, int, int).
@@ -1939,7 +1939,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType A type code value.
        * @param scale The desired number of digits to the right of the decimal point, which must be zero or greater.
        */
-      registerOutParameter(parameterName: string, sqlType: Integer, scale: Integer): any;
+      registerOutParameter(parameterName: string, sqlType: Integer, scale: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#registerOutParameter(String, int, String).
@@ -1953,7 +1953,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType A type code value.
        * @param typeName The fully-qualified name of an SQL structured type.
        */
-      registerOutParameter(parameterName: string, sqlType: Integer, typeName: string): any;
+      registerOutParameter(parameterName: string, sqlType: Integer, typeName: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setArray(int, Array).
@@ -1966,7 +1966,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setArray(parameterIndex: Integer, x: JdbcArray): any;
+      setArray(parameterIndex: Integer, x: JdbcArray): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBigDecimal(int, BigDecimal).
@@ -1979,7 +1979,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBigDecimal(parameterIndex: Integer, x: BigNumber): any;
+      setBigDecimal(parameterIndex: Integer, x: BigNumber): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setBigDecimal(String, BigDecimal).
@@ -1992,7 +1992,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setBigDecimal(parameterName: string, x: BigNumber): any;
+      setBigDecimal(parameterName: string, x: BigNumber): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBlob(int, Clob).
@@ -2005,7 +2005,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBlob(parameterIndex: Integer, x: JdbcBlob): any;
+      setBlob(parameterIndex: Integer, x: JdbcBlob): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setBlob(String, Blob).
@@ -2018,7 +2018,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x A blob that maps to an SQL BLOB value.
        */
-      setBlob(parameterName: string, x: JdbcBlob): any;
+      setBlob(parameterName: string, x: JdbcBlob): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBoolean(int, boolean).
@@ -2031,7 +2031,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBoolean(parameterIndex: Integer, x: boolean): any;
+      setBoolean(parameterIndex: Integer, x: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setBoolean(String, boolean).
@@ -2044,7 +2044,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setBoolean(parameterName: string, x: boolean): any;
+      setBoolean(parameterName: string, x: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setByte(int, byte).
@@ -2057,7 +2057,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setByte(parameterIndex: Integer, x: Byte): any;
+      setByte(parameterIndex: Integer, x: Byte): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setByte(String, byte).
@@ -2070,7 +2070,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setByte(parameterName: string, x: Byte): any;
+      setByte(parameterName: string, x: Byte): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBytes(int, byte[]).
@@ -2083,7 +2083,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBytes(parameterIndex: Integer, x: Byte[]): any;
+      setBytes(parameterIndex: Integer, x: Byte[]): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setBytes(String, byte[]).
@@ -2096,7 +2096,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setBytes(parameterName: string, x: Byte[]): any;
+      setBytes(parameterName: string, x: Byte[]): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setClob(int, Clob).
@@ -2109,7 +2109,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setClob(parameterIndex: Integer, x: JdbcClob): any;
+      setClob(parameterIndex: Integer, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setBlob(String, Clob).
@@ -2122,7 +2122,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x A clob that maps to an SQL CLOB value.
        */
-      setClob(parameterName: string, x: JdbcClob): any;
+      setClob(parameterName: string, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setCursorName(String).
@@ -2134,7 +2134,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setCursorName(String)
        * @param name The new cursor name, which must be unique within a connection.
        */
-      setCursorName(name: string): any;
+      setCursorName(name: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setDate(int, Date).
@@ -2147,7 +2147,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setDate(parameterIndex: Integer, x: JdbcDate): any;
+      setDate(parameterIndex: Integer, x: JdbcDate): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setDate(int, Date, Calendar).
@@ -2161,7 +2161,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setDate(parameterIndex: Integer, x: JdbcDate, timeZone: string): any;
+      setDate(parameterIndex: Integer, x: JdbcDate, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setDate(String, Date).
@@ -2174,7 +2174,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setDate(parameterName: string, x: JdbcDate): any;
+      setDate(parameterName: string, x: JdbcDate): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setDate(String, Date, Calendar).
@@ -2188,7 +2188,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setDate(parameterName: string, x: JdbcDate, timeZone: string): any;
+      setDate(parameterName: string, x: JdbcDate, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setDouble(int, double).
@@ -2201,7 +2201,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setDouble(parameterIndex: Integer, x: number): any;
+      setDouble(parameterIndex: Integer, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setDouble(String, double).
@@ -2214,7 +2214,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setDouble(parameterName: string, x: number): any;
+      setDouble(parameterName: string, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setEscapeProcessing(boolean).
@@ -2226,7 +2226,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setEscapeProcessing(Boolean)
        * @param enable If true, escape processing is enabled; otherwise it is disabled.
        */
-      setEscapeProcessing(enable: boolean): any;
+      setEscapeProcessing(enable: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setFetchDirection(int).
@@ -2238,7 +2238,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setFetchDirection(Integer)
        * @param direction The specified direction to set, which is either Jdbc.ResultSet.FETCH_FORWARD or Jdbc.ResultSet.FETCH_REVERSE.
        */
-      setFetchDirection(direction: Integer): any;
+      setFetchDirection(direction: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setFetchSize(int).
@@ -2250,7 +2250,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setFetchSize(Integer)
        * @param rows The number of rows to fetch.
        */
-      setFetchSize(rows: Integer): any;
+      setFetchSize(rows: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setFloat(int, float).
@@ -2263,7 +2263,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setFloat(parameterIndex: Integer, x: number): any;
+      setFloat(parameterIndex: Integer, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setFloat(String, float).
@@ -2276,7 +2276,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setFloat(parameterName: string, x: number): any;
+      setFloat(parameterName: string, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setInt(int, int).
@@ -2289,7 +2289,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setInt(parameterIndex: Integer, x: Integer): any;
+      setInt(parameterIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setInt(String, int).
@@ -2302,7 +2302,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setInt(parameterName: string, x: Integer): any;
+      setInt(parameterName: string, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setLong(int, long).
@@ -2315,7 +2315,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setLong(parameterIndex: Integer, x: Integer): any;
+      setLong(parameterIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setLong(String, long).
@@ -2328,7 +2328,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setLong(parameterName: string, x: Integer): any;
+      setLong(parameterName: string, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setMaxFieldSize(int).
@@ -2340,7 +2340,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setMaxFieldSize(Integer)
        * @param max The new column byte size limit; a value of zero indicates no limit.
        */
-      setMaxFieldSize(max: Integer): any;
+      setMaxFieldSize(max: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setMaxRows(int).
@@ -2352,7 +2352,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setMaxRows(Integer)
        * @param max The maximum number of rows a result set generated by this statement can have. A value of 0 indicates no limit.
        */
-      setMaxRows(max: Integer): any;
+      setMaxRows(max: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNClob(int, NClob).
@@ -2365,7 +2365,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setNClob(parameterIndex: Integer, x: JdbcClob): any;
+      setNClob(parameterIndex: Integer, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setNClob(String, NClob).
@@ -2378,7 +2378,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param value The parameter value to set.
        */
-      setNClob(parameterName: string, value: JdbcClob): any;
+      setNClob(parameterName: string, value: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNString(int, String).
@@ -2391,7 +2391,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setNString(parameterIndex: Integer, x: string): any;
+      setNString(parameterIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setNString(String, String).
@@ -2404,7 +2404,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param value The parameter value to set.
        */
-      setNString(parameterName: string, value: string): any;
+      setNString(parameterName: string, value: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNull(int, int).
@@ -2417,7 +2417,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param sqlType The SQL type of the specified parameter.
        */
-      setNull(parameterIndex: Integer, sqlType: Integer): any;
+      setNull(parameterIndex: Integer, sqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNull(int, int, String).
@@ -2431,7 +2431,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType The SQL type of the specified parameter.
        * @param typeName The fully-qualifed name of an SQL user-defined type. Ignored if the parameter isn't a user-defined type or REF.
        */
-      setNull(parameterIndex: Integer, sqlType: Integer, typeName: string): any;
+      setNull(parameterIndex: Integer, sqlType: Integer, typeName: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setNull(String, int).
@@ -2444,7 +2444,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param sqlType The SQL  type code.
        */
-      setNull(parameterName: string, sqlType: Integer): any;
+      setNull(parameterName: string, sqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setNull(String, int, String).
@@ -2458,7 +2458,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType The SQL type.
        * @param typeName The fully-qualified name of an SQL user-defined type; ignored if the parameter is not a user-defined type or SQL REF value.
        */
-      setNull(parameterName: string, sqlType: Integer, typeName: string): any;
+      setNull(parameterName: string, sqlType: Integer, typeName: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setObject(int, Object).
@@ -2471,7 +2471,7 @@ declare namespace GoogleAppsScript {
        * @param index The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The object containing the value to set the parameter to.
        */
-      setObject(index: Integer, x: any): any;
+      setObject(index: Integer, x: any): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setObject(int, Object, int).
@@ -2485,7 +2485,7 @@ declare namespace GoogleAppsScript {
        * @param x The object containing the value to set the parameter to.
        * @param targetSqlType The SQL type to send to the database.
        */
-      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer): any;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setObject(int, Object, int, int).
@@ -2500,7 +2500,7 @@ declare namespace GoogleAppsScript {
        * @param targetSqlType The SQL type to send to the database. The scale argument may further qualify this type.
        * @param scaleOrLength The number of digits after the decimal for DECIMAL or NUMERIC types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer, scaleOrLength: Integer): any;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setObject(String, Object).
@@ -2513,7 +2513,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The object containing the value to set.
        */
-      setObject(parameterName: string, x: any): any;
+      setObject(parameterName: string, x: any): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setObject(String, Object, int).
@@ -2527,7 +2527,7 @@ declare namespace GoogleAppsScript {
        * @param x The object containing the value to set.
        * @param targetSqlType The SQL type sent to the database.
        */
-      setObject(parameterName: string, x: any, targetSqlType: Integer): any;
+      setObject(parameterName: string, x: any, targetSqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setObject(String, Object, int, int).
@@ -2542,7 +2542,7 @@ declare namespace GoogleAppsScript {
        * @param targetSqlType The SQL type sent to the database. The scale parameter may further qualify this type.
        * @param scale The number of digits after the decimal point for DECIMAL and NUMERIC types. Ignored for all other types.
        */
-      setObject(parameterName: string, x: any, targetSqlType: Integer, scale: Integer): any;
+      setObject(parameterName: string, x: any, targetSqlType: Integer, scale: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setPoolable(boolean).
@@ -2554,7 +2554,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setPoolable(Boolean)
        * @param poolable If true, requests that this statement be pooled; otherwise requests it not be pooled.
        */
-      setPoolable(poolable: boolean): any;
+      setPoolable(poolable: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setQueryTimeout(int).
@@ -2566,7 +2566,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-callable-statement#setQueryTimeout(Integer)
        * @param seconds The new query timeout in seconds; a value of 0 indicates no timeout.
        */
-      setQueryTimeout(seconds: Integer): any;
+      setQueryTimeout(seconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setRef(int, Ref).
@@ -2579,7 +2579,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The SQL REF value to set.
        */
-      setRef(parameterIndex: Integer, x: JdbcRef): any;
+      setRef(parameterIndex: Integer, x: JdbcRef): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setRowId(int, RowId).
@@ -2592,7 +2592,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setRowId(parameterIndex: Integer, x: JdbcRowId): any;
+      setRowId(parameterIndex: Integer, x: JdbcRowId): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setRowId(String, RowId).
@@ -2605,7 +2605,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setRowId(parameterName: string, x: JdbcRowId): any;
+      setRowId(parameterName: string, x: JdbcRowId): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setSQLXML(int, SQLXML).
@@ -2618,7 +2618,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setSQLXML(parameterIndex: Integer, x: JdbcSQLXML): any;
+      setSQLXML(parameterIndex: Integer, x: JdbcSQLXML): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setSQLXML(String, SQLXML).
@@ -2631,7 +2631,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param xmlObject A SQLXML object that maps to an SQL XML value.
        */
-      setSQLXML(parameterName: string, xmlObject: JdbcSQLXML): any;
+      setSQLXML(parameterName: string, xmlObject: JdbcSQLXML): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setShort(int, short).
@@ -2644,7 +2644,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setShort(parameterIndex: Integer, x: Integer): any;
+      setShort(parameterIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setShort(String, short).
@@ -2657,7 +2657,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setShort(parameterName: string, x: Integer): any;
+      setShort(parameterName: string, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setString(int, String).
@@ -2670,7 +2670,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setString(parameterIndex: Integer, x: string): any;
+      setString(parameterIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setString(String, String).
@@ -2683,7 +2683,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setString(parameterName: string, x: string): any;
+      setString(parameterName: string, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTime(int, Time).
@@ -2696,7 +2696,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setTime(parameterIndex: Integer, x: JdbcTime): any;
+      setTime(parameterIndex: Integer, x: JdbcTime): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTime(int, Time, Calendar).
@@ -2710,7 +2710,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setTime(parameterIndex: Integer, x: JdbcTime, timeZone: string): any;
+      setTime(parameterIndex: Integer, x: JdbcTime, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setTime(String, Time).
@@ -2723,7 +2723,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setTime(parameterName: string, x: JdbcTime): any;
+      setTime(parameterName: string, x: JdbcTime): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setTime(String, Time, Calendar).
@@ -2737,7 +2737,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setTime(parameterName: string, x: JdbcTime, timeZone: string): any;
+      setTime(parameterName: string, x: JdbcTime, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTimestamp(int, Timestamp).
@@ -2750,7 +2750,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp): any;
+      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTimestamp(int, Timestamp, Calendar).
@@ -2764,7 +2764,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp, timeZone: string): any;
+      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setTimestamp(String, Timestamp).
@@ -2777,7 +2777,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param x The parameter value to set.
        */
-      setTimestamp(parameterName: string, x: JdbcTimestamp): any;
+      setTimestamp(parameterName: string, x: JdbcTimestamp): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setTimestamp(String, Timestamp, Calendar).
@@ -2791,7 +2791,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setTimestamp(parameterName: string, x: JdbcTimestamp, timeZone: string): any;
+      setTimestamp(parameterName: string, x: JdbcTimestamp, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setURL(int, URL).
@@ -2804,7 +2804,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setURL(parameterIndex: Integer, x: string): any;
+      setURL(parameterIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#setURL(String, URL).
@@ -2817,7 +2817,7 @@ declare namespace GoogleAppsScript {
        * @param parameterName The name of the parameter to set.
        * @param val The parameter value to set.
        */
-      setURL(parameterName: string, val: string): any;
+      setURL(parameterName: string, val: string): void;
 
       /**
        * For documentation of this method, see java.sql.CallableStatement#wasNull().
@@ -2845,7 +2845,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-clob#free()
        */
-      free(): any;
+      free(): void;
 
       /**
        * Gets the content of this JdbcClob as an Apps Script blob.
@@ -2973,7 +2973,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-clob#truncate(Integer)
        * @param length The size (in bytes) of this clob after truncation.
        */
-      truncate(length: Integer): any;
+      truncate(length: Integer): void;
     }
     /**
      * A JDBC Connection. For documentation of this class, see
@@ -2990,7 +2990,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#clearWarnings()
        */
-      clearWarnings(): any;
+      clearWarnings(): void;
 
       /**
        * Release this connection's database and all associated resources.
@@ -3006,7 +3006,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#close()
        */
-      close(): any;
+      close(): void;
 
       /**
        * Makes all pending changes permanent, releases database locks held by this JdbcConnection.
@@ -3041,7 +3041,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#commit()
        */
-      commit(): any;
+      commit(): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#createArrayOf(String, Object[]).
@@ -3472,7 +3472,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#releaseSavepoint(JdbcSavepoint)
        * @param savepoint The save point to remove.
        */
-      releaseSavepoint(savepoint: JdbcSavepoint): any;
+      releaseSavepoint(savepoint: JdbcSavepoint): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#rollback().
@@ -3483,7 +3483,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#rollback()
        */
-      rollback(): any;
+      rollback(): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#rollback(Savepoint).
@@ -3495,7 +3495,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#rollback(JdbcSavepoint)
        * @param savepoint The save point to rollback to.
        */
-      rollback(savepoint: JdbcSavepoint): any;
+      rollback(savepoint: JdbcSavepoint): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#setAutoCommit(boolean).
@@ -3507,7 +3507,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#setAutoCommit(Boolean)
        * @param autoCommit If true, auto-commit mode is enabled; false disables.
        */
-      setAutoCommit(autoCommit: boolean): any;
+      setAutoCommit(autoCommit: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#setCatalog(String).
@@ -3519,7 +3519,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#setCatalog(String)
        * @param catalog The name of a catalog (the subspace in the connection's database) in which to work.
        */
-      setCatalog(catalog: string): any;
+      setCatalog(catalog: string): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#setHoldability(int).
@@ -3527,7 +3527,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#setHoldability(Integer)
        * @param holdability The default holdability of JdbcResultSet objects created with this connection; either Jdbc.ResultSet.HOLD_CURSORS_OVER_COMMIT or Jdbc.ResultSet.CLOSE_CURSORS_AT_COMMIT.
        */
-      setHoldability(holdability: Integer): any;
+      setHoldability(holdability: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#setReadOnly(boolean).
@@ -3539,7 +3539,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#setReadOnly(Boolean)
        * @param readOnly If true, read-only mode is enabled; false disables.
        */
-      setReadOnly(readOnly: boolean): any;
+      setReadOnly(readOnly: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Connection#setSavepoint().
@@ -3582,7 +3582,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-connection#setTransactionIsolation(Integer)
        * @param level The transaction level to set, which is one of: Jdbc.Connection.TRANSACTION_READ_UNCOMMITTED, Jdbc.Connection.TRANSACTION_READ_COMMITTED, Jdbc.Connection.TRANSACTION_REPEATABLE_READ, Jdbc.Connection.TRANSACTION_SERIALIZABLE, or Jdbc.Connection.TRANSACTION_NONE.
        */
-      setTransactionIsolation(level: Integer): any;
+      setTransactionIsolation(level: Integer): void;
     }
     /**
      * A JDBC database metadata object. For documentation of this class, see
@@ -6333,7 +6333,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-date#setDate(Integer)
        * @param date The day of the month to set. The value is between 1 and 31, modified as needed. For example, if the date was April 30, for example, and the date is set to 31, then it is treated as if it were on May 1, because April has only 30 days.
        */
-      setDate(date: Integer): any;
+      setDate(date: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setMonth(int).
@@ -6341,7 +6341,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-date#setMonth(Integer)
        * @param month The month value to set. The value returned is between 0 and 11, with the value 0 representing January.
        */
-      setMonth(month: Integer): any;
+      setMonth(month: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setTime(int).
@@ -6349,7 +6349,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-date#setTime(Integer)
        * @param milliseconds The number of milliseconds since January 1, 1970, 00:00:00 GMT, not to exceed the milliseconds representation for the year 8099. A negative number indicates the number of milliseconds before January 1, 1970, 00:00:00 GMT.
        */
-      setTime(milliseconds: Integer): any;
+      setTime(milliseconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setYear(int).
@@ -6357,7 +6357,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-date#setYear(Integer)
        * @param year The value to set the year with. This value plus 1900 is the resulting year the date has after this method executes.
        */
-      setYear(year: Integer): any;
+      setYear(year: Integer): void;
     }
     /**
      * A JDBC ParameterMetaData. For documentation of this class, see
@@ -6523,7 +6523,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#addBatch()
        */
-      addBatch(): any;
+      addBatch(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#addBatch(String).
@@ -6535,7 +6535,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#addBatch(String)
        * @param sql The SQL command to add to this statement, typically an SQL INSERT or UPDATE.
        */
-      addBatch(sql: string): any;
+      addBatch(sql: string): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#cancel().
@@ -6546,7 +6546,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#cancel()
        */
-      cancel(): any;
+      cancel(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#clearBatch().
@@ -6557,7 +6557,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#clearBatch()
        */
-      clearBatch(): any;
+      clearBatch(): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#clearParameters().
@@ -6568,7 +6568,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#clearParameters()
        */
-      clearParameters(): any;
+      clearParameters(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#clearWarnings().
@@ -6579,14 +6579,14 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#clearWarnings()
        */
-      clearWarnings(): any;
+      clearWarnings(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#close().
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#close()
        */
-      close(): any;
+      close(): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#execute().
@@ -7139,7 +7139,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setArray(parameterIndex: Integer, x: JdbcArray): any;
+      setArray(parameterIndex: Integer, x: JdbcArray): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBigDecimal(int, BigDecimal).
@@ -7152,7 +7152,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBigDecimal(parameterIndex: Integer, x: BigNumber): any;
+      setBigDecimal(parameterIndex: Integer, x: BigNumber): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBlob(int, Clob).
@@ -7165,7 +7165,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBlob(parameterIndex: Integer, x: JdbcBlob): any;
+      setBlob(parameterIndex: Integer, x: JdbcBlob): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBoolean(int, boolean).
@@ -7178,7 +7178,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBoolean(parameterIndex: Integer, x: boolean): any;
+      setBoolean(parameterIndex: Integer, x: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setByte(int, byte).
@@ -7191,7 +7191,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setByte(parameterIndex: Integer, x: Byte): any;
+      setByte(parameterIndex: Integer, x: Byte): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setBytes(int, byte[]).
@@ -7204,7 +7204,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setBytes(parameterIndex: Integer, x: Byte[]): any;
+      setBytes(parameterIndex: Integer, x: Byte[]): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setClob(int, Clob).
@@ -7217,7 +7217,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setClob(parameterIndex: Integer, x: JdbcClob): any;
+      setClob(parameterIndex: Integer, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setCursorName(String).
@@ -7229,7 +7229,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setCursorName(String)
        * @param name The new cursor name, which must be unique within a connection.
        */
-      setCursorName(name: string): any;
+      setCursorName(name: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setDate(int, Date).
@@ -7242,7 +7242,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setDate(parameterIndex: Integer, x: JdbcDate): any;
+      setDate(parameterIndex: Integer, x: JdbcDate): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setDate(int, Date, Calendar).
@@ -7256,7 +7256,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setDate(parameterIndex: Integer, x: JdbcDate, timeZone: string): any;
+      setDate(parameterIndex: Integer, x: JdbcDate, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setDouble(int, double).
@@ -7269,7 +7269,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setDouble(parameterIndex: Integer, x: number): any;
+      setDouble(parameterIndex: Integer, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setEscapeProcessing(boolean).
@@ -7281,7 +7281,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setEscapeProcessing(Boolean)
        * @param enable If true, escape processing is enabled; otherwise it is disabled.
        */
-      setEscapeProcessing(enable: boolean): any;
+      setEscapeProcessing(enable: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setFetchDirection(int).
@@ -7293,7 +7293,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setFetchDirection(Integer)
        * @param direction The specified direction to set, which is either Jdbc.ResultSet.FETCH_FORWARD or Jdbc.ResultSet.FETCH_REVERSE.
        */
-      setFetchDirection(direction: Integer): any;
+      setFetchDirection(direction: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setFetchSize(int).
@@ -7305,7 +7305,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setFetchSize(Integer)
        * @param rows The number of rows to fetch.
        */
-      setFetchSize(rows: Integer): any;
+      setFetchSize(rows: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setFloat(int, float).
@@ -7318,7 +7318,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setFloat(parameterIndex: Integer, x: number): any;
+      setFloat(parameterIndex: Integer, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setInt(int, int).
@@ -7331,7 +7331,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setInt(parameterIndex: Integer, x: Integer): any;
+      setInt(parameterIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setLong(int, long).
@@ -7344,7 +7344,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setLong(parameterIndex: Integer, x: Integer): any;
+      setLong(parameterIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setMaxFieldSize(int).
@@ -7356,7 +7356,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setMaxFieldSize(Integer)
        * @param max The new column byte size limit; a value of zero indicates no limit.
        */
-      setMaxFieldSize(max: Integer): any;
+      setMaxFieldSize(max: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setMaxRows(int).
@@ -7368,7 +7368,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setMaxRows(Integer)
        * @param max The maximum number of rows a result set generated by this statement can have. A value of 0 indicates no limit.
        */
-      setMaxRows(max: Integer): any;
+      setMaxRows(max: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNClob(int, NClob).
@@ -7381,7 +7381,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setNClob(parameterIndex: Integer, x: JdbcClob): any;
+      setNClob(parameterIndex: Integer, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNString(int, String).
@@ -7394,7 +7394,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setNString(parameterIndex: Integer, x: string): any;
+      setNString(parameterIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNull(int, int).
@@ -7407,7 +7407,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param sqlType The SQL type of the specified parameter.
        */
-      setNull(parameterIndex: Integer, sqlType: Integer): any;
+      setNull(parameterIndex: Integer, sqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setNull(int, int, String).
@@ -7421,7 +7421,7 @@ declare namespace GoogleAppsScript {
        * @param sqlType The SQL type of the specified parameter.
        * @param typeName The fully-qualifed name of an SQL user-defined type. Ignored if the parameter isn't a user-defined type or REF.
        */
-      setNull(parameterIndex: Integer, sqlType: Integer, typeName: string): any;
+      setNull(parameterIndex: Integer, sqlType: Integer, typeName: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setObject(int, Object).
@@ -7434,7 +7434,7 @@ declare namespace GoogleAppsScript {
        * @param index The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The object containing the value to set the parameter to.
        */
-      setObject(index: Integer, x: any): any;
+      setObject(index: Integer, x: any): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setObject(int, Object, int).
@@ -7448,7 +7448,7 @@ declare namespace GoogleAppsScript {
        * @param x The object containing the value to set the parameter to.
        * @param targetSqlType The SQL type to send to the database.
        */
-      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer): any;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setObject(int, Object, int, int).
@@ -7463,7 +7463,7 @@ declare namespace GoogleAppsScript {
        * @param targetSqlType The SQL type to send to the database. The scale argument may further qualify this type.
        * @param scaleOrLength The number of digits after the decimal for DECIMAL or NUMERIC types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer, scaleOrLength: Integer): any;
+      setObject(parameterIndex: Integer, x: any, targetSqlType: Integer, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setPoolable(boolean).
@@ -7475,7 +7475,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setPoolable(Boolean)
        * @param poolable If true, requests that this statement be pooled; otherwise requests it not be pooled.
        */
-      setPoolable(poolable: boolean): any;
+      setPoolable(poolable: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setQueryTimeout(int).
@@ -7487,7 +7487,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-prepared-statement#setQueryTimeout(Integer)
        * @param seconds The new query timeout in seconds; a value of 0 indicates no timeout.
        */
-      setQueryTimeout(seconds: Integer): any;
+      setQueryTimeout(seconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setRef(int, Ref).
@@ -7500,7 +7500,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The SQL REF value to set.
        */
-      setRef(parameterIndex: Integer, x: JdbcRef): any;
+      setRef(parameterIndex: Integer, x: JdbcRef): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setRowId(int, RowId).
@@ -7513,7 +7513,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setRowId(parameterIndex: Integer, x: JdbcRowId): any;
+      setRowId(parameterIndex: Integer, x: JdbcRowId): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setSQLXML(int, SQLXML).
@@ -7526,7 +7526,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setSQLXML(parameterIndex: Integer, x: JdbcSQLXML): any;
+      setSQLXML(parameterIndex: Integer, x: JdbcSQLXML): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setShort(int, short).
@@ -7539,7 +7539,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setShort(parameterIndex: Integer, x: Integer): any;
+      setShort(parameterIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setString(int, String).
@@ -7552,7 +7552,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setString(parameterIndex: Integer, x: string): any;
+      setString(parameterIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTime(int, Time).
@@ -7565,7 +7565,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setTime(parameterIndex: Integer, x: JdbcTime): any;
+      setTime(parameterIndex: Integer, x: JdbcTime): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTime(int, Time, Calendar).
@@ -7579,7 +7579,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setTime(parameterIndex: Integer, x: JdbcTime, timeZone: string): any;
+      setTime(parameterIndex: Integer, x: JdbcTime, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTimestamp(int, Timestamp).
@@ -7592,7 +7592,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp): any;
+      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setTimestamp(int, Timestamp, Calendar).
@@ -7606,7 +7606,7 @@ declare namespace GoogleAppsScript {
        * @param x The parameter value to set.
        * @param timeZone A time zone string used to construct  java.lang.Calendar instance, which in turn is used to build the date. Several formats of time zone strings are recognized: short IDs (such as PST, EST, and GMT), long IDs (such as US/Pacific and America/Los_Angeles), and offsets (such as GMT+6:30).
        */
-      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp, timeZone: string): any;
+      setTimestamp(parameterIndex: Integer, x: JdbcTimestamp, timeZone: string): void;
 
       /**
        * For documentation of this method, see java.sql.PreparedStatement#setURL(int, URL).
@@ -7619,7 +7619,7 @@ declare namespace GoogleAppsScript {
        * @param parameterIndex The index of the parameter to set (the first parameter is 1, the second is 2, and so on).
        * @param x The parameter value to set.
        */
-      setURL(parameterIndex: Integer, x: string): any;
+      setURL(parameterIndex: Integer, x: string): void;
     }
     /**
      * A JDBC Ref. For documentation of this class, see java.sql.Ref.
@@ -7652,7 +7652,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-ref#setObject(Object)
        * @param object The object to set as the refernence target.
        */
-      setObject(object: any): any;
+      setObject(object: any): void;
     }
     /**
      * A JDBC ResultSet. For documentation of this class, see java.sql.ResultSet
@@ -7685,7 +7685,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#afterLast()
        */
-      afterLast(): any;
+      afterLast(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#beforeFirst().
@@ -7696,7 +7696,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#beforeFirst()
        */
-      beforeFirst(): any;
+      beforeFirst(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#cancelRowUpdates().
@@ -7707,7 +7707,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#cancelRowUpdates()
        */
-      cancelRowUpdates(): any;
+      cancelRowUpdates(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#clearWarnings().
@@ -7718,14 +7718,14 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#clearWarnings()
        */
-      clearWarnings(): any;
+      clearWarnings(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#close().
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#close()
        */
-      close(): any;
+      close(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#deleteRow().
@@ -7736,7 +7736,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#deleteRow()
        */
-      deleteRow(): any;
+      deleteRow(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#findColumn(String).
@@ -8766,7 +8766,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#insertRow()
        */
-      insertRow(): any;
+      insertRow(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#isAfterLast().
@@ -8867,7 +8867,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#moveToCurrentRow()
        */
-      moveToCurrentRow(): any;
+      moveToCurrentRow(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#moveToInsertRow().
@@ -8878,7 +8878,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#moveToInsertRow()
        */
-      moveToInsertRow(): any;
+      moveToInsertRow(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#next().
@@ -8919,7 +8919,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#refreshRow()
        */
-      refreshRow(): any;
+      refreshRow(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#relative(int).
@@ -8992,7 +8992,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#setFetchDirection(Integer)
        * @param direction The specified direction to set, which is either Jdbc.ResultSet.FETCH_FORWARD or Jdbc.ResultSet.FETCH_REVERSE.
        */
-      setFetchDirection(direction: Integer): any;
+      setFetchDirection(direction: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#setFetchSize(int).
@@ -9004,7 +9004,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#setFetchSize(Integer)
        * @param rows The number of rows to fetch.
        */
-      setFetchSize(rows: Integer): any;
+      setFetchSize(rows: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateArray(int, Array).
@@ -9017,7 +9017,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateArray(columnIndex: Integer, x: JdbcArray): any;
+      updateArray(columnIndex: Integer, x: JdbcArray): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateArray(String, Array).
@@ -9030,7 +9030,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateArray(columnLabel: string, x: JdbcArray): any;
+      updateArray(columnLabel: string, x: JdbcArray): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBigDecimal(int, BigDecimal).
@@ -9043,7 +9043,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateBigDecimal(columnIndex: Integer, x: BigNumber): any;
+      updateBigDecimal(columnIndex: Integer, x: BigNumber): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBigDecimal(String, BigDecimal).
@@ -9056,7 +9056,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateBigDecimal(columnLabel: string, x: BigNumber): any;
+      updateBigDecimal(columnLabel: string, x: BigNumber): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBlob(int, Blob).
@@ -9069,7 +9069,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateBlob(columnIndex: Integer, x: JdbcBlob): any;
+      updateBlob(columnIndex: Integer, x: JdbcBlob): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateRef(String, Blob).
@@ -9082,7 +9082,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateBlob(columnLabel: string, x: JdbcBlob): any;
+      updateBlob(columnLabel: string, x: JdbcBlob): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBoolean(int, boolean).
@@ -9095,7 +9095,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateBoolean(columnIndex: Integer, x: boolean): any;
+      updateBoolean(columnIndex: Integer, x: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBoolean(String, boolean).
@@ -9108,7 +9108,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateBoolean(columnLabel: string, x: boolean): any;
+      updateBoolean(columnLabel: string, x: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateByte(int, byte).
@@ -9121,7 +9121,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateByte(columnIndex: Integer, x: Byte): any;
+      updateByte(columnIndex: Integer, x: Byte): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateByte(String, byte).
@@ -9134,7 +9134,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateByte(columnLabel: string, x: Byte): any;
+      updateByte(columnLabel: string, x: Byte): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBytes(int, byte[]).
@@ -9147,7 +9147,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateBytes(columnIndex: Integer, x: Byte[]): any;
+      updateBytes(columnIndex: Integer, x: Byte[]): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateBytes(String, byte[]).
@@ -9160,7 +9160,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateBytes(columnLabel: string, x: Byte[]): any;
+      updateBytes(columnLabel: string, x: Byte[]): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateClob(int, Clob).
@@ -9173,7 +9173,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateClob(columnIndex: Integer, x: JdbcClob): any;
+      updateClob(columnIndex: Integer, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateClob(String, Clob).
@@ -9186,7 +9186,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateClob(columnLabel: string, x: JdbcClob): any;
+      updateClob(columnLabel: string, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateDate(int, Date).
@@ -9199,7 +9199,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateDate(columnIndex: Integer, x: JdbcDate): any;
+      updateDate(columnIndex: Integer, x: JdbcDate): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateDate(String, Date).
@@ -9212,7 +9212,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateDate(columnLabel: string, x: JdbcDate): any;
+      updateDate(columnLabel: string, x: JdbcDate): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateDouble(int, double).
@@ -9225,7 +9225,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateDouble(columnIndex: Integer, x: number): any;
+      updateDouble(columnIndex: Integer, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateDouble(String, double).
@@ -9238,7 +9238,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateDouble(columnLabel: string, x: number): any;
+      updateDouble(columnLabel: string, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateFloat(int, float).
@@ -9251,7 +9251,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateFloat(columnIndex: Integer, x: number): any;
+      updateFloat(columnIndex: Integer, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateFloat(String, float).
@@ -9264,7 +9264,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateFloat(columnLabel: string, x: number): any;
+      updateFloat(columnLabel: string, x: number): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateInt(int, int).
@@ -9277,7 +9277,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateInt(columnIndex: Integer, x: Integer): any;
+      updateInt(columnIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateInt(String, int).
@@ -9290,7 +9290,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateInt(columnLabel: string, x: Integer): any;
+      updateInt(columnLabel: string, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateLong(int, long).
@@ -9303,7 +9303,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateLong(columnIndex: Integer, x: Integer): any;
+      updateLong(columnIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateLong(String, long).
@@ -9316,7 +9316,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateLong(columnLabel: string, x: Integer): any;
+      updateLong(columnLabel: string, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateNClob(int, NClob).
@@ -9329,7 +9329,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateNClob(columnIndex: Integer, x: JdbcClob): any;
+      updateNClob(columnIndex: Integer, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateNClob(String, NClob).
@@ -9342,7 +9342,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateNClob(columnLabel: string, x: JdbcClob): any;
+      updateNClob(columnLabel: string, x: JdbcClob): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateNString(int, String).
@@ -9355,7 +9355,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateNString(columnIndex: Integer, x: string): any;
+      updateNString(columnIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateNString(String, String).
@@ -9368,7 +9368,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateNString(columnLabel: string, x: string): any;
+      updateNString(columnLabel: string, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateNull(int).
@@ -9380,7 +9380,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#updateNull(Integer)
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        */
-      updateNull(columnIndex: Integer): any;
+      updateNull(columnIndex: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateNull(String).
@@ -9392,7 +9392,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#updateNull(String)
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        */
-      updateNull(columnLabel: string): any;
+      updateNull(columnLabel: string): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateObject(int, Object).
@@ -9405,7 +9405,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateObject(columnIndex: Integer, x: any): any;
+      updateObject(columnIndex: Integer, x: any): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateObject(int, Object, int).
@@ -9419,7 +9419,7 @@ declare namespace GoogleAppsScript {
        * @param x The new column value.
        * @param scaleOrLength The number of digits after the decimal for BigDecimal types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      updateObject(columnIndex: Integer, x: any, scaleOrLength: Integer): any;
+      updateObject(columnIndex: Integer, x: any, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateObject(String, Object).
@@ -9432,7 +9432,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateObject(columnLabel: string, x: any): any;
+      updateObject(columnLabel: string, x: any): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateObject(String, Object, int).
@@ -9446,7 +9446,7 @@ declare namespace GoogleAppsScript {
        * @param x The new column value.
        * @param scaleOrLength The number of digits after the decimal for BigDecimal types, or the length of data for InputStream or Reader types. Ignored for all other types.
        */
-      updateObject(columnLabel: string, x: any, scaleOrLength: Integer): any;
+      updateObject(columnLabel: string, x: any, scaleOrLength: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateRef(int, Ref).
@@ -9459,7 +9459,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateRef(columnIndex: Integer, x: JdbcRef): any;
+      updateRef(columnIndex: Integer, x: JdbcRef): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateRef(String, Ref).
@@ -9472,7 +9472,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateRef(columnLabel: string, x: JdbcRef): any;
+      updateRef(columnLabel: string, x: JdbcRef): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateRow().
@@ -9483,7 +9483,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-result-set#updateRow()
        */
-      updateRow(): any;
+      updateRow(): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateRowId(int, RowId).
@@ -9496,7 +9496,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateRowId(columnIndex: Integer, x: JdbcRowId): any;
+      updateRowId(columnIndex: Integer, x: JdbcRowId): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateRowId(String, RowId).
@@ -9509,7 +9509,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateRowId(columnLabel: string, x: JdbcRowId): any;
+      updateRowId(columnLabel: string, x: JdbcRowId): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateSQLXML(int, SQLXML).
@@ -9522,7 +9522,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateSQLXML(columnIndex: Integer, x: JdbcSQLXML): any;
+      updateSQLXML(columnIndex: Integer, x: JdbcSQLXML): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateSQLXML(String, SQLXML).
@@ -9535,7 +9535,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateSQLXML(columnLabel: string, x: JdbcSQLXML): any;
+      updateSQLXML(columnLabel: string, x: JdbcSQLXML): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateShort(int, short).
@@ -9548,7 +9548,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateShort(columnIndex: Integer, x: Integer): any;
+      updateShort(columnIndex: Integer, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateShort(String, short).
@@ -9561,7 +9561,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateShort(columnLabel: string, x: Integer): any;
+      updateShort(columnLabel: string, x: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateString(int, String).
@@ -9574,7 +9574,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateString(columnIndex: Integer, x: string): any;
+      updateString(columnIndex: Integer, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateString(String, String).
@@ -9587,7 +9587,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateString(columnLabel: string, x: string): any;
+      updateString(columnLabel: string, x: string): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateTime(int, Time).
@@ -9600,7 +9600,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateTime(columnIndex: Integer, x: JdbcTime): any;
+      updateTime(columnIndex: Integer, x: JdbcTime): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateTime(String, Time).
@@ -9613,7 +9613,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateTime(columnLabel: string, x: JdbcTime): any;
+      updateTime(columnLabel: string, x: JdbcTime): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateTimestamp(int, Timestamp).
@@ -9626,7 +9626,7 @@ declare namespace GoogleAppsScript {
        * @param columnIndex The index of the column to update (the first column is 1, the second is 2, and so on).
        * @param x The new column value.
        */
-      updateTimestamp(columnIndex: Integer, x: JdbcTimestamp): any;
+      updateTimestamp(columnIndex: Integer, x: JdbcTimestamp): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#updateTimestamp(String, Timestamp).
@@ -9639,7 +9639,7 @@ declare namespace GoogleAppsScript {
        * @param columnLabel The label for the column, specified with the SQL AS clause. If the AS clause wasn't specified, then the label is the name of the column.
        * @param x The new column value.
        */
-      updateTimestamp(columnLabel: string, x: JdbcTimestamp): any;
+      updateTimestamp(columnLabel: string, x: JdbcTimestamp): void;
 
       /**
        * For documentation of this method, see java.sql.ResultSet#wasNull().
@@ -10024,7 +10024,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-sqlxml#free()
        */
-      free(): any;
+      free(): void;
 
       /**
        * For documentation of this method, see java.sql.SQLXML#getString().
@@ -10042,7 +10042,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-sqlxml#setString(String)
        * @param value The string representation of the XML value to set.
        */
-      setString(value: string): any;
+      setString(value: string): void;
     }
     /**
      * A JDBC Savepoint. For documentation of this class, see java.sql.Savepoint
@@ -10086,7 +10086,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#addBatch(String)
        * @param sql The SQL command to add to this statement, typically an SQL INSERT or UPDATE.
        */
-      addBatch(sql: string): any;
+      addBatch(sql: string): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#cancel().
@@ -10097,7 +10097,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#cancel()
        */
-      cancel(): any;
+      cancel(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#clearBatch().
@@ -10108,7 +10108,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#clearBatch()
        */
-      clearBatch(): any;
+      clearBatch(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#clearWarnings().
@@ -10119,14 +10119,14 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#clearWarnings()
        */
-      clearWarnings(): any;
+      clearWarnings(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#close().
        *
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#close()
        */
-      close(): any;
+      close(): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#execute(String).
@@ -10603,7 +10603,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setCursorName(String)
        * @param name The new cursor name, which must be unique within a connection.
        */
-      setCursorName(name: string): any;
+      setCursorName(name: string): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setEscapeProcessing(boolean).
@@ -10615,7 +10615,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setEscapeProcessing(Boolean)
        * @param enable If true, escape processing is enabled; otherwise it is disabled.
        */
-      setEscapeProcessing(enable: boolean): any;
+      setEscapeProcessing(enable: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setFetchDirection(int).
@@ -10627,7 +10627,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setFetchDirection(Integer)
        * @param direction The specified direction to set, which is either Jdbc.ResultSet.FETCH_FORWARD or Jdbc.ResultSet.FETCH_REVERSE.
        */
-      setFetchDirection(direction: Integer): any;
+      setFetchDirection(direction: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setFetchSize(int).
@@ -10639,7 +10639,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setFetchSize(Integer)
        * @param rows The number of rows to fetch.
        */
-      setFetchSize(rows: Integer): any;
+      setFetchSize(rows: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setMaxFieldSize(int).
@@ -10651,7 +10651,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setMaxFieldSize(Integer)
        * @param max The new column byte size limit; a value of zero indicates no limit.
        */
-      setMaxFieldSize(max: Integer): any;
+      setMaxFieldSize(max: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setMaxRows(int).
@@ -10663,7 +10663,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setMaxRows(Integer)
        * @param max The maximum number of rows a result set generated by this statement can have. A value of 0 indicates no limit.
        */
-      setMaxRows(max: Integer): any;
+      setMaxRows(max: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setPoolable(boolean).
@@ -10675,7 +10675,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setPoolable(Boolean)
        * @param poolable If true, requests that this statement be pooled; otherwise requests it not be pooled.
        */
-      setPoolable(poolable: boolean): any;
+      setPoolable(poolable: boolean): void;
 
       /**
        * For documentation of this method, see java.sql.Statement#setQueryTimeout(int).
@@ -10687,7 +10687,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-statement#setQueryTimeout(Integer)
        * @param seconds The new query timeout in seconds; a value of 0 indicates no timeout.
        */
-      setQueryTimeout(seconds: Integer): any;
+      setQueryTimeout(seconds: Integer): void;
     }
     /**
      * A JDBC Struct. For documentation of this class, see java.sql.Struct
@@ -10789,7 +10789,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-time#setHours(Integer)
        * @param hours The hour to set; this object is updated to represent a point in time within the specified hour of the day, with the year, month, date, minute, and second the same as before, as interpreted in the local time zone.
        */
-      setHours(hours: Integer): any;
+      setHours(hours: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setMinutes(int).
@@ -10797,7 +10797,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-time#setMinutes(Integer)
        * @param minutes The minutes to set; this object is updated to represent a point in time within the specified minute of the hour, with the year, month, date, hour, and second the same as before, as interpreted in the local time zone.
        */
-      setMinutes(minutes: Integer): any;
+      setMinutes(minutes: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setSeconds(int).
@@ -10805,7 +10805,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-time#setSeconds(Integer)
        * @param seconds The seconds to set; this object is updated to represent a point in time within the specified second of the minute, with the year, month, date, hour, and minute the same as before, as interpreted in the local time zone.
        */
-      setSeconds(seconds: Integer): any;
+      setSeconds(seconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Time#setTime(long).
@@ -10813,7 +10813,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-time#setTime(Integer)
        * @param milliseconds The time value to set. The value is milliseconds since January 1, 1970, 00:00:00 GMT, while a negative number is milliseconds before that time.
        */
-      setTime(milliseconds: Integer): any;
+      setTime(milliseconds: Integer): void;
     }
     /**
      * A JDBC Timestamp. For documentation of this class, see java.sql.Timestamp
@@ -10929,7 +10929,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setDate(Integer)
        * @param date The day of month to set. This timestamp is updated to represent a point in time within the specified day of month, with the year, month, hour, minute, and second the same as before, as interpreted in the local time zone. If the date was April 30, for example, and the date is set to 31, then it is treated as if it were on May 1, because April has only 30 days.
        */
-      setDate(date: Integer): any;
+      setDate(date: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setHours(int).
@@ -10937,7 +10937,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setHours(Integer)
        * @param hours The hour to set; this object is updated to represent a point in time within the specified hour of the day, with the year, month, date, minute, and second the same as before, as interpreted in the local time zone.
        */
-      setHours(hours: Integer): any;
+      setHours(hours: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setMinutes(int).
@@ -10945,7 +10945,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setMinutes(Integer)
        * @param minutes The minutes to set; this object is updated to represent a point in time within the specified minute of the hour, with the year, month, date, hour, and second the same as before, as interpreted in the local time zone.
        */
-      setMinutes(minutes: Integer): any;
+      setMinutes(minutes: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setMonth(int).
@@ -10953,7 +10953,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setMonth(Integer)
        * @param month The month to set. This timestamp is updated to represent a point in time within the specified month, with the year, date, hour, minute, and second the same as before, as interpreted in the local time zone. If the date was October 31, for example, and the month is set to June, then the new date is treated as if it were on July 1, because June has only 30 days.
        */
-      setMonth(month: Integer): any;
+      setMonth(month: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Timestamp#setNanos(int).
@@ -10961,7 +10961,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setNanos(Integer)
        * @param nanoseconds The new fractional seconds value.
        */
-      setNanos(nanoseconds: Integer): any;
+      setNanos(nanoseconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setSeconds(int).
@@ -10969,7 +10969,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setSeconds(Integer)
        * @param seconds The seconds to set; this object is updated to represent a point in time within the specified second of the minute, with the year, month, date, hour, and minute the same as before, as interpreted in the local time zone.
        */
-      setSeconds(seconds: Integer): any;
+      setSeconds(seconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Timestamp#setTime(long).
@@ -10977,7 +10977,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setTime(Integer)
        * @param milliseconds The time value to set. The value is milliseconds since January 1, 1970, 00:00:00 GMT.
        */
-      setTime(milliseconds: Integer): any;
+      setTime(milliseconds: Integer): void;
 
       /**
        * For documentation of this method, see java.sql.Date#setYear(int).
@@ -10985,7 +10985,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/jdbc/jdbc-timestamp#setYear(Integer)
        * @param year The year value to set; the timestamp's year is set to this value plus 1900. This timestamp is updated to represent a point in time within the specified year, with the month, date, hour, minute, and second the same as before, as interpreted in the local time zone. If the date was February 29, for example, and the year is set to a non-leap year, then the new date is treated as if it were on March 1.
        */
-      setYear(year: Integer): any;
+      setYear(year: Integer): void;
     }
   }
 }

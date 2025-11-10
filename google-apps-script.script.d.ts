@@ -451,7 +451,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/script/script-app#deleteTrigger(Trigger)
        * @param trigger The trigger to delete.
        */
-      deleteTrigger(trigger: Trigger): any;
+      deleteTrigger(trigger: Trigger): void;
 
       /**
        * Gets an object that checks if the user has granted authorization for all the script requirements. The object also provides an authorization URL for users to grant those permissions, in case any of the script requirements are not authorized.
@@ -658,7 +658,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/script/script-app#invalidateAuth()
        */
-      invalidateAuth(): any;
+      invalidateAuth(): void;
 
       /**
        * Creates a builder for a state token that can be used in a callback API (like an OAuth flow).
@@ -730,7 +730,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/script/script-app#requireAllScopes(AuthMode)
        * @param authMode The authorization mode for which script scopes needs to be evaluated, in almost all cases, the value for authMode should be ScriptApp.AuthMode.FULL, since no other authorization mode requires that users grant authorization.
        */
-      requireAllScopes(authMode: AuthMode): any;
+      requireAllScopes(authMode: AuthMode): void;
 
       /**
        * Validates if the user has granted consent for the requested scopes. Use this method if an execution flow relies on one or more services. If any of the specified consents are missing, then this method ends the current execution and renders an authorization prompt to request the missing consents. Scopes that are invalid or not required by the script lead to an error.
@@ -745,7 +745,7 @@ declare namespace GoogleAppsScript {
        * @param authMode The authorization mode for which requested scopes needs to be evaluated, in almost all cases, the value for authMode should be ScriptApp.AuthMode.FULL, since no other authorization mode requires that users grant authorization.
        * @param oAuthScopes The OAuth scopes that are required to complete the given execution flow.
        */
-      requireScopes(authMode: AuthMode, oAuthScopes: string[]): any;
+      requireScopes(authMode: AuthMode, oAuthScopes: string[]): void;
       /** @deprecated DO NOT USE */ getProjectKey(): string;
       /** @deprecated DO NOT USE */ getScriptTriggers(): Trigger[];
     }
@@ -780,7 +780,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/script/service#isEnabled()
        */
       isEnabled(): boolean;
-      /** @deprecated DO NOT USE */ disable(): any;
+      /** @deprecated DO NOT USE */ disable(): void;
     }
     /**
      * Builder for spreadsheet triggers.

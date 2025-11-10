@@ -758,7 +758,7 @@ declare namespace GoogleAppsScript {
        * @param clientId A client identifier.
        * @param signingKey A private signing key.
        */
-      setAuthentication(clientId: string, signingKey: string): any;
+      setAuthentication(clientId: string, signingKey: string): void;
     }
     /**
      * An enum representing the size of a marker added to a map.

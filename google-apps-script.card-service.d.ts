@@ -415,7 +415,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/card-service/authorization-exception#throwException()
        */
-      throwException(): any;
+      throwException(): void;
     }
     /**
      * A class that represents a complete border style that can be applied to widgets.

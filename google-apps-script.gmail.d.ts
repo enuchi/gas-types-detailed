@@ -1301,7 +1301,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/gmail/gmail-app#setCurrentMessageAccessToken(String)
        * @param accessToken the temporary access token obtained from a Gmail add-on action event object.
        */
-      setCurrentMessageAccessToken(accessToken: string): any;
+      setCurrentMessageAccessToken(accessToken: string): void;
 
       /**
        * Adds a star to this message and forces the message to refresh.
@@ -1612,7 +1612,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/gmail/gmail-draft#deleteDraft()
        */
-      deleteDraft(): any;
+      deleteDraft(): void;
 
       /**
        * Gets the ID of this draft message.
@@ -1833,7 +1833,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/gmail/gmail-label#deleteLabel()
        */
-      deleteLabel(): any;
+      deleteLabel(): void;
 
       /**
        * Gets the id of this label.

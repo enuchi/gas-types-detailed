@@ -757,7 +757,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(Color)
        * @param color
        */
-      setSolidFill(color: Color): any;
+      setSolidFill(color: Color): void;
 
       /**
        * Sets the solid fill to the given alpha and Color.
@@ -771,7 +771,7 @@ declare namespace GoogleAppsScript {
        * @param color
        * @param alpha
        */
-      setSolidFill(color: Color, alpha: number): any;
+      setSolidFill(color: Color, alpha: number): void;
 
       /**
        * Sets the solid fill to the given RGB values.
@@ -786,7 +786,7 @@ declare namespace GoogleAppsScript {
        * @param green
        * @param blue
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer): any;
+      setSolidFill(red: Integer, green: Integer, blue: Integer): void;
 
       /**
        * Sets the solid fill to the given alpha and RGB values.
@@ -802,7 +802,7 @@ declare namespace GoogleAppsScript {
        * @param blue
        * @param alpha
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): any;
+      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
 
       /**
        * Sets the solid fill to the given hex color string.
@@ -816,7 +816,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(String)
        * @param hexString
        */
-      setSolidFill(hexString: string): any;
+      setSolidFill(hexString: string): void;
 
       /**
        * Sets the solid fill to the given alpha and hex color string.
@@ -831,7 +831,7 @@ declare namespace GoogleAppsScript {
        * @param hexString
        * @param alpha
        */
-      setSolidFill(hexString: string, alpha: number): any;
+      setSolidFill(hexString: string, alpha: number): void;
 
       /**
        * Sets the solid fill to the given ThemeColorType.
@@ -844,7 +844,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(ThemeColorType)
        * @param color
        */
-      setSolidFill(color: ThemeColorType): any;
+      setSolidFill(color: ThemeColorType): void;
 
       /**
        * Sets the solid fill to the given alpha and ThemeColorType.
@@ -858,7 +858,7 @@ declare namespace GoogleAppsScript {
        * @param color
        * @param alpha
        */
-      setSolidFill(color: ThemeColorType, alpha: number): any;
+      setSolidFill(color: ThemeColorType, alpha: number): void;
 
       /**
        * Sets the background to transparent.
@@ -870,7 +870,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/fill#setTransparent()
        */
-      setTransparent(): any;
+      setTransparent(): void;
     }
     /**
      * The kinds of fill.
@@ -1247,7 +1247,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/group#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -1303,7 +1303,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/group#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -1331,7 +1331,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/group#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -1536,7 +1536,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/group#ungroup()
        */
-      ungroup(): any;
+      ungroup(): void;
     }
     /**
      * A PageElement representing an image.
@@ -2032,7 +2032,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/image#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes a Link.
@@ -2042,7 +2042,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/image#removeLink()
        */
-      removeLink(): any;
+      removeLink(): void;
 
       /**
        * Replaces this image with an image described by a BlobSource object.
@@ -2187,7 +2187,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/image#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -2215,7 +2215,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/image#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -3607,7 +3607,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/layout#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Replaces all instances of text matching find text with replace text. The search is case insensitive.
@@ -3663,7 +3663,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/layout#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): any;
+      selectAsCurrentPage(): void;
     }
     /**
      * A PageElement representing a line.
@@ -4232,7 +4232,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/line#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes a Link.
@@ -4242,7 +4242,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/line#removeLink()
        */
-      removeLink(): any;
+      removeLink(): void;
 
       /**
        * Reroutes the start and end of the line to the closest two connection sites on the connected page elements. The start and end of the line must be connected to different page elements.
@@ -4314,7 +4314,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/line#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -4342,7 +4342,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/line#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -4875,7 +4875,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(Color)
        * @param color
        */
-      setSolidFill(color: Color): any;
+      setSolidFill(color: Color): void;
 
       /**
        * Sets the solid fill to the given alpha and Color.
@@ -4889,7 +4889,7 @@ declare namespace GoogleAppsScript {
        * @param color
        * @param alpha
        */
-      setSolidFill(color: Color, alpha: number): any;
+      setSolidFill(color: Color, alpha: number): void;
 
       /**
        * Sets the solid fill to the given RGB values.
@@ -4904,7 +4904,7 @@ declare namespace GoogleAppsScript {
        * @param green
        * @param blue
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer): any;
+      setSolidFill(red: Integer, green: Integer, blue: Integer): void;
 
       /**
        * Sets the solid fill to the given alpha and RGB values.
@@ -4920,7 +4920,7 @@ declare namespace GoogleAppsScript {
        * @param blue
        * @param alpha
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): any;
+      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
 
       /**
        * Sets the solid fill to the given hex color string.
@@ -4934,7 +4934,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(String)
        * @param hexString
        */
-      setSolidFill(hexString: string): any;
+      setSolidFill(hexString: string): void;
 
       /**
        * Sets the solid fill to the given alpha and hex color string.
@@ -4949,7 +4949,7 @@ declare namespace GoogleAppsScript {
        * @param hexString
        * @param alpha
        */
-      setSolidFill(hexString: string, alpha: number): any;
+      setSolidFill(hexString: string, alpha: number): void;
 
       /**
        * Sets the solid fill to the given ThemeColorType.
@@ -4962,7 +4962,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(ThemeColorType)
        * @param color
        */
-      setSolidFill(color: ThemeColorType): any;
+      setSolidFill(color: ThemeColorType): void;
 
       /**
        * Sets the solid fill to the given alpha and ThemeColorType.
@@ -4976,7 +4976,7 @@ declare namespace GoogleAppsScript {
        * @param color
        * @param alpha
        */
-      setSolidFill(color: ThemeColorType, alpha: number): any;
+      setSolidFill(color: ThemeColorType, alpha: number): void;
     }
     /**
      * The kinds of line fill.
@@ -6436,7 +6436,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/master#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Replaces all instances of text matching find text with replace text. The search is case insensitive.
@@ -6492,7 +6492,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/master#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): any;
+      selectAsCurrentPage(): void;
     }
     /**
      * A notes master in a presentation.
@@ -8180,7 +8180,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/page#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Replaces all instances of text matching find text with replace text. The search is case insensitive.
@@ -8236,7 +8236,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/page#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): any;
+      selectAsCurrentPage(): void;
     }
     /**
      * Describes the page's background
@@ -8319,7 +8319,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/page-background#setPictureFill(BlobSource)
        * @param blobSource The image data.
        */
-      setPictureFill(blobSource: Base.BlobSource): any;
+      setPictureFill(blobSource: Base.BlobSource): void;
 
       /**
        * Sets the image at the provided URL as the page background. The image is stretched to match the dimensions of the page.
@@ -8334,7 +8334,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/page-background#setPictureFill(String)
        * @param imageUrl The URL to download the image from.
        */
-      setPictureFill(imageUrl: string): any;
+      setPictureFill(imageUrl: string): void;
 
       /**
        * Sets the solid fill to the given Color.
@@ -8347,7 +8347,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(Color)
        * @param color
        */
-      setSolidFill(color: Color): any;
+      setSolidFill(color: Color): void;
 
       /**
        * Sets the solid fill to the given alpha and Color.
@@ -8361,7 +8361,7 @@ declare namespace GoogleAppsScript {
        * @param color
        * @param alpha
        */
-      setSolidFill(color: Color, alpha: number): any;
+      setSolidFill(color: Color, alpha: number): void;
 
       /**
        * Sets the solid fill to the given RGB values.
@@ -8376,7 +8376,7 @@ declare namespace GoogleAppsScript {
        * @param green
        * @param blue
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer): any;
+      setSolidFill(red: Integer, green: Integer, blue: Integer): void;
 
       /**
        * Sets the solid fill to the given alpha and RGB values.
@@ -8392,7 +8392,7 @@ declare namespace GoogleAppsScript {
        * @param blue
        * @param alpha
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): any;
+      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
 
       /**
        * Sets the solid fill to the given hex color string.
@@ -8406,7 +8406,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(String)
        * @param hexString
        */
-      setSolidFill(hexString: string): any;
+      setSolidFill(hexString: string): void;
 
       /**
        * Sets the solid fill to the given alpha and hex color string.
@@ -8421,7 +8421,7 @@ declare namespace GoogleAppsScript {
        * @param hexString
        * @param alpha
        */
-      setSolidFill(hexString: string, alpha: number): any;
+      setSolidFill(hexString: string, alpha: number): void;
 
       /**
        * Sets the solid fill to the given ThemeColorType.
@@ -8434,7 +8434,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(ThemeColorType)
        * @param color
        */
-      setSolidFill(color: ThemeColorType): any;
+      setSolidFill(color: ThemeColorType): void;
 
       /**
        * Sets the solid fill to the given alpha and ThemeColorType.
@@ -8448,7 +8448,7 @@ declare namespace GoogleAppsScript {
        * @param color
        * @param alpha
        */
-      setSolidFill(color: ThemeColorType, alpha: number): any;
+      setSolidFill(color: ThemeColorType, alpha: number): void;
 
       /**
        * Sets the background to transparent.
@@ -8460,7 +8460,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/page-background#setTransparent()
        */
-      setTransparent(): any;
+      setTransparent(): void;
     }
     /**
      * The kinds of page backgrounds.
@@ -8969,7 +8969,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/page-element#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -9025,7 +9025,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/page-element#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -9053,7 +9053,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/page-element#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -10496,7 +10496,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#saveAndClose()
        */
-      saveAndClose(): any;
+      saveAndClose(): void;
 
       /**
        * Sets the name or title of the presentation.
@@ -10509,7 +10509,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/presentation#setName(String)
        * @param name The name to set for this presentation.
        */
-      setName(name: string): any;
+      setName(name: string): void;
     }
     /**
      * The user's selection in the active presentation.
@@ -11195,7 +11195,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/shape#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes a Link.
@@ -11205,7 +11205,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/shape#removeLink()
        */
-      removeLink(): any;
+      removeLink(): void;
 
       /**
        * Replaces this shape with an image provided by a BlobSource.
@@ -11399,7 +11399,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/shape#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -11427,7 +11427,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/shape#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -12172,7 +12172,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#refresh()
        */
-      refresh(): any;
+      refresh(): void;
 
       /**
        * Removes the page element.
@@ -12186,7 +12186,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes a Link.
@@ -12196,7 +12196,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#removeLink()
        */
-      removeLink(): any;
+      removeLink(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -12252,7 +12252,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -12280,7 +12280,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -13763,7 +13763,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/slide#move(Integer)
        * @param index The index where the slide should be moved to, based on the slide arrangement before the move. The index should be between zero and the number of slides in the presentation, inclusive.
        */
-      move(index: Integer): any;
+      move(index: Integer): void;
 
       /**
        * Refreshes the slide to reflect any changes made to the linked source slide. If this slide is not linked, returns without making any changes.
@@ -13793,7 +13793,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/slide#refreshSlide()
        */
-      refreshSlide(): any;
+      refreshSlide(): void;
 
       /**
        * Removes the page.
@@ -13805,7 +13805,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/slide#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Replaces all instances of text matching find text with replace text. The search is case insensitive.
@@ -13861,7 +13861,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/slide#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): any;
+      selectAsCurrentPage(): void;
 
       /**
        * Sets whether the slide is skipped in the presentation mode.
@@ -13874,7 +13874,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/slide#setSkipped(Boolean)
        * @param isSkipped True to skip the slide in the presentation mode.
        */
-      setSkipped(isSkipped: boolean): any;
+      setSkipped(isSkipped: boolean): void;
 
       /**
        * Unlinks the current Slide from its source slide. If this slide is not linked, returns without making any changes.
@@ -13902,7 +13902,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/slide#unlink()
        */
-      unlink(): any;
+      unlink(): void;
     }
     /**
      * The mode of links between slides.
@@ -14521,7 +14521,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -14577,7 +14577,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -14605,7 +14605,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -15302,7 +15302,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/table#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -15358,7 +15358,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/table#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -15386,7 +15386,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/table#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -15914,7 +15914,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/table-column#remove()
        */
-      remove(): any;
+      remove(): void;
     }
     /**
      * A row in a table. A row consists of a list of table cells. A row is identified by the row index.
@@ -16014,7 +16014,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/table-row#remove()
        */
-      remove(): any;
+      remove(): void;
     }
     /**
      * The text vertical offset from its normal position.
@@ -16156,7 +16156,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/text-range#clear()
        */
-      clear(): any;
+      clear(): void;
 
       /**
        * Clears the text bounded by the start and end offsets in the range.
@@ -16171,7 +16171,7 @@ declare namespace GoogleAppsScript {
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the range to clear. The start offset must be equal to or greater than 0 and less than or equal to endOffset. startOffset must also be less than the length of the current range.
        * @param endOffset The number of characters past the start index of the current text range used to determine the exclusive end index of the range to clear. The endOffset must be equal to or greater than startOffset. endOffset must also be less than or equal to the length of the current range.
        */
-      clear(startOffset: Integer, endOffset: Integer): any;
+      clear(startOffset: Integer, endOffset: Integer): void;
 
       /**
        * Returns all the ranges matching the search pattern in the current text range. The search is case sensitive.
@@ -16568,7 +16568,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/text-range#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Sets the text bounded by this range of the associated shape or table cell. The text maintains the styling of the start of the existing text.
@@ -17731,7 +17731,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/video#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -17787,7 +17787,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/video#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -17815,7 +17815,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/video#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
@@ -18405,7 +18405,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/word-art#remove()
        */
-      remove(): any;
+      remove(): void;
 
       /**
        * Removes a Link.
@@ -18415,7 +18415,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/word-art#removeLink()
        */
-      removeLink(): any;
+      removeLink(): void;
 
       /**
        * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
@@ -18471,7 +18471,7 @@ declare namespace GoogleAppsScript {
        *
        * https://developers.google.com/apps-script/reference/slides/word-art#select()
        */
-      select(): any;
+      select(): void;
 
       /**
        * Selects the PageElement in the active presentation.
@@ -18499,7 +18499,7 @@ declare namespace GoogleAppsScript {
        * https://developers.google.com/apps-script/reference/slides/word-art#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): any;
+      select(replace: boolean): void;
 
       /**
        * Sends the page element backward on the page by one element.
