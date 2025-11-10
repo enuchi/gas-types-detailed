@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2023-10-28
+// Type definitions for Google Apps Script 2025-11-10
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -10,25 +10,30 @@ declare namespace GoogleAppsScript {
     /**
      * Container for all conference-related information.
      *
-     *     var conferenceId;
-     *     // Set the conference ID, that is, the identifier your system creates for the meeting.
+     *     let conferenceId;
+     *     // Set the conference ID, that is, the identifier your system creates for the
+     *     // meeting.
      *
-     *     var entryPoint = ConferenceDataService.newEntryPoint();
+     *     const entryPoint = ConferenceDataService.newEntryPoint();
      *     // Finish building the entry point ...
      *
-     *     var conferenceParameter = ConferenceDataService.newConferenceParameter();
+     *     const conferenceParameter = ConferenceDataService.newConferenceParameter();
      *     // Finish building the parameter ...
      *
-     *     var conferenceData = ConferenceDataService.newConferenceDataBuilder()
-     *         .setConferenceId(conferenceId);
-     *         .addEntryPoint(entryPoint)
-     *         .addConferenceParameter(conferenceParameter)
-     *         .build();
+     *     const conferenceData = ConferenceDataService.newConferenceDataBuilder()
+     *                                .setConferenceId(conferenceId)
+     *                                .addEntryPoint(entryPoint)
+     *                                .addConferenceParameter(conferenceParameter)
+     *                                .build();
      */
     interface ConferenceData {
 
       /**
        * Prints the JSON representation of this object. This is for debugging only.
+       *
+       * Return:
+       * - String
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data#printJson()
        */
       printJson(): string;
@@ -39,16 +44,28 @@ declare namespace GoogleAppsScript {
     interface ConferenceDataBuilder {
 
       /**
-       * Adds a ConferenceParameter to this ConferenceData. The maximum number of
-       * parameters per ConferenceData is 300.
+       * Adds a ConferenceParameter to this ConferenceData. The maximum number of parameters per ConferenceData is 300.
+       *
+       * Return:
+       * - ConferenceDataBuilder — This builder, for chaining.
+       *
+       * Throws:
+       * - Error — if the provided conference parameter is invalid or if too many conference parameters were added.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#addConferenceParameter(ConferenceParameter)
        * @param conferenceParameter The parameter to add.
        */
       addConferenceParameter(conferenceParameter: ConferenceParameter): ConferenceDataBuilder;
 
       /**
-       * Adds an EntryPoint to this ConferenceData. The maximum number of entry points
-       * per ConferenceData is 300.
+       * Adds an EntryPoint to this ConferenceData. The maximum number of entry points per ConferenceData is 300.
+       *
+       * Return:
+       * - ConferenceDataBuilder — This builder, for chaining.
+       *
+       * Throws:
+       * - Error — if the provided entry point is invalid or if too many entry points were added.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#addEntryPoint(EntryPoint)
        * @param entryPoint The entry point to add.
        */
@@ -56,42 +73,69 @@ declare namespace GoogleAppsScript {
 
       /**
        * Builds and validates the ConferenceData.
+       *
+       * Return:
+       * - ConferenceData — the validated conference data
+       *
+       * Throws:
+       * - Error — if the constructed conference data is not valid.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#build()
        */
       build(): ConferenceData;
 
       /**
-       * Sets the conference ID of this ConferenceData. The maximum length for this field is 512
-       * characters.
+       * Sets the conference ID of this ConferenceData. The maximum length for this field is 512 characters.
+       *
+       * Return:
+       * - ConferenceDataBuilder — This builder, for chaining.
+       *
+       * Throws:
+       * - Error — if the provided conference ID is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#setConferenceId(String)
        * @param conferenceId The ID to set.
        */
       setConferenceId(conferenceId: string): ConferenceDataBuilder;
 
       /**
-       * Sets the conference solution ID defined in the addon's manifest. The value must be specified
-       * and populates conference's name and iconUrl values.
+       * Sets the conference solution ID defined in the addon's manifest. The value must be specified and populates conference's name and iconUrl values.
+       * Note that the field is required for GSuite add-ons whereas it's ignored for Conferencing add-ons
        *
+       * Return:
+       * - ConferenceDataBuilder — This builder, for chaining.
        *
-       * Note that the field is required for GSuite add-ons whereas it's ignored for Conferencing
-       * add-ons
+       * Throws:
+       * - Error — if the provided conference solution id is too long. The maximum length for this field is 512 characters.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#setConferenceSolutionId(String)
        * @param conferenceSolutionId The ID matching the manifest.
        */
       setConferenceSolutionId(conferenceSolutionId: string): ConferenceDataBuilder;
 
       /**
-       * Sets the ConferenceError of this ConferenceData, indicating that the conference
-       * was not successfully created.
+       * Sets the ConferenceError of this ConferenceData, indicating that the conference was not successfully created.
+       *
+       * Return:
+       * - ConferenceDataBuilder — This builder, for chaining.
+       *
+       * Throws:
+       * - Error — if the provided error is invalid.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#setError(ConferenceError)
        * @param conferenceError The error to set.
        */
       setError(conferenceError: ConferenceError): ConferenceDataBuilder;
 
       /**
-       * Sets the additional notes of this ConferenceData, such as instructions from the
-       * administrator or legal notices. Can contain HTML. The maximum length for this field is 2048
-       * characters.
+       * Sets the additional notes of this ConferenceData, such as instructions from the administrator or legal notices. Can contain HTML. The maximum length for this field is 2048 characters.
+       *
+       * Return:
+       * - ConferenceDataBuilder — This builder, for chaining.
+       *
+       * Throws:
+       * - Error — if the provided notes are too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#setNotes(String)
        * @param notes The additional notes to set.
        */
@@ -107,24 +151,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns a new, empty ConferenceDataBuilder.
+       *
+       * Return:
+       * - ConferenceDataBuilder — a new, empty ConferenceDataBuilder
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-service#newConferenceDataBuilder()
        */
       newConferenceDataBuilder(): ConferenceDataBuilder;
 
       /**
        * Returns a new, empty ConferenceError.
+       *
+       * Return:
+       * - ConferenceError — a new, empty ConferenceError
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-service#newConferenceError()
        */
       newConferenceError(): ConferenceError;
 
       /**
        * Returns a new, empty ConferenceParameter.
+       *
+       * Return:
+       * - ConferenceParameter — a new, empty ConferenceParameter
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-service#newConferenceParameter()
        */
       newConferenceParameter(): ConferenceParameter;
 
       /**
        * Returns a new, empty EntryPoint.
+       *
+       * Return:
+       * - EntryPoint — a new, empty EntryPoint
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-data-service#newEntryPoint()
        */
       newEntryPoint(): EntryPoint;
@@ -132,29 +192,37 @@ declare namespace GoogleAppsScript {
     /**
      * Error that occurred in a conferencing add-on. Example usage:
      *
-     *     var conferenceError = ConferenceDataService.newConferenceError()
-     *         .setConferenceErrorType(ConferenceErrorType.PERMANENT);
+     *     const conferenceError =
+     *         ConferenceDataService.newConferenceError().setConferenceErrorType(
+     *             ConferenceDataService.ConferenceErrorType.PERMANENT,
+     *         );
      *
-     *     var state = ScriptApp.newStateToken()
-     *         .withMethod('myLoginCallbackFunction');
-     *         .withTimeout(3600)
-     *         .createToken();
+     *     const state = ScriptApp.newStateToken()
+     *                       .withMethod('myLoginCallbackFunction')
+     *                       .withTimeout(3600)
+     *                       .createToken();
      *
-     *     var authenticationUrl = 'https://script.google.com/a/google.com/d/'
-     *         + ScriptApp.getScriptId()
-     *         + '/usercallback?state='
-     *         + state;
+     *     const authenticationUrl = `https://script.google.com/a/google.com/d/${
+     *         ScriptApp.getScriptId()}/usercallback?state=${state}`;
      *
-     *     var conferenceError = ConferenceDataService.newConferenceError()
-     *         .setConferenceErrorType(ConferenceDataService.ConferenceErrorType.AUTHENTICATION)
-     *         .setAuthenticationUrl(authenticationUrl);
+     *     const conferenceError =
+     *         ConferenceDataService.newConferenceError()
+     *             .setConferenceErrorType(
+     *                 ConferenceDataService.ConferenceErrorType.AUTHENTICATION,
+     *                 )
+     *             .setAuthenticationUrl(authenticationUrl);
      */
     interface ConferenceError {
 
       /**
-       * If the error type is AUTHENTICATION, the add-on must
-       * provide a URL calling back into the add-on to allow users to log in. The maximum length for
-       * this field is 1800 characters.
+       * If the error type is AUTHENTICATION, the add-on must provide a URL calling back into the add-on to allow users to log in. The maximum length for this field is 1800 characters.
+       *
+       * Return:
+       * - ConferenceError — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided URL is not a valid http/https URL or is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-error#setAuthenticationUrl(String)
        * @param authenticationUrl The authentication URL to set.
        */
@@ -162,6 +230,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the error type of this ConferenceError.
+       *
+       * Return:
+       * - ConferenceError — this object, for chaining
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-error#setConferenceErrorType(ConferenceErrorType)
        * @param conferenceErrorType The type of error to set.
        */
@@ -169,29 +241,44 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Enum that defines the types of errors that you can specify in a ConferenceError.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * ConferenceDataService.ConferenceErrorType.AUTHENTICATION.
      */
     enum ConferenceErrorType { AUTHENTICATION, CONFERENCE_SOLUTION_FORBIDDEN, PERMANENT, PERMISSION_DENIED, TEMPORARY, UNKNOWN }
     /**
      * Solution-specific parameter available fo the add-on's use. This parameter is persisted with the
      * conference data and, if an update or delete is needed, is passed to the add-on. Example usage:
      *
-     *     var conferenceParameter = ConferenceDataService.newConferenceParameter()
-     *         .setKey('meetingId')
-     *         .setValue('123456');
+     *     const conferenceParameter = ConferenceDataService.newConferenceParameter()
+     *                                     .setKey('meetingId')
+     *                                     .setValue('123456');
      */
     interface ConferenceParameter {
 
       /**
-       * Sets the key of this ConferenceParameter. The maximum length for this field is 50
-       * characters. Required.
+       * Sets the key of this ConferenceParameter. The maximum length for this field is 50 characters. Required.
+       *
+       * Return:
+       * - ConferenceParameter — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided key is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-parameter#setKey(String)
        * @param key The key to set.
        */
       setKey(key: string): ConferenceParameter;
 
       /**
-       * Sets the value of this ConferenceParameter. The maximum length for this field is 1024
-       * characters. Required.
+       * Sets the value of this ConferenceParameter. The maximum length for this field is 1024 characters. Required.
+       *
+       * Return:
+       * - ConferenceParameter — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided value is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/conference-parameter#setValue(String)
        * @param value The value to set.
        */
@@ -200,30 +287,41 @@ declare namespace GoogleAppsScript {
     /**
      * Definition of a specific way to join a conference. Example usage:
      *
-     *     var videoEntryPoint = ConferenceDataService.newEntryPoint()
-     *         .setEntryPointType(ConferenceDataService.EntryPointType.VIDEO)
-     *         .setUri('https://example.com/myroom');
-     *         .setPasscode('12345');
+     *     const videoEntryPoint =
+     *         ConferenceDataService.newEntryPoint()
+     *             .setEntryPointType(ConferenceDataService.EntryPointType.VIDEO)
+     *             .setUri('https://example.com/myroom')
+     *             .setPasscode('12345');
      *
-     *     var phoneEntryPoint = ConferenceDataService.newEntryPoint()
-     *         .setEntryPointType(ConferenceDataService.EntryPointType.PHONE)
-     *         .setUri('tel:+11234567890,,,112233445;9687')
-     *         .addFeature(ConferenceDataService.EntryPointFeature.TOLL)
-     *         setPin('9687');
+     *     const phoneEntryPoint =
+     *         ConferenceDataService.newEntryPoint()
+     *             .setEntryPointType(ConferenceDataService.EntryPointType.PHONE)
+     *             .setUri('tel:+11234567890,,,112233445;9687')
+     *             .addFeature(ConferenceDataService.EntryPointFeature.TOLL)
+     *             .setPin('9687');
      *
-     *     var sipEntryPoint = ConferenceDataService.newEntryPoint()
-     *         .setEntryPointType(ConferenceDataService.EntryPointType.SIP)
-     *         .setUri('sip:joe@example.com')
-     *         .setAccessCode('1234567');
+     *     const sipEntryPoint =
+     *         ConferenceDataService.newEntryPoint()
+     *             .setEntryPointType(ConferenceDataService.EntryPointType.SIP)
+     *             .setUri('sip:joe@example.com')
+     *             .setAccessCode('1234567');
      *
-     *     var moreEntryPoint = ConferenceDataService.newEntryPoint()
-     *         .setEntryPointType(ConferenceDataService.EntryPointType.MORE)
-     *         .setUri('https://example.com/moreJoiningInfo');
+     *     const moreEntryPoint =
+     *         ConferenceDataService.newEntryPoint()
+     *             .setEntryPointType(ConferenceDataService.EntryPointType.MORE)
+     *             .setUri('https://example.com/moreJoiningInfo');
      */
     interface EntryPoint {
 
       /**
        * Adds the feature of the entry point, such as being toll or toll-free.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the feature isn't applicable to this entry point.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#addFeature(EntryPointFeature)
        * @param feature The feature to set.
        */
@@ -231,6 +329,13 @@ declare namespace GoogleAppsScript {
 
       /**
        * An access code for accessing the conference. Maximum length 128 characters. Optional.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided access code is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setAccessCode(String)
        * @param accessCode The access code to set.
        */
@@ -238,6 +343,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the type of this entry point. Required.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setEntryPointType(EntryPointType)
        * @param entryPointType The entry point type to set.
        */
@@ -245,6 +354,13 @@ declare namespace GoogleAppsScript {
 
       /**
        * A meeting code for accessing the conference. Maximum length 128 characters. Optional.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided meeting code is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setMeetingCode(String)
        * @param meetingCode The meeting code to set.
        */
@@ -252,6 +368,13 @@ declare namespace GoogleAppsScript {
 
       /**
        * A passcode for accessing the conference. Maximum length 128 characters. Optional.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided passcode is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setPasscode(String)
        * @param passcode The passcode to set.
        */
@@ -259,6 +382,13 @@ declare namespace GoogleAppsScript {
 
       /**
        * A password code for accessing the conference. Maximum length 128 characters. Optional.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided password is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setPassword(String)
        * @param password The password to set.
        */
@@ -266,22 +396,41 @@ declare namespace GoogleAppsScript {
 
       /**
        * A PIN code for accessing the conference. Maximum length 128 characters. Optional.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided PIN code is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setPin(String)
        * @param pin The PIN code to set.
        */
       setPin(pin: string): EntryPoint;
 
       /**
-       * The CLDR/ISO 3166 region code for the country associated with this entry point. Applicable only
-       * to phone entry point types. Optional.
+       * The CLDR/ISO 3166 region code for the country associated with this entry point. Applicable only to phone entry point types. Optional.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided regionCode is too long.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setRegionCode(String)
        * @param regionCode The regionCode to set.
        */
       setRegionCode(regionCode: string): EntryPoint;
 
       /**
-       * Sets the URI for joining the conference through this entry point. For PHONE entry points, the prefix tel: is required. For SIP entry points, the prefix sip: is required. For VIDEO and MORE entry points, the prefixes
-       * http: or https: are required. Maximum length 1300 characters. Required.
+       * Sets the URI for joining the conference through this entry point. For PHONE entry points, the prefix tel: is required. For SIP entry points, the prefix sip: is required. For VIDEO and MORE entry points, the prefixes http: or https: are required. Maximum length 1300 characters. Required.
+       *
+       * Return:
+       * - EntryPoint — this object, for chaining
+       *
+       * Throws:
+       * - Error — if the provided URI is malformed.
+       *
        * https://developers.google.com/apps-script/reference/conference-data/entry-point#setUri(String)
        * @param uri The URI to set.
        */
@@ -289,10 +438,16 @@ declare namespace GoogleAppsScript {
     }
     /**
      * Enum that defines the features of the entry point that can be created by a conferencing add-on.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * ConferenceDataService.EntryPointFeature.TOLL.
      */
     enum EntryPointFeature { UNKNOWN_FEATURE, TOLL, TOLL_FREE }
     /**
      * Enum that defines the types of entry points that can be created by a conferencing add-on.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * ConferenceDataService.EntryPointType.VIDEO.
      */
     enum EntryPointType { VIDEO, PHONE, MORE, SIP }
   }

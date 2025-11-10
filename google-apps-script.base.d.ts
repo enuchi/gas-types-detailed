@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2023-10-28
+// Type definitions for Google Apps Script 2025-11-10
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -14,46 +14,62 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns a copy of this blob.
+       *
+       * Return:
+       * - Blob — The new copy.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#copyBlob()
        */
       copyBlob(): Blob;
 
       /**
-       * Return the data inside this object as a blob converted to the specified content type. This
-       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
-       * assumes that the part of the filename that follows the last period (if any) is an existing
-       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
-       * "ShoppingList.12.25.pdf".
+       * Return the data inside this object as a blob converted to the specified content type. This method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it assumes that the part of the filename that follows the last period (if any) is an existing extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes "ShoppingList.12.25.pdf".
+       * To view the daily quotas for conversions, see Quotas for Google Services. Newly created Google Workspace domains might be temporarily subject to stricter quotas.
        *
+       * Return:
+       * - Blob — The data as a blob.
        *
-       * To view the daily quotas for conversions, see Quotas for Google
-       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
-       * quotas.
        * https://developers.google.com/apps-script/reference/base/blob#getAs(String)
-       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid. For a Google Docs document, 'text/markdown' is also valid.
        */
       getAs(contentType: string): Blob;
 
       /**
        * Gets the data stored in this blob.
+       *
+       * Return:
+       * - Byte[] — The stored bytes.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#getBytes()
        */
       getBytes(): Byte[];
 
       /**
        * Gets the content type of the bytes in this blob.
+       *
+       * Return:
+       * - String — The content type of this data, if known, or null.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#getContentType()
        */
       getContentType(): string;
 
       /**
        * Gets the data of this blob as a String with UTF-8 encoding.
+       *
+       * Return:
+       * - String — The data as a string.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#getDataAsString()
        */
       getDataAsString(): string;
 
       /**
        * Gets the data of this blob as a string with the specified encoding.
+       *
+       * Return:
+       * - String — The data as a string.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#getDataAsString(String)
        * @param charset The charset to use in encoding the data in this blob as a string.
        */
@@ -61,18 +77,30 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the name of this blob.
+       *
+       * Return:
+       * - String — The name of this data, if known, or null.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#getName()
        */
       getName(): string;
 
       /**
        * Returns whether this blob is a Google Workspace file (Sheets, Docs, etc.).
+       *
+       * Return:
+       * - Boolean — true if this blob is a Google Workspace file; false if not.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#isGoogleType()
        */
       isGoogleType(): boolean;
 
       /**
        * Sets the data stored in this blob.
+       *
+       * Return:
+       * - Blob — This blob, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#setBytes(Byte)
        * @param data The new data.
        */
@@ -80,20 +108,31 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the content type of the bytes in this blob.
+       *
+       * Return:
+       * - Blob — This blob, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#setContentType(String)
        * @param contentType The new contentType.
        */
       setContentType(contentType: string): Blob;
 
       /**
-       * Sets the content type of the bytes in this blob based on the file extension. The contentType is
-       * null if it cannot be guessed from its extension.
+       * Sets the content type of the bytes in this blob based on the file extension. The contentType is null if it cannot be guessed from its extension.
+       *
+       * Return:
+       * - Blob — This blob, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#setContentTypeFromExtension()
        */
       setContentTypeFromExtension(): Blob;
 
       /**
        * Sets the data of this blob from a string with UTF-8 encoding.
+       *
+       * Return:
+       * - Blob — This blob, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#setDataFromString(String)
        * @param string The string data.
        */
@@ -101,6 +140,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the data of this blob from a string with the specified encoding.
+       *
+       * Return:
+       * - Blob — This blob, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#setDataFromString(String,String)
        * @param string The string data.
        * @param charset The charset to use in interpreting the string as bytes.
@@ -109,6 +152,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the name of this blob.
+       *
+       * Return:
+       * - Blob — This blob, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/blob#setName(String)
        * @param name The new name.
        */
@@ -121,13 +168,12 @@ declare namespace GoogleAppsScript {
      *
      * NameBrief description
      *
-     * AttachmentA Sites Attachment such as a file attached to a page.
-     *
      * BlobA data interchange object for Apps Script services.
      *
      * ChartA Chart object, which can be converted to a static image.
      *
-     * DocumentA document, containing rich text and elements such as tables and lists.
+     * DocumentA document, containing one or more Tab objects, each of which contains rich text and
+     * elements such as tables and lists.
      *
      * EmbeddedChartRepresents a chart that has been embedded into a spreadsheet.
      *
@@ -158,23 +204,23 @@ declare namespace GoogleAppsScript {
     interface BlobSource {
 
       /**
-       * Return the data inside this object as a blob converted to the specified content type. This
-       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
-       * assumes that the part of the filename that follows the last period (if any) is an existing
-       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
-       * "ShoppingList.12.25.pdf".
+       * Return the data inside this object as a blob converted to the specified content type. This method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it assumes that the part of the filename that follows the last period (if any) is an existing extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes "ShoppingList.12.25.pdf".
+       * To view the daily quotas for conversions, see Quotas for Google Services. Newly created Google Workspace domains might be temporarily subject to stricter quotas.
        *
+       * Return:
+       * - Blob — The data as a blob.
        *
-       * To view the daily quotas for conversions, see Quotas for Google
-       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
-       * quotas.
        * https://developers.google.com/apps-script/reference/base/blob-source#getAs(String)
-       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid. For a Google Docs document, 'text/markdown' is also valid.
        */
       getAs(contentType: string): Blob;
 
       /**
        * Return the data inside this object as a blob.
+       *
+       * Return:
+       * - Blob — The data as a blob.
+       *
        * https://developers.google.com/apps-script/reference/base/blob-source#getBlob()
        */
       getBlob(): Blob;
@@ -193,16 +239,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Pops up a dialog box with a text input box in the user's browser.
+       * The inputBox method raises a client-side input box that displays the given prompt to the user. Note that this function causes the server-side script to be suspended. It resumes automatically after the user clears the dialog, but JDBC connections don't persist across the suspension.
        *
+       *     // The code below sets the value of name to the name input by the user, or
+       *     // 'cancel'.
+       *     const name = Browser.inputBox('Enter your name');
        *
-       * The inputBox method raises a client-side input box that displays the given prompt to the
-       * user. Note that this function causes the server-side script to be suspended. It resumes
-       * automatically after the user clears the dialog, but JDBC connections don't persist across the
-       * suspension.
+       * Return:
+       * - String — The text entered by the user (or 'cancel' for a canceled or dismissed dialog).
        *
+       * Authorization:
        *
-       *     // The code below sets the value of name to the name input by the user, or 'cancel'.
-       *     var name = Browser.inputBox('Enter your name');
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.currentonly
+       * - https://www.googleapis.com/auth/spreadsheets
+       *
        * https://developers.google.com/apps-script/reference/base/browser#inputBox(String)
        * @param prompt The text to be displayed in the dialog box.
        */
@@ -210,16 +261,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Pops up a dialog box with a text input box in the user's browser.
+       * The inputBox method raises a client-side input box that displays the given prompt to the user, and offers a choice of buttons to be displayed. Note that this function causes the server-side script to be suspended. It resumes automatically after the user clears the dialog, but JDBC connections don't persist across the suspension.
        *
+       *     // The code below sets the value of name to the name input by the user, or
+       *     // 'cancel'.
+       *     const name = Browser.inputBox('Enter your name', Browser.Buttons.OK_CANCEL);
        *
-       * The inputBox method raises a client-side input box that displays the given prompt to the
-       * user, and offers a choice of buttons to be displayed. Note that this function causes the
-       * server-side script to be suspended. It resumes automatically after the user clears the dialog,
-       * but JDBC connections don't persist across the suspension.
+       * Return:
+       * - String — The text entered by the user (or 'cancel' for a canceled or dismissed dialog).
        *
+       * Authorization:
        *
-       *     // The code below sets the value of name to the name input by the user, or 'cancel'.
-       *     var name = Browser.inputBox('Enter your name', Browser.Buttons.OK_CANCEL);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.currentonly
+       * - https://www.googleapis.com/auth/spreadsheets
+       *
        * https://developers.google.com/apps-script/reference/base/browser#inputBox(String,ButtonSet)
        * @param prompt The text to be displayed in the dialog box.
        * @param buttons The type of button set to use.
@@ -228,16 +284,25 @@ declare namespace GoogleAppsScript {
 
       /**
        * Pops up a dialog box with a text input box in the user's browser.
+       * The inputBox method raises a client side input box with the given title, that displays the given prompt to the user, and offers a choice of buttons to be displayed. Note that this function causes the server-side script to be suspended. It resumes automatically after the user clears the dialog, but JDBC connections don't persist across the suspension.
        *
+       *     // The code below sets the value of name to the name input by the user, or
+       *     // 'cancel'.
+       *     const name = Browser.inputBox(
+       *         'ID Check',
+       *         'Enter your name',
+       *         Browser.Buttons.OK_CANCEL,
+       *     );
        *
-       * The inputBox method raises a client side input box with the given title, that displays the
-       * given prompt to the user, and offers a choice of buttons to be displayed. Note that this
-       * function causes the server-side script to be suspended. It resumes automatically after the user
-       * clears the dialog, but JDBC connections don't persist across the suspension.
+       * Return:
+       * - String — The text entered by the user (or 'cancel' for a canceled or dismissed dialog).
        *
+       * Authorization:
        *
-       *     // The code below sets the value of name to the name input by the user, or 'cancel'.
-       *     var name = Browser.inputBox('ID Check', 'Enter your name', Browser.Buttons.OK_CANCEL);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.currentonly
+       * - https://www.googleapis.com/auth/spreadsheets
+       *
        * https://developers.google.com/apps-script/reference/base/browser#inputBox(String,String,ButtonSet)
        * @param title The title for the dialog box.
        * @param prompt The text to be displayed in the dialog box.
@@ -247,16 +312,20 @@ declare namespace GoogleAppsScript {
 
       /**
        * Pops up a dialog box with the given message and an OK button in the user's browser.
-       *
-       *
-       * The msgBox method raises a client-side message box that displays the given message to the
-       * user. Note that this method causes the server-side script to be suspended. It resumes
-       * automatically after the user clears the dialog, but JDBC connections don't persist across the
-       * suspension.
-       *
+       * The msgBox method raises a client-side message box that displays the given message to the user. Note that this method causes the server-side script to be suspended. It resumes automatically after the user clears the dialog, but JDBC connections don't persist across the suspension.
        *
        *     // The code below displays "hello world" in a dialog box with an OK button
        *     Browser.msgBox('hello world');
+       *
+       * Return:
+       * - String — The lower case text of the button that is clicked by the user (or 'cancel' for a dismissed dialog).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.currentonly
+       * - https://www.googleapis.com/auth/spreadsheets
+       *
        * https://developers.google.com/apps-script/reference/base/browser#msgBox(String)
        * @param prompt The text to be displayed in the dialog box.
        */
@@ -264,16 +333,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Pops up a dialog box with the given message and specified buttons in the user's browser.
+       * The msgBox method raises a client-side message box that displays the given message to the user, and offers a choice of buttons to be displayed. Note that this method causes the server-side script to be suspended. It resumes automatically after the user clears the dialog, but JDBC connections don't persist across the suspension.
        *
-       *
-       * The msgBox method raises a client-side message box that displays the given message to the
-       * user, and offers a choice of buttons to be displayed. Note that this method causes the
-       * server-side script to be suspended. It resumes automatically after the user clears the dialog,
-       * but JDBC connections don't persist across the suspension.
-       *
-       *
-       *     // The code below displays "hello world" in a dialog box with OK and Cancel buttons.
+       *     // The code below displays "hello world" in a dialog box with OK and Cancel
+       *     // buttons.
        *     Browser.msgBox('hello world', Browser.Buttons.OK_CANCEL);
+       *
+       * Return:
+       * - String — The lower case text of the button that is clicked by the user (or 'cancel' for a dismissed dialog).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.currentonly
+       * - https://www.googleapis.com/auth/spreadsheets
+       *
        * https://developers.google.com/apps-script/reference/base/browser#msgBox(String,ButtonSet)
        * @param prompt The text to be displayed in the dialog box.
        * @param buttons The type of button set to use.
@@ -282,17 +356,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Pops up a dialog box with the given title, message and specified buttons in the user's browser.
+       * The msgBox method raises a client-side message box with the given title, that displays the given message to the user, and offers a choice of buttons to be displayed. Note that this method causes the server-side script to be suspended. It resumes automatically after the user clears the dialog, but JDBC connections don't persist across the suspension.
        *
-       *
-       * The msgBox method raises a client-side message box with the given title, that displays the
-       * given message to the user, and offers a choice of buttons to be displayed. Note that this
-       * method causes the server-side script to be suspended. It resumes automatically after the user
-       * clears the dialog, but JDBC connections don't persist across the suspension.
-       *
-       *
-       *     // The code below displays "hello world" in a dialog box with a custom title and Yes and
-       *     // No buttons
+       *     // The code below displays "hello world" in a dialog box with a custom title and
+       *     // Yes and No buttons
        *     Browser.msgBox('Greetings', 'hello world', Browser.Buttons.YES_NO);
+       *
+       * Return:
+       * - String — The lower case text of the button that is clicked by the user (or 'cancel' for a dismissed dialog).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.currentonly
+       * - https://www.googleapis.com/auth/spreadsheets
+       *
        * https://developers.google.com/apps-script/reference/base/browser#msgBox(String,String,ButtonSet)
        * @param title The title of the dialog box.
        * @param prompt The text to be displayed in the dialog box.
@@ -305,12 +383,18 @@ declare namespace GoogleAppsScript {
      * which button in a dialog the user clicked. These values cannot be set; to add buttons to an
      * alert or prompt, use ButtonSet instead.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * Base.Button.CLOSE.
+     *
      *     // Display a dialog box with a message and "Yes" and "No" buttons.
-     *     var ui = DocumentApp.getUi();
-     *     var response = ui.alert('Are you sure you want to continue?', ui.ButtonSet.YES_NO);
+     *     const ui = DocumentApp.getUi();
+     *     const response = ui.alert(
+     *         'Are you sure you want to continue?',
+     *         ui.ButtonSet.YES_NO,
+     *     );
      *
      *     // Process the user's response.
-     *     if (response == ui.Button.YES) {
+     *     if (response === ui.Button.YES) {
      *       Logger.log('The user clicked "Yes."');
      *     } else {
      *       Logger.log('The user clicked "No" or the dialog\'s close button.');
@@ -322,12 +406,18 @@ declare namespace GoogleAppsScript {
      * added to an alert or a prompt. To determine which button the user clicked,
      * use Button.
      *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * Base.ButtonSet.OK.
+     *
      *     // Display a dialog box with a message and "Yes" and "No" buttons.
-     *     var ui = DocumentApp.getUi();
-     *     var response = ui.alert('Are you sure you want to continue?', ui.ButtonSet.YES_NO);
+     *     const ui = DocumentApp.getUi();
+     *     const response = ui.alert(
+     *         'Are you sure you want to continue?',
+     *         ui.ButtonSet.YES_NO,
+     *     );
      *
      *     // Process the user's response.
-     *     if (response == ui.Button.YES) {
+     *     if (response === ui.Button.YES) {
      *       Logger.log('The user clicked "Yes."');
      *     } else {
      *       Logger.log('The user clicked "No" or the dialog\'s close button.');
@@ -336,82 +426,142 @@ declare namespace GoogleAppsScript {
     enum ButtonSet { OK, OK_CANCEL, YES_NO, YES_NO_CANCEL }
     /**
      * The types of Colors
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * Base.ColorType.RGB.
      */
     enum ColorType { UNSUPPORTED, RGB, THEME }
     /**
-     * This class allows the developer to write out text to the debugging logs.
+     * This class allows the developer to write to the Execution log and to Google Cloud Logging if the script is associated with
+     * a standard
+     * Cloud Project. This class is preferred for structured logging and jsonPayload support
+     * in Cloud Logging. For time-based logging, use console.
      */
     interface Logger {
 
       /**
        * Clears the log.
+       *
        * https://developers.google.com/apps-script/reference/base/logger#clear()
        */
-      clear(): void;
+      clear(): any;
 
       /**
-       * Returns a complete list of messages in the current log. This method can be used to save or
-       * email the entire log output generated during script execution.
-       *
+       * Returns a complete list of messages in the current log. This method can be used to save or email the entire log output generated during script execution.
        *
        *     // Generate a log, then email it to the person who ran the script.
-       *     var files = DriveApp.getFiles();
+       *     const files = DriveApp.getFiles();
        *     while (files.hasNext()) {
        *       Logger.log(files.next().getName());
        *     }
-       *     var recipient = Session.getActiveUser().getEmail();
-       *     var subject = 'A list of files in your Google Drive';
-       *     var body = Logger.getLog();
+       *     const recipient = Session.getActiveUser().getEmail();
+       *     const subject = 'A list of files in your Google Drive';
+       *     const body = Logger.getLog();
        *     MailApp.sendEmail(recipient, subject, body);
+       *
+       * Return:
+       * - String — the log from the logging console
+       *
        * https://developers.google.com/apps-script/reference/base/logger#getLog()
        */
       getLog(): string;
 
       /**
-       * Writes the string to the logging console. To view the logged output, select View > Show
-       * logs. This can be very useful for debugging scripts.
+       * Writes the data to the log. The data can be a string, a JavaScript object, or an object with a message property.
+       *
+       *     Logger.log("my log message");
+       *     // Info   my logmessage
+       *     Logger.log({ key: "value" });
+       *     // Info   {key=value}
+       *     Logger.log({ message: "my log message", data: { key: "value" } })
+       *     // Info   my logmessage
+       *
+       * When passing an object, if the object contains a message property, that property is used as the log message. Otherwise, the toString() method is called to convert the object to a string. All other properties which are JSON serializable are included as part of the jsonPayload in the LogEntry, similar to the example below:
+       *
+       *     {
+       *       "insertId": "w5eib...",
+       *       "jsonPayload": {
+       *         "message": "my log message",
+       *         "serviceContext": {
+       *           "service": "AKfyc..."
+       *         },
+       *         "data": {
+       *           "key": "value"
+       *         }
+       *       },
+       *       "resource": {
+       *         "type": "app_script_function",
+       *         "labels": {
+       *           "invocation_type": "editor",
+       *           "function_name": "unknown",
+       *           "project_id": "1234567890"
+       *         }
+       *       },
+       *       "timestamp": "2024-11-15T23:28:19.448591Z",
+       *       "severity": "INFO",
+       *       "labels": {
+       *         "script.googleapis.com/user_key": "AOX2d...",
+       *         "script.googleapis.com/process_id": "EAEA1...",
+       *         "script.googleapis.com/project_key": "MQXvl...",
+       *         "script.googleapis.com/deployment_id": "AKfyc..."
+       *       },
+       *       "logName": "projects/[PROJECT_ID]/logs/script.googleapis.com%2Fconsole_logs",
+       *       "receiveTimestamp": "2024-11-15T23:28:20.363790313Z"
+       *     }
+       *
+       * Return:
+       * - Logger — the Logger, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/logger#log(Object)
-       * @param data the message to log
+       * @param data the object to log
        */
       log(data: any): Logger;
 
       /**
-       * Writes a formatted string to the logging console, using the format and values provided. The
-       * string can include multiple %s placeholders, which are replaced with corresponding
-       * values from the list of arguments, converted to strings.
-       *
+       * Writes a formatted string to the logging console, using the format and values provided. The string can include multiple %s placeholders, which are replaced with corresponding values from the list of arguments, converted to strings.
        *
        *     // Log the number of Google Groups you belong to.
-       *     var groups = GroupsApp.getGroups();
+       *     const groups = GroupsApp.getGroups();
        *     Logger.log('You are a member of %s Google Groups.', groups.length);
+       *
+       * Return:
+       * - Logger — the Logger, for chaining
+       *
        * https://developers.google.com/apps-script/reference/base/logger#log(String,Object...)
        * @param format a format string that contains as many instances of %s as the number of values arguments
        * @param values a variable number of values to insert into the format string
        */
-      log(format: string, ...values: any[]): Logger;
+      log(format: string, values: any): Logger;
     }
     /**
      * A custom menu in an instance of the user interface for a Google App. A script can only interact
      * with the UI for the current instance of an open document or form, and only if the script is container-bound to the document or form. For more
      * information, see the guide to menus.
      *
-     *     // Add a custom menu to the active spreadsheet, including a separator and a sub-menu.
+     *     // Add a custom menu to the active spreadsheet, including a separator and a
+     *     // sub-menu.
      *     function onOpen(e) {
      *       SpreadsheetApp.getUi()
      *           .createMenu('My Menu')
      *           .addItem('My Menu Item', 'myFunction')
      *           .addSeparator()
-     *           .addSubMenu(SpreadsheetApp.getUi().createMenu('My Submenu')
-     *               .addItem('One Submenu Item', 'mySecondFunction')
-     *               .addItem('Another Submenu Item', 'myThirdFunction'))
+     *           .addSubMenu(
+     *               SpreadsheetApp.getUi()
+     *                   .createMenu('My Submenu')
+     *                   .addItem('One Submenu Item', 'mySecondFunction')
+     *                   .addItem('Another Submenu Item', 'myThirdFunction'),
+     *               )
      *           .addToUi();
      *     }
      */
     interface Menu {
 
       /**
-       * Adds an item to the menu. The label for a menu item should be in sentence case (only the first
-       * word capitalized).
+       * Adds an item to the menu. The label for a menu item should be in sentence case (only the first word capitalized).
+       *
+       * Return:
+       * - Menu — This Menu, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/menu#addItem(String,String)
        * @param caption The label for the menu item, with only the first word capitalized.
        * @param functionName The name of the function to invoke when the user selects the item. You can use functions from included libraries, such as Library.libFunction1.
@@ -420,12 +570,20 @@ declare namespace GoogleAppsScript {
 
       /**
        * Adds a visual separator to the menu.
+       *
+       * Return:
+       * - Menu — This Menu, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/menu#addSeparator()
        */
       addSeparator(): Menu;
 
       /**
        * Adds a sub-menu to the menu.
+       *
+       * Return:
+       * - Menu — This Menu, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/base/menu#addSubMenu(Menu)
        * @param menu The sub-menu, constructed like a top-level menu.
        */
@@ -433,9 +591,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts the menu into the instance of the editor's user interface.
+       *
        * https://developers.google.com/apps-script/reference/base/menu#addToUi()
        */
-      addToUi(): void;
+      addToUi(): any;
     }
     /**
      * An enumeration that provides access to MIME-type declarations without typing the strings
@@ -444,22 +603,25 @@ declare namespace GoogleAppsScript {
      * underlying MIME type.
      *
      *     // Use MimeType enum to log the name of every Google Doc in the user's Drive.
-     *     var docs = DriveApp.getFilesByType(MimeType.GOOGLE_DOCS);
+     *     const docs = DriveApp.getFilesByType(MimeType.GOOGLE_DOCS);
      *     while (docs.hasNext()) {
-     *      var doc = docs.next();
-     *      Logger.log(doc.getName())
+     *       const doc = docs.next();
+     *       Logger.log(doc.getName());
      *     }
      *
      *     // Use plain string to log the size of every PNG in the user's Drive.
-     *     var pngs = DriveApp.getFilesByType('image/png');
+     *     const pngs = DriveApp.getFilesByType('image/png');
      *     while (pngs.hasNext()) {
-     *      var png = pngs.next();
-     *      Logger.log(png.getSize());
+     *       const png = pngs.next();
+     *       Logger.log(png.getSize());
      *     }
      */
     enum MimeType { GOOGLE_APPS_SCRIPT, GOOGLE_DRAWINGS, GOOGLE_DOCS, GOOGLE_FORMS, GOOGLE_SHEETS, GOOGLE_SITES, GOOGLE_SLIDES, FOLDER, SHORTCUT, BMP, GIF, JPEG, PNG, SVG, PDF, CSS, CSV, HTML, JAVASCRIPT, PLAIN_TEXT, RTF, OPENDOCUMENT_GRAPHICS, OPENDOCUMENT_PRESENTATION, OPENDOCUMENT_SPREADSHEET, OPENDOCUMENT_TEXT, MICROSOFT_EXCEL, MICROSOFT_EXCEL_LEGACY, MICROSOFT_POWERPOINT, MICROSOFT_POWERPOINT_LEGACY, MICROSOFT_WORD, MICROSOFT_WORD_LEGACY, ZIP }
     /**
      * An enum representing the months of the year.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * Base.Month.JANUARY.
      */
     enum Month { JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER }
     /**
@@ -467,15 +629,20 @@ declare namespace GoogleAppsScript {
      * user-interface environment for a Google App. The response contains any text the user entered in
      * the dialog's input field and indicates which button the user clicked to dismiss the dialog.
      *
-     *     // Display a dialog box with a title, message, input field, and "Yes" and "No" buttons. The
-     *     // user can also close the dialog by clicking the close button in its title bar.
-     *     var ui = DocumentApp.getUi();
-     *     var response = ui.prompt('Getting to know you', 'May I know your name?', ui.ButtonSet.YES_NO);
+     *     // Display a dialog box with a title, message, input field, and "Yes" and "No"
+     *     // buttons. The user can also close the dialog by clicking the close button in
+     *     // its title bar.
+     *     const ui = DocumentApp.getUi();
+     *     const response = ui.prompt(
+     *         'Getting to know you',
+     *         'May I know your name?',
+     *         ui.ButtonSet.YES_NO,
+     *     );
      *
      *     // Process the user's response.
-     *     if (response.getSelectedButton() == ui.Button.YES) {
+     *     if (response.getSelectedButton() === ui.Button.YES) {
      *       Logger.log('The user\'s name is %s.', response.getResponseText());
-     *     } else if (response.getSelectedButton() == ui.Button.NO) {
+     *     } else if (response.getSelectedButton() === ui.Button.NO) {
      *       Logger.log('The user didn\'t want to provide a name.');
      *     } else {
      *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
@@ -484,17 +651,21 @@ declare namespace GoogleAppsScript {
     interface PromptResponse {
 
       /**
-       * Gets the text that the user entered in the dialog's input field. The text is available even if
-       * the user closed the dialog by clicking a button with a negative connotation, like "Cancel" or
-       * the close button in the dialog's title bar. getSelectedButton() can help to determine
-       * whether the user intended the response text to be valid.
+       * Gets the text that the user entered in the dialog's input field. The text is available even if the user closed the dialog by clicking a button with a negative connotation, like "Cancel" or the close button in the dialog's title bar. getSelectedButton() can help to determine whether the user intended the response text to be valid.
+       *
+       * Return:
+       * - String — The text that the user entered in the dialog's input field.
+       *
        * https://developers.google.com/apps-script/reference/base/prompt-response#getResponseText()
        */
       getResponseText(): string;
 
       /**
-       * Gets the button that the user clicked to dismiss the dialog. If the user clicked the close
-       * button that is included in every dialog's title bar, this method returns Button.CLOSE.
+       * Gets the button that the user clicked to dismiss the dialog. If the user clicked the close button that is included in every dialog's title bar, this method returns Button.CLOSE.
+       *
+       * Return:
+       * - Button — The button that the user clicked.
+       *
        * https://developers.google.com/apps-script/reference/base/prompt-response#getSelectedButton()
        */
       getSelectedButton(): Button;
@@ -505,32 +676,51 @@ declare namespace GoogleAppsScript {
     interface RgbColor {
 
       /**
-       * Returns the color as a CSS-style 7 character hexadecimal string (#rrggbb) or 9 character
-       * hexadecimal string (#aarrggbb).
+       * Returns the color as a CSS-style 7 character hexadecimal string (#rrggbb) or 9 character hexadecimal string (#aarrggbb).
+       *
+       * Return:
+       * - String — The hex representation of color.
+       *
        * https://developers.google.com/apps-script/reference/base/rgb-color#asHexString()
        */
       asHexString(): string;
 
       /**
        * The blue channel of this color, as a number from 0 to 255.
+       *
+       * Return:
+       * - Integer — The value of blue channel.
+       *
        * https://developers.google.com/apps-script/reference/base/rgb-color#getBlue()
        */
       getBlue(): Integer;
 
       /**
        * Get the type of this color.
+       *
+       * Return:
+       * - ColorType — The color type.
+       *
        * https://developers.google.com/apps-script/reference/base/rgb-color#getColorType()
        */
       getColorType(): ColorType;
 
       /**
        * The green channel of this color, as a number from 0 to 255.
+       *
+       * Return:
+       * - Integer — The value of green channel.
+       *
        * https://developers.google.com/apps-script/reference/base/rgb-color#getGreen()
        */
       getGreen(): Integer;
 
       /**
        * The red channel of this color, as a number from 0 to 255.
+       *
+       * Return:
+       * - Integer — The value of red channel.
+       *
        * https://developers.google.com/apps-script/reference/base/rgb-color#getRed()
        */
       getRed(): Integer;
@@ -542,18 +732,20 @@ declare namespace GoogleAppsScript {
     interface Session {
 
       /**
-       * Gets information about the current user. If security policies do not allow access to the user's
-       * identity, User.getEmail() returns a blank string. The circumstances in which the
-       * email address is available vary: for example, the user's email address is not available in any
-       * context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app
-       * deployed to "execute as me" (that is, authorized by the developer instead of the user).
-       * However, these restrictions generally do not apply if the developer runs the script themselves
-       * or belongs to the same Google Workspace domain as the user.
-       *
+       * Gets information about the current user. If security policies do not allow access to the user's identity, User.getEmail() returns a blank string. The circumstances in which the email address is available vary: for example, the user's email address is not available in any context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app deployed to "execute as me" (that is, authorized by the developer instead of the user). However, these restrictions generally do not apply if the developer runs the script themselves or belongs to the same Google Workspace domain as the user.
        *
        *     // Log the email address of the person running the script.
-       *     var email = Session.getActiveUser().getEmail();
+       *     const email = Session.getActiveUser().getEmail();
        *     Logger.log(email);
+       *
+       * Return:
+       * - User — the current user
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/userinfo.email
+       *
        * https://developers.google.com/apps-script/reference/base/session#getActiveUser()
        */
       getActiveUser(): User;
@@ -561,50 +753,59 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the language setting of the current user as a string—for example, en for English.
        *
-       *
        *     // Log the language setting of the person running the script.
        *     Logger.log(Session.getActiveUserLocale());
+       *
+       * Return:
+       * - String — a string that represents the user's language setting
+       *
        * https://developers.google.com/apps-script/reference/base/session#getActiveUserLocale()
        */
       getActiveUserLocale(): string;
 
       /**
-       * Gets information about the user under whose authority the script is running. If the script is a
-       * web app set to "execute as me" (the developer), this returns the developer's user account. If
-       * the script is running under an installable
-       * trigger, this returns the account of the user who created the trigger. In most other
-       * scenarios, this returns the same account as getActiveUser().
+       * Gets information about the user under whose authority the script is running. If the script is a web app set to "execute as me" (the developer), this returns the developer's user account. If the script is running under an installable trigger, this returns the account of the user who created the trigger. In most other scenarios, this returns the same account as getActiveUser().
        *
-       *
-       *     // Log the email address of the user under whose authority the script is running.
-       *     var email = Session.getEffectiveUser().getEmail();
+       *     // Log the email address of the user under whose authority the script is
+       *     // running.
+       *     const email = Session.getEffectiveUser().getEmail();
        *     Logger.log(email);
+       *
+       * Return:
+       * - User — the user under whose authority the script is running
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/userinfo.email
+       *
        * https://developers.google.com/apps-script/reference/base/session#getEffectiveUser()
        */
       getEffectiveUser(): User;
 
       /**
-       * Gets the time zone of the script. New scripts default to the owner's time zone, but the
-       * script's time zone can be changed by clicking File > Project properties in the script
-       * editor. Note that spreadsheets have a separate time zone, which can be changed by clicking
-       * File > Spreadsheet settings in Google Sheets. Spreadsheet time zones that differ from
-       * the script time zone are a frequent source of scripting bugs.
-       *
+       * Gets the time zone of the script. New scripts default to the owner's time zone, but the script's time zone can be changed by clicking File > Project properties in the script editor. Note that spreadsheets have a separate time zone, which can be changed by clicking File > Spreadsheet settings in Google Sheets. Spreadsheet time zones that differ from the script time zone are a frequent source of scripting bugs.
        *
        *     // Log the time zone of the script.
-       *     var timeZone = Session.getScriptTimeZone();
+       *     const timeZone = Session.getScriptTimeZone();
        *     Logger.log(timeZone);
+       *
+       * Return:
+       * - String — the time zone of the script
+       *
        * https://developers.google.com/apps-script/reference/base/session#getScriptTimeZone()
        */
       getScriptTimeZone(): string;
 
       /**
-       * Gets a temporary key that is unique to the active user but does not reveal the user identity.
-       * The temporary key rotates every 30 days and is unique to the script.
-       *
+       * Gets a temporary key that is unique to the active user but does not reveal the user identity. The temporary key rotates every 30 days and is unique to the script.
        *
        *     // Log the temporary key of the person running the script.
        *     Logger.log(Session.getTemporaryActiveUserKey());
+       *
+       * Return:
+       * - String — the temporary active user key
+       *
        * https://developers.google.com/apps-script/reference/base/session#getTemporaryActiveUserKey()
        */
       getTemporaryActiveUserKey(): string;
@@ -616,15 +817,20 @@ declare namespace GoogleAppsScript {
      * features like menus, dialogs, and sidebars. A script can only interact with the UI for the
      * current instance of an open editor, and only if the script is container-bound to the editor.
      *
-     *     // Display a dialog box with a title, message, input field, and "Yes" and "No" buttons. The
-     *     // user can also close the dialog by clicking the close button in its title bar.
-     *     var ui = SpreadsheetApp.getUi();
-     *     var response = ui.prompt('Getting to know you', 'May I know your name?', ui.ButtonSet.YES_NO);
+     *     // Display a dialog box with a title, message, input field, and "Yes" and "No"
+     *     // buttons. The user can also close the dialog by clicking the close button in
+     *     // its title bar.
+     *     const ui = SpreadsheetApp.getUi();
+     *     const response = ui.prompt(
+     *         'Getting to know you',
+     *         'May I know your name?',
+     *         ui.ButtonSet.YES_NO,
+     *     );
      *
      *     // Process the user's response.
-     *     if (response.getSelectedButton() == ui.Button.YES) {
+     *     if (response.getSelectedButton() === ui.Button.YES) {
      *       Logger.log('The user\'s name is %s.', response.getResponseText());
-     *     } else if (response.getSelectedButton() == ui.Button.NO) {
+     *     } else if (response.getSelectedButton() === ui.Button.NO) {
      *       Logger.log('The user didn\'t want to provide a name.');
      *     } else {
      *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
@@ -635,40 +841,43 @@ declare namespace GoogleAppsScript {
       ButtonSet: typeof ButtonSet;
 
       /**
-       * Opens a dialog box in the user's editor with the given message and an "OK" button. This method
-       * suspends the server-side script while the dialog is open. The script resumes after the user
-       * dismisses the dialog, but Jdbc
-       * connections and LockService locks don't
-       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       * Opens a dialog box in the user's editor with the given message and an "OK" button. This method suspends the server-side script while the dialog is open. The script resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the suspension. For more information, see the guide to dialogs and sidebars.
        *
-       *
-       *     // Display "Hello, world" in a dialog box with an "OK" button. The user can also close the
-       *     // dialog by clicking the close button in its title bar.
+       *     // Display "Hello, world" in a dialog box with an "OK" button. The user can also
+       *     // close the dialog by clicking the close button in its title bar.
        *     SpreadsheetApp.getUi().alert('Hello, world');
+       *
+       * Return:
+       * - Button — The button the user clicked.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#alert(String)
        * @param prompt The message to display in the dialog box.
        */
       alert(prompt: string): Button;
 
       /**
-       * Opens a dialog box in the user's editor with the given message and set of buttons. This method
-       * suspends the server-side script while the dialog is open. The script resumes after the user
-       * dismisses the dialog, but Jdbc
-       * connections and LockService locks don't
-       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       * Opens a dialog box in the user's editor with the given message and set of buttons. This method suspends the server-side script while the dialog is open. The script resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the suspension. For more information, see the guide to dialogs and sidebars.
        *
-       *
-       *     // Display a dialog box with a message and "Yes" and "No" buttons. The user can also close the
-       *     // dialog by clicking the close button in its title bar.
-       *     var ui = SpreadsheetApp.getUi();
-       *     var response = ui.alert('Are you sure you want to continue?', ui.ButtonSet.YES_NO);
+       *     // Display a dialog box with a message and "Yes" and "No" buttons. The user can
+       *     // also close the dialog by clicking the close button in its title bar.
+       *     const ui = SpreadsheetApp.getUi();
+       *     const response = ui.alert(
+       *         'Are you sure you want to continue?',
+       *         ui.ButtonSet.YES_NO,
+       *     );
        *
        *     // Process the user's response.
-       *     if (response == ui.Button.YES) {
+       *     if (response === ui.Button.YES) {
        *       Logger.log('The user clicked "Yes."');
        *     } else {
-       *       Logger.log('The user clicked "No" or the close button in the dialog\'s title bar.');
+       *       Logger.log(
+       *           'The user clicked "No" or the close button in the dialog\'s title bar.',
+       *       );
        *     }
+       *
+       * Return:
+       * - Button — The button the user clicked.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#alert(String,ButtonSet)
        * @param prompt The message to display in the dialog box.
        * @param buttons The button set to display in the dialog box.
@@ -676,24 +885,29 @@ declare namespace GoogleAppsScript {
       alert(prompt: string, buttons: ButtonSet): Button;
 
       /**
-       * Opens a dialog box in the user's editor with the given title, message, and set of buttons. This
-       * method suspends the server-side script while the dialog is open. The script resumes after the
-       * user dismisses the dialog, but Jdbc
-       * connections and LockService locks don't
-       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       * Opens a dialog box in the user's editor with the given title, message, and set of buttons. This method suspends the server-side script while the dialog is open. The script resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the suspension. For more information, see the guide to dialogs and sidebars.
        *
-       *
-       *     // Display a dialog box with a title, message, and "Yes" and "No" buttons. The user can also
-       *     // close the dialog by clicking the close button in its title bar.
-       *     var ui = SpreadsheetApp.getUi();
-       *     var response = ui.alert('Confirm', 'Are you sure you want to continue?', ui.ButtonSet.YES_NO);
+       *     // Display a dialog box with a title, message, and "Yes" and "No" buttons. The
+       *     // user can also close the dialog by clicking the close button in its title bar.
+       *     const ui = SpreadsheetApp.getUi();
+       *     const response = ui.alert(
+       *         'Confirm',
+       *         'Are you sure you want to continue?',
+       *         ui.ButtonSet.YES_NO,
+       *     );
        *
        *     // Process the user's response.
-       *     if (response == ui.Button.YES) {
+       *     if (response === ui.Button.YES) {
        *       Logger.log('The user clicked "Yes."');
        *     } else {
-       *       Logger.log('The user clicked "No" or the close button in the dialog\'s title bar.');
+       *       Logger.log(
+       *           'The user clicked "No" or the close button in the dialog\'s title bar.',
+       *       );
        *     }
+       *
+       * Return:
+       * - Button — The button the user clicked.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#alert(String,String,ButtonSet)
        * @param title The title to display above the dialog box.
        * @param prompt The message to display in the dialog box.
@@ -702,92 +916,95 @@ declare namespace GoogleAppsScript {
       alert(title: string, prompt: string, buttons: ButtonSet): Button;
 
       /**
-       * Creates a builder that can be used to insert a sub-menu into the editor's Extensions menu. The
-       * menu isn't actually be updated until Menu.addToUi() is called. If the script is running
-       * as an add-on, the sub-menu name matches the add-on's name in the web store; if the script is bound to the document directly, the sub-menu name
-       * matches the script's name. For more information, see the guide to menus.
+       * Creates a builder that can be used to insert a sub-menu into the editor's Extensions menu. The menu isn't actually be updated until Menu.addToUi() is called. If the script is running as an add-on, the sub-menu name matches the add-on's name in the web store; if the script is bound to the document directly, the sub-menu name matches the script's name. For more information, see the guide to menus.
        *
-       *
-       *     // Add an item to the Add-on menu, under a sub-menu whose name is set automatically.
+       *     // Add an item to the add-on menu, under a sub-menu whose name is set
+       *     // automatically.
        *     function onOpen(e) {
        *       SpreadsheetApp.getUi()
        *           .createAddonMenu()
        *           .addItem('Show', 'showSidebar')
        *           .addToUi();
        *     }
+       *
+       * Return:
+       * - Menu — The new menu builder.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#createAddonMenu()
        */
       createAddonMenu(): Menu;
 
       /**
-       * Creates a builder that can be used to add a menu to the editor's user interface. The menu isn't
-       * actually be added until Menu.addToUi() is called. For more information, see the guide to menus. The label for a top-level menu should be
-       * in headline case (all major words capitalized), although the label for a sub-menu should be in
-       * sentence case (only the first word capitalized). If the script is published as an add-on, the caption parameter is ignored and the
-       * menu is added as a sub-menu of the Extensions menu, equivalent to createAddonMenu().
+       * Creates a builder that can be used to add a menu to the editor's user interface. The menu isn't actually be added until Menu.addToUi() is called. For more information, see the guide to menus. The label for a top-level menu should be in headline case (all major words capitalized), although the label for a sub-menu should be in sentence case (only the first word capitalized). If the script is published as an add-on, the caption parameter is ignored and the menu is added as a sub-menu of the Extensions menu, equivalent to createAddonMenu().
        *
-       *
-       *     // Add a custom menu to the active document, including a separator and a sub-menu.
+       *     // Add a custom menu to the active document, including a separator and a
+       *     // sub-menu.
        *     function onOpen(e) {
        *       SpreadsheetApp.getUi()
        *           .createMenu('My Menu')
        *           .addItem('My menu item', 'myFunction')
        *           .addSeparator()
-       *           .addSubMenu(SpreadsheetApp.getUi().createMenu('My sub-menu')
-       *               .addItem('One sub-menu item', 'mySecondFunction')
-       *               .addItem('Another sub-menu item', 'myThirdFunction'))
+       *           .addSubMenu(
+       *               SpreadsheetApp.getUi()
+       *                   .createMenu('My sub-menu')
+       *                   .addItem('One sub-menu item', 'mySecondFunction')
+       *                   .addItem('Another sub-menu item', 'myThirdFunction'),
+       *               )
        *           .addToUi();
        *     }
+       *
+       * Return:
+       * - Menu — The new menu builder.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#createMenu(String)
        * @param caption The label for the menu, with all major words capitalized for a top-level menu, or only the first word capitalized for a sub-menu.
        */
       createMenu(caption: string): Menu;
 
       /**
-       * Opens an input dialog box in the user's editor with the given message and an "OK" button. This
-       * method suspends the server-side script while the dialog is open. The script resumes after the
-       * user dismisses the dialog, but Jdbc
-       * connections and LockService locks don't
-       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       * Opens an input dialog box in the user's editor with the given message and an "OK" button. This method suspends the server-side script while the dialog is open. The script resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the suspension. For more information, see the guide to dialogs and sidebars.
        *
-       *
-       *     // Display a dialog box with a message, input field, and an "OK" button. The user can also
-       *     // close the dialog by clicking the close button in its title bar.
-       *     var ui = SpreadsheetApp.getUi();
-       *     var response = ui.prompt('Enter your name:');
+       *     // Display a dialog box with a message, input field, and an "OK" button. The
+       *     // user can also close the dialog by clicking the close button in its title bar.
+       *     const ui = SpreadsheetApp.getUi();
+       *     const response = ui.prompt('Enter your name:');
        *
        *     // Process the user's response.
-       *     if (response.getSelectedButton() == ui.Button.OK) {
+       *     if (response.getSelectedButton() === ui.Button.OK) {
        *       Logger.log('The user\'s name is %s.', response.getResponseText());
        *     } else {
        *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
        *     }
+       *
+       * Return:
+       * - PromptResponse — A representation of the user's response.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#prompt(String)
        * @param prompt The message to display in the dialog box.
        */
       prompt(prompt: string): PromptResponse;
 
       /**
-       * Opens an input dialog box in the user's editor with the given message and set of buttons. This
-       * method suspends the server-side script while the dialog is open. The script resumes after the
-       * user dismisses the dialog, but Jdbc
-       * connections and LockService locks don't
-       * persist across the suspension. For more information, see the guide to dialogs and sidebars.
+       * Opens an input dialog box in the user's editor with the given message and set of buttons. This method suspends the server-side script while the dialog is open. The script resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the suspension. For more information, see the guide to dialogs and sidebars.
        *
-       *
-       *     // Display a dialog box with a message, input field, and "Yes" and "No" buttons. The user can
-       *     // also close the dialog by clicking the close button in its title bar.
-       *     var ui = SpreadsheetApp.getUi();
-       *     var response = ui.prompt('May I know your name?', ui.ButtonSet.YES_NO);
+       *     // Display a dialog box with a message, input field, and "Yes" and "No" buttons.
+       *     // The user can also close the dialog by clicking the close button in its title
+       *     // bar.
+       *     const ui = SpreadsheetApp.getUi();
+       *     const response = ui.prompt('May I know your name?', ui.ButtonSet.YES_NO);
        *
        *     // Process the user's response.
-       *     if (response.getSelectedButton() == ui.Button.YES) {
+       *     if (response.getSelectedButton() === ui.Button.YES) {
        *       Logger.log('The user\'s name is %s.', response.getResponseText());
-       *     } else if (response.getSelectedButton() == ui.Button.NO) {
+       *     } else if (response.getSelectedButton() === ui.Button.NO) {
        *       Logger.log('The user didn\'t want to provide a name.');
        *     } else {
        *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
        *     }
+       *
+       * Return:
+       * - PromptResponse — A representation of the user's response.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#prompt(String,ButtonSet)
        * @param prompt The message to display in the dialog box.
        * @param buttons The button set to display in the dialog box.
@@ -795,26 +1012,30 @@ declare namespace GoogleAppsScript {
       prompt(prompt: string, buttons: ButtonSet): PromptResponse;
 
       /**
-       * Opens an input dialog box in the user's editor with the given title, message, and set of
-       * buttons. This method suspends the server-side script while the dialog is open. The script
-       * resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the
-       * suspension. For more information, see the guide to
-       * dialogs and sidebars.
+       * Opens an input dialog box in the user's editor with the given title, message, and set of buttons. This method suspends the server-side script while the dialog is open. The script resumes after the user dismisses the dialog, but Jdbc connections and LockService locks don't persist across the suspension. For more information, see the guide to dialogs and sidebars.
        *
-       *
-       *     // Display a dialog box with a title, message, input field, and "Yes" and "No" buttons. The
-       *     // user can also close the dialog by clicking the close button in its title bar.
-       *     var ui = SpreadsheetApp.getUi();
-       *     var response = ui.prompt('Getting to know you', 'May I know your name?', ui.ButtonSet.YES_NO);
+       *     // Display a dialog box with a title, message, input field, and "Yes" and "No"
+       *     // buttons. The user can also close the dialog by clicking the close button in
+       *     // its title bar.
+       *     const ui = SpreadsheetApp.getUi();
+       *     const response = ui.prompt(
+       *         'Getting to know you',
+       *         'May I know your name?',
+       *         ui.ButtonSet.YES_NO,
+       *     );
        *
        *     // Process the user's response.
-       *     if (response.getSelectedButton() == ui.Button.YES) {
+       *     if (response.getSelectedButton() === ui.Button.YES) {
        *       Logger.log('The user\'s name is %s.', response.getResponseText());
-       *     } else if (response.getSelectedButton() == ui.Button.NO) {
+       *     } else if (response.getSelectedButton() === ui.Button.NO) {
        *       Logger.log('The user didn\'t want to provide a name.');
        *     } else {
        *       Logger.log('The user clicked the close button in the dialog\'s title bar.');
        *     }
+       *
+       * Return:
+       * - PromptResponse — A representation of the user's response.
+       *
        * https://developers.google.com/apps-script/reference/base/ui#prompt(String,String,ButtonSet)
        * @param title The title to display above the dialog box.
        * @param prompt The message to display in the dialog box.
@@ -823,84 +1044,75 @@ declare namespace GoogleAppsScript {
       prompt(title: string, prompt: string, buttons: ButtonSet): PromptResponse;
 
       /**
-       * Opens a modal dialog box in the user's editor with custom client-side content. This method does
-       * not suspend the server-side script while the dialog is open. To communicate with the
-       * server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog
-       * programmatically, call
-       * google.script.host.close() on the client side of an HtmlService web
-       * app. For more information, see the guide to dialogs and
-       * sidebars.
-       *
-       *
-       * Modal dialogs prevent the user from interacting with anything other than the dialog. By
-       * contrast, modeless dialogs and sidebars let the user interact with the editor. In almost all cases, a
-       * modal dialog or sidebar is a better choice than a modeless dialog.
-       *
+       * Opens a modal dialog box in the user's editor with custom client-side content. This method does not suspend the server-side script while the dialog is open. To communicate with the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog programmatically, call google.script.host.close() on the client side of an HtmlService web app. For more information, see the guide to dialogs and sidebars.
+       * Modal dialogs prevent the user from interacting with anything other than the dialog. By contrast, modeless dialogs and sidebars let the user interact with the editor. In almost all cases, a modal dialog or sidebar is a better choice than a modeless dialog.
        *
        *     // Display a modal dialog box with custom HtmlService content.
-       *     var htmlOutput = HtmlService
-       *         .createHtmlOutput('<p>A change of speed, a change of style...</p>')
-       *         .setWidth(250)
-       *         .setHeight(300);
+       *     const htmlOutput = HtmlService
+       *                            .createHtmlOutput(
+       *                                '<p>A change of speed, a change of style...</p>',
+       *                                )
+       *                            .setWidth(250)
+       *                            .setHeight(300);
        *     SpreadsheetApp.getUi().showModalDialog(htmlOutput, 'My add-on');
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.container.ui
+       *
        * https://developers.google.com/apps-script/reference/base/ui#showModalDialog(Object,String)
        * @param userInterface An HtmlOutput representing the interface to display.
        * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
        */
-      showModalDialog(userInterface: any, title: string): void;
+      showModalDialog(userInterface: any, title: string): any;
 
       /**
-       * Opens a modeless dialog box in the user's editor with custom client-side content. This method
-       * does not suspend the server-side script while the dialog is open. To communicate with
-       * the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog
-       * programmatically, call
-       * google.script.host.close() on the client side of an HtmlService web
-       * app. For more information, see the guide to dialogs and
-       * sidebars.
-       *
-       *
-       * Modeless dialogs let the user interact with the editor behind the dialog. By contrast,
-       * modal dialogs do not. In almost all cases, a modal
-       * dialog or sidebar is a better choice than a modeless dialog.
-       *
+       * Opens a modeless dialog box in the user's editor with custom client-side content. This method does not suspend the server-side script while the dialog is open. To communicate with the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the dialog programmatically, call google.script.host.close() on the client side of an HtmlService web app. For more information, see the guide to dialogs and sidebars.
+       * Modeless dialogs let the user interact with the editor behind the dialog. By contrast, modal dialogs do not. In almost all cases, a modal dialog or sidebar is a better choice than a modeless dialog.
        *
        *     // Display a modeless dialog box with custom HtmlService content.
-       *     var htmlOutput = HtmlService
-       *         .createHtmlOutput('<p>A change of speed, a change of style...</p>')
-       *         .setWidth(250)
-       *         .setHeight(300);
+       *     const htmlOutput = HtmlService
+       *                            .createHtmlOutput(
+       *                                '<p>A change of speed, a change of style...</p>',
+       *                                )
+       *                            .setWidth(250)
+       *                            .setHeight(300);
        *     SpreadsheetApp.getUi().showModelessDialog(htmlOutput, 'My add-on');
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.container.ui
+       *
        * https://developers.google.com/apps-script/reference/base/ui#showModelessDialog(Object,String)
        * @param userInterface An HtmlOutput representing the interface to display.
        * @param title The title of the dialog; overrides any title set by calling setTitle() on the userInterface object.
        */
-      showModelessDialog(userInterface: any, title: string): void;
+      showModelessDialog(userInterface: any, title: string): any;
 
       /**
-       * Opens a sidebar in the user's editor with custom client-side content. This method does
-       * not suspend the server-side script while the sidebar is open. To communicate with the
-       * server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the sidebar
-       * programmatically, call
-       * google.script.host.close() on the client side of an HtmlService web
-       * app. For more information, see the guide to dialogs and
-       * sidebars.
-       *
-       *
-       * The sidebar displays on the right side of the editor for users whose environments use a
-       * left-to-right language and on the left side of the editor for right-to-left languages. All
-       * sidebars shown by scripts are 300 pixels wide.
-       *
+       * Opens a sidebar in the user's editor with custom client-side content. This method does not suspend the server-side script while the sidebar is open. To communicate with the server-side script, the client-side component must make asynchronous callbacks using the google.script API for HtmlService. To close the sidebar programmatically, call google.script.host.close() on the client side of an HtmlService web app. For more information, see the guide to dialogs and sidebars.
+       * The sidebar displays on the right side of the editor for users whose environments use a left-to-right language and on the left side of the editor for right-to-left languages. All sidebars shown by scripts are 300 pixels wide.
        *
        *     // Display a sidebar with custom HtmlService content.
-       *     var htmlOutput = HtmlService
-       *         .createHtmlOutput('<p>A change of speed, a change of style...</p>')
-       *         .setTitle('My add-on');
+       *     const htmlOutput = HtmlService
+       *                            .createHtmlOutput(
+       *                                '<p>A change of speed, a change of style...</p>',
+       *                                )
+       *                            .setTitle('My add-on');
        *     SpreadsheetApp.getUi().showSidebar(htmlOutput);
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.container.ui
+       *
        * https://developers.google.com/apps-script/reference/base/ui#showSidebar(Object)
        * @param userInterface An HtmlOutput representing the interface to display.
        */
-      showSidebar(userInterface: any): void;
-      /** @deprecated DO NOT USE */ showDialog(userInterface: any): void;
+      showSidebar(userInterface: any): any;
+      /** @deprecated DO NOT USE */ showDialog(userInterface: any): any;
     }
     /**
      * Representation of a user, suitable for scripting.
@@ -908,17 +1120,14 @@ declare namespace GoogleAppsScript {
     interface User {
 
       /**
-       * Gets the user's email address, if available. If security policies do not allow access to the
-       * user's email address, this method returns a blank string. The circumstances in which the email
-       * address is available vary: for example, the user's email address is not available in any
-       * context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app
-       * deployed to "execute as me" (that is, authorized by the developer instead of the user).
-       * However, these restrictions generally do not apply if the developer runs the script themselves
-       * or belongs to the same Google Workspace domain as the user.
-       *
+       * Gets the user's email address, if available. If security policies do not allow access to the user's email address, this method returns a blank string. The circumstances in which the email address is available vary: for example, the user's email address is not available in any context that allows a script to run without that user's authorization, like a simple onOpen(e) or onEdit(e) trigger, a custom function in Google Sheets, or a web app deployed to "execute as me" (that is, authorized by the developer instead of the user). However, these restrictions generally do not apply if the developer runs the script themselves or belongs to the same Google Workspace domain as the user.
        *
        *     // Log the email address of the person running the script.
        *     Logger.log(Session.getActiveUser().getEmail());
+       *
+       * Return:
+       * - String — The user's email's address, or a blank string if security policies do not allow access to the user's email address.
+       *
        * https://developers.google.com/apps-script/reference/base/user#getEmail()
        */
       getEmail(): string;
@@ -926,109 +1135,117 @@ declare namespace GoogleAppsScript {
     }
     /**
      * An enum representing the days of the week.
+     *
+     * To call an enum, you call its parent class, name, and property. For example,
+     * Base.Weekday.SUNDAY.
      */
     enum Weekday { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY }
     /**
-     * This class allows the developer to write logs to the Google Cloud Platform's Stackdriver Logging service. The following
-     * shows some logging examples:
+     * This class allows the developer to write to the Execution log and to Google Cloud Logging if the script is associated with
+     * a standard
+     * Cloud Project.
+     *
+     * For full support of Cloud Logging and structured logging, use Logger. The console methods
+     * serialize the objects to strings and do not support jsonPayload as part of the structured
+     * logging LogEntry.
      *
      *     function measuringExecutionTime() {
-     *       // A simple INFO log message, using sprintf() formatting.
-     *       console.info('Timing the %s function (%d arguments)', 'myFunction', 1);
-     *
-     *       // Log a JSON object at a DEBUG level. If the object contains a property called "message",
-     *       // that is used as the summary in the log viewer, otherwise a stringified version of
-     *       // the object is used as the summary.
-     *       var parameters = {
-     *         isValid: true,
-     *         content: 'some string',
-     *         timestamp: new Date()
-     *       };
-     *       console.log(parameters);
-     *
-     *       var label = 'myFunction() time';  // Labels the timing log entry.
-     *       console.time(label);              // Starts the timer.
+     *       const label = "myFunction() time"; // Labels the timing log entry.
+     *       console.time(label); // Starts the timer.
      *       try {
-     *         myFunction(parameters);         // Function to time.
+     *         myFunction(); // Function to time.
      *       } catch (e) {
      *         // Logs an ERROR message.
-     *         console.error('myFunction() yielded an error: ' + e);
+     *         console.error("myFunction() yielded an error: " + e);
      *       }
-     *       console.timeEnd(label);      // Stops the timer, logs execution duration.
+     *       console.timeEnd(label); // Stops the timer, logs execution duration.
+     *     }
+     *
+     *     function myFunction() {
+     *       // ...
      *     }
      */
     interface console {
 
       /**
        * Outputs a blank ERROR level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#error()
        */
-      error(): void;
+      error(): any;
 
       /**
        * Outputs an ERROR level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#error(Object,Object...)
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      error(formatOrObject: any, ...values: any[]): void;
+      error(formatOrObject: any, values: any): any;
 
       /**
        * Outputs blank INFO level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#info()
        */
-      info(): void;
+      info(): any;
 
       /**
        * Outputs an INFO level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#info(Object,Object...)
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      info(formatOrObject: any, ...values: any[]): void;
+      info(formatOrObject: any, values: any): any;
 
       /**
        * Outputs a blank DEBUG level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#log()
        */
-      log(): void;
+      log(): any;
 
       /**
        * Outputs a DEBUG level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#log(Object,Object...)
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      log(formatOrObject: any, ...values: any[]): void;
+      log(formatOrObject: any, values: any): any;
 
       /**
        * Starts a timer you can use to track how long an operation takes.
+       *
        * https://developers.google.com/apps-script/reference/base/console#time(String)
        * @param label The name to give the new timer.
        */
-      time(label: string): void;
+      time(label: string): any;
 
       /**
-       * Stops a timer that was previously started by calling console.time(). The time duration
-       * is logged in Stackdriver.
+       * Stops a timer that was previously started by calling console.time(). The time duration is logged in Stackdriver.
+       *
        * https://developers.google.com/apps-script/reference/base/console#timeEnd(String)
        * @param label the name of the timer to stop.
        */
-      timeEnd(label: string): void;
+      timeEnd(label: string): any;
 
       /**
        * Outputs a blank WARNING level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#warn()
        */
-      warn(): void;
+      warn(): any;
 
       /**
        * Outputs a WARNING level message to Stackdriver Logging.
+       *
        * https://developers.google.com/apps-script/reference/base/console#warn(Object,Object...)
        * @param formatOrObject a string containing zero or more substitution strings, or a JavaScript object to be logged as a JavaScript object if no other parameters.
        * @param values objects with which to replace substitution strings within the message. This gives you additional control over the format of the output.
        */
-      warn(formatOrObject: any, ...values: any[]): void;
+      warn(formatOrObject: any, values: any): any;
     }
   }
 }

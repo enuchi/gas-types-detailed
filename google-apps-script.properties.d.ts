@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2023-10-28
+// Type definitions for Google Apps Script 2025-11-10
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -19,10 +19,13 @@ declare namespace GoogleAppsScript {
       /**
        * Deletes all properties in the current Properties store.
        *
-       *
        *     // Deletes all user properties.
-       *     var userProperties = PropertiesService.getUserProperties();
+       *     const userProperties = PropertiesService.getUserProperties();
        *     userProperties.deleteAllProperties();
+       *
+       * Return:
+       * - Properties — this Properties store, for chaining
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#deleteAllProperties()
        */
       deleteAllProperties(): Properties;
@@ -30,10 +33,13 @@ declare namespace GoogleAppsScript {
       /**
        * Deletes the property with the given key in the current Properties store.
        *
-       *
        *     // Deletes the user property 'nickname'.
-       *     var userProperties = PropertiesService.getUserProperties();
+       *     const userProperties = PropertiesService.getUserProperties();
        *     userProperties.deleteProperty('nickname');
+       *
+       * Return:
+       * - Properties — this Properties store, for chaining
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#deleteProperty(String)
        * @param key the key for the property to delete
        */
@@ -42,46 +48,50 @@ declare namespace GoogleAppsScript {
       /**
        * Gets all keys in the current Properties store.
        *
-       *
        *     // Sets several properties, then logs the value of each key.
-       *     var scriptProperties = PropertiesService.getScriptProperties();
+       *     const scriptProperties = PropertiesService.getScriptProperties();
        *     scriptProperties.setProperties({
-       *       'cow': 'moo',
-       *       'sheep': 'baa',
-       *       'chicken': 'cluck'
+       *       cow: 'moo',
+       *       sheep: 'baa',
+       *       chicken: 'cluck',
        *     });
-       *     var keys = scriptProperties.getKeys();
+       *     const keys = scriptProperties.getKeys();
        *     Logger.log('Animals known:');
-       *     for (var i = 0; i < keys.length; i++) {
+       *     for (let i = 0; i < keys.length; i++) {
        *       Logger.log(keys[i]);
        *     }
+       *
+       * Return:
+       * - String[] — an array of all keys in the current Properties store
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#getKeys()
        */
       getKeys(): string[];
 
       /**
-       * Gets a copy of all key-value pairs in the current Properties store. Note that the
-       * returned object is not a live view of the store. Consequently, changing the properties on the
-       * returned object will not automatically update them in storage, or vice versa.
-       *
+       * Gets a copy of all key-value pairs in the current Properties store. Note that the returned object is not a live view of the store. Consequently, changing the properties on the returned object will not automatically update them in storage, or vice versa.
        *
        *     // Sets several script properties, then retrieves them and logs them.
-       *     var scriptProperties = PropertiesService.getScriptProperties();
+       *     const scriptProperties = PropertiesService.getScriptProperties();
        *     scriptProperties.setProperties({
-       *       'cow': 'moo',
-       *       'sheep': 'baa',
-       *       'chicken': 'cluck'
+       *       cow: 'moo',
+       *       sheep: 'baa',
+       *       chicken: 'cluck',
        *     });
        *
-       *     var animalSounds = scriptProperties.getProperties();
+       *     const animalSounds = scriptProperties.getProperties();
        *
        *     // Logs:
        *     // A chicken goes cluck!
        *     // A cow goes moo!
        *     // A sheep goes baa!
-       *     for (var kind in animalSounds) {
+       *     for (const kind in animalSounds) {
        *       Logger.log('A %s goes %s!', kind, animalSounds[kind]);
        *     }
+       *
+       * Return:
+       * - Object — a copy of all key-value pairs in the current Properties store
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#getProperties()
        */
       getProperties(): any;
@@ -89,11 +99,14 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the value associated with the given key in the current Properties store, or null if no such key exists.
        *
-       *
        *     // Gets the user property 'nickname'.
-       *     var userProperties = PropertiesService.getUserProperties();
-       *     var nickname = userProperties.getProperty('nickname');
+       *     const userProperties = PropertiesService.getUserProperties();
+       *     const nickname = userProperties.getProperty('nickname');
        *     Logger.log(nickname);
+       *
+       * Return:
+       * - String — the value associated with the given key in the current Properties store
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#getProperty(String)
        * @param key the key for the property value to retrieve
        */
@@ -102,25 +115,39 @@ declare namespace GoogleAppsScript {
       /**
        * Sets all key-value pairs from the given object in the current Properties store.
        *
-       *
        *     // Sets multiple user properties at once.
-       *     var userProperties = PropertiesService.getUserProperties();
-       *     var newProperties = {nickname: 'Bob', region: 'US', language: 'EN'};
+       *     const userProperties = PropertiesService.getUserProperties();
+       *     const newProperties = {
+       *       nickname: 'Bob',
+       *       region: 'US',
+       *       language: 'EN'
+       *     };
        *     userProperties.setProperties(newProperties);
+       *
+       * Return:
+       * - Properties — this Properties store, for chaining
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#setProperties(Object)
        * @param properties an object containing key-values pairs to set
        */
       setProperties(properties: any): Properties;
 
       /**
-       * Sets all key-value pairs from the given object in the current Properties store,
-       * optionally deleting all other properties in the store.
+       * Sets all key-value pairs from the given object in the current Properties store, optionally deleting all other properties in the store.
        *
-       *
-       *     // Sets multiple user properties at once while deleting all other user properties.
-       *     var userProperties = PropertiesService.getUserProperties();
-       *     var newProperties = {nickname: 'Bob', region: 'US', language: 'EN'};
+       *     // Sets multiple user properties at once while deleting all other user
+       *     // properties.
+       *     const userProperties = PropertiesService.getUserProperties();
+       *     const newProperties = {
+       *       nickname: 'Bob',
+       *       region: 'US',
+       *       language: 'EN'
+       *     };
        *     userProperties.setProperties(newProperties, true);
+       *
+       * Return:
+       * - Properties — this Properties store, for chaining
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#setProperties(Object,Boolean)
        * @param properties an object containing key-values pairs to set
        * @param deleteAllOthers true to delete all other key-value pairs in the properties object; false to not
@@ -130,10 +157,13 @@ declare namespace GoogleAppsScript {
       /**
        * Sets the given key-value pair in the current Properties store.
        *
-       *
        *     // Sets the user property 'nickname' to 'Bobby'.
-       *     var userProperties = PropertiesService.getUserProperties();
+       *     const userProperties = PropertiesService.getUserProperties();
        *     userProperties.setProperty('nickname', 'Bobby');
+       *
+       * Return:
+       * - Properties — this Properties store, for chaining
+       *
        * https://developers.google.com/apps-script/reference/properties/properties#setProperty(String,String)
        * @param key the key for the property
        * @param value the value to associate with the key
@@ -146,35 +176,45 @@ declare namespace GoogleAppsScript {
      * For more information about when to use each type of property, see the guide to the Properties service.
      *
      *     // Sets three properties of different types.
-     *     var documentProperties = PropertiesService.getDocumentProperties();
-     *     var scriptProperties = PropertiesService.getScriptProperties();
-     *     var userProperties = PropertiesService.getUserProperties();
+     *     const documentProperties = PropertiesService.getDocumentProperties();
+     *     const scriptProperties = PropertiesService.getScriptProperties();
+     *     const userProperties = PropertiesService.getUserProperties();
      *
      *     documentProperties.setProperty('DAYS_TO_FETCH', '5');
-     *     scriptProperties.setProperty('SERVER_URL', 'http://www.example.com/MyWeatherService/');
+     *     scriptProperties.setProperty(
+     *         'SERVER_URL',
+     *         'http://www.example.com/MyWeatherService/',
+     *     );
      *     userProperties.setProperty('DISPLAY_UNITS', 'metric');
      */
     interface PropertiesService {
 
       /**
-       * Gets a property store (for this script only) that all users can access within the open
-       * document, spreadsheet, or form. It is only available if the script is published and executing
-       * as an add-on or if it is bound to a Google file
-       * type. When document properties are not available this method returns null. Document
-       * properties created by a script are not accessible outside that script, even by other scripts
-       * accessing the same document.
+       * Gets a property store (for this script only) that all users can access within the open document, spreadsheet, or form. It is only available if the script is published and executing as an add-on or if it is bound to a Google file type. When document properties are not available this method returns null. Document properties created by a script are not accessible outside that script, even by other scripts accessing the same document.
+       *
+       * Return:
+       * - Properties — a property store for this script only that all users of the current document can access, or null if the script is not either an add-on or bound to a Google Workspace file
+       *
        * https://developers.google.com/apps-script/reference/properties/properties-service#getDocumentProperties()
        */
       getDocumentProperties(): Properties;
 
       /**
        * Gets a property store that all users can access, but only within this script.
+       *
+       * Return:
+       * - Properties — a property store that all users of the script can access
+       *
        * https://developers.google.com/apps-script/reference/properties/properties-service#getScriptProperties()
        */
       getScriptProperties(): Properties;
 
       /**
        * Gets a property store that only the current user can access, and only within this script.
+       *
+       * Return:
+       * - Properties — a property store that only the current user of the script can access
+       *
        * https://developers.google.com/apps-script/reference/properties/properties-service#getUserProperties()
        */
       getUserProperties(): Properties;

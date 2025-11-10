@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2023-10-28
+// Type definitions for Google Apps Script 2025-11-10
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -17,36 +17,38 @@ declare namespace GoogleAppsScript {
     interface HTTPResponse {
 
       /**
-       * Returns an attribute/value map of headers for the HTTP response, with headers that have
-       * multiple values returned as arrays.
-       *
+       * Returns an attribute/value map of headers for the HTTP response, with headers that have multiple values returned as arrays.
        *
        *     // The code below logs the HTTP headers from the response
        *     // received when fetching the Google home page.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getAllHeaders());
+       *
+       * Return:
+       * - Object — a JavaScript key/value map of HTTP headers
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getAllHeaders()
        */
       getAllHeaders(): any;
 
       /**
-       * Return the data inside this object as a blob converted to the specified content type. This
-       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
-       * assumes that the part of the filename that follows the last period (if any) is an existing
-       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
-       * "ShoppingList.12.25.pdf".
+       * Return the data inside this object as a blob converted to the specified content type. This method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it assumes that the part of the filename that follows the last period (if any) is an existing extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes "ShoppingList.12.25.pdf".
+       * To view the daily quotas for conversions, see Quotas for Google Services. Newly created Google Workspace domains might be temporarily subject to stricter quotas.
        *
+       * Return:
+       * - Blob — The data as a blob.
        *
-       * To view the daily quotas for conversions, see Quotas for Google
-       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
-       * quotas.
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getAs(String)
-       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid. For a Google Docs document, 'text/markdown' is also valid.
        */
       getAs(contentType: string): Base.Blob;
 
       /**
        * Return the data inside this object as a blob.
+       *
+       * Return:
+       * - Blob — The data as a blob.
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getBlob()
        */
       getBlob(): Base.Blob;
@@ -54,10 +56,13 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the raw binary content of an HTTP response.
        *
-       *
        *     // The code below logs the value of the first byte of the Google home page.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getContent()[0]);
+       *
+       * Return:
+       * - Byte[] — the content as a raw binary array
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getContent()
        */
       getContent(): Byte[];
@@ -65,10 +70,13 @@ declare namespace GoogleAppsScript {
       /**
        * Gets the content of an HTTP response encoded as a string.
        *
-       *
        *     // The code below logs the HTML code of the Google home page.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getContentText());
+       *
+       * Return:
+       * - String — the content of the HTTP response, as a string
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getContentText()
        */
       getContentText(): string;
@@ -76,10 +84,14 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the content of an HTTP response encoded as a string of the given charset.
        *
+       *     // The code below logs the HTML code of the Google home page with the UTF-8
+       *     // charset.
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
+       *     Logger.log(response.getContentText('UTF-8'));
        *
-       *     // The code below logs the HTML code of the Google home page with the UTF-8 charset.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
-       *     Logger.log(response.getContentText("UTF-8"));
+       * Return:
+       * - String — the content of the HTTP response, encoded using the given charset
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getContentText(String)
        * @param charset a string representing the charset to be used for encoding the HTTP response content
        */
@@ -88,11 +100,14 @@ declare namespace GoogleAppsScript {
       /**
        * Returns an attribute/value map of headers for the HTTP response.
        *
-       *
        *     // The code below logs the HTTP headers from the response
        *     // received when fetching the Google home page.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getHeaders());
+       *
+       * Return:
+       * - Object — a JavaScript key/value map of HTTP headers
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getHeaders()
        */
       getHeaders(): any;
@@ -100,12 +115,15 @@ declare namespace GoogleAppsScript {
       /**
        * Get the HTTP status code (200 for OK, etc.) of an HTTP response.
        *
-       *
        *     // The code below logs the HTTP status code from the response received
        *     // when fetching the Google home page.
        *     // It should be 200 if the request succeeded.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getResponseCode());
+       *
+       * Return:
+       * - Integer — The HTTP response code (for example, 200 for OK).
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/http-response#getResponseCode()
        */
       getResponseCode(): Integer;
@@ -135,14 +153,20 @@ declare namespace GoogleAppsScript {
 
       /**
        * Makes a request to fetch a URL.
-       *
-       *
        * This works over HTTP as well as HTTPS.
        *
-       *
        *     // The code below logs the HTML code of the Google home page.
-       *     var response = UrlFetchApp.fetch("http://www.google.com/");
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getContentText());
+       *
+       * Return:
+       * - HTTPResponse — The HTTP response data.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.external_request
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#fetch(String)
        * @param url The URL to fetch. The URL can have up to 2,082 characters.
        */
@@ -150,43 +174,49 @@ declare namespace GoogleAppsScript {
 
       /**
        * Makes a request to fetch a URL using optional advanced parameters.
-       *
-       *
        * This works over HTTP as well as HTTPS.
        *
-       *
        *     // Make a GET request and log the returned content.
-       *     var response = UrlFetchApp.fetch('http://www.google.com/');
+       *     const response = UrlFetchApp.fetch('http://www.google.com/');
        *     Logger.log(response.getContentText());
        *     // Make a POST request with form data.
-       *     var resumeBlob = Utilities.newBlob('Hire me!', 'text/plain', 'resume.txt');
-       *     var formData = {
-       *       'name': 'Bob Smith',
-       *       'email': 'bob@example.com',
-       *       'resume': resumeBlob
+       *     const resumeBlob = Utilities.newBlob('Hire me!', 'text/plain', 'resume.txt');
+       *     const formData = {
+       *       name: 'Bob Smith',
+       *       email: 'bob@example.com',
+       *       resume: resumeBlob,
        *     };
        *     // Because payload is a JavaScript object, it is interpreted as
        *     // as form data. (No need to specify contentType; it automatically
        *     // defaults to either 'application/x-www-form-urlencoded'
        *     // or 'multipart/form-data')
-       *     var options = {
-       *       'method' : 'post',
-       *       'payload' : formData
+       *     const options = {
+       *       method: 'post',
+       *       payload: formData,
        *     };
        *     UrlFetchApp.fetch('https://httpbin.org/post', options);
        *     // Make a POST request with a JSON payload.
-       *     var data = {
-       *       'name': 'Bob Smith',
-       *       'age': 35,
-       *       'pets': ['fido', 'fluffy']
+       *     const data = {
+       *       name: 'Bob Smith',
+       *       age: 35,
+       *       pets: ['fido', 'fluffy'],
        *     };
-       *     var options = {
-       *       'method' : 'post',
-       *       'contentType': 'application/json',
+       *     const options = {
+       *       method: 'post',
+       *       contentType: 'application/json',
        *       // Convert the JavaScript object to a JSON string.
-       *       'payload' : JSON.stringify(data)
+       *       payload: JSON.stringify(data),
        *     };
        *     UrlFetchApp.fetch('https://httpbin.org/post', options);
+       *
+       * Return:
+       * - HTTPResponse — The HTTP response data.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.external_request
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#fetch(String,Object)
        * @param url The URL to fetch. The URL can have up to 2,082 characters.
        * @param params The optional JavaScript object specifying advanced parameters as defined below.
@@ -195,29 +225,35 @@ declare namespace GoogleAppsScript {
 
       /**
        * Makes multiple requests to fetch multiple URLs using optional advanced parameters.
-       *
-       *
        * This works over HTTP as well as HTTPS.
        *
-       *
        *     // Make both a POST request with form data, and a GET request.
-       *     var resumeBlob = Utilities.newBlob('Hire me!', 'text/plain', 'resume.txt');
-       *     var formData = {
-       *       'name': 'Bob Smith',
-       *       'email': 'bob@example.com',
-       *       'resume': resumeBlob
+       *     const resumeBlob = Utilities.newBlob('Hire me!', 'text/plain', 'resume.txt');
+       *     const formData = {
+       *       name: 'Bob Smith',
+       *       email: 'bob@example.com',
+       *       resume: resumeBlob,
        *     };
        *     // Because payload is a JavaScript object, it is interpreted as
        *     // as form data. (No need to specify contentType; it defaults to either
        *     // 'application/x-www-form-urlencoded' or 'multipart/form-data')
-       *     var request1 = {
-       *       'url': 'https://httpbin.org/post',
-       *       'method' : 'post',
-       *       'payload' : formData
+       *     const request1 = {
+       *       url: 'https://httpbin.org/post',
+       *       method: 'post',
+       *       payload: formData,
        *     };
        *     // A request may also just be a URL.
-       *     var request2 = 'https://httpbin.org/get?key=value';
+       *     const request2 = 'https://httpbin.org/get?key=value';
        *     UrlFetchApp.fetchAll([request1, request2]);
+       *
+       * Return:
+       * - HTTPResponse[] — An array of HTTP response data from each input request.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.external_request
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#fetchAll(Object)
        * @param requests An array of either URLs or JavaScript objects specifying requests as defined below.
        */
@@ -225,16 +261,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the request that is made if the operation was invoked.
-       *
-       *
        * This method does not actually issue the request.
        *
-       *
        *     // The code below logs the value for every key of the returned map.
-       *     var response = UrlFetchApp.getRequest("http://www.google.com/");
-       *     for(i in response) {
-       *       Logger.log(i + ": " + response[i]);
+       *     const response = UrlFetchApp.getRequest('http://www.google.com/');
+       *     for (const i in response) {
+       *       Logger.log(`${i}: ${response[i]}`);
        *     }
+       *
+       * Return:
+       * - Object — A map of Field Name to Value. The map has at least the following keys: url, method, contentType, payload, and headers.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.external_request
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#getRequest(String)
        * @param url The URL to look up. The URL can have up to 2,082 characters.
        */
@@ -242,9 +284,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the request that is made if the operation were invoked.
-       *
-       *
        * This method does not actually issue the request.
+       *
+       * Return:
+       * - Object — A map of Field Name to Value. The map has at least the following keys: url, method, contentType, payload, and headers.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/script.external_request
+       *
        * https://developers.google.com/apps-script/reference/url-fetch/url-fetch-app#getRequest(String,Object)
        * @param url The URL to look up. The URL can have up to 2,082 characters.
        * @param params An optional JavaScript object specifying advanced parameters as defined below.

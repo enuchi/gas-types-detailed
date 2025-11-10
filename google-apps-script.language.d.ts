@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2023-10-28
+// Type definitions for Google Apps Script 2025-11-10
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -11,7 +11,7 @@ declare namespace GoogleAppsScript {
      * The Language service provides scripts a way to compute automatic translations of text.
      *
      *     // The code below will write "Esta es una prueba" to the log.
-     *     var spanish = LanguageApp.translate('This is a test', 'en', 'es');
+     *     const spanish = LanguageApp.translate('This is a test', 'en', 'es');
      *     Logger.log(spanish);
      */
     interface LanguageApp {
@@ -19,10 +19,13 @@ declare namespace GoogleAppsScript {
       /**
        * Automatically translates some text from a source language to a destination language.
        *
-       *
        *     // The code below will write "Esta es una prueba" to the log.
-       *       var spanish = LanguageApp.translate('This is a test', 'en', 'es');
-       *       Logger.log(spanish);
+       *     const spanish = LanguageApp.translate('This is a test', 'en', 'es');
+       *     Logger.log(spanish);
+       *
+       * Return:
+       * - String — the translated text
+       *
        * https://developers.google.com/apps-script/reference/language/language-app#translate(String,String,String)
        * @param text the text to translate
        * @param sourceLanguage the language code in which text is written. If it is set to the empty string, the source language code will be auto-detected
@@ -33,11 +36,18 @@ declare namespace GoogleAppsScript {
       /**
        * Automatically translates some text from a source language to a destination language.
        *
-       *
        *     // The code below will write "Esta es una <strong>prueba</strong>" to the log.
-       *       var spanish = LanguageApp.translate('This is a &lt;strong&gt;test&lt;/strong&gt;',
-       *                                           'en', 'es', {contentType: 'html'});
-       *       Logger.log(spanish);
+       *     const spanish = LanguageApp.translate(
+       *         'This is a &lt;strong&gt;test&lt;/strong&gt;',
+       *         'en',
+       *         'es',
+       *         {contentType: 'html'},
+       *     );
+       *     Logger.log(spanish);
+       *
+       * Return:
+       * - String — the translated text
+       *
        * https://developers.google.com/apps-script/reference/language/language-app#translate(String,String,String,Object)
        * @param text the text to translate
        * @param sourceLanguage the language code in which text is written. If it is set to the empty string, the source language code will be auto-detected

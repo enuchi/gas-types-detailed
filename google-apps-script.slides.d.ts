@@ -1,4 +1,4 @@
-// Type definitions for Google Apps Script 2023-10-28
+// Type definitions for Google Apps Script 2025-11-10
 // Project: https://developers.google.com/apps-script/
 // Definitions by: motemen <https://github.com/motemen/>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
@@ -19,49 +19,77 @@ declare namespace GoogleAppsScript {
      *
      * After transformation,
      *
-     *     x2 = scaleX * x1 + shearX * y1 + translateX
-     *     y2 = scaleY * y1 + shearY * x1 + translateY
+     *     x2 = scaleX * x1 + shearX * y1 + translateX;
+     *     y2 = scaleY * y1 + shearY * x1 + translateY;
      */
     interface AffineTransform {
 
       /**
        * Gets the X coordinate scaling element.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#getScaleX()
        */
       getScaleX(): number;
 
       /**
        * Gets the Y coordinate scaling element.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#getScaleY()
        */
       getScaleY(): number;
 
       /**
        * Gets the X coordinate shearing element.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#getShearX()
        */
       getShearX(): number;
 
       /**
        * Gets the Y coordinate shearing element.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#getShearY()
        */
       getShearY(): number;
 
       /**
        * Gets the X coordinate translation element in points.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#getTranslateX()
        */
       getTranslateX(): number;
 
       /**
        * Gets the Y coordinate translation element in points.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#getTranslateY()
        */
       getTranslateY(): number;
 
       /**
        * Returns a new AffineTransformBuilder based on this transform.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform#toBuilder()
        */
       toBuilder(): AffineTransformBuilder;
@@ -71,24 +99,33 @@ declare namespace GoogleAppsScript {
      *
      * Call AffineTransformBuilder#build() to get the AffineTransform object.
      *
-     *     var transform =
+     *     const transform =
      *         SlidesApp.newAffineTransformBuilder().setScaleX(2.0).setShearY(1.1).build();
      *
-     *     The resulting transform matrix is
-     *       [ 2.0   0.0   0.0 ]
-     *       [ 1.1   1.0   0.0 ]
-     *       [  0     0     1  ]
+     *     // The resulting transform matrix is
+     *     //  [ 2.0   0.0   0.0 ]
+     *     //  [ 1.1   1.0   0.0 ]
+     *     //  [  0     0     1  ]
+     *     }
      */
     interface AffineTransformBuilder {
 
       /**
        * Creates an AffineTransform object initialized with the elements set in the builder.
+       *
+       * Return:
+       * - AffineTransform
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#build()
        */
       build(): AffineTransform;
 
       /**
        * Sets the X coordinate scaling element and returns the builder.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#setScaleX(Number)
        * @param scaleX
        */
@@ -96,6 +133,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the Y coordinate scaling element and returns the builder.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#setScaleY(Number)
        * @param scaleY
        */
@@ -103,6 +144,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the X coordinate shearing element and returns the builder.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#setShearX(Number)
        * @param shearX
        */
@@ -110,6 +155,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the Y coordinate shearing element and returns the builder.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#setShearY(Number)
        * @param shearY
        */
@@ -117,6 +166,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the X coordinate translation element in points, and returns the builder.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#setTranslateX(Number)
        * @param translateX
        */
@@ -124,6 +177,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the Y coordinate translation element in points, and returns the builder.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/affine-transform-builder#setTranslateY(Number)
        * @param translateY
        */
@@ -140,7 +197,7 @@ declare namespace GoogleAppsScript {
      * The kinds of start and end forms with which linear geometry can be rendered.
      *
      * Some values are based on the "ST_LineEndType" simple type described in section 20.1.10.33 of
-     * of "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
+     * of "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 5th
      * edition.
      *
      * To call an enum, you call its parent class, name, and property. For example,
@@ -155,19 +212,48 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the type of auto text. Returns null if the auto text has been deleted.
+       *
+       * Return:
+       * - AutoTextType
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/auto-text#getAutoTextType()
        */
       getAutoTextType(): AutoTextType;
 
       /**
        * Returns the index of the auto text. Returns null if the auto text has been deleted.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/auto-text#getIndex()
        */
       getIndex(): Integer;
 
       /**
-       * Returns a TextRange spanning the auto text. Returns null if the auto text has
-       * been deleted.
+       * Returns a TextRange spanning the auto text. Returns null if the auto text has been deleted.
+       *
+       * Return:
+       * - TextRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/auto-text#getRange()
        */
       getRange(): TextRange;
@@ -193,29 +279,64 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the AutofitType of a shape to AutofitType.NONE.
+       *
+       * Return:
+       * - Autofit — The autofit, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/autofit#disableAutofit()
        */
       disableAutofit(): Autofit;
 
       /**
        * Gets the AutofitType of the shape.
+       *
+       * Return:
+       * - AutofitType — The autofit type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/autofit#getAutofitType()
        */
       getAutofitType(): AutofitType;
 
       /**
-       * Gets the font scale applied to the shape. For shapes with AutofitType AutofitType.NONE or AutofitType.SHAPE_AUTOFIT, this value is the default value of 1.
-       * For AutofitType.TEXT_AUTOFIT, the value returned is what the original font size is
-       * multiplied by to fit within the shape.
+       * Gets the font scale applied to the shape. For shapes with AutofitType AutofitType.NONE or AutofitType.SHAPE_AUTOFIT, this value is the default value of 1. For AutofitType.TEXT_AUTOFIT, the value returned is what the original font size is multiplied by to fit within the shape.
+       *
+       * Return:
+       * - Number — The font scale.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/autofit#getFontScale()
        */
       getFontScale(): number;
 
       /**
-       * Gets the line spacing reduction applied to the shape. For shapes with AutofitType
-       * AutofitType.NONE or AutofitType.SHAPE_AUTOFIT, this value is the default value
-       * of 0. For AutofitType.TEXT_AUTOFIT, the returned value is the amount of spacing
-       * subtracted from the original spacing to make the text fit within the shape.
+       * Gets the line spacing reduction applied to the shape. For shapes with AutofitType AutofitType.NONE or AutofitType.SHAPE_AUTOFIT, this value is the default value of 0. For AutofitType.TEXT_AUTOFIT, the returned value is the amount of spacing subtracted from the original spacing to make the text fit within the shape.
+       *
+       * Return:
+       * - Number — The line spacing.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/autofit#getLineSpacingReduction()
        */
       getLineSpacingReduction(): number;
@@ -234,34 +355,81 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the DashStyle of the border.
+       *
+       * Return:
+       * - DashStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#getDashStyle()
        */
       getDashStyle(): DashStyle;
 
       /**
        * Gets the LineFill of the border.
+       *
+       * Return:
+       * - LineFill
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#getLineFill()
        */
       getLineFill(): LineFill;
 
       /**
-       * Gets the thickness of the border in points. Returns null if the element does not have a
-       * border.
+       * Gets the thickness of the border in points. Returns null if the element does not have a border.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#getWeight()
        */
       getWeight(): number;
 
       /**
        * Gets whether the border is visible or not.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#isVisible()
        */
       isVisible(): boolean;
 
       /**
        * Sets the DashStyle of the border.
-       *
-       *
        * Setting a DashStyle on a transparent border makes it visible.
+       *
+       * Return:
+       * - Border
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#setDashStyle(DashStyle)
        * @param style
        */
@@ -269,15 +437,33 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the border to be transparent.
+       *
+       * Return:
+       * - Border
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#setTransparent()
        */
       setTransparent(): Border;
 
       /**
        * Sets the thickness of the border in points.
-       *
-       *
        * Setting a weight on a transparent border makes it visible.
+       *
+       * Return:
+       * - Border
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/border#setWeight(Number)
        * @param points
        */
@@ -297,18 +483,54 @@ declare namespace GoogleAppsScript {
 
       /**
        * Converts this color to an RgbColor.
+       *
+       * Return:
+       * - RgbColor
+       *
+       * Throws:
+       * - Error — if the color is not an RgbColor
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color#asRgbColor()
        */
       asRgbColor(): Base.RgbColor;
 
       /**
        * Converts this color to a ThemeColor.
+       *
+       * Return:
+       * - ThemeColor
+       *
+       * Throws:
+       * - Error — if the color is not a ThemeColor
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color#asThemeColor()
        */
       asThemeColor(): ThemeColor;
 
       /**
        * Get the type of this color.
+       *
+       * Return:
+       * - ColorType — The color type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color#getColorType()
        */
       getColorType(): Base.ColorType;
@@ -320,11 +542,18 @@ declare namespace GoogleAppsScript {
     interface ColorScheme {
 
       /**
-       * Returns the concrete Color associated with the ThemeColorType in this color
-       * scheme.
-       *
-       *
+       * Returns the concrete Color associated with the ThemeColorType in this color scheme.
        * The returned color is guaranteed to not be an instance of ThemeColor.
+       *
+       * Return:
+       * - Color — The concrete color corresponding the theme color type in this scheme.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color-scheme#getConcreteColor(ThemeColorType)
        * @param theme The theme color to derive the concrete color from.
        */
@@ -332,13 +561,32 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns a list of all possible theme color types in a color scheme.
+       *
+       * Return:
+       * - ThemeColorType[] — The possible theme color types in this scheme.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color-scheme#getThemeColors()
        */
       getThemeColors(): ThemeColorType[];
 
       /**
-       * Sets the concrete color associated with the ThemeColorType in this color scheme to the
-       * given color.
+       * Sets the concrete color associated with the ThemeColorType in this color scheme to the given color.
+       *
+       * Return:
+       * - ColorScheme — This color scheme, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color-scheme#setConcreteColor(ThemeColorType,Color)
        * @param type The theme color type.
        * @param color The color to set the theme color type to.
@@ -346,8 +594,17 @@ declare namespace GoogleAppsScript {
       setConcreteColor(type: ThemeColorType, color: Color): ColorScheme;
 
       /**
-       * Sets the concrete color associated with the ThemeColorType in this color scheme to the
-       * given color in RGB format.
+       * Sets the concrete color associated with the ThemeColorType in this color scheme to the given color in RGB format.
+       *
+       * Return:
+       * - ColorScheme — This color scheme, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color-scheme#setConcreteColor(ThemeColorType,Integer,Integer,Integer)
        * @param type The theme color type.
        * @param red The red value of the color to set the theme color type to (between 0 and 255).
@@ -357,11 +614,18 @@ declare namespace GoogleAppsScript {
       setConcreteColor(type: ThemeColorType, red: Integer, green: Integer, blue: Integer): ColorScheme;
 
       /**
-       * Sets the concrete color associated with the ThemeColorType in this color scheme to the
-       * given color in HEX format.
-       *
-       *
+       * Sets the concrete color associated with the ThemeColorType in this color scheme to the given color in HEX format.
        * The hex string must be in the format '#RRGGBB'.
+       *
+       * Return:
+       * - ColorScheme — This color scheme, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/color-scheme#setConcreteColor(ThemeColorType,String)
        * @param type The theme color type.
        * @param hexColor The hex color to set the theme color type to, such as '#F304a7'.
@@ -374,22 +638,34 @@ declare namespace GoogleAppsScript {
     interface ConnectionSite {
 
       /**
-       * Returns the index of the connection site. The index is unique among all the connection sites on
-       * the same page element.
+       * Returns the index of the connection site. The index is unique among all the connection sites on the same page element.
+       * In most cases, it corresponds to the predefined connection site index from the ECMA-376 standard. More information on those connection sites can be found in the description of the "cnx" attribute in section 20.1.9.9 and Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open XML File Formats-Fundamentals and Markup Language Reference", part 1 of ECMA-376 5th edition.
        *
+       * Return:
+       * - Integer — The index of the connection site.
        *
-       * In most cases, it corresponds to the predefined connection site index from the ECMA-376
-       * standard. More information on those connection sites can be found in the description of the
-       * "cnx" attribute in section 20.1.9.9 and Annex H. "Predefined DrawingML Shape and Text
-       * Geometries" of "Office Open XML File Formats-Fundamentals and Markup Language Reference", part
-       * 1 of ECMA-376
-       * 5th edition.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/connection-site#getIndex()
        */
       getIndex(): Integer;
 
       /**
        * Returns the PageElement that the connection site is on.
+       *
+       * Return:
+       * - PageElement — The page element of the connection site.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/connection-site#getPageElement()
        */
       getPageElement(): PageElement;
@@ -400,8 +676,8 @@ declare namespace GoogleAppsScript {
      *
      * More information on those alignments can be found in the description of
      * the ST_TextAnchoringType simple type in section 20.1.10.59 of "Office Open XML File
-     * Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
-     * edition.
+     * Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376
+     * 5th edition.
      *
      * To call an enum, you call its parent class, name, and property. For example,
      * SlidesApp.ContentAlignment.TOP.
@@ -410,7 +686,7 @@ declare namespace GoogleAppsScript {
     /**
      * The kinds of dashes with which linear geometry can be rendered. These values are based on the
      * "ST_PresetLineDashVal" simple type described in section 20.1.10.48 of "Office Open XML File
-     * Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
+     * Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 5th
      * edition.
      *
      * To call an enum, you call its parent class, name, and property. For example,
@@ -424,99 +700,177 @@ declare namespace GoogleAppsScript {
 
       /**
        * Get the solid fill of this background, or null if the fill type is not FillType.SOLID.
+       *
+       * Return:
+       * - SolidFill — The solid fill setting, or null if this fill type is not solid.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#getSolidFill()
        */
       getSolidFill(): SolidFill;
 
       /**
        * Get the type of this fill.
+       *
+       * Return:
+       * - FillType — The type of this fill.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#getType()
        */
       getType(): FillType;
 
       /**
        * Whether the background is visible.
+       *
+       * Return:
+       * - Boolean — true if the background is visible; false otherwise.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#isVisible()
        */
       isVisible(): boolean;
 
       /**
        * Sets the solid fill to the given Color.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(Color)
        * @param color
        */
-      setSolidFill(color: Color): void;
+      setSolidFill(color: Color): any;
 
       /**
        * Sets the solid fill to the given alpha and Color.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(Color,Number)
        * @param color
        * @param alpha
        */
-      setSolidFill(color: Color, alpha: number): void;
+      setSolidFill(color: Color, alpha: number): any;
 
       /**
        * Sets the solid fill to the given RGB values.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(Integer,Integer,Integer)
        * @param red
        * @param green
        * @param blue
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer): void;
+      setSolidFill(red: Integer, green: Integer, blue: Integer): any;
 
       /**
        * Sets the solid fill to the given alpha and RGB values.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(Integer,Integer,Integer,Number)
        * @param red
        * @param green
        * @param blue
        * @param alpha
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
+      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): any;
 
       /**
        * Sets the solid fill to the given hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink is represented as '#FFC0CB'.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(String)
        * @param hexString
        */
-      setSolidFill(hexString: string): void;
+      setSolidFill(hexString: string): any;
 
       /**
        * Sets the solid fill to the given alpha and hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink is represented as '#FFC0CB'.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(String,Number)
        * @param hexString
        * @param alpha
        */
-      setSolidFill(hexString: string, alpha: number): void;
+      setSolidFill(hexString: string, alpha: number): any;
 
       /**
        * Sets the solid fill to the given ThemeColorType.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(ThemeColorType)
        * @param color
        */
-      setSolidFill(color: ThemeColorType): void;
+      setSolidFill(color: ThemeColorType): any;
 
       /**
        * Sets the solid fill to the given alpha and ThemeColorType.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setSolidFill(ThemeColorType,Number)
        * @param color
        * @param alpha
        */
-      setSolidFill(color: ThemeColorType, alpha: number): void;
+      setSolidFill(color: ThemeColorType, alpha: number): any;
 
       /**
        * Sets the background to transparent.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/fill#setTransparent()
        */
-      setTransparent(): void;
+      setTransparent(): any;
     }
     /**
      * The kinds of fill.
@@ -532,6 +886,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/group#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -539,155 +897,312 @@ declare namespace GoogleAppsScript {
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#bringForward()
        */
       bringForward(): Group;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#bringToFront()
        */
       bringToFront(): Group;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#duplicate()
        */
       duplicate(): PageElement;
 
       /**
        * Gets the collection of page elements in the group. The minimum size of a group is 2.
+       *
+       * Return:
+       * - PageElement[] — The list of page elements in this group.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getChildren()
        */
       getChildren(): PageElement[];
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getDescription()
        */
       getDescription(): string;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getLeft()
        */
       getLeft(): number;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getRotation()
        */
       getRotation(): number;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getTop()
        */
       getTop(): number;
 
       /**
        * Gets the page element's transform.
+       * The initial transform for a newly created Group is always the identity transform: 1.0 scale parameters, and 0.0 shear and translate parameters.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The initial transform for a newly created Group is always the identity transform:
-       * 1.0 scale parameters, and 0.0 shear and translate parameters.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#getWidth()
        */
       getWidth(): number;
@@ -695,15 +1210,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -711,140 +1237,191 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/group#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Group — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): Group;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Group — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): Group;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/group#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#sendBackward()
        */
       sendBackward(): Group;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#sendToBack()
        */
       sendToBack(): Group;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - Group — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): Group;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Group — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): Group;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -852,11 +1429,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Group — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -864,23 +1447,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - Group — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): Group;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Group — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -888,31 +1488,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - Group — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/group#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): Group;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Group — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -920,15 +1526,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Ungroups the elements of the group.
-       *
-       *
        * The group itself is removed.
-       *
-       *
        * Groups inside other groups cannot be ungrouped.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/group#ungroup()
        */
-      ungroup(): void;
+      ungroup(): any;
     }
     /**
      * A PageElement representing an image.
@@ -937,6 +1545,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/image#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -944,119 +1556,205 @@ declare namespace GoogleAppsScript {
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#bringForward()
        */
       bringForward(): Image;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#bringToFront()
        */
       bringToFront(): Image;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#duplicate()
        */
       duplicate(): PageElement;
 
       /**
-       * Return the data inside this object as a blob converted to the specified content type. This
-       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
-       * assumes that the part of the filename that follows the last period (if any) is an existing
-       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
-       * "ShoppingList.12.25.pdf".
+       * Return the data inside this object as a blob converted to the specified content type. This method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it assumes that the part of the filename that follows the last period (if any) is an existing extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes "ShoppingList.12.25.pdf".
+       * To view the daily quotas for conversions, see Quotas for Google Services. Newly created Google Workspace domains might be temporarily subject to stricter quotas.
        *
+       * Return:
+       * - Blob — The data as a blob.
        *
-       * To view the daily quotas for conversions, see Quotas for Google
-       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
-       * quotas.
        * https://developers.google.com/apps-script/reference/slides/image#getAs(String)
-       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid. For a Google Docs document, 'text/markdown' is also valid.
        */
       getAs(contentType: string): Base.Blob;
 
       /**
        * Return the data inside this image as a blob.
+       *
+       * Return:
+       * - Blob — The image data as a blob.
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getBlob()
        */
       getBlob(): Base.Blob;
 
       /**
        * Returns the Border of the image.
+       *
+       * Return:
+       * - Border — The border of the image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getBorder()
        */
       getBorder(): Border;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
        * Gets a URL to the image.
+       * This URL is tagged with the account of the requester, so anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change. The returned URL expires after a short period of time.
        *
+       * Return:
+       * - String
        *
-       * This URL is tagged with the account of the requester, so anyone with the URL effectively
-       * accesses the image as the original requester. Access to the image may be lost if the
-       * presentation's sharing settings change. The returned URL expires after a short period of time.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getContentUrl()
        */
       getContentUrl(): string;
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getDescription()
        */
       getDescription(): string;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getLeft()
        */
       getLeft(): number;
@@ -1064,113 +1762,232 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the Link or null if there is no link.
        *
-       *
-       *     var link = shape.getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
        *     if (link != null) {
-       *       Logger.log('Shape has a link of type: ' + link.getLinkType());
+       *       Logger.log(`Shape has a link of type: ${link.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - Link — The Link or null if there is no link.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getLink()
        */
       getLink(): Link;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the parent page element of the placeholder. Returns null if the image is not a
-       * placeholder or has no parent.
+       * Returns the parent page element of the placeholder. Returns null if the image is not a placeholder or has no parent.
+       *
+       * Return:
+       * - PageElement — The parent page element of this image placeholder, or null if this image is not a placeholder or doesn't have a parent.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getParentPlaceholder()
        */
       getParentPlaceholder(): PageElement;
 
       /**
-       * Returns the index of the placeholder image. If two or more placeholder images on the same page
-       * are the same type, they each have a unique index value. Returns null if the image isn't
-       * a placeholder.
+       * Returns the index of the placeholder image. If two or more placeholder images on the same page are the same type, they each have a unique index value. Returns null if the image isn't a placeholder.
+       *
+       * Return:
+       * - Integer — This image's placeholder index, or null if the image isn't a placeholder.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getPlaceholderIndex()
        */
       getPlaceholderIndex(): Integer;
 
       /**
-       * Returns the placeholder type of the image, or PlaceholderType.NONE if the shape is not
-       * a placeholder.
+       * Returns the placeholder type of the image, or PlaceholderType.NONE if the shape is not a placeholder.
+       *
+       * Return:
+       * - PlaceholderType — The placeholder type of this image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getPlaceholderType()
        */
       getPlaceholderType(): PlaceholderType;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getRotation()
        */
       getRotation(): number;
 
       /**
        * Gets the image's source URL, if available.
-       *
-       *
        * When an image is inserted by URL, returns the URL provided during image insertion.
+       *
+       * Return:
+       * - String — The image URL or null if the image does not have a source URL.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getSourceUrl()
        */
       getSourceUrl(): string;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#getWidth()
        */
       getWidth(): number;
@@ -1178,15 +1995,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -1194,66 +2022,71 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/image#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
        * Removes a Link.
        *
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     slides[1].getShapes()[0].removeLink();
        *
-       *     shape.removeLink();
        * https://developers.google.com/apps-script/reference/slides/image#removeLink()
        */
-      removeLink(): void;
+      removeLink(): any;
 
       /**
        * Replaces this image with an image described by a BlobSource object.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the size of the existing image.
        *
-       *
-       * Inserting the image fetches it from the
-       * BlobSource once and a copy is stored for display inside the presentation.
-       * Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in
-       * PNG, JPEG, or GIF format.
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the size of the existing image.
-       *
-       *
-       *     var image = SlidesApp.getActivePresentation().getSlides()[0].getImages()[0];
+       *     const image = SlidesApp.getActivePresentation().getSlides()[0].getImages()[0];
        *     // Get the Drive image file with the given ID.
-       *     var driveImage = DriveApp.getFileById(fileId);
+       *     const driveImage = DriveApp.getFileById("123abc");
        *     image.replace(driveImage);
+       *
+       * Return:
+       * - Image — This Image after the replacement.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#replace(BlobSource)
        * @param blobSource The image data.
        */
       replace(blobSource: Base.BlobSource): Image;
 
       /**
-       * Replaces this image with an image described by a Image object, optionally cropping
-       * the image to fit.
+       * Replaces this image with an image described by a Image object, optionally cropping the image to fit.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        *
-       *
-       * Inserting the image fetches it from the
-       * BlobSource once and a copy is stored for display inside the presentation.
-       * Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in
-       * PNG, JPEG, or GIF format.
-       *
-       *
-       *     var image = SlidesApp.getActivePresentation().getSlides()[0].getImages()[0];
+       *     const image = SlidesApp.getActivePresentation().getSlides()[0].getImages()[0];
        *     // Get the Drive image file with the given ID.
-       *     var driveImage = DriveApp.getFileById(fileId);
+       *     const driveImage = DriveApp.getFileById('123abc');
        *     // Replace and crop the drive image.
        *     image.replace(driveImage, true);
+       *
+       * Return:
+       * - Image — This Image after the replacement.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#replace(BlobSource,Boolean)
        * @param blobSource The image data.
        * @param crop If true, crops the image to fit the existing image's size. Otherwise, the image is scaled and centered.
@@ -1262,35 +2095,38 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces this image with another image downloaded from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via getSourceUrl().
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the size of the existing image.
        *
+       * Return:
+       * - Image — This Image after the replacement.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via getSourceUrl().
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the size of the existing image.
        * https://developers.google.com/apps-script/reference/slides/image#replace(String)
        * @param imageUrl The URL to download the image from.
        */
       replace(imageUrl: string): Image;
 
       /**
-       * Replaces this image with another image downloaded from the provided URL, optionally cropping
-       * the image to fit.
-       *
-       *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
-       *
-       *
+       * Replaces this image with another image downloaded from the provided URL, optionally cropping the image to fit.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        * The provided URL must be no larger than 2kB.
+       *
+       * Return:
+       * - Image — This Image after the replacement.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#replace(String,Boolean)
        * @param imageUrl The URL to download the image from.
        * @param crop If true, crops the image to fit the existing image's size. Otherwise, the image is scaled and centered.
@@ -1298,127 +2134,178 @@ declare namespace GoogleAppsScript {
       replace(imageUrl: string, crop: boolean): Image;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Image — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): Image;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Image — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): Image;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/image#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#sendBackward()
        */
       sendBackward(): Image;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#sendToBack()
        */
       sendToBack(): Image;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - Image — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): Image;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Image — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): Image;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -1427,9 +2314,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the zero-based index of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(0);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(0);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setLinkSlide(Integer)
        * @param slideIndex The zero-based index to the slide.
        */
@@ -1438,10 +2336,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide, the link is set by the given slide ID.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     var slide = presentation.getSlides()[0];
-       *     shape.setLinkSlide(slide);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(slides[0]);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setLinkSlide(Slide)
        * @param slide The Slide to be linked.
        */
@@ -1450,9 +2358,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the relative position of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(SlideApp.SlidePosition.FIRST_SLIDE);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setLinkSlide(SlidePosition)
        * @param slidePosition The relative SlidePosition.
        */
@@ -1461,9 +2380,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given non-empty URL string.
        *
-       *
        *     // Set a link to the URL.
-       *     shape.setLinkUrl("https://slides.google.com");
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkUrl('https://slides.google.com');
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setLinkUrl(String)
        * @param url The URL string.
        */
@@ -1471,11 +2401,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Image — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -1483,23 +2419,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - Image — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): Image;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Image — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -1507,31 +2460,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - Image — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/image#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): Image;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Image — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/image#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -1547,55 +2506,144 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the page's background.
+       *
+       * Return:
+       * - PageBackground — The page's background.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getBackground()
        */
       getBackground(): PageBackground;
 
       /**
        * Gets the ColorScheme associated with the page.
+       *
+       * Return:
+       * - ColorScheme — The page's color scheme.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getColorScheme()
        */
       getColorScheme(): ColorScheme;
 
       /**
        * Returns the list of Group objects on the page.
+       *
+       * Return:
+       * - Group[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getGroups()
        */
       getGroups(): Group[];
 
       /**
        * Returns the list of Image objects on the page.
+       *
+       * Return:
+       * - Image[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getImages()
        */
       getImages(): Image[];
 
       /**
        * Gets the name of the layout.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getLayoutName()
        */
       getLayoutName(): string;
 
       /**
        * Returns the list of Line objects on the page.
+       *
+       * Return:
+       * - Line[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getLines()
        */
       getLines(): Line[];
 
       /**
        * Gets the master that the layout is based on.
+       *
+       * Return:
+       * - Master
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getMaster()
        */
       getMaster(): Master;
 
       /**
-       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same
-       * namespace.
+       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the PageElement on the page with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
@@ -1603,44 +2651,78 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement objects rendered on the page.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getPageElements()
        */
       getPageElements(): PageElement[];
 
       /**
        * Gets the type of the page.
+       *
+       * Return:
+       * - PageType — The page type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getPageType()
        */
       getPageType(): PageType;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType or
-       * null if a matching placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType or null if a matching placeholder is not present.
+       * If there are multiple placeholders with the same type, it returns the one with minimal placeholder index. If there are multiple matching placeholders with the same index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *     );
        *
-       * If there are multiple placeholders with the same type, it returns the one with minimal
-       * placeholder index. If there are multiple matching placeholders with the same index, it returns
-       * the first placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getPlaceholder(PlaceholderType)
        * @param placeholderType
        */
       getPlaceholder(placeholderType: PlaceholderType): PageElement;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType and
-       * a placeholder index, or null if the placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType and a placeholder index, or null if the placeholder is not present.
+       * If there are multiple placeholders with the same type and index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *         0,
+       *     );
        *
-       * If there are multiple placeholders with the same type and index, it returns the first
-       * placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE, 0);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getPlaceholder(PlaceholderType,Integer)
        * @param placeholderType
        * @param placeholderIndex
@@ -1650,49 +2732,117 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the list of placeholder PageElement objects in the page.
        *
+       *     const master = SlidesApp.getActivePresentation().getMasters()[0];
+       *     Logger.log(
+       *         `Number of placeholders in the master: ${master.getPlaceholders().length}`,
+       *     );
        *
-       *     var master = SlidesApp.getActivePresentation().getMasters()[0];
-       *     Logger.log('Number of placeholders in the master: ' + master.getPlaceholders().length);
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getPlaceholders()
        */
       getPlaceholders(): PageElement[];
 
       /**
        * Returns the list of Shape objects on the page.
+       *
+       * Return:
+       * - Shape[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getShapes()
        */
       getShapes(): Shape[];
 
       /**
        * Returns the list of SheetsChart objects on the page.
+       *
+       * Return:
+       * - SheetsChart[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getSheetsCharts()
        */
       getSheetsCharts(): SheetsChart[];
 
       /**
        * Returns the list of Table objects on the page.
+       *
+       * Return:
+       * - Table[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getTables()
        */
       getTables(): Table[];
 
       /**
        * Returns the list of Video objects on the page.
+       *
+       * Return:
+       * - Video[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getVideos()
        */
       getVideos(): Video[];
 
       /**
        * Returns the list of WordArt objects on the page.
+       *
+       * Return:
+       * - WordArt[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#getWordArts()
        */
       getWordArts(): WordArt[];
 
       /**
        * Groups all the specified page elements.
+       * There should be at least two page elements on the same page that are not already in another group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
        *
+       * Return:
+       * - Group — The new group.
        *
-       * There should be at least two page elements on the same page that are not already in another
-       * group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#group(PageElement)
        * @param pageElements The elements to group together.
        */
@@ -1700,45 +2850,51 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Group on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a group between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var group = otherPresentationSlide.getGroups()[0];
-       *     currentPresentationSlide.insertGroup(group); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const group = otherPresentationSlide.getGroups()[0];
+       *     currentPresentationSlide.insertGroup(
+       *         group);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Group — The inserted group.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertGroup(Group)
        * @param group The group to be copied and inserted.
        */
       insertGroup(group: Group): Group;
 
       /**
-       * Inserts an image at the top left corner of the page with a default size from the specified
-       * image blob.
+       * Inserts an image at the top left corner of the page with a default size from the specified image blob.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        *
-       *
-       * Inserting the image fetches it from the BlobSource once and a copy is stored for
-       * display inside the presentation. Images must be less than 50MB in size, cannot exceed 25
-       * megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
+       *     const image = DriveApp.getFileById('123abc');
        *     slide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertImage(BlobSource)
        * @param blobSource The image data.
        */
@@ -1746,23 +2902,31 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the specified image blob.
+       * The image is fetched from the provided BlobSource once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
-       *
-       * The image is fetched from the provided BlobSource once at insertion time and a copy
-       * is stored for display inside the presentation. Images must be less than 50MB in size, cannot
-       * exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 300, height: 100};
+       *     const image = DriveApp.getFileById('123abc');
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 300,
+       *       height: 100
+       *     };
        *     slide.insertImage(image, position.left, position.top, size.width, size.height);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertImage(BlobSource,Number,Number,Number,Number)
        * @param blobSource The image data.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -1774,27 +2938,27 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Image on the page.
-       *
-       *
-       * The inserted images's position on this page is determined from the source image's position
-       * on its respective page.
-       *
-       *
-       * If the provided image is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted image.
-       *
-       *
-       * If the provided image is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the image from the source
-       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
-       * presentation.
-       *
+       * The inserted images's position on this page is determined from the source image's position on its respective page.
+       * If the provided image is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted image.
+       * If the provided image is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the image from the source presentation. If the copied placeholder image is empty, nothing is inserted in the destination presentation.
        *
        *     // Copy an image between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var image = otherPresentationSlide.getImages[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const image = otherPresentationSlide.getImages[0];
        *     currentPresentationSlide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertImage(Image)
        * @param image The image to be copied and inserted.
        */
@@ -1802,15 +2966,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image at the top left corner of the page with a default size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/layout#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -1818,19 +2985,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
        * https://developers.google.com/apps-script/reference/slides/layout#insertImage(String,Number,Number,Number,Number)
        * @param imageUrl The image URL.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -1842,44 +3009,54 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Line on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a line between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var line = otherPresentationSlide.getLines[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const line = otherPresentationSlide.getLines[0];
        *     currentPresentationSlide.insertLine(line);
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertLine(Line)
        * @param line The line to be copied and inserted.
        */
       insertLine(line: Line): Line;
 
       /**
-       * Inserts a line on the page connecting two connection sites. The two
-       * connection sites must be on this page.
-       *
+       * Inserts a line on the page connecting two connection sites. The two connection sites must be on this page.
        *
        *     // Insert a line in the first slide of the presentation connecting two shapes.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
-       *     var shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *     const shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
        *     slide.insertLine(
        *         SlidesApp.LineCategory.BENT,
        *         shape1.getConnectionSites()[0],
-       *         shape2.getConnectionSites()[1]);
+       *         shape2.getConnectionSites()[1],
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertLine(LineCategory,ConnectionSite,ConnectionSite)
        * @param lineCategory The category of the line to insert.
        * @param startConnectionSite The connection site where the start of the line is to be connected.
@@ -1890,17 +3067,33 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a line on the page.
        *
-       *
        *     // Insert a line in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var startPoint = {left: 10, top: 10};
-       *     var endPoint = {left: 40, top: 40};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const startPoint = {
+       *       left: 10,
+       *       top: 10
+       *     };
+       *     const endPoint = {
+       *       left: 40,
+       *       top: 40
+       *     };
        *     slide.insertLine(
        *         SlidesApp.LineCategory.STRAIGHT,
        *         startPoint.left,
        *         startPoint.top,
        *         endPoint.left,
-       *         endPoint.top);
+       *         endPoint.top,
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertLine(LineCategory,Number,Number,Number,Number)
        * @param lineCategory The category of the line to insert.
        * @param startLeft The horizontal position of the start point of the line, measured in points from the upper left corner of the page.
@@ -1912,28 +3105,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided PageElement on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a page element between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements()[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
+       *
+       * Return:
+       * - PageElement — The inserted page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertPageElement(PageElement)
        * @param pageElement The page element to be copied and inserted.
        */
@@ -1941,26 +3135,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Shape on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a shape between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape = otherPresentationSlide.getShapes[0];
-       *     currentPresentationSlide.insertShape(shape); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape = otherPresentationSlide.getShapes[0];
+       *     currentPresentationSlide.insertShape(
+       *         shape);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertShape(Shape)
        * @param shape The shape to be copied and inserted.
        */
@@ -1968,16 +3164,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
-       *
-       *
        * The shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert a shape in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertShape(ShapeType)
        * @param shapeType The type of shape to insert.
        */
@@ -1985,6 +3188,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertShape(ShapeType,Number,Number,Number,Number)
        * @param shapeType The type of shape to insert.
        * @param left The horizontal position of the shape, measured from the upper left corner of the page.
@@ -1996,20 +3209,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page.
-       *
-       *
        * The chart is inserted with a default size at the top left corner of the page.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     slide.insertSheetsChart(chart);
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertSheetsChart(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
@@ -2017,22 +3234,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page with the provided position and size.
+       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect to the provided size.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChart(
@@ -2040,7 +3256,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.top,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertSheetsChart(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -2052,28 +3279,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided SheetsChart on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a sheets chart between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var sheetsChart = otherPresentationSlide.getSheetsCharts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const sheetsChart = otherPresentationSlide.getSheetsCharts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertSheetsChart(sheetsChart);
+       *
+       * Return:
+       * - SheetsChart — The inserted sheets chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertSheetsChart(SheetsChart)
        * @param sheetsChart The sheets chart to be copied and inserted.
        */
@@ -2081,42 +3309,47 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart as an Image on the page.
-       *
-       *
        * The image of the chart is inserted with a default size at the top left corner of the page.
-       *
-       *
        * The inserted image of chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertSheetsChartAsImage(chart); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertSheetsChartAsImage(
+       *         chart);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertSheetsChartAsImage(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
       insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
 
       /**
-       * Inserts a Google Sheets chart as an Image on the page with the provided position and
-       * size.
-       *
-       *
-       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with
-       * respect to the provided size.
-       *
-       *
+       * Inserts a Google Sheets chart as an Image on the page with the provided position and size.
+       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with respect to the provided size.
        * The inserted image of the chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChartAsImage(
@@ -2124,7 +3357,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.right,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertSheetsChartAsImage(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -2136,9 +3380,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page.
-       *
-       *
        * The table is centered on the page with default size and evenly distributed rows and columns.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertTable(Integer,Integer)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -2147,9 +3399,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page with the provided position and size.
-       *
-       *
        * Rows and columns are evenly distributed in the created table.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertTable(Integer,Integer,Number,Number,Number,Number)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -2162,26 +3422,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Table on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a table between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var table = otherPresentationSlide.getTables[0];
-       *     currentPresentationSlide.insertTable(table); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const table = otherPresentationSlide.getTables[0];
+       *     currentPresentationSlide.insertTable(
+       *         table);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertTable(Table)
        * @param table The table to be copied and inserted.
        */
@@ -2189,14 +3451,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a text box Shape containing the provided string on the page.
-       *
-       *
        * The text box shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert text box with "Hello" on the first slide of presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello'); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox('Hello');  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertTextBox(String)
        * @param text The string the text box shape should contain.
        */
@@ -2205,11 +3474,21 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a text box Shape containing the provided string on the page.
        *
+       *     // Insert text box with "Hello" on the first slide of presentation. This text
+       *     // box is a square with a length of 10 points on each side.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox(
+       *         'Hello', 0, 0, 10, 10);  // Also available for Layout, Master, and Page.
        *
-       *     // Insert text box with "Hello" on the first slide of presentation. This text box is a square
-       *     // with a length of 10 points on each side.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello', 0, 0, 10, 10); // Also available for Layout, Master, and Page.
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertTextBox(String,Number,Number,Number,Number)
        * @param text The string the text box shape should contain.
        * @param left The horizontal position of the text box shape, measured from the upper left corner of the page.
@@ -2221,9 +3500,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video at the top left corner of the page with a default size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertVideo(String)
        * @param videoUrl The URL of the video to insert.
        */
@@ -2231,9 +3518,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video on the page with the provided position and size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertVideo(String,Number,Number,Number,Number)
        * @param videoUrl The URL of the video to insert.
        * @param left The horizontal position of the video in points, measured from the upper left corner of the page.
@@ -2245,26 +3540,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Video on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a video between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var video = otherPresentationSlide.getVideos[0];
-       *     currentPresentationSlide.insertVideo(video); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const video = otherPresentationSlide.getVideos[0];
+       *     currentPresentationSlide.insertVideo(
+       *         video);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertVideo(Video)
        * @param video The video to be copied and inserted.
        */
@@ -2272,28 +3569,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided WordArt on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a word art between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var wordArt = otherPresentationSlide.getWordArts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const wordArt = otherPresentationSlide.getWordArts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertWordArt(wordArt);
+       *
+       * Return:
+       * - WordArt — The inserted word art.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#insertWordArt(WordArt)
        * @param wordArt The group to be copied and inserted.
        */
@@ -2301,13 +3599,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -2316,6 +3629,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/layout#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -2325,18 +3648,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Selects the Page in the active presentation as the current page selection and removes any previous selection.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        *
+       *     // Select the first slide as the current page selection and replace any previous
+       *     // selection.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.selectAsCurrentPage();  // Also available for Layout, Master, and Page.
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       *     // Select the first slide as the current page selection and replace any previous selection.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.selectAsCurrentPage(); // Also available for Layout, Master, and Page.
        * https://developers.google.com/apps-script/reference/slides/layout#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): void;
+      selectAsCurrentPage(): any;
     }
     /**
      * A PageElement representing a line.
@@ -2345,6 +3672,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/line#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -2352,122 +3683,262 @@ declare namespace GoogleAppsScript {
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#bringForward()
        */
       bringForward(): Line;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#bringToFront()
        */
       bringToFront(): Line;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#duplicate()
        */
       duplicate(): PageElement;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
        * Gets the DashStyle of the line.
+       *
+       * Return:
+       * - DashStyle — The style of the dashing used with this line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getDashStyle()
        */
       getDashStyle(): DashStyle;
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getDescription()
        */
       getDescription(): string;
 
       /**
        * Returns the end point of the line, measured from the upper-left corner of the page.
+       *
+       * Return:
+       * - Point — The ending point of the line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getEnd()
        */
       getEnd(): Point;
 
       /**
        * Gets the ArrowStyle of the arrow at the end of the line.
+       *
+       * Return:
+       * - ArrowStyle — The style of the arrow at the end of this line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getEndArrow()
        */
       getEndArrow(): ArrowStyle;
 
       /**
        * Returns the connection at the end of the line, or null if there is no connection.
+       *
+       * Return:
+       * - ConnectionSite — The connection at the end of the line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getEndConnection()
        */
       getEndConnection(): ConnectionSite;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getLeft()
        */
       getLeft(): number;
 
       /**
        * Gets the LineCategory of the line.
+       *
+       * Return:
+       * - LineCategory — The line category.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getLineCategory()
        */
       getLineCategory(): LineCategory;
 
       /**
        * Gets the LineFill of the line.
+       *
+       * Return:
+       * - LineFill — The fill setting of this line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getLineFill()
        */
       getLineFill(): LineFill;
 
       /**
        * Gets the LineType of the line.
+       *
+       * Return:
+       * - LineType — The type of this line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getLineType()
        */
       getLineType(): LineType;
@@ -2475,116 +3946,248 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the Link or null if there is no link.
        *
-       *
-       *     var link = shape.getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
        *     if (link != null) {
-       *       Logger.log('Shape has a link of type: ' + link.getLinkType());
+       *       Logger.log(`Shape has a link of type: ${link.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - Link — The Link or null if there is no link.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getLink()
        */
       getLink(): Link;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getRotation()
        */
       getRotation(): number;
 
       /**
        * Returns the start point of the line, measured from the upper-left corner of the page.
+       *
+       * Return:
+       * - Point — The starting point of the line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getStart()
        */
       getStart(): Point;
 
       /**
        * Gets the ArrowStyle of the arrow at the beginning of the line.
+       *
+       * Return:
+       * - ArrowStyle — The style of the arrow at the beginning of this line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getStartArrow()
        */
       getStartArrow(): ArrowStyle;
 
       /**
        * Returns the connection at the beginning of the line, or null if there is no connection.
+       *
+       * Return:
+       * - ConnectionSite — The connection at the beginning of the line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getStartConnection()
        */
       getStartConnection(): ConnectionSite;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
        * Returns the thickness of the line in points.
+       *
+       * Return:
+       * - Number — The thickness of the line in points.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getWeight()
        */
       getWeight(): number;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#getWidth()
        */
       getWidth(): number;
 
       /**
        * Returns true if the line is a connector, or false if not.
+       * Connector is a type of line that is used to connect connections sites on applicable page elements. Each end of the connector can be connected to at most one connection site.
        *
+       * Return:
+       * - Boolean — True if the line is a connector, or false if not.
        *
-       * Connector is a type of line that is used to connect connections sites on applicable page
-       * elements. Each end of the connector can be connected to at most one connection site.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#isConnector()
        */
       isConnector(): boolean;
@@ -2592,15 +4195,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -2608,126 +4222,174 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/line#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
        * Removes a Link.
        *
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     slides[1].getShapes()[0].removeLink();
        *
-       *     shape.removeLink();
        * https://developers.google.com/apps-script/reference/slides/line#removeLink()
        */
-      removeLink(): void;
+      removeLink(): any;
 
       /**
-       * Reroutes the start and end of the line to the closest two connection sites on the connected
-       * page elements. The start and end of the line must be connected to different page elements.
+       * Reroutes the start and end of the line to the closest two connection sites on the connected page elements. The start and end of the line must be connected to different page elements.
+       *
+       * Return:
+       * - Line — The line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#reroute()
        */
       reroute(): Line;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Line — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): Line;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Line — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): Line;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/line#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#sendBackward()
        */
       sendBackward(): Line;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#sendToBack()
        */
       sendToBack(): Line;
 
       /**
        * Sets the DashStyle of the line.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setDashStyle(DashStyle)
        * @param style The style of the dashing to set for this line.
        */
@@ -2735,15 +4397,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - Line — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setDescription(String)
        * @param description The string to set the alt text description to.
        */
@@ -2751,9 +4422,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the position of the end point of the line.
-       *
-       *
        * The line path may be adjusted after the position changes.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setEnd(Number,Number)
        * @param left The horizontal position of the end point of the line, measured in points from the upper left corner of the page.
        * @param top The vertical position of the end point of the line, measured in points from the upper left corner of the page.
@@ -2762,9 +4441,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the position of the end point of the line.
-       *
-       *
        * The line path may be adjusted after the position changes.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setEnd(Point)
        * @param point The end point of the line, whose position is measured from the upper left corner of the page.
        */
@@ -2772,35 +4459,68 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the ArrowStyle of the arrow at the end of the line.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setEndArrow(ArrowStyle)
        * @param style The style to set.
        */
       setEndArrow(style: ArrowStyle): Line;
 
       /**
-       * Sets the connection at the end of the line. It moves the end of the line to the specified
-       * connection site while keeping the other end intact.
+       * Sets the connection at the end of the line. It moves the end of the line to the specified connection site while keeping the other end intact.
+       *
+       * Return:
+       * - Line — The line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setEndConnection(ConnectionSite)
        * @param connectionSite The connection site the end connection is updated to, or null if removing the end connection.
        */
       setEndConnection(connectionSite: ConnectionSite): Line;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Line — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): Line;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -2808,10 +4528,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the LineCategory of the line.
+       * You can only set the category on connectors. The connector may be rerouted after changing its category.
        *
+       * Return:
+       * - Line — The line.
        *
-       * You can only set the category on connectors. The connector may be
-       * rerouted after changing its category.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setLineCategory(LineCategory)
        * @param lineCategory The line category to set.
        */
@@ -2820,9 +4547,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the zero-based index of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(0);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(0);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setLinkSlide(Integer)
        * @param slideIndex The zero-based index to the slide.
        */
@@ -2831,10 +4569,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide, the link is set by the given slide ID.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     var slide = presentation.getSlides()[0];
-       *     shape.setLinkSlide(slide);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(slides[0]);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setLinkSlide(Slide)
        * @param slide The Slide to be linked.
        */
@@ -2843,9 +4591,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the relative position of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(SlideApp.SlidePosition.FIRST_SLIDE);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setLinkSlide(SlidePosition)
        * @param slidePosition The relative SlidePosition.
        */
@@ -2854,9 +4613,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given non-empty URL string.
        *
-       *
        *     // Set a link to the URL.
-       *     shape.setLinkUrl("https://slides.google.com");
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkUrl('https://slides.google.com');
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setLinkUrl(String)
        * @param url The URL string.
        */
@@ -2864,11 +4634,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Line — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -2876,9 +4652,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the position of the start point of the line.
-       *
-       *
        * The line path may be adjusted after the position changes.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setStart(Number,Number)
        * @param left The horizontal position of the start point of the line, measured in points from the upper left corner of the page.
        * @param top The vertical position of the start point of the line, measured in points from the upper left corner of the page.
@@ -2887,9 +4671,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the position of the start point of the line.
-       *
-       *
        * The line path may be adjusted after the position changes.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setStart(Point)
        * @param point The start point of the line, whose position is measured from the upper left corner of the page.
        */
@@ -2897,14 +4689,33 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the ArrowStyle of the arrow at the beginning of the line.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setStartArrow(ArrowStyle)
        * @param style The new arrow style to set.
        */
       setStartArrow(style: ArrowStyle): Line;
 
       /**
-       * Sets the connection at the beginning of the line. It moves the start of the line to the
-       * specified connection site while keeping the other end intact.
+       * Sets the connection at the beginning of the line. It moves the start of the line to the specified connection site while keeping the other end intact.
+       *
+       * Return:
+       * - Line — The line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setStartConnection(ConnectionSite)
        * @param connectionSite The connection site the start connection is updated to, or null if removing the start connection.
        */
@@ -2912,23 +4723,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - Line — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): Line;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Line — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -2936,18 +4764,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - Line — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/line#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
@@ -2955,19 +4784,34 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the thickness of the line in points.
+       *
+       * Return:
+       * - Line — This line, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setWeight(Number)
        * @param points The new thickness of the line in points.
        */
       setWeight(points: number): Line;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Line — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -2990,87 +4834,149 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the type of the line fill.
+       *
+       * Return:
+       * - LineFillType
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#getFillType()
        */
       getFillType(): LineFillType;
 
       /**
        * Gets the solid fill of the line, or null if the fill type is not LineFillType.SOLID.
+       *
+       * Return:
+       * - SolidFill
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#getSolidFill()
        */
       getSolidFill(): SolidFill;
 
       /**
        * Sets the solid fill to the given Color.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(Color)
        * @param color
        */
-      setSolidFill(color: Color): void;
+      setSolidFill(color: Color): any;
 
       /**
        * Sets the solid fill to the given alpha and Color.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(Color,Number)
        * @param color
        * @param alpha
        */
-      setSolidFill(color: Color, alpha: number): void;
+      setSolidFill(color: Color, alpha: number): any;
 
       /**
        * Sets the solid fill to the given RGB values.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(Integer,Integer,Integer)
        * @param red
        * @param green
        * @param blue
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer): void;
+      setSolidFill(red: Integer, green: Integer, blue: Integer): any;
 
       /**
        * Sets the solid fill to the given alpha and RGB values.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(Integer,Integer,Integer,Number)
        * @param red
        * @param green
        * @param blue
        * @param alpha
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
+      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): any;
 
       /**
        * Sets the solid fill to the given hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink is represented as '#FFC0CB'.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(String)
        * @param hexString
        */
-      setSolidFill(hexString: string): void;
+      setSolidFill(hexString: string): any;
 
       /**
        * Sets the solid fill to the given alpha and hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink is represented as '#FFC0CB'.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(String,Number)
        * @param hexString
        * @param alpha
        */
-      setSolidFill(hexString: string, alpha: number): void;
+      setSolidFill(hexString: string, alpha: number): any;
 
       /**
        * Sets the solid fill to the given ThemeColorType.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(ThemeColorType)
        * @param color
        */
-      setSolidFill(color: ThemeColorType): void;
+      setSolidFill(color: ThemeColorType): any;
 
       /**
        * Sets the solid fill to the given alpha and ThemeColorType.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/line-fill#setSolidFill(ThemeColorType,Number)
        * @param color
        * @param alpha
        */
-      setSolidFill(color: ThemeColorType, alpha: number): void;
+      setSolidFill(color: ThemeColorType, alpha: number): any;
     }
     /**
      * The kinds of line fill.
@@ -3083,7 +4989,7 @@ declare namespace GoogleAppsScript {
      * The line types.
      *
      * Derived from a subset of the values of the "ST_ShapeType" simple type in section 20.1.10.55 of
-     * "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 4th
+     * "Office Open XML File Formats - Fundamentals and Markup Language Reference", part 1 of ECMA-376 5th
      * edition.
      *
      * To call an enum, you call its parent class, name, and property. For example,
@@ -3098,70 +5004,115 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the LinkType.
        *
-       *
-       *     var link = shape.getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
        *     if (link != null) {
-       *       Logger.log('Shape has a link of type: ' + link.getLinkType());
+       *       Logger.log(`Shape has a link of type: ${link.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - LinkType
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/link#getLinkType()
        */
       getLinkType(): LinkType;
 
       /**
-       * Returns the linked Slide for non-URL links types, if it exists. Returns null if
-       * the slide doesn't exist in the presentation, or if the LinkType is LinkType.URL.
+       * Returns the linked Slide for non-URL links types, if it exists. Returns null if the slide doesn't exist in the presentation, or if the LinkType is LinkType.URL.
        *
-       *
-       *     var link = shape.getLink();
-       *     if (link != null && link.getLinkType() != SlidesApp.LinkType.URL) {
-       *       Logger.log('Shape has link to slide: ' + link.getLinkedSlide());
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
+       *     if (link != null && link.getLinkType() !== SlidesApp.LinkType.URL) {
+       *       Logger.log(`Shape has link to slide: ${link.getLinkedSlide()}`);
        *     }
+       *
+       * Return:
+       * - Slide
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/link#getLinkedSlide()
        */
       getLinkedSlide(): Slide;
 
       /**
-       * Returns the ID of the linked Slide or null if the LinkType is not
-       * LinkType.SLIDE_ID.
-       *
-       *
+       * Returns the ID of the linked Slide or null if the LinkType is not LinkType.SLIDE_ID.
        * Note that the slide with the returned ID might not exist.
        *
-       *
-       *     var link = shape.getLink();
-       *     if (link != null && link.getLinkType() == SlidesApp.LinkType.SLIDE_ID) {
-       *       Logger.log('Shape has link to slide with ID: ' + link.getSlideId());
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
+       *     if (link != null && link.getLinkType() === SlidesApp.LinkType.SLIDE_ID) {
+       *       Logger.log(`Shape has link to slide with ID: ${link.getSlideId()}`);
        *     }
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/link#getSlideId()
        */
       getSlideId(): string;
 
       /**
        * Returns the zero-based index of the linked Slide or null if the LinkType is not LinkType.SLIDE_INDEX.
-       *
-       *
        * Note that the slide at the returned index might not exist.
        *
-       *
-       *     var link = shape.getLink();
-       *     if (link != null && link.getLinkType() == SlidesApp.LinkType.SLIDE_INDEX) {
-       *       Logger.log('Shape has link to slide with index: ' + link.getSlideIndex());
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
+       *     if (link != null && link.getLinkType() === SlidesApp.LinkType.SLIDE_INDEX) {
+       *       Logger.log(`Shape has link to slide with index: ${link.getSlideIndex()}`);
        *     }
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/link#getSlideIndex()
        */
       getSlideIndex(): Integer;
 
       /**
        * Returns the SlidePosition of the linked Slide or null if the LinkType is not LinkType.SLIDE_POSITION.
-       *
-       *
        * Note that the slide with the returned relative position might not exist.
        *
-       *
-       *     var link = shape.getLink();
-       *     if (link != null && link.getLinkType() == SlidesApp.LinkType.SLIDE_POSITION) {
-       *       Logger.log('Shape has link to slide with relative position: ' + link.getSlidePosition());
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
+       *     if (link != null && link.getLinkType() === SlidesApp.LinkType.SLIDE_POSITION) {
+       *       Logger.log(
+       *           `Shape has link to slide with relative position: ${
+       *               link.getSlidePosition()}`,
+       *       );
        *     }
+       *
+       * Return:
+       * - SlidePosition
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/link#getSlidePosition()
        */
       getSlidePosition(): SlidePosition;
@@ -3169,11 +5120,21 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the URL to the external web page or null if the LinkType is not LinkType.URL.
        *
-       *
-       *     var link = shape.getLink();
-       *     if (link != null && link.getLinkType() == SlidesApp.LinkType.URL) {
-       *       Logger.log('Shape has link to URL: ' + link.getUrl());
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
+       *     if (link != null && link.getLinkType() === SlidesApp.LinkType.URL) {
+       *       Logger.log(`Shape has link to URL: ${link.getUrl()}`);
        *     }
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/link#getUrl()
        */
       getUrl(): string;
@@ -3192,12 +5153,32 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the ID of the list.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list#getListId()
        */
       getListId(): string;
 
       /**
        * Returns all the Paragraphs in the list.
+       *
+       * Return:
+       * - Paragraph[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list#getListParagraphs()
        */
       getListParagraphs(): Paragraph[];
@@ -3254,57 +5235,100 @@ declare namespace GoogleAppsScript {
 
       /**
        * Applies the specified ListPreset to all of the paragraphs that overlap with the text.
+       * The nesting level of each paragraph is determined by counting leading tabs in front of each paragraph. To avoid excess space between the glyphs and the corresponding paragraph, these leading tabs are removed by this method.
+       * If the paragraph immediately before paragraphs being updated is in a List with a matching list preset and the paragraphs being updated are not already in a different list, the paragraphs being updated are added to that preceding list.
        *
+       * Return:
+       * - ListStyle
        *
-       * The nesting level of each paragraph is determined by counting leading tabs in front of each
-       * paragraph. To avoid excess space between the glyphs and the corresponding paragraph, these
-       * leading tabs are removed by this method.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If the paragraph immediately before paragraphs being updated is in a List with a
-       * matching list preset and the paragraphs being updated are not already in a different list, the
-       * paragraphs being updated are added to that preceding list.
        * https://developers.google.com/apps-script/reference/slides/list-style#applyListPreset(ListPreset)
        * @param listPreset
        */
       applyListPreset(listPreset: ListPreset): ListStyle;
 
       /**
-       * Returns the rendered glyph for the text. Returns null if the text spans more than one
-       * paragraph or the text is not in a list.
+       * Returns the rendered glyph for the text. Returns null if the text spans more than one paragraph or the text is not in a list.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list-style#getGlyph()
        */
       getGlyph(): string;
 
       /**
-       * Returns the List the text is in, or null if none of the text is in a list, or
-       * part of the text is in a list, or the text is in multiple lists. Call isInList() to
-       * determine whether the text is in a list.
+       * Returns the List the text is in, or null if none of the text is in a list, or part of the text is in a list, or the text is in multiple lists. Call isInList() to determine whether the text is in a list.
+       *
+       * Return:
+       * - List
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list-style#getList()
        */
       getList(): List;
 
       /**
-       * Returns the 0-based nesting level of the text. Returns null if the text is not in a
-       * list or there are mixed values.
+       * Returns the 0-based nesting level of the text. Returns null if the text is not in a list or there are mixed values.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list-style#getNestingLevel()
        */
       getNestingLevel(): Integer;
 
       /**
-       * Returns true if the text is in exactly one list, false if none of the text is
-       * in a list, and null if only some of the text is in a list or if the text is in multiple
-       * lists.
+       * Returns true if the text is in exactly one list, false if none of the text is in a list, and null if only some of the text is in a list or if the text is in multiple lists.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list-style#isInList()
        */
       isInList(): boolean;
 
       /**
        * Removes the paragraphs that overlap with the text from any lists.
+       * The nesting level of each paragraph is visually preserved by adding indent to the start of the corresponding paragraph.
        *
+       * Return:
+       * - ListStyle
        *
-       * The nesting level of each paragraph is visually preserved by adding indent to the start of
-       * the corresponding paragraph.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/list-style#removeFromList()
        */
       removeFromList(): ListStyle;
@@ -3327,49 +5351,128 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the page's background.
+       *
+       * Return:
+       * - PageBackground — The page's background.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getBackground()
        */
       getBackground(): PageBackground;
 
       /**
        * Gets the ColorScheme associated with the page.
+       *
+       * Return:
+       * - ColorScheme — The page's color scheme.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getColorScheme()
        */
       getColorScheme(): ColorScheme;
 
       /**
        * Returns the list of Group objects on the page.
+       *
+       * Return:
+       * - Group[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getGroups()
        */
       getGroups(): Group[];
 
       /**
        * Returns the list of Image objects on the page.
+       *
+       * Return:
+       * - Image[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getImages()
        */
       getImages(): Image[];
 
       /**
        * Gets this master's layouts.
+       *
+       * Return:
+       * - Layout[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getLayouts()
        */
       getLayouts(): Layout[];
 
       /**
        * Returns the list of Line objects on the page.
+       *
+       * Return:
+       * - Line[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getLines()
        */
       getLines(): Line[];
 
       /**
-       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same
-       * namespace.
+       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the PageElement on the page with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
@@ -3377,44 +5480,78 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement objects rendered on the page.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getPageElements()
        */
       getPageElements(): PageElement[];
 
       /**
        * Gets the type of the page.
+       *
+       * Return:
+       * - PageType — The page type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getPageType()
        */
       getPageType(): PageType;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType or
-       * null if a matching placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType or null if a matching placeholder is not present.
+       * If there are multiple placeholders with the same type, it returns the one with minimal placeholder index. If there are multiple matching placeholders with the same index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *     );
        *
-       * If there are multiple placeholders with the same type, it returns the one with minimal
-       * placeholder index. If there are multiple matching placeholders with the same index, it returns
-       * the first placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getPlaceholder(PlaceholderType)
        * @param placeholderType
        */
       getPlaceholder(placeholderType: PlaceholderType): PageElement;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType and
-       * a placeholder index, or null if the placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType and a placeholder index, or null if the placeholder is not present.
+       * If there are multiple placeholders with the same type and index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *         0,
+       *     );
        *
-       * If there are multiple placeholders with the same type and index, it returns the first
-       * placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE, 0);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getPlaceholder(PlaceholderType,Integer)
        * @param placeholderType
        * @param placeholderIndex
@@ -3424,49 +5561,117 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the list of placeholder PageElement objects in the page.
        *
+       *     const master = SlidesApp.getActivePresentation().getMasters()[0];
+       *     Logger.log(
+       *         `Number of placeholders in the master: ${master.getPlaceholders().length}`,
+       *     );
        *
-       *     var master = SlidesApp.getActivePresentation().getMasters()[0];
-       *     Logger.log('Number of placeholders in the master: ' + master.getPlaceholders().length);
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getPlaceholders()
        */
       getPlaceholders(): PageElement[];
 
       /**
        * Returns the list of Shape objects on the page.
+       *
+       * Return:
+       * - Shape[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getShapes()
        */
       getShapes(): Shape[];
 
       /**
        * Returns the list of SheetsChart objects on the page.
+       *
+       * Return:
+       * - SheetsChart[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getSheetsCharts()
        */
       getSheetsCharts(): SheetsChart[];
 
       /**
        * Returns the list of Table objects on the page.
+       *
+       * Return:
+       * - Table[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getTables()
        */
       getTables(): Table[];
 
       /**
        * Returns the list of Video objects on the page.
+       *
+       * Return:
+       * - Video[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getVideos()
        */
       getVideos(): Video[];
 
       /**
        * Returns the list of WordArt objects on the page.
+       *
+       * Return:
+       * - WordArt[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#getWordArts()
        */
       getWordArts(): WordArt[];
 
       /**
        * Groups all the specified page elements.
+       * There should be at least two page elements on the same page that are not already in another group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
        *
+       * Return:
+       * - Group — The new group.
        *
-       * There should be at least two page elements on the same page that are not already in another
-       * group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#group(PageElement)
        * @param pageElements The elements to group together.
        */
@@ -3474,45 +5679,51 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Group on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a group between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var group = otherPresentationSlide.getGroups()[0];
-       *     currentPresentationSlide.insertGroup(group); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const group = otherPresentationSlide.getGroups()[0];
+       *     currentPresentationSlide.insertGroup(
+       *         group);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Group — The inserted group.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertGroup(Group)
        * @param group The group to be copied and inserted.
        */
       insertGroup(group: Group): Group;
 
       /**
-       * Inserts an image at the top left corner of the page with a default size from the specified
-       * image blob.
+       * Inserts an image at the top left corner of the page with a default size from the specified image blob.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        *
-       *
-       * Inserting the image fetches it from the BlobSource once and a copy is stored for
-       * display inside the presentation. Images must be less than 50MB in size, cannot exceed 25
-       * megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
+       *     const image = DriveApp.getFileById('123abc');
        *     slide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertImage(BlobSource)
        * @param blobSource The image data.
        */
@@ -3520,23 +5731,31 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the specified image blob.
+       * The image is fetched from the provided BlobSource once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
-       *
-       * The image is fetched from the provided BlobSource once at insertion time and a copy
-       * is stored for display inside the presentation. Images must be less than 50MB in size, cannot
-       * exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 300, height: 100};
+       *     const image = DriveApp.getFileById('123abc');
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 300,
+       *       height: 100
+       *     };
        *     slide.insertImage(image, position.left, position.top, size.width, size.height);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertImage(BlobSource,Number,Number,Number,Number)
        * @param blobSource The image data.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -3548,27 +5767,27 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Image on the page.
-       *
-       *
-       * The inserted images's position on this page is determined from the source image's position
-       * on its respective page.
-       *
-       *
-       * If the provided image is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted image.
-       *
-       *
-       * If the provided image is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the image from the source
-       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
-       * presentation.
-       *
+       * The inserted images's position on this page is determined from the source image's position on its respective page.
+       * If the provided image is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted image.
+       * If the provided image is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the image from the source presentation. If the copied placeholder image is empty, nothing is inserted in the destination presentation.
        *
        *     // Copy an image between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var image = otherPresentationSlide.getImages[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const image = otherPresentationSlide.getImages[0];
        *     currentPresentationSlide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertImage(Image)
        * @param image The image to be copied and inserted.
        */
@@ -3576,15 +5795,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image at the top left corner of the page with a default size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/master#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -3592,19 +5814,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
        * https://developers.google.com/apps-script/reference/slides/master#insertImage(String,Number,Number,Number,Number)
        * @param imageUrl The image URL.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -3616,44 +5838,54 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Line on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a line between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var line = otherPresentationSlide.getLines[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const line = otherPresentationSlide.getLines[0];
        *     currentPresentationSlide.insertLine(line);
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertLine(Line)
        * @param line The line to be copied and inserted.
        */
       insertLine(line: Line): Line;
 
       /**
-       * Inserts a line on the page connecting two connection sites. The two
-       * connection sites must be on this page.
-       *
+       * Inserts a line on the page connecting two connection sites. The two connection sites must be on this page.
        *
        *     // Insert a line in the first slide of the presentation connecting two shapes.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
-       *     var shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *     const shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
        *     slide.insertLine(
        *         SlidesApp.LineCategory.BENT,
        *         shape1.getConnectionSites()[0],
-       *         shape2.getConnectionSites()[1]);
+       *         shape2.getConnectionSites()[1],
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertLine(LineCategory,ConnectionSite,ConnectionSite)
        * @param lineCategory The category of the line to insert.
        * @param startConnectionSite The connection site where the start of the line is to be connected.
@@ -3664,17 +5896,33 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a line on the page.
        *
-       *
        *     // Insert a line in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var startPoint = {left: 10, top: 10};
-       *     var endPoint = {left: 40, top: 40};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const startPoint = {
+       *       left: 10,
+       *       top: 10
+       *     };
+       *     const endPoint = {
+       *       left: 40,
+       *       top: 40
+       *     };
        *     slide.insertLine(
        *         SlidesApp.LineCategory.STRAIGHT,
        *         startPoint.left,
        *         startPoint.top,
        *         endPoint.left,
-       *         endPoint.top);
+       *         endPoint.top,
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertLine(LineCategory,Number,Number,Number,Number)
        * @param lineCategory The category of the line to insert.
        * @param startLeft The horizontal position of the start point of the line, measured in points from the upper left corner of the page.
@@ -3686,28 +5934,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided PageElement on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a page element between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements()[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
+       *
+       * Return:
+       * - PageElement — The inserted page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertPageElement(PageElement)
        * @param pageElement The page element to be copied and inserted.
        */
@@ -3715,26 +5964,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Shape on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a shape between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape = otherPresentationSlide.getShapes[0];
-       *     currentPresentationSlide.insertShape(shape); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape = otherPresentationSlide.getShapes[0];
+       *     currentPresentationSlide.insertShape(
+       *         shape);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertShape(Shape)
        * @param shape The shape to be copied and inserted.
        */
@@ -3742,16 +5993,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
-       *
-       *
        * The shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert a shape in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertShape(ShapeType)
        * @param shapeType The type of shape to insert.
        */
@@ -3759,6 +6017,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertShape(ShapeType,Number,Number,Number,Number)
        * @param shapeType The type of shape to insert.
        * @param left The horizontal position of the shape, measured from the upper left corner of the page.
@@ -3770,20 +6038,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page.
-       *
-       *
        * The chart is inserted with a default size at the top left corner of the page.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     slide.insertSheetsChart(chart);
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertSheetsChart(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
@@ -3791,22 +6063,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page with the provided position and size.
+       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect to the provided size.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChart(
@@ -3814,7 +6085,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.top,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertSheetsChart(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -3826,28 +6108,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided SheetsChart on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a sheets chart between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var sheetsChart = otherPresentationSlide.getSheetsCharts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const sheetsChart = otherPresentationSlide.getSheetsCharts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertSheetsChart(sheetsChart);
+       *
+       * Return:
+       * - SheetsChart — The inserted sheets chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertSheetsChart(SheetsChart)
        * @param sheetsChart The sheets chart to be copied and inserted.
        */
@@ -3855,42 +6138,47 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart as an Image on the page.
-       *
-       *
        * The image of the chart is inserted with a default size at the top left corner of the page.
-       *
-       *
        * The inserted image of chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertSheetsChartAsImage(chart); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertSheetsChartAsImage(
+       *         chart);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertSheetsChartAsImage(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
       insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
 
       /**
-       * Inserts a Google Sheets chart as an Image on the page with the provided position and
-       * size.
-       *
-       *
-       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with
-       * respect to the provided size.
-       *
-       *
+       * Inserts a Google Sheets chart as an Image on the page with the provided position and size.
+       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with respect to the provided size.
        * The inserted image of the chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChartAsImage(
@@ -3898,7 +6186,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.right,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertSheetsChartAsImage(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -3910,9 +6209,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page.
-       *
-       *
        * The table is centered on the page with default size and evenly distributed rows and columns.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertTable(Integer,Integer)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -3921,9 +6228,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page with the provided position and size.
-       *
-       *
        * Rows and columns are evenly distributed in the created table.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertTable(Integer,Integer,Number,Number,Number,Number)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -3936,26 +6251,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Table on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a table between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var table = otherPresentationSlide.getTables[0];
-       *     currentPresentationSlide.insertTable(table); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const table = otherPresentationSlide.getTables[0];
+       *     currentPresentationSlide.insertTable(
+       *         table);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertTable(Table)
        * @param table The table to be copied and inserted.
        */
@@ -3963,14 +6280,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a text box Shape containing the provided string on the page.
-       *
-       *
        * The text box shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert text box with "Hello" on the first slide of presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello'); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox('Hello');  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertTextBox(String)
        * @param text The string the text box shape should contain.
        */
@@ -3979,11 +6303,21 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a text box Shape containing the provided string on the page.
        *
+       *     // Insert text box with "Hello" on the first slide of presentation. This text
+       *     // box is a square with a length of 10 points on each side.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox(
+       *         'Hello', 0, 0, 10, 10);  // Also available for Layout, Master, and Page.
        *
-       *     // Insert text box with "Hello" on the first slide of presentation. This text box is a square
-       *     // with a length of 10 points on each side.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello', 0, 0, 10, 10); // Also available for Layout, Master, and Page.
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertTextBox(String,Number,Number,Number,Number)
        * @param text The string the text box shape should contain.
        * @param left The horizontal position of the text box shape, measured from the upper left corner of the page.
@@ -3995,9 +6329,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video at the top left corner of the page with a default size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertVideo(String)
        * @param videoUrl The URL of the video to insert.
        */
@@ -4005,9 +6347,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video on the page with the provided position and size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertVideo(String,Number,Number,Number,Number)
        * @param videoUrl The URL of the video to insert.
        * @param left The horizontal position of the video in points, measured from the upper left corner of the page.
@@ -4019,26 +6369,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Video on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a video between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var video = otherPresentationSlide.getVideos[0];
-       *     currentPresentationSlide.insertVideo(video); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const video = otherPresentationSlide.getVideos[0];
+       *     currentPresentationSlide.insertVideo(
+       *         video);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertVideo(Video)
        * @param video The video to be copied and inserted.
        */
@@ -4046,28 +6398,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided WordArt on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a word art between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var wordArt = otherPresentationSlide.getWordArts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const wordArt = otherPresentationSlide.getWordArts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertWordArt(wordArt);
+       *
+       * Return:
+       * - WordArt — The inserted word art.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#insertWordArt(WordArt)
        * @param wordArt The group to be copied and inserted.
        */
@@ -4075,13 +6428,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -4090,6 +6458,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/master#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -4099,18 +6477,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Selects the Page in the active presentation as the current page selection and removes any previous selection.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        *
+       *     // Select the first slide as the current page selection and replace any previous
+       *     // selection.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.selectAsCurrentPage();  // Also available for Layout, Master, and Page.
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       *     // Select the first slide as the current page selection and replace any previous selection.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.selectAsCurrentPage(); // Also available for Layout, Master, and Page.
        * https://developers.google.com/apps-script/reference/slides/master#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): void;
+      selectAsCurrentPage(): any;
     }
     /**
      * A notes master in a presentation.
@@ -4122,31 +6504,80 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of Group objects on the page.
+       *
+       * Return:
+       * - Group[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getGroups()
        */
       getGroups(): Group[];
 
       /**
        * Returns the list of Image objects on the page.
+       *
+       * Return:
+       * - Image[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getImages()
        */
       getImages(): Image[];
 
       /**
        * Returns the list of Line objects on the page.
+       *
+       * Return:
+       * - Line[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getLines()
        */
       getLines(): Line[];
 
       /**
-       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same
-       * namespace.
+       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the PageElement on the page with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
@@ -4154,38 +6585,62 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement objects rendered on the page.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getPageElements()
        */
       getPageElements(): PageElement[];
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType or
-       * null if a matching placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType or null if a matching placeholder is not present.
+       * If there are multiple placeholders with the same type, it returns the one with minimal placeholder index. If there are multiple matching placeholders with the same index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *     );
        *
-       * If there are multiple placeholders with the same type, it returns the one with minimal
-       * placeholder index. If there are multiple matching placeholders with the same index, it returns
-       * the first placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getPlaceholder(PlaceholderType)
        * @param placeholderType
        */
       getPlaceholder(placeholderType: PlaceholderType): PageElement;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType and
-       * a placeholder index, or null if the placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType and a placeholder index, or null if the placeholder is not present.
+       * If there are multiple placeholders with the same type and index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *         0,
+       *     );
        *
-       * If there are multiple placeholders with the same type and index, it returns the first
-       * placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE, 0);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getPlaceholder(PlaceholderType,Integer)
        * @param placeholderType
        * @param placeholderIndex
@@ -4195,39 +6650,100 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the list of placeholder PageElement objects in the page.
        *
+       *     const master = SlidesApp.getActivePresentation().getMasters()[0];
+       *     Logger.log(
+       *         `Number of placeholders in the master: ${master.getPlaceholders().length}`,
+       *     );
        *
-       *     var master = SlidesApp.getActivePresentation().getMasters()[0];
-       *     Logger.log('Number of placeholders in the master: ' + master.getPlaceholders().length);
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getPlaceholders()
        */
       getPlaceholders(): PageElement[];
 
       /**
        * Returns the list of Shape objects on the page.
+       *
+       * Return:
+       * - Shape[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getShapes()
        */
       getShapes(): Shape[];
 
       /**
        * Returns the list of SheetsChart objects on the page.
+       *
+       * Return:
+       * - SheetsChart[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getSheetsCharts()
        */
       getSheetsCharts(): SheetsChart[];
 
       /**
        * Returns the list of Table objects on the page.
+       *
+       * Return:
+       * - Table[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getTables()
        */
       getTables(): Table[];
 
       /**
        * Returns the list of Video objects on the page.
+       *
+       * Return:
+       * - Video[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getVideos()
        */
       getVideos(): Video[];
 
       /**
        * Returns the list of WordArt objects on the page.
+       *
+       * Return:
+       * - WordArt[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-master#getWordArts()
        */
       getWordArts(): WordArt[];
@@ -4243,31 +6759,80 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of Group objects on the page.
+       *
+       * Return:
+       * - Group[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getGroups()
        */
       getGroups(): Group[];
 
       /**
        * Returns the list of Image objects on the page.
+       *
+       * Return:
+       * - Image[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getImages()
        */
       getImages(): Image[];
 
       /**
        * Returns the list of Line objects on the page.
+       *
+       * Return:
+       * - Line[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getLines()
        */
       getLines(): Line[];
 
       /**
-       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same
-       * namespace.
+       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the PageElement on the page with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
@@ -4275,38 +6840,62 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement objects rendered on the page.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getPageElements()
        */
       getPageElements(): PageElement[];
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType or
-       * null if a matching placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType or null if a matching placeholder is not present.
+       * If there are multiple placeholders with the same type, it returns the one with minimal placeholder index. If there are multiple matching placeholders with the same index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *     );
        *
-       * If there are multiple placeholders with the same type, it returns the one with minimal
-       * placeholder index. If there are multiple matching placeholders with the same index, it returns
-       * the first placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getPlaceholder(PlaceholderType)
        * @param placeholderType
        */
       getPlaceholder(placeholderType: PlaceholderType): PageElement;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType and
-       * a placeholder index, or null if the placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType and a placeholder index, or null if the placeholder is not present.
+       * If there are multiple placeholders with the same type and index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *         0,
+       *     );
        *
-       * If there are multiple placeholders with the same type and index, it returns the first
-       * placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE, 0);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getPlaceholder(PlaceholderType,Integer)
        * @param placeholderType
        * @param placeholderIndex
@@ -4316,52 +6905,132 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the list of placeholder PageElement objects in the page.
        *
+       *     const master = SlidesApp.getActivePresentation().getMasters()[0];
+       *     Logger.log(
+       *         `Number of placeholders in the master: ${master.getPlaceholders().length}`,
+       *     );
        *
-       *     var master = SlidesApp.getActivePresentation().getMasters()[0];
-       *     Logger.log('Number of placeholders in the master: ' + master.getPlaceholders().length);
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getPlaceholders()
        */
       getPlaceholders(): PageElement[];
 
       /**
        * Returns the list of Shape objects on the page.
+       *
+       * Return:
+       * - Shape[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getShapes()
        */
       getShapes(): Shape[];
 
       /**
        * Returns the list of SheetsChart objects on the page.
+       *
+       * Return:
+       * - SheetsChart[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getSheetsCharts()
        */
       getSheetsCharts(): SheetsChart[];
 
       /**
        * Gets the shape containing the speaker notes on the page.
+       *
+       * Return:
+       * - Shape
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getSpeakerNotesShape()
        */
       getSpeakerNotesShape(): Shape;
 
       /**
        * Returns the list of Table objects on the page.
+       *
+       * Return:
+       * - Table[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getTables()
        */
       getTables(): Table[];
 
       /**
        * Returns the list of Video objects on the page.
+       *
+       * Return:
+       * - Video[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getVideos()
        */
       getVideos(): Video[];
 
       /**
        * Returns the list of WordArt objects on the page.
+       *
+       * Return:
+       * - WordArt[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#getWordArts()
        */
       getWordArts(): WordArt[];
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -4370,6 +7039,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/notes-page#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -4384,61 +7063,160 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the page as a layout.
+       *
+       * Return:
+       * - Layout — The page as a layout.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#asLayout()
        */
       asLayout(): Layout;
 
       /**
        * Returns the page as a master.
+       *
+       * Return:
+       * - Master — The page as a master.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#asMaster()
        */
       asMaster(): Master;
 
       /**
        * Returns the page as a slide.
+       *
+       * Return:
+       * - Slide — The page as a slide.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#asSlide()
        */
       asSlide(): Slide;
 
       /**
        * Gets the page's background.
+       *
+       * Return:
+       * - PageBackground — The page's background.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getBackground()
        */
       getBackground(): PageBackground;
 
       /**
        * Gets the ColorScheme associated with the page.
+       *
+       * Return:
+       * - ColorScheme — The page's color scheme.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getColorScheme()
        */
       getColorScheme(): ColorScheme;
 
       /**
        * Returns the list of Group objects on the page.
+       *
+       * Return:
+       * - Group[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getGroups()
        */
       getGroups(): Group[];
 
       /**
        * Returns the list of Image objects on the page.
+       *
+       * Return:
+       * - Image[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getImages()
        */
       getImages(): Image[];
 
       /**
        * Returns the list of Line objects on the page.
+       *
+       * Return:
+       * - Line[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getLines()
        */
       getLines(): Line[];
 
       /**
-       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same
-       * namespace.
+       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the PageElement on the page with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
@@ -4446,44 +7224,78 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement objects rendered on the page.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getPageElements()
        */
       getPageElements(): PageElement[];
 
       /**
        * Gets the type of the page.
+       *
+       * Return:
+       * - PageType — The page type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getPageType()
        */
       getPageType(): PageType;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType or
-       * null if a matching placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType or null if a matching placeholder is not present.
+       * If there are multiple placeholders with the same type, it returns the one with minimal placeholder index. If there are multiple matching placeholders with the same index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *     );
        *
-       * If there are multiple placeholders with the same type, it returns the one with minimal
-       * placeholder index. If there are multiple matching placeholders with the same index, it returns
-       * the first placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getPlaceholder(PlaceholderType)
        * @param placeholderType
        */
       getPlaceholder(placeholderType: PlaceholderType): PageElement;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType and
-       * a placeholder index, or null if the placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType and a placeholder index, or null if the placeholder is not present.
+       * If there are multiple placeholders with the same type and index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *         0,
+       *     );
        *
-       * If there are multiple placeholders with the same type and index, it returns the first
-       * placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE, 0);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getPlaceholder(PlaceholderType,Integer)
        * @param placeholderType
        * @param placeholderIndex
@@ -4493,49 +7305,117 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the list of placeholder PageElement objects in the page.
        *
+       *     const master = SlidesApp.getActivePresentation().getMasters()[0];
+       *     Logger.log(
+       *         `Number of placeholders in the master: ${master.getPlaceholders().length}`,
+       *     );
        *
-       *     var master = SlidesApp.getActivePresentation().getMasters()[0];
-       *     Logger.log('Number of placeholders in the master: ' + master.getPlaceholders().length);
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getPlaceholders()
        */
       getPlaceholders(): PageElement[];
 
       /**
        * Returns the list of Shape objects on the page.
+       *
+       * Return:
+       * - Shape[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getShapes()
        */
       getShapes(): Shape[];
 
       /**
        * Returns the list of SheetsChart objects on the page.
+       *
+       * Return:
+       * - SheetsChart[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getSheetsCharts()
        */
       getSheetsCharts(): SheetsChart[];
 
       /**
        * Returns the list of Table objects on the page.
+       *
+       * Return:
+       * - Table[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getTables()
        */
       getTables(): Table[];
 
       /**
        * Returns the list of Video objects on the page.
+       *
+       * Return:
+       * - Video[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getVideos()
        */
       getVideos(): Video[];
 
       /**
        * Returns the list of WordArt objects on the page.
+       *
+       * Return:
+       * - WordArt[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#getWordArts()
        */
       getWordArts(): WordArt[];
 
       /**
        * Groups all the specified page elements.
+       * There should be at least two page elements on the same page that are not already in another group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
        *
+       * Return:
+       * - Group — The new group.
        *
-       * There should be at least two page elements on the same page that are not already in another
-       * group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#group(PageElement)
        * @param pageElements The elements to group together.
        */
@@ -4543,45 +7423,51 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Group on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a group between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var group = otherPresentationSlide.getGroups()[0];
-       *     currentPresentationSlide.insertGroup(group); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const group = otherPresentationSlide.getGroups()[0];
+       *     currentPresentationSlide.insertGroup(
+       *         group);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Group — The inserted group.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertGroup(Group)
        * @param group The group to be copied and inserted.
        */
       insertGroup(group: Group): Group;
 
       /**
-       * Inserts an image at the top left corner of the page with a default size from the specified
-       * image blob.
+       * Inserts an image at the top left corner of the page with a default size from the specified image blob.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        *
-       *
-       * Inserting the image fetches it from the BlobSource once and a copy is stored for
-       * display inside the presentation. Images must be less than 50MB in size, cannot exceed 25
-       * megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
+       *     const image = DriveApp.getFileById('123abc');
        *     slide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertImage(BlobSource)
        * @param blobSource The image data.
        */
@@ -4589,23 +7475,31 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the specified image blob.
+       * The image is fetched from the provided BlobSource once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
-       *
-       * The image is fetched from the provided BlobSource once at insertion time and a copy
-       * is stored for display inside the presentation. Images must be less than 50MB in size, cannot
-       * exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 300, height: 100};
+       *     const image = DriveApp.getFileById('123abc');
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 300,
+       *       height: 100
+       *     };
        *     slide.insertImage(image, position.left, position.top, size.width, size.height);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertImage(BlobSource,Number,Number,Number,Number)
        * @param blobSource The image data.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -4617,27 +7511,27 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Image on the page.
-       *
-       *
-       * The inserted images's position on this page is determined from the source image's position
-       * on its respective page.
-       *
-       *
-       * If the provided image is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted image.
-       *
-       *
-       * If the provided image is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the image from the source
-       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
-       * presentation.
-       *
+       * The inserted images's position on this page is determined from the source image's position on its respective page.
+       * If the provided image is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted image.
+       * If the provided image is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the image from the source presentation. If the copied placeholder image is empty, nothing is inserted in the destination presentation.
        *
        *     // Copy an image between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var image = otherPresentationSlide.getImages[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const image = otherPresentationSlide.getImages[0];
        *     currentPresentationSlide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertImage(Image)
        * @param image The image to be copied and inserted.
        */
@@ -4645,15 +7539,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image at the top left corner of the page with a default size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/page#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -4661,19 +7558,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
        * https://developers.google.com/apps-script/reference/slides/page#insertImage(String,Number,Number,Number,Number)
        * @param imageUrl The image URL.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -4685,44 +7582,54 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Line on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a line between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var line = otherPresentationSlide.getLines[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const line = otherPresentationSlide.getLines[0];
        *     currentPresentationSlide.insertLine(line);
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertLine(Line)
        * @param line The line to be copied and inserted.
        */
       insertLine(line: Line): Line;
 
       /**
-       * Inserts a line on the page connecting two connection sites. The two
-       * connection sites must be on this page.
-       *
+       * Inserts a line on the page connecting two connection sites. The two connection sites must be on this page.
        *
        *     // Insert a line in the first slide of the presentation connecting two shapes.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
-       *     var shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *     const shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
        *     slide.insertLine(
        *         SlidesApp.LineCategory.BENT,
        *         shape1.getConnectionSites()[0],
-       *         shape2.getConnectionSites()[1]);
+       *         shape2.getConnectionSites()[1],
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertLine(LineCategory,ConnectionSite,ConnectionSite)
        * @param lineCategory The category of the line to insert.
        * @param startConnectionSite The connection site where the start of the line is to be connected.
@@ -4733,17 +7640,33 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a line on the page.
        *
-       *
        *     // Insert a line in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var startPoint = {left: 10, top: 10};
-       *     var endPoint = {left: 40, top: 40};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const startPoint = {
+       *       left: 10,
+       *       top: 10
+       *     };
+       *     const endPoint = {
+       *       left: 40,
+       *       top: 40
+       *     };
        *     slide.insertLine(
        *         SlidesApp.LineCategory.STRAIGHT,
        *         startPoint.left,
        *         startPoint.top,
        *         endPoint.left,
-       *         endPoint.top);
+       *         endPoint.top,
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertLine(LineCategory,Number,Number,Number,Number)
        * @param lineCategory The category of the line to insert.
        * @param startLeft The horizontal position of the start point of the line, measured in points from the upper left corner of the page.
@@ -4755,28 +7678,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided PageElement on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a page element between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements()[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
+       *
+       * Return:
+       * - PageElement — The inserted page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertPageElement(PageElement)
        * @param pageElement The page element to be copied and inserted.
        */
@@ -4784,26 +7708,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Shape on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a shape between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape = otherPresentationSlide.getShapes[0];
-       *     currentPresentationSlide.insertShape(shape); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape = otherPresentationSlide.getShapes[0];
+       *     currentPresentationSlide.insertShape(
+       *         shape);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertShape(Shape)
        * @param shape The shape to be copied and inserted.
        */
@@ -4811,16 +7737,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
-       *
-       *
        * The shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert a shape in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertShape(ShapeType)
        * @param shapeType The type of shape to insert.
        */
@@ -4828,6 +7761,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertShape(ShapeType,Number,Number,Number,Number)
        * @param shapeType The type of shape to insert.
        * @param left The horizontal position of the shape, measured from the upper left corner of the page.
@@ -4839,20 +7782,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page.
-       *
-       *
        * The chart is inserted with a default size at the top left corner of the page.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     slide.insertSheetsChart(chart);
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertSheetsChart(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
@@ -4860,22 +7807,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page with the provided position and size.
+       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect to the provided size.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChart(
@@ -4883,7 +7829,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.top,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertSheetsChart(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -4895,28 +7852,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided SheetsChart on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a sheets chart between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var sheetsChart = otherPresentationSlide.getSheetsCharts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const sheetsChart = otherPresentationSlide.getSheetsCharts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertSheetsChart(sheetsChart);
+       *
+       * Return:
+       * - SheetsChart — The inserted sheets chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertSheetsChart(SheetsChart)
        * @param sheetsChart The sheets chart to be copied and inserted.
        */
@@ -4924,42 +7882,47 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart as an Image on the page.
-       *
-       *
        * The image of the chart is inserted with a default size at the top left corner of the page.
-       *
-       *
        * The inserted image of chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertSheetsChartAsImage(chart); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertSheetsChartAsImage(
+       *         chart);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertSheetsChartAsImage(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
       insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
 
       /**
-       * Inserts a Google Sheets chart as an Image on the page with the provided position and
-       * size.
-       *
-       *
-       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with
-       * respect to the provided size.
-       *
-       *
+       * Inserts a Google Sheets chart as an Image on the page with the provided position and size.
+       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with respect to the provided size.
        * The inserted image of the chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChartAsImage(
@@ -4967,7 +7930,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.right,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertSheetsChartAsImage(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -4979,9 +7953,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page.
-       *
-       *
        * The table is centered on the page with default size and evenly distributed rows and columns.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertTable(Integer,Integer)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -4990,9 +7972,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page with the provided position and size.
-       *
-       *
        * Rows and columns are evenly distributed in the created table.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertTable(Integer,Integer,Number,Number,Number,Number)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -5005,26 +7995,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Table on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a table between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var table = otherPresentationSlide.getTables[0];
-       *     currentPresentationSlide.insertTable(table); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const table = otherPresentationSlide.getTables[0];
+       *     currentPresentationSlide.insertTable(
+       *         table);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertTable(Table)
        * @param table The table to be copied and inserted.
        */
@@ -5032,14 +8024,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a text box Shape containing the provided string on the page.
-       *
-       *
        * The text box shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert text box with "Hello" on the first slide of presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello'); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox('Hello');  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertTextBox(String)
        * @param text The string the text box shape should contain.
        */
@@ -5048,11 +8047,21 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a text box Shape containing the provided string on the page.
        *
+       *     // Insert text box with "Hello" on the first slide of presentation. This text
+       *     // box is a square with a length of 10 points on each side.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox(
+       *         'Hello', 0, 0, 10, 10);  // Also available for Layout, Master, and Page.
        *
-       *     // Insert text box with "Hello" on the first slide of presentation. This text box is a square
-       *     // with a length of 10 points on each side.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello', 0, 0, 10, 10); // Also available for Layout, Master, and Page.
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertTextBox(String,Number,Number,Number,Number)
        * @param text The string the text box shape should contain.
        * @param left The horizontal position of the text box shape, measured from the upper left corner of the page.
@@ -5064,9 +8073,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video at the top left corner of the page with a default size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertVideo(String)
        * @param videoUrl The URL of the video to insert.
        */
@@ -5074,9 +8091,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video on the page with the provided position and size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertVideo(String,Number,Number,Number,Number)
        * @param videoUrl The URL of the video to insert.
        * @param left The horizontal position of the video in points, measured from the upper left corner of the page.
@@ -5088,26 +8113,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Video on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a video between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var video = otherPresentationSlide.getVideos[0];
-       *     currentPresentationSlide.insertVideo(video); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const video = otherPresentationSlide.getVideos[0];
+       *     currentPresentationSlide.insertVideo(
+       *         video);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertVideo(Video)
        * @param video The video to be copied and inserted.
        */
@@ -5115,28 +8142,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided WordArt on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a word art between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var wordArt = otherPresentationSlide.getWordArts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const wordArt = otherPresentationSlide.getWordArts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertWordArt(wordArt);
+       *
+       * Return:
+       * - WordArt — The inserted word art.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#insertWordArt(WordArt)
        * @param wordArt The group to be copied and inserted.
        */
@@ -5144,13 +8172,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -5159,6 +8202,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -5168,18 +8221,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Selects the Page in the active presentation as the current page selection and removes any previous selection.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        *
+       *     // Select the first slide as the current page selection and replace any previous
+       *     // selection.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.selectAsCurrentPage();  // Also available for Layout, Master, and Page.
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       *     // Select the first slide as the current page selection and replace any previous selection.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.selectAsCurrentPage(); // Also available for Layout, Master, and Page.
        * https://developers.google.com/apps-script/reference/slides/page#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): void;
+      selectAsCurrentPage(): any;
     }
     /**
      * Describes the page's background
@@ -5187,138 +8244,223 @@ declare namespace GoogleAppsScript {
     interface PageBackground {
 
       /**
-       * Get the stretched picture fill of this background, or null if the background fill type
-       * is not PageBackgroundType.PICTURE.
+       * Get the stretched picture fill of this background, or null if the background fill type is not PageBackgroundType.PICTURE.
+       *
+       * Return:
+       * - PictureFill
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#getPictureFill()
        */
       getPictureFill(): PictureFill;
 
       /**
-       * Get the solid fill of this background, or null if the background fill type is not
-       * PageBackgroundType.SOLID.
+       * Get the solid fill of this background, or null if the background fill type is not PageBackgroundType.SOLID.
+       *
+       * Return:
+       * - SolidFill
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#getSolidFill()
        */
       getSolidFill(): SolidFill;
 
       /**
        * Get the type of this page background.
+       *
+       * Return:
+       * - PageBackgroundType
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#getType()
        */
       getType(): PageBackgroundType;
 
       /**
        * Whether the background is visible.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#isVisible()
        */
       isVisible(): boolean;
 
       /**
-       * Sets an image from the specified image blob as the page background. The image is stretched to
-       * match the dimensions of the page.
+       * Sets an image from the specified image blob as the page background. The image is stretched to match the dimensions of the page.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Inserting the image fetches it from the BlobSource once and a copy is stored for
-       * display inside the presentation. Images must be less than 50MB in size, cannot exceed 25
-       * megapixels, and must be in either in PNG, JPEG, or GIF format.
        * https://developers.google.com/apps-script/reference/slides/page-background#setPictureFill(BlobSource)
        * @param blobSource The image data.
        */
-      setPictureFill(blobSource: Base.BlobSource): void;
+      setPictureFill(blobSource: Base.BlobSource): any;
 
       /**
-       * Sets the image at the provided URL as the page background. The image is stretched to match the
-       * dimensions of the page.
+       * Sets the image at the provided URL as the page background. The image is stretched to match the dimensions of the page.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via PictureFill.getSourceUrl().
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
-       *
-       *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via PictureFill.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/page-background#setPictureFill(String)
        * @param imageUrl The URL to download the image from.
        */
-      setPictureFill(imageUrl: string): void;
+      setPictureFill(imageUrl: string): any;
 
       /**
        * Sets the solid fill to the given Color.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(Color)
        * @param color
        */
-      setSolidFill(color: Color): void;
+      setSolidFill(color: Color): any;
 
       /**
        * Sets the solid fill to the given alpha and Color.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(Color,Number)
        * @param color
        * @param alpha
        */
-      setSolidFill(color: Color, alpha: number): void;
+      setSolidFill(color: Color, alpha: number): any;
 
       /**
        * Sets the solid fill to the given RGB values.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(Integer,Integer,Integer)
        * @param red
        * @param green
        * @param blue
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer): void;
+      setSolidFill(red: Integer, green: Integer, blue: Integer): any;
 
       /**
        * Sets the solid fill to the given alpha and RGB values.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(Integer,Integer,Integer,Number)
        * @param red
        * @param green
        * @param blue
        * @param alpha
        */
-      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
+      setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): any;
 
       /**
        * Sets the solid fill to the given hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink is represented as '#FFC0CB'.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(String)
        * @param hexString
        */
-      setSolidFill(hexString: string): void;
+      setSolidFill(hexString: string): any;
 
       /**
        * Sets the solid fill to the given alpha and hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink is represented as '#FFC0CB'.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(String,Number)
        * @param hexString
        * @param alpha
        */
-      setSolidFill(hexString: string, alpha: number): void;
+      setSolidFill(hexString: string, alpha: number): any;
 
       /**
        * Sets the solid fill to the given ThemeColorType.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(ThemeColorType)
        * @param color
        */
-      setSolidFill(color: ThemeColorType): void;
+      setSolidFill(color: ThemeColorType): any;
 
       /**
        * Sets the solid fill to the given alpha and ThemeColorType.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setSolidFill(ThemeColorType,Number)
        * @param color
        * @param alpha
        */
-      setSolidFill(color: ThemeColorType, alpha: number): void;
+      setSolidFill(color: ThemeColorType, alpha: number): any;
 
       /**
        * Sets the background to transparent.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-background#setTransparent()
        */
-      setTransparent(): void;
+      setTransparent(): any;
     }
     /**
      * The kinds of page backgrounds.
@@ -5334,6 +8476,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -5341,199 +8487,444 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the page element as a group.
+       *
+       * Return:
+       * - Group — This page element as a group.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asGroup()
        */
       asGroup(): Group;
 
       /**
        * Returns the page element as an image.
+       *
+       * Return:
+       * - Image — This page element as an image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asImage()
        */
       asImage(): Image;
 
       /**
        * Returns the page element as a line.
+       *
+       * Return:
+       * - Line — This page element as a line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asLine()
        */
       asLine(): Line;
 
       /**
        * Returns the page element as a shape.
+       *
+       * Return:
+       * - Shape — This page element as a shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asShape()
        */
       asShape(): Shape;
 
       /**
        * Returns the page element as a linked chart embedded from Google Sheets.
+       *
+       * Return:
+       * - SheetsChart — The page element as a chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asSheetsChart()
        */
       asSheetsChart(): SheetsChart;
 
       /**
+       * Returns the page element as a speaker spotlight.
+       *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
+       *     pageElement.asSpeakerSpotlight();
+       *
+       * Return:
+       * - SpeakerSpotlight — The page element as a speaker spotlight.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/page-element#asSpeakerSpotlight()
+       */
+      asSpeakerSpotlight(): SpeakerSpotlight;
+
+      /**
        * Returns the page element as a table.
+       *
+       * Return:
+       * - Table — This page element as a table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asTable()
        */
       asTable(): Table;
 
       /**
        * Returns the page element as a video.
+       *
+       * Return:
+       * - Video — This page element as a video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asVideo()
        */
       asVideo(): Video;
 
       /**
        * Returns the page element as word art.
+       *
+       * Return:
+       * - WordArt — This page element as word art.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#asWordArt()
        */
       asWordArt(): WordArt;
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#bringForward()
        */
       bringForward(): PageElement;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#bringToFront()
        */
       bringToFront(): PageElement;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#duplicate()
        */
       duplicate(): PageElement;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getDescription()
        */
       getDescription(): string;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getLeft()
        */
       getLeft(): number;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getRotation()
        */
       getRotation(): number;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#getWidth()
        */
       getWidth(): number;
@@ -5541,15 +8932,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -5557,140 +8959,191 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/page-element#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - PageElement — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): PageElement;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - PageElement — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): PageElement;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/page-element#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#sendBackward()
        */
       sendBackward(): PageElement;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#sendToBack()
        */
       sendToBack(): PageElement;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - PageElement — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): PageElement;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - PageElement — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): PageElement;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -5698,11 +9151,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - PageElement — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -5710,23 +9169,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - PageElement — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): PageElement;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - PageElement — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -5734,31 +9210,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - PageElement — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/page-element#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): PageElement;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - PageElement — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -5771,6 +9253,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement instances.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-element-range#getPageElements()
        */
       getPageElements(): PageElement[];
@@ -5781,7 +9273,7 @@ declare namespace GoogleAppsScript {
      * To call an enum, you call its parent class, name, and property. For example,
      * SlidesApp.PageElementType.SHAPE.
      */
-    enum PageElementType { UNSUPPORTED, SHAPE, IMAGE, VIDEO, TABLE, GROUP, LINE, WORD_ART, SHEETS_CHART }
+    enum PageElementType { UNSUPPORTED, SHAPE, IMAGE, VIDEO, TABLE, GROUP, LINE, WORD_ART, SHEETS_CHART, SPEAKER_SPOTLIGHT }
     /**
      * A collection of one or more Page instances.
      */
@@ -5789,6 +9281,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of Page instances.
+       *
+       * Return:
+       * - Page[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/page-range#getPages()
        */
       getPages(): Page[];
@@ -5806,15 +9308,33 @@ declare namespace GoogleAppsScript {
     interface Paragraph {
 
       /**
-       * Returns the index of the paragraph's newline. Returns null if the newline has been
-       * deleted.
+       * Returns the index of the paragraph's newline. Returns null if the newline has been deleted.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph#getIndex()
        */
       getIndex(): Integer;
 
       /**
-       * Returns a TextRange spanning the text in the paragraph ended by this object's newline
-       * character. Returns null if the paragraph's newline has been deleted.
+       * Returns a TextRange spanning the text in the paragraph ended by this object's newline character. Returns null if the paragraph's newline has been deleted.
+       *
+       * Return:
+       * - TextRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph#getRange()
        */
       getRange(): TextRange;
@@ -5840,80 +9360,164 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the text end indentation for paragraphs in the TextRange in points, or null if there are multiple paragraph styles on the given text.
-       *
-       *
        * The side that corresponds to the end of the text is based on the current text direction.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getIndentEnd()
        */
       getIndentEnd(): number;
 
       /**
-       * Returns the indentation for the first line of paragraphs in the TextRange in points, or
-       * null if there are multiple paragraph styles on the given text.
+       * Returns the indentation for the first line of paragraphs in the TextRange in points, or null if there are multiple paragraph styles on the given text.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getIndentFirstLine()
        */
       getIndentFirstLine(): number;
 
       /**
        * Returns the text start indentation for paragraphs in the TextRange in points, or null if there are multiple paragraph styles on the given text.
-       *
-       *
        * The side that corresponds to the start of the text is based on the current text direction.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getIndentStart()
        */
       getIndentStart(): number;
 
       /**
-       * Returns the line spacing, or null if there are multiple paragraph styles on the given
-       * text.
+       * Returns the line spacing, or null if there are multiple paragraph styles on the given text.
+       * This is a value that corresponds to the space between lines, as a percentage of normal. Normal is represented as 100.0.
        *
+       * Return:
+       * - Number
        *
-       * This is a value that corresponds to the space between lines, as a percentage of normal.
-       * Normal is represented as 100.0.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getLineSpacing()
        */
       getLineSpacing(): number;
 
       /**
-       * Returns the ParagraphAlignment of paragraphs in the TextRange, or null
-       * if there are multiple paragraph styles on the given text.
+       * Returns the ParagraphAlignment of paragraphs in the TextRange, or null if there are multiple paragraph styles on the given text.
+       *
+       * Return:
+       * - ParagraphAlignment
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getParagraphAlignment()
        */
       getParagraphAlignment(): ParagraphAlignment;
 
       /**
-       * Returns the extra space above paragraphs in the TextRange in points, or null if
-       * there are multiple paragraph styles on the given text.
+       * Returns the extra space above paragraphs in the TextRange in points, or null if there are multiple paragraph styles on the given text.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getSpaceAbove()
        */
       getSpaceAbove(): number;
 
       /**
-       * Returns the extra space below paragraphs in the TextRange in points, or null if
-       * there are multiple paragraph styles on the given text.
+       * Returns the extra space below paragraphs in the TextRange in points, or null if there are multiple paragraph styles on the given text.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getSpaceBelow()
        */
       getSpaceBelow(): number;
 
       /**
-       * Returns the SpacingMode for paragraphs in the TextRange, or null if
-       * there are multiple paragraph styles on the given text.
+       * Returns the SpacingMode for paragraphs in the TextRange, or null if there are multiple paragraph styles on the given text.
+       *
+       * Return:
+       * - SpacingMode
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getSpacingMode()
        */
       getSpacingMode(): SpacingMode;
 
       /**
-       * Returns the TextDirection for paragraphs in the TextRange, or null if
-       * there are multiple paragraph styles on the given text.
+       * Returns the TextDirection for paragraphs in the TextRange, or null if there are multiple paragraph styles on the given text.
+       *
+       * Return:
+       * - TextDirection
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#getTextDirection()
        */
       getTextDirection(): TextDirection;
 
       /**
        * Sets the text end indentation for paragraphs in the TextRange in points.
-       *
-       *
        * The side that corresponds to the end of the text is based on the current text direction.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setIndentEnd(Number)
        * @param indent
        */
@@ -5921,6 +9525,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the indentation for the first line of paragraphs in the TextRange in points.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setIndentFirstLine(Number)
        * @param indent
        */
@@ -5928,9 +9542,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the text start indentation for paragraphs in the TextRange in points.
-       *
-       *
        * The side that corresponds to the start of the text is based on the current text direction.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setIndentStart(Number)
        * @param indent
        */
@@ -5938,10 +9560,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the line spacing.
+       * This is a value that corresponds to the space between lines, as a percentage of normal. Normal is represented as 100.0.
        *
+       * Return:
+       * - ParagraphStyle
        *
-       * This is a value that corresponds to the space between lines, as a percentage of normal.
-       * Normal is represented as 100.0.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setLineSpacing(Number)
        * @param spacing
        */
@@ -5949,6 +9578,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the ParagraphAlignment of paragraphs in the TextRange.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setParagraphAlignment(ParagraphAlignment)
        * @param alignment
        */
@@ -5956,6 +9595,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the extra space above paragraphs in the TextRange in points.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setSpaceAbove(Number)
        * @param space
        */
@@ -5963,6 +9612,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the extra space below paragraphs in the TextRange in points.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setSpaceBelow(Number)
        * @param space
        */
@@ -5970,6 +9629,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the SpacingMode for paragraphs in the TextRange.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setSpacingMode(SpacingMode)
        * @param mode
        */
@@ -5977,6 +9646,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the TextDirection for paragraphs in the TextRange.
+       *
+       * Return:
+       * - ParagraphStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/paragraph-style#setTextDirection(TextDirection)
        * @param direction
        */
@@ -5988,43 +9667,57 @@ declare namespace GoogleAppsScript {
     interface PictureFill {
 
       /**
-       * Return the data inside this object as a blob converted to the specified content type. This
-       * method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it
-       * assumes that the part of the filename that follows the last period (if any) is an existing
-       * extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes
-       * "ShoppingList.12.25.pdf".
+       * Return the data inside this object as a blob converted to the specified content type. This method adds the appropriate extension to the filename—for example, "myfile.pdf". However, it assumes that the part of the filename that follows the last period (if any) is an existing extension that should be replaced. Consequently, "ShoppingList.12.25.2014" becomes "ShoppingList.12.25.pdf".
+       * To view the daily quotas for conversions, see Quotas for Google Services. Newly created Google Workspace domains might be temporarily subject to stricter quotas.
        *
+       * Return:
+       * - Blob — The data as a blob.
        *
-       * To view the daily quotas for conversions, see Quotas for Google
-       * Services. Newly created Google Workspace domains might be temporarily subject to stricter
-       * quotas.
        * https://developers.google.com/apps-script/reference/slides/picture-fill#getAs(String)
-       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid.
+       * @param contentType The MIME type to convert to. For most blobs, 'application/pdf' is the only valid option. For images in BMP, GIF, JPEG, or PNG format, any of 'image/bmp', 'image/gif', 'image/jpeg', or 'image/png' are also valid. For a Google Docs document, 'text/markdown' is also valid.
        */
       getAs(contentType: string): Base.Blob;
 
       /**
        * Return the data inside this object as a blob.
+       *
+       * Return:
+       * - Blob — The data as a blob.
+       *
        * https://developers.google.com/apps-script/reference/slides/picture-fill#getBlob()
        */
       getBlob(): Base.Blob;
 
       /**
        * Gets a URL to the image.
+       * This URL is tagged with the account of the requester, so anyone with the URL effectively accesses the image as the original requester. Access to the image may be lost if the presentation's sharing settings change. The URL expires after a short period of time.
        *
+       * Return:
+       * - String
        *
-       * This URL is tagged with the account of the requester, so anyone with the URL effectively
-       * accesses the image as the original requester. Access to the image may be lost if the
-       * presentation's sharing settings change. The URL expires after a short period of time.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/picture-fill#getContentUrl()
        */
       getContentUrl(): string;
 
       /**
        * Gets the image's source URL, if available.
-       *
-       *
        * When an image is inserted by URL, returns the URL provided during image insertion.
+       *
+       * Return:
+       * - String — the image URL or null if the image does not have a source URL
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/picture-fill#getSourceUrl()
        */
       getSourceUrl(): string;
@@ -6047,12 +9740,20 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the horizontal coordinate, measured in points.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/point#getX()
        */
       getX(): number;
 
       /**
        * Gets the vertical coordinate, measured in points.
+       *
+       * Return:
+       * - Number
+       *
        * https://developers.google.com/apps-script/reference/slides/point#getY()
        */
       getY(): number;
@@ -6072,67 +9773,138 @@ declare namespace GoogleAppsScript {
     interface Presentation {
 
       /**
-       * Adds the given user to the list of editors for the Presentation. If the user was already
-       * on the list of viewers, this method promotes the user out of the list of viewers.
+       * Adds the given user to the list of editors for the Presentation. If the user was already on the list of viewers, this method promotes the user out of the list of viewers.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#addEditor(String)
        * @param emailAddress The email address of the user to add.
        */
       addEditor(emailAddress: string): Presentation;
 
       /**
-       * Adds the given user to the list of editors for the Presentation. If the user was already
-       * on the list of viewers, this method promotes the user out of the list of viewers.
+       * Adds the given user to the list of editors for the Presentation. If the user was already on the list of viewers, this method promotes the user out of the list of viewers.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#addEditor(User)
        * @param user A representation of the user to add.
        */
       addEditor(user: Base.User): Presentation;
 
       /**
-       * Adds the given array of users to the list of editors for the Presentation. If any of the
-       * users were already on the list of viewers, this method promotes them out of the list of
-       * viewers.
+       * Adds the given array of users to the list of editors for the Presentation. If any of the users were already on the list of viewers, this method promotes them out of the list of viewers.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#addEditors(String)
        * @param emailAddresses An array of email addresses of the users to add.
        */
       addEditors(emailAddresses: string[]): Presentation;
 
       /**
-       * Adds the given user to the list of viewers for the Presentation. If the user was already
-       * on the list of editors, this method has no effect.
+       * Adds the given user to the list of viewers for the Presentation. If the user was already on the list of editors, this method has no effect.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#addViewer(String)
        * @param emailAddress The email address of the user to add.
        */
       addViewer(emailAddress: string): Presentation;
 
       /**
-       * Adds the given user to the list of viewers for the Presentation. If the user was already
-       * on the list of editors, this method has no effect.
+       * Adds the given user to the list of viewers for the Presentation. If the user was already on the list of editors, this method has no effect.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#addViewer(User)
        * @param user A representation of the user to add.
        */
       addViewer(user: Base.User): Presentation;
 
       /**
-       * Adds the given array of users to the list of viewers for the Presentation. If any of the
-       * users were already on the list of editors, this method has no effect for them.
+       * Adds the given array of users to the list of viewers for the Presentation. If any of the users were already on the list of editors, this method has no effect for them.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#addViewers(String)
        * @param emailAddresses An array of email addresses of the users to add.
        */
       addViewers(emailAddresses: string[]): Presentation;
 
       /**
-       * Appends a slide to the end of the presentation using the PredefinedLayout.BLANK
-       * predefined layout based on the current master. The current master is one of the following:
+       * Appends a slide to the end of the presentation using the PredefinedLayout.BLANK predefined layout based on the current master. The current master is one of the following:
+       * - The master of the current last slide.
+       * - The first master in the presentation, if there is no slide.
        *
+       * Return:
+       * - Slide — The new slide that is appended.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide()
        */
       appendSlide(): Slide;
 
       /**
-       * Appends a slide to the end of the presentation using the specified layout based on the current
-       * master. The current master is one of the following:
+       * Appends a slide to the end of the presentation using the specified layout based on the current master. The current master is one of the following:
+       * - The master of the current last slide.
+       * - The first master in the presentation, if there is no slide.
        *
+       * Return:
+       * - Slide — The new slide that is appended.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide(Layout)
        * @param layout The layout to use for the new slide; it should be present in the current master.
@@ -6140,9 +9912,18 @@ declare namespace GoogleAppsScript {
       appendSlide(layout: Layout): Slide;
 
       /**
-       * Appends a slide to the end of the presentation using the specified predefined layout based on
-       * the current master. The current master is one of the following:
+       * Appends a slide to the end of the presentation using the specified predefined layout based on the current master. The current master is one of the following:
+       * - The master of the current last slide.
+       * - The first master in the presentation, if there is no slide.
        *
+       * Return:
+       * - Slide — The new slide that is appended.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide(PredefinedLayout)
        * @param predefinedLayout The predefined layout to use for the new slide; it should be present in the current master.
@@ -6151,42 +9932,51 @@ declare namespace GoogleAppsScript {
 
       /**
        * Appends a copy of the provided Slide to the end of the presentation.
-       *
-       *
-       * If the slide being copied is from a different presentation, the parent master and layout
-       * pages are copied as well if they do not already exist in this presentation.
-       *
+       * If the slide being copied is from a different presentation, the parent master and layout pages are copied as well if they do not already exist in this presentation.
        *
        *     // Copy a slide from another presentation and appends it.
-       *     var otherPresentation = SlidesApp.openById('presentationId');
-       *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var slide = otherPresentation.getSlides()[0];
+       *     const otherPresentation = SlidesApp.openById('presentationId');
+       *     const currentPresentation = SlidesApp.getActivePresentation();
+       *     const slide = otherPresentation.getSlides()[0];
        *     currentPresentation.appendSlide(slide);
+       *
+       * Return:
+       * - Slide — The new slide that is appended.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide(Slide)
        * @param slide The slide to be copied and appended.
        */
       appendSlide(slide: Slide): Slide;
 
       /**
-       * Appends a copy of the provided Slide from the source presentation to the end of the
-       * current presentation, and sets the slide link as specified by the SlideLinkingMode.
-       *
-       *
-       * If the slide being copied is from a different presentation, the parent master and layout
-       * pages are copied as well if they do not already exist in the current presentation.
-       *
-       *
-       * If the link mode is SlideLinkingMode.LINKED, the appended slide can be updated to
-       * match the provided source slide when Slide.refreshSlide() is called. Other collaborators
-       * can see the link to the source slide. SlideLinkingMode.LINKED cannot be used with
-       * source slides from the current presentation.
-       *
+       * Appends a copy of the provided Slide from the source presentation to the end of the current presentation, and sets the slide link as specified by the SlideLinkingMode.
+       * If the slide being copied is from a different presentation, the parent master and layout pages are copied as well if they do not already exist in the current presentation.
+       * If the link mode is SlideLinkingMode.LINKED, the appended slide can be updated to match the provided source slide when Slide.refreshSlide() is called. Other collaborators can see the link to the source slide. SlideLinkingMode.LINKED cannot be used with source slides from the current presentation.
        *
        *     // Copy a slide from another presentation, then append and link it.
-       *     var sourcePresentation = SlidesApp.openById('presentationId');
-       *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var slide = sourcePresentation.getSlides()[0];
-       *     var appendedSlide = currentPresentation.appendSlide(slide, SlidesApp.SlideLinkingMode.LINKED);
+       *     const sourcePresentation = SlidesApp.openById('presentationId');
+       *     const currentPresentation = SlidesApp.getActivePresentation();
+       *     const slide = sourcePresentation.getSlides()[0];
+       *     const appendedSlide = currentPresentation.appendSlide(
+       *         slide,
+       *         SlidesApp.SlideLinkingMode.LINKED,
+       *     );
+       *
+       * Return:
+       * - Slide — The new slide.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#appendSlide(Slide,SlideLinkingMode)
        * @param slide The slide to be copied, appended, and linked.
        * @param linkingMode The link mode to use.
@@ -6195,95 +9985,214 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the list of editors for this Presentation.
+       *
+       * Return:
+       * - User[] — An array of users with edit permission.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getEditors()
        */
       getEditors(): Base.User[];
 
       /**
        * Gets the presentation's unique identifier. The presentation ID is used with SlidesApp.openById() to open a specific presentation instance.
+       *
+       * Return:
+       * - String — The ID of this presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getId()
        */
       getId(): string;
 
       /**
        * Gets the layouts in the presentation.
+       *
+       * Return:
+       * - Layout[] — The list of layouts in this presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getLayouts()
        */
       getLayouts(): Layout[];
 
       /**
        * Gets the masters in the presentation.
+       *
+       * Return:
+       * - Master[] — The list of masters in this presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getMasters()
        */
       getMasters(): Master[];
 
       /**
        * Gets the name or title of the presentation.
+       *
+       * Return:
+       * - String — The title of this presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getName()
        */
       getName(): string;
 
       /**
        * Gets the notes master of the presentation.
+       *
+       * Return:
+       * - NotesMaster — The notes master of the presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getNotesMaster()
        */
       getNotesMaster(): NotesMaster;
 
       /**
-       * Gets the page height of the notes master and notes pages in the presentation in points. They
-       * all have the same page height.
+       * Gets the page height of the notes master and notes pages in the presentation in points. They all have the same page height.
+       *
+       * Return:
+       * - Number — The notes page height in points.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getNotesPageHeight()
        */
       getNotesPageHeight(): number;
 
       /**
-       * Gets the page width of the notes master and notes pages in the presentation in points. They all
-       * have the same page width.
+       * Gets the page width of the notes master and notes pages in the presentation in points. They all have the same page width.
+       *
+       * Return:
+       * - Number — The notes page width in points.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getNotesPageWidth()
        */
       getNotesPageWidth(): number;
 
       /**
        * Returns the PageElement with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
       getPageElementById(id: string): PageElement;
 
       /**
-       * Gets the page height of the slides, layouts, and masters in the presentation in points. They
-       * all have the same page height.
+       * Gets the page height of the slides, layouts, and masters in the presentation in points. They all have the same page height.
+       *
+       * Return:
+       * - Number — The page height in points.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getPageHeight()
        */
       getPageHeight(): number;
 
       /**
-       * Gets the page width of the slides, layouts, and masters in the presentation in points. They all
-       * have the same page width.
+       * Gets the page width of the slides, layouts, and masters in the presentation in points. They all have the same page width.
+       *
+       * Return:
+       * - Number — The page width in points.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getPageWidth()
        */
       getPageWidth(): number;
 
       /**
-       * Gets the user’s selection in the active presentation. A script can only access the selection of
-       * the user who is running the script, and only if the script is bound to the presentation.
-       *
-       *
-       * Note that the selection returned is the current effective selection. As the script performs
-       * various changes to the presentation, the selection is transformed to take them into account.
-       * For example if two shapes A and B are selected, and then the script removes shape B, the
-       * returned selection object is implicitly updated such that only shape A is selected.
-       *
+       * Gets the user’s selection in the active presentation. A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Note that the selection returned is the current effective selection. As the script performs various changes to the presentation, the selection is transformed to take them into account. For example if two shapes A and B are selected, and then the script removes shape B, the returned selection object is implicitly updated such that only shape A is selected.
        *
        *     // Gets the current active page that is selected in the active presentation.
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var currentPage = selection.getCurrentPage();
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const currentPage = selection.getCurrentPage();
+       *
+       * Return:
+       * - Selection — A representation of the user's selection, or null if the script is not bound to the presentation or if there is no valid user selection.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getSelection()
        */
       getSelection(): Selection;
 
       /**
        * Returns the Slide with the given ID, or null if none exists.
+       *
+       * Return:
+       * - Slide — The slide with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getSlideById(String)
        * @param id The ID of the slide that is being retrieved.
        */
@@ -6291,6 +10200,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Gets the slides in the presentation.
+       *
+       * Return:
+       * - Slide[] — The list of slides in this presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getSlides()
        */
       getSlides(): Slide[];
@@ -6298,25 +10217,58 @@ declare namespace GoogleAppsScript {
       /**
        * Retrieves the URL to access this presentation.
        *
-       *
-       *     var presentation = SlidesApp.getActivePresentation();
+       *     const presentation = SlidesApp.getActivePresentation();
        *
        *     // Send out the link to open the presentation.
-       *     MailApp.sendEmail("<email-address>", presentation.getName(), presentation.getUrl());
+       *     MailApp.sendEmail(
+       *         '<email-address>',
+       *         presentation.getName(),
+       *         presentation.getUrl(),
+       *     );
+       *
+       * Return:
+       * - String — The URL to access the current presentation.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getUrl()
        */
       getUrl(): string;
 
       /**
        * Gets the list of viewers and commenters for this Presentation.
+       *
+       * Return:
+       * - User[] — An array of users with view or comment permission.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#getViewers()
        */
       getViewers(): Base.User[];
 
       /**
-       * Inserts a slide at the specified index in the presentation using the PredefinedLayout.BLANK predefined layout based on the current master. The current master is
-       * one of the following:
+       * Inserts a slide at the specified index in the presentation using the PredefinedLayout.BLANK predefined layout based on the current master. The current master is one of the following:
+       * - The master of the previous slide.
+       * - The master of the first slide, if the insertionIndex is zero.
+       * - The first master in the presentation, if there is no slide.
        *
+       * Return:
+       * - Slide — The new slide that is inserted.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#insertSlide(Integer)
        * @param insertionIndex The zero-based index indicating where to insert the slide.
@@ -6324,9 +10276,19 @@ declare namespace GoogleAppsScript {
       insertSlide(insertionIndex: Integer): Slide;
 
       /**
-       * Inserts a slide at the specified index in the presentation using the specified layout based on
-       * the current master. The current master is one of the following:
+       * Inserts a slide at the specified index in the presentation using the specified layout based on the current master. The current master is one of the following:
+       * - The master of the previous slide.
+       * - The master of the first slide, if the insertionIndex is zero.
+       * - The first master in the presentation, if there is no slide.
        *
+       * Return:
+       * - Slide — The new slide that is inserted.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#insertSlide(Integer,Layout)
        * @param insertionIndex The zero-based index indicating where to insert the slide.
@@ -6335,9 +10297,19 @@ declare namespace GoogleAppsScript {
       insertSlide(insertionIndex: Integer, layout: Layout): Slide;
 
       /**
-       * Inserts a slide at the specified index in the presentation using the specified predefined
-       * layout based on the current master. The current master is one of the following:
+       * Inserts a slide at the specified index in the presentation using the specified predefined layout based on the current master. The current master is one of the following:
+       * - The master of the previous slide.
+       * - The master of the first slide, if the insertionIndex is zero.
+       * - The first master in the presentation, if there is no slide.
        *
+       * Return:
+       * - Slide — The new slide that is inserted.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/presentation#insertSlide(Integer,PredefinedLayout)
        * @param insertionIndex The zero-based index indicating where to insert the slide.
@@ -6347,18 +10319,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Slide at the specified index in the presentation.
-       *
-       *
-       * If the slide being copied is from a different presentation, the parent master and layout
-       * pages are copied as well if they do not already exist in this presentation.
-       *
+       * If the slide being copied is from a different presentation, the parent master and layout pages are copied as well if they do not already exist in this presentation.
        *
        *     // Copy a slide from another presentation and inserts it.
-       *     var otherPresentation = SlidesApp.openById('presentationId');
-       *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var slide = otherPresentation.getSlides()[0];
-       *     var insertionIndex = 1;
+       *     const otherPresentation = SlidesApp.openById('presentationId');
+       *     const currentPresentation = SlidesApp.getActivePresentation();
+       *     const slide = otherPresentation.getSlides()[0];
+       *     const insertionIndex = 1;
        *     currentPresentation.insertSlide(insertionIndex, slide);
+       *
+       * Return:
+       * - Slide — The new slide that is inserted.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#insertSlide(Integer,Slide)
        * @param insertionIndex The zero-based index indicating where to insert the slide.
        * @param slide The slide to be copied and inserted.
@@ -6366,28 +10344,30 @@ declare namespace GoogleAppsScript {
       insertSlide(insertionIndex: Integer, slide: Slide): Slide;
 
       /**
-       * Inserts a copy of the provided Slide from the source presentation into the specified
-       * index in the current presentation, and sets the slide link as specified by the SlideLinkingMode.
-       *
-       *
-       * If the slide being copied is from a different presentation, the parent master and layout
-       * pages are copied as well if they do not already exist in the current presentation.
-       *
-       *
-       * If the link mode is SlideLinkingMode.LINKED, the inserted slide can be updated to
-       * match the provided source slide when Slide.refreshSlide() is called. Other collaborators
-       * can see the link to the source slide. SlideLinkingMode.LINKED cannot be used with
-       * source slides from the current presentation.
-       *
+       * Inserts a copy of the provided Slide from the source presentation into the specified index in the current presentation, and sets the slide link as specified by the SlideLinkingMode.
+       * If the slide being copied is from a different presentation, the parent master and layout pages are copied as well if they do not already exist in the current presentation.
+       * If the link mode is SlideLinkingMode.LINKED, the inserted slide can be updated to match the provided source slide when Slide.refreshSlide() is called. Other collaborators can see the link to the source slide. SlideLinkingMode.LINKED cannot be used with source slides from the current presentation.
        *
        *     // Copy a slide from another presentation, then insert and link it.
-       *     var sourcePresentation = SlidesApp.openById('presentationId');
-       *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var slide = sourcePresentation.getSlides()[0];
-       *     var insertionIndex = 1;
-       *     var insertedSlide =
-       *         currentPresentation.insertSlide(
-       *         insertionIndex, slide, SlidesApp.SlideLinkingMode.LINKED);
+       *     const sourcePresentation = SlidesApp.openById('presentationId');
+       *     const currentPresentation = SlidesApp.getActivePresentation();
+       *     const slide = sourcePresentation.getSlides()[0];
+       *     const insertionIndex = 1;
+       *     const insertedSlide = currentPresentation.insertSlide(
+       *         insertionIndex,
+       *         slide,
+       *         SlidesApp.SlideLinkingMode.LINKED,
+       *     );
+       *
+       * Return:
+       * - Slide — The new slide.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#insertSlide(Integer,Slide,SlideLinkingMode)
        * @param insertionIndex The zero-based index indicating where to insert the slide.
        * @param slide The slide to be copied and inserted.
@@ -6396,62 +10376,89 @@ declare namespace GoogleAppsScript {
       insertSlide(insertionIndex: Integer, slide: Slide, linkingMode: SlideLinkingMode): Slide;
 
       /**
-       * Removes the given user from the list of editors for the Presentation. This method doesn't
-       * block users from accessing the Presentation if they belong to a class of users who have
-       * general access—for example, if the Presentation is shared with the user's entire
-       * domain, or if the Presentation is in a shared drive that the user can access.
-       *
-       *
+       * Removes the given user from the list of editors for the Presentation. This method doesn't block users from accessing the Presentation if they belong to a class of users who have general access—for example, if the Presentation is shared with the user's entire domain, or if the Presentation is in a shared drive that the user can access.
        * For Drive files, this also removes the user from the list of viewers.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#removeEditor(String)
        * @param emailAddress The email address of the user to remove.
        */
       removeEditor(emailAddress: string): Presentation;
 
       /**
-       * Removes the given user from the list of editors for the Presentation. This method doesn't
-       * block users from accessing the Presentation if they belong to a class of users who have
-       * general access—for example, if the Presentation is shared with the user's entire
-       * domain, or if the Presentation is in a shared drive that the user can access.
-       *
-       *
+       * Removes the given user from the list of editors for the Presentation. This method doesn't block users from accessing the Presentation if they belong to a class of users who have general access—for example, if the Presentation is shared with the user's entire domain, or if the Presentation is in a shared drive that the user can access.
        * For Drive files, this also removes the user from the list of viewers.
+       *
+       * Return:
+       * - Presentation — This Presentation, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#removeEditor(User)
        * @param user A representation of the user to remove.
        */
       removeEditor(user: Base.User): Presentation;
 
       /**
-       * Removes the given user from the list of viewers and commenters for the Presentation. This
-       * method has no effect if the user is an editor, not a viewer or commenter. This method also
-       * doesn't block users from accessing the Presentation if they belong to a class of users who
-       * have general access—for example, if the Presentation is shared with the user's
-       * entire domain, or if the Presentation is in a shared drive that the user can access.
-       *
-       *
+       * Removes the given user from the list of viewers and commenters for the Presentation. This method has no effect if the user is an editor, not a viewer or commenter. This method also doesn't block users from accessing the Presentation if they belong to a class of users who have general access—for example, if the Presentation is shared with the user's entire domain, or if the Presentation is in a shared drive that the user can access.
        * For Drive files, this also removes the user from the list of editors.
+       *
+       * Return:
+       * - Presentation — This Presentation for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#removeViewer(String)
        * @param emailAddress The email address of the user to remove.
        */
       removeViewer(emailAddress: string): Presentation;
 
       /**
-       * Removes the given user from the list of viewers and commenters for the Presentation. This
-       * method has no effect if the user is an editor, not a viewer. This method also doesn't block
-       * users from accessing the Presentation if they belong to a class of users who have general
-       * access—for example, if the Presentation is shared with the user's entire domain, or
-       * if the Presentation is in a shared drive that the user can access.
-       *
-       *
+       * Removes the given user from the list of viewers and commenters for the Presentation. This method has no effect if the user is an editor, not a viewer. This method also doesn't block users from accessing the Presentation if they belong to a class of users who have general access—for example, if the Presentation is shared with the user's entire domain, or if the Presentation is in a shared drive that the user can access.
        * For Drive files, this also removes the user from the list of editors.
+       *
+       * Return:
+       * - Presentation — This Presentation for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#removeViewer(User)
        * @param user A representation of the user to remove.
        */
       removeViewer(user: Base.User): Presentation;
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -6460,6 +10467,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -6469,75 +10486,108 @@ declare namespace GoogleAppsScript {
 
       /**
        * Saves the current Presentation. Causes pending updates to be flushed and applied.
-       *
-       *
-       * The saveAndClose() method is automatically invoked at the end of script execution
-       * for each open Presentation, even if the script execution terminated with an error.
-       *
-       *
+       * The saveAndClose() method is automatically invoked at the end of script execution for each open Presentation, even if the script execution terminated with an error.
        * A closed Presentation cannot be edited. Use one of the open methods on SlidesApp to reopen a given presentation for editing.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#saveAndClose()
        */
-      saveAndClose(): void;
+      saveAndClose(): any;
 
       /**
        * Sets the name or title of the presentation.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/presentation#setName(String)
        * @param name The name to set for this presentation.
        */
-      setName(name: string): void;
+      setName(name: string): any;
     }
     /**
      * The user's selection in the active presentation.
      *
-     *     var selection = SlidesApp.getActivePresentation().getSelection();
-     *     var currentPage = selection.getCurrentPage();
-     *     var selectionType = selection.getSelectionType();
-     *     }
+     *     const selection = SlidesApp.getActivePresentation().getSelection();
+     *     const currentPage = selection.getCurrentPage();
+     *     const selectionType = selection.getSelectionType();
      */
     interface Selection {
 
       /**
        * Returns the currently active Page or null if there is no active page.
        *
-       *
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var currentPage = selection.getCurrentPage();
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const currentPage = selection.getCurrentPage();
        *     if (currentPage != null) {
-       *       Logger.log('Selected current active page ID: ' + currentPage.getObjectId());
+       *       Logger.log(`Selected current active page ID: ${currentPage.getObjectId()}`);
        *     }
+       *
+       * Return:
+       * - Page
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/selection#getCurrentPage()
        */
       getCurrentPage(): Page;
 
       /**
-       * Returns the PageElementRange collection of PageElement instances that are
-       * selected or null if there are no PageElement instances selected.
+       * Returns the PageElementRange collection of PageElement instances that are selected or null if there are no PageElement instances selected.
        *
-       *
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var selectionType = selection.getSelectionType();
-       *     if (selectionType == SlidesApp.SelectionType.PAGE_ELEMENT) {
-       *       var currentPage = selection.getCurrentPage();
-       *       var pageElements = selection.getPageElementRange().getPageElements();
-       *       Logger.log('Number of page elements selected: ' + pageElements.length);
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const selectionType = selection.getSelectionType();
+       *     if (selectionType === SlidesApp.SelectionType.PAGE_ELEMENT) {
+       *       const currentPage = selection.getCurrentPage();
+       *       const pageElements = selection.getPageElementRange().getPageElements();
+       *       Logger.log(`Number of page elements selected: ${pageElements.length}`);
        *     }
+       *
+       * Return:
+       * - PageElementRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/selection#getPageElementRange()
        */
       getPageElementRange(): PageElementRange;
 
       /**
-       * Returns the PageRange a collection of Page instances in the flimstrip that are
-       * selected or null if the selection is not of type SelectionType.PAGE.
+       * Returns the PageRange a collection of Page instances in the flimstrip that are selected or null if the selection is not of type SelectionType.PAGE.
        *
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const selectionType = selection.getSelectionType();
+       *     if (selectionType === SlidesApp.SelectionType.PAGE) {
+       *       const pageRange = selection.getPageRange();
+       *       Logger.log(
+       *           `Number of pages in the flimstrip selected: ${
+       *               pageRange.getPages().length}`,
+       *       );
+       *     }
        *
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var selectionType = selection.getSelectionType();
-       *     if (selectionType == SlidesApp.SelectionType.PAGE) {
-       *       var pageRange = selection.getPageRange();
-       *       Logger.log('Number of pages in the flimstrip selected: ' + pageRange.getPages().length);
-       *     }
-       *     }
+       * Return:
+       * - PageRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/selection#getPageRange()
        */
       getPageRange(): PageRange;
@@ -6545,59 +10595,75 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the SelectionType.
        *
-       *
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var selectionType = selection.getSelectionType();
-       *     if (selectionType == SlidesApp.SelectionType.CURRENT_PAGE) {
-       *       var currentPage = selection.getCurrentPage();
-       *       Logger.log('Selected current active page ID: ' + currentPage.getObjectId());
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const selectionType = selection.getSelectionType();
+       *     if (selectionType === SlidesApp.SelectionType.CURRENT_PAGE) {
+       *       const currentPage = selection.getCurrentPage();
+       *       Logger.log(`Selected current active page ID: ${currentPage.getObjectId()}`);
        *     }
+       *
+       * Return:
+       * - SelectionType
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/selection#getSelectionType()
        */
       getSelectionType(): SelectionType;
 
       /**
-       * Returns the TableCellRange collection of TableCell instances that are selected
-       * or null if there are no TableCell instances selected.
+       * Returns the TableCellRange collection of TableCell instances that are selected or null if there are no TableCell instances selected.
        *
-       *
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var selectionType = selection.getSelectionType();
-       *     if (selectionType == SlidesApp.SelectionType.TABLE_CELL) {
-       *       var currentPage = selection.getCurrentPage();
-       *       var tableCells = selection.getTableCellRange().getTableCells();
-       *       var table = tableCells[0].getParentTable();
-       *       Logger.log('Number of table cells selected: ' + tableCells.length);
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const selectionType = selection.getSelectionType();
+       *     if (selectionType === SlidesApp.SelectionType.TABLE_CELL) {
+       *       const currentPage = selection.getCurrentPage();
+       *       const tableCells = selection.getTableCellRange().getTableCells();
+       *       const table = tableCells[0].getParentTable();
+       *       Logger.log(`Number of table cells selected: ${tableCells.length}`);
        *     }
+       *
+       * Return:
+       * - TableCellRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/selection#getTableCellRange()
        */
       getTableCellRange(): TableCellRange;
 
       /**
-       * Returns the TextRange that is selected or null if the selection is not of type
-       * SelectionType.TEXT.
-       *
-       *
+       * Returns the TextRange that is selected or null if the selection is not of type SelectionType.TEXT.
        * The TextRange represents two scenarios:
+       * 1. Range of text selected. For example if a shape has text "Hello", and "He" is selected, the returned range has TextRange.getStartIndex() = 0, and TextRange.getEndIndex() = 2.
+       * 2. Cursor position. For example if a shape has text "Hello", and cursor is after "H", ("H|ello"), the returned range has TextRange.getStartIndex() = 1 and TextRange.getEndIndex() = 1.
        *
-       *
-       * 1. Range of text selected. For example if a shape has text "Hello", and "He" is selected,
-       * the returned range has TextRange.getStartIndex() = 0, and TextRange.getEndIndex() =
-       * 2.
-       *
-       *
-       * 2. Cursor position. For example if a shape has text "Hello", and cursor is after "H",
-       * ("H|ello"), the returned range has TextRange.getStartIndex() = 1 and TextRange.getEndIndex() = 1.
-       *
-       *
-       *     var selection = SlidesApp.getActivePresentation().getSelection();
-       *     var selectionType = selection.getSelectionType();
-       *     if (selectionType == SlidesApp.SelectionType.TEXT) {
-       *       var currentPage = selection.getCurrentPage();
-       *       var pageElement = selection.getPageElementRange().getPageElements()[0];
-       *       var textRange = selection.getTextRange();
-       *       Logger.log('Text selected: ' + textRange.asString());
+       *     const selection = SlidesApp.getActivePresentation().getSelection();
+       *     const selectionType = selection.getSelectionType();
+       *     if (selectionType === SlidesApp.SelectionType.TEXT) {
+       *       const currentPage = selection.getCurrentPage();
+       *       const pageElement = selection.getPageElementRange().getPageElements()[0];
+       *       const textRange = selection.getTextRange();
+       *       Logger.log(`Text selected: ${textRange.asString()}`);
        *     }
+       *
+       * Return:
+       * - TextRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/selection#getTextRange()
        */
       getTextRange(): TextRange;
@@ -6623,6 +10689,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -6630,105 +10700,214 @@ declare namespace GoogleAppsScript {
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#bringForward()
        */
       bringForward(): Shape;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#bringToFront()
        */
       bringToFront(): Shape;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#duplicate()
        */
       duplicate(): PageElement;
 
       /**
-       * Returns the Autofit of the text within this shape. This is null if the shape
-       * doesn't allow text.
+       * Returns the Autofit of the text within this shape. This is null if the shape doesn't allow text.
+       *
+       * Return:
+       * - Autofit — The autofit of the text within this shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getAutofit()
        */
       getAutofit(): Autofit;
 
       /**
        * Returns the Border of the shape.
+       *
+       * Return:
+       * - Border — The border setting of this shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getBorder()
        */
       getBorder(): Border;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
        * Returns the ContentAlignment of the text in the shape.
+       *
+       * Return:
+       * - ContentAlignment — The alignment of text within this shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getContentAlignment()
        */
       getContentAlignment(): ContentAlignment;
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getDescription()
        */
       getDescription(): string;
 
       /**
        * Returns the Fill of the shape.
+       *
+       * Return:
+       * - Fill — The fill setting of this shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getFill()
        */
       getFill(): Fill;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getLeft()
        */
       getLeft(): number;
@@ -6736,118 +10915,242 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the Link or null if there is no link.
        *
-       *
-       *     var link = shape.getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
        *     if (link != null) {
-       *       Logger.log('Shape has a link of type: ' + link.getLinkType());
+       *       Logger.log(`Shape has a link of type: ${link.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - Link — The Link or null if there is no link.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getLink()
        */
       getLink(): Link;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the parent page element of the placeholder. Returns null if the shape is not a
-       * placeholder or has no parent.
+       * Returns the parent page element of the placeholder. Returns null if the shape is not a placeholder or has no parent.
+       *
+       * Return:
+       * - PageElement — The parent page element of this shape placeholder, or null if this shape is not a placeholder or doesn't have a parent.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getParentPlaceholder()
        */
       getParentPlaceholder(): PageElement;
 
       /**
-       * Returns the placeholder index of the shape. If two or more instances of the same placeholder
-       * types are present in the same page, they each have their own unique index value. Returns null if the shape is not a placeholder.
+       * Returns the placeholder index of the shape. If two or more instances of the same placeholder types are present in the same page, they each have their own unique index value. Returns null if the shape is not a placeholder.
+       *
+       * Return:
+       * - Integer — This shape's placeholder index, or null if the shape is not a placeholder.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getPlaceholderIndex()
        */
       getPlaceholderIndex(): Integer;
 
       /**
-       * Returns the placeholder type of the shape, or PlaceholderType.NONE if the shape is not
-       * a placeholder.
+       * Returns the placeholder type of the shape, or PlaceholderType.NONE if the shape is not a placeholder.
+       *
+       * Return:
+       * - PlaceholderType — The placeholder type of this shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getPlaceholderType()
        */
       getPlaceholderType(): PlaceholderType;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getRotation()
        */
       getRotation(): number;
 
       /**
        * Returns the type of the shape.
+       *
+       * Return:
+       * - ShapeType — The type of this shape.
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getShapeType()
        */
       getShapeType(): ShapeType;
 
       /**
        * Returns the text content of the shape.
-       *
-       *
        * Text within a shape always terminates with a newline character.
+       *
+       * Return:
+       * - TextRange — The text content of this shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getText()
        */
       getText(): TextRange;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#getWidth()
        */
       getWidth(): number;
@@ -6855,15 +11158,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -6871,44 +11185,47 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/shape#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
        * Removes a Link.
        *
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     slides[1].getShapes()[0].removeLink();
        *
-       *     shape.removeLink();
        * https://developers.google.com/apps-script/reference/slides/shape#removeLink()
        */
-      removeLink(): void;
+      removeLink(): any;
 
       /**
        * Replaces this shape with an image provided by a BlobSource.
+       * The image is fetched from the provided BlobSource once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in PNG, JPEG, or GIF format.
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the size of the existing shape.
        *
-       *
-       * The image is fetched from the provided BlobSource once at insertion time and a copy
-       * is stored for display inside the presentation. Images must be less than 50MB in size, cannot
-       * exceed 25 megapixels, and must be in PNG, JPEG, or GIF format.
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the size of the existing shape.
-       *
-       *
-       *     var shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
        *     // Get the Drive image file with the given ID.
-       *     var driveImage = DriveApp.getFileById(fileId);
+       *     const driveImage = DriveApp.getFileById('123abc');
        *     shape.replaceWithImage(driveImage);
+       *
+       * Return:
+       * - Image — The Image that replaced the shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#replaceWithImage(BlobSource)
        * @param blobSource The image data.
        */
@@ -6916,18 +11233,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces this shape with an image provided by a BlobSource.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        *
-       *
-       * Inserting the image fetches it from the BlobSource once and a copy is stored for
-       * display inside the presentation. Images must be less than 50MB in size, cannot exceed 25
-       * megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       *     var shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
        *     // Get the Drive image file with the given ID.
-       *     var driveImage = DriveApp.getFileById(fileId);
+       *     const driveImage = DriveApp.getFileById('123abc');
        *     // Replace and crop the replaced image.
        *     shape.replaceWithImage(driveImage, true);
+       *
+       * Return:
+       * - Image — The Image that replaced the shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#replaceWithImage(BlobSource,Boolean)
        * @param blobSource The image data.
        * @param crop If true, crops the image to fit the existing shape's size. Otherwise, the image is scaled and centered.
@@ -6936,19 +11258,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces this shape with an image.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the size of the existing shape.
        *
+       * Return:
+       * - Image — The Image that replaced the shape.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the size of the existing shape.
        * https://developers.google.com/apps-script/reference/slides/shape#replaceWithImage(String)
        * @param imageUrl The image URL to download the image from.
        */
@@ -6956,15 +11278,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces this shape with an image.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
        *
+       * Return:
+       * - Image — The Image that replaced the shape.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be no larger than 2kB. The URL itself is saved with the image and
-       * exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/shape#replaceWithImage(String,Boolean)
        * @param imageUrl The image URL to download the image from.
        * @param crop If true, crops the image to fit the existing shape's size. Otherwise, the image is scaled and centered.
@@ -6973,17 +11298,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces this shape with a Google Sheets chart.
+       * The chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * The chart is linked with the source Google Sheets chart which allows it to be updated. Other
-       * collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Replace the shape with the Sheets chart.
-       *     var shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
        *     shape.replaceWithSheetsChart(chart);
+       *
+       * Return:
+       * - SheetsChart — The chart that replaced the shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#replaceWithSheetsChart(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet that replaces the shape.
        */
@@ -6991,120 +11322,160 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces this shape with an image of a Google Sheets chart.
-       *
-       *
-       * In order to maintain the Google Sheets chart's aspect ratio, the chart image is scaled and
-       * centered with respect to the size of the existing shape.
-       *
-       *
+       * In order to maintain the Google Sheets chart's aspect ratio, the chart image is scaled and centered with respect to the size of the existing shape.
        * The image of the chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Replace the shape with the Sheets chart as an image.
-       *     var shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
        *     shape.replaceWithSheetsChartAsImage(chart);
+       *
+       * Return:
+       * - Image — The image of the chart that replaced the shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#replaceWithSheetsChartAsImage(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet that replaces the shape.
        */
       replaceWithSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Shape — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): Shape;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Shape — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): Shape;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/shape#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#sendBackward()
        */
       sendBackward(): Shape;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#sendToBack()
        */
       sendToBack(): Shape;
 
       /**
        * Sets the ContentAlignment of the text in the shape.
-       *
-       *
        * This method automatically deactivates text autofit properties on the updated shapes.
+       *
+       * Return:
+       * - Shape — This shape, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setContentAlignment(ContentAlignment)
        * @param contentAlignment The alignment to set.
        */
@@ -7112,36 +11483,59 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - Shape — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): Shape;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Shape — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): Shape;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -7150,9 +11544,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the zero-based index of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(0);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(0);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setLinkSlide(Integer)
        * @param slideIndex The zero-based index to the slide.
        */
@@ -7161,10 +11566,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide, the link is set by the given slide ID.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     var slide = presentation.getSlides()[0];
-       *     shape.setLinkSlide(slide);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(slides[0]);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setLinkSlide(Slide)
        * @param slide The Slide to be linked.
        */
@@ -7173,9 +11588,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the relative position of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(SlideApp.SlidePosition.FIRST_SLIDE);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setLinkSlide(SlidePosition)
        * @param slidePosition The relative SlidePosition.
        */
@@ -7184,9 +11610,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given non-empty URL string.
        *
-       *
        *     // Set a link to the URL.
-       *     shape.setLinkUrl("https://slides.google.com");
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkUrl('https://slides.google.com');
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setLinkUrl(String)
        * @param url The URL string.
        */
@@ -7194,11 +11631,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Shape — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -7206,23 +11649,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - Shape — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): Shape;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Shape — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -7230,31 +11690,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - Shape — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/shape#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): Shape;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Shape — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/shape#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -7264,7 +11730,7 @@ declare namespace GoogleAppsScript {
      * The shape types. Many of these shapes correspond to predefined shapes from the ECMA-376 standard.
      * More information on those shapes can be found in the description of the "ST_ShapeType" simple
      * type in section 20.1.10.55 of "Office Open XML File Formats - Fundamentals and Markup Language
-     * Reference", part 1 of ECMA-376 4th
+     * Reference", part 1 of ECMA-376 5th
      * edition.
      *
      * To call an enum, you call its parent class, name, and property. For example,
@@ -7278,6 +11744,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -7285,98 +11755,198 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the chart as an image or null if the chart is not an embedded image.
+       *
+       * Return:
+       * - Image — This chart as an image, or null if the chart is not an embedded image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#asImage()
        */
       asImage(): Image;
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#bringForward()
        */
       bringForward(): SheetsChart;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#bringToFront()
        */
       bringToFront(): SheetsChart;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#duplicate()
        */
       duplicate(): PageElement;
 
       /**
        * Gets the ID of the specific chart in the Google Sheets spreadsheet that is embedded.
+       *
+       * Return:
+       * - Integer — The ID of the embedded chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getChartId()
        */
       getChartId(): Integer;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getDescription()
        */
       getDescription(): string;
 
       /**
        * Returns the embed type of the Sheets chart.
+       *
+       * Return:
+       * - SheetsChartEmbedType — The embed type of this chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getEmbedType()
        */
       getEmbedType(): SheetsChartEmbedType;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getLeft()
        */
       getLeft(): number;
@@ -7384,88 +11954,183 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the Link or null if there is no link.
        *
-       *
-       *     var link = shape.getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
        *     if (link != null) {
-       *       Logger.log('Shape has a link of type: ' + link.getLinkType());
+       *       Logger.log(`Shape has a link of type: ${link.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - Link — The Link or null if there is no link.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getLink()
        */
       getLink(): Link;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getRotation()
        */
       getRotation(): number;
 
       /**
        * Gets the ID of the Google Sheets spreadsheet that contains the source chart.
+       *
+       * Return:
+       * - String — The ID of the spreadsheet that contains the source chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getSpreadsheetId()
        */
       getSpreadsheetId(): string;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#getWidth()
        */
       getWidth(): number;
@@ -7473,172 +12138,239 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
       preconcatenateTransform(transform: AffineTransform): SheetsChart;
 
       /**
-       * Refreshes the chart by replacing it with the latest version of the chart from Google Sheets. If
-       * the chart is already up to date, does not make any change to the chart in the presentation.
+       * Refreshes the chart by replacing it with the latest version of the chart from Google Sheets. If the chart is already up to date, does not make any change to the chart in the presentation.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/spreadsheets.readonly
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#refresh()
        */
-      refresh(): void;
+      refresh(): any;
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
        * Removes a Link.
        *
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     slides[1].getShapes()[0].removeLink();
        *
-       *     shape.removeLink();
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#removeLink()
        */
-      removeLink(): void;
+      removeLink(): any;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): SheetsChart;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): SheetsChart;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#sendBackward()
        */
       sendBackward(): SheetsChart;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#sendToBack()
        */
       sendToBack(): SheetsChart;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - SheetsChart — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): SheetsChart;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): SheetsChart;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -7647,9 +12379,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the zero-based index of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(0);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(0);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setLinkSlide(Integer)
        * @param slideIndex The zero-based index to the slide.
        */
@@ -7658,10 +12401,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide, the link is set by the given slide ID.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     var slide = presentation.getSlides()[0];
-       *     shape.setLinkSlide(slide);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(slides[0]);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setLinkSlide(Slide)
        * @param slide The Slide to be linked.
        */
@@ -7670,9 +12423,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the relative position of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(SlideApp.SlidePosition.FIRST_SLIDE);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setLinkSlide(SlidePosition)
        * @param slidePosition The relative SlidePosition.
        */
@@ -7681,9 +12445,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given non-empty URL string.
        *
-       *
        *     // Set a link to the URL.
-       *     shape.setLinkUrl("https://slides.google.com");
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkUrl('https://slides.google.com');
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setLinkUrl(String)
        * @param url The URL string.
        */
@@ -7691,11 +12466,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -7703,23 +12484,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - SheetsChart — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): SheetsChart;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -7727,31 +12525,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - SheetsChart — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): SheetsChart;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - SheetsChart — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/sheets-chart#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -7774,65 +12578,161 @@ declare namespace GoogleAppsScript {
 
       /**
        * Duplicates the slide.
-       *
-       *
        * The duplicate slide is created immediately following the original.
+       *
+       * Return:
+       * - Slide — The duplicated slide.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#duplicate()
        */
       duplicate(): Slide;
 
       /**
        * Gets the page's background.
+       *
+       * Return:
+       * - PageBackground — The page's background.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getBackground()
        */
       getBackground(): PageBackground;
 
       /**
        * Gets the ColorScheme associated with the page.
+       *
+       * Return:
+       * - ColorScheme — The page's color scheme.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getColorScheme()
        */
       getColorScheme(): ColorScheme;
 
       /**
        * Returns the list of Group objects on the page.
+       *
+       * Return:
+       * - Group[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getGroups()
        */
       getGroups(): Group[];
 
       /**
        * Returns the list of Image objects on the page.
+       *
+       * Return:
+       * - Image[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getImages()
        */
       getImages(): Image[];
 
       /**
-       * Gets the layout that the slide is based on or null if the slide is not based on a
-       * layout.
+       * Gets the layout that the slide is based on or null if the slide is not based on a layout.
+       *
+       * Return:
+       * - Layout
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getLayout()
        */
       getLayout(): Layout;
 
       /**
        * Returns the list of Line objects on the page.
+       *
+       * Return:
+       * - Line[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getLines()
        */
       getLines(): Line[];
 
       /**
        * Returns the notes page associated with the slide.
+       *
+       * Return:
+       * - NotesPage
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getNotesPage()
        */
       getNotesPage(): NotesPage;
 
       /**
-       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same
-       * namespace.
+       * Gets the unique ID for the page. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the PageElement on the page with the given ID, or null if none exists.
+       *
+       * Return:
+       * - PageElement — The page element with the given ID.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getPageElementById(String)
        * @param id The ID of the page element that is being retrieved.
        */
@@ -7840,44 +12740,78 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of PageElement objects rendered on the page.
+       *
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getPageElements()
        */
       getPageElements(): PageElement[];
 
       /**
        * Gets the type of the page.
+       *
+       * Return:
+       * - PageType — The page type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getPageType()
        */
       getPageType(): PageType;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType or
-       * null if a matching placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType or null if a matching placeholder is not present.
+       * If there are multiple placeholders with the same type, it returns the one with minimal placeholder index. If there are multiple matching placeholders with the same index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *     );
        *
-       * If there are multiple placeholders with the same type, it returns the one with minimal
-       * placeholder index. If there are multiple matching placeholders with the same index, it returns
-       * the first placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getPlaceholder(PlaceholderType)
        * @param placeholderType
        */
       getPlaceholder(placeholderType: PlaceholderType): PageElement;
 
       /**
-       * Returns the placeholder PageElement object for a specified PlaceholderType and
-       * a placeholder index, or null if the placeholder is not present.
+       * Returns the placeholder PageElement object for a specified PlaceholderType and a placeholder index, or null if the placeholder is not present.
+       * If there are multiple placeholders with the same type and index, it returns the first placeholder from the page's page elements collection.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const placeholder = slide.getPlaceholder(
+       *         SlidesApp.PlaceholderType.CENTERED_TITLE,
+       *         0,
+       *     );
        *
-       * If there are multiple placeholders with the same type and index, it returns the first
-       * placeholder from the page's page elements collection.
+       * Return:
+       * - PageElement
        *
+       * Authorization:
        *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var placeholder = slide.getPlaceholder(SlidesApp.PlaceholderType.CENTERED_TITLE, 0);
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getPlaceholder(PlaceholderType,Integer)
        * @param placeholderType
        * @param placeholderIndex
@@ -7887,74 +12821,167 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the list of placeholder PageElement objects in the page.
        *
+       *     const master = SlidesApp.getActivePresentation().getMasters()[0];
+       *     Logger.log(
+       *         `Number of placeholders in the master: ${master.getPlaceholders().length}`,
+       *     );
        *
-       *     var master = SlidesApp.getActivePresentation().getMasters()[0];
-       *     Logger.log('Number of placeholders in the master: ' + master.getPlaceholders().length);
+       * Return:
+       * - PageElement[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getPlaceholders()
        */
       getPlaceholders(): PageElement[];
 
       /**
        * Returns the list of Shape objects on the page.
+       *
+       * Return:
+       * - Shape[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getShapes()
        */
       getShapes(): Shape[];
 
       /**
        * Returns the list of SheetsChart objects on the page.
+       *
+       * Return:
+       * - SheetsChart[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getSheetsCharts()
        */
       getSheetsCharts(): SheetsChart[];
 
       /**
        * Returns a SlideLinkingMode indicating if the slide is linked to another slide.
+       *
+       * Return:
+       * - SlideLinkingMode — The slide linking mode.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getSlideLinkingMode()
        */
       getSlideLinkingMode(): SlideLinkingMode;
 
       /**
        * Returns the source Presentation ID or null if the slide is not linked.
+       * A slide only has a source Presentation ID when it is linked to a slide within another presentation.
        *
+       * Return:
+       * - String — The source presentation ID or null.
        *
-       * A slide only has a source Presentation ID when it is linked to a slide within
-       * another presentation.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getSourcePresentationId()
        */
       getSourcePresentationId(): string;
 
       /**
        * Returns the source slide ID or null if the slide is not linked.
-       *
-       *
        * A slide only has a source slide ID when it is linked to a slide within another presentation.
+       *
+       * Return:
+       * - String — The source slide ID or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getSourceSlideObjectId()
        */
       getSourceSlideObjectId(): string;
 
       /**
        * Returns the list of Table objects on the page.
+       *
+       * Return:
+       * - Table[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getTables()
        */
       getTables(): Table[];
 
       /**
        * Returns the list of Video objects on the page.
+       *
+       * Return:
+       * - Video[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getVideos()
        */
       getVideos(): Video[];
 
       /**
        * Returns the list of WordArt objects on the page.
+       *
+       * Return:
+       * - WordArt[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#getWordArts()
        */
       getWordArts(): WordArt[];
 
       /**
        * Groups all the specified page elements.
+       * There should be at least two page elements on the same page that are not already in another group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
        *
+       * Return:
+       * - Group — The new group.
        *
-       * There should be at least two page elements on the same page that are not already in another
-       * group. Some page elements, such as Videos, Tables and placeholder Shapes cannot be grouped.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#group(PageElement)
        * @param pageElements The elements to group together.
        */
@@ -7962,45 +12989,51 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Group on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a group between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var group = otherPresentationSlide.getGroups()[0];
-       *     currentPresentationSlide.insertGroup(group); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const group = otherPresentationSlide.getGroups()[0];
+       *     currentPresentationSlide.insertGroup(
+       *         group);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Group — The inserted group.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertGroup(Group)
        * @param group The group to be copied and inserted.
        */
       insertGroup(group: Group): Group;
 
       /**
-       * Inserts an image at the top left corner of the page with a default size from the specified
-       * image blob.
+       * Inserts an image at the top left corner of the page with a default size from the specified image blob.
+       * Inserting the image fetches it from the BlobSource once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
        *
-       *
-       * Inserting the image fetches it from the BlobSource once and a copy is stored for
-       * display inside the presentation. Images must be less than 50MB in size, cannot exceed 25
-       * megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
+       *     const image = DriveApp.getFileById('123abc');
        *     slide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertImage(BlobSource)
        * @param blobSource The image data.
        */
@@ -8008,23 +13041,31 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the specified image blob.
+       * The image is fetched from the provided BlobSource once at insertion time and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
-       *
-       * The image is fetched from the provided BlobSource once at insertion time and a copy
-       * is stored for display inside the presentation. Images must be less than 50MB in size, cannot
-       * exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     // Get the Drive image file with the given ID.
-       *     var image = DriveApp.getFileById(fileId);
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 300, height: 100};
+       *     const image = DriveApp.getFileById('123abc');
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 300,
+       *       height: 100
+       *     };
        *     slide.insertImage(image, position.left, position.top, size.width, size.height);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertImage(BlobSource,Number,Number,Number,Number)
        * @param blobSource The image data.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -8036,27 +13077,27 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Image on the page.
-       *
-       *
-       * The inserted images's position on this page is determined from the source image's position
-       * on its respective page.
-       *
-       *
-       * If the provided image is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted image.
-       *
-       *
-       * If the provided image is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the image from the source
-       * presentation. If the copied placeholder image is empty, nothing is inserted in the destination
-       * presentation.
-       *
+       * The inserted images's position on this page is determined from the source image's position on its respective page.
+       * If the provided image is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted image.
+       * If the provided image is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the image from the source presentation. If the copied placeholder image is empty, nothing is inserted in the destination presentation.
        *
        *     // Copy an image between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var image = otherPresentationSlide.getImages[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const image = otherPresentationSlide.getImages[0];
        *     currentPresentationSlide.insertImage(image);
+       *
+       * Return:
+       * - Image — The inserted image.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertImage(Image)
        * @param image The image to be copied and inserted.
        */
@@ -8064,15 +13105,18 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image at the top left corner of the page with a default size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
        * https://developers.google.com/apps-script/reference/slides/slide#insertImage(String)
        * @param imageUrl The image URL.
        */
@@ -8080,19 +13124,19 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts an image on the page with the provided position and size from the provided URL.
+       * Inserting the image fetches it from the URL once and a copy is stored for display inside the presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF format.
+       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved with the image and exposed via Image.getSourceUrl().
+       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect to the provided size.
        *
+       * Return:
+       * - Image — The inserted image.
        *
-       * Inserting the image fetches it from the URL once and a copy is stored for display inside the
-       * presentation. Images must be less than 50MB in size, cannot exceed 25 megapixels, and must be
-       * in either in PNG, JPEG, or GIF format.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * The provided URL must be publicly accessible and no larger than 2kB. The URL itself is saved
-       * with the image and exposed via Image.getSourceUrl().
-       *
-       *
-       * In order to maintain the image's aspect ratio, the image is scaled and centered with respect
-       * to the provided size.
        * https://developers.google.com/apps-script/reference/slides/slide#insertImage(String,Number,Number,Number,Number)
        * @param imageUrl The image URL.
        * @param left The horizontal position of the image in points, measured from the upper left corner of the page.
@@ -8104,44 +13148,54 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Line on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a line between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var line = otherPresentationSlide.getLines[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const line = otherPresentationSlide.getLines[0];
        *     currentPresentationSlide.insertLine(line);
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertLine(Line)
        * @param line The line to be copied and inserted.
        */
       insertLine(line: Line): Line;
 
       /**
-       * Inserts a line on the page connecting two connection sites. The two
-       * connection sites must be on this page.
-       *
+       * Inserts a line on the page connecting two connection sites. The two connection sites must be on this page.
        *
        *     // Insert a line in the first slide of the presentation connecting two shapes.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
-       *     var shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape1 = slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *     const shape2 = slide.insertShape(SlidesApp.ShapeType.CLOUD);
        *     slide.insertLine(
        *         SlidesApp.LineCategory.BENT,
        *         shape1.getConnectionSites()[0],
-       *         shape2.getConnectionSites()[1]);
+       *         shape2.getConnectionSites()[1],
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertLine(LineCategory,ConnectionSite,ConnectionSite)
        * @param lineCategory The category of the line to insert.
        * @param startConnectionSite The connection site where the start of the line is to be connected.
@@ -8152,17 +13206,33 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a line on the page.
        *
-       *
        *     // Insert a line in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var startPoint = {left: 10, top: 10};
-       *     var endPoint = {left: 40, top: 40};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const startPoint = {
+       *       left: 10,
+       *       top: 10
+       *     };
+       *     const endPoint = {
+       *       left: 40,
+       *       top: 40
+       *     };
        *     slide.insertLine(
        *         SlidesApp.LineCategory.STRAIGHT,
        *         startPoint.left,
        *         startPoint.top,
        *         endPoint.left,
-       *         endPoint.top);
+       *         endPoint.top,
+       *     );
+       *
+       * Return:
+       * - Line — The inserted line.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertLine(LineCategory,Number,Number,Number,Number)
        * @param lineCategory The category of the line to insert.
        * @param startLeft The horizontal position of the start point of the line, measured in points from the upper left corner of the page.
@@ -8174,28 +13244,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided PageElement on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a page element between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = otherPresentationSlide.getPageElements()[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = otherPresentationSlide.getPageElements()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertPageElement(pageElement);
+       *
+       * Return:
+       * - PageElement — The inserted page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertPageElement(PageElement)
        * @param pageElement The page element to be copied and inserted.
        */
@@ -8203,26 +13274,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Shape on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a shape between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var shape = otherPresentationSlide.getShapes[0];
-       *     currentPresentationSlide.insertShape(shape); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const shape = otherPresentationSlide.getShapes[0];
+       *     currentPresentationSlide.insertShape(
+       *         shape);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertShape(Shape)
        * @param shape The shape to be copied and inserted.
        */
@@ -8230,16 +13303,23 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
-       *
-       *
        * The shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert a shape in the first slide of the presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertShape(SlidesApp.ShapeType.RECTANGLE);
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertShape(ShapeType)
        * @param shapeType The type of shape to insert.
        */
@@ -8247,6 +13327,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a shape on the page.
+       *
+       * Return:
+       * - Shape — The inserted shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertShape(ShapeType,Number,Number,Number,Number)
        * @param shapeType The type of shape to insert.
        * @param left The horizontal position of the shape, measured from the upper left corner of the page.
@@ -8258,20 +13348,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page.
-       *
-       *
        * The chart is inserted with a default size at the top left corner of the page.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
        *     slide.insertSheetsChart(chart);
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertSheetsChart(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
@@ -8279,22 +13373,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart on the page with the provided position and size.
+       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect to the provided size.
+       * The inserted chart is linked with the source Google Sheets chart which allows it to be updated. Other collaborators can see the link to the source spreadsheet.
        *
-       *
-       * In order to maintain the chart's aspect ratio, the chart is scaled and centered with respect
-       * to the provided size.
-       *
-       *
-       * The inserted chart is linked with the source Google Sheets chart which allows it to be
-       * updated. Other collaborators can see the link to the source spreadsheet.
-       *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChart(
@@ -8302,7 +13395,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.top,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - SheetsChart — The inserted chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertSheetsChart(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -8314,28 +13418,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided SheetsChart on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a sheets chart between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var sheetsChart = otherPresentationSlide.getSheetsCharts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const sheetsChart = otherPresentationSlide.getSheetsCharts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertSheetsChart(sheetsChart);
+       *
+       * Return:
+       * - SheetsChart — The inserted sheets chart.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertSheetsChart(SheetsChart)
        * @param sheetsChart The sheets chart to be copied and inserted.
        */
@@ -8343,42 +13448,47 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a Google Sheets chart as an Image on the page.
-       *
-       *
        * The image of the chart is inserted with a default size at the top left corner of the page.
-       *
-       *
        * The inserted image of chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertSheetsChartAsImage(chart); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertSheetsChartAsImage(
+       *         chart);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertSheetsChartAsImage(EmbeddedChart)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        */
       insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
 
       /**
-       * Inserts a Google Sheets chart as an Image on the page with the provided position and
-       * size.
-       *
-       *
-       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with
-       * respect to the provided size.
-       *
-       *
+       * Inserts a Google Sheets chart as an Image on the page with the provided position and size.
+       * In order to maintain the chart image's aspect ratio, the image is scaled and centered with respect to the provided size.
        * The inserted image of the chart is not linked with the source Google Sheets chart.
        *
-       *
-       *     var sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
-       *     var chart = sheet.getCharts()[0];
+       *     const sheet = SpreadsheetApp.openById('spreadsheetId').getSheets()[0];
+       *     const chart = sheet.getCharts()[0];
        *     // Insert the spreadsheet chart in the first slide.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var position = {left: 0, top: 0};
-       *     var size = {width: 200, height: 200};
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const position = {
+       *       left: 0,
+       *       top: 0
+       *     };
+       *     const size = {
+       *       width: 200,
+       *       height: 200
+       *     };
        *
        *     // Also available for Layout, Master, and Page.
        *     slide.insertSheetsChartAsImage(
@@ -8386,7 +13496,18 @@ declare namespace GoogleAppsScript {
        *         position.left,
        *         position.right,
        *         size.width,
-       *         size.height);
+       *         size.height,
+       *     );
+       *
+       * Return:
+       * - Image — The inserted image of the chart in the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertSheetsChartAsImage(EmbeddedChart,Number,Number,Number,Number)
        * @param sourceChart The chart in a spreadsheet to be inserted in the page.
        * @param left The horizontal position of the chart in points, measured from the upper left corner of the page.
@@ -8398,9 +13519,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page.
-       *
-       *
        * The table is centered on the page with default size and evenly distributed rows and columns.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertTable(Integer,Integer)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -8409,9 +13538,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a table on the page with the provided position and size.
-       *
-       *
        * Rows and columns are evenly distributed in the created table.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertTable(Integer,Integer,Number,Number,Number,Number)
        * @param numRows The number of rows in the table.
        * @param numColumns The number of columns in the table.
@@ -8424,26 +13561,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Table on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a table between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var table = otherPresentationSlide.getTables[0];
-       *     currentPresentationSlide.insertTable(table); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const table = otherPresentationSlide.getTables[0];
+       *     currentPresentationSlide.insertTable(
+       *         table);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Table — The inserted table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertTable(Table)
        * @param table The table to be copied and inserted.
        */
@@ -8451,14 +13590,21 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a text box Shape containing the provided string on the page.
-       *
-       *
        * The text box shape is inserted with a default size at the top left corner of the page.
        *
-       *
        *     // Insert text box with "Hello" on the first slide of presentation.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello'); // Also available for Layout, Master, and Page.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox('Hello');  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertTextBox(String)
        * @param text The string the text box shape should contain.
        */
@@ -8467,11 +13613,21 @@ declare namespace GoogleAppsScript {
       /**
        * Inserts a text box Shape containing the provided string on the page.
        *
+       *     // Insert text box with "Hello" on the first slide of presentation. This text
+       *     // box is a square with a length of 10 points on each side.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.insertTextBox(
+       *         'Hello', 0, 0, 10, 10);  // Also available for Layout, Master, and Page.
        *
-       *     // Insert text box with "Hello" on the first slide of presentation. This text box is a square
-       *     // with a length of 10 points on each side.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.insertTextBox('Hello', 0, 0, 10, 10); // Also available for Layout, Master, and Page.
+       * Return:
+       * - Shape — The inserted text box shape.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertTextBox(String,Number,Number,Number,Number)
        * @param text The string the text box shape should contain.
        * @param left The horizontal position of the text box shape, measured from the upper left corner of the page.
@@ -8483,9 +13639,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video at the top left corner of the page with a default size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertVideo(String)
        * @param videoUrl The URL of the video to insert.
        */
@@ -8493,9 +13657,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a video on the page with the provided position and size.
-       *
-       *
        * Only YouTube videos are currently supported.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertVideo(String,Number,Number,Number,Number)
        * @param videoUrl The URL of the video to insert.
        * @param left The horizontal position of the video in points, measured from the upper left corner of the page.
@@ -8507,26 +13679,28 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided Video on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a video between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var video = otherPresentationSlide.getVideos[0];
-       *     currentPresentationSlide.insertVideo(video); // Also available for Layout, Master, and Page.
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const video = otherPresentationSlide.getVideos[0];
+       *     currentPresentationSlide.insertVideo(
+       *         video);  // Also available for Layout, Master, and Page.
+       *
+       * Return:
+       * - Video — The inserted video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertVideo(Video)
        * @param video The video to be copied and inserted.
        */
@@ -8534,28 +13708,29 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided WordArt on the page.
-       *
-       *
-       * The inserted element's position on this page is determined from the source element's
-       * position on its respective page.
-       *
-       *
-       * If the provided element is a placeholder being copied from within the current presentation,
-       * properties that inherit from master or layout pages also inherit on the inserted element.
-       *
-       *
-       * If the provided element is a placeholder being copied from a different presentation,
-       * properties that inherit from master or layout pages are copied onto the element from the source
-       * presentation.
-       *
+       * The inserted element's position on this page is determined from the source element's position on its respective page.
+       * If the provided element is a placeholder being copied from within the current presentation, properties that inherit from master or layout pages also inherit on the inserted element.
+       * If the provided element is a placeholder being copied from a different presentation, properties that inherit from master or layout pages are copied onto the element from the source presentation.
        *
        *     // Copy a word art between presentations.
-       *     var otherPresentationSlide = SlidesApp.openById('presentationId').getSlides()[0];
-       *     var currentPresentationSlide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var wordArt = otherPresentationSlide.getWordArts[0];
+       *     const otherPresentationSlide =
+       *         SlidesApp.openById('presentationId').getSlides()[0];
+       *     const currentPresentationSlide =
+       *         SlidesApp.getActivePresentation().getSlides()[0];
+       *     const wordArt = otherPresentationSlide.getWordArts[0];
        *
        *     // Also available for Layout, Master, and Page.
        *     currentPresentationSlide.insertWordArt(wordArt);
+       *
+       * Return:
+       * - WordArt — The inserted word art.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#insertWordArt(WordArt)
        * @param wordArt The group to be copied and inserted.
        */
@@ -8563,42 +13738,87 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns whether the slide is skipped in the presentation mode.
+       *
+       * Return:
+       * - Boolean — True if the slide is skipped in the presentation mode.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#isSkipped()
        */
       isSkipped(): boolean;
 
       /**
        * Move the slide to the specified index.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#move(Integer)
        * @param index The index where the slide should be moved to, based on the slide arrangement before the move. The index should be between zero and the number of slides in the presentation, inclusive.
        */
-      move(index: Integer): void;
+      move(index: Integer): any;
 
       /**
-       * Refreshes the slide to reflect any changes made to the linked source slide. If this slide is
-       * not linked, returns without making any changes.
+       * Refreshes the slide to reflect any changes made to the linked source slide. If this slide is not linked, returns without making any changes.
+       * The refreshSlide method copies the linked source slide's corresponding master and layout pages into the slide's presentation if they do not already exist. If they do already exist, they are likewise updated to reflect any changes made to the source.
        *
+       *     const currentPresentation = SlidesApp.getActivePresentation();
+       *     const sourcePresentation = SlidesApp.openById('sourcePresentationId');
+       *     const sourceSlide = sourcePresentation.getSlides()[0];
+       *     const linkedSlide = currentPresentation.append(
+       *         sourceSlide,
+       *         SlidesApp.SlideLinkingMode.LINKED,
+       *     );
        *
-       * The refreshSlide method copies the linked source slide's corresponding master and
-       * layout pages into the slide's presentation if they do not already exist. If they do already
-       * exist, they are likewise updated to reflect any changes made to the source.
+       *     sourceSlide.insertText(
+       *         'hello world');  // Only the source slide has the text box.
        *
+       *     linkedSlide.refreshSlide();  // The linked slide now has the text box.
        *
+       * Throws:
+       * - Error — If read-access to the source presentation is no longer available.
        *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/slide#refreshSlide()
        */
-      refreshSlide(): void;
+      refreshSlide(): any;
 
       /**
        * Removes the page.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -8607,6 +13827,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -8616,44 +13846,63 @@ declare namespace GoogleAppsScript {
 
       /**
        * Selects the Page in the active presentation as the current page selection and removes any previous selection.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        *
+       *     // Select the first slide as the current page selection and replace any previous
+       *     // selection.
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     slide.selectAsCurrentPage();  // Also available for Layout, Master, and Page.
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       *     // Select the first slide as the current page selection and replace any previous selection.
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     slide.selectAsCurrentPage(); // Also available for Layout, Master, and Page.
        * https://developers.google.com/apps-script/reference/slides/slide#selectAsCurrentPage()
        */
-      selectAsCurrentPage(): void;
+      selectAsCurrentPage(): any;
 
       /**
        * Sets whether the slide is skipped in the presentation mode.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#setSkipped(Boolean)
        * @param isSkipped True to skip the slide in the presentation mode.
        */
-      setSkipped(isSkipped: boolean): void;
+      setSkipped(isSkipped: boolean): any;
 
       /**
-       * Unlinks the current Slide from its source slide. If this slide is not linked, returns
-       * without making any changes.
+       * Unlinks the current Slide from its source slide. If this slide is not linked, returns without making any changes.
        *
-       *
-       *     var currentPresentation = SlidesApp.getActivePresentation();
-       *     var sourcePresentation = SlidesApp.openById('sourcePresentationId');
-       *     var sourceSlide = sourcePresentation.getSlides()[0];
-       *     var linkedSlide = currentPresentation.append(sourceSlide, SlidesApp.SlideLinkingMode.LINKED);
+       *     const currentPresentation = SlidesApp.getActivePresentation();
+       *     const sourcePresentation = SlidesApp.openById('sourcePresentationId');
+       *     const sourceSlide = sourcePresentation.getSlides()[0];
+       *     const linkedSlide = currentPresentation.append(
+       *         sourceSlide,
+       *         SlidesApp.SlideLinkingMode.LINKED,
+       *     );
        *
        *     linkedSlide.unlink();
        *
-       *     linkedSlide.getSourcePresentationId(); // returns null
-       *     linkedSlide.getSourceSlideObjectId();  // returns null
-       *     linkedSlide.getSlideLinkingMode();     // returns SlidesApp.SlideLinkingMode.NOT_LINKED
+       *     linkedSlide.getSourcePresentationId();  // returns null
+       *     linkedSlide.getSourceSlideObjectId();   // returns null
+       *     linkedSlide
+       *         .getSlideLinkingMode();  // returns SlidesApp.SlideLinkingMode.NOT_LINKED
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slide#unlink()
        */
-      unlink(): void;
+      unlink(): any;
     }
     /**
      * The mode of links between slides.
@@ -8673,7 +13922,7 @@ declare namespace GoogleAppsScript {
      * Creates and opens Presentations that can be edited.
      *
      *     // Open a presentation by ID.
-     *     var preso = SlidesApp.openById('PRESENTATION_ID_GOES_HERE');
+     *     let preso = SlidesApp.openById('PRESENTATION_ID_GOES_HERE');
      *
      *     // Create and open a presentation.
      *     preso = SlidesApp.create('Presentation Name');
@@ -8712,48 +13961,70 @@ declare namespace GoogleAppsScript {
 
       /**
        * Creates and opens a new Presentation.
+       *
+       * Return:
+       * - Presentation — the presentation with the given name.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slides-app#create(String)
        * @param name The name to be given to the created presentation.
        */
       create(name: string): Presentation;
 
       /**
-       * Returns the currently active presentation to which the script is container-bound, or null if there is no
-       * active presentation. To interact with a presentation to which the script is not
-       * container-bound, use openById(id) instead.
-       *
+       * Returns the currently active presentation to which the script is container-bound, or null if there is no active presentation. To interact with a presentation to which the script is not container-bound, use openById(id) instead.
        *
        *     // Get the current presentation to which this script is bound.
-       *     var presentation = SlidesApp.getActivePresentation();
+       *     const presentation = SlidesApp.getActivePresentation();
+       *
+       * Return:
+       * - Presentation
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slides-app#getActivePresentation()
        */
       getActivePresentation(): Presentation;
 
       /**
-       * Returns an instance of the presentation's user-interface environment that allows the script to
-       * add features like menus, dialogs, and sidebars. A script can only interact with the UI for the
-       * current instance of an open presentation, and only if the script is bound to the presentation. For more information, see
-       * the guides to menus and dialogs and sidebars.
+       * Returns an instance of the presentation's user-interface environment that allows the script to add features like menus, dialogs, and sidebars. A script can only interact with the UI for the current instance of an open presentation, and only if the script is bound to the presentation. For more information, see the guides to menus and dialogs and sidebars.
        *
-       *
-       *     // Add a custom menu to the active presentation, including a separator and a sub-menu.
+       *     // Add a custom menu to the active presentation, including a separator and a
+       *     // sub-menu.
        *     function onOpen(e) {
        *       SlidesApp.getUi()
        *           .createMenu('My Menu')
        *           .addItem('My menu item', 'myFunction')
        *           .addSeparator()
-       *           .addSubMenu(SlidesApp.getUi().createMenu('My sub-menu')
-       *               .addItem('One sub-menu item', 'mySecondFunction')
-       *               .addItem('Another sub-menu item', 'myThirdFunction'))
+       *           .addSubMenu(
+       *               SlidesApp.getUi()
+       *                   .createMenu('My sub-menu')
+       *                   .addItem('One sub-menu item', 'mySecondFunction')
+       *                   .addItem('Another sub-menu item', 'myThirdFunction'),
+       *               )
        *           .addToUi();
        *     }
+       *
+       * Return:
+       *
        * https://developers.google.com/apps-script/reference/slides/slides-app#getUi()
        */
       getUi(): Base.Ui;
 
       /**
-       * Returns a new AffineTransformBuilder to build an AffineTransform. The builder
-       * is preset with the identity affine transform.
+       * Returns a new AffineTransformBuilder to build an AffineTransform. The builder is preset with the identity affine transform.
+       *
+       * Return:
+       * - AffineTransformBuilder
+       *
        * https://developers.google.com/apps-script/reference/slides/slides-app#newAffineTransformBuilder()
        */
       newAffineTransformBuilder(): AffineTransformBuilder;
@@ -8761,9 +14032,17 @@ declare namespace GoogleAppsScript {
       /**
        * Opens the Presentation with the given ID.
        *
-       *
        *     // Open a presentation by ID.
-       *     var presentation = SlidesApp.openById('docId');
+       *     const presentation = SlidesApp.openById('docId');
+       *
+       * Return:
+       * - Presentation — the presentation with the given ID
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slides-app#openById(String)
        * @param id
        */
@@ -8772,9 +14051,19 @@ declare namespace GoogleAppsScript {
       /**
        * Opens the Presentation with the given URL.
        *
-       *
        *     // Open a presentation by URL.
-       *     var presentation = SlidesApp.openByUrl('https://docs.google.com/presentation/d/docId/edit');
+       *     const presentation = SlidesApp.openByUrl(
+       *         'https://docs.google.com/presentation/d/docId/edit',
+       *     );
+       *
+       * Return:
+       * - Presentation — the presentation with the given URL
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/slides-app#openByUrl(String)
        * @param url
        */
@@ -8790,12 +14079,32 @@ declare namespace GoogleAppsScript {
 
       /**
        * Get the opacity of the color, in the interval from [0, 1.0], where 1.0 means fully opaque.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/solid-fill#getAlpha()
        */
       getAlpha(): number;
 
       /**
        * Get the color of the fill.
+       *
+       * Return:
+       * - Color
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/solid-fill#getColor()
        */
       getColor(): Color;
@@ -8808,12 +14117,698 @@ declare namespace GoogleAppsScript {
      */
     enum SpacingMode { UNSUPPORTED, NEVER_COLLAPSE, COLLAPSE_LISTS }
     /**
+     * A PageElement representing a speaker spotlight.
+     *
+     *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+     *     const speakerSpotlight = slide.getPageElements()[0];
+     *     console.log(
+     *         `Page element is of type: ${
+     *             speakerSpotlight.getPageElementType().toString()}`,
+     *     );
+     */
+    interface SpeakerSpotlight {
+
+      /**
+       * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#alignOnPage(AlignmentPosition)
+       * @param alignmentPosition The position to align this page element to on the page.
+       */
+      alignOnPage(alignmentPosition: AlignmentPosition): SpeakerSpotlight;
+
+      /**
+       * Brings the page element forward on the page by one element.
+       * The page element must not be in a group.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#bringForward()
+       */
+      bringForward(): SpeakerSpotlight;
+
+      /**
+       * Brings the page element to the front of the page.
+       * The page element must not be in a group.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#bringToFront()
+       */
+      bringToFront(): SpeakerSpotlight;
+
+      /**
+       * Duplicates the page element.
+       * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#duplicate()
+       */
+      duplicate(): PageElement;
+
+      /**
+       * Returns the Border of the speaker spotlight.
+       *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // Gets the first element on the page, which in
+       *     // this example is of type speaker spotlight.
+       *     const speakerSpotlight = slide.getPageElements()[0];
+       *     // Gets the border of the speaker spotlight.
+       *     const border = speakerSpotlight.getBorder();
+       *
+       * Return:
+       * - Border — The border of the speaker spotlight.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getBorder()
+       */
+      getBorder(): Border;
+
+      /**
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getConnectionSites()
+       */
+      getConnectionSites(): ConnectionSite[];
+
+      /**
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getDescription()
+       */
+      getDescription(): string;
+
+      /**
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getHeight()
+       */
+      getHeight(): number;
+
+      /**
+       * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
+       *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getInherentHeight()
+       */
+      getInherentHeight(): number;
+
+      /**
+       * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
+       *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getInherentWidth()
+       */
+      getInherentWidth(): number;
+
+      /**
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getLeft()
+       */
+      getLeft(): number;
+
+      /**
+       * Returns the ShapeType of the mask applied to the speaker spotlight, or null if there is no mask.
+       *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // Gets the first element on the page, which in
+       *     // this example is of type speaker spotlight.
+       *     const speakerSpotlight = slide.getPageElements()[0];
+       *     // Gets the shape type of the mask on the speaker spotlight.
+       *     const maskShapeType = speakerSpotlight.getMaskShapeType();
+       *
+       * Return:
+       * - ShapeType — The shape type of the speaker spotlight mask.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getMaskShapeType()
+       */
+      getMaskShapeType(): ShapeType;
+
+      /**
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getObjectId()
+       */
+      getObjectId(): string;
+
+      /**
+       * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getPageElementType()
+       */
+      getPageElementType(): PageElementType;
+
+      /**
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getParentGroup()
+       */
+      getParentGroup(): Group;
+
+      /**
+       * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getParentPage()
+       */
+      getParentPage(): Page;
+
+      /**
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getRotation()
+       */
+      getRotation(): number;
+
+      /**
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getTitle()
+       */
+      getTitle(): string;
+
+      /**
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getTop()
+       */
+      getTop(): number;
+
+      /**
+       * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
+       *
+       * Return:
+       * - AffineTransform — The page element's transform.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getTransform()
+       */
+      getTransform(): AffineTransform;
+
+      /**
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#getWidth()
+       */
+      getWidth(): number;
+
+      /**
+       * Preconcatenates the provided transform to the existing transform of the page element.
+       *
+       *     newTransform = argument * existingTransform;
+       *
+       * For example, to move a page elements 36 points to the left:
+       *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
+       *
+       * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#preconcatenateTransform(AffineTransform)
+       * @param transform The transform to preconcatenate onto this page element's transform.
+       */
+      preconcatenateTransform(transform: AffineTransform): SpeakerSpotlight;
+
+      /**
+       * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#remove()
+       */
+      remove(): any;
+
+      /**
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#scaleHeight(Number)
+       * @param ratio The ratio to scale this page element's height by.
+       */
+      scaleHeight(ratio: number): SpeakerSpotlight;
+
+      /**
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#scaleWidth(Number)
+       * @param ratio The ratio to scale this page element's width by.
+       */
+      scaleWidth(ratio: number): SpeakerSpotlight;
+
+      /**
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * This sets the parent Page of the PageElement as the current page selection.
+       *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
+       *     // Only select this page element and replace any previous selection.
+       *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#select()
+       */
+      select(): any;
+
+      /**
+       * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
+       *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#select(Boolean)
+       * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
+       */
+      select(replace: boolean): any;
+
+      /**
+       * Sends the page element backward on the page by one element.
+       * The page element must not be in a group.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#sendBackward()
+       */
+      sendBackward(): SpeakerSpotlight;
+
+      /**
+       * Sends the page element to the back of the page.
+       * The page element must not be in a group.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#sendToBack()
+       */
+      sendToBack(): SpeakerSpotlight;
+
+      /**
+       * Sets the page element's alt text description.
+       * The method is not supported for Group elements.
+       *
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     pageElement.setDescription('new alt text description');
+       *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setDescription(String)
+       * @param description The string to set the alt text description to.
+       */
+      setDescription(description: string): SpeakerSpotlight;
+
+      /**
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setHeight(Number)
+       * @param height The new height of this page element to set, in points.
+       */
+      setHeight(height: number): SpeakerSpotlight;
+
+      /**
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setLeft(Number)
+       * @param left The new horizontal position to set, in points.
+       */
+      setLeft(left: number): SpeakerSpotlight;
+
+      /**
+       * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setRotation(Number)
+       * @param angle The new clockwise rotation angle to set, in degrees.
+       */
+      setRotation(angle: number): SpeakerSpotlight;
+
+      /**
+       * Sets the page element's alt text title.
+       * The method is not supported for Group elements.
+       *
+       *     // Set the first page element's alt text title to "new alt text title".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     pageElement.setTitle('new alt text title');
+       *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setTitle(String)
+       * @param title The string to set the alt text title to.
+       */
+      setTitle(title: string): SpeakerSpotlight;
+
+      /**
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setTop(Number)
+       * @param top The new vertical position to set, in points.
+       */
+      setTop(top: number): SpeakerSpotlight;
+
+      /**
+       * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
+       *
+       * Return:
+       * - SpeakerSpotlight — This element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setTransform(AffineTransform)
+       * @param transform The transform that is set for this page element.
+       */
+      setTransform(transform: AffineTransform): SpeakerSpotlight;
+
+      /**
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
+       *
+       * Return:
+       * - SpeakerSpotlight — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
+       * https://developers.google.com/apps-script/reference/slides/speaker-spotlight#setWidth(Number)
+       * @param width The new width of this page element to set, in points.
+       */
+      setWidth(width: number): SpeakerSpotlight;
+    }
+    /**
      * A PageElement representing a table.
      */
     interface Table {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/table#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -8821,45 +14816,99 @@ declare namespace GoogleAppsScript {
 
       /**
        * Appends a new column to the right of the last column of the table.
+       *
+       * Return:
+       * - TableColumn — The new appended column.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#appendColumn()
        */
       appendColumn(): TableColumn;
 
       /**
        * Appends a new row below the last row of the table.
+       *
+       * Return:
+       * - TableRow — The new appended row.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#appendRow()
        */
       appendRow(): TableRow;
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#bringForward()
        */
       bringForward(): Table;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#bringToFront()
        */
       bringToFront(): Table;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#duplicate()
        */
       duplicate(): PageElement;
 
       /**
        * Returns the specified cell in the table.
+       *
+       * Return:
+       * - TableCell — The table cell retrieved.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getCell(Integer,Integer)
        * @param rowIndex The row index of the cell to retrieve.
        * @param columnIndex The column index of the cell to retrieve.
@@ -8868,160 +14917,328 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the specified column in the table.
+       *
+       * Return:
+       * - TableColumn — The table column retrieved.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getColumn(Integer)
        * @param columnIndex The 0-based column index.
        */
       getColumn(columnIndex: Integer): TableColumn;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getDescription()
        */
       getDescription(): string;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getLeft()
        */
       getLeft(): number;
 
       /**
        * Returns the number of columns in the table.
+       *
+       * Return:
+       * - Integer — The number fo columns in this table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getNumColumns()
        */
       getNumColumns(): Integer;
 
       /**
        * Returns the number of rows in the table.
+       *
+       * Return:
+       * - Integer — The number of rows in this table.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getNumRows()
        */
       getNumRows(): Integer;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getRotation()
        */
       getRotation(): number;
 
       /**
        * Returns the specified row in the table.
+       *
+       * Return:
+       * - TableRow — The table row retrieved.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getRow(Integer)
        * @param rowIndex The index of the row to retrieve.
        */
       getRow(rowIndex: Integer): TableRow;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#getWidth()
        */
       getWidth(): number;
 
       /**
        * Inserts a new column at the specified index of the table.
+       * If all the cells in the column to the left of the specified index are merged with other columns, the new column is inserted to the right of the common columns spanned by these cells.
        *
+       * Return:
+       * - TableColumn — The new inserted column.
        *
-       * If all the cells in the column to the left of the specified index are merged with other
-       * columns, the new column is inserted to the right of the common columns spanned by these cells.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#insertColumn(Integer)
        * @param index The index at which to insert a new column.
        */
@@ -9029,10 +15246,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a new row at the specified index of the table.
+       * If all the cells in the row above the specified index are merged with other rows, the new row is inserted below the common rows spanned by these cells.
        *
+       * Return:
+       * - TableRow — The new inserted row.
        *
-       * If all the cells in the row above the specified index are merged with other rows, the new
-       * row is inserted below the common rows spanned by these cells.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#insertRow(Integer)
        * @param index The index at which to insert a new row.
        */
@@ -9041,15 +15265,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -9057,140 +15292,191 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/table#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Table — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): Table;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Table — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): Table;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/table#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#sendBackward()
        */
       sendBackward(): Table;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#sendToBack()
        */
       sendToBack(): Table;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - Table — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): Table;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Table — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): Table;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -9198,11 +15484,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Table — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -9210,23 +15502,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - Table — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): Table;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Table — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -9234,31 +15543,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - Table — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/table#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): Table;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Table — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -9271,83 +15586,209 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the 0-based column index of the table cell.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getColumnIndex()
        */
       getColumnIndex(): Integer;
 
       /**
        * Returns the column span of the table cell.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getColumnSpan()
        */
       getColumnSpan(): Integer;
 
       /**
        * Returns the ContentAlignment of the text in the table cell.
+       *
+       * Return:
+       * - ContentAlignment
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getContentAlignment()
        */
       getContentAlignment(): ContentAlignment;
 
       /**
        * Returns the fill of the table cell.
+       *
+       * Return:
+       * - Fill
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getFill()
        */
       getFill(): Fill;
 
       /**
-       * Returns the head cell of this table cell. Returns null if this cell has not been merged
-       * or if this cell is the head cell.
+       * Returns the head cell of this table cell. Returns null if this cell has not been merged or if this cell is the head cell.
+       *
+       * Return:
+       * - TableCell
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getHeadCell()
        */
       getHeadCell(): TableCell;
 
       /**
        * Returns the merge state of the table cell.
+       *
+       * Return:
+       * - CellMergeState
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getMergeState()
        */
       getMergeState(): CellMergeState;
 
       /**
        * Returns the table column containing the current cell.
+       *
+       * Return:
+       * - TableColumn
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getParentColumn()
        */
       getParentColumn(): TableColumn;
 
       /**
        * Returns the table row containing the current cell.
+       *
+       * Return:
+       * - TableRow
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getParentRow()
        */
       getParentRow(): TableRow;
 
       /**
        * Returns the table containing the current cell.
+       *
+       * Return:
+       * - Table
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getParentTable()
        */
       getParentTable(): Table;
 
       /**
        * Returns the 0-based row index of the table cell.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getRowIndex()
        */
       getRowIndex(): Integer;
 
       /**
        * Returns the row span of the table cell.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getRowSpan()
        */
       getRowSpan(): Integer;
 
       /**
-       * Returns the text content of the table cell. Returns null if the cell is merged but is
-       * not a head cell.
-       *
-       *
+       * Returns the text content of the table cell. Returns null if the cell is merged but is not a head cell.
        * Text within a table cell always terminates with a newline character.
+       *
+       * Return:
+       * - TextRange
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#getText()
        */
       getText(): TextRange;
 
       /**
        * Sets the ContentAlignment of the text in the table cell.
+       *
+       * Return:
+       * - TableCell
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell#setContentAlignment(ContentAlignment)
        * @param contentAlignment
        */
@@ -9360,6 +15801,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the list of TableCell instances.
+       *
+       * Return:
+       * - TableCell[]
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-cell-range#getTableCells()
        */
       getTableCells(): TableCell[];
@@ -9372,6 +15823,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the cell at the specified index.
+       *
+       * Return:
+       * - TableCell
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-column#getCell(Integer)
        * @param cellIndex The 0-based index of the cell to retrieve.
        */
@@ -9379,40 +15840,81 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the 0-based index of the column.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-column#getIndex()
        */
       getIndex(): Integer;
 
       /**
        * Returns the number of cells in this column.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-column#getNumCells()
        */
       getNumCells(): Integer;
 
       /**
        * Returns the table containing the current column.
+       *
+       * Return:
+       * - Table
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-column#getParentTable()
        */
       getParentTable(): Table;
 
       /**
        * Returns the width of the column in points.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-column#getWidth()
        */
       getWidth(): number;
 
       /**
        * Removes the table column.
-       *
-       *
-       * If all the cells in the column are merged with other columns, the common columns spanned by
-       * these cells are removed.
-       *
-       *
+       * If all the cells in the column are merged with other columns, the common columns spanned by these cells are removed.
        * If no columns remain in the table after this removal, the whole table is removed.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-column#remove()
        */
-      remove(): void;
+      remove(): any;
     }
     /**
      * A row in a table. A row consists of a list of table cells. A row is identified by the row index.
@@ -9421,6 +15923,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the cell at the specified index.
+       *
+       * Return:
+       * - TableCell — the cell.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-row#getCell(Integer)
        * @param cellIndex The 0-based index of the cell to retrieve.
        */
@@ -9428,41 +15940,81 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the 0-based index of the row.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-row#getIndex()
        */
       getIndex(): Integer;
 
       /**
-       * Returns the minimum height of the row in points. The actual height depends on the length of the
-       * content of the cell.
+       * Returns the minimum height of the row in points. The actual height depends on the length of the content of the cell.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-row#getMinimumHeight()
        */
       getMinimumHeight(): number;
 
       /**
        * Returns the number of cells in this row.
+       *
+       * Return:
+       * - Integer
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-row#getNumCells()
        */
       getNumCells(): Integer;
 
       /**
        * Returns the table containing the current row.
+       *
+       * Return:
+       * - Table
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-row#getParentTable()
        */
       getParentTable(): Table;
 
       /**
        * Removes the table row.
-       *
-       *
-       * If all the cells in the row are merged with other rows, the common rows spanned by these
-       * cells are removed.
-       *
-       *
+       * If all the cells in the row are merged with other rows, the common rows spanned by these cells are removed.
        * If no rows remain in the table after this removal, the whole table is removed.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/table-row#remove()
        */
-      remove(): void;
+      remove(): any;
     }
     /**
      * The text vertical offset from its normal position.
@@ -9487,16 +16039,19 @@ declare namespace GoogleAppsScript {
     interface TextRange {
 
       /**
-       * Appends a paragraph at the end of the text range. The paragraph maintains the styling of the
-       * end of the current text range.
+       * Appends a paragraph at the end of the text range. The paragraph maintains the styling of the end of the current text range.
+       * The provided text string is appended as a paragraph by adding at least one surrounding newline character to the string.
+       * When the provided text string contains newline characters (thus consisting of multiple paragraphs), the final paragraph added is returned.
        *
+       * Return:
+       * - Paragraph — The appended Paragraph.
        *
-       * The provided text string is appended as a paragraph by adding at least one surrounding
-       * newline character to the string.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * When the provided text string contains newline characters (thus consisting of multiple
-       * paragraphs), the final paragraph added is returned.
        * https://developers.google.com/apps-script/reference/slides/text-range#appendParagraph(String)
        * @param text The string to append as a paragraph.
        */
@@ -9504,9 +16059,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Appends a copy of the provided text range to the end of the current text range.
+       * The formatting of the inserted text matches that of the source text.
        *
+       * Return:
+       * - TextRange — The text range representing the appended text.
        *
-       * The formatting of the inserted text will match that of the source text.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#appendRange(TextRange)
        * @param textRange The text range to append.
        */
@@ -9514,11 +16077,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Appends a copy of the provided text range to the end of the current text range.
+       * If set to match the formatting of the destination text, AutoText within the provided text range are replaced with their rendered values. Furthermore, any non-text elements within the provided text range are not appended.
        *
+       * Return:
+       * - TextRange — The text range representing the appended text.
        *
-       * If set to match the formatting of the destination text, AutoText within the provided
-       * text range are replaced with their rendered values. Furthermore, any non-text elements within
-       * the provided text range are not appended.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#appendRange(TextRange,Boolean)
        * @param textRange The text range to append.
        * @param matchSourceFormatting If true, match the formatting of the source text; if false, match the formatting of the destination text.
@@ -9526,67 +16095,113 @@ declare namespace GoogleAppsScript {
       appendRange(textRange: TextRange, matchSourceFormatting: boolean): TextRange;
 
       /**
-       * Appends text at the end of the text range. The text maintains the styling of the end of the
-       * existing text.
+       * Appends text at the end of the text range. The text maintains the styling of the end of the existing text.
+       *
+       * Return:
+       * - TextRange — The text range representing the appended text.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#appendText(String)
        * @param text The string to append.
        */
       appendText(text: string): TextRange;
 
       /**
-       * Returns the rendered text bounded by this range of the associated shape or table cell in a
-       * format appropriate to display to end users.
+       * Returns the rendered text bounded by this range of the associated shape or table cell in a format appropriate to display to end users.
+       * AutoText elements, such as generated slide numbers, are replaced with their rendered values. Any non-text elements in the range are omitted.
        *
+       * Return:
+       * - String — The rendered text in the range.
        *
-       * AutoText elements, such as generated slide numbers, are replaced with their rendered values.
-       * Any non-text elements in the range are omitted.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#asRenderedString()
        */
       asRenderedString(): string;
 
       /**
        * Returns the raw text bounded by this range of the associated shape or table cell.
+       * AutoText elements such as generated slide numbers and any non-text elements in the range are replaced with the Unicode character U+E907.
        *
+       * Return:
+       * - String — The raw text in the range.
        *
-       * AutoText elements such as generated slide numbers and any non-text elements in the range are
-       * replaced with the Unicode character U+E907.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#asString()
        */
       asString(): string;
 
       /**
        * Clears the text bounded by this range.
+       * Since the entire text in a Shape or TableCell must end in a newline, the final newline in the text is not removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Since the entire text in a Shape or TableCell must end in a newline, the final newline in
-       * the text is not removed.
        * https://developers.google.com/apps-script/reference/slides/text-range#clear()
        */
-      clear(): void;
+      clear(): any;
 
       /**
        * Clears the text bounded by the start and end offsets in the range.
+       * Since the text must end in a newline, the final newline in text is not removed even if it's covered by the given offsets.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Since the text must end in a newline, the final newline in text is not removed even if it's
-       * covered by the given offsets.
        * https://developers.google.com/apps-script/reference/slides/text-range#clear(Integer,Integer)
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the range to clear. The start offset must be equal to or greater than 0 and less than or equal to endOffset. startOffset must also be less than the length of the current range.
        * @param endOffset The number of characters past the start index of the current text range used to determine the exclusive end index of the range to clear. The endOffset must be equal to or greater than startOffset. endOffset must also be less than or equal to the length of the current range.
        */
-      clear(startOffset: Integer, endOffset: Integer): void;
+      clear(startOffset: Integer, endOffset: Integer): any;
 
       /**
-       * Returns all the ranges matching the search pattern in the current text range. The search is
-       * case sensitive.
+       * Returns all the ranges matching the search pattern in the current text range. The search is case sensitive.
+       *
+       * Return:
+       * - TextRange[] — A list of text ranges.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#find(String)
        * @param pattern The regular expression pattern to search; any backslashes in the pattern should be escaped.
        */
       find(pattern: string): TextRange[];
 
       /**
-       * Returns all the ranges matching the search pattern in the current text range starting from the
-       * start offset. The search is case sensitive.
+       * Returns all the ranges matching the search pattern in the current text range starting from the start offset. The search is case sensitive.
+       *
+       * Return:
+       * - TextRange[] — A list of text ranges.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#find(String,Integer)
        * @param pattern The regular expression pattern to search; any backslashes in the pattern should be escaped.
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the range to search. startOffset must also be less than the length of the current range.
@@ -9595,70 +16210,153 @@ declare namespace GoogleAppsScript {
 
       /**
        * Returns the auto texts within the current text range.
+       *
+       * Return:
+       * - AutoText[] — A list of auto texts.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getAutoTexts()
        */
       getAutoTexts(): AutoText[];
 
       /**
-       * Returns the exclusive, 0-based index for the last character in this range. If the start and end
-       * indices are equal, the range is considered to be empty.
+       * Returns the exclusive, 0-based index for the last character in this range. If the start and end indices are equal, the range is considered to be empty.
+       *
+       * Return:
+       * - Integer — The end index of the range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getEndIndex()
        */
       getEndIndex(): Integer;
 
       /**
        * Returns the number of characters in this range.
+       *
+       * Return:
+       * - Integer — The number of characters in this range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getLength()
        */
       getLength(): Integer;
 
       /**
-       * Returns a collection of text ranges that correspond to all Links within the current
-       * text range or overlapping the current text range.
-       *
-       *
-       * Each returned range is guaranteed to span one link when it is created. Text modifications
-       * can cause it to no longer represent exactly one link.
-       *
-       *
+       * Returns a collection of text ranges that correspond to all Links within the current text range or overlapping the current text range.
+       * Each returned range is guaranteed to span one link when it is created. Text modifications can cause it to no longer represent exactly one link.
        * Each Link on the returned ranges can be accessed via TextStyle.getLink().
        *
-       *
        *     // Accesses the first link on a TextRange object.
-       *     var linkTextRange = textRange.getLinks()[0];
-       *     var textStyle = linkTextRange.getTextStyle();
-       *     Logger.log(textStyle.hasLink()); // logs 'true'
-       *     var link = textStyle.getLink();  // Link object
+       *     const textRange = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0].getText();
+       *     const linkTextRange = textRange.getLinks()[0];
+       *     const textStyle = linkTextRange.getTextStyle();
+       *     Logger.log(textStyle.hasLink());   // logs 'true'
+       *     const link = textStyle.getLink();  // Link object
+       *
+       * Return:
+       * - TextRange[] — A list of text ranges.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getLinks()
        */
       getLinks(): TextRange[];
 
       /**
        * Returns the paragraphs in lists that overlap the current text range.
+       *
+       * Return:
+       * - Paragraph[] — A list of paragraphs in lists.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getListParagraphs()
        */
       getListParagraphs(): Paragraph[];
 
       /**
        * Returns the ListStyle of the current text range.
+       *
+       * Return:
+       * - ListStyle — The list style of the current text range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getListStyle()
        */
       getListStyle(): ListStyle;
 
       /**
        * Returns the ParagraphStyle of the current text range.
+       *
+       * Return:
+       * - ParagraphStyle — The paragraph style of the current text range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getParagraphStyle()
        */
       getParagraphStyle(): ParagraphStyle;
 
       /**
        * Returns the paragraphs that overlap the current text range.
+       *
+       * Return:
+       * - Paragraph[] — A list of paragraphs.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getParagraphs()
        */
       getParagraphs(): Paragraph[];
 
       /**
        * Returns a new TextRange covering part of the range from which it is derived.
+       *
+       * Return:
+       * - TextRange — A new text range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getRange(Integer,Integer)
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the returned range. The start offset must be equal to or greater than 0 and less than or equal to endOffset. startOffset must also be less than the length of the current range.
        * @param endOffset The number of characters past the start index of the current text range used to determine the exclusive end index of the returned range. The endOffset must be equal to or greater than startOffset. endOffset must also be less than or equal to the length of the current range.
@@ -9666,40 +16364,68 @@ declare namespace GoogleAppsScript {
       getRange(startOffset: Integer, endOffset: Integer): TextRange;
 
       /**
-       * Returns the text runs that overlap the current text range. A text run is a segment of text
-       * where all the characters have the same text style.
+       * Returns the text runs that overlap the current text range. A text run is a segment of text where all the characters have the same text style.
+       * Each returned range is only guaranteed to span one run when it is created. Text or style modifications can cause it to no longer represent exactly one run.
        *
+       * Return:
+       * - TextRange[] — A list of text ranges.
        *
-       * Each returned range is only guaranteed to span one run when it is created. Text or style
-       * modifications can cause it to no longer represent exactly one run.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getRuns()
        */
       getRuns(): TextRange[];
 
       /**
-       * Returns the inclusive, 0-based index for the first character in this range. If the start and
-       * end indices are equal, the range is considered to be empty.
+       * Returns the inclusive, 0-based index for the first character in this range. If the start and end indices are equal, the range is considered to be empty.
+       *
+       * Return:
+       * - Integer — The start index of the range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getStartIndex()
        */
       getStartIndex(): Integer;
 
       /**
        * Returns the text style of the range, or null if the range is empty.
+       *
+       * Return:
+       * - TextStyle — The text style of the range.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#getTextStyle()
        */
       getTextStyle(): TextStyle;
 
       /**
-       * Inserts a paragraph at the start offset. The paragraph maintains the styling of the current
-       * text range at the start offset.
+       * Inserts a paragraph at the start offset. The paragraph maintains the styling of the current text range at the start offset.
+       * The provided text string is inserted as a paragraph by adding at least one surrounding newline character to the string.
+       * When the provided text string contains newline characters (thus consisting of multiple paragraphs), the final paragraph added is returned.
        *
+       * Return:
+       * - Paragraph — The inserted Paragraph.
        *
-       * The provided text string is inserted as a paragraph by adding at least one surrounding
-       * newline character to the string.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * When the provided text string contains newline characters (thus consisting of multiple
-       * paragraphs), the final paragraph added is returned.
        * https://developers.google.com/apps-script/reference/slides/text-range#insertParagraph(Integer,String)
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the text to insert.
        * @param text The string to insert.
@@ -9708,9 +16434,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided text range at the start offset.
+       * The formatting of the inserted text matches that of the source text.
        *
+       * Return:
+       * - TextRange — The text range representing the inserted text.
        *
-       * The formatting of the inserted text will match that of the source text.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#insertRange(Integer,TextRange)
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the text to insert.
        * @param textRange The text range to insert.
@@ -9719,11 +16453,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Inserts a copy of the provided text range at the start offset.
+       * If set to match the formatting of the destination text, AutoText within the provided text range are replaced with their rendered values. Furthermore, any non-text elements within the provided text range are not inserted.
        *
+       * Return:
+       * - TextRange — The text range representing the inserted text.
        *
-       * If set to match the formatting of the destination text, AutoText within the provided
-       * text range are replaced with their rendered values. Furthermore, any non-text elements within
-       * the provided text range are not inserted.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#insertRange(Integer,TextRange,Boolean)
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the text to insert.
        * @param textRange The text range to insert.
@@ -9732,8 +16472,17 @@ declare namespace GoogleAppsScript {
       insertRange(startOffset: Integer, textRange: TextRange, matchSourceFormatting: boolean): TextRange;
 
       /**
-       * Inserts text at the start offset. The text maintains the styling of the existing text at the
-       * start offset.
+       * Inserts text at the start offset. The text maintains the styling of the existing text at the start offset.
+       *
+       * Return:
+       * - TextRange — The text range representing the inserted text.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#insertText(Integer,String)
        * @param startOffset The number of characters past the start index of the current text range used to determine the inclusive start index of the text to insert.
        * @param text The string to insert.
@@ -9741,15 +16490,33 @@ declare namespace GoogleAppsScript {
       insertText(startOffset: Integer, text: string): TextRange;
 
       /**
-       * Returns true if there are no characters in this range, and returns false
-       * otherwise.
+       * Returns true if there are no characters in this range, and returns false otherwise.
+       *
+       * Return:
+       * - Boolean — true if there are no characters in this range, and returns false otherwise.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#isEmpty()
        */
       isEmpty(): boolean;
 
       /**
-       * Replaces all instances of text matching find text with replace text. The search is case
-       * insensitive.
+       * Replaces all instances of text matching find text with replace text. The search is case insensitive.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#replaceAllText(String,String)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -9758,6 +16525,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Replaces all instances of text matching find text with replace text.
+       *
+       * Return:
+       * - Integer — the number of occurrences changed
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#replaceAllText(String,String,Boolean)
        * @param findText The text to find.
        * @param replaceText The text to replace the matched text.
@@ -9766,25 +16543,45 @@ declare namespace GoogleAppsScript {
       replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
 
       /**
-       * Selects only the TextRange in the active presentation and removes any previous
-       * selection.
+       * Selects only the TextRange in the active presentation and removes any previous selection.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * The parent Page of the corresponding Shape or the TableCell is set as the current page selection. The Shape or the TableCell is set as the selected page element.
+       * - 1. Range of text, use select on a non-empty TextRange to select the range of the
        *
+       *       characters.
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * - 2. Cursor position, use an empty TextRange to place the cursor at the desired index.
        *
+       * const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       * shape.getText().setText('Hello');
+       * // Range selection: Select the text range "He".
+       * shape.getText().getRange(0, 2).select();
+       * // Cursor selection: Place the cursor after "H" like "H|ello".
+       * shape.getText().getRange(1, 1).select();
+       * Authorization
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * https://www.googleapis.com/auth/presentations.currentonly
        *
-       * The parent Page of the corresponding Shape or the TableCell is set
-       * as the current page selection. The Shape or the TableCell is set as the selected page element.
-       *
+       * https://www.googleapis.com/auth/presentations
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/text-range#select()
        */
-      select(): void;
+      select(): any;
 
       /**
-       * Sets the text bounded by this range of the associated shape or table cell. The text maintains
-       * the styling of the start of the existing text.
+       * Sets the text bounded by this range of the associated shape or table cell. The text maintains the styling of the start of the existing text.
+       *
+       * Return:
+       * - TextRange — The text range representing the set text.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-range#setText(String)
        * @param newText The string to set as the new text.
        */
@@ -9803,133 +16600,263 @@ declare namespace GoogleAppsScript {
     interface TextStyle {
 
       /**
-       * Returns the background color of the text, or null if there are multiple styles on the
-       * text.
+       * Returns the background color of the text, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Color
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getBackgroundColor()
        */
       getBackgroundColor(): Color;
 
       /**
-       * Returns the vertical offset of text from its normal position, or null if there are
-       * multiple styles on the text.
+       * Returns the vertical offset of text from its normal position, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - TextBaselineOffset
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getBaselineOffset()
        */
       getBaselineOffset(): TextBaselineOffset;
 
       /**
        * Returns the font family of the text, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - String
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getFontFamily()
        */
       getFontFamily(): string;
 
       /**
-       * Returns the font size of the text in points, or null if there are multiple styles on
-       * the text.
+       * Returns the font size of the text in points, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Number
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getFontSize()
        */
       getFontSize(): number;
 
       /**
        * Returns the font weight of the text, or null if there are multiple styles on the text.
+       * The weight is a multiple of 100 between 100 and 900, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, section 15.6, with non-numerical values disallowed. Weights greater than or equal to 700 are considered bold, in which case isBold() returns true. The default value is 400 ("normal").
        *
+       * Return:
+       * - Integer
        *
-       * The weight is a multiple of 100 between 100 and 900, inclusive. This range corresponds to
-       * the numerical values described in the CSS 2.1 Specification, section 15.6, with
-       * non-numerical values disallowed. Weights greater than or equal to 700 are considered bold, in
-       * which case isBold() returns true. The default value is 400
-       * ("normal").
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getFontWeight()
        */
       getFontWeight(): Integer;
 
       /**
-       * Returns the foreground color of the text, or null if there are multiple styles on the
-       * text.
+       * Returns the foreground color of the text, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Color
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getForegroundColor()
        */
       getForegroundColor(): Color;
 
       /**
-       * Returns the Link on the text, or null if there is no link or if the link is on
-       * part of the text or if there are multiple links. Call hasLink() to determine whether
-       * the text has no link.
+       * Returns the Link on the text, or null if there is no link or if the link is on part of the text or if there are multiple links. Call hasLink() to determine whether the text has no link.
        *
-       *
-       *     var textLink = shape.getText().getTextStyle().getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const textLink = shape.getText().getTextStyle().getLink();
        *     if (textLink != null) {
-       *       Logger.log('Shape text has a link of type: ' + textLink.getLinkType());
+       *       Logger.log(`Shape text has a link of type: ${textLink.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - Link
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#getLink()
        */
       getLink(): Link;
 
       /**
-       * Returns true if there is link on the text, false if not, or null if the
-       * link is on part of the text or there are multiple links.
+       * Returns true if there is link on the text, false if not, or null if the link is on part of the text or there are multiple links.
+       * Links cannot be set on newline characters. Therefore, if the TextRange contains a newline character, this method always returns either null or false.
        *
+       * Return:
+       * - Boolean
        *
-       * Links cannot be set on newline characters. Therefore, if the TextRange contains a
-       * newline character, this method always returns either null or false.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#hasLink()
        */
       hasLink(): boolean;
 
       /**
-       * Returns true if the background of the text is transparent, false if not, or
-       * null if there are multiple styles on the text.
+       * Returns true if the background of the text is transparent, false if not, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#isBackgroundTransparent()
        */
       isBackgroundTransparent(): boolean;
 
       /**
-       * Returns true if the text is rendered as bold, false if not, or null if
-       * there are multiple styles on the text.
+       * Returns true if the text is rendered as bold, false if not, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#isBold()
        */
       isBold(): boolean;
 
       /**
-       * Returns true if the text is italicized, false if not, or null if there
-       * are multiple styles on the text.
+       * Returns true if the text is italicized, false if not, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#isItalic()
        */
       isItalic(): boolean;
 
       /**
        * Returns true if the text is in small capital letters, false if not, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#isSmallCaps()
        */
       isSmallCaps(): boolean;
 
       /**
-       * Returns true if the text is struck through, false if not, or null if
-       * there are multiple styles on the text.
+       * Returns true if the text is struck through, false if not, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#isStrikethrough()
        */
       isStrikethrough(): boolean;
 
       /**
-       * Returns true if the text is underlined, false if not, or null if there
-       * are multiple styles on the text.
+       * Returns true if the text is underlined, false if not, or null if there are multiple styles on the text.
+       *
+       * Return:
+       * - Boolean
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#isUnderline()
        */
       isUnderline(): boolean;
 
       /**
        * Removes a Link.
+       * Removing a link removes the hyperlink foreground color and underline style on the text. If possible, these styles are applied to match the text preceding the link.
        *
+       *     const textRange = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0].getText();
+       *     textRange.getTextStyle().removeLink();
        *
-       * Removing a link removes the hyperlink foreground color and underline style on the text. If
-       * possible, these styles are applied to match the text preceding the link.
+       * Return:
+       * - TextStyle
        *
-       *
-       *     text.getTextStyle().removeLink();
        * https://developers.google.com/apps-script/reference/slides/text-style#removeLink()
        */
       removeLink(): TextStyle;
 
       /**
        * Sets the background color of the text.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBackgroundColor(Color)
        * @param color
        */
@@ -9937,6 +16864,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the background color of the text to the given RGB values from 0 to 255.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBackgroundColor(Integer,Integer,Integer)
        * @param red
        * @param green
@@ -9946,10 +16883,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the background color of the text to the given hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as '#FFC0CB'.
        *
+       * Return:
+       * - TextStyle
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBackgroundColor(String)
        * @param hexColor
        */
@@ -9957,6 +16901,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the background color of the text to the given ThemeColorType.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBackgroundColor(ThemeColorType)
        * @param color
        */
@@ -9964,12 +16918,32 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the background color of the text to transparent.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBackgroundColorTransparent()
        */
       setBackgroundColorTransparent(): TextStyle;
 
       /**
        * Sets the vertical offset of the text relative to its normal position.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBaselineOffset(TextBaselineOffset)
        * @param offset
        */
@@ -9977,9 +16951,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets whether the text should be rendered as bold.
-       *
-       *
        * Changing the text's boldness updates the font weight used to render the text.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setBold(Boolean)
        * @param bold
        */
@@ -9987,6 +16969,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the font family of the text .
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setFontFamily(String)
        * @param fontFamily
        */
@@ -9994,13 +16986,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the font family and weight of the text.
+       * The weight is a multiple of 100 between 100 and 900, inclusive. This range corresponds to the numerical values described in the CSS 2.1 Specification, section 15.6, with non-numerical values disallowed. Weights greater than or equal to 700 are considered bold, in which case isBold() returns true. The default value is 400 ("normal").
        *
+       * Return:
+       * - TextStyle
        *
-       * The weight is a multiple of 100 between 100 and 900, inclusive. This range corresponds to
-       * the numerical values described in the CSS 2.1 Specification, section 15.6, with
-       * non-numerical values disallowed. Weights greater than or equal to 700 are considered bold, in
-       * which case isBold() returns true. The default value is 400
-       * ("normal").
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setFontFamilyAndWeight(String,Integer)
        * @param fontFamily
        * @param fontWeight
@@ -10009,6 +17005,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the font size of the text, in points.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setFontSize(Number)
        * @param fontSize
        */
@@ -10016,6 +17022,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the foreground color of the text.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setForegroundColor(Color)
        * @param foregroundColor
        */
@@ -10023,6 +17039,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the foreground color of the text to the given RGB values from 0 to 255.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setForegroundColor(Integer,Integer,Integer)
        * @param red
        * @param green
@@ -10032,10 +17058,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the foreground color of the text to the given hex color string.
+       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as '#FFC0CB'.
        *
+       * Return:
+       * - TextStyle
        *
-       * The hex string must be in the format '#RRGGBB'. For example, pink would be represented as
-       * '#FFC0CB'.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setForegroundColor(String)
        * @param hexColor
        */
@@ -10043,6 +17076,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the foreground color of the text to the given ThemeColorType.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setForegroundColor(ThemeColorType)
        * @param color
        */
@@ -10050,6 +17093,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the whether the text is italicized.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setItalic(Boolean)
        * @param italic
        */
@@ -10057,17 +17110,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets a Link to the given Slide using the zero-based index of the slide.
-       *
-       *
        * Setting a link changes the style of the text to be underlined and to have a ThemeColorType.HYPERLINK foreground color. This can be changed via setForegroundColor(hexColor) and setUnderline(underline).
-       *
-       *
-       * Since links cannot be set on newline characters, newline characters in the TextRange
-       * are ignored.
-       *
+       * Since links cannot be set on newline characters, newline characters in the TextRange are ignored.
        *
        *     // Set a link to the first slide of the presentation.
-       *     text.getTextStyle().setLinkSlide(0);
+       *     const presentation = SlidesApp.getActivePresentation();
+       *     const slide = presentation.getSlides()[0];
+       *     const textRange = slide.getShapes()[0].getText();
+       *     textRange.getTextStyle().setLinkSlide(0);
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setLinkSlide(Integer)
        * @param slideIndex The zero-based index to the slide.
        */
@@ -10075,18 +17135,24 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets a Link to the given Slide, the link is set by the given slide ID.
-       *
-       *
        * Setting a link changes the style of the text to be underlined and to have a ThemeColorType.HYPERLINK foreground color. This can be changed via setForegroundColor(hexColor) and setUnderline(underline).
-       *
-       *
-       * Since links cannot be set on newline characters, newline characters in the TextRange
-       * are ignored.
-       *
+       * Since links cannot be set on newline characters, newline characters in the TextRange are ignored.
        *
        *     // Set a link to the first slide of the presentation.
-       *     var slide = presentation.getSlides()[0];
-       *     text.getTextStyle().setLinkSlide(slide);
+       *     const presentation = SlidesApp.getActivePresentation();
+       *     const slide = presentation.getSlides()[0];
+       *     const textRange = slide.getShapes()[0].getText();
+       *     textRange.getTextStyle().setLinkSlide(slide);
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setLinkSlide(Slide)
        * @param slide The Slide to be linked.
        */
@@ -10094,17 +17160,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets a Link to the given Slide using the relative position of the slide.
-       *
-       *
        * Setting a link changes the style of the text to be underlined and to have a ThemeColorType.HYPERLINK foreground color. This can be changed via setForegroundColor(hexColor) and setUnderline(underline).
-       *
-       *
-       * Since links cannot be set on newline characters, newline characters in the TextRange
-       * are ignored.
-       *
+       * Since links cannot be set on newline characters, newline characters in the TextRange are ignored.
        *
        *     // Set a link to the first slide of the presentation.
-       *     text.getTextStyle().setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *     const textRange = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0].getText();
+       *     textRange.getTextStyle().setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setLinkSlide(SlidePosition)
        * @param slidePosition The relative SlidePosition.
        */
@@ -10112,17 +17183,22 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets a Link to the given non-empty URL string.
-       *
-       *
        * Setting a link changes the style of the text to be underlined and to have a ThemeColorType.HYPERLINK foreground color. This can be changed via setForegroundColor(hexColor) and setUnderline(underline).
-       *
-       *
-       * Since links cannot be set on newline characters, newline characters in the TextRange
-       * are ignored.
-       *
+       * Since links cannot be set on newline characters, newline characters in the TextRange are ignored.
        *
        *     // Set a link to the URL.
-       *     text.getTextStyle().setLinkUrl("https://slides.google.com");
+       *     const textRange = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0].getText();
+       *     textRange.getTextStyle().setLinkUrl('https://slides.google.com');
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setLinkUrl(String)
        * @param url The URL string.
        */
@@ -10130,6 +17206,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets whether the text is rendered in small capital letters.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setSmallCaps(Boolean)
        * @param smallCaps
        */
@@ -10137,6 +17223,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets whether the text is struck through.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setStrikethrough(Boolean)
        * @param strikethrough
        */
@@ -10144,6 +17240,16 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets whether the text is underlined.
+       *
+       * Return:
+       * - TextStyle
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/text-style#setUnderline(Boolean)
        * @param underline
        */
@@ -10156,12 +17262,32 @@ declare namespace GoogleAppsScript {
 
       /**
        * Get the type of this color.
+       *
+       * Return:
+       * - ColorType — The color type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/theme-color#getColorType()
        */
       getColorType(): Base.ColorType;
 
       /**
        * Get the theme color type of this color.
+       *
+       * Return:
+       * - ThemeColorType
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/theme-color#getThemeColorType()
        */
       getThemeColorType(): ThemeColorType;
@@ -10180,6 +17306,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/video#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -10187,185 +17317,376 @@ declare namespace GoogleAppsScript {
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#bringForward()
        */
       bringForward(): Video;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#bringToFront()
        */
       bringToFront(): Video;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#duplicate()
        */
       duplicate(): PageElement;
 
       /**
        * Returns the Border of the video.
+       *
+       * Return:
+       * - Border — The border setting for this video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getBorder()
        */
       getBorder(): Border;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getDescription()
        */
       getDescription(): string;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getLeft()
        */
       getLeft(): number;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getParentPage()
        */
       getParentPage(): Page;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getRotation()
        */
       getRotation(): number;
 
       /**
        * Gets the video source.
+       *
+       * Return:
+       * - VideoSourceType — The source of this video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getSource()
        */
       getSource(): VideoSourceType;
 
       /**
-       * Gets an URL to the video thumbnail. This URL is tagged with the account of the requester.
-       * Anyone with the URL effectively accesses the thumbnail as the original requester. Access to the
-       * thumbnail may be lost if the presentation's sharing settings change. The URL expires after a
-       * short period of time.
+       * Gets an URL to the video thumbnail. This URL is tagged with the account of the requester. Anyone with the URL effectively accesses the thumbnail as the original requester. Access to the thumbnail may be lost if the presentation's sharing settings change. The URL expires after a short period of time.
+       *
+       * Return:
+       * - String — The URL of the video thumbnail.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getThumbnailUrl()
        */
       getThumbnailUrl(): string;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Gets an URL to the video. The URL is valid as long as the source video exists and sharing
-       * settings do not change. Returns null when the video source is not supported.
+       * Gets an URL to the video. The URL is valid as long as the source video exists and sharing settings do not change. Returns null when the video source is not supported.
+       *
+       * Return:
+       * - String — The URL of this video, or null if the video source is not supported.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getUrl()
        */
       getUrl(): string;
 
       /**
        * Gets the video source's unique identifier for this video.
+       *
+       * Return:
+       * - String — The source ID for this video.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getVideoId()
        */
       getVideoId(): string;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#getWidth()
        */
       getWidth(): number;
@@ -10373,15 +17694,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -10389,140 +17721,191 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/video#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Video — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): Video;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Video — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): Video;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/video#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#sendBackward()
        */
       sendBackward(): Video;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#sendToBack()
        */
       sendToBack(): Video;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - Video — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): Video;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Video — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): Video;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -10530,11 +17913,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Video — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -10542,23 +17931,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - Video — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): Video;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Video — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -10566,31 +17972,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - Video — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/video#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): Video;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Video — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/video#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
@@ -10610,6 +18022,10 @@ declare namespace GoogleAppsScript {
 
       /**
        * Aligns the element to the specified alignment position on the page.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#alignOnPage(AlignmentPosition)
        * @param alignmentPosition The position to align this page element to on the page.
        */
@@ -10617,80 +18033,150 @@ declare namespace GoogleAppsScript {
 
       /**
        * Brings the page element forward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#bringForward()
        */
       bringForward(): WordArt;
 
       /**
        * Brings the page element to the front of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#bringToFront()
        */
       bringToFront(): WordArt;
 
       /**
        * Duplicates the page element.
-       *
-       *
        * The duplicate page element is placed on the same page at the same position as the original.
+       *
+       * Return:
+       * - PageElement — The new duplicate of this page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#duplicate()
        */
       duplicate(): PageElement;
 
       /**
-       * Returns the list of ConnectionSites on the page element, or an empty list if the page
-       * element does not have any connection sites.
+       * Returns the list of ConnectionSites on the page element, or an empty list if the page element does not have any connection sites.
+       *
+       * Return:
+       * - ConnectionSite[] — The connection sites list, which may be empty if this element has no connection sites.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getConnectionSites()
        */
       getConnectionSites(): ConnectionSite[];
 
       /**
-       * Returns the page element's alt text description. The description is combined with the title to
-       * display and read alt text.
+       * Returns the page element's alt text description. The description is combined with the title to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text description.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getDescription()
        */
       getDescription(): string;
 
       /**
-       * Gets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Gets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getHeight()
        */
       getHeight(): number;
 
       /**
        * Returns the element's inherent height in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent height in points, or null if the page element does not have a height.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getInherentHeight()
        */
       getInherentHeight(): number;
 
       /**
        * Returns the element's inherent width in points.
+       * The page element's transform is relative to its inherent size. Use the inherent size in conjunction with the element's transform to determine the element's final visual appearance.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * The page element's transform is relative to its inherent size. Use the inherent size in
-       * conjunction with the element's transform to determine the element's final visual appearance.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getInherentWidth()
        */
       getInherentWidth(): number;
 
       /**
-       * Returns the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Returns the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's horizontal position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getLeft()
        */
       getLeft(): number;
@@ -10698,88 +18184,183 @@ declare namespace GoogleAppsScript {
       /**
        * Returns the Link or null if there is no link.
        *
-       *
-       *     var link = shape.getLink();
+       *     const shape = SlidesApp.getActivePresentation().getSlides()[0].getShapes()[0];
+       *     const link = shape.getLink();
        *     if (link != null) {
-       *       Logger.log('Shape has a link of type: ' + link.getLinkType());
+       *       Logger.log(`Shape has a link of type: ${link.getLinkType()}`);
        *     }
+       *
+       * Return:
+       * - Link — The Link or null if there is no link.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getLink()
        */
       getLink(): Link;
 
       /**
-       * Returns the unique ID for this object. Object IDs used by pages and page elements share the
-       * same namespace.
+       * Returns the unique ID for this object. Object IDs used by pages and page elements share the same namespace.
+       *
+       * Return:
+       * - String — The unique ID for this object.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getObjectId()
        */
       getObjectId(): string;
 
       /**
        * Returns the page element's type, represented as a PageElementType enum.
+       *
+       * Return:
+       * - PageElementType — The page element's type.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getPageElementType()
        */
       getPageElementType(): PageElementType;
 
       /**
-       * Returns the group this page element belongs to, or null if the element is not in a
-       * group.
+       * Returns the group this page element belongs to, or null if the element is not in a group.
+       *
+       * Return:
+       * - Group — The group this page element belongs to, or null.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getParentGroup()
        */
       getParentGroup(): Group;
 
       /**
        * Returns the page this page element is on.
+       *
+       * Return:
+       * - Page — The page this element resides on.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getParentPage()
        */
       getParentPage(): Page;
 
       /**
        * Gets the text that is rendered as word art.
+       *
+       * Return:
+       * - String — The text that is rendered as this word art.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getRenderedText()
        */
       getRenderedText(): string;
 
       /**
-       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees
-       * means no rotation.
+       * Returns the element's clockwise rotation angle around its center in degrees, where zero degrees means no rotation.
+       *
+       * Return:
+       * - Number — The rotation angle in degrees between 0 (inclusive) and 360 (exclusive).
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getRotation()
        */
       getRotation(): number;
 
       /**
-       * Returns the page element's alt text title. The title is combined with the description to
-       * display and read alt text.
+       * Returns the page element's alt text title. The title is combined with the description to display and read alt text.
+       *
+       * Return:
+       * - String — The page element's alt text title.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getTitle()
        */
       getTitle(): string;
 
       /**
-       * Gets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Gets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - Number — This element's vertical position in points, from the upper-left corner of the page.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getTop()
        */
       getTop(): number;
 
       /**
        * Returns the page element's transform.
+       * The visual appearance of the page element is determined by its absolute transform. To compute the absolute transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the page element is not in a group, its absolute transform is the same as the value in this field.
        *
+       * Return:
+       * - AffineTransform — The page element's transform.
        *
-       * The visual appearance of the page element is determined by its absolute transform. To
-       * compute the absolute transform, preconcatenate a page element's transform with the transforms
-       * of all of its parent groups. If the page element is not in a group, its absolute transform is
-       * the same as the value in this field.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getTransform()
        */
       getTransform(): AffineTransform;
 
       /**
-       * Returns the element's width in points, which is the width of the element's bounding box when
-       * the element has no rotation.
+       * Returns the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - Number — The page element's inherent width in points, or null if the page element does not have a width.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#getWidth()
        */
       getWidth(): number;
@@ -10787,15 +18368,26 @@ declare namespace GoogleAppsScript {
       /**
        * Preconcatenates the provided transform to the existing transform of the page element.
        *
+       *     newTransform = argument * existingTransform;
        *
-       *     newTransform = argument * existingTransform
        * For example, to move a page elements 36 points to the left:
        *
+       *     const element = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     element.preconcatenateTransform(
+       *         SlidesApp.newAffineTransformBuilder().setTranslateX(-36.0).build(),
+       *     );
        *
-       *     element.preconcatenateTransform(SlidesApp.newAffineTransformBuilder()
-       *         .setTranslateX(-36.0)
-       *         .build());
        * You can also replace the page element's transform with setTransform(transform).
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#preconcatenateTransform(AffineTransform)
        * @param transform The transform to preconcatenate onto this page element's transform.
        */
@@ -10803,149 +18395,201 @@ declare namespace GoogleAppsScript {
 
       /**
        * Removes the page element.
+       * If after a remove operation, a Group contains only one or no page elements, the group itself is also removed.
+       * If a placeholder PageElement is removed on a master or layout, any empty inheriting placeholders are also removed.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * If after a remove operation, a Group contains only one or no page elements, the
-       * group itself is also removed.
-       *
-       *
-       * If a placeholder PageElement is removed on a master or layout, any empty inheriting
-       * placeholders are also removed.
        * https://developers.google.com/apps-script/reference/slides/word-art#remove()
        */
-      remove(): void;
+      remove(): any;
 
       /**
        * Removes a Link.
        *
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     slides[1].getShapes()[0].removeLink();
        *
-       *     shape.removeLink();
        * https://developers.google.com/apps-script/reference/slides/word-art#removeLink()
        */
-      removeLink(): void;
+      removeLink(): any;
 
       /**
-       * Scales the element's height by the specified ratio. The element's height is the height of its
-       * bounding box when the element has no rotation.
+       * Scales the element's height by the specified ratio. The element's height is the height of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - WordArt — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#scaleHeight(Number)
        * @param ratio The ratio to scale this page element's height by.
        */
       scaleHeight(ratio: number): WordArt;
 
       /**
-       * Scales the element's width by the specified ratio. The element's width is the width of its
-       * bounding box when the element has no rotation.
+       * Scales the element's width by the specified ratio. The element's width is the width of its bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - WordArt — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#scaleWidth(Number)
        * @param ratio The ratio to scale this page element's width by.
        */
       scaleWidth(ratio: number): WordArt;
 
       /**
-       * Selects only the PageElement in the active presentation and removes any previous
-       * selection. This is same as calling select(replace) with true.
-       *
-       *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
-       *
-       *
+       * Selects only the PageElement in the active presentation and removes any previous selection. This is the same as calling select(replace) with true.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
        * This sets the parent Page of the PageElement as the current page selection.
        *
-       *
-       *     var slide = SlidesApp.getActivePresentation().getSlides()[0];
-       *     var pageElement = slide.getPageElements()[0];
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     const pageElement = slide.getPageElements()[0];
        *     // Only select this page element and replace any previous selection.
        *     pageElement.select();
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#select()
        */
-      select(): void;
+      select(): any;
 
       /**
        * Selects the PageElement in the active presentation.
+       * A script can only access the selection of the user who is running the script, and only if the script is bound to the presentation.
+       * Pass true to this method to select only the PageElement and remove any previous selection. This also sets the parent Page of the PageElement as the current page selection.
+       * Pass false to select multiple PageElement objects. The PageElement objects must be in the same Page.
+       * The following conditions must be met while selecting a page element using a false parameter:
+       * To make sure that’s the case the preferred approach is to select the parent Page first using Page.selectAsCurrentPage() and then select the page elements in that page.
        *
+       *     const slide = SlidesApp.getActivePresentation().getSlides()[0];
+       *     // First select the slide page, as the current page selection.
+       *     slide.selectAsCurrentPage();
+       *     // Then select all the page elements in the selected slide page.
+       *     const pageElements = slide.getPageElements();
+       *     for (let i = 0; i < pageElements.length; i++) {
+       *       pageElements[i].select(false);
+       *     }
        *
-       * A script can only access the selection of the user who is running the script, and only if
-       * the script is bound to the presentation.
+       * Authorization:
        *
-       *
-       * Pass true to this method to select only the PageElement and remove any
-       * previous selection. This also sets the parent Page of the PageElement as the
-       * current page selection.
-       *
-       *
-       * Pass false to select multiple PageElement objects. The PageElement
-       * objects must be in the same Page.
-       *
-       *
-       * The following conditions must be met while selecting a page element using a false
-       * parameter:
-       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
        * https://developers.google.com/apps-script/reference/slides/word-art#select(Boolean)
        * @param replace If true, the selection replaces any previous selection; otherwise the selection is added to any previous selection.
        */
-      select(replace: boolean): void;
+      select(replace: boolean): any;
 
       /**
        * Sends the page element backward on the page by one element.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#sendBackward()
        */
       sendBackward(): WordArt;
 
       /**
        * Sends the page element to the back of the page.
-       *
-       *
        * The page element must not be in a group.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#sendToBack()
        */
       sendToBack(): WordArt;
 
       /**
        * Sets the page element's alt text description.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
-       *     // Set the first page element's alt text description to "new alt text description".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     // Set the first page element's alt text description to "new alt text
+       *     // description".
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setDescription('new alt text description');
        *     Logger.log(pageElement.getDescription());
+       *
+       * Return:
+       * - WordArt — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setDescription(String)
        * @param description The string to set the alt text description to.
        */
       setDescription(description: string): WordArt;
 
       /**
-       * Sets the element's height in points, which is the height of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's height in points, which is the height of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - WordArt — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setHeight(Number)
        * @param height The new height of this page element to set, in points.
        */
       setHeight(height: number): WordArt;
 
       /**
-       * Sets the element's horizontal position in points, measured from the upper-left corner of the
-       * page when the element has no rotation.
+       * Sets the element's horizontal position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setLeft(Number)
        * @param left The new horizontal position to set, in points.
        */
@@ -10954,9 +18598,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the zero-based index of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(0);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(0);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setLinkSlide(Integer)
        * @param slideIndex The zero-based index to the slide.
        */
@@ -10965,10 +18620,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide, the link is set by the given slide ID.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     var slide = presentation.getSlides()[0];
-       *     shape.setLinkSlide(slide);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(slides[0]);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setLinkSlide(Slide)
        * @param slide The Slide to be linked.
        */
@@ -10977,9 +18642,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given Slide using the relative position of the slide.
        *
-       *
        *     // Set a link to the first slide of the presentation.
-       *     shape.setLinkSlide(SlideApp.SlidePosition.FIRST_SLIDE);
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkSlide(SlidesApp.SlidePosition.FIRST_SLIDE);
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setLinkSlide(SlidePosition)
        * @param slidePosition The relative SlidePosition.
        */
@@ -10988,9 +18664,20 @@ declare namespace GoogleAppsScript {
       /**
        * Sets a Link to the given non-empty URL string.
        *
-       *
        *     // Set a link to the URL.
-       *     shape.setLinkUrl("https://slides.google.com");
+       *     const slides = SlidesApp.getActivePresentation().getSlides();
+       *     const shape = slides[1].getShapes()[0];
+       *     const link = shape.setLinkUrl('https://slides.google.com');
+       *
+       * Return:
+       * - Link — The Link that was set.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setLinkUrl(String)
        * @param url The URL string.
        */
@@ -10998,11 +18685,17 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the element's clockwise rotation angle around its center in degrees.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - WordArt — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setRotation(Number)
        * @param angle The new clockwise rotation angle to set, in degrees.
        */
@@ -11010,23 +18703,40 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the page element's alt text title.
-       *
-       *
        * The method is not supported for Group elements.
        *
-       *
        *     // Set the first page element's alt text title to "new alt text title".
-       *     var pageElement = SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
+       *     const pageElement =
+       *         SlidesApp.getActivePresentation().getSlides()[0].getPageElements()[0];
        *     pageElement.setTitle('new alt text title');
        *     Logger.log(pageElement.getTitle());
+       *
+       * Return:
+       * - WordArt — This page element.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setTitle(String)
        * @param title The string to set the alt text title to.
        */
       setTitle(title: string): WordArt;
 
       /**
-       * Sets the element's vertical position in points, measured from the upper-left corner of the page
-       * when the element has no rotation.
+       * Sets the element's vertical position in points, measured from the upper-left corner of the page when the element has no rotation.
+       *
+       * Return:
+       * - WordArt — This page element, for chaining.
+       *
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setTop(Number)
        * @param top The new vertical position to set, in points.
        */
@@ -11034,31 +18744,37 @@ declare namespace GoogleAppsScript {
 
       /**
        * Sets the transform of the page element with the provided transform.
+       * Updating the transform of a group changes the absolute transform of the page elements in that group, which can change their visual appearance.
+       * Updating the transform of a page element that is in a group only changes the transform of that page element; it doesn't affect the transforms of the group or other page elements in the group.
+       * For details on how transforms impact the visual appearance of page elements, see getTransform().
        *
+       * Return:
+       * - WordArt — This element, for chaining.
        *
-       * Updating the transform of a group changes the absolute transform of the page elements in
-       * that group, which can change their visual appearance.
+       * Authorization:
        *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
        *
-       * Updating the transform of a page element that is in a group only changes the transform of
-       * that page element; it doesn't affect the transforms of the group or other page elements in the
-       * group.
-       *
-       *
-       * For details on how transforms impact visual appearance of page elements, see getTransform().
        * https://developers.google.com/apps-script/reference/slides/word-art#setTransform(AffineTransform)
        * @param transform The transform that is set for this page element.
        */
       setTransform(transform: AffineTransform): WordArt;
 
       /**
-       * Sets the element's width in points, which is the width of the element's bounding box when the
-       * element has no rotation.
+       * Sets the element's width in points, which is the width of the element's bounding box when the element has no rotation.
+       * This method isn't compatible with all page elements. To learn which page elements aren't compatible with this method, refer to the sizing and positioning limitations.
        *
+       * Return:
+       * - WordArt — This page element, for chaining.
        *
-       * This method isn't compatible with all page elements. To learn which page elements aren't
-       * compatible with this method, refer to the
-       * sizing and positioning limitations.
+       * Authorization:
+       *
+       * Scripts that use this method require authorization with one or more of the following scopes:
+       * - https://www.googleapis.com/auth/presentations.currentonly
+       * - https://www.googleapis.com/auth/presentations
+       *
        * https://developers.google.com/apps-script/reference/slides/word-art#setWidth(Number)
        * @param width The new width of this page element to set, in points.
        */
