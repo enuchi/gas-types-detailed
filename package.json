@@ -1,6 +1,6 @@
 {
   "name": "gas-types-detailed",
-  "version": "1.1.3-prelease.1",
+  "version": "1.1.3",
   "description": "Enhanced Google Apps Script Type Definitions with detailed documentation. Includes type definitions plus code snippets, return values, required authorization scopes, and other details not found in @types/google-apps-script.",
   "main": "",
   "scripts": {},
